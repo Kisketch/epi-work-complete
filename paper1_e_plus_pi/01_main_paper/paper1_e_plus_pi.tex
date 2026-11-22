@@ -783,7 +783,7 @@ interface hypotheses for the locked denominators, the Hermite recurrence,
 the mod-$T$ congruence, and the digit-determination rule).
 The file elaborates with zero \texttt{sorry}; the kernel audit is recorded in
 \texttt{verification/\allowbreak audit\_\allowbreak final\_\allowbreak 20261122.log}
-(828 audited declarations project-wide, \texttt{sorryAx}=0, zero project-added axioms;
+(872 audited declarations project-wide across 131 Lean files, \texttt{sorryAx}=0, zero project-added axioms;
 the seven \texttt{AffineWindow} declarations use only Lean base axioms, three of them strictly weaker including one axiom-free).
 This remark does not affect the paper proofs, which are self-contained.
 \end{remark}
@@ -3910,10 +3910,10 @@ developing and drafting mathematical arguments and text,
 preparing the numerical certificates, and writing the Lean~4
 formalization. The results marked as kernel-checked were verified
 by the Lean~4 kernel, and their axiom dependencies were audited
-with \texttt{\#print axioms} in \texttt{Audit.lean} (828 audited
-declarations project-wide as of 2026-11-22, recorded in
+with \texttt{\#print axioms} in \texttt{Audit.lean} (872 audited
+declarations project-wide across 131 Lean files as of 2026-11-22, recorded in
 \texttt{verification/\allowbreak audit\_\allowbreak final\_\allowbreak 20261122.log};
-805 depend only on the Lean base axioms \texttt{propext},
+849 depend only on the Lean base axioms \texttt{propext},
 \texttt{Classical.choice}, and \texttt{Quot.sound}, and 23 use the
 registered transcendence/irrationality-measure whitelist axioms
 \texttt{e\_transcendental}, \texttt{pi\_transcendental}, and
@@ -4118,11 +4118,11 @@ The invariance lemmas (translation, scaling, reciprocal) and Theorem~\ref{thm:me
 The earlier 9098-job, 9099-job, and 9101-job baselines were built and
 reproduced separately. In the current fully integrated sources
 (2026-11-22), \texttt{lake build EpiFormal} completed cleanly
-(9172 jobs, exit code~0) and \texttt{lake env lean Audit.lean}
+(9176 jobs, exit code~0) and \texttt{lake env lean Audit.lean}
 (recorded in \texttt{verification/\allowbreak audit\_\allowbreak final\_\allowbreak 20261122.log}
 and reconciled by \texttt{verification/\allowbreak check\_\allowbreak audit\_\allowbreak reconcile.py})
-reports 828 audited declarations with zero \texttt{sorryAx} and zero
-project-added axioms. Of these, 805 use only the Lean base axioms
+reports 872 audited declarations across 131 scanned Lean files with zero \texttt{sorryAx} and zero
+project-added axioms. Of these, 849 use only the Lean base axioms
 (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound},
 including 5 axiom-free declarations) and 23 also use the three
 whitelisted classical inputs (\texttt{e\_transcendental},
@@ -4686,8 +4686,8 @@ other seven Paper~1 helper modules (\texttt{GoldenAffineEndpoint.lean},
 \texttt{ResearchAdvance.lean}, and \texttt{TraceMarkov.lean}) are now
 integrated directly inside \texttt{epi\_formal/\allowbreak EpiFormal/}
 and audited in \texttt{Audit.lean}. The 2026-11-22 rerun built the full
-integrated project (\texttt{9172 jobs}, exit code~0) and verified all
-828 audited declarations (805 base-only + 23 whitelisted classical,
+integrated project (\texttt{9176 jobs}, exit code~0) and verified all
+872 audited declarations across 131 Lean files (849 base-only + 23 whitelisted classical,
 zero \texttt{sorryAx}, zero project-added axioms) in
 \texttt{verification/\allowbreak audit\_\allowbreak final\_\allowbreak 20261122.log}.
 

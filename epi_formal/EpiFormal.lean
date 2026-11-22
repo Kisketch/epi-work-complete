@@ -81,5 +81,9 @@ import EpiFormal.DensityCube
 import EpiFormal.OrbitAndFlow
 import EpiFormal.ResearchAdvance
 import EpiFormal.TraceMarkov
+import EpiFormal.WindowShortAeRealize
+import EpiFormal.ResidueModGeneral
+import EpiFormal.TransferOperatorDim
+import EpiFormal.FiniteStateComplete
 
 

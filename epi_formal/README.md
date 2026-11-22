@@ -1,5 +1,5 @@
 > [!NOTE]
-> **2026-11-22 最新状态提示**：下方原文保留为 **2026-11-14 Phase-1 初版基线快照**（31 条声明 / 9056 jobs）。当前完整工程的 2026-11-22 实测验证状态为：**`lake build EpiFormal` 9172 jobs EXIT 0，共 127 个 `.lean` 文件，828/828 条 `#print axioms` 严格双射（805 条 Lean 基础公理 [含 5 条零公理] + 23 条论文一经典白名单公理 + 0 条项目自加公理，`sorryAx = 0`，0 逃逸关键字）**。完整最新总览与复现指南请见 [../README.md](../README.md)、[Audit.lean](Audit.lean) 及 [../verification/audit_final_20261122.log](../verification/audit_final_20261122.log)。
+> **2026-11-22 最新状态提示**：下方原文保留为 **2026-11-14 Phase-1 初版基线快照**（31 条声明 / 9056 jobs）。当前完整工程的 2026-11-22 实测验证状态为：**`lake build EpiFormal` 9176 jobs EXIT 0，共 131 个 `.lean` 文件（129 个 `EpiFormal/` 子模块 + `EpiFormal.lean` + `Audit.lean`），872/872 条 `#print axioms` 严格双射（849 条 Lean 基础公理 [含 5 条零公理] + 23 条论文一经典白名单公理 + 0 条项目自加公理，`sorryAx = 0`，0 逃逸关键字）**。完整最新总览与复现指南请见 [../README.md](../README.md)、[Audit.lean](Audit.lean) 及 [../verification/audit_final_20261122.log](../verification/audit_final_20261122.log)。
 
 # epi_formal — e+π 研究的 Lean 4 形式化
 

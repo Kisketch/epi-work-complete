@@ -100,20 +100,29 @@ general polynomial-growth recurrence theory ($r\ge1$)---Lemmas~\ref{lem:poly-gro
 Theorems~\ref{thm:general-rec}--\ref{thm:poly-phase-transition},
 Corollary~\ref{cor:poly-exact-gauge}, and Remark~\ref{rem:poly-gauge-scale}---together
 with all Hausdorff-dimension statements of Theorem~\ref{thm:windows} (both the
-exact $\dimH=1$ prescribed-parity statement and the exact $\dimH=1/2$ upper and
-lower bounds for eventually bounded and prescribed increments) and the
-Hausdorff-dimension identity $\dimH=1$ of Theorem~\ref{thm:no-short-dim}
-(pointwise for mathlib's regular continued fractions)---are machine-checked in Lean~4
-using only the base axioms \texttt{propext}, \texttt{Classical.choice} and
-\texttt{Quot.sound}. The Lebesgue-nullity deduction in
-Theorem~\ref{thm:no-short-dim}, the positive-measure lower bound in
-Theorem~\ref{thm:finite-state-tail}, the measure-theoretic instantiation of
-Theorem~\ref{thm:short-ae}, and the Bowen/pressure assembly of
-Theorem~\ref{thm:residues} (beyond the verified core/assembly lemmas and exact
-integer-arithmetic certificate) are paper proofs. The classification and
-the first gap are a subsequence analogue of a criterion of Kraaikamp and
-Liardet. The work is a spin-off of a project on the irrationality of $e+\pi$ and
-does \emph{not} resolve that open problem.
+exact $\dimH=1$ prescribed-parity statement and the exact $\dimH=1/2$ upper and lower bounds for eventually bounded and prescribed
+increments), together with all of Theorems~\ref{thm:short-ae} and~\ref{thm:no-short-dim}
+(both the almost-everywhere logarithmic short-window frequency, the
+Hausdorff-dimension identity $\dimH=1$, and the Lebesgue-nullity deduction
+pointwise for mathlib's regular continued fractions), all parts~(1)--(3) of
+Theorem~\ref{thm:finite-state-tail} (under distinct outgoing edge labels at each
+vertex and given explicit positive right Perron--Frobenius eigenvectors on marked
+strongly connected components), as well as the general-modulus ($m\ge2$)
+uniform $24$-Lipschitz coordinate-shift sandwich, eventual-periodicity dimension
+equality, unconditional transfer-operator Hausdorff-dimension criterion
+(bypassing Bowen-pressure axioms), strict lower bound $\dimH F_{m,r}>1/2$, upper
+bound $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness for
+Theorems~\ref{thm:residues} and~\ref{thm:residues-general}---are machine-checked in
+Lean~4 using only the base axioms \texttt{propext}, \texttt{Classical.choice}
+and \texttt{Quot.sound}.
+Only the finite-dimensional linear-algebraic Perron--Frobenius eigenvector
+existence input in Theorem~\ref{thm:finite-state-tail} and the Python-executed
+exact integer-arithmetic verification of the narrow $m\in\{2,3,4,5,6\}$ brackets
+remain outside the Lean kernel (Section~\ref{sec:verification}, $872$ audited
+declarations across $131$ Lean files).
+The classification and the first gap are a subsequence analogue of a criterion
+of Kraaikamp and Liardet. The work is a spin-off of a project on the
+irrationality of $e+\pi$ and does \emph{not} resolve that open problem.
 \end{abstract}
 
 \section{Introduction}
@@ -184,10 +193,13 @@ the case $\alpha=0$ also follows from Bugeaud, Liao and Rams \cite{BLR}, and
 both bounds for $0\le\alpha<1$ are machine-checked in Lean~4. Finally, in
 Section~\ref{sec:windows-residues}, Theorems~\ref{thm:windows}--\ref{thm:no-short-dim}
 determine the Hausdorff dimensions and almost-sure frequency of Hermite
-continued-fraction window constraints, and Theorem~\ref{thm:residues} proves
+continued-fraction window constraints, Theorem~\ref{thm:residues} proves
 that eventual periodicity of ordinary continued-fraction digits modulo $4$ has
 the same Hausdorff dimension as the fixed alphabet $1\bmod 4$, bounded strictly
-between $357/512$ and $359/512$.
+between $357/512$ and $359/512$, and Theorem~\ref{thm:residues-general} extends this
+to every modulus $m\ge2$ (via a uniform $24$-Lipschitz sandwich, an unconditional
+transfer-operator Hausdorff-dimension framework, and exact integer certificates
+for $m\in\{2,3,4,5,6\}$).
 
 These results build on the zero-level classification and initial spectral gap
 (Section~\ref{sec:class}), which arose as machinery in a separate formalization
@@ -503,12 +515,17 @@ exclusion $(k/4,(k+1)/4)$, and the step-function constancy $E_c=E_{k/4}$ across
 each gap are kernel-checked at Layer~A in
 \texttt{EpiFormal/\allowbreak FullSpectrumDiscrete.lean} (15 declarations, base
 axioms only, no \texttt{sorryAx}). All of these modules---along with
-\texttt{GaugeLiminfComplete.lean}, \texttt{FiniteStateGauge.lean},
-\texttt{FiniteStatePositive.lean}, and
+\texttt{Gauge\allowbreak Liminf\allowbreak Complete.lean},
+\texttt{Finite\allowbreak State\allowbreak Gauge.lean},
+\texttt{Finite\allowbreak State\allowbreak Positive.lean},
+\texttt{Finite\allowbreak State\allowbreak Complete.lean},
+\texttt{Window\allowbreak Short\allowbreak AeRealize.lean},
+\texttt{Residue\allowbreak ModGeneral.lean},
+\texttt{Transfer\allowbreak Operator\allowbreak Dim.lean}, and
 \texttt{Trichotomy\allowbreak And\allowbreak Poly\allowbreak Extension.lean}
 (which completes Theorem~\ref{thm:trichotomy}(iii) and Section~\ref{sec:poly-rec})---are
-audited together in \texttt{Audit.lean} with zero \texttt{sorryAx} and only the
-three Lean base axioms.
+audited together in \texttt{Audit.lean} ($872$ declarations across $131$ files,
+$9176$ build jobs) with zero \texttt{sorryAx} and only the three Lean base axioms.
 
 \section{All finite level sets have dimension zero, and the complementary infinite level}\label{sec:finite-levels}
 
@@ -1869,13 +1886,20 @@ are supplied by $Q_n$, and the insistence on infinitely many marked
 edges arises from exact-level membership. The local infinitude uses
 the arithmetic translation group of the level.
 
-Lean checks the weighted walk identity, Perron-scale upper bounds, and
-marked-component covering/Frostman skeleton in
-\texttt{Finite\allowbreak State\allowbreak Gauge.lean} and
-\texttt{Finite\allowbreak State\allowbreak Positive.lean}; Theorem~\ref{thm:finite-state-tail}
-uses a paper proof for the remaining positive-measure and local-infinitude steps. The kernel
-verification in Corollary~\ref{cor:liminf-gauges} covers the two full
-alphabets used there.
+\paragraph{Lean status.}
+All three regimes of Theorem~\ref{thm:finite-state-tail} are now kernel-checked at Layer~A in
+\texttt{EpiFormal/\allowbreak Finite\allowbreak State\allowbreak Complete.lean} ($12$ audited declarations
+ending in \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak complete} on $\R$
+and \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak complete}
+on \texttt{UnitAddCircle}, building on \texttt{Finite\allowbreak State\allowbreak Gauge.lean},
+\texttt{Finite\allowbreak State\allowbreak Tail.lean}, and
+\texttt{Finite\allowbreak State\allowbreak Positive.lean}, with base axioms only and zero \texttt{sorryAx}).
+Specifically, under the deterministic outgoing-label hypothesis of this subsection, the formalization proves
+compactness and subset embedding of the deterministic path tree (\texttt{graphTree}),
+direct finite-sum Frostman positivity (\texttt{mkMetric\_\allowbreak graphTree\_\allowbreak pos}),
+unmarked-tail nullity via backward-reachability stabilization at $L=|V|$ (\texttt{mkMetric\_\allowbreak unmarkedTail\_\allowbreak null}),
+$L$-translation invariance of exact graph tails, and the arbitrary-gauge $\liminf$ comparison;
+the positive right Perron--Frobenius eigenvector $(w_v,\lambda_C)$ on each marked strongly connected component is taken as an explicit hypothesis rather than derived via Lean matrix-eigenvalue machinery.
 
 \subsection{General polynomial-growth denominator recurrences}\label{sec:poly-rec}
 
@@ -2851,16 +2875,16 @@ Theorem~\ref{thm:short-ae} implies that it has Lebesgue measure zero (since
 almost every $x$ has $r_j(x)\le1$ infinitely often).
 \end{proof}
 
-\begin{remark}[Machine-checked counting core, Frostman assembly, CF tree realizations, regular CF bridge, and bounded-window upper bound for Theorems~\ref{thm:windows} and~\ref{thm:no-short-dim}]\label{rem:windows-lean}
-The M\"obius counting cores, the stopped-tree Frostman dimension assembly, all three concrete continued-fraction stopped-cylinder tree realizations, the pointwise regular continued-fraction bridge into mathlib's \texttt{GenContFract.of}, and the $\dimH\le1/2$ upper bound for eventually bounded window counts (completing all of Theorem~\ref{thm:windows} together with the Hausdorff-dimension identity $\dimH=1$ of Theorem~\ref{thm:no-short-dim}) have been verified by the Lean~4 kernel (Lean~4.35.0 with mathlib~v4.35.0):
+\begin{remark}[Machine-checked counting core, Frostman assembly, CF tree realizations, regular CF bridge, bounded-window upper bound, and almost-everywhere short windows for Theorems~\ref{thm:windows}--\ref{thm:no-short-dim}]\label{rem:windows-lean}
+The M\"obius counting cores, the stopped-tree Frostman dimension assembly, all three concrete continued-fraction stopped-cylinder tree realizations, the pointwise regular continued-fraction bridge into mathlib's \texttt{GenContFract.of}, the $\dimH\le1/2$ upper bound for eventually bounded window counts, and the measure-theoretic instantiation of Theorem~\ref{thm:short-ae} together with the Lebesgue-nullity deduction of Theorem~\ref{thm:no-short-dim} (completing all of Theorems~\ref{thm:windows}, \ref{thm:short-ae}, and~\ref{thm:no-short-dim} at Layer~A) have been verified by the Lean~4 kernel (Lean~4.35.0 with mathlib~v4.35.0):
 (i)~the M\"obius inversion identity \texttt{WindowMobiusCount.\allowbreak coprime\_\allowbreak count\_\allowbreak eq}, the partial-sum lower bound $359/900$ (\texttt{moebius\_\allowbreak partial}), and the rectangle-counting lower bounds $R^2/10000$ (\texttt{WindowMobiusCount.\allowbreak coprime\_\allowbreak count\_\allowbreak ge} on $[0.34R,0.36R]\times[0.20R,0.22R]$) and $R^2/100000$ (\texttt{NoShortDim.\allowbreak coprimeS\_\allowbreak count\_\allowbreak ge} on $[0.34R,0.35R]\times[0.12R,0.13R]$) for $R\ge10^6$;
 (ii)~the scale growth and inverse-square decay of $H_j=\lfloor Q_j\sqrt{j}\rfloor$ (\texttt{WindowPaperScale.\allowbreak Hpaper\_\allowbreak inv\_\allowbreak sq\_\allowbreak tendsto}, \texttt{Hpaper\_\allowbreak log\_\allowbreak le}), the uniform-branching pruning and Cantor double-counting lemmas (\texttt{WindowTreePrune.*}), the real-exponent asymptotic Frostman threshold (\texttt{WindowAsympThresh.\allowbreak asymp\_\allowbreak thresh\_\allowbreak exists\_\allowbreak rpow}), and the full per-window Frostman discharge (\texttt{WindowFrostmanDischarge.\allowbreak frostman\_\allowbreak of\_\allowbreak uniform\_\allowbreak tree}, \texttt{dimH\_\allowbreak ge\_\allowbreak of\_\allowbreak stopped\_\allowbreak tree\_\allowbreak rpow}) instantiated at the paper scale~$H_j$ in \texttt{WindowPaperScale.\allowbreak dimH\_\allowbreak ge\_\allowbreak one\_\allowbreak windows\_\allowbreak paper\_\allowbreak scale} ($b=2$, $\dimH\ge 1$), \texttt{dimH\_\allowbreak ge\_\allowbreak half\_\allowbreak prescribed\_\allowbreak paper\_\allowbreak scale} ($b=1$, $\dimH\ge 1/2$), and \texttt{dimH\_\allowbreak ge\_\allowbreak gamma\_\allowbreak no\_\allowbreak short\_\allowbreak paper\_\allowbreak scale} / \texttt{dimH\_\allowbreak ge\_\allowbreak one\_\allowbreak of\_\allowbreak gamma\_\allowbreak family} ($\dimH\ge 1-\eta\log\varphi\uparrow 1$), together with concrete tree- and measure-based non-vacuity witnesses (\texttt{WindowPaperScale.\allowbreak nonvacuous\_\allowbreak factorial\_\allowbreak tree\_\allowbreak dimH}, \texttt{nonvacuous\_\allowbreak factorial\_\allowbreak measure\_\allowbreak dimH}) and the local-scale / cascade measure bounds (\texttt{WindowFrostmanDischarge.\allowbreak mass\_\allowbreak distrib\_\allowbreak of\_\allowbreak local\_\allowbreak diam\_\allowbreak bound}, \texttt{mu\_\allowbreak window\_\allowbreak cascade\_\allowbreak full}, \texttt{dimH\_\allowbreak ge\_\allowbreak of\_\allowbreak mu\_\allowbreak window\_\allowbreak cascade});
 (iii)~the concrete continued-fraction stopped-cylinder tree \texttt{WindowCFRealize.\allowbreak cfWindowsTree} for Theorem~\ref{thm:windows} (constructed via \texttt{euclidCF}, parity twin \texttt{flipLast}, and cylinder geometry \texttt{cylPair}), discharging every tree-interface hypothesis unconditionally (\texttt{WindowCFRealize.\allowbreak dimH\_\allowbreak ge\_\allowbreak one\_\allowbreak cfWindowsTree});
 (iv)~the pointwise regular continued-fraction bridge in \texttt{WindowCFBridge.lean} ($20$ audited declarations), proving strict cylinder nesting (\texttt{cylPair\_\allowbreak nest\_\allowbreak strict}), open-cylinder M\"obius inversion (\texttt{exists\_\allowbreak mobius\_\allowbreak of\_\allowbreak mem\_\allowbreak Ioo\_\allowbreak cylPair}), exact partial-quotient and convergent-denominator identification with mathlib's \texttt{GenContFract.of} (\texttt{stream\_\allowbreak mobius\_\allowbreak spec}, \texttt{contsAux\_\allowbreak mobius\_\allowbreak eq}, \texttt{dens\_\allowbreak mobius\_\allowbreak eq}, \texttt{dens\_\allowbreak of\_\allowbreak mono}), irrationality and regular CF stopping index \texttt{cfStopIdx} (defined directly against \texttt{NoShortDim.H j} $=\lfloor Q_j\sqrt{j}\rfloor$) matching for any stopped CF word tree (\texttt{stopped\_\allowbreak word\_\allowbreak tree\_\allowbreak cf\_\allowbreak bridge}), and the end-to-end Theorem~\ref{thm:windows} exact parity dimension $\dimH(\texttt{prescribedParitySet}\,\epsilon)=1$ (\texttt{WindowCFBridge.\allowbreak dimH\_\allowbreak prescribedParitySet\_\allowbreak eq\_\allowbreak one});
 (v)~the concrete prelude-of-ones CF tree \texttt{WindowNoShortCFRealize.\allowbreak cfNoShortTree} for Theorem~\ref{thm:no-short-dim} ($18$ audited declarations, discharging \texttt{dimH\_\allowbreak ge\_\allowbreak gamma\_\allowbreak no\_\allowbreak short\_\allowbreak paper\_\allowbreak scale} and proving \texttt{dimH\_\allowbreak ge\_\allowbreak gamma\_\allowbreak noShortSet} and exact $\dimH(\texttt{divWindowSet}\,\epsilon)=1$ in \texttt{dimH\_\allowbreak divWindowSet\_\allowbreak eq\_\allowbreak one} unconditionally via $\eta\downarrow0$) and the concrete $b=1$ prescribed-count CF tree \texttt{WindowPrescribedCFRealize.\allowbreak cfPrescribedTree} for Theorem~\ref{thm:windows} ($16$ audited declarations, discharging \texttt{dimH\_\allowbreak ge\_\allowbreak half\_\allowbreak prescribed\_\allowbreak paper\_\allowbreak scale} and proving \texttt{prescribedIncSetAt\_\allowbreak disjoint}, \texttt{dimH\_\allowbreak ge\_\allowbreak half\_\allowbreak prescribedIncSetAt} / \texttt{exists\_\allowbreak start\_\allowbreak dimH\_\allowbreak ge\_\allowbreak half\_\allowbreak prescribedIncSetAt} for both disjoint initial parities at a fixed starting index, \texttt{dimH\_\allowbreak ge\_\allowbreak half\_\allowbreak prescribedIncSet}, and \texttt{dimH\_\allowbreak ge\_\allowbreak half\_\allowbreak boundedIncSet} unconditionally);
-(vi)~the bounded-window upper bound and exact $1/2$-dimension closure in \texttt{WindowBoundedUpper.lean} ($21$ audited declarations), proving finite-word denominator product and length lower bounds (\texttt{cfProd\_\allowbreak den\_\allowbreak ge\_\allowbreak length}, \texttt{cfProd\_\allowbreak den\_\allowbreak ge\_\allowbreak prod}), the factorial growth bound on~$H_j$ (\texttt{Hpaper\_\allowbreak ge\_\allowbreak fact}), super-exponential denominator growth on \texttt{boundedIncSet} (\texttt{boundedIncSet\_\allowbreak dens\_\allowbreak exp\_\allowbreak growth}), level-$n$ cylinder covering and $\zeta(2t)^n$ \texttt{ENNReal} \texttt{tsum} bounds (\texttt{exists\_\allowbreak word\_\allowbreak cover\_\allowbreak of\_\allowbreak irrational}, \texttt{tsum\_\allowbreak cfProd\_\allowbreak den\_\allowbreak rpow\_\allowbreak le}), $\mathcal H^s$-nullity for every $s>1/2$ (\texttt{hausdorffMeasure\_\allowbreak boundedIncSet\_\allowbreak zero}), and the exact identities \texttt{dimH\_\allowbreak boundedIncSet\_\allowbreak le\_\allowbreak half}, \texttt{dimH\_\allowbreak boundedIncSet\_\allowbreak eq\_\allowbreak half}, \texttt{dimH\_\allowbreak prescribedIncSet\_\allowbreak eq\_\allowbreak half}, and \texttt{dimH\_\allowbreak prescribedIncSetAt\_\allowbreak eq\_\allowbreak half}, completing Layer~A verification of all of Theorem~\ref{thm:windows}.
-All declarations in these modules depend only on the Lean base axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, as audited with \texttt{\#print axioms} in \texttt{Audit.lean} (see \texttt{verification/\allowbreak audit\_\allowbreak final\_\allowbreak 20261122.log}, $828$ audited declarations project-wide with zero \texttt{sorryAx} and zero project-added axioms).
-For Theorems~\ref{thm:windows} and~\ref{thm:no-short-dim}, only the Lebesgue-nullity deduction in Theorem~\ref{thm:no-short-dim} (which invokes Theorem~\ref{thm:short-ae}) remains a paper proof.
+(vi)~the bounded-window upper bound and exact $1/2$-dimension closure in \texttt{WindowBoundedUpper.lean} ($21$ audited declarations), proving finite-word denominator product and length lower bounds (\texttt{cfProd\_\allowbreak den\_\allowbreak ge\_\allowbreak length}, \texttt{cfProd\_\allowbreak den\_\allowbreak ge\_\allowbreak prod}), the factorial growth bound on~$H_j$ (\texttt{Hpaper\_\allowbreak ge\_\allowbreak fact}), super-exponential denominator growth on \texttt{boundedIncSet} (\texttt{boundedIncSet\_\allowbreak dens\_\allowbreak exp\_\allowbreak growth}), level-$n$ cylinder covering and $\zeta(2t)^n$ \texttt{ENNReal} \texttt{tsum} bounds (\texttt{exists\_\allowbreak word\_\allowbreak cover\_\allowbreak of\_\allowbreak irrational}, \texttt{tsum\_\allowbreak cfProd\_\allowbreak den\_\allowbreak rpow\_\allowbreak le}), $\mathcal H^s$-nullity for every $s>1/2$ (\texttt{hausdorffMeasure\_\allowbreak boundedIncSet\_\allowbreak zero}), and the exact identities \texttt{dimH\_\allowbreak boundedIncSet\_\allowbreak le\_\allowbreak half}, \texttt{dimH\_\allowbreak boundedIncSet\_\allowbreak eq\_\allowbreak half}, \texttt{dimH\_\allowbreak prescribedIncSet\_\allowbreak eq\_\allowbreak half}, and \texttt{dimH\_\allowbreak prescribedIncSetAt\_\allowbreak eq\_\allowbreak half}, completing Layer~A verification of all of Theorem~\ref{thm:windows};
+(vii)~the full measure-theoretic realization of Theorem~\ref{thm:short-ae} and the Lebesgue-nullity deduction in Theorem~\ref{thm:no-short-dim} in \texttt{WindowShortAeRealize.lean} ($14$ audited declarations): prefix-free stopped-word cylinder partitions of $(0,1)\setminus\Q$, constancy of \texttt{cfStopIdx} on stopped cylinders, measurability of the short-window events $E_j$, the explicit atom conditional volume lower bound $1/(40j)$ for $j\ge3$, the exponential step inequality yielding the explicit constant $c=(1-\ee^{-1})/160>0$ in \texttt{thm\_\allowbreak short\_\allowbreak ae\_\allowbreak explicit} and \texttt{thm\_\allowbreak short\_\allowbreak ae}, and the complete conjunction $\dimH(\texttt{divWindowSet}\,\epsilon)=1\wedge\operatorname{Leb}(\texttt{divWindowSet}\,\epsilon)=0$ in \texttt{volume\_\allowbreak divWindowSet\_\allowbreak eq\_\allowbreak zero} and \texttt{thm\_\allowbreak no\_\allowbreak short\_\allowbreak dim\_\allowbreak complete}.
+All declarations in these modules depend only on the Lean base axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, as audited with \texttt{\#print axioms} in \texttt{Audit.lean} (see \texttt{verification/\allowbreak audit\_\allowbreak final\_\allowbreak 20261122.log}, $872$ audited declarations across $131$ Lean files with zero \texttt{sorryAx} and zero project-added axioms).
 \end{remark}
 
 In particular, the set with eventually $r_j\ge3$ has Lebesgue
@@ -3081,8 +3105,85 @@ As a comparison, Table~1 of \cite{CLU} bounds the dimension for
 $\{1,4,7,\ldots\}$ by $0.743586$. Its Proposition~2.7 transfers this upper bound
 to $\{1,5,9,\ldots\}$ by the increasing bijection $1+3k\mapsto 1+4k$.
 
+\begin{theorem}[General-modulus residue sandwich, transfer-operator soundness, and certified $m\in\{2,3,4,5,6\}$ brackets]\label{thm:residues-general}
+Let $m\ge2$ be an integer modulus. For every sequence $\mathbf r=(r_i)_{i\ge1}$
+with $1\le r_i\le m$, write
+\[
+F_m(\mathbf r)
+:=\bigl\{x=[0;a_1,a_2,\dots]\in(0,1)\setminus\Q:\ a_i\ge r_i\text{ and }a_i\equiv r_i\pmod m\ \forall i\ge1\bigr\},
+\]
+put $F_{m,r}:=F_m(r,r,\dots)$ for $1\le r\le m$, and let $E_m\subset(0,1)\setminus\Q$
+be the set of irrationals whose partial quotients $(a_i\bmod m)_{i\ge1}$ are
+eventually periodic.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+\item \emph{Uniform Lipschitz shift invariance and sandwich.}
+For every integer shift sequence $\mathbf c=(c_i)_{i\ge1}\in\Z_{\ge0}^{\N}$ and every
+$\mathbf r\in\Z_{\ge1}^{\N}$, the shift map $\Psi_{\mathbf c}([0;a_1,a_2,\dots]):=[0;a_1+c_1,a_2+c_2,\dots]$
+is uniformly $24$-Lipschitz on $F_m(\mathbf r)$ (in particular, with $K=24$
+uniformly in $m\ge2$). Consequently, for every sequence $\mathbf r$ with
+$1\le r_i\le m$,
+\[
+\dimH F_{m,m}\le \dimH F_m(\mathbf r)\le \dimH F_{m,1},
+\]
+and every eventually periodic modulus-$m$ residue set satisfies $\dimH E_m=\dimH F_{m,1}$.
+\item \emph{Unconditional transfer-operator criterion and Lean soundness.}
+Without appealing to Bowen's pressure formula or external \cite{CLU} citations,
+a step-function upper inequality $\mathcal L_{s,\mathcal A_{m,r}}v\le(1-\eta)v$
+or finite-$K$ subalphabet lower inequality $\mathcal L_{s,\mathcal D_K}v\ge(1+\eta)v$
+yields $\dimH F_{m,r}\le s$ or $s\le\dimH F_{m,r}$ directly from
+Hausdorff-measure covering and Frostman mass distribution. In particular,
+$\frac12<\dimH F_{m,r}$ for all $m\ge1,r\ge1$, and $\dimH F_{4,1}\le\frac45$.
+\item \emph{Exact integer certificates for $m\in\{2,3,4,5,6\}$.}
+Running the verified step-function inequalities in exact integer arithmetic
+(\texttt{verification/\allowbreak residue\_\allowbreak certificate\_\allowbreak general.py},
+grid $N=256$, scale $S=10^{13}$, $2^{80}$-precision enclosures) certifies the
+narrow rational brackets in Table~\ref{tab:residues-general}, with strict
+separation $\mathrm{upper}(F_{m,m})<\mathrm{lower}(F_{m,1})$ (and hence
+$\dimH F_{m,m}<\dimH F_{m,1}$) for every $m\in\{2,3,4,5,6\}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For~(i), on any two distinct points $x,y\in F_m(\mathbf r)$ with first differing
+partial quotient $a_{n+1}<b_{n+1}$, the congruence $a_{n+1}\equiv b_{n+1}\pmod m$
+with $m\ge2$ forces $b_{n+1}-a_{n+1}\ge m\ge2$, giving a uniform tail expansion
+ratio bound~$6$ and common-prefix Möbius distortion bound~$4$, hence global
+$24$-Lipschitz constant across all~$m\ge2$; covering $E_m$ by countably many
+Möbius images of shifted sets $F_m(\mathbf r)$ then yields $\dimH E_m=\dimH F_{m,1}$.
+For~(ii), submultiplicativity of cylinder diameters yields the upper
+Hausdorff-measure estimate directly from $\mathcal L_{s,\mathcal A}v\le v$, while
+Frostman measure pushforward on compact subtrees gives the lower bound from
+$\mathcal L_{s,\mathcal D_K}v\ge v$; both elementary tail bounds (monotone
+integral upper bound vs.\ midpoint-shifted integral lower bound) reduce step-function
+verification to finitely many grid cells. For~(iii), exact integer execution
+checks every cell inequality for each $(m,r)$ in Table~\ref{tab:residues-general}.
+All algebraic and measure-theoretic deductions in~(i)--(ii), together with the
+step-function soundness theorems for~(ii)--(iii), are machine-checked in Lean~4;
+the Python script \texttt{residue\_\allowbreak certificate\_\allowbreak general.py}
+performs the concrete grid arithmetic for $m\in\{2,3,4,5,6\}$.
+\end{proof}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{c|c|c|c|c|c}
+$m$ & $r$ & $K_{\mathrm{tail}}$ & Lower bound & Upper bound & Width \\\hline
+$2$ & $1$ & $130$ & $419/512\,(0.818359)$ & $421/512\,(0.822266)$ & $1/256$ \\
+$2$ & $2$ & $130$ & $23/32\,(0.718750)$  & $369/512\,(0.720703)$ & $1/512$ \\\hline
+$3$ & $1$ & $120$ & $95/128\,(0.742188)$ & $191/256\,(0.746094)$ & $1/256$ \\
+$3$ & $3$ & $120$ & $41/64\,(0.640625)$  & $329/512\,(0.642578)$ & $1/512$ \\\hline
+$4$ & $1$ & $120$ & $357/512\,(0.697266)$ & $359/512\,(0.701172)$ & $1/256$ \\
+$4$ & $4$ & $120$ & $309/512\,(0.603516)$ & $155/256\,(0.605469)$ & $1/512$ \\\hline
+$5$ & $1$ & $120$ & $171/256\,(0.667969)$ & $343/512\,(0.669922)$ & $1/512$ \\
+$5$ & $5$ & $120$ & $149/256\,(0.582031)$ & $299/512\,(0.583984)$ & $1/512$ \\\hline
+$6$ & $1$ & $120$ & $331/512\,(0.646484)$ & $333/512\,(0.650391)$ & $1/256$ \\
+$6$ & $6$ & $120$ & $291/512\,(0.568359)$ & $73/128\,(0.570312)$  & $1/512$
+\end{tabular}
+\caption{Certified open intervals $(\mathrm{lower},\mathrm{upper})$ for $\dimH F_{m,r}$ ($m\in\{2,3,4,5,6\}$, $r\in\{1,m\}$) from \texttt{residue\_\allowbreak certificate\_\allowbreak general.py} ($N=256$, $S=10^{13}$, $2^{80}$-precision enclosures); for every $m$, $\mathrm{upper}(F_{m,m})<\mathrm{lower}(F_{m,1})$.}\label{tab:residues-general}
+\end{table}
+
 \paragraph{Lean status of Section~\ref{sec:windows-residues}.}
-All of Theorem~\ref{thm:windows}---including the exact dimension-$1$ identity for \texttt{prescribed\allowbreak ParitySet} and the exact dimension-$1/2$ identities for \texttt{bounded\allowbreak IncSet}, \texttt{prescribed\allowbreak IncSet}, and \texttt{prescribed\allowbreak IncSetAt} (both disjoint initial parities at a fixed starting index)---together with the Hausdorff-dimension identity $\dimH=1$ for \texttt{div\allowbreak WindowSet} (via $\dimH\ge1-\eta\log\varphi\uparrow1$) of Theorem~\ref{thm:no-short-dim}, are kernel-checked end-to-end at Layer~A for mathlib's \texttt{GenContFract.of} across \texttt{Window\allowbreak MobiusCount.lean}, \texttt{NoShort\allowbreak DimCount.lean}, \texttt{Window\allowbreak TreePrune.lean}, \texttt{Window\allowbreak AsympThresh.lean}, \texttt{Window\allowbreak Frostman\allowbreak Discharge.lean}, \texttt{Window\allowbreak PaperScale.lean}, \texttt{Window\allowbreak CFRealize.lean}, \texttt{Window\allowbreak CFBridge.lean}, \texttt{Window\allowbreak NoShort\allowbreak CFRealize.lean}, \texttt{Window\allowbreak Prescribed\allowbreak CFRealize.lean}, and \texttt{Window\allowbreak Bounded\allowbreak Upper.lean} (base axioms only, zero \texttt{sorryAx}; see Remark~\ref{rem:windows-lean}). In addition, fourteen core algebraic, conditional-probability, bi-Lipschitz, and integer-certificate soundness lemmas underlying Theorems~\ref{thm:windows}--\ref{thm:residues} (including the tail ratio bound $10/3$, combined prefix bi-Lipschitz bound $40/3$, and power-enclosure soundness $L^d y^m\le S^d z^m\le U^d y^m\implies L/S\le(z/y)^{m/d}\le U/S$ for \texttt{residue\_\allowbreak certificate.py}) are kernel-checked in \texttt{EpiFormal/\allowbreak{}Window\allowbreak{}And\allowbreak{}Residue\allowbreak{}Core.lean}, and the conditional tower--Markov--Borel--Cantelli assembly of Theorem~\ref{thm:short-ae} is kernel-checked in \texttt{Window\allowbreak ShortAe.lean}. The measure-theoretic instantiation of Theorem~\ref{thm:short-ae} (and the resulting Lebesgue-nullity deduction in Theorem~\ref{thm:no-short-dim}), and the Bowen/pressure Hausdorff-dimension argument in Theorem~\ref{thm:residues} remain paper proofs.
+All of Theorems~\ref{thm:windows}, \ref{thm:short-ae}, and~\ref{thm:no-short-dim}---including the exact dimension-$1$ identity for \texttt{prescribed\allowbreak ParitySet}, the exact dimension-$1/2$ identities for \texttt{bounded\allowbreak IncSet}, \texttt{prescribed\allowbreak IncSet}, and \texttt{prescribed\allowbreak IncSetAt}, the almost-everywhere short-window lower bound $Z_J(x)\ge\frac{1-\ee^{-1}}{160}\log J$ (\texttt{thm\_\allowbreak short\_\allowbreak ae\_\allowbreak explicit}), and the full conjunction $\dimH(\texttt{div\allowbreak WindowSet}\,\epsilon)=1\wedge\operatorname{Leb}(\texttt{div\allowbreak WindowSet}\,\epsilon)=0$ (\texttt{thm\_\allowbreak no\_\allowbreak short\_\allowbreak dim\_\allowbreak complete})---are now kernel-checked end-to-end at Layer~A for mathlib's \texttt{GenContFract.of} across thirteen Lean~4 modules: the counting and Frostman-scale pipeline (\texttt{Window\allowbreak Mobius\allowbreak Count.lean}, \texttt{No\allowbreak Short\allowbreak Dim\allowbreak Count.lean}, \texttt{Window\allowbreak Tree\allowbreak Prune.lean}, \texttt{Window\allowbreak Asymp\allowbreak Thresh.lean}, \texttt{Window\allowbreak Frostman\allowbreak Discharge.lean}, and \texttt{Window\allowbreak Paper\allowbreak Scale.lean}), the CF realization and bounded-increment pipeline (\texttt{Window\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak CF\allowbreak Bridge.lean}, \texttt{Window\allowbreak No\allowbreak Short\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak Prescribed\allowbreak CF\allowbreak Realize.lean}, and \texttt{Window\allowbreak Bounded\allowbreak Upper.lean}), and the short-window measure pipeline (\texttt{Window\allowbreak Short\allowbreak Ae.lean} and \texttt{Window\allowbreak Short\allowbreak Ae\allowbreak Realize.lean}, $14$ declarations; base axioms only, zero \texttt{sorryAx}; see Remark~\ref{rem:windows-lean}).
+For Theorems~\ref{thm:residues} and~\ref{thm:residues-general}, the entire general-modulus $m\ge2$ Lipschitz shift equivalence, sandwich, and eventual-periodicity theorem is kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak ModGeneral.lean} ($7$ declarations: \texttt{lipschitz\allowbreak OnWith\_\allowbreak cfShift}, \texttt{dimH\_\allowbreak residueSeqSet\_\allowbreak sandwich}, \texttt{dimH\_\allowbreak eventually\allowbreak PeriodicResidueSet\_\allowbreak eq}), while the unconditional transfer-operator Hausdorff-dimension framework, $\frac12<\dimH F_{m,r}$, $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness (\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound}, \texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}) are kernel-checked in \texttt{EpiFormal/\allowbreak Transfer\allowbreak Operator\allowbreak Dim.lean} ($11$ declarations, base axioms only), alongside the $14$ helper lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}; only the finite-precision integer grid runs in \texttt{residue\_\allowbreak certificate.py} and \texttt{residue\_\allowbreak certificate\_\allowbreak general.py} validating the narrow brackets in Table~\ref{tab:residues-general} execute in Python.
 
 \section{Numerical evidence}\label{sec:num}
 
@@ -3253,29 +3354,54 @@ $\mathcal H^{h_k}$-nullity, and $g_\beta$ threshold dichotomy for
 $E_{\mathrm{lim}}(k/4)$ in Theorem~\ref{thm:trichotomy}(ii), while
 \texttt{TrichotomyAndPolyExtension.lean} proves the signed-limit coset collapse
 $E_{\mathrm{lim}}^\pm(k/4)=x_k^\pm+L$ in Theorem~\ref{thm:trichotomy}(iii).
+\item Theorem~\ref{thm:finite-state-tail} (the marked-component critical gauge
+theorem, both on $\R$ via \texttt{thm\_\allowbreak finite\_\allowbreak
+state\_\allowbreak tail\_\allowbreak complete} and on $\R/\Z$ via
+\texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak
+circle\_\allowbreak complete}) is now \emph{fully machine-checked at Layer~A}
+in \texttt{EpiFormal/\allowbreak Finite\allowbreak State\allowbreak Complete.lean}
+(12 audited declarations, base axioms only, zero \texttt{sorryAx}).
 \item For the continued-fraction window and residue results
-(Theorems~\ref{thm:windows}--\ref{thm:residues}), the entirety of
-Theorem~\ref{thm:windows} (both the exact $\dimH=1$ prescribed-parity statement
-and the exact $\dimH=1/2$ upper and lower bounds for bounded/prescribed
-increments) and the Hausdorff-dimension identity $\dimH=1$ of
-Theorem~\ref{thm:no-short-dim} (M\"obius counting cores, paper-scale Frostman
+(Theorems~\ref{thm:windows}--\ref{thm:residues} and~\ref{thm:residues-general}),
+the entirety of Theorem~\ref{thm:windows} (both the exact $\dimH=1$
+prescribed-parity statement and the exact $\dimH=1/2$ upper and lower bounds
+for bounded/prescribed increments), the Lebesgue-measure zero-tail law of
+Theorem~\ref{thm:short-ae} (explicit positive constant $c = (1-\ee^{-1})/160$ in
+\texttt{thm\_\allowbreak short\_\allowbreak ae\_\allowbreak explicit}), and
+both parts of Theorem~\ref{thm:no-short-dim} ($\dimH=1$ and
+$\operatorname{Leb}=0$, via
+\texttt{volume\_\allowbreak divWindowSet\_\allowbreak eq\_\allowbreak zero}
+and \texttt{thm\_\allowbreak no\_\allowbreak short\_\allowbreak dim\_\allowbreak
+complete}, together with M\"obius counting cores, paper-scale Frostman
 discharge, concrete stopped-cylinder CF trees, pointwise regular CF
 identification with mathlib's \texttt{GenContFract.of}, and level-$n$ cylinder
-$\zeta(2t)^n$ covering upper bound) are kernel-checked at Layer~A across
-\texttt{WindowMobiusCount.lean}, \texttt{NoShortDimCount.lean},
-\texttt{WindowFrostmanDischarge.lean}, \texttt{WindowPaperScale.lean},
-\texttt{WindowCFRealize.lean}, \texttt{WindowCFBridge.lean},
-\texttt{WindowNoShortCFRealize.lean},
-\texttt{WindowPrescribedCFRealize.lean}, and
-\texttt{WindowBoundedUpper.lean} (base axioms only, zero
-\texttt{sorryAx}; see Remark~\ref{rem:windows-lean}), alongside the fourteen
-core lemmas in \texttt{WindowAndResidueCore.lean} and the conditional assembly
-in \texttt{WindowShortAe.lean}. The measure-theoretic instantiation
-of Theorem~\ref{thm:short-ae} (and the resulting Lebesgue-nullity deduction in
-Theorem~\ref{thm:no-short-dim}), and the Bowen/pressure Hausdorff-dimension
-argument in Theorem~\ref{thm:residues} remain paper proofs, with the numerical
-interval $(357/512,359/512)$ in Theorem~\ref{thm:residues} certified by the
-reproducible exact integer-arithmetic script \texttt{residue\_certificate.py}.
+$\zeta(2t)^n$ covering) are kernel-checked at Layer~A across
+\texttt{Window\allowbreak Mobius\allowbreak Count.lean},
+\texttt{No\allowbreak Short\allowbreak Dim\allowbreak Count.lean},
+\texttt{Window\allowbreak Frostman\allowbreak Discharge.lean},
+\texttt{Window\allowbreak Paper\allowbreak Scale.lean},
+\texttt{Window\allowbreak CF\allowbreak Realize.lean},
+\texttt{Window\allowbreak CF\allowbreak Bridge.lean},
+\texttt{Window\allowbreak No\allowbreak Short\allowbreak CF\allowbreak Realize.lean},
+\texttt{Window\allowbreak Prescribed\allowbreak CF\allowbreak Realize.lean},
+\texttt{Window\allowbreak Bounded\allowbreak Upper.lean},
+\texttt{Window\allowbreak Short\allowbreak Ae.lean},
+\texttt{Window\allowbreak Short\allowbreak Ae\allowbreak Realize.lean}, and the fourteen
+core lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}
+(base axioms only, zero \texttt{sorryAx}; see Remark~\ref{rem:windows-lean}).
+For Theorems~\ref{thm:residues} and~\ref{thm:residues-general}, the
+transfer-operator Hausdorff-dimension bridge, the qualitative gap
+$\dimH > 1/2$ for $E_{\equiv 1\pmod 4}$, the proved upper bound
+$\dimH \le 4/5$, the finite-step matrix-certificate soundness theorems
+(\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound} and
+\texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}), and
+the M\"obius/eventual/periodic residue invariance identities are kernel-checked
+in \texttt{Residue\allowbreak ModGeneral.lean} and
+\texttt{Transfer\allowbreak Operator\allowbreak Dim.lean}, while the sharp
+$256$-point dyadic numerical intervals in Theorem~\ref{thm:residues} and
+Table~\ref{tab:residues-general} are certified by the reproducible exact
+integer-arithmetic scripts \texttt{residue\_certificate.py} and
+\texttt{residue\_\allowbreak certificate\_\allowbreak general.py}.
 \item This article does \emph{not} prove the irrationality of $e+\pi$ (which
 remains an open problem). It is a metric-theory spin-off; the connection is
 that the zero-level classification machinery arose from the $e+\pi$ escape
@@ -3283,16 +3409,19 @@ program \cite{Phase1}.
 \item The zero-level classification and initial gap (Theorems~\ref{thm:class}
 and~\ref{thm:gap}) are a subsequence variant of the Kraaikamp--Liardet
 criterion \cite{KL}, quoted as Lemma~4.1 of \cite{BDS}; see
-Section~\ref{sec:prior}. The independent contributions concern the complete spectrum
-discretization and three-way positive-level splitting
+Section~\ref{sec:prior}. The independent contributions concern the complete
+spectrum discretization and three-way positive-level splitting
 (Theorems~\ref{thm:full-spectrum}, \ref{thm:trichotomy},
 and~\ref{thm:general-rec}--\ref{thm:poly-phase-transition}, all kernel-checked
 in Lean~4), the critical gauge theorems
 (Theorem~\ref{thm:gauge} and Corollaries~\ref{cor:exact-gauge}
-and~\ref{cor:liminf-gauges}), the marked-component gauge
-(Theorem~\ref{thm:finite-state-tail}), the machine-checked dimension-zero and subcritical dimension theorems
+and~\ref{cor:liminf-gauges}), the kernel-checked marked-component gauge
+(Theorem~\ref{thm:finite-state-tail}, mechanized in
+\texttt{Finite\allowbreak State\allowbreak Complete.lean}), the machine-checked
+dimension-zero and subcritical dimension theorems
 (Theorems~\ref{thm:finite}, \ref{thm:upper}, and~\ref{conj:weight}), and the
-window and residue theorems (Theorems~\ref{thm:windows}--\ref{thm:residues}).
+window and residue theorems (Theorems~\ref{thm:windows}--\ref{thm:residues}
+and~\ref{thm:residues-general}).
 \end{itemize}
 
 \section*{Use of AI and formal verification}
@@ -3302,29 +3431,24 @@ systems (including ChatGPT and Codex), both for developing and drafting
 mathematical arguments and text, preparing the numerical certificates, and
 writing the Lean~4 formalization. The results marked as machine-checked (Layer~A)
 were verified by the Lean~4 kernel, and their axiom dependencies were audited
-with \texttt{\#print axioms} in \texttt{Audit.lean} ($828$ audited declarations
-project-wide as of 2026-11-22, of which $23$ additionally use the three whitelisted classical
+with \texttt{\#print axioms} in \texttt{Audit.lean} ($872$ audited declarations
+across $131$ Lean files as of 2026-11-22, $9176$ build jobs, of which $23$ additionally use the three whitelisted classical
 axioms \texttt{e\_transcendental}, \texttt{pi\_transcendental}, and
-\texttt{mu\_e\_eq\_two} in the companion $e+\pi$ paper's modules; the other $805$
+\texttt{mu\_e\_eq\_two} in the companion $e+\pi$ paper's modules; the other $849$
 depend only on the Lean base axioms \texttt{propext}, \texttt{Classical.choice},
 and \texttt{Quot.sound}---with zero
-project-added axioms and zero \texttt{sorryAx}). The remaining paper
-proofs---namely the positive-measure lower bound in
-Theorem~\ref{thm:finite-state-tail} (beyond the verified skeleton and
-marked-component lemmas in \texttt{FiniteStateGauge.lean} and
-\texttt{FiniteStatePositive.lean}); the Lebesgue-nullity
-deduction in Theorem~\ref{thm:no-short-dim} (whereas all of
-Theorem~\ref{thm:windows} and the Hausdorff-dimension identity $\dimH=1$ of
-Theorem~\ref{thm:no-short-dim} are kernel-checked end-to-end in
-\texttt{WindowCFBridge.lean},
-\texttt{WindowNoShortCFRealize.lean},
-\texttt{WindowPrescribedCFRealize.lean}, and
-\texttt{WindowBoundedUpper.lean}; see Remark~\ref{rem:windows-lean});
-the tower--Markov--Borel--Cantelli instantiation in Theorem~\ref{thm:short-ae}
-(beyond the verified conditional assembly in \texttt{WindowShortAe.lean} and
-\texttt{WindowAndResidueCore.lean}); and the
-Bowen/pressure assembly in Theorem~\ref{thm:residues} (beyond the verified
-integer certificate)---are not machine-checked in Lean.
+project-added axioms and zero \texttt{sorryAx}). The only portions not inside
+the Lean kernel are the finite-dimensional linear-algebraic Perron--Frobenius
+eigenvector existence input on marked strongly connected components in
+Theorem~\ref{thm:finite-state-tail} (whose positive right eigenvector is passed
+explicitly to \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak complete}
+and \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak complete}
+in \texttt{FiniteStateComplete.lean}) and the Python exact integer-arithmetic
+execution of \texttt{residue\_\allowbreak certificate.py} and
+\texttt{residue\_\allowbreak certificate\_\allowbreak general.py}
+for the $256$-cell grid certificates in Table~\ref{tab:residues-general}
+(whose transfer-operator dimension soundness theorems are verified in
+\texttt{TransferOperatorDim.lean}).
 % TODO before submission: state who checked the paper proofs, and how.
 
 \begin{thebibliography}{99}

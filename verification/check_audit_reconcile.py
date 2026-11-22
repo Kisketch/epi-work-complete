@@ -7,12 +7,14 @@ def read_text_auto(path: Path) -> str:
     """Read UTF-8, UTF-8-SIG, or UTF-16 (Windows PowerShell redirection) logs cleanly."""
     raw = path.read_bytes()
     if raw.startswith((b"\xff\xfe", b"\xfe\xff")):
-        return raw.decode("utf-16")
-    if raw.startswith(b"\xef\xbb\xbf"):
-        return raw.decode("utf-8-sig")
-    if b"\x00" in raw[:400]:
-        return raw.decode("utf-16-le", errors="replace")
-    return raw.decode("utf-8", errors="replace")
+        text = raw.decode("utf-16")
+    elif raw.startswith(b"\xef\xbb\xbf"):
+        text = raw.decode("utf-8-sig")
+    elif b"\x00" in raw[:400]:
+        text = raw.decode("utf-16-le", errors="replace")
+    else:
+        text = raw.decode("utf-8", errors="replace")
+    return text.lstrip("\ufeff")
 
 
 root = Path(__file__).resolve().parent.parent
@@ -100,6 +102,10 @@ new_prefixes = (
     "OrbitAndFlow.",
     "ResearchAdvance.",
     "TraceMarkov.",
+    "WindowShortAeRealize.",
+    "ResidueModGeneral.",
+    "TransferOperatorDim.",
+    "FiniteStateComplete.",
 )
 new_exact = {"rational_endpoint_cutoff"}
 new_decls = {k: v for k, v in log_map.items() if k.startswith(new_prefixes) or k in new_exact}
@@ -116,6 +122,6 @@ assert len(unexpected_axioms) == 0, f"Found unexpected axioms: {unexpected_axiom
 assert len(non_core) == 23, f"Expected strictly 23 whitelisted classical declarations, got {len(non_core)}"
 assert len(escape_hits) == 0, f"Found escape keywords: {escape_hits}"
 assert len(axiom_decls) == 3, f"Expected strictly 3 source axiom declarations, got {len(axiom_decls)}: {axiom_decls}"
-assert len(new_decls) == 182, f"Expected 182 new/integrated declarations (132 + 50), got {len(new_decls)}"
+assert len(new_decls) == 226, f"Expected 226 new/integrated declarations (182 + 44), got {len(new_decls)}"
 assert len(new_non_core) == 0, f"New declarations used non-core axioms: {new_non_core}"
 print("ALL RECONCILIATION CHECKS PASSED!")

@@ -119,6 +119,10 @@ import EpiFormal.GeneralEndpointRigidity
 import EpiFormal.TrichotomyAndPolyExtension
 import EpiFormal.WindowThickening
 import EpiFormal.WindowPointMass
+import EpiFormal.WindowShortAeRealize
+import EpiFormal.ResidueModGeneral
+import EpiFormal.TransferOperatorDim
+import EpiFormal.FiniteStateComplete
 
 -- 公理审计：仅允许 Axioms/Measure 清单公理 + Lean 基础公理。
 -- meiburg_criterion 已由 F2 证明为定理（不再是公理）；全项目零 sorry。
@@ -1047,3 +1051,47 @@ import EpiFormal.WindowPointMass
 #print axioms TraceMarkov.discriminantSixtyProgression
 #print axioms TraceMarkov.potentialSum_eq
 #print axioms TraceMarkov.twoReturnVariance
+#print axioms WindowShortAeRealize.cfStopIdx_spec_of_irrational
+#print axioms WindowShortAeRealize.stoppedWords_incomparable
+#print axioms WindowShortAeRealize.stoppedWords_disjoint
+#print axioms WindowShortAeRealize.stoppedWords_cover_irrationals
+#print axioms WindowShortAeRealize.stoppedWords_cyl_ae_mem
+#print axioms WindowShortAeRealize.cfStopIdx_const_on_stoppedCyl
+#print axioms WindowShortAeRealize.measurableSet_shortWinEvent
+#print axioms WindowShortAeRealize.atom_shortWin_volume_ge
+#print axioms WindowShortAeRealize.atom_exp_neg_shortWinCount_step
+#print axioms WindowShortAeRealize.integral_exp_neg_shortWinCount_step
+#print axioms WindowShortAeRealize.thm_short_ae_explicit
+#print axioms WindowShortAeRealize.thm_short_ae
+#print axioms WindowShortAeRealize.volume_divWindowSet_eq_zero
+#print axioms WindowShortAeRealize.thm_no_short_dim_complete
+#print axioms ResidueModGeneral.cfVal_cfDigit
+#print axioms ResidueModGeneral.lipschitzOnWith_cfShift
+#print axioms ResidueModGeneral.dimH_residueSeqSet_add_le
+#print axioms ResidueModGeneral.dimH_residueSeqSet_sandwich
+#print axioms ResidueModGeneral.dimH_mobius_prefix_eq
+#print axioms ResidueModGeneral.dimH_eventualResidueSeqSet_le
+#print axioms ResidueModGeneral.dimH_eventuallyPeriodicResidueSet_eq
+#print axioms TransferOperatorDim.hausdorffMeasure_le_of_transferOp_le
+#print axioms TransferOperatorDim.dimH_le_of_transferOp_le
+#print axioms TransferOperatorDim.isCompact_cfAlphabetSet
+#print axioms TransferOperatorDim.hausdorffMeasure_pos_of_transferOp_ge
+#print axioms TransferOperatorDim.le_dimH_of_transferOp_ge
+#print axioms TransferOperatorDim.half_lt_dimH_residueConstSet
+#print axioms TransferOperatorDim.tsum_arith_tail_le
+#print axioms TransferOperatorDim.sum_arith_lower_ge
+#print axioms TransferOperatorDim.dimH_residueMod4_le_four_fifths
+#print axioms TransferOperatorDim.step_cert_upper_sound
+#print axioms TransferOperatorDim.step_cert_lower_sound
+#print axioms FiniteStateComplete.one_le_k_of_one_lt_growth
+#print axioms FiniteStateComplete.wordOfPath_injective
+#print axioms FiniteStateComplete.isCompact_graphTree
+#print axioms FiniteStateComplete.graphTree_subset_fixedTail
+#print axioms FiniteStateComplete.mkMetric_graphTree_pos
+#print axioms FiniteStateComplete.mkMetric_unmarkedTail_null
+#print axioms FiniteStateComplete.defect_zero_of_mem_latticeL
+#print axioms FiniteStateComplete.exactTail_add_latticeL
+#print axioms FiniteStateComplete.mkMetric_exactTail_inter_Ioo_eq_top
+#print axioms FiniteStateComplete.mkMetric_circleExactTail_inter_open_eq_top
+#print axioms FiniteStateComplete.thm_finite_state_tail_complete
+#print axioms FiniteStateComplete.thm_finite_state_tail_circle_complete

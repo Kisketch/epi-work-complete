@@ -1,9 +1,9 @@
 === Paper 2 Merge & Integrity Verification ===
-Paper 2 source: paper2_spectral_gap_dimension\paper2_spectral_gap_dimension.tex (3385 lines)
+Paper 2 source: paper2_spectral_gap_dimension\paper2_spectral_gap_dimension.tex (3509 lines)
 Historical B draft: paper1_e_plus_pi\02_companion_paper\Phase2_revised.tex (4905 lines)
-Labels: 55 (all unique); Undefined refs: 0
+Labels: 57 (all unique); Undefined refs: 0
 Bibitems: 14/14 (100% cited in body, 0 missing)
-Braces balanced (3403); Environments balanced (115)
+Braces balanced (3530); Environments balanced (120)
 Residual 'Proof sketch': 0
   [OK] Desktop: Author placeholder
   [OK] Desktop: KL 2*Lambda(x) normalization
@@ -30,4 +30,12 @@ Residual 'Proof sketch': 0
   [OK] Workspace: Margins 29/10000 & 65/10000
   [OK] Workspace: Lipschitz 10/3 & 40/3
   [OK] Workspace: residue_certificate.py
+  [OK] Workspace: General modulus m=2..6 thm
+  [OK] Workspace: Table residues-general
+  [OK] Workspace: WindowShortAeRealize
+  [OK] Workspace: ResidueModGeneral
+  [OK] Workspace: TransferOperatorDim
+  [OK] Workspace: FiniteStateComplete
+  [OK] Workspace: residue_certificate_general.py
+  [OK] Workspace: Audit 872 declarations
 ALL MERGE & INTEGRITY CHECKS PASSED.

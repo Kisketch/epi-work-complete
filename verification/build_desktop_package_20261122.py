@@ -32,9 +32,9 @@ def copy_file(src: Path, dst: Path) -> None:
 
 
 def build_readme() -> str:
-    return r"""# 论文与 Lean 4 完整交付与复现说明（2026-11-22）
+    return r"""# 论文与 Lean 4 完整交付与复现说明（2026-11-22 最终版）
 
-> **一句总判断**：本交付包完整汇总两篇主论文（含历史 B 稿）、全量可复现 Lean 4 形式化项目（`epi_formal/`，Lean `v4.35.0`，`lake build EpiFormal` **9172 jobs** EXIT 0，`Audit.lean` **828/828** 条审计声明 = **805** 条仅用 Lean 基础公理 [含 5 条无公理] + **23** 条论文一经典白名单公理 + **0** 条项目自加公理，`sorryAx = 0`，127 个 `.lean` 文件零逃逸关键字）及全部 Python/`sympy`/`mpmath` 核验脚本、日志与证书；**$e+\pi$ 无理性仍是公开问题，本工作未证明 $e+\pi$ 无理、有理或超越。**
+> **一句总判断**：本交付包完整汇总两篇主论文（含历史 B 稿）、全量可复现 Lean 4 形式化项目（`epi_formal/`，Lean `v4.35.0`，`lake build EpiFormal` **9176 jobs** EXIT 0，`Audit.lean` **872/872** 条审计声明 = **849** 条仅用 Lean 基础公理 [含 5 条无公理] + **23** 条论文一经典白名单公理 + **0** 条项目自加公理，`sorryAx = 0`，131 个 `.lean` 文件零逃逸关键字；2026-11-22 新增/并入全部 **226** 条声明 0 非基础公理）及全部 Python/`sympy`/`mpmath` 核验脚本（含一般模 $m\in\{2,3,4,5,6\}$ 转移算子证书 `residue_certificate_general.py`）、日志与证书；**$e+\pi$ 无理性仍是公开问题，本工作未证明 $e+\pi$ 无理、有理或超越。**
 
 ---
 
@@ -42,9 +42,9 @@ def build_readme() -> str:
 
 | 成果板块 | 诚实类别 | 核查状态（2026-11-22 实测） | 关键未做事项 / 边界 |
 | :--- | :--- | :--- | :--- |
-| 论文二：沿 $e$ 收敛子分母与一般 $(cj^r+d)$ 递推的全谱离散化、正能级三分法、精确 Hausdorff 规范（$\mathbb{R}$ 与 $\mathbb{R}/\mathbb{Z}$）、次临界相变 $1-\alpha/r$、全部 `thm:windows`（$\dim_{\mathrm{H}}=1$ 与 $\dim_{\mathrm{H}}=1/2$ 上下界）及 `thm:no-short-dim` 维数部分（$\dim_{\mathrm{H}}=1$） | 无条件新结果 + Lean 4 Layer A 机器验证 | **已核实**（`lake build EpiFormal` 9172 jobs EXIT 0；`Audit.lean` 828/828，全部论文二模块仅依赖 Lean 基础公理，0 `sorryAx`） | `thm:no-short-dim` 的 Lebesgue 零测度推论、`thm:short-ae` 的测度论实例化、`thm:finite-state-tail` 正测度下界、`thm:residues` 的 Bowen/压力组装仍为纸面证明（辅以精确整数证书 `residue_certificate.py`） |
+| 论文二：全谱离散化、正能级三分法、精确 Hausdorff 规范（$\mathbb{R}$ 与 $\mathbb{R}/\mathbb{Z}$）、一般 $(cj^r+d)$ 相变 $1-\alpha/r$、`thm:finite-state-tail` 全定理（$\mathbb{R}$ 与 $\mathbb{T}$）、`thm:windows` 全四条、`thm:short-ae` 显式常数 $(1-e^{-1})/160$、`thm:no-short-dim` 完整合取（$\dim_{\mathrm{H}}=1\wedge\operatorname{Leb}=0$），以及 `thm:residues`/`thm:residues-general` 结构理论与转移算子证书可靠性 | 无条件新结果 + Lean 4 Layer A 机器验证 | **已核实**（`lake build EpiFormal` 9176 jobs EXIT 0；`Audit.lean` 872/872，全部论文二模块含新增 `WindowShortAeRealize` [14]、`ResidueModGeneral` [7]、`TransferOperatorDim` [11]、`FiniteStateComplete` [12] 均仅依赖 Lean 基础公理，0 `sorryAx`） | `thm:residues` 与表 `tab:residues-general` 中 $N=256$、$K\in\{120,130\}$ 的大矩阵精确整数数值求值由 `residue_certificate.py` 与 `residue_certificate_general.py` 在 Python 中执行（矩阵可靠性定理已在 `TransferOperatorDim.lean` 内核验证），未直接在 Lean 内核展开 $256\times 256$ 数值计算 |
 | 论文一：仿射窗口显式周期、黄金比轨道有限谱与 $B=1\text{--}6$ / 多尺度刚性、$e+\pi$ 归约与障碍分析、Flint Hills 条件桥接、Alekseyev 方向与逃逸约化 | 无条件模型/归约结果 + 条件桥接 + 障碍分析 + Lean 4 机器验证 | **已核实**（全部论文一引用模块——含原 8 个独立模块 `GoldenHeadCutoff` 等共 29 条声明——已并入 `epi_formal/` 与 `Audit.lean`；23 条经典定理推导显式依赖 3 条白名单公理 `e_transcendental`, `pi_transcendental`, `mu_e_eq_two`） | **未解决 $e+\pi$ 无理性**；论文一窗口/谱主体证明与障碍分析为纸面证明；有限区间/分母排除证书仅覆盖有限范围 |
-| 符号与高精度区间证书（`verify_round3.py`、`verify_round4.py`、`residue_certificate.py` 等） | 有限计算与严格整数/区间认证（非 Lean 内核证明） | **已核实**（`verify_round3.py` 12/12 SymPy 1.14.0 PASS；`verify_round4.py` 余弦积分 + 450 位 `mpmath.iv` 宽度 $< 9.13\times 10^{-451}$、`q<=1000` 排除与 `n<=60` 窗违反证书 PASS；`residue_certificate.py` 认证 $357/512 < \dim_{\mathrm{H}} F < 359/512$） | 仅验证有限范围或代数恒等式，不构成一般性无理性证明 |
+| 符号、高精度区间与转移算子整数证书（`verify_round3.py`、`verify_round4.py`、`residue_certificate.py`、`residue_certificate_general.py`） | 有限计算与严格整数/区间认证（非 Lean 内核求值） | **已核实**（`verify_round3.py` 12/12 SymPy PASS；`verify_round4.py` 余弦积分 + 450 位 `mpmath.iv`；`residue_certificate.py` 认证 $357/512 < \dim_{\mathrm{H}} F_{4,1} < 359/512$；`residue_certificate_general.py` 认证 $m\in\{2,3,4,5,6\}, r\in\{1,m\}$ 全部 10 组二进区间与严格谱隙 `[PASS]`） | 仅验证有限范围、代数恒等式或有限格点转移矩阵，不构成一般性无理性证明 |
 | CMMS 一次文献核查（`cmms_citation_check_20261122.md`） | 文献核查与复现 | **已核实**（直接核对 *Pacific J. Math.* 217(1) (2004), pp. 45–59 官方刊出全文，确认 §5 主定理为 **Theorem 3**，修正论文二三处误写） | — |
 
 ---
@@ -58,21 +58,22 @@ epi_complete_package_20261122/
 ├── AGENTS.md                            # 研究纪律与诚实分类法基线
 ├── papers/
 │   ├── paper1_e_plus_pi/                # 论文一（72 页，TeX + PDF + pdflatex log，0 错误/0 警告/0 Overfull）
-│   ├── paper2_spectral_gap_dimension/   # 论文二（48 页，TeX + PDF + pdflatex log，0 错误/0 警告/0 Overfull）
+│   ├── paper2_spectral_gap_dimension/   # 论文二（50 页，TeX + PDF + pdflatex log，0 错误/0 警告/0 Overfull）
 │   └── historical_draft_B_Phase2_revised/ # 历史 B 稿备份（Phase2_revised.tex/.pdf/.log）
-├── epi_formal/                          # 完整可复现 Lean 4 项目（127 个 .lean，不含 8 GB .lake 缓存与 .git）
+├── epi_formal/                          # 完整可复现 Lean 4 项目（131 个 .lean，不含 8 GB .lake 缓存与 .git）
 │   ├── lean-toolchain                   # leanprover/lean4:v4.35.0
 │   ├── lakefile.toml & lake-manifest.json
-│   ├── EpiFormal.lean                   # 总入口（含 WindowBoundedUpper 与全部 8 个论文一辅助模块）
-│   ├── Audit.lean                       # 828 条 #print axioms 全量审计脚本
-│   ├── EpiFormal/                       # 125 个形式化模块（含 21 条 WindowBoundedUpper + 29 条原独立模块）
+│   ├── EpiFormal.lean                   # 总入口（含新闭合 4 模块、WindowBoundedUpper 与 8 个论文一辅助模块）
+│   ├── Audit.lean                       # 872 条 #print axioms 全量审计脚本
+│   ├── EpiFormal/                       # 129 个形式化模块（含 2026-11-22 新增/并入全套模块）
 │   └── LEMMA_AUDIT.md / PROOF_GAPS.md / FINAL_REVIEW.md / README.md
 └── verification/                        # 全部核验脚本、原始审计日志、证书与一次文献核查记录
-    ├── audit_final_20261122.log         # 2026-11-22 实测 828 条 #print axioms 原始日志
-    ├── check_audit_reconcile.py         # 828/828 双射、0 sorryAx、23 白名单、0 逃逸关键字自动核对脚本
+    ├── audit_final_20261122.log         # 2026-11-22 实测 872 条 #print axioms 原始日志
+    ├── check_audit_reconcile.py         # 872/872 双射、0 sorryAx、23 白名单、0 逃逸关键字自动核对脚本
     ├── verify_round3.py & .log          # 论文一 Appendix A 12/12 SymPy 符号验证
     ├── verify_round4.py & .log & certificate_round4.json  # 余弦积分 + 450 位 mpmath.iv 区间证书
-    ├── residue_certificate.py & residue-certificate.log   # 论文二 Theorem 16 精确整数转移算子证书
+    ├── residue_certificate.py & residue-certificate.log   # 论文二 thm:residues 精确整数转移算子证书
+    ├── residue_certificate_general.py & .json & .log      # 论文二 thm:residues-general 一般模 m=2..6 整数证书
     ├── verify_paper2_merge.py & .log    # 论文二结构/标签/引文/公式完整性校验
     ├── cmms_citation_check_20261122.md  # CMMS PJM 2004 一次文献核查记录
     ├── paper1_companion_scripts/        # 论文一引用的伴随证书脚本（golden_finite_spectrum.py 等）
@@ -83,12 +84,12 @@ epi_complete_package_20261122/
 
 ## 三、三层公理依赖实测清单（`audit_final_20261122.log`）
 
-经 `lake build EpiFormal`（9172 jobs，EXIT 0）与 `lake env lean Audit.lean`（EXIT 0），并由 `verification/check_audit_reconcile.py` 自动对账：
+经 `lake build EpiFormal`（9176 jobs，EXIT 0）与 `lake env lean Audit.lean`（EXIT 0），并由 `verification/check_audit_reconcile.py` 自动对账：
 
-- **总计审计声明数**：**828 条**（`Audit.lean` 与日志 828/828 严格双射，重复 0）
+- **总计审计声明数**：**872 条**（`Audit.lean` 与日志 872/872 严格双射，重复 0）
 - **`sorryAx` 计数**：**0**
-- **逃逸关键字扫描**（全项目 127 个 `.lean` 文件扫描 `sorry` / `admit` / `native_decide` / `implemented_by` / `extern` / `unsafe` / `partial` / `opaque`）：**0 命中**
-- **第 1 层（Lean 基础公理：`propext`, `Classical.choice`, `Quot.sound`）**：**805 条**（含 5 条零公理声明；**论文二全部形式化定理、新增 `WindowBoundedUpper.lean` 21 条、以及新并入的 8 个论文一辅助模块 29 条均属此层**）
+- **逃逸关键字扫描**（全项目 131 个 `.lean` 文件扫描 `sorry` / `admit` / `native_decide` / `implemented_by` / `extern` / `unsafe` / `partial` / `opaque`）：**0 命中**
+- **第 1 层（Lean 基础公理：`propext`, `Classical.choice`, `Quot.sound`）**：**849 条**（含 5 条零公理声明；**含 2026-11-22 新增/并入全部 226 条声明：`WindowShortAeRealize` 14 条、`ResidueModGeneral` 7 条、`TransferOperatorDim` 11 条、`FiniteStateComplete` 12 条、`WindowBoundedUpper` 21 条、8 个论文一辅助模块 29 条等，0 非基础公理**）
 - **第 2 层（经典白名单公理，仅 3 条源码 `axiom` 声明）**：**23 条**（仅用于论文一经典超越数/无理性测度推论）：
   1. `e_transcendental`（`EpiFormal/Axioms.lean`）
   2. `pi_transcendental`（`EpiFormal/Axioms.lean`）
@@ -102,13 +103,14 @@ epi_complete_package_20261122/
 ### 4.1 校验包内文件完整性与审计日志对账（无需联网）
 
 ```powershell
-# 1. 核对审计日志 828/828 双射、0 sorryAx、23 白名单、0 逃逸关键字
+# 1. 核对审计日志 872/872 双射、0 sorryAx、23 白名单、0 逃逸关键字
 python verification\check_audit_reconcile.py verification\audit_final_20261122.log
 
-# 2. 复跑核心 Python 符号/区间/整数证书与论文二完整性脚本（需 sympy 1.14+, mpmath 1.3+）
+# 2. 复跑核心 Python 符号/区间/整数证书（含 m=4 与一般 m=2..6）与论文二完整性脚本
 python verification\verify_round3.py
 python verification\verify_round4.py
 python verification\residue_certificate.py
+python verification\residue_certificate_general.py
 python verification\verify_paper2_merge.py
 ```
 
@@ -134,8 +136,9 @@ pdflatex -interaction=nonstopmode paper1_e_plus_pi.tex
 pdflatex -interaction=nonstopmode paper1_e_plus_pi.tex
 pdflatex -interaction=nonstopmode paper1_e_plus_pi.tex
 
-# 论文二（洁净目录两遍即可稳定全部引用）
+# 论文二（洁净目录三遍稳定全部引用与书签）
 cd ..\paper2_spectral_gap_dimension
+pdflatex -interaction=nonstopmode paper2_spectral_gap_dimension.tex
 pdflatex -interaction=nonstopmode paper2_spectral_gap_dimension.tex
 pdflatex -interaction=nonstopmode paper2_spectral_gap_dimension.tex
 ```
@@ -248,7 +251,11 @@ def main() -> None:
         check=False,
     )
     assert proc.returncode == 0, f"Packaged check_audit_reconcile.py failed:\n{proc.stdout}\n{proc.stderr}"
-    print("[PASS] Packaged verification/check_audit_reconcile.py EXIT 0 (828/828 inside package)")
+    print("[PASS] Packaged verification/check_audit_reconcile.py EXIT 0 (872/872 inside package)")
+
+    for gen_name in ("residue_certificate_general.py", "residue_certificate_general.json", "residue_certificate_general.log"):
+        assert (PKG_DIR / "verification" / gen_name).exists(), f"Missing {gen_name} in package"
+    print("[PASS] General modulus certificate artifacts (residue_certificate_general.{py,json,log}) present")
 
     with tempfile.TemporaryDirectory() as td:
         with zipfile.ZipFile(ZIP_PATH, "r") as zf:
@@ -266,7 +273,7 @@ def main() -> None:
         # Verify check_audit_reconcile.py works on a PowerShell-style UTF-16LE redirected log
         utf16_log = unpacked / "verification" / "audit_utf16_test.log"
         utf16_log.write_text(
-            (unpacked / "verification" / "audit_final_20261122.log").read_text(encoding="utf-8"),
+            (unpacked / "verification" / "audit_final_20261122.log").read_text(encoding="utf-8-sig"),
             encoding="utf-16",
         )
         proc_u16 = subprocess.run(
@@ -306,11 +313,21 @@ def main() -> None:
         missing_log = [f for f in log_refs if f not in pkg_filenames]
         assert not missing_log, f"{label} cites missing .log files: {missing_log}"
 
-        assert "828" in t and "805" in t and "23" in t, f"{label} missing synchronized 828/805/23 audit counts"
+        assert "872" in t and "849" in t and "23" in t, f"{label} missing synchronized 872/849/23 audit counts"
         print(
             f"[PASS] {label} cross-check: {len(lean_refs)} .lean, {len(py_refs)} active .py, "
-            f"{len(json_refs)} .json, {len(log_refs)} .log all present; 828/805/23 aligned"
+            f"{len(json_refs)} .json, {len(log_refs)} .log all present; 872/849/23 aligned"
         )
+
+    required_new_lean = [
+        "WindowShortAeRealize.lean",
+        "ResidueModGeneral.lean",
+        "TransferOperatorDim.lean",
+        "FiniteStateComplete.lean",
+    ]
+    missing_new_lean = [f for f in required_new_lean if f not in pkg_lean_names]
+    assert not missing_new_lean, f"Missing new 2026-11-22 Lean modules in package: {missing_new_lean}"
+    print(f"[PASS] All 4 new Lean modules verified in package ({len(pkg_lean_names)} total .lean files)")
 
     # 8e. Check pdflatex logs in package for 0 errors & 0 Overfull \hbox
     for label, log_p in [

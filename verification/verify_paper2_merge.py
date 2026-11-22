@@ -88,6 +88,14 @@ def main():
         ("Workspace: Margins 29/10000 & 65/10000", "29/10000"),
         ("Workspace: Lipschitz 10/3 & 40/3", "40/3"),
         ("Workspace: residue_certificate.py", "residue\\_certificate.py"),
+        ("Workspace: General modulus m=2..6 thm", r"\label{thm:residues-general}"),
+        ("Workspace: Table residues-general", r"\label{tab:residues-general}"),
+        ("Workspace: WindowShortAeRealize", "WindowShortAeRealize"),
+        ("Workspace: ResidueModGeneral", "ResidueModGeneral"),
+        ("Workspace: TransferOperatorDim", "TransferOperatorDim"),
+        ("Workspace: FiniteStateComplete", "FiniteStateComplete"),
+        ("Workspace: residue_certificate_general.py", "residue\\_certificate\\_general.py"),
+        ("Workspace: Audit 872 declarations", "872"),
     ]
     for label, pat in items:
         found = pat in norm_merged
