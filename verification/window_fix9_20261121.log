@@ -1,0 +1,6 @@
+﻿'WindowMobiusCount.exp_three_gt_ten' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMobiusCount.log_ten_lt_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMobiusCount.log106_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMobiusCount.logMhi_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMobiusCount.err_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMobiusCount.coprime_count_ge' depends on axioms: [propext, Classical.choice, Quot.sound]

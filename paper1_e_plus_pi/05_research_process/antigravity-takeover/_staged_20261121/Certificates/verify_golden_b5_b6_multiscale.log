@@ -1,0 +1,50 @@
+=== 1. Lemma lem:general-case2-criterion Auxiliary Bound Check ===
+Checked 688 elements of E_phi cap (0,1) \ {phi-1, 2-phi} in [-12,12]^4:
+  min h(theta)*(1-theta) = 1.23606797749978969640917366873 == sqrt(5)-1 (at [0;1,2,\bar{1}]); 0 exceptions.
+
+=== 2. Theorem thm:golden-b5-exact (B = 5: 16/5..19/5 - e, 2500 digits) ===
+c_min^(5) = 56/(25*sqrt(5)) - 1 = 0.001758453919905783991309803591611753477397
+c_sec^(5) = 1 - 54/(25*sqrt(5)) = 0.03401863372009085115123697510808866628965
+Verified Q_j mod 5 has minimal period 10 with Q_{j+5} === -Q_j (mod 5) and 5 nmid Q_j.
+Verified 4*tau inversion at D=50: 4 families at m=56, 8 families at m=54.
+  [B=5] Case 2 closure: Q1(non-excl)>=0.03401863372, (a)mid=0.35952933, (a)gt=0.57067495, (b)mid=0.57067495, (b)gt=0.35952933, (c)1=1.7976467, (c)>=2=0.089442719 > c_sec=0.03401863372
+  16/5 - e: 194 windows (min period 50, b_{j+50}=b_j+4); max_dev_ext=0.0002451, max_dev_sec=0.005265
+    non-extremal scan (20899 pts): min = 0.02906597705 (threshold 0.028)
+  17/5 - e: 194 windows (min period 50, b_{j+50}=b_j+4); max_dev_ext=0.000262, max_dev_sec=0.005378
+    non-extremal scan (20976 pts): min = 0.02864055622 (threshold 0.028)
+  18/5 - e: 194 windows (min period 50, b_{j+50}=b_j+4); max_dev_ext=0.0002588, max_dev_sec=0.005417
+    non-extremal scan (20921 pts): min = 0.02864080451 (threshold 0.028)
+  19/5 - e: 194 windows (min period 50, b_{j+50}=b_j+4); max_dev_ext=0.0002667, max_dev_sec=0.005472
+    non-extremal scan (20943 pts): min = 0.02854654862 (threshold 0.028)
+  Shared 20 suffixes for B=5: {1: [49, 1], 3: [16, 1, 1, 1], 7: [7, 7], 9: [5, 1, 1, 4], 11: [4, 1, 1, 5], 13: [3, 1, 5, 2], 17: [2, 1, 15, 1], 19: [2, 1, 1, 1, 2, 2], 21: [2, 2, 1, 1, 1, 2], 23: [2, 5, 1, 3], 27: [1, 1, 5, 1, 2, 1], 29: [1, 1, 2, 1, 1, 1, 1, 1], 31: [1, 1, 1, 1, 1, 2, 1, 1], 33: [1, 1, 1, 16], 37: [1, 2, 1, 5, 1, 1], 39: [1, 3, 1, 1, 4, 1], 41: [1, 4, 1, 1, 3, 1], 43: [1, 6, 6, 1], 47: [1, 15, 1, 2], 49: [1, 49]}
+
+=== 3. Theorem thm:golden-b6-exact (B = 6: 19/6 - e and 23/6 - e, 2500 digits) ===
+c_min^(6) = 1 - 79/(36*sqrt(5)) = 0.0186146098750922999093071120568287633344
+excluded m=83: 83/(36*sqrt(5))-1 = 0.03107578962490302667756341391497737523095
+c_sec^(6) = 1 - 77/(36*sqrt(5)) = 0.04345980962508996320274237504273183261707
+Verified inert 3|36 forbids m=81 and mod-8 congruence (m === +-1 mod 8) forbids m=83 (=== 3 mod 8).
+Verified 4*tau inversion at D=72: m=81,83 empty; 4 families at m=79, 4 families at m=77.
+  [B=6] Case 2 closure: Q1(non-excl)>=0.09315020913, (a)mid=0.40375379, (a)gt=0.6148994, (b)mid=0.6148994, (b)gt=0.40375379, (c)1=2.0187689, (c)>=2=0.310565 > c_sec=0.04345980963
+  19/6 - e: 193 windows (min period 18, b_{j+18}=b_j+1); max_dev_ext=0.003809, max_dev_sec=0.0007555
+    non-extremal scan (15168 pts): min = 0.04270658164 (threshold 0.036)
+  23/6 - e: 193 windows (min period 18, b_{j+18}=b_j+1); max_dev_ext=0.003809, max_dev_sec=0.0007602
+    non-extremal scan (15168 pts): min = 0.04270957618 (threshold 0.036)
+  Shared 12 suffixes for B=6: {5: [14, 2, 1, 1], 11: [6, 1, 1, 5], 13: [5, 1, 1, 6], 19: [3, 1, 3, 1, 2, 1], 29: [2, 2, 13, 1], 35: [2, 17, 1, 1], 37: [1, 1, 17, 2], 43: [1, 1, 2, 14], 53: [1, 2, 1, 3, 1, 3], 59: [1, 4, 1, 1, 5, 1], 61: [1, 5, 1, 1, 4, 1], 67: [1, 13, 2, 2]}
+
+=== 4. Theorem thm:golden-multiscale-exact (Multi-scale & 22/7 - e, 2500 digits) ===
+-- Target (i): (1+e)/6 --
+  [(1+e)/6] Case 2 closure: Q1(non-excl)>=0.2546440075, (a)mid=0.34164079, (a)gt=0.8509288, (b)mid=0.5527864, (b)gt=0.63978318, (c)1=1.7082039, (c)>=2=1.236068 > c_sec=0.2546440075
+    non-extremal scan (776 pts): min = 0.2520062431 (threshold 0.248)
+-- Target (ii): (1+e)/3 --
+  [(1+e)/3] Case 2 closure: Q1(non-excl)>=0.403715206, (a)mid=0.49071198, (a)gt=0.7018576, (b)mid=1.0, (b)gt=0.49071198, (c)1=2.4535599, (c)>=2=0.74535599 > c_sec=0.192569588
+    non-extremal scan (1244 pts): min = 0.1885819513 (threshold 0.185)
+-- Target (iii): (1+2e)/3 --
+  [(1+2e)/3] Case 2 closure: Q1(non-excl)>=0.1180339887, (a)mid=0.41617639, (a)gt=0.627322, (b)mid=0.7763932, (b)gt=0.41617639, (c)1=2.0808819, (c)>=2=0.372678 > c_sec=0.1180339887
+    non-extremal scan (1688 pts): min = 0.1184464712 (threshold 0.11)
+-- Target (iv): 22/7 - e --
+  All 8 D_j=2 windows in j=50..147: [(59, 1, 49, [1, 1, 1]), (60, 49, 1, [5928, 1, 1]), (85, 1, 49, [2, 1, 1]), (86, 49, 1, [8476, 1, 1]), (120, 1, 49, [4, 1, 1]), (121, 49, 1, [11906, 1, 1]), (122, 1, 49, [4, 1, 1]), (123, 49, 1, [12102, 1, 1])]
+  [22/7-e] Case 2 closure: Q1(non-excl)>=0.022202504, (a)mid=0.35076759, (a)gt=0.56191321, (b)mid=0.56191321, (b)gt=0.35076759, (c)1=1.753838, (c)>=2=0.04563404 > c_sec=0.01430472829
+  22/7 - e: 210 windows, max_dev_ext=0.0001936, max_dev_sec=0.0005235
+    non-extremal scan (37377 pts): min = 0.01378121057 (threshold 0.008)
+
+ALL PATH 2A B=5, B=6, AND MULTISCALE CHECKS PASSED WITH 0 ASSERTION FAILURES.

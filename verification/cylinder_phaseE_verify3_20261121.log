@@ -1,0 +1,4 @@
+﻿EpiFormal/CylinderPhaseE.lean:18:4: error: No goals to be solved
+'Cylinder.frac_abs_sub_of_unit_cross' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Cylinder.diam_Icc_min_max' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.child_cyl_diam' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

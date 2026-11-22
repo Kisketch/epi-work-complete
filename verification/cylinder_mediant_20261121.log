@@ -1,0 +1,3 @@
+﻿'Cylinder.cfProd_append_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.col1_convPair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.sibling_cross' depends on axioms: [propext, Classical.choice, Quot.sound]

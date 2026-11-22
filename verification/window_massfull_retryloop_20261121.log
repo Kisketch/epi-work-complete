@@ -1,0 +1,42 @@
+﻿retry-loop started 20:04:12
+--- try 1 20:04:12 ---
+EpiFormal/WindowMassFull.lean:1:0: error: failed to read file 'c:\Users\Lgnatius\.elan\toolchains\leanprover--lean4---v4.35.0\lib\lean\Lean\LibrarySuggestions\SineQuaNon.olean.private'
+--- try 2 20:05:04 ---
+EpiFormal/WindowMassFull.lean:1:0: error: failed to read file 'c:\Users\Lgnatius\.elan\toolchains\leanprover--lean4---v4.35.0\lib\lean\Lean\Compiler\LCNF\Simp\ConstantFold.olean.private'
+--- try 3 20:05:56 ---
+EpiFormal/WindowMassFull.lean:1:0: error: failed to read file 'C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\batteries\.lake\build\lib\lean\Batteries\Recycling\RBTree\Basic.olean'
+--- try 4 20:06:47 ---
+EpiFormal/WindowMassFull.lean:39:9: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsBotZeroClass ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowMassFull.lean:39:45: error: Tactic `rcases` failed: `x✝ : ?m.352` is not an inductive datatype
+'WindowMassFull.mu_window_le_full' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+--- try 5 20:08:22 ---
+EpiFormal/WindowMassFull.lean:39:9: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsBotZeroClass ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowMassFull.lean:39:45: error: Tactic `rcases` failed: `x✝ : ?m.352` is not an inductive datatype
+'WindowMassFull.mu_window_le_full' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+--- try 6 20:09:26 ---
+EpiFormal/WindowMassFull.lean:39:9: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsBotZeroClass ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowMassFull.lean:39:45: error: Tactic `rcases` failed: `x✝ : ?m.352` is not an inductive datatype
+'WindowMassFull.mu_window_le_full' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+--- try 7 20:10:30 ---
+EpiFormal/WindowMassFull.lean:39:9: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsBotZeroClass ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowMassFull.lean:39:45: error: Tactic `rcases` failed: `x✝ : ?m.352` is not an inductive datatype
+'WindowMassFull.mu_window_le_full' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+--- try 8 20:11:34 ---
+EpiFormal/WindowMassFull.lean:39:9: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsBotZeroClass ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowMassFull.lean:39:45: error: Tactic `rcases` failed: `x✝ : ?m.352` is not an inductive datatype
+'WindowMassFull.mu_window_le_full' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

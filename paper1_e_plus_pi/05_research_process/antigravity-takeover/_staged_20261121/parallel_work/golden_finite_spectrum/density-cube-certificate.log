@@ -1,0 +1,4 @@
+Delta=60: 11 split-prime residues, 3266/12001 finite hits.
+Delta=240: 11 split-prime residues, 3271/12001 finite hits.
+Cross-order example: 257 shared values among 301 candidate traces.
+Exact tilted/uniform corridor count identities at all depths through 640.

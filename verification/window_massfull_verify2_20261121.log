@@ -1,0 +1,6 @@
+﻿EpiFormal/WindowMassFull.lean:39:9: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsBotZeroClass ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowMassFull.lean:39:45: error: Tactic `rcases` failed: `x✝ : ?m.352` is not an inductive datatype
+'WindowMassFull.mu_window_le_full' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

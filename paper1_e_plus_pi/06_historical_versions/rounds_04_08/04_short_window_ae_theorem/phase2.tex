@@ -1,0 +1,672 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\setlength{\emergencystretch}{3em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\dimH}{\dim_{\mathrm{H}}}
+\newcommand{\Lam}{\Lambda}
+
+\title{A spectral gap and zero-dimensional level sets for Diophantine\\
+approximation along the convergent denominators of \texorpdfstring{$e$}{e}}
+\author{Phase-2 report (AI-assisted research; Lean-kernel-checked core)}
+\date{Revised November 18, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $(Q_j)$ be the convergent denominators of $e$ immediately preceding
+the partial quotients $2j$, and put $\Lambda(x)=\limsup_j j\|Q_jx\|$,
+where $\|t\|$ is the distance from $t$ to the nearest integer.
+For each integer $k\ge1$ we identify a gauge $h_k$ by
+$h_k(1/Q_n)=(2k+1)^{-n}$ and linear interpolation. On the circle,
+the exact level $\{\Lambda=k/4\}$ has infinite, $\sigma$-finite
+$\mathcal H^{h_k}$ measure, and the strict sublevel has zero
+$\mathcal H^{h_k}$ measure. Every finite sublevel
+$\{\Lambda\le c\}$ has Hausdorff dimension zero. The zero level is
+$\mathbb Z+\mathbb Z(e+1)/2$ and the positive spectrum has a gap
+below $1/4$. The Lean declarations audited for the classification,
+gap and dimension bounds use only Lean's three standard axioms.
+For ordinary continued fractions, eventual periodicity of the
+partial quotients modulo four has the same Hausdorff dimension
+as the fixed alphabet $1\bmod 4$, strictly between $13/20$ and $5/7$.
+For $0\le\alpha<1$, prescribed admissible limits of
+$j^\alpha\|Q_jx\|$ occur on sets of dimension $1-\alpha$.
+Almost every input has at least logarithmically many windows with
+at most one new convergent.
+\end{abstract}
+
+\section{Introduction}
+
+This note studies the metric theory of Diophantine approximation along a
+\emph{sparse, super-exponentially growing} subsequence of denominators: the
+selected convergent denominators of $\ee$. It is a spin-off of a formalization
+project on the (open) irrationality of $e+\pi$; the classification and gap
+theorems from that project underlie the metric results presented here.
+
+\subsection{Setup}
+
+The continued fraction of $\ee$ is $[2;1,2,1,1,4,1,1,6,\dots]$. Let $P_j/Q_j$
+be the convergent immediately preceding the partial quotient $2j$; the first
+few are $3/1,19/7,193/71,2721/1001$. The denominators satisfy
+\begin{equation}\label{eq:rec}
+Q_{j+1}=(4j+2)Q_j+Q_{j-1}\quad(j\ge2),\qquad Q_1=1,\ Q_2=7,
+\end{equation}
+so $Q_{j+1}/Q_j\sim 4j$ and $\log Q_j\sim j\log j$ (super-exponential growth).
+Write $\|y\|=\dist(y,\Z)$ and define
+\[
+\Lam(x):=\limsup_{j\to\infty} j\,\|Q_j x\|\in[0,\infty].
+\]
+Let $L:=\Z+\Z\frac{\ee+1}{2}$, a countable dense subgroup of $\R$.
+
+\subsection{Relation to prior work}\label{sec:prior}
+
+The \emph{phenomenon} (a spectral gap plus zero-dimensional sub-threshold level
+sets) is classical: the Lagrange spectrum below $3$ is countable
+(dimensions $0$), Hall's ray gives a half-line, and Moreira and Lima--Moreira
+establish phase transitions for spectra of Diophantine approximation
+\cite{Moreira,LimaMoreira}. For comparison with continued-fraction characterizations see
+\cite{KL,BDS}. In particular, put $\beta=(e+1)/2$. The fractions
+$R_j/Q_j$, where $R_j=(P_j+Q_j)/2$, are the convergents of
+$\beta=[1;1,6,10,14,\ldots]$: the initial pairs are $(1,1)$ and
+$(2,1)$ and the remaining partial quotients are $4j+2$ for $j\ge1$.
+The Kraaikamp--Liardet criterion in \cite[p.~106, Lem.~4.1]{BDS} then
+gives $\|Q_jx\|>Q_j|Q_j\beta-R_j|/4$ infinitely often for $x\notin L$.
+The continued-fraction error formula gives
+$jQ_j|Q_j\beta-R_j|\to1/4$, hence $\Lambda(x)\ge1/16$ outside $L$.
+Together with $\Lambda=0$ on $L$, this recovers the zero-level
+classification. The recurrence proof below gives the sharp bound $1/4$.
+
+For the selected sequence here, Corollary~8 of \cite{BLR}
+applies directly since $Q_{j+1}/Q_j\to\infty$. It yields full dimension
+for $\{x:\|Q_jx\|\to0\}$. Theorem~7 of that paper treats shrinking
+intervals with moving centres. We give the elementary construction
+for this recurrence below.
+
+Our results concern a specific sequence with four distinguishing
+features: (i) a \emph{subsequence} of convergent denominators (every third),
+(ii) the \emph{weight} $j$, (iii) the lattice $L=\Z+\Z\frac{\ee+1}{2}$ (note
+$(\ee+1)/2$, not $\ee$), and (iv) the \emph{sharp} constant $1/4$. The weight is
+\emph{critical} for the covering argument: it makes the per-parent branching
+number uniformly bounded, yielding dimension $0$ for \emph{all} finite level
+sets (Theorem~\ref{thm:finite}), whereas without the weight the branching grows
+linearly and the argument fails. The unweighted zero-set has full dimension, whereas the zero-set
+for the weight $j$ equals the countable group $L$.
+
+\section{Classification and spectral gap}
+
+The following two results were established and Lean-kernel-checked in the
+Phase-1 project. The Lean foundation proves both error estimates
+$\delta_j\to0$ and $|\delta_j|<1/(2jQ_j)$ for $j\ge1$, where
+$\delta_j=Q_j\ee-P_j$. The proofs use the selected-convergent
+recurrence and its Hermite integral representation.
+
+\begin{theorem}[Classification, {\cite[Thm.~2]{Phase1}}]\label{thm:class}
+For $x\in\R$, $\quad j\|Q_jx\|\to0\iff x\in L.$
+\end{theorem}
+
+\begin{theorem}[Gap, {\cite[Cor.~3]{Phase1}}]\label{thm:gap}
+If $x\notin L$ and $c<1/4$, then it is \emph{not} the case that
+$j\|Q_jx\|\le c$ eventually. Equivalently $\Lam(x)\ge1/4$ for $x\notin L$.
+\end{theorem}
+
+\section{The spectral gap (machine-checked)}
+
+\begin{theorem}[Spectral gap]\label{thm:spectral}
+For every $x\in\R$, either $\Lam(x)=0$ or $\Lam(x)\ge1/4$. Thus
+$\Lam(\R)\subseteq\{0\}\cup[1/4,\infty]$, and $\Lam(x)=0\iff x\in L$.
+\end{theorem}
+
+\begin{proof}
+If $x\in L$, Theorem~\ref{thm:class} gives $j\|Q_jx\|\to0$, hence $\Lam(x)=0$.
+If $x\notin L$, Theorem~\ref{thm:gap} gives $\Lam(x)\ge1/4$. The dichotomy and
+the characterization of the zero value follow.
+\end{proof}
+
+\begin{remark}
+In particular $\Lam(\ee)=0$, since $\ee=2\cdot\frac{\ee+1}{2}-1\in L$; $\ee$ is
+an exceptional input for this exponent: its value is zero.
+Section~\ref{sec:num} reports finite-window maxima for $B\pi$, $\sqrt2$,
+the golden ratio, and random reals.
+\end{remark}
+
+\section{Sub-threshold level sets have dimension zero (machine-checked)}
+
+For $c\ge0$ write $E_c:=\{x:\Lam(x)\le c\}$.
+
+\begin{theorem}[Sub-threshold level sets]\label{thm:sub}
+If $c<1/4$, then $E_c=L$. In particular $E_c$ is countable and
+$\dimH E_c=0$.
+\end{theorem}
+
+\begin{proof}
+If $x\in L$ then $\Lam(x)=0\le c$, so $L\subseteq E_c$. Conversely if
+$x\in E_c$ then $\Lam(x)\le c<1/4$, so by Theorem~\ref{thm:spectral}
+$\Lam(x)=0$, hence $x\in L$ by Theorem~\ref{thm:class}. Thus $E_c=L$, which is
+countable (image of $\Z^2$), and countable sets have Hausdorff dimension $0$.
+\end{proof}
+
+\paragraph{Lean status.} Theorems~\ref{thm:spectral} and~\ref{thm:sub}, together
+with the countability of $L$ and $\dimH E_c=0$ for $c<1/4$, are kernel-checked in
+\texttt{EpiFormal/SpectralGap.lean} (five declarations, no \texttt{sorryAx}).
+The declaration audit reports \texttt{propext}, \texttt{Classical.choice}, and
+\texttt{Quot.sound} for the classification and spectral-gap results.
+In the existing project environment, \texttt{lake build} and
+\texttt{lake env lean Audit.lean} both exited successfully. A fresh
+dependency fetch in the separate reproduction directory was blocked by
+DNS resolution. The gauge and residue theorems use the proofs in this article.
+
+\section{All finite level sets have dimension zero (machine-checked)}
+
+The sub-threshold result uses the sharp classification. For $c\ge1/4$ the level
+set $E_c$ is uncountable, but we show it still has dimension $0$. The entire
+covering argument --- factorial growth of $Q_j$, uniform branching bound,
+surviving-center recursion, periodicity reduction, Hausdorff-content estimate,
+and the countable-union assembly --- is \emph{machine-checked}
+(\texttt{EpiFormal/DimHCore.lean} + \texttt{EpiFormal/DimHFinite.lean}, base
+axioms only, no \texttt{sorryAx}, and \emph{no} continued-fraction axioms).
+The elementary proof below mirrors the formalization.
+
+\begin{lemma}[Factorial growth]\label{lem:factorial}
+For $j\ge1$, $Q_j\ge j!$. (Lean: \texttt{DimHCore.\allowbreak Qsel\_ge\_factorial}.)
+\end{lemma}
+
+\begin{lemma}[Uniform branching bound, machine-checked]\label{lem:branch}
+Fix $t\ge0$, $j\ge1$ and a parent center $c$. The number of child centers
+$k'\in[0,Q_{j+1}]$ with $|c/Q_j-k'/Q_{j+1}|\le t/(jQ_j)+t/((j+1)Q_{j+1})$ is at
+most $B:=\lfloor16t\rfloor+1$, \emph{uniformly in $j$ and $c$}.
+(Lean: \texttt{DimHCore.fiber\_card\_le}; proof by injecting $k'\mapsto
+\lfloor k'-A\rfloor$ into $[0,\lfloor16t\rfloor]$, using $Q_{j+1}\le(4j+3)Q_j$.)
+\end{lemma}
+
+\begin{theorem}[Finite level sets, machine-checked]\label{thm:finite}
+For every $c\in\R$, $\dimH E_c=0$. Consequently
+$F:=\{x:\Lam(x)<\infty\}=\bigcup_{n\ge1}E_n$ has $\dimH F=0$.
+(Lean: \texttt{DimHFinite.dimH\_levelSet\_finite}; \texttt{\#print axioms}
+returns \texttt{[propext, Classical.choice, Quot.sound]} only.)
+\end{theorem}
+
+\begin{proof}[Proof sketch (elementary covering)]
+Fix $c<\infty$ and $t>c$. Since $\Lam(x)\le c<t$ means $j\|Q_jx\|\le t$
+\emph{eventually} (a liminf-type condition, \emph{not} a limsup set), we have
+\[
+E_c\subseteq\bigcup_{J\ge1}\bigcap_{j\ge J}A_j(t),\qquad
+A_j(t):=\{x:\|Q_jx\|\le t/j\}.
+\]
+Each $A_j(t)$ is a union of $Q_j$ intervals of radius $t/(jQ_j)$ centered at
+$k/Q_j$. The intersection $C_J:=\bigcap_{j\ge J}A_j(t)$ is a nested Cantor set.
+A level-$j$ interval survives to level $j+1$ only if its center $k/Q_j$ is
+within $t/(jQ_j)+t/((j+1)Q_{j+1})$ of some $k'/Q_{j+1}$, i.e.
+$|k'Q_j-kQ_{j+1}|\le t\bigl(Q_{j+1}/j+Q_j/(j+1)\bigr)$. Using
+\eqref{eq:rec}, the number of surviving children per parent is bounded
+\emph{uniformly} by $B=\lfloor16t\rfloor+1$ (Lemma~\ref{lem:branch},
+machine-checked). Hence the number $N_n$ of level-$n$ intervals obeys
+$N_n\le (Q_J+1)\,B^{\,n-J}$, while their diameter is $\le 2t/(nQ_n)$. By
+Lemma~\ref{lem:factorial} (machine-checked), $Q_n\ge n!$, so for any $s>0$ the
+$s$-content is bounded by
+\[
+N_n\cdot\bigl(2t/(nQ_n)\bigr)^{s}\le (Q_J+1) B^{n-J}(2t)^{s}\,(n\cdot n!)^{-s}
+\longrightarrow0,
+\]
+because $\log(n!)\sim n\log n$ dominates the linear exponent $n\log B$. Thus
+$\dimH C_J=0$ for each $J$, and $E_c$ is a countable union of such sets, so
+$\dimH E_c=0$. Finally $F=\bigcup_nE_n$ is a countable union, hence
+$\dimH F=0$.
+\end{proof}
+
+\paragraph{Lean status of the assembly.} All steps are kernel-checked.
+The surviving centers are encoded as a \texttt{Finset} recursion
+(\texttt{survSet}), not as paths: $S_0=\{0,\dots,Q_J\}$ and
+$S_{n+1}=\bigcup_{k\in S_n}\mathrm{branchSet}(k)$, with
+$|S_n|\le(Q_J+1)B^n$ by \texttt{Finset.card\_biUnion\_le\_card\_mul} and
+Lemma~\ref{lem:branch} (\texttt{card\_survSet\_le}). Membership of the center
+sequence $\mathrm{round}(Q_{J+n}x)$ in $S_n$ is proved by induction via the
+triangle inequality (\texttt{centerOf\_mem\_survSet}), giving the cover
+(\texttt{tailSet\_cover}). The content bound
+$|S_n|(2t/((J+n)Q_{J+n}))^s\to0$ uses $Q_j\ge j!$ and
+\texttt{FloorSemiring.tendsto\_pow\_div\_factorial\_atTop} with $c=B^{1/s}$
+(\texttt{tendsto\_contentBound}); no asymptotic notation is used. Feeding this
+into \texttt{hausdorffMeasure\_le\_liminf\_sum} yields $\mu H^s=0$ for all
+$s>0$ (\texttt{hausdorffMeasure\_tailSet\_zero}), hence $\dimH=0$
+(\texttt{dimH\_tailSet\_zero}). Periodicity
+$\|Q_j(x+m)\|=\|Q_jx\|$ (\texttt{apprSeq\_add\_intCast}) reduces general $x$ to
+$[0,1]$; integer shifts are $1$-Lipschitz and countable unions preserve
+dimension $0$ (\texttt{dimH\_iUnion}). The sub-threshold case $c<1/4$ is
+\emph{not} used: a monotonicity reduction to $c'=\max(c,0)$ lets the covering
+argument handle all $c$ uniformly, so the theorem needs no continued-fraction
+axioms. \texttt{Audit.lean} exits $0$ with \texttt{sorryAx} count $0$.
+
+\begin{remark}
+The inequality $\|Q_jx\|\le j\|Q_jx\|$ gives the inclusion from the
+weighted zero-set into the unweighted one. To see strictness explicitly,
+the point constructed in \texttt{QuarterPointFinal.lean} has
+$j\|Q_jx_0\|\to1/4$. Its unweighted error tends to zero, and
+$x_0\notin L$ by the weighted classification. The combined witness is kernel-checked in \texttt{UnweightedCorrection.lean} using only the three Lean base axioms.
+\end{remark}
+
+\begin{theorem}[Weighted upper bound]\label{thm:upper}
+For $0\le\alpha\le1$ and every finite $c\ge0$,
+$\dimH\{x:\Lam_\alpha(x)\le c\}\le1-\alpha$.
+\end{theorem}
+\begin{proof}[Proof sketch]
+Cover $\{\Lam_\alpha\le c\}$ by $\bigcup_J\bigcap_{j\ge J}\{x:\|Q_jx\|\le t/j^\alpha\}$,
+$t>c$. Level-$j$ intervals have radius $t/(j^\alpha Q_j)$; a parent has at most
+$K j^{1-\alpha}$ surviving children (using $Q_{j+1}\le(4j+3)Q_j$). Thus
+$N_n\le C K^n (n!)^{1-\alpha}$ and diameters $\le2t/(n^\alpha n!)$, so the
+$s$-content is $\le C' K^n (n!)^{1-\alpha-s}\to0$ for $s>1-\alpha$
+(the analytic core $K^n(n!)^{-\beta}\to0$, $\beta=s-(1-\alpha)>0$, is
+machine-checked, \texttt{WeightedPhase.content\_core\_tendsto}). Hausdorff's
+covering criterion gives $\dimH\le s$; let $s\downarrow1-\alpha$.
+\end{proof}
+
+\begin{theorem}[Prescribed limits at subcritical weights]\label{conj:weight}
+Let $0\le\alpha<1$. For $\alpha>0$ take any $c\ge0$; for $\alpha=0$
+take $0\le c\le1/2$. Then
+\[
+ \dimH\{x\in[0,1]: j^\alpha\|Q_jx\|\longrightarrow c\}=1-\alpha .
+\]
+In particular $\dimH\{x:\Lam_\alpha(x)\le c\}=1-\alpha$ for every
+finite $c\ge0$, including $c=0$.
+\end{theorem}
+\begin{proof}
+The upper bound follows from Theorem~\ref{thm:upper}. For the lower
+bound put $w_j=j^{-\alpha}/\log(j+2)$ and use intervals
+of radius $r_j=w_j/Q_j$ centred at $(k+cj^{-\alpha})/Q_j$, $k\in\Z$.
+At all large levels $cj^{-\alpha}\in[0,1/2]$. The distance to the
+integers is $1$-Lipschitz, so every surviving point satisfies
+$|j^\alpha\|Q_jx\|-c|\le 1/\log(j+2)$, including at the endpoints.
+Inside any parent interval, shrinking by $r_{j+1}$ at both ends leaves
+at least $2(r_j-r_{j+1})Q_{j+1}-1$ eligible child centres, irrespective
+of the shift. Since $Q_{j+1}/Q_j=4j+O(1)$, this is at least
+$b_j=\lfloor j^{1-\alpha}/\log(j+2)\rfloor\ge2$ eventually.
+Start with one parent inside $(0,1)$, keep exactly $b_j$ whole children
+and split its mass evenly. The level-$n$ intervals are disjoint and
+each has mass $M_n^{-1}$, with
+$\log M_n=\sum_{j=N}^{n-1}\log b_j=(1-\alpha)n\log n+o(n\log n)$.
+An interval of length $Q_{n+1}^{-1}\le h<Q_n^{-1}$ meets at most three
+level-$n$ intervals by their grid spacing. Since
+$\log Q_{n+1}=n\log n+O(n)$, its mass is at most $3/M_n\le h^s$
+eventually for every $0<s<1-\alpha$. Summation over any sufficiently
+fine cover proves the lower bound. For the sublevel statement take
+the subset with limit zero and use the upper bound and integer translations.
+\end{proof}
+
+For $\alpha=0$ the dimension assertion follows from Corollary~8 of
+\cite{BLR} with constant target $c$, by the distance inequality used
+above. For $0<\alpha<1$, condition (1.6) of their Theorem~7 fails:
+$\log Q_{j+1}/\log Q_j\to1$. The lower bound is also a corollary of
+Feng, Wen and Wu's homogeneous Moran bounds (Theorem~2.1,
+\emph{Sci. China Ser. A} 40 (1997), 475--482): the retained level
+has $\log M_n\sim(1-\alpha)n\log n$ and both bounding logarithmic
+length scales are asymptotic to $n\log n$. The independent covering
+upper bound applies to the full prescribed-limit set.
+\subsection{A Hausdorff gauge at the critical weight}
+For an integer $k\ge1$, set $b=2k+1$. Define an increasing continuous
+gauge $h_k$ by $h_k(0)=0$, $h_k(1/Q_n)=b^{-n}$ ($n\ge1$), and
+linear interpolation on each intervening interval. Only its values
+near zero matter. Write $\mathcal H^{h_k}$ for Hausdorff measure with
+covering cost $h_k(\operatorname{diam} U)$.
+
+\begin{theorem}[Size of a critical spectral level]\label{thm:gauge}
+On the circle $\R/\Z$, the exact level $\{x:\Lam(x)=k/4\}$ has
+infinite but $\sigma$-finite $\mathcal H^{h_k}$ measure.
+The set $\{x:\Lam(x)<k/4\}$ has zero $\mathcal H^{h_k}$ measure.
+\end{theorem}
+\begin{proof}
+Write $A_j=4j+2$, let $M_j$ be a nearest integer to $Q_jx$, put
+$u_j=Q_jx-M_j$, and define $d_j=M_{j+1}-A_jM_j-M_{j-1}$.
+Then $d_j=A_ju_j+u_{j-1}-u_{j+1}$.
+If $\Lam(x)\le k/4$, eventually $|u_j|\le (k+1)/j$, and
+$\limsup |d_j|\le k$. Thus the integer digits eventually satisfy
+$|d_j|\le k$. For $\Lam(x)<k/4$ this improves to $|d_j|\le k-1$.
+Partition into countably many classes by a common starting index $N$
+and the two starting integers. By level $n$ there are at most
+$b^{n-N}$ possible $M_n$ per class. Each gives an interval of diameter
+$2(k+1)/(nQ_n)\le1/Q_n$ eventually. This gives a finite covering
+cost per class; for the strict sublevel the cost tends to zero since
+the count uses $2k-1<b$ instead. The classes may be taken Borel
+by requiring the stated inequalities at all indices past $N$.
+
+For positivity fix a large $N$, set $M_{N-1}=M_N=0$, and prescribe
+arbitrary digits $d_j\in\{-k,\ldots,k\}$ for $j\ge N$ using the
+recurrence above. With $W_j=M_{j+1}Q_j-M_jQ_{j+1}$ one has
+$W_j=d_j Q_j-W_{j-1}$ and $W_{N-1}=0$. Since the denominators at
+least double, $|W_j|\le2kQ_j$. Telescoping therefore gives a limit
+$x=\lim M_j/Q_j$ with $|x-M_j/Q_j|\le4k/Q_{j+1}$ uniformly.
+Choose $N$ so that $|u_j|<1/8$ for all $j\ge N$ and
+$8k/Q_{N+1}<1/2$. Since $M_N=0$, the entire constructed set
+lies in an interval of length at most $8k/Q_{N+1}$. On that
+interval the projection to the circle preserves distances.
+Thus $M_j$ is indeed nearest, and
+$|4ju_j-d_j|\le2|u_j|+|u_{j-1}|+|u_{j+1}|\to0$.
+The compact image of the digit space lies in the sublevel.
+
+Give the digits equal independent weights. An interval of length
+$1/Q_{n+1}\le h<1/Q_n$ determines at most one $M_j$ at each
+$N\le j<n$: for two points in it their integers differ by less
+than $1/4+Q_j/Q_n<1$. At level $n$ there are at most three choices.
+These integers recover all digits through $n-1$, hence the interval
+has mass at most $3b^{-(n-N)}\le3b^{N+1}h_k(h)$.
+The mass distribution bound gives positive Hausdorff measure.
+The local isometry transfers this bound to the circle.
+Removing the null strict sublevel preserves positivity.
+
+Choose a fixed rounding rule at ties. The functions
+$x\mapsto j\|Q_jx\|$ are continuous on the circle, so their limsup
+and its level sets are Borel. The digit image in the non-strict
+sublevel retains positive measure upon removing the strict sublevel,
+whose zero measure was proved independently by the smaller alphabet.
+The countable covering classes above give sigma-finiteness also on
+the exact level by intersection. For comparison, Cabrelli, Mendivil,
+Molter and Shonkwiler~\cite[Thm.~3]{CMMS}
+treat the gauge of a gap-generated Cantor set. We use the recurrence's
+own scale and prove the assertion for the entire level here.
+Finally, the exact level is a Borel set of Lebesgue measure zero by
+Theorem~\ref{thm:finite}. For $y\in L$, the reverse triangle inequality gives
+$|j\|Q_j(x+y)\|-j\|Q_jx\||\le j\|Q_jy\|\to0$.
+Hence the exact level is invariant under translation by $L$ modulo one. This subgroup is dense as
+$(e+1)/2$ is irrational. If its level measure were finite and positive,
+restricting $\mathcal H^{h_k}$ to the level and normalizing would give
+a probability invariant under this dense subgroup. Integrating continuous
+functions and taking limits gives invariance under the entire circle.
+Such a probability is normalized Lebesgue measure (equal arcs of length
+$1/m$ have mass $1/m$, and rational arcs determine the measure).
+It cannot be supported on the null level. This proves infinitude.
+\end{proof}
+
+\section{Numerical evidence}\label{sec:num}
+
+All computations use mpmath with dynamic precision $\mathrm{digits}(Q_j)+300$
+(to survive the catastrophic cancellation in $Q_jx-\mathrm{round}(Q_jx)$).
+These are corroborations, not proofs.
+
+\paragraph{Spectral gap.} For $x=B\pi$ ($B=1..10$), $\sqrt2$, the golden ratio,
+and random reals, $\max_{j\le60}j\|Q_jx\|$ lies in $22$--$29$ and grows
+$\sim j/4$, in this finite sample; the data do not establish an infinite limsup. For $x\in L$ (e.g.\ $(\ee+1)/2$,
+$1+(\ee+1)/2$), $j\|Q_jx\|<10^{-12}$ already for $j\ge10$ and $\sim10^{-117}$
+at $j=60$, confirming $\Lam=0$.
+
+\paragraph{Dimension (box-counting).} Exact rational covering trees give the
+following box-counting estimates for $E_c\cap[0,1]$:
+\begin{center}
+\begin{tabular}{c|cccc}
+$c$ & $N=4$ & $N=12$ & path $N=400$ & bound $n=1500$\\\hline
+$1/4$ & 0.371 & 0.323 & 0.171 & 0.180\\
+$1/2$ & 0.630 & --- & 0.251 & 0.270\\
+$1$   & 0.863 & --- & 0.343 & 0.360\\
+$2$   & 1.000 & --- & 0.442 & 0.446
+\end{tabular}
+\end{center}
+The finite counts suggest the branching scale $\lfloor8c\rfloor+1$ ($3,5,9,17$), and
+the rigorous upper bound decays as $\log B/\log n\to0$. \textbf{Caveat:} the
+decay is only $O(1/\log n)$; at accessible $N$ the estimates are far from $0$
+(e.g.\ $s=0.01$ needs $n\approx10^{60}$). The numerics are consistent with
+$\dimH=0$ but cannot resolve it directly; the proof is the covering argument of
+Theorem~\ref{thm:finite}. Below the gap ($c=0.24$) the covering upper bound
+still grows exponentially while the true branching tends to $0$: the covering
+method is not sharp below the gap, which is why the exact classification
+(Theorem~\ref{thm:class}) is needed there.
+
+\section{Dimensions of continued-fraction window constraints}
+Put $H_j=\lfloor Q_j\sqrt j\rfloor$. For irrational $x\in(0,1)$ let
+$k(j)$ be its last convergent index with denominator at most $H_j$
+(the integer part has index zero) and $r_j=k(j+1)-k(j)$.
+\begin{theorem}\label{thm:windows}
+For each prescribed sequence $\epsilon_j\in\{0,1\}$, the set with
+$k(j)\equiv\epsilon_j\pmod2$ eventually has Hausdorff dimension one.
+The set with eventually bounded $r_j$ has dimension $1/2$. Its subset
+with $r_j=3$ and $k(j)+j$ odd eventually also has dimension $1/2$.
+\end{theorem}
+\begin{proof}
+The recurrence gives $H_{j+1}/H_j\asymp j$ and
+$\log H_j=j\log j+O(j)$. Use cylinders of finite regular continued
+fractions. A cylinder with last two denominators $u,v$ has length
+$1/(u(u+v))$. At stage $j$ stop at the first denominator crossing $H_j$,
+with last digit four and $4H_j/3\le u\le 5H_j/2$.
+To initialize at any sufficiently large stage choose the rational $1/d$
+with $H_j/3\le d\le H_j/2$, use either terminal representation to
+prescribe the index parity, and append four.
+
+Write $T=H_{j+1}$, $R=T/u$. For the full-dimensional construction
+choose coprime positive integers $m,n$ with
+$0.34R\le m\le0.36R$ and $0.20R\le n\le0.22R$.
+There are $\gg R^2$ choices uniformly for large $R$: by
+M\"obius inversion, the count in this rectangle is its area divided
+by $\zeta(2)$ plus $O(R\log R)$ (sum the two integer endpoint errors
+over divisors up to $R$). Append the digits of $m/n$ as a finite tail.
+Its terminal denominator is $t=mu+nv$, independently of the terminal
+representation. Since $v\le u/4$, we have $T/3<t<T/2$.
+Choose the representation with the desired terminal index parity and
+append four. The new last denominator is between $4T/3$ and $5T/2$,
+so the terminal index just chosen is exactly $k(j+1)$.
+Distinct choices give distinct cylinders with disjoint interiors:
+each word stops at its first crossing of $T$, and removing the final
+four recovers the tail and its value.
+
+For the lower bound with $r_j=3$, instead append $1,m,4$ with
+$T/3\le m(u+v)+u\le T/2$. There are $\gg R$ choices and the first
+crossing again occurs at the four. Initialize with $k(j)+j$ odd.
+Three index steps preserve that condition at the next stage.
+
+In either construction give siblings equal conditional masses.
+With $b=2$ or $1$, respectively, the mass of a level-$j$ cylinder
+is at most $\exp(-bj\log j+O(j))$. Such cylinders have disjoint
+interiors and lengths comparable to $H_j^{-2}$ uniformly. An interval
+of length $h\in[H_{j+1}^{-2},H_j^{-2}]$ meets at most a bounded number
+of them. Since $\log H_{j+1}=j\log j+O(j)$, its mass is $O(h^s)$
+for each $s<b/2$. The mass distribution principle proves the lower bounds.
+
+Finally bounded increments imply $k(j)\le Cj$ eventually for some
+integer $C$. Taking $j=\lfloor n/(2C)\rfloor$ gives $d_n>H_j$ and
+$\log d_n/n\to\infty$. For $1/2<t<s$, summing the $t$-powers of
+all level-$n$ cylinder lengths costs at most $\zeta(2t)^n$, since
+$d_n\ge\prod_{i=1}^n a_i$. Restricting to $d_n\ge\exp(Mn)$ makes
+the $s$-cost at most $(\zeta(2t)\exp(-2M(s-t)))^n$. Choose $M$
+so the base is below one and take the countable union over starting
+indices. This gives the upper bound $1/2$.
+\end{proof}
+For related spectra of continued-fraction growth see Fan, Liao, Wang
+and Wu~\cite{FLLW}. The lower constructions here prescribe the
+Hermite windows themselves. Removing the countable set $\Q+\Q e$
+leaves both dimensions unchanged. These statements concern sets of
+variable $x$ and leave the window pattern of the single point $\pi$
+undetermined (translation by its integer part preserves denominators).
+
+\section{Short continued-fraction windows occur infinitely often}
+For $x\in(0,1)\setminus\mathbb Q$, retain $H_j,k(j),r_j$ from the window
+constraints above.
+\begin{theorem}[Short windows at almost every point]\label{thm:short-ae}
+There is a constant $c>0$ such that for Lebesgue-almost every $x$,
+\[
+ \#\{1\le j\le J:r_j(x)\le1\}\ge c\log J
+\]
+for all sufficiently large $J$ (with a starting index depending on $x$).
+\end{theorem}
+\begin{proof}
+Let $\tau_j=k(j)+1$ be the first index whose denominator exceeds $H_j$.
+Stop each continued-fraction cylinder at this index and denote the
+resulting sigma-field by $\mathcal F_j$. The stopping words are
+prefix-free and cover the irrational points. Since $H_j$ increases,
+$\mathcal F_j\subseteq\mathcal F_{j+1}$ and the event
+$E_j=\{\tau_{j+1}-\tau_j\le1\}$ belongs to $\mathcal F_{j+1}$.
+
+On a stopped cylinder write $q$ and $q'$ for the latest and previous
+denominators, with $q>H_j$ and $0\le q'\le q$. If $q>H_{j+1}$, then
+$\tau_{j+1}=\tau_j$. Otherwise put $A=\lfloor H_{j+1}/q\rfloor+1$.
+The next digit $a\ge A$ ensures $a q+q'>H_{j+1}$ and gives $E_j$.
+The conditional Lebesgue distribution of the remaining tail
+$t=[0;a,\ldots]$ on the cylinder has density proportional to
+$(q+q't)^{-2}$ for $0<t<1$. Thus
+\[
+ \mathbb P(a\ge A\mid\mathcal F_j)
+ =\frac{q+q'}{Aq+q'}\ge\frac1A\ge \frac{H_j}{2H_{j+1}}.
+\]
+This bound also holds in the case $q>H_{j+1}$. The recurrence and the
+definition of $H_j$ imply $H_{j+1}/H_j=O(j)$, so
+$\mathbb P(E_j\mid\mathcal F_j)\ge c_0/j$ for all large $j$.
+
+Write $Z_J=\sum_{j\le J}\mathbf 1_{E_j}$. The preceding indicators are
+$\mathcal F_j$-measurable. Conditional expectation, iterated one step
+at a time, gives
+\[
+ \mathbb E e^{-Z_J}\le C J^{-b},\qquad
+ b=(1-e^{-1})c_0>0.
+\]
+In fact the factor at step $j$ is at most
+$1-(1-e^{-1})c_0/j$. By Markov's inequality,
+$\mathbb P(Z_J<(b/2)\log J)\le C J^{-b/2}$.
+This is summable on $J=2^m$. The first Borel--Cantelli lemma and
+monotonicity of $Z_J$ between successive powers of two prove the claim.
+\end{proof}
+The argument applies to any increasing integer thresholds tending to
+infinity with successive ratios $O(j)$. The estimate concerns
+Lebesgue measure on the variable $x$. It supplies a frequency bound
+for the short-window criterion of the main paper.
+
+\section{Eventual periodicity of digit residues}
+For irrational $x=[0;a_1,a_2,\ldots]$ in $(0,1)$ let $E$ consist of
+the points for which $(a_i\bmod4)$ is eventually periodic. Let $F$
+consist of points with every digit in $\mathcal A=\{1,5,9,\ldots\}$.
+Continued fractions with a fixed arithmetic-progression alphabet are
+studied by Chousionis, Leykekhman and Urba\'nski~\cite{CLU}. Here
+we compare different sequences of allowed residues, including sequences
+that change from one position to the next.
+\begin{theorem}\label{thm:residues}
+$\dimH E=\dimH F$, with $13/20<\dimH F<5/7$.
+\end{theorem}
+\begin{proof}
+Fix any prescribed sequence of residues. Add a fixed $c_i\in\{0,1,2,3\}$
+to the $i$th digit of each point of $F$ to map it onto the desired set.
+This map is Lipschitz uniformly in the sequence. Indeed, at the first
+different digit $a<b$ the two source tails, written with integer part
+zero, are at least $1/(a+1)-1/b$ apart. The new tails are at most
+$1/a-1/(b+1)$ apart, since a common shift decreases this upper bound.
+Their distance ratio is at most
+\[
+ \frac{b-a+1}{b-a-1}\frac{(a+1)b}{a(b+1)}\le10/3
+\]
+as $b-a\ge4$. A common prefix with last denominator $q$ has derivative
+in absolute value between $1/(4q^2)$ and $1/q^2$. Increasing digits
+can only increase the continuant $q$, so restoring the two prefixes
+gives Lipschitz constant $40/3$. There are countably many eventually
+periodic residue sequences, and $F\subset E$. This proves equality.
+
+For the bounds write $f_a(x)=1/(a+x)$. In the bi-Lipschitz coordinate
+$h_u(x)=1/(u+x)$, $u>0$, the absolute derivative of the conjugated
+branch at $h_u(x)$ is
+\[
+ D_a(x)=\left(\frac{1+x/u}{a+x+1/u}\right)^2 .
+\]
+For the upper bound choose $u=5/2$, $s=5/7$ and $p=2s$.
+Put $S(x)=\sum_{a\in\mathcal A}D_a(x)^s$.
+After multiplication by a positive function of $x$, its derivative
+has the sign of
+\[
+ 1+1/u-u+\sum_{a\ge5,\ a\in\mathcal A}(a+1/u-u)
+ \left(\frac{1+x+1/u}{a+x+1/u}\right)^{p+1}.
+\]
+Termwise differentiation is justified by uniform summability. This
+expression increases with $x$, so the maximum of $S$ is at an endpoint.
+Write $a=4k+1$. After the terms $k=0,1,2$, the integral from $2$
+to infinity bounds the remaining sum by
+$(7/12)(1+x/u)^p(9+x+1/u)^{-3/7}$.
+At zero the three terms and this remainder are respectively less than
+$(619,90,41,224)/1000$; at one they are less than
+$(464,115,57,346)/1000$, by taking seventh powers. Thus $S\le0.982$.
+By uniform convergence this bound stays strictly below one for some
+$s<5/7$. Iterating the chain rule bounds the sum of powered derivatives
+of all length-$n$ words at any one point by $(\sup S)^n$. Their
+derivative distortion is uniformly bounded: ordinary prefix distortion
+is at most four and $h_u$ and its inverse have derivatives bounded
+above and away from zero. The cylinder $s$-cost therefore tends to zero.
+
+For the lower bound use $u=2$. The infimum of $\sqrt{D_a(x)}$ on
+$[0,1]$ is $3/5$ for $a=1$ and $1/(4k+3/2)$ for $a=4k+1$, $k\ge1$.
+At $s=13/20$, using a decreasing-series integral from one to infinity,
+\[
+ \sum_{a\in\mathcal A}(\inf D_a)^s
+ \ge(3/5)^{13/10}+(5/6)(11/2)^{-3/10}>1.
+\]
+The two terms exceed $51/100$ and $49/100$, respectively, by taking
+tenth powers. A finite subalphabet therefore has sum $Z>1$ for some
+$s>13/20$. Give its digits independent weights $(\inf D_a)^s/Z$.
+By the chain rule a cylinder has mass at most its normalized length
+to the power $s$ in the conjugated interval. Stop when its length
+first drops below $h$. Uniform distortion and the finite alphabet
+give lengths between $ch$ and $h$ for a fixed $c>0$. The stopped
+intervals have disjoint interiors, so an interval of length $h$ meets
+at most $2+1/c$ of them, up to endpoints of zero mass. The mass
+distribution principle and bi-Lipschitz invariance prove the lower bound.
+\end{proof}
+The published bound of Chousionis, Leykekhman and Urba\'nski~\cite[p.~23, eq.~(4.8), arXiv version]{CLU}, applied to the alphabet $E_{1,4}$, also gives the upper bound $\dimH E<0.744$ by the equality above. The two bounds in the theorem follow from the branch estimates above.
+In particular, removing $\mathbb Q-e$ from $E$ leaves its dimension
+unchanged. For each remaining $x$, the sum $e+x$ is irrational even
+though its digit residues pass the periodicity test applied to $x$.
+The theorem gives no membership information for the fractional part of
+$\pi$.
+\section{Scope and verification}
+
+\begin{itemize}[leftmargin=1.5em]
+\item Theorem~\ref{thm:spectral}, Theorem~\ref{thm:sub}, and the countability /
+dimension-$0$ statements for $c<1/4$ are represented in
+\texttt{EpiFormal/SpectralGap.lean}. The declaration audit of those
+results and their $\delta$ estimates reports only the three Lean axioms.
+\item Theorem~\ref{thm:finite} (all $c\in\R$) is \emph{fully machine-checked}
+(\texttt{DimHCore.lean} + \texttt{DimHFinite.lean}, base axioms only:
+\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}; no
+$\delta$ axioms, no \texttt{sorryAx}). The assembly uses a surviving-center
+\texttt{Finset} recursion rather than path encoding; the growth estimate is
+explicit (\texttt{tendsto\_pow\_div\_factorial\_atTop}), not asymptotic.
+\item The prescribed-limit and Hausdorff-gauge theorems, the window dimension theorem (Theorem~\ref{thm:windows}), and the residue comparison (Theorem~\ref{thm:residues}) have paper proofs.
+\item This note does \emph{not} prove the irrationality of $e+\pi$ (still open).
+It is a metric-theory spin-off; the connection is that the same classification
+machinery arose from the $e+\pi$ escape program.
+\item Section~\ref{sec:prior} describes the relation to earlier spectral-gap
+and shrinking-target results for this choice of subsequence and weight.
+\end{itemize}
+
+\begin{thebibliography}{99}
+\bibitem{CMMS} C.~Cabrelli, F.~Mendivil, U.~M.~Molter and R.~Shonkwiler,
+\emph{On the Hausdorff $h$-measure of Cantor sets}, Pacific J. Math. 217
+(2004), 45--59.
+\bibitem{CLU} V.~Chousionis, D.~Leykekhman and M.~Urba\'nski, \emph{On the dimension spectrum of infinite subsystems of continued fractions}, arXiv:1805.11904.
+\bibitem{FLLW} A.-H. Fan, L.-M. Liao, B.-W. Wang and J. Wu, \emph{On Khintchine exponents and Lyapunov exponents of continued fractions}, arXiv:0802.3433.
+\bibitem{Phase1} Phase-1 archive, \emph{On the irrationality of $e+\pi$}
+(formalization project), \texttt{EpiFormal/Classification.lean},
+Theorem~2 and Corollary~3; \texttt{EpiFormal/SpectralGap.lean}, 2026-11-15.
+\bibitem{KL} C.~Kraaikamp and P.~Liardet, \emph{Good approximations and
+continued fractions}, Proc.~Amer.~Math.~Soc.~112 (1991), 303--309.
+\bibitem{BDS} A.~B\'ir\'o, J.-M.~Deshouillers, V.~T.~S\'os, \emph{Good
+approximation and characterization of subgroups of $\R/\Z$}, Studia Sci.~Math.~Hungar.~38 (2001), 97--113.
+\bibitem{BLR} Y.~Bugeaud, L.~Liao, M.~Rams, \emph{Metrical results on the distribution of fractional parts of powers of real numbers}, Proc. Edinburgh Math. Soc. 62 (2019), 505--521, arXiv:1710.03596. (Cor.~8,
+the hypothesis is $Q_{j+1}/Q_j\to\infty$.)
+\bibitem{Moreira} C.~G.~Moreira, \emph{Geometric properties of the Markov and
+Lagrange spectra}, arXiv:1612.05782.
+\bibitem{LimaMoreira} D.~Lima and C.~G.~Moreira, \emph{Phase transitions for
+the Lagrange and Markov spectra}, arXiv:1801.04636.
+\bibitem{BV} V.~Beresnevich and S.~Velani, \emph{A mass transference principle
+and the Duffin--Schaeffer conjecture}, Ann.~of Math.~164 (2006), 971--992.
+\bibitem{Falconer} K.~Falconer, \emph{Fractal Geometry}, Wiley, 2003.
+(countable sets have Hausdorff dimension $0$.)
+\end{thebibliography}
+
+\end{document}

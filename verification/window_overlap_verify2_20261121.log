@@ -1,0 +1,30 @@
+﻿EpiFormal/WindowOverlap.lean:45:12: error: invalid 'calc' step, left-hand side is
+  4 * H / 3 * (4 * H / 3) : ℝ
+but is expected to be
+  (4 * H / 3) ^ 2 : ℝ
+EpiFormal/WindowOverlap.lean:46:8: error: invalid 'calc' step, right-hand side is
+  (4 * H / 3) ^ 2 : ℝ
+but is expected to be
+  q₀ * q₁ : ℝ
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+EpiFormal/WindowOverlap.lean:46:31: error: unsolved goals
+q₀ q₁ H : ℝ
+hH : 0 < H
+hlo0 : 4 * H / 3 ≤ q₀
+hhi0 : q₀ ≤ 5 * H / 2
+hlo1 : 4 * H / 3 ≤ q₁
+hhi1 : q₁ ≤ 5 * H / 2
+hq0 : 0 < q₀
+hq1 : 0 < q₁
+hbase : 0 < 4 / (25 * H ^ 2)
+hprod : 4 * H / 3 * (4 * H / 3) ≤ q₀ * q₁
+e : 9 / (16 * H ^ 2) = 1 / (4 * H / 3) ^ 2
+⊢ q₀ * q₁ = H ^ 2 * (16 / 9)
+'CoverCount.child_len_bounds' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'CoverCount.stopped_cyl_len_bounds' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'CoverCount.window_overlap_le' depends on axioms: [propext, Classical.choice, Quot.sound]

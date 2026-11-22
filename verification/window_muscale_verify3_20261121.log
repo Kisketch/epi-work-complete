@@ -1,0 +1,2 @@
+﻿'WindowMuScale.stopped_thresh_of_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMuScale.stopped_window_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

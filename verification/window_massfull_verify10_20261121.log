@@ -1,0 +1,19 @@
+﻿EpiFormal/WindowMassFull.lean:52:21: error(lean.unknownIdentifier): Unknown identifier `measure_mono`
+EpiFormal/WindowMassFull.lean:52:61: error: Function expected at
+  zero_le
+but this term has type
+  0 ≤ ?m.460
+
+Note: Expected a function because this term is being applied to the argument
+  _
+EpiFormal/WindowMassFull.lean:56:14: error(lean.unknownIdentifier): Unknown constant `MeasureTheory.Measure.empty`
+EpiFormal/WindowMassFull.lean:58:10: error: Function expected at
+  zero_le
+but this term has type
+  0 ≤ ?m.481
+
+Note: Expected a function because this term is being applied to the argument
+  _
+EpiFormal/WindowMassFull.lean:59:11: error(lean.unknownIdentifier): Unknown identifier `le_or_lt`
+EpiFormal/WindowMassFull.lean:59:58: error: Tactic `rcases` failed: `x✝ : ?m.483` is not an inductive datatype
+'WindowMassFull.mu_window_le_full' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

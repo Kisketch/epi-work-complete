@@ -1,0 +1,42 @@
+﻿EpiFormal/WindowOverlap.lean:34:9: error: invalid 'calc' step, left-hand side is
+  (5 * H / 2) ^ 2 : ℝ
+but is expected to be
+  q₀ * q₁ : ℝ
+EpiFormal/WindowOverlap.lean:35:6: error: invalid 'calc' step, right-hand side is
+  q₀ * q₁ : ℝ
+but is expected to be
+  (5 * H / 2) ^ 2 : ℝ
+EpiFormal/WindowOverlap.lean:36:8: error: Tactic `apply` failed: could not unify the type of `mul_le_mul hhi0 hhi1 ?m.385 ?m.386`
+  q₀ * q₁ ≤ 5 * H / 2 * (5 * H / 2)
+with the goal
+  5 * H / 2 * (5 * H / 2) ≤ q₀ * q₁
+
+q₀ q₁ H : ℝ
+hH : 0 < H
+hlo0 : 4 * H / 3 ≤ q₀
+hhi0 : q₀ ≤ 5 * H / 2
+hlo1 : 4 * H / 3 ≤ q₁
+hhi1 : q₁ ≤ 5 * H / 2
+hq0 : 0 < q₀
+hq1 : 0 < q₁
+hbase : 0 < 4 / (25 * H ^ 2)
+e : 4 / (25 * H ^ 2) = 1 / (5 * H / 2) ^ 2
+⊢ 5 * H / 2 * (5 * H / 2) ≤ q₀ * q₁
+EpiFormal/WindowOverlap.lean:65:28: error: Application type mismatch: The argument
+  hlo
+has type
+  4 * H / 3 ≤ Cylinder.cylDen (Cylinder.cfProd (w ++ [k]))
+but is expected to have type
+  4 * H / 3 ≤ Cylinder.cylDen (Cylinder.cfProd (w ++ [k + 1]))
+in the application
+  child_len_bounds hH hlo
+EpiFormal/WindowOverlap.lean:84:28: error: Type mismatch
+  h
+has type
+  ↑F.card ≤ (x - (x - h✝) + 9 / (16 * H ^ 2)) / (4 / (25 * H ^ 2)) + 2
+of sort `Prop` but is expected to have type
+  ℝ
+of sort `Type`
+'CoverCount.child_len_bounds' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'CoverCount.stopped_cyl_len_bounds' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'CoverCount.window_overlap_le' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

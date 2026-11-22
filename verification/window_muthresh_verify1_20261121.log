@@ -1,0 +1,26 @@
+﻿EpiFormal/WindowMuThresh.lean:37:23: error: Function expected at
+  μ
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (Set.Icc I.1 I.2)
+
+Hint: The identifier `μ` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+EpiFormal/WindowMuThresh.lean:40:4: error: Function expected at
+  μ
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  U
+
+Hint: The identifier `μ` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+EpiFormal/WindowMuThresh.lean:44:35: error: Function expected at
+  Metric.diam_nonneg
+but this term has type
+  0 ≤ Metric.diam ?m.282
+
+Note: Expected a function because this term is being applied to the argument
+  _
+'WindowMuThreshLevel.mu_window_thresh_num' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

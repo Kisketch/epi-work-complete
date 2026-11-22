@@ -1,0 +1,8 @@
+﻿EpiFormal/WindowMuThresh.lean:46:35: error: Function expected at
+  Metric.diam_nonneg
+but this term has type
+  0 ≤ Metric.diam ?m.282
+
+Note: Expected a function because this term is being applied to the argument
+  _
+'WindowMuThreshLevel.mu_window_thresh_num' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

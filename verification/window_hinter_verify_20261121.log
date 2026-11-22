@@ -1,0 +1,11 @@
+﻿EpiFormal/WindowHinter.lean:24:9: error(lean.unknownIdentifier): Unknown identifier `div_le_div_right`
+EpiFormal/WindowHinter.lean:38:22: error: Application type mismatch: The argument
+  f
+has type
+  (a : α) → a ∈ A → ι
+but is expected to have type
+  ι → ι
+in the application
+  Finset.image f
+'HinterBridge.thresh_bridge' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'HinterBridge.fiber_count_ge' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

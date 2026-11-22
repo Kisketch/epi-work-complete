@@ -1,0 +1,25 @@
+﻿EpiFormal/CylinderFrostman.lean:44:47: warning: Variable name `hρ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hρ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+EpiFormal/CylinderFrostman.lean:61:59: error: unexpected token 'set_option'; expected 'lemma'
+EpiFormal/CylinderFrostman.lean:81:2: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+EpiFormal/CylinderFrostman.lean:118:72: error: Invalid projection: Type of
+  i
+is not known; cannot resolve projection `1`
+EpiFormal/CylinderFrostman.lean:227:0: error: Unexpected name `Cylinder` after `end`: The current section is unnamed
+
+Hint: Delete the name `Cylinder` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵C̵y̵l̵i̵n̵d̵e̵r̵
+'Cylinder.rpow_add_le_add_rpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.ediam_thickening_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.frostman_of_count_thresh' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Cylinder.frostman_dimH_le' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

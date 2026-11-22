@@ -1,0 +1,2 @@
+﻿'WindowLogFact.log_factorial_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowLogFact.log_factorial_le' depends on axioms: [propext, Classical.choice, Quot.sound]

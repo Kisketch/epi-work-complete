@@ -1,0 +1,50 @@
+warning: mathlib: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\mathlib
+warning: plausible: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\plausible
+warning: LeanSearchClient: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\LeanSearchClient
+warning: importGraph: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\importGraph
+warning: proofwidgets: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\proofwidgets
+warning: aesop: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\aesop
+warning: Qq: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\Qq
+warning: batteries: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\batteries
+warning: Cli: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\Cli
+'GeneralEndpointRigidity.cfMatrix_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.cfMatrix_eval_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.eta_conj_ge_inv_sq_of_gt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.eta_conj_add_pos_gt_abs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.eta_conj_eq_inv_sq_at_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.xi1_xi2Conj_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.Muv_norm_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.mobius_ratio_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.ratio_eq_Muv_sub_div' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.inert_legendreSym_five_eq_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.inert_prime_dvd_zphiNorm_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.inert_prime_not_dvd_zphiNorm_of_cond' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralEndpointRigidity.inert_prime_not_dvd_zphiNorm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.inert_prime_not_dvd_zphiNorm_xi2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.even_D_Muv_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.even_D_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.even_D_rigidity_functional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.mod_2D_sieve_q' depends on axioms: [propext, Quot.sound]
+'GeneralEndpointRigidity.mod_2D_sieve_p' depends on axioms: [propext, Quot.sound]
+'GeneralEndpointRigidity.mod_2d_sieve_special' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.Muv_norm_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.zphiNorm_xi2_dvd_norm_quot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.b3_inert_three_not_dvd_m' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.b3_spectral_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.b4_mod16_excludes_37' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.b4_spectral_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.b5_even_m' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.b5_spectral_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.b6_inert_three_not_dvd_m' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralEndpointRigidity.b6_spectral_gap' depends on axioms: [propext, Classical.choice, Quot.sound]

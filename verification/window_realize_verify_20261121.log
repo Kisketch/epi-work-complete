@@ -1,0 +1,243 @@
+﻿EpiFormal/WindowRealize.lean:22:14: error(lean.unknownIdentifier): Unknown identifier `MeasureTheory.Measure`
+EpiFormal/WindowRealize.lean:26:21: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat ℝ 10
+numerals are polymorphic in Lean, but the numeral `10` cannot be used in a context where the expected type is
+  ℝ
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:26:20: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:26:44: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LT ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:28:11: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LT ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:28:25: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:28:39: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:28:56: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:32:34: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:32:51: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:33:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:33:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:33:57: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HMul ℝ ℝ ?m.164
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:36:12: error(lean.unknownIdentifier): Unknown identifier `WindowMobiusCount.copCount`
+EpiFormal/WindowRealize.lean:36:10: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:37:19: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HDiv ℝ ℝ ?m.190
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:38:25: error(lean.unknownIdentifier): Unknown identifier `Bornology.IsBounded`
+EpiFormal/WindowRealize.lean:40:45: error(lean.unknownIdentifier): Unknown identifier `ENNReal.ofReal`
+EpiFormal/WindowRealize.lean:41:18: error(lean.unknownIdentifier): Unknown identifier `Metric.diam`
+EpiFormal/WindowRealize.lean:42:12: error(lean.unknownIdentifier): Unknown identifier `Metric.diam`
+EpiFormal/WindowRealize.lean:43:10: error(lean.unknownIdentifier): Unknown identifier `ENNReal.ofReal`
+EpiFormal/WindowRealize.lean:26:44: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat ℝ 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  ℝ
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:28:11: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat ℝ 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  ℝ
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:28:25: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat ℝ 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  ℝ
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:28:39: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat ℝ 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  ℝ
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:28:56: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat ℝ 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  ℝ
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:26:21: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HPow ℝ Nat ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:29:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HMul Nat ℝ ?m.51
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:29:28: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HPow ℝ Nat ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:29:53: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HMul Nat ℝ ?m.70
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:29:58: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HPow ℝ Nat ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:32:34: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HMul Nat ℝ ?m.104
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:32:56: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HMul Nat ℝ ?m.118
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:33:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HMul Nat ℝ ?m.132
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:33:28: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HMul Nat ℝ ?m.146
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:41:13: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HDiv Nat ℝ ?m.256
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:41:34: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HMul Nat ℝ Nat
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:41:54: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HMul ℝ Nat ?m.268
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:41:69: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HPow ℝ Nat ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:30:9: error: Function expected at
+  Finset
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  (ℝ × ℝ)
+
+Hint: The identifier `Finset` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+EpiFormal/WindowRealize.lean:31:22: error: Invalid projection: Type of
+  I
+is not known; cannot resolve projection `1`
+EpiFormal/WindowRealize.lean:31:28: error: Invalid projection: Type of
+  I
+is not known; cannot resolve projection `2`
+EpiFormal/WindowRealize.lean:33:40: error: Invalid projection: Type of
+  I
+is not known; cannot resolve projection `2`
+EpiFormal/WindowRealize.lean:33:46: error: Invalid projection: Type of
+  I
+is not known; cannot resolve projection `1`
+EpiFormal/WindowRealize.lean:35:6: error: Function expected at
+  Disjoint
+but this term has type
+  ?m.3
+
+Note: Expected a function because this term is being applied to the argument
+  (Set.Ioo I.1 I.2)
+
+Hint: The identifier `Disjoint` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+EpiFormal/WindowRealize.lean:38:9: error: Function expected at
+  Set
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  ℝ
+
+Hint: The identifier `Set` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+EpiFormal/WindowRealize.lean:39:34: error(lean.invalidField): Invalid field notation: Type of
+  Set
+is not known; cannot resolve field `Icc`
+EpiFormal/WindowRealize.lean:44:26: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowRealize.lean:44:31: error: Invalid projection: Type of
+  I
+is not known; cannot resolve projection `2`
+EpiFormal/WindowRealize.lean:44:37: error: Invalid projection: Type of
+  I
+is not known; cannot resolve projection `1`
+EpiFormal/WindowRealize.lean:43:52: error: unsolved goals
+ℝ : Type u_1
+x✝² : Sort u_2
+Finset : x✝²
+x✝¹ : Sort u_3
+Disjoint : x✝¹
+ℕ : Sort u_4
+x✝ : Sort u_5
+Set : x✝
+R H : ℝ
+hR : sorry
+hH : sorry
+d0 L m0 C s Mpar : ℝ
+hd0 : sorry
+hL : sorry
+hm0 : sorry
+hMpar : sorry
+hd0eq : d0 = 4 / (25 * H ^ 2)
+hLeq : L = 9 / (16 * H ^ 2)
+P : sorry
+htriv : ∀ (I : ?m.331 R H hR hH hd0 hL hm0 hMpar hd0eq hLeq P), I ∈ P → ?m.80 < ?m.82
+hden :
+  ∀ (I : ?m.337 R H hR hH hd0 hL hm0 hMpar hd0eq hLeq P htriv), I ∈ P → ∃ q₀ q₁, sorry ∧ sorry ∧ sorry ∧ sorry ∧ sorry
+hdisj :
+  (I : ?m.343 R H hR hH hd0 hL hm0 hMpar hd0eq hLeq P htriv hden) →
+    I ∈ P → (J : ?m.343 R H hR hH hd0 hL hm0 hMpar hd0eq hLeq P htriv hden) → J ∈ P → I ≠ J → sorry
+hK : sorry
+hsplit : sorry
+U : sorry
+hbddU : sorry
+hcov :
+  ∀ (x : ?m.355 R H hR hH hd0 hL hm0 hMpar hd0eq hLeq P htriv hden hdisj hK hsplit U hbddU),
+    x ∈ U → ∃ I, I ∈ P ∧ x ∈ ?m.205
+hbound :
+  ∀ (I : ?m.397 R H hR hH hd0 hL hm0 hMpar hd0eq hLeq P htriv hden hdisj hK hsplit U hbddU hcov), I ∈ P → sorry ≤ sorry
+hnum : ((2 * sorry + 3 * L) / d0 + 2) * (Mpar * 10000 / R ^ 2) ≤ C * sorry ^ s
+⊢ sorry ≤ sorry
+EpiFormal/WindowRealize.lean:59:14: error(lean.unknownIdentifier): Unknown constant `WindowRealize.stopped_window_realize`

@@ -1,0 +1,4 @@
+﻿EpiFormal/WindowLogFact.lean:22:45: error: unexpected token ':'; expected no space before or term
+EpiFormal/WindowLogFact.lean:28:18: error: unexpected token ':'; expected no space before or term
+'WindowLogFact.log_factorial_ge' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+EpiFormal/WindowLogFact.lean:35:14: error(lean.unknownIdentifier): Unknown constant `WindowLogFact.log_factorial_le`

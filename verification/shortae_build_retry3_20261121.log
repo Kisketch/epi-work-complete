@@ -1,0 +1,72 @@
+﻿⚠ [9047/9048] Replayed EpiFormal.WindowAndResidueCore
+warning: EpiFormal\WindowAndResidueCore.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/WindowAndResidueCore.lean:3:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Finset`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/WindowAndResidueCore.lean:1:1: * `-/`:
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/WindowAndResidueCore.lean:13:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WindowAndResidueCore.lean:14:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WindowAndResidueCore.lean:16:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WindowAndResidueCore.lean:190:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WindowAndResidueCore.lean:295:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WindowAndResidueCore.lean:299:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+info: EpiFormal/WindowAndResidueCore.lean:331:0: 'WindowAndResidueCore.thm18_terminal_denom_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:332:0: 'WindowAndResidueCore.thm18_append_four_crosses' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:333:0: 'WindowAndResidueCore.thm18_prescribed_count_crossing' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:334:0: 'WindowAndResidueCore.thm19_cond_prob_integral_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:335:0: 'WindowAndResidueCore.thm19_cond_prob_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:336:0: 'WindowAndResidueCore.thm19_exp_moment_step_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:337:0: 'WindowAndResidueCore.thm20_rational_between_two_and_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:338:0: 'WindowAndResidueCore.thm20_terminal_denom_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:339:0: 'WindowAndResidueCore.thm21_shift_mod4_mem_alphabet' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:340:0: 'WindowAndResidueCore.thm21_tail_distance_ratio_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:341:0: 'WindowAndResidueCore.thm21_tail_distance_ratio_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:342:0: 'WindowAndResidueCore.thm21_prefix_factor_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:343:0: 'WindowAndResidueCore.thm21_integer_certificate_power_enclosure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: EpiFormal/WindowAndResidueCore.lean:344:0: 'WindowAndResidueCore.thm21_transfer_operator_sub_super_iteration' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+⚠ [9048/9048] Built EpiFormal.WindowShortAe (18s)
+warning: EpiFormal/WindowShortAe.lean:3:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open scoped BigOperators ENNReal`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/WindowShortAe.lean:1:1: * `-/`:
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/WindowShortAe.lean:503:6: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/WindowShortAe.lean:533:6: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+Build completed successfully (9048 jobs).

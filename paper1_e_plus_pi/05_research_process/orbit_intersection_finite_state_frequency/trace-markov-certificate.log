@@ -1,0 +1,6 @@
+2158 primitive forms and conjugate products checked.
+378 common-prime blocks tested, including the conductor example.
+51 exact trace checks on the common discriminant-60 progression.
+51 exact trace checks across discriminants 60 and 240 in Q(sqrt(15)).
+Exact Q(sqrt(5)) agreement of return and Poisson variances.
+Exact zero-variance potential checked on the period-two graph.

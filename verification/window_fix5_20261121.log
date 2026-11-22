@@ -1,0 +1,42 @@
+﻿EpiFormal/WindowMainBound.lean:49:9: error(lean.unknownIdentifier): Unknown constant `Real.log_lt_iff_exp_lt`
+EpiFormal/WindowMainBound.lean:55:4: error(lean.unknownIdentifier): Unknown identifier `mul_lt_mul_of_nonneg_left`
+EpiFormal/WindowMainBound.lean:131:12: error(lean.unknownIdentifier): Unknown identifier `abs_add`
+EpiFormal/WindowMainBound.lean:186:26: error(lean.unknownIdentifier): Unknown constant `Finset.card_Icc`
+EpiFormal/WindowMainBound.lean:212:8: error: Tactic `apply` failed: could not unify the type of `mul_le_mul_of_nonneg_right ?m.1068 (abs_nonneg ?m.1074)`
+  ?m.1065 * |?m.1074| ≤ ?m.1066 * |?m.1074|
+with the goal
+  |↑(moebius d)| * |↑(Acount R d) * ↑(Bcount R d) - W1 R * W2 R / ↑d ^ 2| ≤ 1 * (42e-3 * R * (1 / ↑d) + 1)
+
+R : ℝ
+hR : 10 ^ 6 ≤ R
+hR0 : 0 ≤ R
+hMhi1 : 1 ≤ Mhi R
+hMhi_ub : ↑(Mhi R) ≤ 0.36 * R
+hW1nn : 0 ≤ W1 R
+hW2nn : 0 ≤ W2 R
+hS : 359 / 900 ≤ ∑ d ∈ Icc 1 (Mhi R), ↑(moebius d) / ↑d ^ 2
+hcast : ↑(copCount R) = ∑ d ∈ Icc 1 (Mhi R), ↑(moebius d) * (↑(Acount R d) * ↑(Bcount R d))
+hS2 :
+  W1 R * W2 R * ∑ d ∈ Icc 1 (Mhi R), ↑(moebius d) / ↑d ^ 2 = ∑ d ∈ Icc 1 (Mhi R), ↑(moebius d) * (W1 R * W2 R / ↑d ^ 2)
+hdiff :
+  ↑(copCount R) - W1 R * W2 R * ∑ d ∈ Icc 1 (Mhi R), ↑(moebius d) / ↑d ^ 2 =
+    ∑ d ∈ Icc 1 (Mhi R), ↑(moebius d) * (↑(Acount R d) * ↑(Bcount R d) - W1 R * W2 R / ↑d ^ 2)
+hsum1 : ∑ _d ∈ Icc 1 (Mhi R), 1 = ↑(Mhi R)
+h1 :
+  |∑ d ∈ Icc 1 (Mhi R), ↑(moebius d) * (↑(Acount R d) * ↑(Bcount R d) - W1 R * W2 R / ↑d ^ 2)| ≤
+    ∑ d ∈ Icc 1 (Mhi R), |↑(moebius d) * (↑(Acount R d) * ↑(Bcount R d) - W1 R * W2 R / ↑d ^ 2)|
+d : ℕ
+hd : d ∈ Icc 1 (Mhi R)
+hd1 : 1 ≤ d
+hmu : |moebius d| ≤ 1
+herr : |↑(Acount R d) * ↑(Bcount R d) - W1 R * W2 R / ↑d ^ 2| ≤ 42e-3 * R * (1 / ↑d) + 1
+e1 :
+  |↑(moebius d) * (↑(Acount R d) * ↑(Bcount R d) - W1 R * W2 R / ↑d ^ 2)| =
+    |↑(moebius d)| * |↑(Acount R d) * ↑(Bcount R d) - W1 R * W2 R / ↑d ^ 2|
+⊢ |↑(moebius d)| * |↑(Acount R d) * ↑(Bcount R d) - W1 R * W2 R / ↑d ^ 2| ≤ 1 * (42e-3 * R * (1 / ↑d) + 1)
+'WindowMobiusCount.exp_three_gt_ten' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMobiusCount.log_ten_lt_three' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMobiusCount.log106_lt' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMobiusCount.logMhi_le' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMobiusCount.err_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMobiusCount.coprime_count_ge' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

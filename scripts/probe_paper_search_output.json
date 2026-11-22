@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-11-21T08:18:25.462Z",
+  "prober": "scripts/probe_paper_search.js",
+  "verbatim": {
+    "label": "verbatim-user-spec",
+    "command": [
+      "uvx",
+      "paper-search-mcp"
+    ],
+    "exited": {
+      "code": 1,
+      "signal": null
+    },
+    "initialize": {
+      "error": {
+        "code": -32000,
+        "message": "connection closed before response (exit code=1, signal=null)"
+      }
+    },
+    "failure": "initialize rejected: {\"code\":-32000,\"message\":\"connection closed before response (exit code=1, signal=null)\"}",
+    "stderrTail": "Traceback (most recent call last):\r\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\r\n  File \"<frozen runpy>\", line 88, in _run_code\r\n  File \"C:\\Users\\Lgnatius\\AppData\\Local\\uv\\cache\\archive-v0\\-Jr1Swbof_KI8eNk\\Scripts\\paper-search-mcp.exe\\__main__.py\", line 4, in <module>\r\n  File \"C:\\Users\\Lgnatius\\AppData\\Local\\uv\\cache\\archive-v0\\-Jr1Swbof_KI8eNk\\Lib\\site-packages\\paper_search_mcp\\server.py\", line 8, in <module>\r\n    from mcp.server.fastmcp import FastMCP\r\n  File \"C:\\Users\\Lgnatius\\AppData\\Local\\uv\\cache\\archive-v0\\-Jr1Swbof_KI8eNk\\Lib\\site-packages\\mcp\\server\\fastmcp.py\", line 16, in <module>\r\n    raise ModuleNotFoundError(_MESSAGE, name=__name__)\r\nModuleNotFoundError: No module named 'mcp.server.fastmcp'. This is mcp 2.x, where FastMCP was renamed to MCPServer (from mcp.server.mcpserver import MCPServer) and other APIs changed; see the migration guide at https://py.sdk.modelcontextprotocol.io/v2/migration/#fastmcp-renamed-to-mcpserver or pin 'mcp<2' to keep running v1 code.\r\n"
+  },
+  "pinned": {
+    "label": "pinned-mcp-lt-2",
+    "command": [
+      "uvx",
+      "--with",
+      "mcp<2",
+      "paper-search-mcp"
+    ],
+    "initialize": {
+      "serverInfo": {
+        "name": "paper_search_server",
+        "version": "1.30.0"
+      },
+      "protocolVersion": "2024-11-05"
+    },
+    "tools": {
+      "count": 57,
+      "names": [
+        "search_papers",
+        "search_arxiv",
+        "search_pubmed",
+        "search_biorxiv",
+        "search_medrxiv",
+        "search_google_scholar",
+        "search_iacr",
+        "download_arxiv",
+        "download_pubmed",
+        "download_biorxiv",
+        "download_medrxiv",
+        "download_iacr",
+        "read_arxiv_paper",
+        "read_pubmed_paper",
+        "read_biorxiv_paper",
+        "read_medrxiv_paper",
+        "read_iacr_paper",
+        "search_semantic",
+        "download_semantic",
+        "read_semantic_paper",
+        "search_crossref",
+        "get_crossref_paper_by_doi",
+        "download_crossref",
+        "download_scihub",
+        "download_with_fallback",
+        "read_crossref_paper",
+        "search_openalex",
+        "search_pmc",
+        "search_core",
+        "search_europepmc",
+        "search_dblp",
+        "search_openaire",
+        "search_citeseerx",
+        "search_doaj",
+        "search_base",
+        "search_zenodo",
+        "search_hal",
+        "search_ssrn",
+        "search_unpaywall",
+        "read_dblp_paper",
+        "download_dblp",
+        "read_openaire_paper",
+        "download_openaire",
+        "read_citeseerx_paper",
+        "download_citeseerx",
+        "read_doaj_paper",
+        "download_doaj",
+        "read_base_paper",
+        "download_base",
+        "read_zenodo_paper",
+        "download_zenodo",
+        "read_hal_paper",
+        "download_hal",
+        "read_ssrn_paper",
+        "download_ssrn",
+        "read_openalex_paper",
+        "download_openalex"
+      ]
+    },
+    "stderrTail": "[11/21/26 01:18:25] WARNING  No CORE API key provided. Searches may  core.py:40\r\n                             be rate-limited or return limited                 \r\n                             results.                                          \r\n                    WARNING  No DOAJ API key provided. Searches will doaj.py:48\r\n                             use public access with rate limits (100           \r\n                             requests/hour). Get a free API key at:            \r\n                             https://doaj.org/apply-for-api-key/               \r\n                    WARNING  PAPER_SEARCH_MCP_UNPAYWALL_EMAIL/U unpaywall.py:29\r\n                             NPAYWALL_EMAIL not configured.                    \r\n                             Unpaywall fallback will be                        \r\n                             skipped. You can request free                     \r\n                             access at                                         \r\n                             https://unpaywall.org/products/api                \r\n                    INFO     Processing request of type           server.py:733\r\n                             ListToolsRequest                                  \r\n"
+  }
+}

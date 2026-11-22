@@ -1,0 +1,10 @@
+﻿EpiFormal/WindowLargeWindow.lean:39:66: error: Application type mismatch: The argument
+  hnum
+has type
+  ((2 * Metric.diam U + 3 * L) / d0 + 2) * m0 ≤ C * Metric.diam U ^ s
+but is expected to have type
+  ((2 * Metric.diam U + 3 * L) / d0 + 2) * (Mpar * 10000 / R ^ 2) ≤ C * Metric.diam U ^ s
+in the application
+  WindowMuThreshLevel.mu_window_thresh_num R hR hd0 hL hm0 hMpar P htriv hlen_lo hlen_hi hdisj K hK hsplit U hbddU hcov
+    hbound hnum
+'WindowLargeWindow.mu_large_window' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

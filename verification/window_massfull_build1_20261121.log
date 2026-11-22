@@ -1,0 +1,51 @@
+﻿⚠ [9047/9051] Replayed EpiFormal.WindowCoverCount
+warning: EpiFormal\WindowCoverCount.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/WindowCoverCount.lean:1:1: * `-/`:
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+info: EpiFormal/WindowCoverCount.lean:206:0: 'CoverCount.left_separated' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowCoverCount.lean:207:0: 'CoverCount.floor_lt_of_separated' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowCoverCount.lean:208:0: 'CoverCount.meet_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowCoverCount.lean:209:0: 'CoverCount.meet_card_of_diam_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9048/9051] Replayed EpiFormal.WindowMuImplication
+warning: EpiFormal\WindowMuImplication.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/WindowMuImplication.lean:1:1: * `-/`:
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+info: EpiFormal/WindowMuImplication.lean:68:0: 'WindowMu.mu_biUnion_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowMuImplication.lean:69:0: 'WindowMu.mu_window_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowMuImplication.lean:70:0: 'WindowMu.exp_ratio_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9049/9051] Replayed EpiFormal.WindowSandwich
+warning: EpiFormal\WindowSandwich.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/WindowSandwich.lean:1:1: * `-/`:
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+info: EpiFormal/WindowSandwich.lean:52:0: 'WindowSandwich.sandwich_of_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9050/9051] Replayed EpiFormal.WindowMuLevel
+warning: EpiFormal\WindowMuLevel.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/WindowMuLevel.lean:1:1: * `-/`:
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+info: EpiFormal/WindowMuLevel.lean:113:0: 'WindowMuLevel.filter_meet_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowMuLevel.lean:114:0: 'WindowMuLevel.mu_le_at_level' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WindowMuLevel.lean:115:0: 'WindowMuLevel.mu_le_of_sandwich' depends on axioms: [propext, Classical.choice, Quot.sound]
+✖ [9051/9051] Building EpiFormal.WindowMassFull (2.2s)
+trace: .> LEAN_PATH=C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\build\lib\lean c:\Users\Lgnatius\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\EpiFormal\WindowMassFull.lean -o C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\build\lib\lean\EpiFormal\WindowMassFull.olean -i C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\build\lib\lean\EpiFormal\WindowMassFull.ilean -c C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\build\ir\EpiFormal\WindowMassFull.c --setup C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\build\ir\EpiFormal\WindowMassFull.setup.json --json
+error: EpiFormal/WindowMassFull.lean:1:0: failed to read file 'c:\Users\Lgnatius\.elan\toolchains\leanprover--lean4---v4.35.0\lib\lean\Lean\Meta\WrapInstance.olean.private'
+Some required targets logged failures:
+- EpiFormal.WindowMassFull
+lake : error: build failed
+At line:1 char:1
++ lake build EpiFormal.WindowMassFull 2>&1 | Out-File -FilePath "C:\Use ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (error: build failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

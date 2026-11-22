@@ -1,0 +1,2 @@
+﻿'WindowThickening.isBounded_thickening_of_ediam' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowThickening.diam_thickening_pos' depends on axioms: [propext, Classical.choice, Quot.sound]

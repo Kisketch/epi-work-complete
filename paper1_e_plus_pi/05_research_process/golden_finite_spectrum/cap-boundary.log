@@ -1,0 +1,7 @@
+6/1-e: 3 distinct finite limits <= 1
+  #1: 1 + (-2/5) sqrt(5)  (0.105572809000084)
+      witness: suffix=(1, 1), eta=3/2 + (1/2) sqrt(5)
+  #2: -1 + (4/5) sqrt(5)  (0.788854381999832)
+      witness: suffix=(1, 1), eta=7/2 + (-1/2) sqrt(5)
+  #3: 1 + (0) sqrt(5)  (1)
+      witness: suffix=(1, 1), eta=5/2 + (-1/2) sqrt(5)

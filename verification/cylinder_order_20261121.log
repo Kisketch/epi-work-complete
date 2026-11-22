@@ -1,0 +1,4 @@
+﻿'Cylinder.cfProd_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.cfProd_det_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.childDen_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.sibling_strict' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,2 @@
+﻿EpiFormal/WindowMassFull.lean:58:24: error: expected token
+'WindowMassFull.mu_window_le_full' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

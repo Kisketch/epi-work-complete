@@ -1,0 +1,451 @@
+Lean 4.35.0
+
+[project-audit]
+vieta_identity: [propext, Classical.choice, Quot.sound]
+quadratic_roots_algebraic: [propext, Classical.choice, Quot.sound]
+at_least_one_transcendental: [e_transcendental, propext, Classical.choice, Quot.sound]
+four_numbers_at_most_one_rational: [e_transcendental,
+ pi_transcendental,
+ propext,
+ Classical.choice,
+ Quot.sound]
+mu0_identity: [propext, Classical.choice, Quot.sound]
+tail_summable: [propext, Classical.choice, Quot.sound]
+tail_recurrence: [propext, Classical.choice, Quot.sound]
+irrMeasure_neg: [propext, Classical.choice, Quot.sound]
+irrMeasure_add_rat: [propext, Classical.choice, Quot.sound]
+irrMeasure_mul_rat: [propext, Classical.choice, Quot.sound]
+irrMeasure_inv: [propext, Classical.choice, Quot.sound]
+theoremA_sum: [mu_e_eq_two, propext, Classical.choice, Quot.sound]
+theoremA_diff: [mu_e_eq_two, propext, Classical.choice, Quot.sound]
+theoremA_prod: [e_transcendental, mu_e_eq_two, propext, Classical.choice, Quot.sound]
+theoremA_quot: [mu_e_eq_two, propext, Classical.choice, Quot.sound]
+proposition_H': [mu_e_eq_two, pi_transcendental, propext, Classical.choice, Quot.sound]
+meiburg_criterion: [pi_transcendental, propext, Classical.choice, Quot.sound]
+flint_hills_diverges_bound: [pi_transcendental, propext, Classical.choice, Quot.sound]
+flint_hills_converges_of_mu_lt: [pi_transcendental, propext, Classical.choice, Quot.sound]
+circle_spacing: [pi_transcendental, propext, Classical.choice, Quot.sound]
+dyadic_block_count: [pi_transcendental, propext, Classical.choice, Quot.sound]
+block_sum_bound: [pi_transcendental, propext, Classical.choice, Quot.sound]
+sin_nat_ne_zero: [pi_transcendental, propext, Classical.choice, Quot.sound]
+sin_eventual_lower: [pi_transcendental, propext, Classical.choice, Quot.sound]
+abs_sub_mul_pi_factor: [propext, Classical.choice, Quot.sound]
+nearest_int_le_four_mul: [propext, Classical.choice, Quot.sound]
+nearest_int_tendsto_atTop: [propext, Classical.choice, Quot.sound]
+term_tendsto_eventually_gt: [pi_transcendental, propext, Classical.choice, Quot.sound]
+alekseyev_eventual_lower: [pi_transcendental, propext, Classical.choice, Quot.sound]
+apprPairs_finite_of_flintHills: [pi_transcendental, propext, Classical.choice, Quot.sound]
+alekseyev_bound: [pi_transcendental, propext, Classical.choice, Quot.sound]
+Qsel_pos: [propext, Classical.choice, Quot.sound]
+Psel_rec: [propext, Quot.sound]
+Qsel_rec: [propext, Quot.sound]
+sel_determinant: [propext, Quot.sound]
+Psel_odd: [propext, Classical.choice, Quot.sound]
+Qsel_odd: [propext, Classical.choice, Quot.sound]
+Qsel_strictMono: [propext, Classical.choice, Quot.sound]
+Qsel_double: [propext, Classical.choice, Quot.sound]
+Qsel_succ_coprime: [propext, Quot.sound]
+Psel_div_Qsel_tendsto_exp: [propext, Classical.choice, Quot.sound]
+Qsel_tendsto_atTop: [propext, Classical.choice, Quot.sound]
+AdjacentWitness.theorem11_three_equiv: [propext, Classical.choice, Quot.sound]
+AdjacentWitness.pair_iff: [propext, Classical.choice, Quot.sound]
+AdjacentWitness.limit_integer: [propext, Classical.choice, Quot.sound]
+AdjacentWitness.quantitative_bound: [propext, Classical.choice, Quot.sound]
+AdjacentWitness.quantitative_bound_succ: [propext, Classical.choice, Quot.sound]
+AdjacentWitness.hpos_eventually_mismatch: [propext, Classical.choice, Quot.sound]
+EpiFormalH.proposition3_signed_criterion: [propext, Classical.choice, Quot.sound]
+EpiFormalH.proposition3_forward: [propext, Classical.choice, Quot.sound]
+EpiFormalH.proposition3_converse: [propext, Classical.choice, Quot.sound]
+Classification.theorem2_classification: [propext, Classical.choice, Quot.sound]
+Classification.corollary3_gap: [propext, Classical.choice, Quot.sound]
+Classification.propagate: [propext, Classical.choice, Quot.sound]
+Classification.sel_determinant: [propext, Quot.sound]
+CSpectrum.theorem6_a: [propext, Classical.choice, Quot.sound]
+CSpectrum.theorem6_b: [propext, Classical.choice, Quot.sound]
+CSpectrum.lemma5_four_S_integer: [propext, Classical.choice, Quot.sound]
+CSpectrum.Qsel_pos: [propext, Classical.choice, Quot.sound]
+SignedClusters.theorem7_cluster_set: [propext, Classical.choice, Quot.sound]
+SignedClusters.theorem7_finite: [propext, Classical.choice, Quot.sound]
+SignedClusters.theorem8_realization: [propext, Classical.choice, Quot.sound]
+DefectFibres.theorem9_tail_iff: [propext, Classical.choice, Quot.sound]
+DefectFibres.corollary10_injective: [propext, Classical.choice, Quot.sound]
+DefectFibres.finer_scale_ratio: [e_transcendental, propext, Classical.choice, Quot.sound]
+DefectFibres.control_example: [e_transcendental, propext, Classical.choice, Quot.sound]
+DefectFibres.deltaSel_ne_zero: [e_transcendental, propext, Classical.choice, Quot.sound]
+FactorialCriterion.factorial_criterion: [propext, Classical.choice, Quot.sound]
+FactorialCriterion.tFrac_bounds: [propext, Classical.choice, Quot.sound]
+FactorialCriterion.recurrence_u: [propext, Classical.choice, Quot.sound]
+Escape.irrational_iff_inf_mismatch: [propext, Classical.choice, Quot.sound]
+Escape.D_eq_eps: [propext, Classical.choice, Quot.sound]
+EscapeBoundary.boundary_eventual_match: [propext, Classical.choice, Quot.sound]
+Escape.inf_mismatch_iff_eventually: [propext, Classical.choice, Quot.sound]
+EscapeReduction.match_eps_bound: [propext, Classical.choice, Quot.sound]
+EscapeReduction.Qsel_pred_div_tendsto_zero: [propext, Classical.choice, Quot.sound]
+EscapeReduction.jQsel_div_Qsel_succ_tendsto: [propext, Classical.choice, Quot.sound]
+EscapeReduction.sharp_bound_tendsto: [propext, Classical.choice, Quot.sound]
+EscapeReduction.match_eventually_eps_le_fifth: [propext, Classical.choice, Quot.sound]
+EscapeReduction.reduction_to_lattice: [propext, Classical.choice, Quot.sound]
+EscapeReduction.P1_imp_irrational: [propext, Classical.choice, Quot.sound]
+SpectralGap.apprExponent_eq_zero_iff: [propext, Classical.choice, Quot.sound]
+SpectralGap.spectral_gap: [propext, Classical.choice, Quot.sound]
+SpectralGap.levelSet_below_eq_lattice: [propext, Classical.choice, Quot.sound]
+SpectralGap.latticeL_countable: [propext, Classical.choice, Quot.sound]
+SpectralGap.dimH_levelSet_below: [propext, Classical.choice, Quot.sound]
+DimHCore.Qsel_ge_factorial: [propext, Classical.choice, Quot.sound]
+DimHCore.Qsel_succ_le: [propext, Classical.choice, Quot.sound]
+DimHCore.fiber_card_le: [propext, Classical.choice, Quot.sound]
+DimHFinite.card_survSet_le: [propext, Classical.choice, Quot.sound]
+DimHFinite.centerOf_mem_survSet: [propext, Classical.choice, Quot.sound]
+DimHFinite.tailSet_cover: [propext, Classical.choice, Quot.sound]
+DimHFinite.tendsto_contentBound: [propext, Classical.choice, Quot.sound]
+DimHFinite.hausdorffMeasure_tailSet_zero: [propext, Classical.choice, Quot.sound]
+DimHFinite.dimH_tailSet_zero: [propext, Classical.choice, Quot.sound]
+DimHFinite.apprExponent_add_intCast: [propext, Classical.choice, Quot.sound]
+DimHFinite.levelSet_subset_iUnion_tailSet: [propext, Classical.choice, Quot.sound]
+DimHFinite.dimH_levelSet_finite: [propext, Classical.choice, Quot.sound]
+DeltaReduction.deltaSel_rec: [propext, Classical.choice, Quot.sound]
+DeltaReduction.cross_identity: [propext, Classical.choice, Quot.sound]
+DeltaReduction.abs_sum_eq_two: [propext, Classical.choice, Quot.sound]
+DeltaReduction.abs_deltaSel_lt_of_sign: [propext, Classical.choice, Quot.sound]
+DeltaReduction.deltaSel_tendsto_zero_of_sign: [propext, Classical.choice, Quot.sound]
+padéR_ode: [propext, Classical.choice, Quot.sound]
+PadeIntegral.pade_integral_repr: [propext, Classical.choice, Quot.sound]
+padéP_second_deriv: [propext, Classical.choice, Quot.sound]
+padeI_recurrence: [propext, Classical.choice, Quot.sound]
+DeltaSign.E_eq_I: [propext, Classical.choice, Quot.sound]
+DeltaSign.I_pos: [propext, Classical.choice, Quot.sound]
+DeltaSign.deltaSignAlternation_proved: [propext, Classical.choice, Quot.sound]
+DeltaSign.deltaSel_tendsto_zero_proved: [propext, Classical.choice, Quot.sound]
+DeltaSign.abs_deltaSel_lt_proved: [propext, Classical.choice, Quot.sound]
+ThresholdAttained.apprSeq_tendsto_quarter: [propext, Classical.choice, Quot.sound]
+QuarterPointFinal.eps_bound: [propext, Classical.choice, Quot.sound]
+QuarterPointFinal.round_eq_M: [propext, Classical.choice, Quot.sound]
+QuarterPointFinal.defect_eventually_one: [propext, Classical.choice, Quot.sound]
+QuarterPointFinal.lambda_x0_eq_quarter: [propext, Classical.choice, Quot.sound]
+WeightedFiber.fiber_card_weighted_le: [propext, Classical.choice, Quot.sound]
+WeightedDimH.card_wsurvSet_le: [propext, Classical.choice, Quot.sound]
+WeightedUpper.dimH_wtailSet_le: [propext, Classical.choice, Quot.sound]
+WeightedFinal.dimH_levelSetα_le: [propext, Classical.choice, Quot.sound]
+WeightedLower.width_ge: [propext, Classical.choice, Quot.sound]
+WeightedLower.fiber_card_weighted_ge_scale: [propext, Classical.choice, Quot.sound]
+WeightedCantor.winterv_disjoint: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.mobius_error_identity: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.zphiNorm_even_iff: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.m0_even: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.norm_parity_rigidity_identity: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.spectral_gap_constants: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.norm_parity_rigidity_eq_iff: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.norm_parity_rigidity_ge_second: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.zphiNorm_not_two_three_four: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.height_dichotomy: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.case1_lower_bound: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.case2_sub1_quadratic_ge: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.case2_sub2_quadratic_ge: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.case2_sub3_quadratic_ge: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.second_limit_point_attained_value: [propext, Classical.choice, Quot.sound]
+GoldenOrbitRigidity.b2_control_model_constant: [propext, Classical.choice, Quot.sound]
+WeightedExactDim.one_le_hausdorffMeasure_cantorSet: [propext, Classical.choice, Quot.sound]
+WeightedExactDim.dimH_exactLimitSetα_ge: [propext, Classical.choice, Quot.sound]
+WeightedExactDim.dimH_exactLimitSetα_eq: [propext, Classical.choice, Quot.sound]
+WeightedExactDim.dimH_levelSetα_eq: [propext, Classical.choice, Quot.sound]
+WeightedExactDim.dimH_apprExponentα_eq_zero: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.general_signed_defect_approx: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.general_abs_defect_approx: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.not_tendsto_open_interval_of_int_approx: [propext,
+ Classical.choice,
+ Quot.sound]
+FullSpectrumDiscrete.eventually_le_of_int_approx_in_gap: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.eventually_eq_int_of_tendsto: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.euler_signed_defect_approx: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.euler_abs_defect_approx: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.spectral_gap_open_interval: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.eventually_abs_defect_le_of_apprExponent_le: [propext,
+ Classical.choice,
+ Quot.sound]
+FullSpectrumDiscrete.levelSet_eq_on_gap: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.unsigned_exact_limit_iff_defect_binary: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.signed_exact_limit_iff_defect_const: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.sub_mem_latticeL_of_same_signed_limit: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.signed_exact_limit_set_countable: [propext, Classical.choice, Quot.sound]
+FullSpectrumDiscrete.dimH_signed_exact_limit_set_zero: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.xi1_mul_xi2Conj: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.M_uv_norm_identity: [propext, Quot.sound]
+GoldenOrbitB2Rigidity.rational_endpoint_rigidity_identity: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.zphiNorm_mod5_identity: [propext]
+GoldenOrbitB2Rigidity.five_dvd_zphiNorm_iff: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.m8q_mod4_identity: [propext, Quot.sound]
+GoldenOrbitB2Rigidity.alpha8q_mul_gammaConj: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.m8q_norm_identity: [propext, Quot.sound]
+GoldenOrbitB2Rigidity.m8q_odd: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.phi8q_odd_rigidity_identity: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.pell_b2_spectral_gap: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.phi85_eq_min_iff: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.phi83_eq_min_iff: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.phi85_ge_second: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.phi83_ge_second: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.phi85_second_attained: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.phi83_second_attained: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.b2_case1_85_lower_bound: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.b2_case1_83_lower_bound: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.b2_case2_sk_Q1_limit: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.b2_case2_sub1_quadratic_ge: [propext, Classical.choice, Quot.sound]
+GoldenOrbitB2Rigidity.b2_case2_sub3_quadratic_ge: [propext, Classical.choice, Quot.sound]
+GaugeNull.mkMetric_digitClass_null: [propext, Classical.choice, Quot.sound]
+GaugeNull.mkMetric_strictLevel_null: [propext, Classical.choice, Quot.sound]
+GaugeNull.mkMetric_levelSet_null_of_subgauge: [propext, Classical.choice, Quot.sound]
+UnweightedCorrection.witness: [propext, Classical.choice, Quot.sound]
+GaugeExact.dimH_finiteLevel_zero: [propext, Classical.choice, Quot.sound]
+GaugeExact.volume_finiteLevel_zero: [propext, Classical.choice, Quot.sound]
+GaugeExact.ae_apprExponent_eq_top: [propext, Classical.choice, Quot.sound]
+GaugeExact.volume_infiniteLevel_Icc: [propext, Classical.choice, Quot.sound]
+GaugeExact.volume_infiniteLevel_Icc_zero_one: [propext, Classical.choice, Quot.sound]
+GaugeExact.dimH_infiniteLevel_inter_Icc_zero_one: [propext, Classical.choice, Quot.sound]
+GaugeExact.dimH_infiniteLevel_eq_one: [propext, Classical.choice, Quot.sound]
+GaugeExact.apprExponent_add_latticeL: [propext, Classical.choice, Quot.sound]
+GaugeExact.exactLevel_add_latticeL: [propext, Classical.choice, Quot.sound]
+GaugeExact.mkMetric_digitClass_le: [propext, Classical.choice, Quot.sound]
+GaugeExact.mkMetric_digitClass_lt_top: [propext, Classical.choice, Quot.sound]
+GaugeExact.exactLevel_countable_cover_finite_mkMetric: [propext, Classical.choice, Quot.sound]
+GaugeExact.mkMetric_le_mul_of_eventually_le: [propext, Classical.choice, Quot.sound]
+GaugeExact.mkMetric_eq_zero_of_ratio_tendsto_zero_of_lt_top: [propext, Classical.choice, Quot.sound]
+GaugeExact.not_countable_union_finite_of_ratio_tendsto_zero: [propext, Classical.choice, Quot.sound]
+GaugeExact.gauge_ratio_adjacent_levels_tendsto_zero: [propext, Classical.choice, Quot.sound]
+GaugeExact.mkMetric_unsignedExactLimit_null_of_hk: [propext, Classical.choice, Quot.sound]
+GaugeExact.mkMetric_unsignedExactLimit_null_of_subgauge_base2: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeExact.unsignedExactLimit_countable_cover_finite_mkMetric_base2: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeExact.mkMetric_cantorTree_pos: [propext, Classical.choice, Quot.sound]
+GaugeExact.mkMetric_exactLevel_pos: [propext, Classical.choice, Quot.sound]
+GaugeExact.mkMetric_exactLevel_eq_top: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm18_terminal_denom_bounds: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm18_append_four_crosses: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm18_prescribed_count_crossing: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm19_cond_prob_integral_identity: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm19_cond_prob_lower_bound: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm19_exp_moment_step_le: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm20_rational_between_two_and_three: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm20_terminal_denom_bounds: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm21_shift_mod4_mem_alphabet: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm21_tail_distance_ratio_identity: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm21_tail_distance_ratio_le: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm21_prefix_factor_bounds: [propext, Classical.choice, Quot.sound]
+WindowAndResidueCore.thm21_integer_certificate_power_enclosure: [propext,
+ Classical.choice,
+ Quot.sound]
+WindowAndResidueCore.thm21_transfer_operator_sub_super_iteration: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.critGauge_zero: [propext, Classical.choice, Quot.sound]
+GaugeCircle.critGauge_mono: [propext, Classical.choice, Quot.sound]
+GaugeCircle.critGauge_continuous: [propext, Classical.choice, Quot.sound]
+GaugeCircle.critGauge_at_inv_Qsel: [propext, Classical.choice, Quot.sound]
+GaugeCircle.binaryGauge_zero: [propext, Classical.choice, Quot.sound]
+GaugeCircle.binaryGauge_mono: [propext, Classical.choice, Quot.sound]
+GaugeCircle.binaryGauge_continuous: [propext, Classical.choice, Quot.sound]
+GaugeCircle.binaryGauge_at_inv_Qsel: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_critGauge_strictLevel_null: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_critGauge_exactLevel_pos: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_critGauge_exactLevel_eq_top: [propext, Classical.choice, Quot.sound]
+GaugeCircle.critGauge_exactLevel_sigma_finite_cover: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_critGauge_exactLevel_inter_Ioo_eq_top: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_critGauge_exactLevel_inter_Icc_zero_one_eq_top: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_critGauge_exactLevel_inter_eq_top_of_Ioo_subset: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_binaryGauge_unsignedExactLimit_pos: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_binaryGauge_unsignedExactLimit_inter_Ioo_eq_top: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_binaryGauge_unsignedExactLimit_eq_top: [propext, Classical.choice, Quot.sound]
+GaugeCircle.binaryGauge_unsignedExactLimit_sigma_finite_cover: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.critGauge_unsignedExactLimit_null: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_powerGauge_exactLevel_null_of_gt: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_powerGauge_exactLevel_not_sigma_finite_of_lt: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_powerGauge_unsignedExactLimit_null_of_gt: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_powerGauge_unsignedExactLimit_not_sigma_finite_of_lt: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.critGauge_ge_one: [propext, Classical.choice, Quot.sound]
+GaugeCircle.critGauge_eq_segVal: [propext, Classical.choice, Quot.sound]
+GaugeCircle.binaryGauge_ge_one: [propext, Classical.choice, Quot.sound]
+GaugeCircle.binaryGauge_eq_segVal: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_critGauge_exactLevel_not_sigma_finite_of_ratio: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.critGauge_adjacent_ratio_tendsto_zero: [propext, Classical.choice, Quot.sound]
+GaugeCircle.critGauge_adjacent_level_separation: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_binaryGauge_unsignedExactLimit_inter_Icc_zero_one_eq_top: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_critGauge_circleStrictLevel_null: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_critGauge_circleExactLevel_inter_open_eq_top: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_critGauge_circleExactLevel_eq_top: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_critGauge_circleExactLevel_pos: [propext, Classical.choice, Quot.sound]
+GaugeCircle.critGauge_circleExactLevel_sigma_finite_cover: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_critGauge_circleExactLevel_not_sigma_finite_of_ratio: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_powerGauge_circleExactLevel_null_of_gt: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_powerGauge_circleExactLevel_not_sigma_finite_of_lt: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.critGauge_circleUnsignedExactLimit_null: [propext, Classical.choice, Quot.sound]
+GaugeCircle.binaryGauge_circleUnsignedExactLimit_sigma_finite_cover: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_binaryGauge_circleUnsignedExactLimit_inter_open_eq_top: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_binaryGauge_circleUnsignedExactLimit_eq_top: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_binaryGauge_circleUnsignedExactLimit_pos: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_powerGauge_circleUnsignedExactLimit_null_of_gt: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_powerGauge_circleUnsignedExactLimit_not_sigma_finite_of_lt: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_inter_Ioo_eq_top_of_compact_tree: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_binCantorTree_pos: [propext, Classical.choice, Quot.sound]
+GaugeCircle.unsignedExactLimit_add_latticeL: [propext, Classical.choice, Quot.sound]
+GaugeCircle.mkMetric_le_mul_of_eventually_le_circle: [propext, Classical.choice, Quot.sound]
+GaugeCircle.not_countable_union_finite_of_ratio_tendsto_zero_circle: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeCircle.mkMetric_circleLevelSet_null_of_subgauge: [propext, Classical.choice, Quot.sound]
+
+[GaugeLiminfComplete]
+GaugeLiminf.mkMetric_digitClass_le_liminf: [propext, Classical.choice, Quot.sound]
+GaugeLiminf.mkMetric_binaryDigitClass_le_liminf: [propext, Classical.choice, Quot.sound]
+GaugeLiminf.mkMetric_levelSet_null_of_liminf_zero: [propext, Classical.choice, Quot.sound]
+GaugeLiminf.mkMetric_unsignedExactLimit_null_of_liminf_zero: [propext, Classical.choice, Quot.sound]
+GaugeLiminf.levelSet_countable_cover_of_liminf_lt_top: [propext, Classical.choice, Quot.sound]
+GaugeLiminf.unsignedExactLimit_countable_cover_of_liminf_lt_top: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeScaleComparison.small_radius_le_of_adjacent_scale_le: [propext, Classical.choice, Quot.sound]
+GaugeScaleComparison.not_countable_union_finite_of_adjacent_scale_ratio: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeScaleComparison.exists_small_radius_comparison_of_lt_liminf: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeScaleComparison.not_countable_union_finite_of_liminf_top: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeScaleComparison.mkMetric_eq_top_of_liminf_pos: [propext, Classical.choice, Quot.sound]
+GaugeLiminf.calibrated_exactLevel_eq_top: [propext, Classical.choice, Quot.sound]
+GaugeLiminf.exactLevel_eq_top_of_liminf_pos: [propext, Classical.choice, Quot.sound]
+GaugeLiminf.exactLevel_not_countable_union_finite_of_liminf_top: [propext,
+ Classical.choice,
+ Quot.sound]
+GaugeLiminf.circleExactLevel_liminf_trichotomy: [propext, Classical.choice, Quot.sound]
+GaugeLiminf.circleUnsignedExactLimit_liminf_trichotomy: [propext, Classical.choice, Quot.sound]
+GaugeLiminf.liminf_normalizedGaugeCost_zero_of_smaller_base: [propext, Classical.choice, Quot.sound]
+GaugeLiminf.mkMetric_circleStrictLevel_null_of_liminf_lt_top: [propext,
+ Classical.choice,
+ Quot.sound]
+
+[FiniteStateGauge]
+FiniteStateGauge.walkMass_of_eigenvector: [propext, Classical.choice, Quot.sound]
+FiniteStateGauge.walkCount_bounds: [propext, Classical.choice, Quot.sound]
+
+[GoldenHeadCutoff]
+GoldenHeadCutoff.fixed_side_ratio: [propext, Classical.choice, Quot.sound]
+GoldenHeadCutoff.moving_side_ratio: [propext, Classical.choice, Quot.sound]
+GoldenHeadCutoff.mismatch_gap: [propext, Classical.choice, Quot.sound]
+
+[Experimental source checks: GeneralEndpointRigidity]
+EpiFormal\GeneralEndpointRigidity.lean:461:42: error: Expected type must not contain free variables
+EpiFormal\GeneralEndpointRigidity.lean:461:42: error: Expected type must not contain free variables
+EpiFormal\GeneralEndpointRigidity.lean:461:42: error: Expected type must not contain free variables
+EpiFormal\GeneralEndpointRigidity.lean:461:42: error: Expected type must not contain free variables
+EpiFormal\GeneralEndpointRigidity.lean:461:42: error: Expected type must not contain free variables
+EpiFormal\GeneralEndpointRigidity.lean:466:42: error: Expected type must not contain free variables
+EpiFormal\GeneralEndpointRigidity.lean:466:42: error: Expected type must not contain free variables
+EpiFormal\GeneralEndpointRigidity.lean:466:42: error: Expected type must not contain free variables
+EpiFormal\GeneralEndpointRigidity.lean:466:42: error: Expected type must not contain free variables
+EpiFormal\GeneralEndpointRigidity.lean:466:42: error: Expected type must not contain free variables
+
+[Experimental source checks: TrichotomyAndPolyExtension]
+EpiFormal\TrichotomyAndPolyExtension.lean:195:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:223:4: error: Type mismatch: After simplification, term
+EpiFormal\TrichotomyAndPolyExtension.lean:279:57: error: Type mismatch: After simplification, term
+EpiFormal\TrichotomyAndPolyExtension.lean:416:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:451:40: error: linarith failed to find a contradiction
+EpiFormal\TrichotomyAndPolyExtension.lean:452:10: error: Application type mismatch: The argument
+EpiFormal\TrichotomyAndPolyExtension.lean:458:42: error: Application type mismatch: The argument
+EpiFormal\TrichotomyAndPolyExtension.lean:616:71: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:749:29: error: omega could not prove the goal:
+EpiFormal\TrichotomyAndPolyExtension.lean:811:6: error: mod_cast has type
+EpiFormal\TrichotomyAndPolyExtension.lean:845:9: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:890:66: error: omega could not prove the goal:
+EpiFormal\TrichotomyAndPolyExtension.lean:914:79: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:992:69: error: failed to prove positivity/nonnegativity/nonzeroness
+EpiFormal\TrichotomyAndPolyExtension.lean:999:60: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:1143:55: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:1170:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:1195:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:1235:8: error: No goals to be solved
+EpiFormal\TrichotomyAndPolyExtension.lean:1243:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:1292:46: error: failed to prove positivity/nonnegativity/nonzeroness
+EpiFormal\TrichotomyAndPolyExtension.lean:1350:4: error: Type mismatch: After simplification, term
+EpiFormal\TrichotomyAndPolyExtension.lean:1380:6: error: linarith failed to find a contradiction
+EpiFormal\TrichotomyAndPolyExtension.lean:1436:6: error: Type mismatch: After simplification, term
+EpiFormal\TrichotomyAndPolyExtension.lean:1618:2: error: linarith failed to find a contradiction
+EpiFormal\TrichotomyAndPolyExtension.lean:1659:87: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:1825:24: error: Application type mismatch: The argument
+EpiFormal\TrichotomyAndPolyExtension.lean:1916:85: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:2004:76: error: failed to prove positivity/nonnegativity/nonzeroness
+EpiFormal\TrichotomyAndPolyExtension.lean:2042:60: error: Application type mismatch: The last
+EpiFormal\TrichotomyAndPolyExtension.lean:2037:4: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:2174:24: error: unexpected token '||'; expected term
+EpiFormal\TrichotomyAndPolyExtension.lean:2166:24: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:2204:15: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:2280:47: error: Application type mismatch: The argument
+EpiFormal\TrichotomyAndPolyExtension.lean:2494:4: error: Type mismatch: After simplification, term
+EpiFormal\TrichotomyAndPolyExtension.lean:2538:56: error: Type mismatch: After simplification, term
+EpiFormal\TrichotomyAndPolyExtension.lean:2704:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:2724:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:2788:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:2837:74: error: unexpected identifier; expected ')', ',' or ':'
+EpiFormal\TrichotomyAndPolyExtension.lean:2836:8: error: Application type mismatch: The argument
+EpiFormal\TrichotomyAndPolyExtension.lean:2837:72: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:2837:11: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:2829:60: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:2825:60: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:2988:7: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:3035:42: error: Application type mismatch: The argument
+EpiFormal\TrichotomyAndPolyExtension.lean:3156:69: error: `ring_nf` made no progress on the goal
+EpiFormal\TrichotomyAndPolyExtension.lean:3180:2: error: linarith failed to find a contradiction
+EpiFormal\TrichotomyAndPolyExtension.lean:3535:42: error: failed to prove positivity/nonnegativity/nonzeroness
+EpiFormal\TrichotomyAndPolyExtension.lean:3540:11: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:3546:10: error: Type mismatch
+EpiFormal\TrichotomyAndPolyExtension.lean:3604:54: error: failed to prove strict positivity, but it would be possible to prove nonnegativity if desired
+EpiFormal\TrichotomyAndPolyExtension.lean:3607:6: error: Type mismatch
+EpiFormal\TrichotomyAndPolyExtension.lean:3661:87: error: linarith failed to find a contradiction
+EpiFormal\TrichotomyAndPolyExtension.lean:3655:52: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:3690:54: error: mod_cast has type
+EpiFormal\TrichotomyAndPolyExtension.lean:3780:51: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:3793:77: error: linarith failed to find a contradiction
+EpiFormal\TrichotomyAndPolyExtension.lean:3788:67: error: unsolved goals
+EpiFormal\TrichotomyAndPolyExtension.lean:3857:16: error: Tactic `assumption` failed
+EpiFormal\TrichotomyAndPolyExtension.lean:3883:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:3974:40: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+EpiFormal\TrichotomyAndPolyExtension.lean:3979:8: error: Type mismatch: After simplification, term

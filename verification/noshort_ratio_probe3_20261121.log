@@ -1,0 +1,14 @@
+﻿EpiFormal/NoShortDimRatio.lean:106:2: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+'NoShortDim.Q_ratio_lo' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoShortDim.Q_ratio_hi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoShortDim.Qsqrt_ge_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoShortDim.H_ge_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoShortDim.H_ratio_lo' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoShortDim.Qsqrt_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoShortDim.H_ratio_hi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoShortDim.gamma_pos' depends on axioms: [propext, Classical.choice, Quot.sound]

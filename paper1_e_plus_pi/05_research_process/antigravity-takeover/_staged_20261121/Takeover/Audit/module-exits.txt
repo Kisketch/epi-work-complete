@@ -1,0 +1,3 @@
+FiniteStateGauge=0
+GaugeLiminfComplete=0
+PolyGaugeAndPhaseTransition=0

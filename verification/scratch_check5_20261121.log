@@ -1,0 +1,11 @@
+﻿@Nat.cast_add : ∀ {R : Type u_1} [inst : AddMonoidWithOne R] (m n : ℕ), ↑(m + n) = ↑m + ↑n
+ScratchCheck.lean:5:8: error(lean.unknownIdentifier): Unknown identifier `div_le_div_iff`
+ScratchCheck.lean:6:8: error(lean.unknownIdentifier): Unknown constant `Real.log_two_gt_d69`
+@le_log_iff_exp_le : ∀ {x y : ℝ}, 0 < y → (x ≤ log y ↔ rexp x ≤ y)
+Nat.add_sub_cancel : ∀ (n m : ℕ), n + m - m = n
+@nsmul_eq_mul : ∀ {α : Type u_1} [inst : NonAssocSemiring α] (n : ℕ) (a : α), n • a = ↑n * a
+@Int.cast_natCast : ∀ {R : Type u_1} [inst : AddGroupWithOne R] (n : ℕ), ↑↑n = ↑n
+Nat.le_add_right : ∀ (n k : ℕ), n ≤ n + k
+@sum_neg_distrib : ∀ {ι : Type u_1} {G : Type u_2} {s : Finset ι} [inst : SubtractionCommMonoid G] (f : ι → G),
+  ∑ x ∈ s, -f x = -∑ x ∈ s, f x
+exp_nat_mul : ∀ (x : ℝ) (n : ℕ), rexp (↑n * x) = rexp x ^ n

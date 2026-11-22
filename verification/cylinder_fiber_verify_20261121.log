@@ -1,0 +1,17 @@
+﻿EpiFormal/CylinderFiber.lean:30:2: error: No goals to be solved
+EpiFormal/CylinderFiber.lean:38:38: error(lean.unknownIdentifier): Unknown constant `Finset.card_Icc`
+EpiFormal/CylinderFiber.lean:36:72: error: unsolved goals
+w : List ℕ
+K : ℕ
+⊢ (Finset.Icc 1 K).card = K
+
+case H
+w : List ℕ
+K : ℕ
+⊢ Function.Injective fun k => w ++ [k]
+EpiFormal/CylinderFiber.lean:51:46: error(lean.unknownIdentifier): Unknown identifier `j`
+'Cylinder.children' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.mem_children_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.card_children' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Cylinder.fiber_card_eq' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Cylinder.child_prefix_self' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

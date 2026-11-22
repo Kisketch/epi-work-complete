@@ -1,0 +1,49 @@
+﻿EpiFormal/WindowHinter.lean:50:16: error: Application type mismatch: The argument
+  F
+has type
+  Finset ι
+but is expected to have type
+  Finset α
+in the application
+  Finset.image f F
+EpiFormal/WindowHinter.lean:39:2: error: unsolved goals
+case pos
+ι α : Type
+inst✝² : DecidableEq ι
+inst✝¹ : DecidableEq α
+F : Finset ι
+A : Finset α
+meet : α → ι → Prop
+inst✝ : (a : α) → (i : ι) → Decidable (meet a i)
+hcover : ∀ a ∈ A, ∃ i ∈ F, meet a i
+Kc : ι → ℕ
+hKc : ∀ i ∈ F, ↑{a ∈ A | meet a i}.card ≤ ↑(Kc i)
+a0 : α
+ha0 : a0 ∈ A
+i0 : ι
+hi0F : i0 ∈ F
+right✝ : meet a0 i0
+f : α → ι
+hf : ∀ a ∈ A, f a ∈ F ∧ meet a (f a)
+hfF : ∀ a ∈ A, f a ∈ F
+hfmeet : ∀ a ∈ A, meet a (f a)
+hsub : Finset.image f sorry ⊆ F
+⊢ ↑A.card ≤ ∑ i ∈ F, ↑(Kc i)
+EpiFormal/WindowHinter.lean:55:27: error(lean.unknownIdentifier): Unknown identifier `f`
+EpiFormal/WindowHinter.lean:55:67: error(lean.unknownIdentifier): Unknown identifier `f`
+EpiFormal/WindowHinter.lean:37:44: error: unsolved goals
+case neg
+ι α : Type
+inst✝² : DecidableEq ι
+inst✝¹ : DecidableEq α
+F : Finset ι
+A : Finset α
+meet : α → ι → Prop
+inst✝ : (a : α) → (i : ι) → Decidable (meet a i)
+hcover : ∀ a ∈ A, ∃ i ∈ F, meet a i
+Kc : ι → ℕ
+hKc : ∀ i ∈ F, ↑{a ∈ A | meet a i}.card ≤ ↑(Kc i)
+hA : ¬A.Nonempty
+⊢ ↑A.card ≤ ∑ i ∈ F, ↑(Kc i)
+'HinterBridge.thresh_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HinterBridge.fiber_count_ge' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

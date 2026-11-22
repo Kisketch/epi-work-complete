@@ -1,0 +1,13 @@
+﻿EpiFormal/WindowConcreteThresh.lean:22:5: warning: Variable name `d0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _d0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+EpiFormal/WindowConcreteThresh.lean:22:8: warning: Variable name `L` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _L
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'WindowConcrete.stopped_window_unit' depends on axioms: [propext, Classical.choice, Quot.sound]

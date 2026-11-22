@@ -1,0 +1,28 @@
+warning: mathlib: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\mathlib
+warning: plausible: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\plausible
+warning: LeanSearchClient: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\LeanSearchClient
+warning: importGraph: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\importGraph
+warning: proofwidgets: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\proofwidgets
+warning: aesop: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\aesop
+warning: Qq: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\Qq
+warning: batteries: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\batteries
+warning: Cli: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\Cli
+'DVerify.H_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DVerify.dirichlet_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DVerify.linForm_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DVerify.linForm_abs_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DVerify.linForm_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DVerify.Psel_Qsel_coprime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DVerify.gcd_dvd_Qsel' depends on axioms: [propext, Quot.sound]
+'DVerify.divisor_restriction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DVerify.prop_8_1_div' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DVerify.prop_8_1' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,24 @@
+﻿EpiFormal/WindowMuImplication.lean:42:30: error(lean.unknownIdentifier): Unknown constant `Finset.card_nsmul`
+EpiFormal/WindowMuImplication.lean:41:47: error: unsolved goals
+ι : Type u_1
+μ : Measure ℝ
+A : ι → Set ℝ
+G : Finset ι
+U : Set ℝ
+N : ℕ
+m0 : ℝ
+hcard : #G ≤ N
+hcover : U ⊆ ⋃ i ∈ G, A i
+hbound : ∀ i ∈ G, μ (A i) ≤ ENNReal.ofReal m0
+⊢ #G • ENNReal.ofReal m0 = ↑(#G) * ENNReal.ofReal m0
+EpiFormal/WindowMuImplication.lean:45:14: error(lean.unknownIdentifier): Unknown identifier `mul_le_mul_right'`
+EpiFormal/WindowMuImplication.lean:46:8: error: No goals to be solved
+EpiFormal/WindowMuImplication.lean:50:5: warning: Variable name `hm0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hm0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'WindowMu.mu_biUnion_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMu.mu_window_le' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMu.exp_ratio_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

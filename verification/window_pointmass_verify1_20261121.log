@@ -1,0 +1,61 @@
+﻿EpiFormal/WindowPointMass.lean:58:12: error: Function expected at
+  Finset.prod_le_prod ?m.344
+but this term has type
+  ∏ i ∈ ?m.342, ?m.340 i ≤ ∏ i ∈ ?m.342, ?m.341 i
+
+Note: Expected a function because this term is being applied to the argument
+  (fun i hi => ?_)
+EpiFormal/WindowPointMass.lean:58:36: error: not a positivity goal
+EpiFormal/WindowPointMass.lean:59:6: error: No goals to be solved
+EpiFormal/WindowPointMass.lean:71:56: error: Application type mismatch: The argument
+  hPpos
+has type
+  0 < ∏ i ∈ Finset.Ico j0 j, B i
+but is expected to have type
+  2 ^ (j - j0) ≤ ∏ i ∈ Finset.Ico j0 j, B i
+in the application
+  div_le_div_of_nonneg_left ?m.454 ?m.455 hPpos
+EpiFormal/WindowPointMass.lean:85:32: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?a⁻¹ ^ ?n
+in the target expression
+  m j0 * (2 ^ k)⁻¹ = m j0 * (1 / 2) ^ k
+
+μ : MeasureTheory.Measure ℝ
+T : StoppedTree.TreeData
+m B : ℕ → ℝ
+j0 : ℕ
+hB2 : ∀ j ≥ j0, 2 ≤ B j
+hBpos : ∀ (i : ℕ), 0 < B i
+hm0 : ∀ I ∈ T.atoms j0, μ (Set.Icc I.1 I.2) ≤ ENNReal.ofReal (m j0)
+hm0nn : 0 ≤ m j0
+hmrec : ∀ j ≥ j0, m (j + 1) = m j / B j
+hsplit : ∀ j ≥ j0, ∀ I ∈ T.atoms j, ∀ C ∈ T.child j I, μ (Set.Icc C.1 C.2) ≤ μ (Set.Icc I.1 I.2) / ENNReal.ofReal (B j)
+hmem : ∀ j ≥ j0, ∀ I ∈ T.atoms (j + 1), ∃ P ∈ T.atoms j, I ∈ T.child j P
+hnest : ∀ (x : ℝ), ∀ j ≥ j0, ∃ I ∈ T.atoms j, x ∈ Set.Icc I.1 I.2
+x : ℝ
+hB1 : ∀ j ≥ j0, 1 ≤ B j
+hle : ∀ j ≥ j0, μ {x} ≤ ENNReal.ofReal (m j0 / 2 ^ (j - j0))
+k : ℕ
+hk : j0 + k - j0 = k
+⊢ m j0 * (2 ^ k)⁻¹ = m j0 * (1 / 2) ^ k
+EpiFormal/WindowPointMass.lean:92:4: error: Type mismatch: After simplification, term
+  hcomp
+ has type
+  @Filter.Tendsto ℕ ℝ≥0∞ (ENNReal.ofReal ∘ fun k => m j0 / 2 ^ k) Filter.atTop (nhds 0)
+but is expected to have type
+  @Filter.Tendsto ℕ ℝ≥0∞ (fun k => ENNReal.ofReal (m j0 / 2 ^ k)) Filter.atTop (nhds 0)
+EpiFormal/WindowPointMass.lean:96:24: error: Application type mismatch: The argument
+  fun k => hbound k
+has type
+  ∀ (k : ℕ), μ {x} ≤ ENNReal.ofReal (m j0 / 2 ^ (j0 + k - j0))
+but is expected to have type
+  ∀ᶠ (c : ℕ) in Filter.atTop, μ {x} ≤ ENNReal.ofReal (m j0 / 2 ^ (j0 + c - j0))
+in the application
+  ge_of_tendsto htend fun k => hbound k
+EpiFormal/WindowPointMass.lean:97:26: error: Function expected at
+  zero_le
+but this term has type
+  0 ≤ ?m.787
+
+Note: Expected a function because this term is being applied to the argument
+  _

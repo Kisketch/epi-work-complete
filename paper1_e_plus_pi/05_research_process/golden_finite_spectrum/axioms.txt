@@ -1,0 +1,3 @@
+GoldenHeadCutoff.fixed_side_ratio: propext, Classical.choice, Quot.sound
+GoldenHeadCutoff.moving_side_ratio: propext, Classical.choice, Quot.sound
+GoldenHeadCutoff.mismatch_gap: propext, Classical.choice, Quot.sound

@@ -1,0 +1,141 @@
+warning: mathlib: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\mathlib
+warning: plausible: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\plausible
+warning: LeanSearchClient: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\LeanSearchClient
+warning: importGraph: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\importGraph
+warning: proofwidgets: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\proofwidgets
+warning: aesop: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\aesop
+warning: Qq: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\Qq
+warning: batteries: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\batteries
+warning: Cli: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\Cli
+'PolyGaugeAndPhaseTransition.poly_log_Q_asymptotic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PolyGaugeAndPhaseTransition.polyInterpGauge_log_scale_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.poly_unsigned_exact_limit_iff_defect_binary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.poly_unsigned_exact_limit_empty_of_not_div_c' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.mkMetric_polyCritGauge_polyStrictLevel_null' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.polyExactLevel_critGauge_sigma_finite' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.mkMetric_polyUnsignedExactLimit_null_of_critGauge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.polyUnsignedExactLimit_binaryGauge_sigma_finite' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.mkMetric_polyCritGauge_polyExactLevel_inter_open_eq_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.mkMetric_polyBinaryGauge_unsignedExactLimit_inter_open_eq_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.mkMetric_polyCritGauge_polyCircleStrictLevel_null' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.mkMetric_polyCritGauge_polyCircleExactLevel_inter_open_eq_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.polyCircleExactLevel_critGauge_sigma_finite' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.mkMetric_polyCircleUnsignedExactLimit_null_of_critGauge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.mkMetric_polyBinaryGauge_polyCircleUnsignedExactLimit_inter_open_eq_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.polyCircleUnsignedExactLimit_binaryGauge_sigma_finite' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.polyExactLevel_power_gauge_dichotomy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.polyExactLevel_liminf_four_way' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PolyGaugeAndPhaseTransition.polyUnsignedExactLimit_liminf_four_way' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GaugeLiminf.mkMetric_digitClass_le_liminf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaugeLiminf.mkMetric_binaryDigitClass_le_liminf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaugeLiminf.mkMetric_levelSet_null_of_liminf_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaugeLiminf.mkMetric_unsignedExactLimit_null_of_liminf_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaugeLiminf.levelSet_countable_cover_of_liminf_lt_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaugeLiminf.unsignedExactLimit_countable_cover_of_liminf_lt_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GaugeScaleComparison.small_radius_le_of_adjacent_scale_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaugeScaleComparison.not_countable_union_finite_of_adjacent_scale_ratio' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GaugeScaleComparison.exists_small_radius_comparison_of_lt_liminf' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GaugeScaleComparison.not_countable_union_finite_of_liminf_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GaugeScaleComparison.mkMetric_eq_top_of_liminf_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaugeLiminf.calibrated_exactLevel_eq_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaugeLiminf.exactLevel_eq_top_of_liminf_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaugeLiminf.exactLevel_not_countable_union_finite_of_liminf_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GaugeLiminf.circleExactLevel_liminf_trichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaugeLiminf.circleUnsignedExactLimit_liminf_trichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaugeLiminf.liminf_normalizedGaugeCost_zero_of_smaller_base' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaugeLiminf.mkMetric_circleStrictLevel_null_of_liminf_lt_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FiniteStateGauge.walkMass_of_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.walkCount_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PolyGaugeAndPhaseTransition.mkMetric_polyLevelSet_null_of_liminf_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyGaugeAndPhaseTransition.polyExactLevel_fast_gauge_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PolyGaugeAndPhaseTransition.polyExactLevel_slow_gauge_non_sigma_finite' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PolyWeightedUpper.dimH_polyWeightedExponent_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HermiteResiduePeriod.state_eq_selected' depends on axioms: [propext, Quot.sound]
+'HermiteResiduePeriod.selected_period' depends on axioms: [propext, Quot.sound]
+'HermiteResiduePeriod.state_period_3' depends on axioms: [propext, Quot.sound]
+'HermiteResiduePeriod.state_period_4' depends on axioms: [propext, Quot.sound]
+'HermiteResiduePeriod.state_period_5' depends on axioms: [propext, Quot.sound]
+'HermiteResiduePeriod.state_period_6' depends on axioms: [propext, Quot.sound]
+'PolyWeightedLower.exists_lower_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PolyWeightedLower.exists_level_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PolyWeightedLower.one_le_hausdorffMeasure_cantorSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PolyWeightedLower.dimH_polyExactLimit_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PolyWeightedLower.dimH_polyExactLimit_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PolyWeightedLower.dimH_polyWeightedSublevel_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PolyWeightedLower.polyZeroWeightSublevel_eq_univ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PolyWeightedLower.polyExactLimit_zero_eq_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.card_path_eq_walkMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.mkMetric_fixedTail_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.mkMetric_eventualTail_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.eventualTail_countable_cover_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.fixedTail_finite_of_root_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.eventualTail_countable_of_root_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.mkMetric_circle_fixedTail_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.exists_marked_edge_with_return' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.frequently_defectShift_eq_level' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.exactTail_empty_of_no_marked_return' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.exists_component_suffix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.exactTail_eq_iUnion_marked_components' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.exactTail_countable_of_marked_roots_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.mkMetric_exactTail_null_of_dominant_liminf_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,50 @@
+﻿EpiFormal/WindowWordTree.lean:23:9: error: overloaded, errors 
+  failed to synthesize instance of type class
+    Singleton (List (List ?m.8)) (Finset (List ℕ))
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  
+  23:10 unsupported structure instance field abbreviation, expecting identifier
+EpiFormal/WindowWordTree.lean:28:50: error: unsolved goals
+D : Finset ℕ
+w x : List ℕ
+⊢ (∃ a ∈ D, w ++ [a] = x) ↔ ∃ a ∈ D, x = w ++ [a]
+EpiFormal/WindowWordTree.lean:35:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (fun a => w ++ [a]) a
+in the target expression
+  (w ++ [a]).length = (w ++ [b]).length
+
+w : List ℕ
+a b : ℕ
+hab : (fun a => w ++ [a]) a = (fun a => w ++ [a]) b
+⊢ (w ++ [a]).length = (w ++ [b]).length
+EpiFormal/WindowWordTree.lean:36:36: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+EpiFormal/WindowWordTree.lean:37:2: error: Type mismatch
+  h.right
+has type
+  [a] = [b]
+but is expected to have type
+  a = b
+EpiFormal/WindowWordTree.lean:49:6: warning: declaration uses `sorry`
+EpiFormal/WindowWordTree.lean:49:6: warning: declaration uses `sorry`
+EpiFormal/WindowWordTree.lean:68:6: warning: declaration uses `sorry`
+EpiFormal/WindowWordTree.lean:68:6: warning: declaration uses `sorry`
+EpiFormal/WindowWordTree.lean:67:8: warning: declaration uses `sorry`
+EpiFormal/WindowWordTree.lean:69:2: warning: Unused tactic linter: `exact Finset.mem_singleton_self []` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+EpiFormal/WindowWordTree.lean:78:43: error: No goals to be solved
+EpiFormal/WindowWordTree.lean:76:12: warning: declaration uses `sorry`
+EpiFormal/WindowWordTree.lean:76:12: warning: declaration uses `sorry`
+'WindowWordTree.mem_childrenOf' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowWordTree.append_single_injective' depends on axioms: [sorryAx]
+'WindowWordTree.childrenOf_card' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowWordTree.children_mem_next' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowWordTree.children_disjoint' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowWordTree.nil_mem_levelWords_zero' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowWordTree.uniform_level_count' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

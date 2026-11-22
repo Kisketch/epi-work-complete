@@ -1,0 +1,2 @@
+﻿'WindowMass.ofReal_diam_le_mul_ediam_rpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMass.mass_distrib_of_diam_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

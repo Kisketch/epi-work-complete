@@ -1,0 +1,5 @@
+﻿@one_div_le_one_div_of_le : ∀ {α : Type u_1} [inst : Semifield α] [inst_1 : PartialOrder α] [PosMulReflectLT α]
+  {a b : α}, 0 < a → a ≤ b → 1 / b ≤ 1 / a
+@Nat.cast_ofNat : ∀ {R : Type u_1} {n : ℕ} [inst : NatCast R] [inst_1 : n.AtLeastTwo], ↑(OfNat.ofNat n) = OfNat.ofNat n
+ScratchCheck.lean:6:8: error(lean.unknownIdentifier): Unknown identifier `div_le_iff`
+ScratchCheck.lean:7:8: error(lean.unknownIdentifier): Unknown identifier `le_div_iff`

@@ -1,0 +1,473 @@
+warning: manifest out of date: packages directory changed; use `lake update` to rebuild the manifest (warning: this will update ALL workspace dependencies)
+warning: mathlib: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\mathlib
+warning: plausible: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\plausible
+warning: LeanSearchClient: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\LeanSearchClient
+warning: importGraph: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\importGraph
+warning: proofwidgets: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\proofwidgets
+warning: aesop: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\aesop
+warning: Qq: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\Qq
+warning: batteries: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\batteries
+warning: Cli: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\Cli
+✔ [9047/9090] Built EpiFormal.Basic (1.4s)
+⚠ [9048/9090] Built EpiFormal.Axioms (132s)
+warning: EpiFormal\Axioms.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9049/9090] Built EpiFormal.PadeODE (132s)
+warning: EpiFormal\PadeODE.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/PadeODE.lean:3:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Polynomial Finset`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/PadeODE.lean:53:13: This simp argument is unused:
+  neg_smul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [one_smul, neg_neg, smul_eq_mul, neg_mul, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/PadeODE.lean:53:23: This simp argument is unused:
+  one_smul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [neg_smul, neg_neg, smul_eq_mul, neg_mul, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/PadeODE.lean:53:33: This simp argument is unused:
+  neg_neg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [neg_smul, one_smul, smul_eq_mul, neg_mul, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/PadeODE.lean:53:42: This simp argument is unused:
+  smul_eq_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [neg_smul, one_smul, neg_neg, neg_mul, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/PadeODE.lean:53:64: This simp argument is unused:
+  one_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [neg_smul, one_smul, neg_neg, smul_eq_mul, neg_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: EpiFormal/PadeODE.lean:99:0: 'sum_telescope' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeODE.lean:100:0: 'tele_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeODE.lean:101:0: 'natDegree_padéP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeODE.lean:102:0: 'iter_deriv_padéP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeODE.lean:103:0: 'deriv_A' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeODE.lean:104:0: 'padéR_ode' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9050/9090] Built EpiFormal.Series (132s)
+warning: EpiFormal\Series.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+info: EpiFormal/Series.lean:23:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: EpiFormal/Series.lean:27:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: EpiFormal/Series.lean:22:24: This simp argument is unused:
+  mul_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [one_pow]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Series.lean:74:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: EpiFormal/Series.lean:77:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/Series.lean:68:58: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [h1, h2, hn, ite_false, Pi.add_apply, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Series.lean:54:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Series.lean:56:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Series.lean:75:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [9051/9090] Built EpiFormal.Spectrum (133s)
+warning: EpiFormal\Spectrum.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/Spectrum.lean:14:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `set_option maxHeartbeats 1600000`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/Spectrum.lean:14:0: Unscoped option maxHeartbeats is not allowed:
+Please scope this to individual declarations, as in
+```
+set_option maxHeartbeats in
+-- comment explaining why this is necessary
+example : ... := ...
+```
+
+Note: This linter can be disabled with `set_option linter.style.setOption false`
+warning: EpiFormal/Spectrum.lean:140:4: The `induction'` tactic is discouraged: please strongly consider using `induction` instead.
+
+Note: This linter can be disabled with `set_option linter.style.induction false`
+warning: EpiFormal/Spectrum.lean:320:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:320:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:590:6: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: EpiFormal/Spectrum.lean:589:4: The `induction'` tactic is discouraged: please strongly consider using `induction` instead.
+
+Note: This linter can be disabled with `set_option linter.style.induction false`
+warning: EpiFormal/Spectrum.lean:660:14: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:657:12: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:657:12: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:660:10: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:660:14: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:774:14: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:812:10: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:821:10: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:771:12: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:792:16: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:811:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:820:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:728:10: The `induction'` tactic is discouraged: please strongly consider using `induction` instead.
+
+Note: This linter can be disabled with `set_option linter.style.induction false`
+warning: EpiFormal/Spectrum.lean:771:12: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:774:10: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:774:14: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:792:16: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:811:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:812:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:812:10: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:820:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:821:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:821:10: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:860:16: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:842:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Spectrum.lean:860:12: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:860:16: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/Spectrum.lean:989:31: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: EpiFormal/Spectrum.lean:1028:24: This simp argument is unused:
+  Real.dist_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [abs_sub_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Spectrum.lean:1028:38: This simp argument is unused:
+  abs_sub_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Real.dist_eq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Spectrum.lean:1174:6: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:989:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:1021:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:1083:10: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:1158:8: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:1164:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:989:27: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1021:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1083:10: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1158:8: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1164:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1174:2: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1174:6: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1183:6: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:1183:20: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:1183:2: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1183:6: Unused tactic linter: `push_cast` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1183:16: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1183:20: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/Spectrum.lean:1200:31: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: EpiFormal/Spectrum.lean:1200:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:1200:27: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/Spectrum.lean:1267:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: EpiFormal/Spectrum.lean:1254:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:1254:22: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:1254:4: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1254:8: Unused tactic linter: `push_cast` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1254:18: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1254:22: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/Spectrum.lean:1317:0: 'CSpectrum.Qsel_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1318:0: 'CSpectrum.Psel_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/Spectrum.lean:1319:0: 'CSpectrum.Qsel_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/Spectrum.lean:1320:0: 'CSpectrum.sel_determinant' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/Spectrum.lean:1321:0: 'CSpectrum.Psel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1322:0: 'CSpectrum.Qsel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1323:0: 'CSpectrum.Qsel_double' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1324:0: 'CSpectrum.Qsel_succ_coprime' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1325:0: 'CSpectrum.Qsel_tendsto_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1326:0: 'CSpectrum.defect_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1327:0: 'CSpectrum.bounded_int_frequently' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1328:0: 'CSpectrum.bounded_int_limsup_nat' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1329:0: 'CSpectrum.integer_limsup_identify' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1330:0: 'CSpectrum.Mk_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/Spectrum.lean:1331:0: 'CSpectrum.W_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/Spectrum.lean:1332:0: 'CSpectrum.W_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1333:0: 'CSpectrum.increment_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1334:0: 'CSpectrum.ratio_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1335:0: 'CSpectrum.ratio_bddAbove' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1336:0: 'CSpectrum.ratio_tendsto_xOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1337:0: 'CSpectrum.residual_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1338:0: 'CSpectrum.residual_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1339:0: 'CSpectrum.eventually_nearest' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1340:0: 'CSpectrum.defect_xOf_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1341:0: 'CSpectrum.eps_xOf_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1342:0: 'CSpectrum.four_j_eps_xOf_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1343:0: 'CSpectrum.theorem6_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1344:0: 'CSpectrum.lemma5_four_S_integer' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1345:0: 'CSpectrum.theorem6_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: EpiFormal/Spectrum.lean:1345:34: '' starts on column 34, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+✖ [9052/9090] Building EpiFormal.Measure (40s)
+warning: EpiFormal\Measure.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+trace: .> LEAN_PATH=C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean;C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean c:\Users\Lgnatius\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\EpiFormal\Measure.lean -o C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean\EpiFormal\Measure.olean -i C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean\EpiFormal\Measure.ilean -c C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\ir\EpiFormal\Measure.c --setup C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\ir\EpiFormal\Measure.setup.json --json
+error: EpiFormal/Measure.lean:1:0: failed to read file 'C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean\Mathlib\NumberTheory\NumberField\Cyclotomic\Basic.olean.private'
+⚠ [9053/9090] Ran EpiFormal.Meiburg
+warning: EpiFormal\Meiburg.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9054/9090] Ran EpiFormal.MeiburgConvergence
+warning: EpiFormal\MeiburgConvergence.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9055/9090] Ran EpiFormal.FlintHills
+warning: EpiFormal\FlintHills.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9056/9090] Ran EpiFormal.Alekseyev
+warning: EpiFormal\Alekseyev.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+✖ [9057/9090] Building EpiFormal.PadeDeriv (40s)
+warning: EpiFormal\PadeDeriv.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+trace: .> LEAN_PATH=C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean;C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean c:\Users\Lgnatius\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\EpiFormal\PadeDeriv.lean -o C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean\EpiFormal\PadeDeriv.olean -i C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean\EpiFormal\PadeDeriv.ilean -c C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\ir\EpiFormal\PadeDeriv.c --setup C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\ir\EpiFormal\PadeDeriv.setup.json --json
+error: EpiFormal/PadeDeriv.lean:1:0: failed to read file 'C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean\Mathlib\NumberTheory\PythagoreanTriples.olean.private'
+⚠ [9058/9090] Ran EpiFormal.PadeBoundary
+warning: EpiFormal\PadeBoundary.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9059/9090] Ran EpiFormal.PadeRecurrence
+warning: EpiFormal\PadeRecurrence.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+✖ [9060/9090] Building EpiFormal.PadeIntegral (40s)
+warning: EpiFormal\PadeIntegral.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+trace: .> LEAN_PATH=C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean;C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean c:\Users\Lgnatius\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\EpiFormal\PadeIntegral.lean -o C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean\EpiFormal\PadeIntegral.olean -i C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean\EpiFormal\PadeIntegral.ilean -c C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\ir\EpiFormal\PadeIntegral.c --setup C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\ir\EpiFormal\PadeIntegral.setup.json --json
+error: EpiFormal/PadeIntegral.lean:1:0: failed to read file 'C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean\Mathlib\NumberTheory\PythagoreanTriples.olean.private'
+⚠ [9061/9090] Ran EpiFormal.EulerConvergents
+warning: EpiFormal\EulerConvergents.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9062/9090] Ran EpiFormal.AdjacentWitness
+warning: EpiFormal\AdjacentWitness.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+✖ [9063/9090] Building EpiFormal.AlgebraicIndependence (40s)
+warning: EpiFormal\AlgebraicIndependence.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+trace: .> LEAN_PATH=C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean;C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean c:\Users\Lgnatius\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\EpiFormal\AlgebraicIndependence.lean -o C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean\EpiFormal\AlgebraicIndependence.olean -i C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean\EpiFormal\AlgebraicIndependence.ilean -c C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\ir\EpiFormal\AlgebraicIndependence.c --setup C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\ir\EpiFormal\AlgebraicIndependence.setup.json --json
+error: EpiFormal/AlgebraicIndependence.lean:1:0: failed to read file 'C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean\Mathlib\NumberTheory\Height\MvPolynomial.olean.private'
+⚠ [9064/9090] Ran EpiFormal.Classification
+warning: EpiFormal\Classification.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9065/9090] Ran EpiFormal.SignedClusters
+warning: EpiFormal\SignedClusters.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9066/9090] Ran EpiFormal.DefectFibres
+warning: EpiFormal\DefectFibres.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9067/9090] Ran EpiFormal.SpectralGap
+warning: EpiFormal\SpectralGap.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9068/9090] Ran EpiFormal.DimHCore
+warning: EpiFormal\DimHCore.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9069/9090] Ran EpiFormal.DeltaReduction
+warning: EpiFormal\DeltaReduction.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9070/9090] Ran EpiFormal.DeltaSign
+warning: EpiFormal\DeltaSign.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9071/9090] Ran EpiFormal.DimHFinite
+warning: EpiFormal\DimHFinite.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+✖ [9072/9090] Building EpiFormal.Elementary (40s)
+warning: EpiFormal\Elementary.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+trace: .> LEAN_PATH=C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean;C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean c:\Users\Lgnatius\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\EpiFormal\Elementary.lean -o C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean\EpiFormal\Elementary.olean -i C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean\EpiFormal\Elementary.ilean -c C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\ir\EpiFormal\Elementary.c --setup C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\ir\EpiFormal\Elementary.setup.json --json
+error: EpiFormal/Elementary.lean:1:0: failed to read file 'C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean\Mathlib\NumberTheory\FLT\Three.olean.private'
+⚠ [9073/9090] Ran EpiFormal.Escape
+warning: EpiFormal\Escape.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9074/9090] Ran EpiFormal.EscapeBoundary
+warning: EpiFormal\EscapeBoundary.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9075/9090] Ran EpiFormal.EscapeReduction
+warning: EpiFormal\EscapeReduction.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+✖ [9076/9090] Building EpiFormal.FactorialCriterion (40s)
+warning: EpiFormal\FactorialCriterion.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+trace: .> LEAN_PATH=C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean;C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean c:\Users\Lgnatius\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\EpiFormal\FactorialCriterion.lean -o C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean\EpiFormal\FactorialCriterion.olean -i C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\lib\lean\EpiFormal\FactorialCriterion.ilean -c C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\ir\EpiFormal\FactorialCriterion.c --setup C:\workspace\epi-submission-lean-8acbb313632941b28c2a18504a7d1007\.lake\build\ir\EpiFormal\FactorialCriterion.setup.json --json
+error: EpiFormal/FactorialCriterion.lean:1:0: failed to read file 'C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake\packages\mathlib\.lake\build\lib\lean\Mathlib\NumberTheory\FLT\Three.olean.private'
+⚠ [9077/9090] Ran EpiFormal.OpenAI_mu_pi_bridge
+warning: EpiFormal\OpenAI_mu_pi_bridge.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9078/9090] Ran EpiFormal.ThresholdAttained
+warning: EpiFormal\ThresholdAttained.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9079/9090] Ran EpiFormal.QuarterPointCore
+warning: EpiFormal\QuarterPointCore.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9080/9090] Ran EpiFormal.QuarterPointTail
+warning: EpiFormal\QuarterPointTail.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9081/9090] Ran EpiFormal.QuarterPointFinal
+warning: EpiFormal\QuarterPointFinal.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9082/9090] Ran EpiFormal.SignedCriterion
+warning: EpiFormal\SignedCriterion.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9083/9090] Ran EpiFormal.WeightedPhase
+warning: EpiFormal\WeightedPhase.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9084/9090] Ran EpiFormal.WeightedFiber
+warning: EpiFormal\WeightedFiber.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9085/9090] Ran EpiFormal.WeightedDimHCore
+warning: EpiFormal\WeightedDimHCore.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9086/9090] Ran EpiFormal.WeightedLower
+warning: EpiFormal\WeightedLower.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9087/9090] Ran EpiFormal.WeightedCantor
+warning: EpiFormal\WeightedCantor.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9088/9090] Ran EpiFormal.WeightedUpper
+warning: EpiFormal\WeightedUpper.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9089/9090] Ran EpiFormal.WeightedFinal
+warning: EpiFormal\WeightedFinal.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+Some required targets logged failures:
+- EpiFormal.Measure
+- EpiFormal.PadeDeriv
+- EpiFormal.PadeIntegral
+- EpiFormal.AlgebraicIndependence
+- EpiFormal.Elementary
+- EpiFormal.FactorialCriterion
+error: build failed

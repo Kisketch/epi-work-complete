@@ -1,0 +1,47 @@
+﻿EpiFormal/WindowMassFull.lean:52:75: error: Function expected at
+  zero_le
+but this term has type
+  0 ≤ ?m.467
+
+Note: Expected a function because this term is being applied to the argument
+  _
+EpiFormal/WindowMassFull.lean:58:10: error: Function expected at
+  zero_le
+but this term has type
+  0 ≤ ?m.488
+
+Note: Expected a function because this term is being applied to the argument
+  _
+EpiFormal/WindowMassFull.lean:65:6: error: unsolved goals
+case inr.inr.inr
+μ : MeasureTheory.Measure ℝ
+H : ℕ → ℝ
+j0 : ℕ
+hH : Filter.Tendsto (fun j => 1 / H j ^ 2) Filter.atTop (𝓝 0)
+d0 L m0 : ℕ → ℝ
+C s : ℝ
+P : ℕ → Finset (ℝ × ℝ)
+hd0j : ∀ (j : ℕ), 0 < d0 j
+hLj : ∀ (j : ℕ), 0 ≤ L j
+hm0j : ∀ (j : ℕ), 0 ≤ m0 j
+htriv : ∀ (j : ℕ), ∀ I ∈ P j, I.1 < I.2
+hlen_lo : ∀ (j : ℕ), ∀ I ∈ P j, d0 j ≤ I.2 - I.1
+hlen_hi : ∀ (j : ℕ), ∀ I ∈ P j, I.2 - I.1 ≤ L j
+hdisj : ∀ (j : ℕ), ∀ I ∈ P j, ∀ J ∈ P j, I ≠ J → Disjoint (Set.Ioo I.1 I.2) (Set.Ioo J.1 J.2)
+U : Set ℝ
+hbddU : Bornology.IsBounded U
+hcov : ∀ (j : ℕ), ∀ x ∈ U, ∃ I ∈ P j, x ∈ Set.Icc I.1 I.2
+hbound : ∀ (j : ℕ), ∀ I ∈ P j, μ (Set.Icc I.1 I.2) ≤ ENNReal.ofReal (m0 j)
+hthresh :
+  ∀ (j : ℕ),
+    j0 ≤ j → ∀ h' ∈ Set.Icc (1 / H (j + 1) ^ 2) (1 / H j ^ 2), ((2 * h' + 3 * L j) / d0 j + 2) * m0 j ≤ C * h' ^ s
+hpt : ∀ (x : ℝ), μ {x} = 0
+hprob : ∀ (V : Set ℝ), μ V ≤ 1
+hCbig : ∀ (D : ℝ), 1 / H j0 ^ 2 < D → 1 ≤ C * D ^ s
+hpos : 0 < Metric.diam U
+hge : 1 / H j0 ^ 2 ≤ Metric.diam U
+hgt : 1 / H j0 ^ 2 < Metric.diam U
+h1 : μ U ≤ 1
+⊢ μ U ≤ ENNReal.ofReal (C * Metric.diam U ^ s)
+EpiFormal/WindowMassFull.lean:66:6: error: No goals to be solved
+'WindowMassFull.mu_window_le_full' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

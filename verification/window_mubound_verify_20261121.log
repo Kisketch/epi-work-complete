@@ -1,0 +1,10 @@
+﻿EpiFormal/WindowMuBound.lean:26:24: error: expected token
+EpiFormal/WindowMuBound.lean:25:37: error: Application type mismatch: The argument
+  A
+has type
+  ι → Set ℝ
+but is expected to have type
+  Finset ?m.53
+in the application
+  WindowMu.mu_window_le ?m.56 A
+'WindowMuBound.mu_le_of_overlap_thresh' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

@@ -1,0 +1,2 @@
+﻿EpiFormal/WindowStoppedUniform.lean:37:21: error(lean.unknownIdentifier): Unknown constant `ENNReal.ofReal_le_ofReal.mpr`
+'WindowStoppedUniform.stopped_uniform_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

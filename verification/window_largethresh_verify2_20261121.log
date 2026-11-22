@@ -1,0 +1,21 @@
+﻿EpiFormal/WindowLargeThresh.lean:25:4: error: Tactic `apply` failed: could not unify the conclusion of `@add_le_add_right`
+  ?a + ?b ≤ ?a + ?c
+with the goal
+  (2 * D + 3 * L) / d0 + 2 ≤ (2 + 3 * L) / d0 + 2
+
+Note: The full type of `@add_le_add_right` is
+  ∀ {α : Type ?u.138} {b c : α} [inst : Add α] [inst_1 : LE α] [AddLeftMono α], b ≤ c → ∀ (a : α), a + b ≤ a + c
+
+d0 L m0 C s dmin D : ℝ
+hd0 : 0 < d0
+hm0 : 0 ≤ m0
+hlo : dmin ≤ D
+hhi : D ≤ 1
+hdmin : 0 < dmin
+hs : 0 ≤ s
+hC : C = ((2 + 3 * L) / d0 + 2) * m0 / dmin ^ s
+hDnn : 0 ≤ D
+⊢ (2 * D + 3 * L) / d0 + 2 ≤ (2 + 3 * L) / d0 + 2
+EpiFormal/WindowLargeThresh.lean:35:42: error: failed to prove positivity/nonnegativity/nonzeroness
+EpiFormal/WindowLargeThresh.lean:37:4: error: No goals to be solved
+'WindowLargeThresh.large_window_thresh' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

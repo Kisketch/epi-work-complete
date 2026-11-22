@@ -1,0 +1,86 @@
+﻿EpiFormal/WindowMainBound.lean:75:2: error: linarith failed to find a contradiction
+R : ℝ
+hR : 10 ^ 6 ≤ R
+hR0 : 0 ≤ R
+hMhi1 : 1 ≤ Mhi R
+hMhipos : 0 < ↑(Mhi R)
+h106ne : 10 ^ 6 ≠ 0
+hdiv : Real.log (↑(Mhi R) / 10 ^ 6) = Real.log ↑(Mhi R) - Real.log (10 ^ 6)
+hle : Real.log (↑(Mhi R) / 10 ^ 6) ≤ ↑(Mhi R) / 10 ^ 6 - 1
+a✝ : ↑(Mhi R) / 10 ^ 6 + 17 < Real.log ↑(Mhi R)
+⊢ False
+failed
+EpiFormal/WindowMainBound.lean:135:31: error: linarith failed to find a contradiction
+R : ℝ
+hR : 10 ^ 6 ≤ R
+d : ℕ
+hd : 1 ≤ d
+hR0 : 0 ≤ R
+hdN : 0 < d
+hdrpos : 0 < ↑d
+hW1nn : 0 ≤ W1 R
+hW2nn : 0 ≤ W2 R
+hAnn : 0 ≤ ↑(Acount R d)
+hBnn : 0 ≤ ↑(Bcount R d)
+ha_nn : 0 ≤ W1 R / ↑d
+hb_nn : 0 ≤ W2 R / ↑d
+hA1 : |↑(Acount R d) - W1 R / ↑d| ≤ 1
+hB1 : |↑(Bcount R d) - W2 R / ↑d| ≤ 1
+hBub : ↑(Bcount R d) ≤ W2 R / ↑d + 1
+ha : W1 R / ↑d ≤ 21e-3 * R / ↑d
+hb : W2 R / ↑d ≤ 21e-3 * R / ↑d
+hadd : 21e-3 * R / ↑d + 21e-3 * R / ↑d = 42e-3 * R / ↑d
+hmul0 : 42e-3 * R * (1 / ↑d) = 42e-3 * R / ↑d
+e2 : W1 R / ↑d * (W2 R / ↑d) = W1 R * W2 R / ↑d ^ 2
+e12 :
+  (↑(Acount R d) - W1 R / ↑d) * ↑(Bcount R d) + W1 R / ↑d * (↑(Bcount R d) - W2 R / ↑d) =
+    ↑(Acount R d) * ↑(Bcount R d) - W1 R / ↑d * (W2 R / ↑d)
+hX1 : -|(↑(Acount R d) - W1 R / ↑d) * ↑(Bcount R d)| ≤ (↑(Acount R d) - W1 R / ↑d) * ↑(Bcount R d)
+hY1 : -|W1 R / ↑d * (↑(Bcount R d) - W2 R / ↑d)| ≤ W1 R / ↑d * (↑(Bcount R d) - W2 R / ↑d)
+hX2 : (↑(Acount R d) - W1 R / ↑d) * ↑(Bcount R d) ≤ |(↑(Acount R d) - W1 R / ↑d) * ↑(Bcount R d)|
+hY2 : W1 R / ↑d * (↑(Bcount R d) - W2 R / ↑d) ≤ |W1 R / ↑d * (↑(Bcount R d) - W2 R / ↑d)|
+a✝ :
+  (↑(Acount R d) - W1 R / ↑d) * ↑(Bcount R d) + W1 R / ↑d * (↑(Bcount R d) - W2 R / ↑d) <
+    -(|↑(Acount R d) - W1 R / ↑d| * |↑(Bcount R d)| + |W1 R / ↑d| * |↑(Bcount R d) - W2 R / ↑d|)
+⊢ False
+failed
+EpiFormal/WindowMainBound.lean:135:55: error: linarith failed to find a contradiction
+R : ℝ
+hR : 10 ^ 6 ≤ R
+d : ℕ
+hd : 1 ≤ d
+hR0 : 0 ≤ R
+hdN : 0 < d
+hdrpos : 0 < ↑d
+hW1nn : 0 ≤ W1 R
+hW2nn : 0 ≤ W2 R
+hAnn : 0 ≤ ↑(Acount R d)
+hBnn : 0 ≤ ↑(Bcount R d)
+ha_nn : 0 ≤ W1 R / ↑d
+hb_nn : 0 ≤ W2 R / ↑d
+hA1 : |↑(Acount R d) - W1 R / ↑d| ≤ 1
+hB1 : |↑(Bcount R d) - W2 R / ↑d| ≤ 1
+hBub : ↑(Bcount R d) ≤ W2 R / ↑d + 1
+ha : W1 R / ↑d ≤ 21e-3 * R / ↑d
+hb : W2 R / ↑d ≤ 21e-3 * R / ↑d
+hadd : 21e-3 * R / ↑d + 21e-3 * R / ↑d = 42e-3 * R / ↑d
+hmul0 : 42e-3 * R * (1 / ↑d) = 42e-3 * R / ↑d
+e2 : W1 R / ↑d * (W2 R / ↑d) = W1 R * W2 R / ↑d ^ 2
+e12 :
+  (↑(Acount R d) - W1 R / ↑d) * ↑(Bcount R d) + W1 R / ↑d * (↑(Bcount R d) - W2 R / ↑d) =
+    ↑(Acount R d) * ↑(Bcount R d) - W1 R / ↑d * (W2 R / ↑d)
+hX1 : -|(↑(Acount R d) - W1 R / ↑d) * ↑(Bcount R d)| ≤ (↑(Acount R d) - W1 R / ↑d) * ↑(Bcount R d)
+hY1 : -|W1 R / ↑d * (↑(Bcount R d) - W2 R / ↑d)| ≤ W1 R / ↑d * (↑(Bcount R d) - W2 R / ↑d)
+hX2 : (↑(Acount R d) - W1 R / ↑d) * ↑(Bcount R d) ≤ |(↑(Acount R d) - W1 R / ↑d) * ↑(Bcount R d)|
+hY2 : W1 R / ↑d * (↑(Bcount R d) - W2 R / ↑d) ≤ |W1 R / ↑d * (↑(Bcount R d) - W2 R / ↑d)|
+a✝ :
+  |↑(Acount R d) - W1 R / ↑d| * |↑(Bcount R d)| + |W1 R / ↑d| * |↑(Bcount R d) - W2 R / ↑d| <
+    (↑(Acount R d) - W1 R / ↑d) * ↑(Bcount R d) + W1 R / ↑d * (↑(Bcount R d) - W2 R / ↑d)
+⊢ False
+failed
+'WindowMobiusCount.exp_three_gt_ten' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMobiusCount.log_ten_lt_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMobiusCount.log106_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMobiusCount.logMhi_le' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMobiusCount.err_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMobiusCount.coprime_count_ge' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

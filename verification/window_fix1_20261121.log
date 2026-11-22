@@ -1,0 +1,62 @@
+﻿EpiFormal/WindowMobiusCount.lean:157:10: warning: syntax 'Lean.Parser.Tactic.rwaAtLegacyLocation' has been deprecated: use `rw [...] at ... <;> assumption` instead
+
+Note: This linter can be disabled with `set_option linter.deprecated.syntax false`
+EpiFormal/WindowMobiusCount.lean:227:47: error(lean.unknownIdentifier): Unknown identifier `hne`
+EpiFormal/WindowMobiusCount.lean:332:16: error: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+EpiFormal/WindowMobiusCount.lean:260:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+EpiFormal/WindowMobiusCount.lean:414:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑2
+in the target expression
+  1 / 2 ≤ Real.log 2
+
+case zero
+hset : Icc 2 (0 + 2) = {2}
+h2 : ↑2 = 2
+he : rexp (1 / 2) ≤ 2
+hlog : 1 / 2 ≤ Real.log 2
+h2c : ↑2 = 2
+⊢ 1 / 2 ≤ Real.log 2
+EpiFormal/WindowMobiusCount.lean:431:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑(?m.453 - ?m.452)
+in the target expression
+  ↑(2 + n + 1) - 1 = ↑(2 + n)
+
+n : ℕ
+ih : ∑ d ∈ Icc 2 (2 + n), 1 / ↑d ≤ Real.log ↑(2 + n)
+hset : insert (2 + n + 1) (Icc 2 (2 + n)) = Icc 2 (2 + n + 1)
+hmem : 2 + n + 1 ∉ Icc 2 (2 + n)
+hstep : 1 / ↑(2 + n + 1) ≤ Real.log ↑(2 + n + 1) - Real.log (↑(2 + n + 1) - 1)
+⊢ ↑(2 + n + 1) - 1 = ↑(2 + n)
+EpiFormal/WindowMobiusCount.lean:431:27: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  b ≥ 0
+  a ≥ 0
+  a - b ≥ 1
+where
+ a := ↑?m.452
+ b := ↑?m.453
+EpiFormal/WindowMobiusCount.lean:515:20: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑(5 + k + 1)
+in the target expression
+  1 / ↑(5 + (k + 1)) ^ 2 + ∑ x ∈ Icc 6 (5 + k), 1 / ↑x ^ 2 ≤ 1 / 5 - 1 / ↑(5 + (k + 1))
+
+case succ
+D k : ℕ
+ih : ∑ d ∈ Icc 6 (5 + k), 1 / ↑d ^ 2 ≤ 1 / 5 - 1 / ↑(5 + k)
+hset : insert (5 + k + 1) (Icc 6 (5 + k)) = Icc 6 (5 + (k + 1))
+hmem : 5 + k + 1 ∉ Icc 6 (5 + k)
+hN : 5 ≤ ↑(5 + k)
+hN0 : 0 < ↑(5 + k)
+hN1 : 0 < ↑(5 + k) + 1
+hstep : 1 / (↑(5 + k) + 1) ^ 2 ≤ 1 / ↑(5 + k) - 1 / (↑(5 + k) + 1)
+hcast : ↑(5 + k + 1) = ↑(5 + k) + 1
+hcast2 : ↑(5 + (k + 1)) = ↑(5 + k + 1)
+⊢ 1 / ↑(5 + (k + 1)) ^ 2 + ∑ x ∈ Icc 6 (5 + k), 1 / ↑x ^ 2 ≤ 1 / 5 - 1 / ↑(5 + (k + 1))

@@ -1,0 +1,8 @@
+﻿EpiFormal/WindowMassDist.lean:87:50: error(lean.unknownIdentifier): Unknown constant `Set.not_mem_empty`
+EpiFormal/WindowMassDist.lean:36:8: error: (kernel) invalid projection
+  i.1
+'WindowMass.ofReal_diam_le_mul_ediam_rpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMass.mass_distrib_of_diam_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ mass_distrib_of_diam_bound]

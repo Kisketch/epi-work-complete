@@ -1,0 +1,131 @@
+﻿EpiFormal/WindowMobiusCount.lean:157:10: warning: syntax 'Lean.Parser.Tactic.rwaAtLegacyLocation' has been deprecated: use `rw [...] at ... <;> assumption` instead
+
+Note: This linter can be disabled with `set_option linter.deprecated.syntax false`
+EpiFormal/WindowMobiusCount.lean:227:47: error(lean.unknownIdentifier): Unknown identifier `hne`
+EpiFormal/WindowMobiusCount.lean:255:4: error: Tactic `tauto` failed
+
+case pos
+R : ℝ
+d : ℕ
+p : ℕ × ℕ
+hp : p ∈ box R
+⊢ (p.1 ∈ Icc (Mlo R) (Mhi R) ∧ p.2 ∈ Icc (Nlo R) (Nhi R)) ∧ d ∣ p.1 ∧ d ∣ p.2 ↔
+    p.1 ∈ {m ∈ Icc (Mlo R) (Mhi R) | d ∣ m} ∧ p.2 ∈ {n ∈ Icc (Nlo R) (Nhi R) | d ∣ n}
+EpiFormal/WindowMobiusCount.lean:294:12: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+EpiFormal/WindowMobiusCount.lean:294:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  if d ∈ Icc 1 (Mhi R) then ?m.278 else ?m.279
+in the target expression
+  (if d ∈ (p.1.gcd p.2).divisors then moebius d else 0) = moebius d
+
+R : ℝ
+step1 : ↑(copCount R) = ∑ p ∈ box R, if p.1.gcd p.2 = 1 then 1 else 0
+p : ℕ × ℕ
+hp : p ∈ box R
+h1 : 1 ≤ p.1
+h2 : 1 ≤ p.2
+hsub : (p.1.gcd p.2).divisors ⊆ Icc 1 (Mhi R)
+d : ℕ
+hd : d ∈ Icc 1 (Mhi R)
+⊢ (if d ∈ (p.1.gcd p.2).divisors then moebius d else 0) = moebius d
+EpiFormal/WindowMobiusCount.lean:296:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+EpiFormal/WindowMobiusCount.lean:296:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  if d ∈ (p.1.gcd p.2).divisors then ?m.289 else ?m.290
+in the target expression
+  moebius d = 0
+
+R : ℝ
+step1 : ↑(copCount R) = ∑ p ∈ box R, if p.1.gcd p.2 = 1 then 1 else 0
+p : ℕ × ℕ
+hp : p ∈ box R
+h1 : 1 ≤ p.1
+h2 : 1 ≤ p.2
+hsub : (p.1.gcd p.2).divisors ⊆ Icc 1 (Mhi R)
+d : ℕ
+a✝ : d ∈ Icc 1 (Mhi R)
+hnd : d ∉ (p.1.gcd p.2).divisors
+⊢ moebius d = 0
+EpiFormal/WindowMobiusCount.lean:320:16: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+EpiFormal/WindowMobiusCount.lean:320:26: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+EpiFormal/WindowMobiusCount.lean:321:16: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+EpiFormal/WindowMobiusCount.lean:321:26: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+EpiFormal/WindowMobiusCount.lean:329:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑?m * ↑?n
+in the target expression
+  ↑(Acount R d) * ↑(Bcount R d) = ∑ p ∈ box R, if d ∈ (p.1.gcd p.2).divisors then 1 else 0
+
+R : ℝ
+step1 : ↑(copCount R) = ∑ p ∈ box R, if p.1.gcd p.2 = 1 then 1 else 0
+step2 :
+  ∀ p ∈ box R,
+    (if p.1.gcd p.2 = 1 then 1 else 0) = ∑ d ∈ Icc 1 (Mhi R), if d ∈ (p.1.gcd p.2).divisors then moebius d else 0
+d : ℕ
+a✝ : d ∈ Icc 1 (Mhi R)
+hfac :
+  (∑ p ∈ box R, if d ∈ (p.1.gcd p.2).divisors then moebius d else 0) =
+    moebius d * ∑ p ∈ box R, if d ∈ (p.1.gcd p.2).divisors then 1 else 0
+hcardN : Acount R d * Bcount R d = #({p ∈ box R | d ∈ (p.1.gcd p.2).divisors})
+⊢ ↑(Acount R d) * ↑(Bcount R d) = ∑ p ∈ box R, if d ∈ (p.1.gcd p.2).divisors then 1 else 0
+EpiFormal/WindowMobiusCount.lean:407:6: error: linarith failed to find a contradiction
+hset : Icc 2 (0 + 2) = {2}
+h2 : ↑2 = 2
+hexp : rexp (1 / 2) ^ 2 = rexp 1
+a✝ : 2 < rexp (1 / 2)
+⊢ False
+failed
+EpiFormal/WindowMobiusCount.lean:416:16: error(lean.unknownIdentifier): Unknown constant `Finset.insert`
+EpiFormal/WindowMobiusCount.lean:420:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ a ≤ 1
+where
+ a := ↑d
+EpiFormal/WindowMobiusCount.lean:419:17: warning: This simp argument is unused:
+  Finset.mem_insert
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.mem_Icc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+EpiFormal/WindowMobiusCount.lean:440:14: error(lean.unknownIdentifier): Unknown constant `Finset.insert`
+EpiFormal/WindowMobiusCount.lean:443:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  a ≥ 1
+where
+ a := ↑D
+EpiFormal/WindowMobiusCount.lean:442:15: warning: This simp argument is unused:
+  Finset.mem_insert
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.mem_Icc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+EpiFormal/WindowMobiusCount.lean:475:18: error(lean.unknownIdentifier): Unknown constant `Finset.insert`
+EpiFormal/WindowMobiusCount.lean:479:8: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ a ≤ 5
+where
+ a := ↑d
+EpiFormal/WindowMobiusCount.lean:478:19: warning: This simp argument is unused:
+  Finset.mem_insert
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.mem_Icc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

@@ -1,0 +1,9 @@
+Machin enclosure: 128 alternating terms per arctangent; exact rational arithmetic
+Certified digits a[0] through a[99]: 3 7 15 1 292 1 1 1 2 1 3 1 14 2 1 1 2 2 2 2 1 84 2 1 1 15 3 13 1 4 2 6 6 99 1 2 2 6 3 5 1 1 6 8 1 7 1 2 3 7 1 2 1 1 12 1 1 1 3 1 1 8 1 1 2 1 6 1 1 5 2 2 3 1 2 4 4 16 1 161 45 1 22 1 2 2 1 4 1 2 24 1 2 1 3 1 2 1 1 10
+First maximal run of three ones: indices 5 through 7
+Prefix before this run: 3 7 15 1 292
+Matrix with consecutive convergent columns: [[103993, 355], [33102, 113]]
+determinant and branch sign s: -1
+Coefficients (a,b,c) of a*x^2+b*x+c: -1091989109 6861169923 -10777500509
+Discriminant: 5
+14695421944/1000000000000 < abs(2*a*pi+b-s*sqrt(5))/sqrt(5) < 14695421945/1000000000000

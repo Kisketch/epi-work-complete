@@ -1,0 +1,5 @@
+17/3-e: 2 distinct finite limits <= 1/10
+  #1: 1 + (-4/9) sqrt(5)  (0.00619201000009351)
+      witness: suffix=(1, 1, 1, 1, 2, 1), eta=1/2 + (1/2) sqrt(5)
+  #2: -1 + (22/45) sqrt(5)  (0.0931887889998972)
+      witness: suffix=(1, 2, 1, 1, 1, 1), eta=1/2 + (1/2) sqrt(5)

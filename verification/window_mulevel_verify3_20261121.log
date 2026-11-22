@@ -1,0 +1,38 @@
+﻿EpiFormal/WindowMuLevel.lean:32:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  DecidablePred fun I => (Set.Icc I.1 I.2 ∩ U).Nonempty
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowMuLevel.lean:68:40: error: Application type mismatch: The argument
+  hxI
+has type
+  x ∈ Set.Icc I.1 I.2
+but is expected to have type
+  ?m.277 ∈ ?m.269 ∧ ?m.272 ∈ ?m.270 ?m.277
+in the application
+  Exists.intro ?m.277 hxI
+EpiFormal/WindowMuLevel.lean:68:35: error: Application type mismatch: The argument
+  hIG
+has type
+  I ∈ G
+of sort `Prop` but is expected to have type
+  ?m.275
+of sort `Type ?u.225` in the application
+  Exists.intro hIG
+EpiFormal/WindowMuLevel.lean:106:4: error: Function expected at
+  WindowSandwich.sandwich_of_tendsto H hH j0 ?m.330 ?m.331
+but this term has type
+  ∃ j, j0 ≤ j ∧ 1 / H (j + 1) ^ 2 ≤ ?m.329 ∧ ?m.329 ≤ 1 / H j ^ 2
+
+Note: Expected a function because this term is being applied to the argument
+  hdle
+EpiFormal/WindowMuLevel.lean:106:49: error: Application type mismatch: The argument
+  hdpos
+has type
+  0 < Metric.diam U
+but is expected to have type
+  ?m.329 ≤ 1 / H j0 ^ 2
+in the application
+  WindowSandwich.sandwich_of_tendsto H hH j0 ?m.330 hdpos
+'WindowMuLevel.filter_meet_card' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMuLevel.mu_le_at_level' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMuLevel.mu_le_of_sandwich' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

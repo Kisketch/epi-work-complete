@@ -1,0 +1,1933 @@
+warning: manifest out of date: packages directory changed; use `lake update` to rebuild the manifest (warning: this will update ALL workspace dependencies)
+warning: mathlib: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\mathlib
+warning: plausible: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\plausible
+warning: LeanSearchClient: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\LeanSearchClient
+warning: importGraph: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\importGraph
+warning: proofwidgets: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\proofwidgets
+warning: aesop: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\aesop
+warning: Qq: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\Qq
+warning: batteries: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\batteries
+warning: Cli: repository has local changes:
+  C:/Users/Lgnatius/Documents/qwen-agent/QOTCWZPRRA/default/epi_work/epi_formal/.lake/packages\Cli
+⚠ [9047/9090] Replayed EpiFormal.Axioms
+warning: EpiFormal\Axioms.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9048/9090] Replayed EpiFormal.PadeODE
+warning: EpiFormal\PadeODE.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/PadeODE.lean:3:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Polynomial Finset`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/PadeODE.lean:53:13: This simp argument is unused:
+  neg_smul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [one_smul, neg_neg, smul_eq_mul, neg_mul, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/PadeODE.lean:53:23: This simp argument is unused:
+  one_smul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [neg_smul, neg_neg, smul_eq_mul, neg_mul, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/PadeODE.lean:53:33: This simp argument is unused:
+  neg_neg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [neg_smul, one_smul, smul_eq_mul, neg_mul, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/PadeODE.lean:53:42: This simp argument is unused:
+  smul_eq_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [neg_smul, one_smul, neg_neg, neg_mul, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/PadeODE.lean:53:64: This simp argument is unused:
+  one_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [neg_smul, one_smul, neg_neg, smul_eq_mul, neg_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: EpiFormal/PadeODE.lean:99:0: 'sum_telescope' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeODE.lean:100:0: 'tele_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeODE.lean:101:0: 'natDegree_padéP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeODE.lean:102:0: 'iter_deriv_padéP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeODE.lean:103:0: 'deriv_A' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeODE.lean:104:0: 'padéR_ode' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9050/9090] Replayed EpiFormal.Series
+warning: EpiFormal\Series.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+info: EpiFormal/Series.lean:23:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: EpiFormal/Series.lean:27:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: EpiFormal/Series.lean:22:24: This simp argument is unused:
+  mul_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [one_pow]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Series.lean:74:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: EpiFormal/Series.lean:77:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/Series.lean:68:58: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [h1, h2, hn, ite_false, Pi.add_apply, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Series.lean:54:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Series.lean:56:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Series.lean:75:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [9051/9090] Replayed EpiFormal.Spectrum
+warning: EpiFormal\Spectrum.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/Spectrum.lean:14:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `set_option maxHeartbeats 1600000`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/Spectrum.lean:14:0: Unscoped option maxHeartbeats is not allowed:
+Please scope this to individual declarations, as in
+```
+set_option maxHeartbeats in
+-- comment explaining why this is necessary
+example : ... := ...
+```
+
+Note: This linter can be disabled with `set_option linter.style.setOption false`
+warning: EpiFormal/Spectrum.lean:140:4: The `induction'` tactic is discouraged: please strongly consider using `induction` instead.
+
+Note: This linter can be disabled with `set_option linter.style.induction false`
+warning: EpiFormal/Spectrum.lean:320:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:320:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:590:6: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: EpiFormal/Spectrum.lean:589:4: The `induction'` tactic is discouraged: please strongly consider using `induction` instead.
+
+Note: This linter can be disabled with `set_option linter.style.induction false`
+warning: EpiFormal/Spectrum.lean:660:14: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:657:12: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:657:12: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:660:10: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:660:14: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:774:14: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:812:10: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:821:10: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:771:12: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:792:16: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:811:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:820:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:728:10: The `induction'` tactic is discouraged: please strongly consider using `induction` instead.
+
+Note: This linter can be disabled with `set_option linter.style.induction false`
+warning: EpiFormal/Spectrum.lean:771:12: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:774:10: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:774:14: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:792:16: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:811:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:812:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:812:10: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:820:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:821:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:821:10: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:860:16: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:842:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Spectrum.lean:860:12: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:860:16: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/Spectrum.lean:989:31: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: EpiFormal/Spectrum.lean:1028:24: This simp argument is unused:
+  Real.dist_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [abs_sub_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Spectrum.lean:1028:38: This simp argument is unused:
+  abs_sub_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Real.dist_eq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Spectrum.lean:1174:6: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:989:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:1021:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:1083:10: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:1158:8: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:1164:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:989:27: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1021:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1083:10: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1158:8: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1164:6: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1174:2: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1174:6: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1183:6: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:1183:20: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:1183:2: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1183:6: Unused tactic linter: `push_cast` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1183:16: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1183:20: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/Spectrum.lean:1200:31: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: EpiFormal/Spectrum.lean:1200:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Spectrum.lean:1200:27: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/Spectrum.lean:1267:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: EpiFormal/Spectrum.lean:1254:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:1254:22: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Spectrum.lean:1254:4: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1254:8: Unused tactic linter: `push_cast` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1254:18: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Spectrum.lean:1254:22: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/Spectrum.lean:1317:0: 'CSpectrum.Qsel_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1318:0: 'CSpectrum.Psel_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/Spectrum.lean:1319:0: 'CSpectrum.Qsel_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/Spectrum.lean:1320:0: 'CSpectrum.sel_determinant' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/Spectrum.lean:1321:0: 'CSpectrum.Psel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1322:0: 'CSpectrum.Qsel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1323:0: 'CSpectrum.Qsel_double' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1324:0: 'CSpectrum.Qsel_succ_coprime' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1325:0: 'CSpectrum.Qsel_tendsto_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1326:0: 'CSpectrum.defect_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1327:0: 'CSpectrum.bounded_int_frequently' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1328:0: 'CSpectrum.bounded_int_limsup_nat' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1329:0: 'CSpectrum.integer_limsup_identify' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1330:0: 'CSpectrum.Mk_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/Spectrum.lean:1331:0: 'CSpectrum.W_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/Spectrum.lean:1332:0: 'CSpectrum.W_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1333:0: 'CSpectrum.increment_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1334:0: 'CSpectrum.ratio_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1335:0: 'CSpectrum.ratio_bddAbove' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1336:0: 'CSpectrum.ratio_tendsto_xOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1337:0: 'CSpectrum.residual_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1338:0: 'CSpectrum.residual_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1339:0: 'CSpectrum.eventually_nearest' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1340:0: 'CSpectrum.defect_xOf_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1341:0: 'CSpectrum.eps_xOf_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1342:0: 'CSpectrum.four_j_eps_xOf_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1343:0: 'CSpectrum.theorem6_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1344:0: 'CSpectrum.lemma5_four_S_integer' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Spectrum.lean:1345:0: 'CSpectrum.theorem6_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: EpiFormal/Spectrum.lean:1345:34: '' starts on column 34, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9052/9090] Built EpiFormal.PadeDeriv (88s)
+warning: EpiFormal\PadeDeriv.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/PadeDeriv.lean:4:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Polynomial Finset`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/PadeDeriv.lean:54:2: Unused tactic linter: `push_cast` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/PadeDeriv.lean:59:0: 'deriv_prod' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeDeriv.lean:60:0: 'padéP_first_deriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeDeriv.lean:61:0: 'padéP_second_deriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9053/9090] Built EpiFormal.FactorialCriterion (89s)
+warning: EpiFormal\FactorialCriterion.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/FactorialCriterion.lean:49:0: Please, add a comment explaining the need for modifying the maxHeartbeat limit, as in
+set_option maxHeartbeats 1600000 in
+-- reason for change
+...
+
+Note: This linter can be disabled with `set_option linter.style.maxHeartbeats false`
+warning: EpiFormal/FactorialCriterion.lean:61:0: Please, add a comment explaining the need for modifying the maxHeartbeat limit, as in
+set_option maxHeartbeats 1600000 in
+-- reason for change
+...
+
+Note: This linter can be disabled with `set_option linter.style.maxHeartbeats false`
+warning: EpiFormal/FactorialCriterion.lean:78:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/FactorialCriterion.lean:145:0: Please, add a comment explaining the need for modifying the maxHeartbeat limit, as in
+set_option maxHeartbeats 1600000 in
+-- reason for change
+...
+
+Note: This linter can be disabled with `set_option linter.style.maxHeartbeats false`
+warning: EpiFormal/FactorialCriterion.lean:249:2: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/FactorialCriterion.lean:220:0: Please, add a comment explaining the need for modifying the maxHeartbeat limit, as in
+set_option maxHeartbeats 1600000 in
+-- reason for change
+...
+
+Note: This linter can be disabled with `set_option linter.style.maxHeartbeats false`
+warning: EpiFormal/FactorialCriterion.lean:254:0: Please, add a comment explaining the need for modifying the maxHeartbeat limit, as in
+set_option maxHeartbeats 1600000 in
+-- reason for change
+...
+
+Note: This linter can be disabled with `set_option linter.style.maxHeartbeats false`
+warning: EpiFormal/FactorialCriterion.lean:331:0: Please, add a comment explaining the need for modifying the maxHeartbeat limit, as in
+set_option maxHeartbeats 1600000 in
+-- reason for change
+...
+
+Note: This linter can be disabled with `set_option linter.style.maxHeartbeats false`
+warning: EpiFormal/FactorialCriterion.lean:393:2: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/FactorialCriterion.lean:423:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/FactorialCriterion.lean:441:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/FactorialCriterion.lean:504:0: Please, add a comment explaining the need for modifying the maxHeartbeat limit, as in
+set_option maxHeartbeats 1600000 in
+-- reason for change
+...
+
+Note: This linter can be disabled with `set_option linter.style.maxHeartbeats false`
+info: EpiFormal/FactorialCriterion.lean:651:0: 'FactorialCriterion.exp_one_eq_tsum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:652:0: 'FactorialCriterion.summable_inv_factorial' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:653:0: 'FactorialCriterion.summable_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:654:0: 'FactorialCriterion.tail_eq_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:655:0: 'FactorialCriterion.factorial_ratio_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:656:0: 'FactorialCriterion.tail_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:657:0: 'FactorialCriterion.tsum_pow_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:658:0: 'FactorialCriterion.tail_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:659:0: 'FactorialCriterion.tail_mem_Ioo' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:660:0: 'FactorialCriterion.nfact_mul_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:661:0: 'FactorialCriterion.front_is_int' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:662:0: 'FactorialCriterion.tFrac_eq_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:663:0: 'FactorialCriterion.tFrac_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:664:0: 'FactorialCriterion.tFrac_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:665:0: 'FactorialCriterion.uFrac_eq_tFrac_of_rational' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:666:0: 'FactorialCriterion.fract_mul_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:667:0: 'FactorialCriterion.recurrence_u' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:668:0: 'FactorialCriterion.recurrence_t' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:669:0: 'FactorialCriterion.int_tendsto_eventually_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:670:0: 'FactorialCriterion.iterate_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/FactorialCriterion.lean:671:0: 'FactorialCriterion.factorial_criterion' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: EpiFormal/FactorialCriterion.lean:671:52: '' starts on column 52, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9054/9090] Built EpiFormal.PadeIntegral (65s)
+warning: EpiFormal\PadeIntegral.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/PadeIntegral.lean:4:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology Set Polynomial MeasureTheory
+  intervalIntegral`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+info: EpiFormal/PadeIntegral.lean:56:0: 'PadeIntegral.padeF_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeIntegral.lean:57:0: 'PadeIntegral.pade_integral_repr' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9055/9090] Built EpiFormal.Measure (75s)
+warning: EpiFormal\Measure.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/Measure.lean:46:33: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:87:17: This simp argument is unused:
+  NNReal.coe_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Measure.lean:121:33: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:126:30: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:161:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+warning: EpiFormal/Measure.lean:168:28: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:170:61: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:199:33: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:231:19: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:232:63: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:258:17: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:271:22: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:199:33: This simp argument is unused:
+  Set.mem_setOf_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [apprSet, apprPairs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Measure.lean:315:33: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:324:32: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:375:33: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:384:32: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:418:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Measure.lean:430:33: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:437:32: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:523:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+warning: EpiFormal/Measure.lean:587:28: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:588:48: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:595:19: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:609:19: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:723:35: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:760:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:761:65: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:787:19: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:807:34: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Measure.lean:695:15: This simp argument is unused:
+  Irrational
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Set.mem_range, not_forall, not_not] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Measure.lean:695:42: This simp argument is unused:
+  not_forall
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Irrational, Set.mem_range, not_not] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Measure.lean:695:54: This simp argument is unused:
+  not_not
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Irrational, Set.mem_range, not_forall] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/Measure.lean:688:0: Please, add a comment explaining the need for modifying the maxHeartbeat limit, as in
+set_option maxHeartbeats 1600000 in
+-- reason for change
+...
+
+Note: This linter can be disabled with `set_option linter.style.maxHeartbeats false`
+warning: EpiFormal/Measure.lean:743:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Measure.lean:886:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Measure.lean:916:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [9056/9090] Built EpiFormal.AlgebraicIndependence (27s)
+warning: EpiFormal\AlgebraicIndependence.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/AlgebraicIndependence.lean:149:13: '' starts on column 13, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9057/9090] Built EpiFormal.Elementary (23s)
+warning: EpiFormal\Elementary.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/Elementary.lean:24:11: missing space in the source
+
+This part of the code
+  'x^2 - S'
+should be written as
+  'x ^ 2'
+
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9058/9090] Built EpiFormal.PadeBoundary (51s)
+warning: EpiFormal\PadeBoundary.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/PadeBoundary.lean:5:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Polynomial Finset MeasureTheory intervalIntegral`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+info: EpiFormal/PadeBoundary.lean:45:0: 'padéP_eval_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeBoundary.lean:46:0: 'padéP_eval_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeBoundary.lean:47:0: 'padéP_deriv_eval_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeBoundary.lean:48:0: 'padéP_deriv_eval_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9059/9090] Built EpiFormal.Meiburg (47s)
+warning: EpiFormal\Meiburg.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/Meiburg.lean:31:24: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Meiburg.lean:64:28: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Meiburg.lean:78:28: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Meiburg.lean:166:36: Variable name `hq₂le` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hq₂le
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/Meiburg.lean:167:5: Variable name `hQdef` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hQdef
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/Meiburg.lean:189:66: Variable name `hδ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hδ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/Meiburg.lean:228:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Meiburg.lean:248:23: '' starts on column 23, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9060/9090] Built EpiFormal.PadeRecurrence (48s)
+warning: EpiFormal\PadeRecurrence.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/PadeRecurrence.lean:6:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Polynomial Finset MeasureTheory intervalIntegral Set`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+info: EpiFormal/PadeRecurrence.lean:82:0: 'ibp_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeRecurrence.lean:83:0: 'padeI_eq_second' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/PadeRecurrence.lean:84:0: 'padeI_recurrence' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9061/9090] Built EpiFormal.MeiburgConvergence (52s)
+warning: EpiFormal\MeiburgConvergence.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/MeiburgConvergence.lean:103:28: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/MeiburgConvergence.lean:243:17: Variable name `hN` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hN
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/MeiburgConvergence.lean:243:30: Variable name `hnN` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hnN
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/MeiburgConvergence.lean:244:5: Variable name `hmN` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hmN
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/MeiburgConvergence.lean:258:12: This simp argument is unused:
+  max_lt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hn2N, hm2N]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/MeiburgConvergence.lean:434:34: Variable name `ht` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ht
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/MeiburgConvergence.lean:922:14: This simp argument is unused:
+  Real.rpow_natCast
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/MeiburgConvergence.lean:753:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+info: EpiFormal/MeiburgConvergence.lean:1091:8: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: EpiFormal/MeiburgConvergence.lean:1077:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/MeiburgConvergence.lean:1093:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/MeiburgConvergence.lean:1150:14: Unused tactic linter: `push_cast` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [9062/9090] Built EpiFormal.FlintHills (18s)
+warning: EpiFormal\FlintHills.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9063/9090] Built EpiFormal.OpenAI_mu_pi_bridge (22s)
+warning: EpiFormal\OpenAI_mu_pi_bridge.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/OpenAI_mu_pi_bridge.lean:60:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/OpenAI_mu_pi_bridge.lean:88:26: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/OpenAI_mu_pi_bridge.lean:142:22: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+info: EpiFormal/OpenAI_mu_pi_bridge.lean:188:0: 'OpenAIBridge.finite_numerators' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/OpenAI_mu_pi_bridge.lean:189:0: 'OpenAIBridge.apprPairs_finite_of_eventualLowerBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/OpenAI_mu_pi_bridge.lean:190:0: 'OpenAIBridge.irrMeasure_le_two_of_PiEventualLowerBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/OpenAI_mu_pi_bridge.lean:191:0: 'OpenAIBridge.flint_hills_of_PiEventualLowerBound' depends on axioms: [pi_transcendental,
+ propext,
+ Classical.choice,
+ Quot.sound]
+warning: EpiFormal/OpenAI_mu_pi_bridge.lean:191:62: '' starts on column 62, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9064/9090] Built EpiFormal.Alekseyev (22s)
+warning: EpiFormal\Alekseyev.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/Alekseyev.lean:347:24: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵S̲e̲t̲.̲m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Alekseyev.lean:368:27: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵S̲e̲t̲.̲m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: EpiFormal/Alekseyev.lean:378:17: '' starts on column 17, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9065/9090] Built EpiFormal.EulerConvergents (22s)
+warning: EpiFormal\EulerConvergents.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/EulerConvergents.lean:214:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/EulerConvergents.lean:258:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/EulerConvergents.lean:282:20: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/EulerConvergents.lean:282:34: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/EulerConvergents.lean:282:20: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EulerConvergents.lean:282:34: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EulerConvergents.lean:300:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/EulerConvergents.lean:300:36: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/EulerConvergents.lean:300:22: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EulerConvergents.lean:300:36: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EulerConvergents.lean:332:8: This simp argument is unused:
+  intervalIntegral.integral_const_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/EulerConvergents.lean:346:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/EulerConvergents.lean:347:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/EulerConvergents.lean:351:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/EulerConvergents.lean:352:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/EulerConvergents.lean:346:4: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EulerConvergents.lean:346:8: Unused tactic linter: `simp [derivative_mul, derivative_pow_succ, derivative_sub, derivative_X]` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EulerConvergents.lean:347:4: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EulerConvergents.lean:347:8: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EulerConvergents.lean:351:4: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EulerConvergents.lean:351:8: Unused tactic linter: `simp [derivative_mul, derivative_pow_succ, derivative_sub, derivative_X]` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EulerConvergents.lean:352:4: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EulerConvergents.lean:352:8: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EulerConvergents.lean:391:33: This simp argument is unused:
+  Nat.add_sub_cancel
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nat.mul_succ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/EulerConvergents.lean:450:34: Variable name `hj` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hj
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: EpiFormal/EulerConvergents.lean:587:0: 'Qsel_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EulerConvergents.lean:588:0: 'Psel_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/EulerConvergents.lean:589:0: 'Qsel_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/EulerConvergents.lean:590:0: 'sel_determinant' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/EulerConvergents.lean:591:0: 'Psel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EulerConvergents.lean:592:0: 'Qsel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EulerConvergents.lean:593:0: 'Qsel_strictMono' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EulerConvergents.lean:594:0: 'Qsel_double' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EulerConvergents.lean:595:0: 'Qsel_succ_coprime' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/EulerConvergents.lean:596:0: 'deltaSel_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EulerConvergents.lean:597:0: 'abs_deltaSel_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EulerConvergents.lean:598:0: 'Psel_div_Qsel_tendsto_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EulerConvergents.lean:599:0: 'Qsel_tendsto_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: EpiFormal/EulerConvergents.lean:599:32: '' starts on column 32, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9066/9090] Built EpiFormal.AdjacentWitness (38s)
+warning: EpiFormal\AdjacentWitness.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/AdjacentWitness.lean:40:0: Unscoped option maxHeartbeats is not allowed:
+Please scope this to individual declarations, as in
+```
+set_option maxHeartbeats in
+-- comment explaining why this is necessary
+example : ... := ...
+```
+
+Note: This linter can be disabled with `set_option linter.style.setOption false`
+warning: EpiFormal/AdjacentWitness.lean:80:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/AdjacentWitness.lean:94:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/AdjacentWitness.lean:110:4: The following tactic starts with 2 goals and ends with 2 goals, 1 of which is not operated on.
+  refine ⟨2, fun j hj => ?_⟩
+Please focus on the current goal, for instance using `·` (typed as "\.").
+
+Note: This linter can be disabled with `set_option linter.style.multiGoal false`
+warning: EpiFormal/AdjacentWitness.lean:111:4: The following tactic starts with 2 goals and ends with 2 goals, 1 of which is not operated on.
+  have hk : ∃ k, j = k + 2 := ⟨j - 2, by omega⟩
+Please focus on the current goal, for instance using `·` (typed as "\.").
+
+Note: This linter can be disabled with `set_option linter.style.multiGoal false`
+warning: EpiFormal/AdjacentWitness.lean:112:4: The following tactic starts with 2 goals and ends with 2 goals, 1 of which is not operated on.
+  obtain ⟨k, rfl⟩ := hk
+Please focus on the current goal, for instance using `·` (typed as "\.").
+
+Note: This linter can be disabled with `set_option linter.style.multiGoal false`
+warning: EpiFormal/AdjacentWitness.lean:125:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/AdjacentWitness.lean:170:6: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/AdjacentWitness.lean:204:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+info: EpiFormal/AdjacentWitness.lean:693:0: 'AdjacentWitness.Psel_rec' depends on axioms: [propext]
+info: EpiFormal/AdjacentWitness.lean:694:0: 'AdjacentWitness.Qsel_rec' depends on axioms: [propext]
+info: EpiFormal/AdjacentWitness.lean:695:0: 'AdjacentWitness.Qsel_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:696:0: 'AdjacentWitness.Qsel_ge_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:697:0: 'AdjacentWitness.Qsel_monotone' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:698:0: 'AdjacentWitness.Qsel_double' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:699:0: 'AdjacentWitness.Qsel_tendsto_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:700:0: 'AdjacentWitness.sel_determinant' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:701:0: 'AdjacentWitness.Csel_abs' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:702:0: 'AdjacentWitness.Psel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:703:0: 'AdjacentWitness.Qsel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:704:0: 'AdjacentWitness.Qnat_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:705:0: 'AdjacentWitness.Qnat_rec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:706:0: 'AdjacentWitness.Qsel_succ_coprime' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:707:0: 'AdjacentWitness.QR_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:708:0: 'AdjacentWitness.QR_tendsto_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:709:0: 'AdjacentWitness.Psel_div_Qsel_tendsto_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:710:0: 'AdjacentWitness.Msel_abs_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:711:0: 'AdjacentWitness.Msel_div_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:712:0: 'AdjacentWitness.pair_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:713:0: 'AdjacentWitness.limit_integer' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:714:0: 'AdjacentWitness.forward_Msel' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:715:0: 'AdjacentWitness.theorem11_forward' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:716:0: 'AdjacentWitness.exists_strictMono_match' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:717:0: 'AdjacentWitness.match_cross' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:718:0: 'AdjacentWitness.theorem11_converse' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:719:0: 'AdjacentWitness.eventually_imp_infinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:720:0: 'AdjacentWitness.theorem11_three_equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:721:0: 'AdjacentWitness.quantitative_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:722:0: 'AdjacentWitness.quantitative_bound_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:723:0: 'AdjacentWitness.hpos_eventually_mismatch' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/AdjacentWitness.lean:724:0: 'AdjacentWitness.honesty_note' does not depend on any axioms
+warning: EpiFormal/AdjacentWitness.lean:724:42: '' starts on column 42, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9067/9090] Built EpiFormal.Classification (41s)
+warning: EpiFormal\Classification.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/Classification.lean:41:20: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Classification.lean:41:34: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Classification.lean:41:20: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Classification.lean:41:34: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Classification.lean:47:20: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Classification.lean:47:34: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Classification.lean:47:20: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Classification.lean:47:34: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Classification.lean:294:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:324:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:325:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:386:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Classification.lean:395:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Classification.lean:403:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/Classification.lean:391:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:393:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:399:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:401:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:406:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:418:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:424:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:386:27: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Classification.lean:395:27: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Classification.lean:403:27: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Classification.lean:453:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:486:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:515:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:518:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:530:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:547:63: Variable name `hc0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hc0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/Classification.lean:604:29: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/Classification.lean:551:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:592:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:594:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:649:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:671:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:587:12: Unused tactic linter: `push_cast at hjr ⊢` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Classification.lean:604:25: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Classification.lean:604:29: Unused tactic linter: `simp [mul_comm]` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/Classification.lean:680:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/Classification.lean:694:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+info: EpiFormal/Classification.lean:703:0: 'Classification.Qsel_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:704:0: 'Classification.Psel_rec' depends on axioms: [propext]
+info: EpiFormal/Classification.lean:705:0: 'Classification.Qsel_rec' depends on axioms: [propext]
+info: EpiFormal/Classification.lean:706:0: 'Classification.sel_determinant' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/Classification.lean:707:0: 'Classification.Psel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:708:0: 'Classification.Qsel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:709:0: 'Classification.Qsel_double' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:710:0: 'Classification.Qsel_succ_coprime' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/Classification.lean:711:0: 'Classification.Qsel_tendsto_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:712:0: 'Classification.Psel_div_Qsel_tendsto_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:713:0: 'Classification.defect_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:714:0: 'Classification.eps_div_Qsel_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:715:0: 'Classification.propagate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:716:0: 'Classification.mem_latticeL_of_eventually_defect_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:717:0: 'Classification.defect_eventually_zero_of_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:718:0: 'Classification.theorem2_necessity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:719:0: 'Classification.theorem2_sufficiency' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:720:0: 'Classification.theorem2_classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:721:0: 'Classification.defect_eventually_zero_of_le_lt_quarter' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/Classification.lean:722:0: 'Classification.corollary3_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: EpiFormal/Classification.lean:724:18: '' starts on column 18, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9068/9090] Built EpiFormal.SignedCriterion (49s)
+warning: EpiFormal\SignedCriterion.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/SignedCriterion.lean:38:0: Unscoped option maxHeartbeats is not allowed:
+Please scope this to individual declarations, as in
+```
+set_option maxHeartbeats in
+-- comment explaining why this is necessary
+example : ... := ...
+```
+
+Note: This linter can be disabled with `set_option linter.style.setOption false`
+warning: EpiFormal/SignedCriterion.lean:51:24: Variable name `hj` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hj
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: EpiFormal/SignedCriterion.lean:208:0: 'EpiFormalH.Qsel_pos_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedCriterion.lean:209:0: 'EpiFormalH.round_eq_of_abs_sub_lt_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedCriterion.lean:210:0: 'EpiFormalH.proposition3_forward' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedCriterion.lean:211:0: 'EpiFormalH.proposition3_converse_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedCriterion.lean:212:0: 'EpiFormalH.proposition3_converse' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedCriterion.lean:213:0: 'EpiFormalH.proposition3_signed_criterion' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedCriterion.lean:214:0: 'EpiFormalH.abs_signedResidual_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: EpiFormal/SignedCriterion.lean:214:54: '' starts on column 54, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9069/9090] Built EpiFormal.SignedClusters (54s)
+warning: EpiFormal\SignedClusters.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/SignedClusters.lean:330:6: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/SignedClusters.lean:348:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/SignedClusters.lean:360:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/SignedClusters.lean:362:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/SignedClusters.lean:368:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+info: EpiFormal/SignedClusters.lean:845:0: 'SignedClusters.defect_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:846:0: 'SignedClusters.tracking' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:847:0: 'SignedClusters.integer_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:848:0: 'SignedClusters.stabilizes' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:849:0: 'SignedClusters.theorem7_cluster_set' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:850:0: 'SignedClusters.theorem7_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:851:0: 'SignedClusters.theorem7_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:852:0: 'SignedClusters.W_rec_d' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/SignedClusters.lean:853:0: 'SignedClusters.W_bound_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:854:0: 'SignedClusters.increments_summable_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:855:0: 'SignedClusters.ratio_converges_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:856:0: 'SignedClusters.residual_bound_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:857:0: 'SignedClusters.eventually_nearest_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:858:0: 'SignedClusters.defect_eq_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:859:0: 'SignedClusters.S_finite_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SignedClusters.lean:860:0: 'SignedClusters.theorem8_realization' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: EpiFormal/SignedClusters.lean:862:18: '' starts on column 18, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9070/9090] Built EpiFormal.Escape (54s)
+warning: EpiFormal\Escape.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/Escape.lean:166:10: '' starts on column 10, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9071/9090] Built EpiFormal.EscapeBoundary (57s)
+warning: EpiFormal\EscapeBoundary.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/EscapeBoundary.lean:101:2: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/EscapeBoundary.lean:93:6: Unused tactic linter: `push_cast` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/EscapeBoundary.lean:124:18: '' starts on column 18, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9072/9090] Built EpiFormal.ThresholdAttained (58s)
+warning: EpiFormal\ThresholdAttained.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/ThresholdAttained.lean:4:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology Set`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+info: EpiFormal/ThresholdAttained.lean:123:0: 'ThresholdAttained.eps_mul_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/ThresholdAttained.lean:124:0: 'ThresholdAttained.eps_mul_tendsto_of_defect_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/ThresholdAttained.lean:125:0: 'ThresholdAttained.j_mul_eps_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/ThresholdAttained.lean:126:0: 'ThresholdAttained.apprSeq_tendsto_of_defect_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/ThresholdAttained.lean:127:0: 'ThresholdAttained.apprSeq_tendsto_quarter' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9073/9090] Built EpiFormal.SpectralGap (59s)
+warning: EpiFormal\SpectralGap.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+info: EpiFormal/SpectralGap.lean:160:0: 'SpectralGap.apprExponent_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SpectralGap.lean:161:0: 'SpectralGap.spectral_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SpectralGap.lean:162:0: 'SpectralGap.levelSet_below_eq_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SpectralGap.lean:163:0: 'SpectralGap.latticeL_countable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/SpectralGap.lean:164:0: 'SpectralGap.dimH_levelSet_below' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: EpiFormal/SpectralGap.lean:164:45: '' starts on column 45, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9074/9090] Built EpiFormal.EscapeReduction (56s)
+warning: EpiFormal\EscapeReduction.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+info: EpiFormal/EscapeReduction.lean:216:29: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: EpiFormal/EscapeReduction.lean:216:29: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: EpiFormal/EscapeReduction.lean:218:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+info: EpiFormal/EscapeReduction.lean:381:0: 'EscapeReduction.match_eps_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EscapeReduction.lean:382:0: 'EscapeReduction.Qsel_pred_div_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EscapeReduction.lean:383:0: 'EscapeReduction.jQsel_div_Qsel_succ_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EscapeReduction.lean:384:0: 'EscapeReduction.sharp_bound_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EscapeReduction.lean:385:0: 'EscapeReduction.match_eventually_eps_le_fifth' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EscapeReduction.lean:386:0: 'EscapeReduction.reduction_to_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/EscapeReduction.lean:387:0: 'EscapeReduction.P1_imp_irrational' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: EpiFormal/EscapeReduction.lean:387:47: '' starts on column 47, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9075/9090] Built EpiFormal.DefectFibres (60s)
+warning: EpiFormal\DefectFibres.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/DefectFibres.lean:39:20: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/DefectFibres.lean:39:34: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/DefectFibres.lean:39:20: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:39:34: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:46:20: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/DefectFibres.lean:46:34: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/DefectFibres.lean:46:20: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:46:34: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:151:6: Unused tactic linter: `push_cast at this ⊢` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:268:61: Unused tactic linter: `push_cast` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:331:35: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/DefectFibres.lean:331:48: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/DefectFibres.lean:334:35: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/DefectFibres.lean:334:48: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/DefectFibres.lean:331:31: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:331:35: Unused tactic linter: `simp [m]` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:331:44: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:331:48: Unused tactic linter: `omega` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:334:31: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:334:35: Unused tactic linter: `simp [m]` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:334:44: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:334:48: Unused tactic linter: `omega` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/DefectFibres.lean:513:35: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: EpiFormal/DefectFibres.lean:515:33: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: EpiFormal/DefectFibres.lean:480:37: Variable name `hx` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hx
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/DefectFibres.lean:492:6: Unused tactic linter: `push_cast at this ⊢` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:587:4: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/DefectFibres.lean:587:18: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/DefectFibres.lean:571:6: Unused tactic linter: `push_cast at this ⊢` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:587:4: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:587:18: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/DefectFibres.lean:696:37: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: EpiFormal/DefectFibres.lean:698:35: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: EpiFormal/DefectFibres.lean:707:8: Unused tactic linter: `push_cast at this ⊢` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:803:20: This simp argument is unused:
+  sub_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hε0] at this
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/DefectFibres.lean:827:20: This simp argument is unused:
+  sub_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hε0] at this
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/DefectFibres.lean:797:12: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/DefectFibres.lean:797:26: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/DefectFibres.lean:821:12: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/DefectFibres.lean:821:26: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/DefectFibres.lean:797:8: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:797:12: Unused tactic linter: `push_cast` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:797:22: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:797:26: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:821:8: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:821:12: Unused tactic linter: `push_cast` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:821:22: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DefectFibres.lean:821:26: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/DefectFibres.lean:836:0: 'DefectFibres.Qsel_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:837:0: 'DefectFibres.Psel_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/DefectFibres.lean:838:0: 'DefectFibres.Qsel_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/DefectFibres.lean:839:0: 'DefectFibres.sel_determinant' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/DefectFibres.lean:840:0: 'DefectFibres.Psel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:841:0: 'DefectFibres.Qsel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:842:0: 'DefectFibres.Qsel_double' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:843:0: 'DefectFibres.Qsel_succ_coprime' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/DefectFibres.lean:844:0: 'DefectFibres.Qsel_tendsto_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:845:0: 'DefectFibres.Psel_div_Qsel_tendsto_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:846:0: 'DefectFibres.deltaSel_ne_zero' depends on axioms: [e_transcendental, propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:847:0: 'DefectFibres.jdeltaSel_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:848:0: 'DefectFibres.defect_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:849:0: 'DefectFibres.homogeneous_recurrence_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:850:0: 'DefectFibres.epsSel_tendsto_zero_of_inF' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:851:0: 'DefectFibres.defect_bounded_of_inF' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:852:0: 'DefectFibres.cramer_two_int' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:853:0: 'DefectFibres.propagate_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:854:0: 'DefectFibres.limit_two_diff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:855:0: 'DefectFibres.parity_even_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:856:0: 'DefectFibres.theorem9_forward' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:857:0: 'DefectFibres.Kshift_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:858:0: 'DefectFibres.theorem9_converse' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:859:0: 'DefectFibres.theorem9_tail_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:860:0: 'DefectFibres.translation_preserves_F' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:861:0: 'DefectFibres.defect_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:862:0: 'DefectFibres.corollary10_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:863:0: 'DefectFibres.corollary10_ker' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:864:0: 'DefectFibres.finer_scale_ratio' depends on axioms: [e_transcendental, propext, Classical.choice, Quot.sound]
+info: EpiFormal/DefectFibres.lean:865:0: 'DefectFibres.control_example' depends on axioms: [e_transcendental, propext, Classical.choice, Quot.sound]
+warning: EpiFormal/DefectFibres.lean:867:16: '' starts on column 16, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9076/9090] Built EpiFormal.QuarterPointCore (27s)
+warning: EpiFormal\QuarterPointCore.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/QuarterPointCore.lean:4:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology Set Classification`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+info: EpiFormal/QuarterPointCore.lean:109:0: 'QuarterPoint.Wseq_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/QuarterPointCore.lean:110:0: 'QuarterPoint.Wseq_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/QuarterPointCore.lean:111:0: 'QuarterPoint.Wseq_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/QuarterPointCore.lean:112:0: 'QuarterPoint.Qsel_succ_ge_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/QuarterPointCore.lean:113:0: 'QuarterPoint.ratio_diff' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9077/9090] Built EpiFormal.DimHCore (27s)
+warning: EpiFormal\DimHCore.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/DimHCore.lean:4:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology Set MeasureTheory`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/DimHCore.lean:53:20: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/DimHCore.lean:53:34: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/DimHCore.lean:53:20: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DimHCore.lean:53:34: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/DimHCore.lean:222:0: 'DimHCore.Qsel_ge_factorial' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DimHCore.lean:223:0: 'DimHCore.Qsel_succ_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DimHCore.lean:224:0: 'DimHCore.fiber_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: EpiFormal/DimHCore.lean:224:36: '' starts on column 36, but all commands should start at the beginning of the line.
+
+Note: This linter can be disabled with `set_option linter.style.whitespace false`
+⚠ [9078/9090] Built EpiFormal.QuarterPointTail (37s)
+warning: EpiFormal\QuarterPointTail.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/QuarterPointTail.lean:4:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology Set Classification QuarterPoint`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+info: EpiFormal/QuarterPointTail.lean:90:0: 'QuarterPointTail.Qsel_ge_two_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/QuarterPointTail.lean:91:0: 'QuarterPointTail.ratio_diff_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/QuarterPointTail.lean:92:0: 'QuarterPointTail.summable_inv_Qsel' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9079/9090] Built EpiFormal.DeltaReduction (34s)
+warning: EpiFormal\DeltaReduction.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/DeltaReduction.lean:46:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/DeltaReduction.lean:46:36: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: EpiFormal/DeltaReduction.lean:46:22: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DeltaReduction.lean:46:36: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/DeltaReduction.lean:178:0: 'DeltaReduction.deltaSel_rec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DeltaReduction.lean:179:0: 'DeltaReduction.cross_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DeltaReduction.lean:180:0: 'DeltaReduction.abs_sum_eq_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DeltaReduction.lean:181:0: 'DeltaReduction.abs_deltaSel_lt_of_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DeltaReduction.lean:182:0: 'DeltaReduction.deltaSel_tendsto_zero_of_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9080/9090] Built EpiFormal.DimHFinite (42s)
+warning: EpiFormal\DimHFinite.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/DimHFinite.lean:5:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter MeasureTheory Topology Set`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/DimHFinite.lean:13:0: Unscoped option maxHeartbeats is not allowed:
+Please scope this to individual declarations, as in
+```
+set_option maxHeartbeats in
+-- comment explaining why this is necessary
+example : ... := ...
+```
+
+Note: This linter can be disabled with `set_option linter.style.setOption false`
+warning: EpiFormal/DimHFinite.lean:22:31: Variable name `ht` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ht
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/DimHFinite.lean:99:38: Variable name `hx0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hx0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/DimHFinite.lean:128:35: Variable name `ht` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ht
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/DimHFinite.lean:258:36: Variable name `ht` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ht
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/DimHFinite.lean:344:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/DimHFinite.lean:458:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+info: EpiFormal/DimHFinite.lean:598:0: 'DimHFinite.centerOf_mem_survSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DimHFinite.lean:599:0: 'DimHFinite.tailSet_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DimHFinite.lean:600:0: 'DimHFinite.tendsto_contentBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DimHFinite.lean:601:0: 'DimHFinite.hausdorffMeasure_tailSet_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DimHFinite.lean:602:0: 'DimHFinite.dimH_tailSet_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9081/9090] Built EpiFormal.QuarterPointFinal (42s)
+warning: EpiFormal\QuarterPointFinal.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/QuarterPointFinal.lean:5:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology Set Classification QuarterPoint
+  QuarterPointTail`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/QuarterPointFinal.lean:125:12: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/QuarterPointFinal.lean:125:8: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/QuarterPointFinal.lean:125:12: Unused tactic linter: `field_simp` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: EpiFormal/QuarterPointFinal.lean:253:0: 'QuarterPointFinal.eps_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/QuarterPointFinal.lean:254:0: 'QuarterPointFinal.round_eq_M' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/QuarterPointFinal.lean:255:0: 'QuarterPointFinal.defect_eventually_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/QuarterPointFinal.lean:256:0: 'QuarterPointFinal.eps_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/QuarterPointFinal.lean:257:0: 'QuarterPointFinal.lambda_x0_eq_quarter' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9082/9090] Built EpiFormal.WeightedPhase (30s)
+warning: EpiFormal\WeightedPhase.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/WeightedPhase.lean:4:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+info: EpiFormal/WeightedPhase.lean:32:0: 'WeightedPhase.content_core_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9083/9090] Built EpiFormal.DeltaSign (31s)
+warning: EpiFormal\DeltaSign.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/DeltaSign.lean:10:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Polynomial Finset MeasureTheory intervalIntegral Set`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/DeltaSign.lean:28:8: This simp argument is unused:
+  intervalIntegral.integral_const_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: EpiFormal/DeltaSign.lean:44:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/DeltaSign.lean:45:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/DeltaSign.lean:49:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/DeltaSign.lean:50:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: EpiFormal/DeltaSign.lean:44:4: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DeltaSign.lean:44:8: Unused tactic linter: `simp [derivative_mul, derivative_pow_succ, derivative_sub, derivative_X]` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DeltaSign.lean:45:4: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DeltaSign.lean:45:8: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DeltaSign.lean:49:4: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DeltaSign.lean:49:8: Unused tactic linter: `simp [derivative_mul, derivative_pow_succ, derivative_sub, derivative_X]` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DeltaSign.lean:50:4: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DeltaSign.lean:50:8: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: EpiFormal/DeltaSign.lean:102:33: This simp argument is unused:
+  Nat.add_sub_cancel
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nat.mul_succ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: EpiFormal/DeltaSign.lean:205:0: 'DeltaSign.E_eq_I' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DeltaSign.lean:206:0: 'DeltaSign.I_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DeltaSign.lean:207:0: 'DeltaSign.deltaSignAlternation_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DeltaSign.lean:208:0: 'DeltaSign.deltaSel_tendsto_zero_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/DeltaSign.lean:209:0: 'DeltaSign.abs_deltaSel_lt_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9084/9090] Built EpiFormal.WeightedFiber (39s)
+warning: EpiFormal\WeightedFiber.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/WeightedFiber.lean:5:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology Set DimHCore`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/WeightedFiber.lean:24:25: Variable name `hα0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hα0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: EpiFormal/WeightedFiber.lean:109:0: 'WeightedFiber.pow_cross' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WeightedFiber.lean:110:0: 'WeightedFiber.wrad_le_rad' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WeightedFiber.lean:111:0: 'WeightedFiber.fiber_card_weighted_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9085/9090] Built EpiFormal.WeightedLower (60s)
+warning: EpiFormal\WeightedLower.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/WeightedLower.lean:4:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology Set Polynomial Finset DimHCore
+  WeightedFiber`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/WeightedLower.lean:21:39: Variable name `hα0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hα0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/WeightedLower.lean:21:53: Variable name `hα1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hα1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/WeightedLower.lean:108:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: EpiFormal/WeightedLower.lean:98:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedLower.lean:115:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedLower.lean:147:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedLower.lean:159:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+info: EpiFormal/WeightedLower.lean:170:0: 'WeightedLower.width_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WeightedLower.lean:171:0: 'WeightedLower.fiber_card_weighted_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WeightedLower.lean:172:0: 'WeightedLower.fiber_card_weighted_ge_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9086/9090] Built EpiFormal.WeightedDimHCore (61s)
+warning: EpiFormal\WeightedDimHCore.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/WeightedDimHCore.lean:4:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology Set Polynomial Finset DimHCore
+  WeightedFiber`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/WeightedDimHCore.lean:14:34: Variable name `ht` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ht
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/WeightedDimHCore.lean:32:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedDimHCore.lean:93:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedDimHCore.lean:105:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+info: EpiFormal/WeightedDimHCore.lean:117:0: 'WeightedDimH.ediam_winterv_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WeightedDimHCore.lean:118:0: 'WeightedDimH.card_wbranchSet_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WeightedDimHCore.lean:119:0: 'WeightedDimH.card_wsurvSet_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9087/9090] Built EpiFormal.WeightedCantor (60s)
+warning: EpiFormal\WeightedCantor.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/WeightedCantor.lean:5:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology Set Polynomial Finset DimHCore
+  WeightedFiber WeightedDimH WeightedLower`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/WeightedCantor.lean:14:34: Variable name `ht` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ht
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: EpiFormal/WeightedCantor.lean:52:0: 'WeightedCantor.winterv_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9088/9090] Built EpiFormal.WeightedUpper (61s)
+warning: EpiFormal\WeightedUpper.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/WeightedUpper.lean:6:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology Set Polynomial Finset MeasureTheory
+  intervalIntegral DimHCore WeightedFiber WeightedDimH SpectralGap`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/WeightedUpper.lean:6:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedUpper.lean:40:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedUpper.lean:43:38: Variable name `hx0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hx0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/WeightedUpper.lean:70:38: Variable name `ht` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ht
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/WeightedUpper.lean:92:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedUpper.lean:203:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedUpper.lean:235:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedUpper.lean:238:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedUpper.lean:239:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedUpper.lean:279:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedUpper.lean:298:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedUpper.lean:359:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedUpper.lean:362:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+info: EpiFormal/WeightedUpper.lean:371:0: 'WeightedUpper.centerOf_mem_wsurvSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WeightedUpper.lean:372:0: 'WeightedUpper.wtailSet_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WeightedUpper.lean:373:0: 'WeightedUpper.wcontent_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WeightedUpper.lean:374:0: 'WeightedUpper.hausdorffMeasure_wtailSet_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/WeightedUpper.lean:375:0: 'WeightedUpper.dimH_wtailSet_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9089/9090] Built EpiFormal.WeightedFinal (51s)
+warning: EpiFormal\WeightedFinal.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: EpiFormal/WeightedFinal.lean:5:0: The module doc-string for a file should be the first command after the imports
+and any necessary `set_option` commands.
+Please, add a module doc-string (`/-! ... -/`) before `open Real Filter Topology Set Polynomial Finset MeasureTheory
+  intervalIntegral DimHCore WeightedFiber WeightedDimH SpectralGap WeightedUpper`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: EpiFormal/WeightedFinal.lean:5:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedFinal.lean:27:43: Variable name `hα0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hα0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EpiFormal/WeightedFinal.lean:75:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedFinal.lean:78:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedFinal.lean:91:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: EpiFormal/WeightedFinal.lean:98:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+info: EpiFormal/WeightedFinal.lean:108:0: 'WeightedFinal.dimH_levelSetα_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (9090 jobs).

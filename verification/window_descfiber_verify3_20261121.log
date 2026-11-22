@@ -1,0 +1,45 @@
+﻿EpiFormal/WindowDescFiber.lean:35:39: error: Application type mismatch: The argument
+  hu
+has type
+  u ∈ P lvl
+but is expected to have type
+  t ∈ desc T lvl d ?m.89
+in the application
+  ih ?m.90 hu
+EpiFormal/WindowDescFiber.lean:35:37: error: Application type mismatch: The argument
+  u
+has type
+  ℝ × ℝ
+of sort `Type` but is expected to have type
+  ?m.89 ∈ P lvl
+of sort `Prop` in the application
+  ih u
+EpiFormal/WindowDescFiber.lean:60:53: error: unsolved goals
+T : StoppedTree.TreeData
+P : ℕ → Finset (ℝ × ℝ)
+FmaxN : ℕ → ℕ
+hchild_mem : ∀ (j : ℕ), ∀ u ∈ P j, T.child j u ⊆ P (j + 1)
+hfiber : ∀ (j : ℕ), ∀ v ∈ P j, (T.child j v).card ≤ FmaxN j
+lvl d : ℕ
+ih : ∀ {u : ℝ × ℝ}, u ∈ P lvl → (desc T lvl d u).card ≤ ∏ k ∈ Finset.Ico lvl (lvl + d), FmaxN k
+u : ℝ × ℝ
+hu : u ∈ P lvl
+hle : ((desc T lvl d u).biUnion (T.child (lvl + d))).card ≤ ∑ v ∈ desc T lvl d u, FmaxN (lvl + d)
+⊢ ↑(desc T lvl d u).card * FmaxN (lvl + d) = (desc T lvl d u).card * FmaxN (lvl + d)
+EpiFormal/WindowDescFiber.lean:62:16: error: Function expected at
+  ih ?m.182
+but this term has type
+  (desc T lvl d ?m.181).card ≤ ∏ k ∈ Finset.Ico lvl (lvl + d), FmaxN k
+
+Note: Expected a function because this term is being applied to the argument
+  hu
+EpiFormal/WindowDescFiber.lean:62:19: error: Application type mismatch: The argument
+  u
+has type
+  ℝ × ℝ
+of sort `Type` but is expected to have type
+  ?m.181 ∈ P lvl
+of sort `Prop` in the application
+  ih u
+'WindowDescFiber.desc_mem' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowDescFiber.desc_card_le' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

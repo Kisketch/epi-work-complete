@@ -1,0 +1,33 @@
+﻿EpiFormal/AffineWindowAssembly.lean:33:41: error(lean.unknownIdentifier): Unknown identifier `hB`
+EpiFormal/AffineWindowAssembly.lean:33:45: error(lean.unknownIdentifier): Unknown identifier `hc`
+EpiFormal/AffineWindowAssembly.lean:39:21: error(lean.unknownIdentifier): Unknown identifier `B`
+EpiFormal/AffineWindowAssembly.lean:39:23: error(lean.unknownIdentifier): Unknown identifier `c`
+EpiFormal/AffineWindowAssembly.lean:46:22: error(lean.unknownIdentifier): Unknown identifier `B`
+EpiFormal/AffineWindowAssembly.lean:46:26: error(lean.unknownIdentifier): Unknown identifier `c`
+EpiFormal/AffineWindowAssembly.lean:46:33: error(lean.unknownIdentifier): Unknown identifier `B`
+EpiFormal/AffineWindowAssembly.lean:46:37: error(lean.unknownIdentifier): Unknown identifier `c`
+EpiFormal/AffineWindowAssembly.lean:47:17: error(lean.unknownIdentifier): Unknown identifier `G`
+EpiFormal/AffineWindowAssembly.lean:47:23: error(lean.unknownIdentifier): Unknown identifier `G`
+EpiFormal/AffineWindowAssembly.lean:47:38: error(lean.unknownIdentifier): Unknown identifier `hGodd`
+EpiFormal/AffineWindowAssembly.lean:45:39: error: unsolved goals
+D : ℕ → ℕ
+j : ℕ
+hT : Even (2 * sorry * sorry)
+⊢ Even (D j)
+EpiFormal/AffineWindowAssembly.lean:70:13: error(lean.unknownIdentifier): Unknown identifier `hDT`
+EpiFormal/AffineWindowAssembly.lean:65:24: error: unsolved goals
+G D : ℕ → ℕ
+j T' : ℕ
+hGp : G (j + T') = G j ∧ G (j + 1 + T') = G (j + 1)
+e : j + 1 + T' = j + T' + 1
+h2 : G (j + T' + 1) = G (j + 1)
+hP : G (j + T') * G (j + T' + 1) = G j * G (j + 1)
+⊢ D (j + T') = D j
+EpiFormal/AffineWindowAssembly.lean:96:2: error: No goals to be solved
+'AffineWindow.T_pos' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'AffineWindow.D_pos' depends on axioms: [sorryAx]
+'AffineWindow.D_even' depends on axioms: [propext, sorryAx]
+'AffineWindow.r_ge_three' depends on axioms: [propext, Quot.sound]
+'AffineWindow.D_period' depends on axioms: [propext, sorryAx, Quot.sound]
+'AffineWindow.r_period' does not depend on any axioms
+'AffineWindow.first_digit_shift' depends on axioms: [propext, Classical.choice, Quot.sound]

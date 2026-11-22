@@ -1,0 +1,375 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\dimH}{\dim_{\mathrm{H}}}
+\newcommand{\Lam}{\Lambda}
+
+\title{A spectral gap and zero-dimensional level sets for Diophantine\\
+approximation along the convergent denominators of \texorpdfstring{$e$}{e}}
+\author{Phase-2 report (AI-assisted research; Lean-kernel-checked core)}
+\date{2026-11-15}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $(Q_j)_{j\ge1}$ be the selected convergent denominators of $\ee$
+($Q_1=1,Q_2=7$, $Q_{j+1}=(4j+2)Q_j+Q_{j-1}$), and define the weighted
+approximation exponent $\Lam(x)=\limsup_{j\to\infty} j\,\|Q_j x\|$, where
+$\|y\|=\dist(y,\Z)$. We prove a \emph{spectral gap}: the range of $\Lam$ is
+contained in $\{0\}\cup[1/4,\infty]$, with $\Lam(x)=0$ exactly on the countable
+lattice $L=\Z+\Z\frac{\ee+1}{2}$. Consequently every level set
+$\{\Lam\le c\}$ with $c<1/4$ equals $L$ and has Hausdorff dimension $0$.
+The core (spectral gap, sub-threshold level sets, dimension $0$) is
+\emph{machine-checked} in Lean~4 relative to two explicitly listed classical
+axioms on the continued-fraction errors of $\ee$. We further give an elementary
+covering argument, \emph{fully machine-checked} in Lean~4 relative to the three
+standard axioms only (\texttt{propext}, \texttt{Classical.choice},
+\texttt{Quot.sound}; no continued-fraction axioms needed), showing
+$\dimH\{\Lam\le c\}=0$ for \emph{every} finite $c$, hence
+$\dimH\{\Lam<\infty\}=0$. By the classification theorem the unweighted zero-set
+$\{x:\|Q_jx\|\to0\}$ is contained in the countable lattice $L$, hence also has
+dimension $0$; the role of the weight $j$ is instead to make the branching
+number \emph{uniformly bounded} along this sparse subsequence, so that the
+covering argument yields dimension $0$ for \emph{all} finite level sets, not
+only the zero-set. This is a new concrete instance of a spectral-gap/phase-transition
+phenomenon classical for the Lagrange spectrum; the novelty is the specific
+subsequence, weight, lattice and sharp constant. The work is a Phase-2 spin-off
+of an $e+\pi$ irrationality project; it does \emph{not} resolve that open problem.
+\end{abstract}
+
+\section{Introduction}
+
+This note studies the metric theory of Diophantine approximation along a
+\emph{sparse, super-exponentially growing} subsequence of denominators: the
+selected convergent denominators of $\ee$. It is a spin-off of a formalization
+project on the (open) irrationality of $e+\pi$; the classification and gap
+theorems proved there as machinery turn out to yield genuine new theorems in
+metric Diophantine approximation, which we report here independently.
+
+\subsection{Setup}
+
+The continued fraction of $\ee$ is $[2;1,2,1,1,4,1,1,6,\dots]$. Let $P_j/Q_j$
+be the convergent immediately preceding the partial quotient $2j$; the first
+few are $3/1,19/7,193/71,2721/1001$. The denominators satisfy
+\begin{equation}\label{eq:rec}
+Q_{j+1}=(4j+2)Q_j+Q_{j-1}\quad(j\ge2),\qquad Q_1=1,\ Q_2=7,
+\end{equation}
+so $Q_{j+1}/Q_j\sim 4j$ and $\log Q_j\sim j\log j$ (super-exponential growth).
+Write $\|y\|=\dist(y,\Z)$ and define
+\[
+\Lam(x):=\limsup_{j\to\infty} j\,\|Q_j x\|\in[0,\infty].
+\]
+Let $L:=\Z+\Z\frac{\ee+1}{2}$, a countable dense subgroup of $\R$.
+
+\subsection{Relation to prior work}\label{sec:prior}
+
+The \emph{phenomenon} (a spectral gap plus zero-dimensional sub-threshold level
+sets) is classical: the Lagrange spectrum below $\sqrt5$ is countable
+(dimensions $0$), Hall's ray gives a half-line, and Moreira and Lima--Moreira
+establish phase transitions for spectra of Diophantine approximation
+\cite{Moreira,LimaMoreira}. Kraaikamp--Liardet \cite{KL} and
+B\'ir\'o--Deshouillers--S\'os \cite{BDS} characterized
+$\{x:q_n x\to0\}=\Z+\Z\alpha$ for the \emph{full} convergent sequence of an
+irrational $\alpha$, \emph{without} a weight; the BDS Lemma~4.1 already contains
+a $1/4$ constant. Eggleston's theorem (see \cite{BLR}, Cor.~8) gives dimension
+$1$ for approximation along the \emph{full} sequence of denominators of a
+generic irrational; it does \emph{not} apply to this sparse super-exponential
+subsequence, whose unweighted zero-set $\{x:\|Q_jx\|\to0\}$ is contained in the
+countable lattice $L$ (Theorem~\ref{thm:class}) and hence has dimension $0$.
+
+Our contribution is a \emph{new concrete instance} with four distinguishing
+features: (i) a \emph{subsequence} of convergent denominators (every third),
+(ii) the \emph{weight} $j$, (iii) the lattice $L=\Z+\Z\frac{\ee+1}{2}$ (note
+$(\ee+1)/2$, not $\ee$), and (iv) the \emph{sharp} constant $1/4$. The weight is
+\emph{critical} for the covering argument: it makes the per-parent branching
+number uniformly bounded, yielding dimension $0$ for \emph{all} finite level
+sets (Theorem~\ref{thm:finite}), whereas without the weight the branching grows
+linearly and the argument fails. Both weighted and unweighted zero-sets are
+countable here; the phase transition in the weight parameter concerns positive
+finite level sets (Conjecture~\ref{conj:weight}). We claim no novelty for the
+phenomenon itself.
+
+\section{The classification and gap theorems (imported, machine-checked)}
+
+The following two results were established and Lean-kernel-checked in the
+Phase-1 project; we import them as the foundation. Their only non-base axioms
+are two classical continued-fraction error estimates for $\ee$
+($\delta_j\to0$ and $|\delta_j|<1/(2jQ_j)$, where $\delta_j=Q_j\ee-P_j$),
+which are not in mathlib v4.35.
+
+\begin{theorem}[Classification, {\cite[Thm.~2]{Phase1}}]\label{thm:class}
+For $x\in\R$, $\quad j\|Q_jx\|\to0\iff x\in L.$
+\end{theorem}
+
+\begin{theorem}[Gap, {\cite[Cor.~3]{Phase1}}]\label{thm:gap}
+If $x\notin L$ and $c<1/4$, then it is \emph{not} the case that
+$j\|Q_jx\|\le c$ eventually. Equivalently $\Lam(x)\ge1/4$ for $x\notin L$.
+\end{theorem}
+
+\section{The spectral gap (machine-checked)}
+
+\begin{theorem}[Spectral gap]\label{thm:spectral}
+For every $x\in\R$, either $\Lam(x)=0$ or $\Lam(x)\ge1/4$. Thus
+$\Lam(\R)\subseteq\{0\}\cup[1/4,\infty]$, and $\Lam(x)=0\iff x\in L$.
+\end{theorem}
+
+\begin{proof}
+If $x\in L$, Theorem~\ref{thm:class} gives $j\|Q_jx\|\to0$, hence $\Lam(x)=0$.
+If $x\notin L$, Theorem~\ref{thm:gap} gives $\Lam(x)\ge1/4$. The dichotomy and
+the characterization of the zero value follow.
+\end{proof}
+
+\begin{remark}
+In particular $\Lam(\ee)=0$, since $\ee=2\cdot\frac{\ee+1}{2}-1\in L$; $\ee$ is
+\emph{not} a generic point for this exponent. Numerically (Section~\ref{sec:num})
+$\Lam(B\pi)=\infty$ for $B=1,\dots,10$, and likewise for $\sqrt2$, the golden
+ratio, and random reals.
+\end{remark}
+
+\section{Sub-threshold level sets have dimension zero (machine-checked)}
+
+For $c\ge0$ write $E_c:=\{x:\Lam(x)\le c\}$.
+
+\begin{theorem}[Sub-threshold level sets]\label{thm:sub}
+If $c<1/4$, then $E_c=L$. In particular $E_c$ is countable and
+$\dimH E_c=0$.
+\end{theorem}
+
+\begin{proof}
+If $x\in L$ then $\Lam(x)=0\le c$, so $L\subseteq E_c$. Conversely if
+$x\in E_c$ then $\Lam(x)\le c<1/4$, so by Theorem~\ref{thm:spectral}
+$\Lam(x)=0$, hence $x\in L$ by Theorem~\ref{thm:class}. Thus $E_c=L$, which is
+countable (image of $\Z^2$), and countable sets have Hausdorff dimension $0$.
+\end{proof}
+
+\paragraph{Lean status.} Theorems~\ref{thm:spectral} and~\ref{thm:sub}, together
+with the countability of $L$ and $\dimH E_c=0$ for $c<1/4$, are kernel-checked in
+\texttt{EpiFormal/SpectralGap.lean} (five declarations, no \texttt{sorryAx}).
+The audit reports only the base axioms plus the two $\delta$ axioms of
+Theorems~\ref{thm:class}--\ref{thm:gap}. The whole project builds with zero
+errors and \texttt{Audit.lean} exits $0$ with \texttt{sorryAx} count $0$.
+
+\section{All finite level sets have dimension zero (machine-checked)}
+
+The sub-threshold result uses the sharp classification. For $c\ge1/4$ the level
+set $E_c$ is uncountable, but we show it still has dimension $0$. The entire
+covering argument --- factorial growth of $Q_j$, uniform branching bound,
+surviving-center recursion, periodicity reduction, Hausdorff-content estimate,
+and the countable-union assembly --- is \emph{machine-checked}
+(\texttt{EpiFormal/DimHCore.lean} + \texttt{EpiFormal/DimHFinite.lean}, base
+axioms only, no \texttt{sorryAx}, and \emph{no} continued-fraction axioms).
+The elementary proof below mirrors the formalization.
+
+\begin{lemma}[Factorial growth, machine-checked]\label{lem:factorial}
+For $j\ge1$, $Q_j\ge j!$. (Lean: \texttt{DimHCore.Qsel\_ge\_factorial}.)
+\end{lemma}
+
+\begin{lemma}[Uniform branching bound, machine-checked]\label{lem:branch}
+Fix $t\ge0$, $j\ge1$ and a parent center $c$. The number of child centers
+$k'\in[0,Q_{j+1}]$ with $|c/Q_j-k'/Q_{j+1}|\le t/(jQ_j)+t/((j+1)Q_{j+1})$ is at
+most $B:=\lfloor16t\rfloor+1$, \emph{uniformly in $j$ and $c$}.
+(Lean: \texttt{DimHCore.fiber\_card\_le}; proof by injecting $k'\mapsto
+\lfloor k'-A\rfloor$ into $[0,\lfloor16t\rfloor]$, using $Q_{j+1}\le(4j+3)Q_j$.)
+\end{lemma}
+
+\begin{theorem}[Finite level sets, machine-checked]\label{thm:finite}
+For every $c\in\R$, $\dimH E_c=0$. Consequently
+$F:=\{x:\Lam(x)<\infty\}=\bigcup_{n\ge1}E_n$ has $\dimH F=0$.
+(Lean: \texttt{DimHFinite.dimH\_levelSet\_finite}; \texttt{\#print axioms}
+returns \texttt{[propext, Classical.choice, Quot.sound]} only.)
+\end{theorem}
+
+\begin{proof}[Proof sketch (elementary covering)]
+Fix $c<\infty$ and $t>c$. Since $\Lam(x)\le c<t$ means $j\|Q_jx\|\le t$
+\emph{eventually} (a liminf-type condition, \emph{not} a limsup set), we have
+\[
+E_c\subseteq\bigcup_{J\ge1}\bigcap_{j\ge J}A_j(t),\qquad
+A_j(t):=\{x:\|Q_jx\|\le t/j\}.
+\]
+Each $A_j(t)$ is a union of $Q_j$ intervals of radius $t/(jQ_j)$ centered at
+$k/Q_j$. The intersection $C_J:=\bigcap_{j\ge J}A_j(t)$ is a nested Cantor set.
+A level-$j$ interval survives to level $j+1$ only if its center $k/Q_j$ is
+within $t/(jQ_j)+t/((j+1)Q_{j+1})$ of some $k'/Q_{j+1}$, i.e.
+$|k'Q_j-kQ_{j+1}|\le t\bigl(Q_{j+1}/j+Q_j/(j+1)\bigr)$. Using
+\eqref{eq:rec}, the number of surviving children per parent is bounded
+\emph{uniformly} by $B=\lfloor16t\rfloor+1$ (Lemma~\ref{lem:branch},
+machine-checked). Hence the number $N_n$ of level-$n$ intervals obeys
+$N_n\le (Q_J+1)\,B^{\,n-J}$, while their diameter is $\le 2t/(nQ_n)$. By
+Lemma~\ref{lem:factorial} (machine-checked), $Q_n\ge n!$, so for any $s>0$ the
+$s$-content is bounded by
+\[
+N_n\cdot\bigl(2t/(nQ_n)\bigr)^{s}\le (Q_J+1) B^{n-J}(2t)^{s}\,(n\cdot n!)^{-s}
+\longrightarrow0,
+\]
+because $\log(n!)\sim n\log n$ dominates the linear exponent $n\log B$. Thus
+$\dimH C_J=0$ for each $J$, and $E_c$ is a countable union of such sets, so
+$\dimH E_c=0$. Finally $F=\bigcup_nE_n$ is a countable union, hence
+$\dimH F=0$.
+\end{proof}
+
+\paragraph{Lean status of the assembly.} All steps are kernel-checked.
+The surviving centers are encoded as a \texttt{Finset} recursion
+(\texttt{survSet}), not as paths: $S_0=\{0,\dots,Q_J\}$ and
+$S_{n+1}=\bigcup_{k\in S_n}\mathrm{branchSet}(k)$, with
+$|S_n|\le(Q_J+1)B^n$ by \texttt{Finset.card\_biUnion\_le\_card\_mul} and
+Lemma~\ref{lem:branch} (\texttt{card\_survSet\_le}). Membership of the center
+sequence $\mathrm{round}(Q_{J+n}x)$ in $S_n$ is proved by induction via the
+triangle inequality (\texttt{centerOf\_mem\_survSet}), giving the cover
+(\texttt{tailSet\_cover}). The content bound
+$|S_n|(2t/((J+n)Q_{J+n}))^s\to0$ uses $Q_j\ge j!$ and
+\texttt{FloorSemiring.tendsto\_pow\_div\_factorial\_atTop} with $c=B^{1/s}$
+(\texttt{tendsto\_contentBound}); no asymptotic notation is used. Feeding this
+into \texttt{hausdorffMeasure\_le\_liminf\_sum} yields $\mu H^s=0$ for all
+$s>0$ (\texttt{hausdorffMeasure\_tailSet\_zero}), hence $\dimH=0$
+(\texttt{dimH\_tailSet\_zero}). Periodicity
+$\|Q_j(x+m)\|=\|Q_jx\|$ (\texttt{apprSeq\_add\_intCast}) reduces general $x$ to
+$[0,1]$; integer shifts are $1$-Lipschitz and countable unions preserve
+dimension $0$ (\texttt{dimH\_iUnion}). The sub-threshold case $c<1/4$ is
+\emph{not} used: a monotonicity reduction to $c'=\max(c,0)$ lets the covering
+argument handle all $c$ uniformly, so the theorem needs no continued-fraction
+axioms. \texttt{Audit.lean} exits $0$ with \texttt{sorryAx} count $0$.
+
+\begin{remark}[Role of the weight / phase transition]
+The unweighted zero-set $\{x:\|Q_jx\|\to0\}$ is \emph{countable} (contained in
+$L$ by Theorem~\ref{thm:class}, since $\|Q_jx\|\le j\|Q_jx\|$ for $j\ge1$), hence
+of dimension $0$; it is \emph{not} the full-dimensional Eggleston set, which
+concerns the \emph{full} convergent sequence of a generic irrational, not this
+sparse super-exponential subsequence. The weight $j$ does not collapse a
+dimension-$1$ zero-set; rather it makes the per-parent branching number
+uniformly bounded ($B=\lfloor16t\rfloor+1$, Lemma~\ref{lem:branch}), whereas
+without the weight the branching width grows like $8tj$ and the covering
+argument fails. For the family $\Lam_\alpha(x)=\limsup j^\alpha\|Q_jx\|$,
+$0\le\alpha\le1$, the per-parent branching number scales like $j^{1-\alpha}$
+(Lemma~\ref{lem:branch} generalized), so the $s$-content scales like
+$(n!)^{1-\alpha-s}$: it tends to $0$ exactly when $s>1-\alpha$. Hence the
+\emph{upper bound} $\dimH\{\Lam_\alpha\le c\}\le1-\alpha$ holds for every finite
+$c$ (Theorem~\ref{thm:upper}); the critical exponent varies \emph{linearly}
+with $\alpha$, equal to $0$ at $\alpha=1$ (Theorem~\ref{thm:finite}) and $1$ at
+$\alpha=0$. The matching lower bound $\ge1-\alpha$ is conjectural
+(Conjecture~\ref{conj:weight}); it requires a mass-distribution argument.
+\end{remark}
+
+\begin{theorem}[Weighted upper bound]\label{thm:upper}
+For $0\le\alpha\le1$ and every finite $c\ge0$,
+$\dimH\{x:\Lam_\alpha(x)\le c\}\le1-\alpha$.
+\end{theorem}
+\begin{proof}[Proof sketch]
+Cover $\{\Lam_\alpha\le c\}$ by $\bigcup_J\bigcap_{j\ge J}\{x:\|Q_jx\|\le t/j^\alpha\}$,
+$t>c$. Level-$j$ intervals have radius $t/(j^\alpha Q_j)$; a parent has at most
+$K j^{1-\alpha}$ surviving children (using $Q_{j+1}\le(4j+3)Q_j$). Thus
+$N_n\le C K^n (n!)^{1-\alpha}$ and diameters $\le2t/(n^\alpha n!)$, so the
+$s$-content is $\le C' K^n (n!)^{1-\alpha-s}\to0$ for $s>1-\alpha$
+(the analytic core $K^n(n!)^{-\beta}\to0$, $\beta=s-(1-\alpha)>0$, is
+machine-checked, \texttt{WeightedPhase.content\_core\_tendsto}). Hausdorff's
+covering criterion gives $\dimH\le s$; let $s\downarrow1-\alpha$.
+\end{proof}
+
+\begin{conjecture}[Weight phase transition, matching lower bound]\label{conj:weight}
+For $0\le\alpha<1$ and every $c>0$,
+$\dimH\{x:\Lam_\alpha(x)\le c\}\ge1-\alpha$, hence equality $=1-\alpha$
+(combined with Theorem~\ref{thm:upper}). The upper bound is proved; the lower
+bound requires a Frostman mass-distribution on the surviving Cantor tree with
+uniform branching $\asymp j^{1-\alpha}$, and is open. (An earlier version of
+this manuscript conjectured dimension $1$ for all $\alpha<1$; that is
+\emph{incorrect}: the branching scale $j^{1-\alpha}$ forces the critical
+exponent $1-\alpha<1$ for $\alpha>0$, as the upper bound shows.) The zero-set
+$\{\Lam_\alpha=0\}$ is countable for all $\alpha\ge0$, so the transition is a
+statement about positive finite level sets, not zero-sets.
+\end{conjecture}
+
+\section{Numerical evidence}\label{sec:num}
+
+All computations use mpmath with dynamic precision $\mathrm{digits}(Q_j)+300$
+(to survive the catastrophic cancellation in $Q_jx-\mathrm{round}(Q_jx)$).
+These are corroborations, not proofs.
+
+\paragraph{Spectral gap.} For $x=B\pi$ ($B=1..10$), $\sqrt2$, the golden ratio,
+and random reals, $\max_{j\le60}j\|Q_jx\|$ lies in $22$--$29$ and grows
+$\sim j/4$, so $\Lam(x)=\infty\gg1/4$. For $x\in L$ (e.g.\ $(\ee+1)/2$,
+$1+(\ee+1)/2$), $j\|Q_jx\|<10^{-12}$ already for $j\ge10$ and $\sim10^{-117}$
+at $j=60$, confirming $\Lam=0$.
+
+\paragraph{Dimension (box-counting).} Exact rational covering trees give the
+following box-counting estimates for $E_c\cap[0,1]$:
+\begin{center}
+\begin{tabular}{c|cccc}
+$c$ & $N=4$ & $N=12$ & path $N=400$ & bound $n=1500$\\\hline
+$1/4$ & 0.371 & 0.323 & 0.171 & 0.180\\
+$1/2$ & 0.630 & --- & 0.251 & 0.270\\
+$1$   & 0.863 & --- & 0.343 & 0.360\\
+$2$   & 1.000 & --- & 0.442 & 0.446
+\end{tabular}
+\end{center}
+The true branching number is constantly $\lfloor8c\rfloor+1$ ($3,5,9,17$), and
+the rigorous upper bound decays as $\log B/\log n\to0$. \textbf{Caveat:} the
+decay is only $O(1/\log n)$; at accessible $N$ the estimates are far from $0$
+(e.g.\ $s=0.01$ needs $n\approx10^{60}$). The numerics are consistent with
+$\dimH=0$ but cannot resolve it directly; the proof is the covering argument of
+Theorem~\ref{thm:finite}. Below the gap ($c=0.24$) the covering upper bound
+still grows exponentially while the true branching tends to $0$: the covering
+method is not sharp below the gap, which is why the exact classification
+(Theorem~\ref{thm:class}) is needed there.
+
+\section{Honesty statement and scope}
+
+\begin{itemize}[leftmargin=1.5em]
+\item Theorem~\ref{thm:spectral}, Theorem~\ref{thm:sub}, and the countability /
+dimension-$0$ statements for $c<1/4$ are \emph{machine-checked} (Lean kernel,
+no \texttt{sorryAx}), relative to the two classical $\delta$ axioms.
+\item Theorem~\ref{thm:finite} (all $c\in\R$) is \emph{fully machine-checked}
+(\texttt{DimHCore.lean} + \texttt{DimHFinite.lean}, base axioms only:
+\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}; no
+$\delta$ axioms, no \texttt{sorryAx}). The assembly uses a surviving-center
+\texttt{Finset} recursion rather than path encoding; the growth estimate is
+explicit (\texttt{tendsto\_pow\_div\_factorial\_atTop}), not asymptotic.
+\item The weight phase-transition conjecture is open.
+\item This note does \emph{not} prove the irrationality of $e+\pi$ (still open).
+It is a metric-theory spin-off; the connection is that the same classification
+machinery arose from the $e+\pi$ escape program.
+\item The spectral-gap phenomenon is classical; we claim novelty only for the
+specific instance (subsequence + weight + lattice + sharp constant).
+\end{itemize}
+
+\begin{thebibliography}{99}
+\bibitem{Phase1} Phase-1 archive, \emph{On the irrationality of $e+\pi$}
+(formalization project), \texttt{EpiFormal/Classification.lean},
+Theorem~2 and Corollary~3; \texttt{EpiFormal/SpectralGap.lean}, 2026-11-15.
+\bibitem{KL} C.~Kraaikamp and P.~Liardet, \emph{Good approximations and
+continued fractions}, Proc.~Amer.~Math.~Soc.~112 (1991), 303--309.
+\bibitem{BDS} A.~B\'ir\'o, J.-M.~Deshouillers, V.~T.~S\'os, \emph{Good
+approximation and characterization of subgroups of $\R/\Z$}, Studia Sci.~Math.~Hungar.~37 (2001). (Lemma~4.1 contains the $1/4$ constant.)
+\bibitem{BLR} Y.~Bugeaud, L.~Liao, M.~Rams, \emph{Hausdorff dimension of
+limsup sets and Diophantine approximation}, arXiv:1710.03596. (Cor.~8,
+Eggleston 1952: unweighted zero-set has dimension $1$.)
+\bibitem{Moreira} C.~G.~Moreira, \emph{Geometric properties of the Markov and
+Lagrange spectra}, arXiv:1612.05782.
+\bibitem{LimaMoreira} D.~Lima and C.~G.~Moreira, \emph{Phase transitions for
+the Lagrange and Markov spectra}, arXiv:1801.04636.
+\bibitem{BV} V.~Beresnevich and S.~Velani, \emph{A mass transference principle
+and the Duffin--Schaeffer conjecture}, Ann.~of Math.~164 (2006), 971--992.
+\bibitem{Falconer} K.~Falconer, \emph{Fractal Geometry}, Wiley, 2003.
+(countable sets have Hausdorff dimension $0$.)
+\end{thebibliography}
+
+\end{document}

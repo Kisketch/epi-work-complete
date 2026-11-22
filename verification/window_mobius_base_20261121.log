@@ -1,0 +1,4 @@
+﻿EpiFormal/WindowMobiusCount.lean:134:12: error(lean.unknownIdentifier): Unknown identifier `lt_of_mul_le_mul_right`
+EpiFormal/WindowMobiusCount.lean:157:10: warning: syntax 'Lean.Parser.Tactic.rwaAtLegacyLocation' has been deprecated: use `rw [...] at ... <;> assumption` instead
+
+Note: This linter can be disabled with `set_option linter.deprecated.syntax false`

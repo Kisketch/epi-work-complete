@@ -1,0 +1,12 @@
+Delta 5: independent general enumeration matches existing golden output.
+Delta 5: 4 exact pure-head values through 2.
+Delta 8: 6 exact pure-head values through 2.
+Delta 13: 7 exact pure-head values through 2.
+Delta 20: 9 exact pure-head values through 2.
+Delta 29: 11 exact pure-head values through 2.
+Delta 12, mixed affine target: 5 values through 1/2, lattice denominator 3.
+    1 + (-5/18) sqrt(12)
+    -1 + (1/3) sqrt(12)
+    1 + (-2/9) sqrt(12)
+    -1 + (7/18) sqrt(12)
+    1 + (-1/6) sqrt(12)

@@ -1,0 +1,45 @@
+﻿EpiFormal/WindowMassDist.lean:32:37: error: Application type mismatch: The argument
+  hC
+has type
+  0 ≤ C
+but is expected to have type
+  0 < C
+in the application
+  le_of_lt hC
+EpiFormal/WindowMassDist.lean:45:18: error: Function expected at
+  measure_iUnion_le ?m.98
+but this term has type
+  ?m.93 (⋃ i, ?m.98 i) ≤ ∑' (i : ?m.89), ?m.93 (?m.98 i)
+
+Note: Expected a function because this term is being applied to the argument
+  t
+EpiFormal/WindowMassDist.lean:45:50: error: Application type mismatch: The argument
+  μ.toOuterMeasure
+has type
+  OuterMeasure ℝ
+but is expected to have type
+  ?m.89 → Set ?m.88
+in the application
+  measure_iUnion_le μ.toOuterMeasure
+EpiFormal/WindowMassDist.lean:61:4: error: Type mismatch
+  le_iInf fun t => le_iInf fun hcov => le_iInf fun x => key t hcov
+has type
+  μ K ≤ ⨅ t, ⨅ (hcov : K ⊆ ⋃ n, t n), ⨅ x, ENNReal.ofReal C * ∑' (n : ℕ), Metric.ediam (t n) ^ s
+but is expected to have type
+  μ K ≤
+    ENNReal.ofReal C *
+      ⨅ t, ⨅ (_ : K ⊆ ⋃ n, t n), ⨅ (_ : ∀ (n : ℕ), Metric.ediam (t n) ≤ 1), ∑' (n : ℕ), Metric.ediam (t n) ^ s
+EpiFormal/WindowMassDist.lean:62:51: error(lean.unknownIdentifier): Unknown constant `ENNReal.ofReal_nonneg`
+EpiFormal/WindowMassDist.lean:63:2: error: Type mismatch
+  le_iSup₂ 1 one_pos
+has type
+  ?m.288 1 ⋯ ≤ ⨆ i, ⨆ (j : 0 < i), ?m.288 i j
+but is expected to have type
+  ⨅ t, ⨅ (_ : K ⊆ ⋃ n, t n), ⨅ (_ : ∀ (n : ℕ), Metric.ediam (t n) ≤ 1), ∑' (n : ℕ), Metric.ediam (t n) ^ s ≤
+    ⨆ r,
+      ⨆ (_ : 0 < r),
+        ⨅ t,
+          ⨅ (_ : K ⊆ ⋃ n, t n),
+            ⨅ (_ : ∀ (n : ℕ), Metric.ediam (t n) ≤ r), ∑' (n : ℕ), ⨆ (_ : (t n).Nonempty), Metric.ediam (t n) ^ s
+'WindowMass.ofReal_diam_le_mul_ediam_rpow' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMass.mass_distrib_of_diam_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

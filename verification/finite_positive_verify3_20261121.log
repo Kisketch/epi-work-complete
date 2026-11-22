@@ -1,0 +1,32 @@
+﻿Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+EpiFormal/FiniteStatePositive.lean:119:27: error: unsolved goals
+V : Type u
+inst✝ : Fintype V
+edges : V → V → Finset ℤ
+w : V → ℝ
+growth lo hi : ℝ
+hlo : 0 < lo
+hl : ∀ (u : V), lo ≤ w u
+hu : ∀ (u : V), w u ≤ hi
+hgrowth : 0 < growth
+n : ℕ
+v : V
+q : Path edges n v
+hwv : 0 < w v
+hD : 0 < growth ^ n * w v
+hhi : 0 < hi
+h1 : 1 ≤ w v / lo
+h2 : (1 / growth) ^ n * growth ^ n = 1
+hbig : w (endVertex edges q) ≤ hi * (w v / lo)
+⊢ growth ^ n * growth⁻¹ ^ n = 1
+'FiniteStateGauge.perron_word_mass_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.perron_word_mass_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FiniteStateGauge.muRestricted_elem_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.muRestrict_le_mkMetric_hlam' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.one_le_mkMetric_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.pos_mkMetric_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]

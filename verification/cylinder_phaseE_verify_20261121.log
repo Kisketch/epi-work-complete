@@ -1,0 +1,39 @@
+﻿EpiFormal/CylinderPhaseE.lean:29:40: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  |↑a * ↑d - ↑b * ↑c|
+in the target expression
+  |↑a * ↑d - ↑c * ↑b| / |↑c * ↑d| = 1 / (↑c * ↑d)
+
+a b c d : ℤ
+hc : 0 < c
+hd : 0 < d
+hdet : a * d - b * c = 1 ∨ a * d - b * c = -1
+hcR : ↑c ≠ 0
+hdR : ↑d ≠ 0
+hnum : |↑a * ↑d - ↑b * ↑c| = 1
+⊢ |↑a * ↑d - ↑c * ↑b| / |↑c * ↑d| = 1 / (↑c * ↑d)
+EpiFormal/CylinderPhaseE.lean:38:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  |y - x|
+in the target expression
+  y - x = |x - y|
+
+case inl
+x y : ℝ
+h : x ≤ y
+⊢ y - x = |x - y|
+EpiFormal/CylinderPhaseE.lean:40:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  |y - x|
+in the target expression
+  x - y = |x - y|
+
+case inr
+x y : ℝ
+h : y ≤ x
+⊢ x - y = |x - y|
+EpiFormal/CylinderPhaseE.lean:52:46: error: unexpected token ')'; expected ':=', 'where' or '|'
+EpiFormal/CylinderPhaseE.lean:45:7: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HDiv (ℝ → ℝ) ℝ ?m.45
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+'Cylinder.frac_abs_sub_of_unit_cross' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Cylinder.diam_Icc_min_max' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Cylinder.child_cyl_diam' does not depend on any axioms

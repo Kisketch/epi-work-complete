@@ -1,0 +1,78 @@
+﻿EpiFormal/NoShortDimRatio.lean:73:68: error: unexpected token ':='; expected ')', ',' or ':'
+EpiFormal/NoShortDimRatio.lean:65:81: error: unsolved goals
+case hleR
+j : ℕ
+hj : 1 ≤ j
+hQj : 0 < ↑(Qsel j)
+hrec : ↑(Qsel (j + 1)) = (4 * ↑j + 2) * ↑(Qsel j) + ↑(Qsel (j - 1))
+hle : Qsel (j - 1) ≤ Qsel j
+⊢ ↑(Qsel (j - 1)) ≤ ↑(Qsel j)
+
+j : ℕ
+hj : 1 ≤ j
+hQj : 0 < ↑(Qsel j)
+hrec : ↑(Qsel (j + 1)) = (4 * ↑j + 2) * ↑(Qsel j) + ↑(Qsel (j - 1))
+hle : Qsel (j - 1) ≤ Qsel j
+hleR : ↑(Qsel (j - 1)) ≤ ↑(Qsel j)
+⊢ ↑(Qsel (j + 1)) ≤ (4 * ↑j + 3) * ↑(Qsel j)
+EpiFormal/NoShortDimRatio.lean:84:45: error: unexpected token ':='; expected ')', ',' or ':'
+EpiFormal/NoShortDimRatio.lean:83:60: error: unsolved goals
+case hQ
+j : ℕ
+hj : 1 ≤ j
+⊢ 1 ≤ ↑(Qsel j)
+
+j : ℕ
+hj : 1 ≤ j
+hQ : 1 ≤ ↑(Qsel j)
+⊢ 1 ≤ ↑(Qsel j) * √↑j
+EpiFormal/NoShortDimRatio.lean:111:4: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+EpiFormal/NoShortDimRatio.lean:117:43: error: unexpected token ':='; expected ')', ',' or ':'
+EpiFormal/NoShortDimRatio.lean:116:75: error: unsolved goals
+case hHj
+j : ℕ
+hj : 1 ≤ j
+⊢ 0 < ↑(H j)
+
+j : ℕ
+hj : 1 ≤ j
+hHj : 0 < ↑(H j)
+⊢ 3 * ↑j ≤ ↑(H (j + 1)) / ↑(H j)
+EpiFormal/NoShortDimRatio.lean:184:45: error: unexpected token ':='; expected ')', ',' or ':'
+EpiFormal/NoShortDimRatio.lean:179:60: error: unsolved goals
+case h2
+j : ℕ
+hj : 2 ≤ j
+hj1 : 1 ≤ j - 1
+hd : 2 * Qsel (j - 1) ≤ Qsel j
+hjm : j - 1 + 1 = j
+⊢ 2 ≤ ↑(Qsel j)
+
+j : ℕ
+hj : 2 ≤ j
+hj1 : 1 ≤ j - 1
+hd : 2 * Qsel (j - 1) ≤ Qsel j
+hjm : j - 1 + 1 = j
+h2 : 2 ≤ ↑(Qsel j)
+⊢ 2 ≤ ↑(Qsel j) * √↑j
+EpiFormal/NoShortDimRatio.lean:198:60: error: unexpected token ':='; expected ')', ',' or ':'
+EpiFormal/NoShortDimRatio.lean:213:74: error: unexpected token ':='; expected ')', ',' or ':'
+EpiFormal/NoShortDimRatio.lean:275:27: warning: Variable name `hη0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hη0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'NoShortDim.Q_ratio_lo' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoShortDim.Q_ratio_hi' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'NoShortDim.Qsqrt_ge_one' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'NoShortDim.H_ge_one' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'NoShortDim.H_ratio_lo' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'NoShortDim.Qsqrt_ge_two' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'NoShortDim.H_ratio_hi' does not depend on any axioms
+'NoShortDim.gamma_pos' depends on axioms: [propext, Classical.choice, Quot.sound]

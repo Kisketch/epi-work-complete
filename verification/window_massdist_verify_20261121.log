@@ -1,0 +1,36 @@
+﻿EpiFormal/WindowMassDist.lean:31:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ENNReal.ofReal (Metric.diam ?m.93 ^ s)
+in the target expression
+  ENNReal.ofReal (C * Metric.diam V ^ s) ≤ ENNReal.ofReal C * ENNReal.ofReal (Metric.diam V) ^ s
+
+case inr
+C s : ℝ
+V : Set ℝ
+hC : 0 ≤ C
+hs : 0 < s
+htop : Metric.ediam V ≠ ∞
+he : Metric.ediam V = ENNReal.ofReal (Metric.diam V)
+⊢ ENNReal.ofReal (C * Metric.diam V ^ s) ≤ ENNReal.ofReal C * ENNReal.ofReal (Metric.diam V) ^ s
+EpiFormal/WindowMassDist.lean:45:18: error(lean.unknownIdentifier): Unknown constant `MeasureTheory.OuterMeasure.measure_iUnion_le`
+EpiFormal/WindowMassDist.lean:61:4: error: Type mismatch
+  le_iInf fun t => le_iInf fun hcov => le_iInf fun x => key t hcov
+has type
+  μ K ≤ ⨅ t, ⨅ (hcov : K ⊆ ⋃ n, t n), ⨅ x, ENNReal.ofReal C * ∑' (n : ℕ), Metric.ediam (t n) ^ s
+but is expected to have type
+  μ K ≤
+    ENNReal.ofReal C *
+      ⨅ t, ⨅ (_ : K ⊆ ⋃ n, t n), ⨅ (_ : ∀ (n : ℕ), Metric.ediam (t n) ≤ 1), ∑' (n : ℕ), Metric.ediam (t n) ^ s
+EpiFormal/WindowMassDist.lean:62:51: error(lean.unknownIdentifier): Unknown constant `ENNReal.ofReal_nonneg`
+EpiFormal/WindowMassDist.lean:63:2: error: Type mismatch
+  le_iSup₂ 1 one_pos
+has type
+  ?m.271 1 ⋯ ≤ ⨆ i, ⨆ (j : 0 < i), ?m.271 i j
+but is expected to have type
+  ⨅ t, ⨅ (_ : K ⊆ ⋃ n, t n), ⨅ (_ : ∀ (n : ℕ), Metric.ediam (t n) ≤ 1), ∑' (n : ℕ), Metric.ediam (t n) ^ s ≤
+    ⨆ r,
+      ⨆ (_ : 0 < r),
+        ⨅ t,
+          ⨅ (_ : K ⊆ ⋃ n, t n),
+            ⨅ (_ : ∀ (n : ℕ), Metric.ediam (t n) ≤ r), ∑' (n : ℕ), ⨆ (_ : (t n).Nonempty), Metric.ediam (t n) ^ s
+'WindowMass.ofReal_diam_le_mul_ediam_rpow' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMass.mass_distrib_of_diam_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

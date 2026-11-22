@@ -1,0 +1,18 @@
+﻿EpiFormal/WindowDescFiber.lean:39:37: error: Application type mismatch: The argument
+  u
+has type
+  ℝ × ℝ
+of sort `Type` but is expected to have type
+  t✝ ∈ desc T lvl d u✝
+of sort `Prop` in the application
+  ih u
+EpiFormal/WindowDescFiber.lean:62:61: error: Application type mismatch: The argument
+  hv
+has type
+  v ∈ desc T lvl d u
+of sort `Prop` but is expected to have type
+  ℝ × ℝ
+of sort `Type` in the application
+  desc_mem hchild_mem u hu hv
+'WindowDescFiber.desc_mem' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowDescFiber.desc_card_le' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

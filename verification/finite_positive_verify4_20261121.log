@@ -1,0 +1,6 @@
+﻿'FiniteStateGauge.perron_word_mass_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.perron_word_mass_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.muRestricted_elem_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.muRestrict_le_mkMetric_hlam' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.one_le_mkMetric_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateGauge.pos_mkMetric_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]

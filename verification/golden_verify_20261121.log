@@ -1,0 +1,97 @@
+﻿EpiFormal/GoldenFiniteShift.lean:73:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+EpiFormal/GoldenFiniteShift.lean:114:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+EpiFormal/GoldenFiniteShift.lean:275:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+EpiFormal/GoldenFiniteShift.lean:292:6: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+EpiFormal/GoldenFiniteShift.lean:376:6: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+EpiFormal/GoldenFiniteShift.lean:573:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+EpiFormal/GoldenFiniteShift.lean:580:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+EpiFormal/GoldenFiniteShift.lean:659:39: warning: Variable name `hD` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hD
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+EpiFormal/GoldenFiniteShift.lean:665:40: warning: Variable name `hD` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hD
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+EpiFormal/GoldenFiniteShift.lean:687:6: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+'GoldenFiniteShift.search_bound_fixed_q' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.search_bound_strong_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.search_bound_moving_dist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.search_bound_moving_offset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.search_bound_gen_height' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.search_bound_norm_cutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.search_bound_suffix_m' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.orbit_height_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.quadratic_tail_value_mem_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.suffix_value_mem_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.Dsqrt5_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.Dsqrt5_irrational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.dist_int_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.lattice_spectrum_pos_min' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.lattice_values_separated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.first_two_below_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.latticeSlab_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.mem_latticeSlab_of_abs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.suffixCand_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.fixedCand_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.movingCand_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.latticeVal_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.suffixCand_mem_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.fixedCand_mem_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.movingCand_mem_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.norm_divisor_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.suffix_divisor_candidates_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.finite_shift_of_covers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GoldenFiniteShift.finite_shift_separated' depends on axioms: [propext, Classical.choice, Quot.sound]

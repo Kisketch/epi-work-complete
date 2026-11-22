@@ -1,0 +1,58 @@
+﻿EpiFormal/WindowThickening.lean:21:12: error(lean.unknownIdentifier): Unknown identifier `Cylinder.ediam_thickening_le`
+EpiFormal/WindowThickening.lean:19:51: error: unsolved goals
+s : Set ℝ
+r : ℝ≥0∞
+δ : ℝ
+hs : ediam s ≤ r
+hr : r ≠ ∞
+⊢ ediam (thickening δ s) ≠ ∞
+EpiFormal/WindowThickening.lean:37:54: error: Tactic `assumption` failed
+
+s : Set ℝ
+δ : ℝ
+hδ : 0 < δ
+hbdd : Bornology.IsBounded (thickening δ s)
+x : ℝ
+hx : x ∈ s
+y : ℝ
+hy : dist y x < δ
+hxmem : x ∈ s
+⊢ dist x y < δ
+EpiFormal/WindowThickening.lean:41:69: error: linarith failed to find a contradiction
+s : Set ℝ
+δ : ℝ
+hδ : 0 < δ
+hbdd : Bornology.IsBounded (thickening δ s)
+x : ℝ
+hx : x ∈ s
+hball : ball x δ ⊆ thickening δ s
+a✝ : δ * (-1 / 2) ≤ 0
+⊢ False
+failed
+EpiFormal/WindowThickening.lean:41:38: error: unsolved goals
+s : Set ℝ
+δ : ℝ
+hδ : 0 < δ
+hbdd : Bornology.IsBounded (thickening δ s)
+x : ℝ
+hx : x ∈ s
+hball : ball x δ ⊆ thickening δ s
+⊢ δ * (-1 / 2) = δ * (1 / 2)
+EpiFormal/WindowThickening.lean:48:25: error(lean.unknownIdentifier): Unknown identifier `Metric.dist`
+EpiFormal/WindowThickening.lean:52:2: error: linarith failed to find a contradiction
+s : Set ℝ
+δ : ℝ
+hδ : 0 < δ
+hbdd : Bornology.IsBounded (thickening δ s)
+x : ℝ
+hx : x ∈ s
+hball : ball x δ ⊆ thickening δ s
+hy1 : x - δ / 2 ∈ thickening δ s
+hy2 : x + δ / 2 ∈ thickening δ s
+hdist : δ ≤ sorry
+hle : dist (x - δ / 2) (x + δ / 2) ≤ diam (thickening δ s)
+a✝ : diam (thickening δ s) ≤ 0
+⊢ False
+failed
+'WindowThickening.isBounded_thickening_of_ediam' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowThickening.diam_thickening_pos' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

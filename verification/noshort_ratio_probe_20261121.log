@@ -1,0 +1,70 @@
+﻿EpiFormal/NoShortDimRatio.lean:93:70: error: Application type mismatch: The argument
+  h
+has type
+  1 ≤ ↑(Qsel j) * √↑j
+but is expected to have type
+  1 ≤ ?m.41
+in the application
+  (Nat.one_le_floor_iff ?m.41).mpr h
+EpiFormal/NoShortDimRatio.lean:107:27: error: failed to prove positivity/nonnegativity/nonzeroness
+EpiFormal/NoShortDimRatio.lean:118:6: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+EpiFormal/NoShortDimRatio.lean:132:14: error: Application type mismatch: The argument
+  Nat.lt_floor_add_one ↑(Qsel (j + 1))
+has type
+  ↑(Qsel (j + 1)) < ↑⌊↑(Qsel (j + 1))⌋₊ + 1
+of sort `Prop` but is expected to have type
+  ℝ
+of sort `Type` in the application
+  HMul.hMul ⋯
+EpiFormal/NoShortDimRatio.lean:99:67: error: unsolved goals
+j : ℕ
+hj : 1 ≤ j
+hHj : 0 < ↑(H j)
+hHle : ↑(H j) ≤ ↑(Qsel j) * √↑j
+hQjj : 1 ≤ ↑(Qsel j) * √↑j
+h3j : 3 * ↑j * ↑(H j) ≤ 3 * ↑j * (↑(Qsel j) * √↑j)
+hsqrt_mono : √↑j ≤ √↑(j + 1)
+hcast1 : ↑(j + 1) = ↑j + 1
+hQjp1 : ↑(Qsel (j + 1)) ≥ (4 * ↑j + 2) * ↑(Qsel j)
+hHlo : ↑(Qsel (j + 1)) * √↑(j + 1) - 1 ≤ ↑(H (j + 1))
+⊢ 3 * ↑j * ↑(H j) ≤ ↑(H (j + 1))
+EpiFormal/NoShortDimRatio.lean:133:68: error: unexpected token ')'; expected command
+EpiFormal/NoShortDimRatio.lean:191:27: error: failed to prove positivity/nonnegativity/nonzeroness
+EpiFormal/NoShortDimRatio.lean:217:14: error: Application type mismatch: The argument
+  Nat.lt_floor_add_one ↑(Qsel j)
+has type
+  ↑(Qsel j) < ↑⌊↑(Qsel j)⌋₊ + 1
+of sort `Prop` but is expected to have type
+  ℝ
+of sort `Type` in the application
+  HMul.hMul ⋯
+EpiFormal/NoShortDimRatio.lean:182:72: error: unsolved goals
+j : ℕ
+hj : 3 ≤ j
+hHj : 0 < ↑(H j)
+hHle : ↑(H (j + 1)) ≤ ↑(Qsel (j + 1)) * √↑(j + 1)
+hQhi : ↑(Qsel (j + 1)) ≤ (4 * ↑j + 3) * ↑(Qsel j)
+hsq2 : √↑(j + 1) ≤ 2 * √↑j
+hQjj2 : 2 ≤ ↑(Qsel j) * √↑j
+hHlo : ↑(Qsel j) * √↑j / 2 ≤ ↑(H j)
+⊢ ↑(H (j + 1)) ≤ 20 * ↑j * ↑(H j)
+EpiFormal/NoShortDimRatio.lean:218:48: error: unexpected token ')'; expected command
+EpiFormal/NoShortDimRatio.lean:231:27: warning: Variable name `hη0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hη0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'NoShortDim.Q_ratio_lo' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoShortDim.Q_ratio_hi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoShortDim.Qsqrt_ge_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoShortDim.H_ge_one' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'NoShortDim.H_ratio_lo' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'NoShortDim.Qsqrt_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoShortDim.H_ratio_hi' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'NoShortDim.gamma_pos' depends on axioms: [propext, Classical.choice, Quot.sound]

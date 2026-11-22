@@ -1,0 +1,10 @@
+Delta 60, cyclic period (1, 6) trace slice [4, 6, 8, 10] minimum -1 + (2/15) sqrt(60)
+Delta 60, cyclic period (2, 3) trace slice [6, 10] minimum 1 + (-1/10) sqrt(60)
+Monic discriminant 5: 2 values through 1
+Monic discriminant 8: 3 values through 1
+Monic discriminant 12: 4 values through 1
+Monic discriminant 13: 4 values through 1
+Monic discriminant 21: 5 values through 1
+Monic discriminant 60: 8 values through 1
+Growing-head rate: eighty exact error intervals lie within 10/j of the named limit.
+Tight edge indices [0, 3] [1, 2, 3] : recurrent endpoint roots 1 and sqrt(2), p_max=1/2.

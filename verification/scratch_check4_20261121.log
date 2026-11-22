@@ -1,0 +1,40 @@
+﻿ScratchCheck.lean:4:8: error(lean.unknownIdentifier): Unknown identifier `exists_eq_add_of_le`
+@mul_le_mul : ∀ {α : Type u_1} [inst : Mul α] [inst_1 : Zero α] [inst_2 : Preorder α] {a b c d : α} [PosMulMono α]
+  [MulPosMono α], a ≤ b → c ≤ d → 0 ≤ c → 0 ≤ b → a * c ≤ b * d
+add_one_le_exp : ∀ (x : ℝ), x + 1 ≤ rexp x
+exp_add : ∀ (x y : ℝ), rexp (x + y) = rexp x * rexp y
+log_exp : ∀ (x : ℝ), log (rexp x) = x
+@log_mul : ∀ {x y : ℝ}, x ≠ 0 → y ≠ 0 → log (x * y) = log x + log y
+log_one : log 1 = 0
+@Int.cast_sum : ∀ {R : Type u_1} {ι : Type u_2} [inst : AddCommGroupWithOne R] (s : Finset ι) (f : ι → ℤ),
+  ↑(∑ x ∈ s, f x) = ∑ x ∈ s, ↑(f x)
+@Int.cast_mul : ∀ {α : Type u_1} [inst : NonAssocRing α] (m n : ℤ), ↑(m * n) = ↑m * ↑n
+@Int.cast_le : ∀ {R : Type u_1} [inst : AddCommGroupWithOne R] [inst_1 : PartialOrder R] [AddLeftMono R]
+  [ZeroLEOneClass R] [NeZero 1] {m n : ℤ}, ↑m ≤ ↑n ↔ m ≤ n
+@Nat.cast_sub : ∀ {R : Type u_1} [inst : AddGroupWithOne R] {m n : ℕ}, m ≤ n → ↑(n - m) = ↑n - ↑m
+@Nat.cast_le : ∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : PartialOrder α] [AddLeftMono α] [ZeroLEOneClass α]
+  [CharZero α] {m n : ℕ}, ↑m ≤ ↑n ↔ m ≤ n
+@Nat.cast_mul : ∀ {α : Type u_1} [inst : NonAssocSemiring α] (m n : ℕ), ↑(m * n) = ↑m * ↑n
+@sum_comm : ∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [inst : AddCommMonoid β] {s : Finset γ} {t : Finset α}
+  {f : γ → α → β}, ∑ x ∈ s, ∑ y ∈ t, f x y = ∑ y ∈ t, ∑ x ∈ s, f x y
+@mul_sum : ∀ {ι : Type u_1} {R : Type u_2} [inst : NonUnitalNonAssocSemiring R] (s : Finset ι) (f : ι → R) (a : R),
+  a * ∑ i ∈ s, f i = ∑ i ∈ s, a * f i
+@sum_subset : ∀ {ι : Type u_1} {M : Type u_2} {s₁ s₂ : Finset ι} [inst : AddCommMonoid M] {f : ι → M},
+  s₁ ⊆ s₂ → (∀ x ∈ s₂, x ∉ s₁ → f x = 0) → ∑ x ∈ s₁, f x = ∑ x ∈ s₂, f x
+@sum_congr : ∀ {ι : Type u_1} {M : Type u_2} {s₁ s₂ : Finset ι} [inst : AddCommMonoid M] {f g : ι → M},
+  s₁ = s₂ → (∀ x ∈ s₂, f x = g x) → s₁.sum f = s₂.sum g
+@card_product : ∀ {α : Type u_1} {β : Type u_2} (s : Finset α) (t : Finset β), #(s ×ˢ t) = #s * #t
+@sum_boole : ∀ {ι : Type u_1} {R : Type u_2} [inst : AddCommMonoidWithOne R] (p : ι → Prop) [inst_1 : DecidablePred p]
+  (s : Finset ι), (∑ x ∈ s, if p x then 1 else 0) = ↑(#({x ∈ s | p x}))
+@le_div_iff₀ : ∀ {G₀ : Type u_1} [inst : GroupWithZero G₀] [inst_1 : PartialOrder G₀] [MulPosReflectLT G₀] {a b c : G₀},
+  0 < c → (a ≤ b / c ↔ a * c ≤ b)
+@div_le_iff₀ : ∀ {G₀ : Type u_1} [inst : GroupWithZero G₀] [inst_1 : PartialOrder G₀] [MulPosReflectLT G₀] {a b c : G₀},
+  0 < c → (b / c ≤ a ↔ b ≤ a * c)
+@log_div : ∀ {x y : ℝ}, x ≠ 0 → y ≠ 0 → log (x / y) = log x - log y
+@div_pos : ∀ {G₀ : Type u_1} [inst : GroupWithZero G₀] [inst_1 : PartialOrder G₀] [PosMulReflectLT G₀] {a b : G₀},
+  0 < a → 0 < b → 0 < a / b
+exp_pos : ∀ (x : ℝ), 0 < rexp x
+@sum_insert : ∀ {ι : Type u_1} {M : Type u_2} {s : Finset ι} {a : ι} [inst : AddCommMonoid M] {f : ι → M}
+  [inst_1 : DecidableEq ι], a ∉ s → ∑ x ∈ insert a s, f x = f a + ∑ x ∈ s, f x
+@sum_empty : ∀ {ι : Type u_1} {M : Type u_2} {f : ι → M} [inst : AddCommMonoid M], ∑ x ∈ ∅, f x = 0
+@log_nonneg : ∀ {x : ℝ}, 1 ≤ x → 0 ≤ log x

@@ -1,0 +1,9 @@
+﻿EpiFormal/WindowSplitMass.lean:39:45: error: Application type mismatch: The argument
+  hpos
+has type
+  0 < R ^ 2 / 10000
+but is expected to have type
+  ?m.213 ≤ ?m.214
+in the application
+  one_div_le_one_div_of_le ?m.215 hpos
+'WindowSplitMass.uniform_split_mass_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

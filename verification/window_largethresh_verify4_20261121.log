@@ -1,0 +1,18 @@
+﻿EpiFormal/WindowLargeThresh.lean:41:6: error: linarith failed to find a contradiction
+d0 L m0 C s dmin D : ℝ
+hd0 : 0 < d0
+hm0 : 0 ≤ m0
+hlo : dmin ≤ D
+hhi : D ≤ 1
+hdmin : 0 < dmin
+hs : 0 ≤ s
+hC : C = ((2 + 3 * L) / d0 + 2) * m0 / dmin ^ s
+hDnn : 0 ≤ D
+hdiv : (2 * D + 3 * L) / d0 ≤ (2 + 3 * L) / d0
+h1 : (2 * D + 3 * L) / d0 + 2 ≤ (2 + 3 * L) / d0 + 2
+h2 : ((2 * D + 3 * L) / d0 + 2) * m0 ≤ ((2 + 3 * L) / d0 + 2) * m0
+h3 : ((2 + 3 * L) / d0 + 2) * m0 = C * dmin ^ s
+a✝ : 2 + 3 * L < 0
+⊢ False
+failed
+'WindowLargeThresh.large_window_thresh' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

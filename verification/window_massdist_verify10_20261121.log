@@ -1,0 +1,18 @@
+﻿EpiFormal/WindowMassDist.lean:78:6: warning: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+EpiFormal/WindowMassDist.lean:79:12: error: Function expected at
+  iSup_const
+but this term has type
+  ⨆ x, ?m.447 = ?m.447
+
+Note: Expected a function because this term is being applied to the argument
+  _
+EpiFormal/WindowMassDist.lean:81:15: error: Invalid `⟨...⟩` notation: The expected type of this term could not be determined
+'WindowMass.ofReal_diam_le_mul_ediam_rpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMass.mass_distrib_of_diam_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

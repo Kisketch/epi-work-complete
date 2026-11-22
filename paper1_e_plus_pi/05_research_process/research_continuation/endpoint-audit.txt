@@ -1,0 +1,2 @@
+lake env lean -j 1 GoldenAffineEndpoint.lean: checked
+rational_endpoint_cutoff: [propext, Classical.choice, Quot.sound]

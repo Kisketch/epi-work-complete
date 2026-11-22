@@ -1,0 +1,14 @@
+SymPy version: 1.14.0
+  [PASS] 1. Vieta root identity: True
+  [PASS] 2. Pair 1 (e+pi, e-pi): True
+  [PASS] 3. Pair 2 (e+pi, e*pi): True
+  [PASS] 4. Pair 3 (e-pi, e*pi): True
+  [PASS] 5. Pair 4 (e+pi, e/pi): True
+  [PASS] 6. Pair 5 (e-pi, e/pi): True
+  [PASS] 7. Pair 6 (e*pi, e/pi): True
+  [PASS] 8. Translation identity mu0 = 1 + 1/(M-1): True
+  [PASS] 9. Termwise recurrence (n+1)*n!/k! = (n+1)!/k!: True
+  [PASS] 10. Gauss integral: True
+  [PASS] 11. Mixed integral: True
+  [PASS] 12. Stirling limit: True
+ALL 12/12 SYMBOLIC CHECKS PASSED.

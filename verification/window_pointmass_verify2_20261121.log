@@ -1,0 +1,69 @@
+﻿EpiFormal/WindowPointMass.lean:58:13: error: Function expected at
+  Finset.prod_le_prod fun i x => ?m.346
+but this term has type
+  ∏ i ∈ ?m.342, ?m.340 i ≤ ∏ i ∈ ?m.342, ?m.341 i
+
+Note: Expected a function because this term is being applied to the argument
+  (fun i hi => ?_)
+EpiFormal/WindowPointMass.lean:58:45: error: unsolved goals
+μ : MeasureTheory.Measure ℝ
+T : StoppedTree.TreeData
+m B : ℕ → ℝ
+j0 : ℕ
+hB2 : ∀ j ≥ j0, 2 ≤ B j
+hBpos : ∀ (i : ℕ), 0 < B i
+hm0 : ∀ I ∈ T.atoms j0, μ (Set.Icc I.1 I.2) ≤ ENNReal.ofReal (m j0)
+hm0nn : 0 ≤ m j0
+hmrec : ∀ j ≥ j0, m (j + 1) = m j / B j
+hsplit : ∀ j ≥ j0, ∀ I ∈ T.atoms j, ∀ C ∈ T.child j I, μ (Set.Icc C.1 C.2) ≤ μ (Set.Icc I.1 I.2) / ENNReal.ofReal (B j)
+hmem : ∀ j ≥ j0, ∀ I ∈ T.atoms (j + 1), ∃ P ∈ T.atoms j, I ∈ T.child j P
+hnest : ∀ (x : ℝ), ∀ j ≥ j0, ∃ I ∈ T.atoms j, x ∈ Set.Icc I.1 I.2
+x : ℝ
+hB1 : ∀ j ≥ j0, 1 ≤ B j
+j : ℕ
+hj : j ≥ j0
+I : ℝ × ℝ
+hI : I ∈ T.atoms j
+hxI : x ∈ Set.Icc I.1 I.2
+hsub : μ {x} ≤ μ (Set.Icc I.1 I.2)
+hmass : μ (Set.Icc I.1 I.2) ≤ ENNReal.ofReal (m j)
+hunroll : m j ≤ m j0 / ∏ i ∈ Finset.Ico j0 j, B i
+hcard : (Finset.Ico j0 j).card = j - j0
+h2 : ∏ _i ∈ Finset.Ico j0 j, 2 = 2 ^ (j - j0)
+i : ?m.336
+x✝ : i ∈ ?m.342
+⊢ ?m.340 i ≤ ?m.341 i
+EpiFormal/WindowPointMass.lean:59:6: error: No goals to be solved
+EpiFormal/WindowPointMass.lean:70:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?a / ?b
+in the target expression
+  m j ≤ m j0 * (2 ^ (j - j0))⁻¹
+
+μ : MeasureTheory.Measure ℝ
+T : StoppedTree.TreeData
+m B : ℕ → ℝ
+j0 : ℕ
+hB2 : ∀ j ≥ j0, 2 ≤ B j
+hBpos : ∀ (i : ℕ), 0 < B i
+hm0 : ∀ I ∈ T.atoms j0, μ (Set.Icc I.1 I.2) ≤ ENNReal.ofReal (m j0)
+hm0nn : 0 ≤ m j0
+hmrec : ∀ j ≥ j0, m (j + 1) = m j / B j
+hsplit : ∀ j ≥ j0, ∀ I ∈ T.atoms j, ∀ C ∈ T.child j I, μ (Set.Icc C.1 C.2) ≤ μ (Set.Icc I.1 I.2) / ENNReal.ofReal (B j)
+hmem : ∀ j ≥ j0, ∀ I ∈ T.atoms (j + 1), ∃ P ∈ T.atoms j, I ∈ T.child j P
+hnest : ∀ (x : ℝ), ∀ j ≥ j0, ∃ I ∈ T.atoms j, x ∈ Set.Icc I.1 I.2
+x : ℝ
+hB1 : ∀ j ≥ j0, 1 ≤ B j
+j : ℕ
+hj : j ≥ j0
+I : ℝ × ℝ
+hI : I ∈ T.atoms j
+hxI : x ∈ Set.Icc I.1 I.2
+hsub : μ {x} ≤ μ (Set.Icc I.1 I.2)
+hmass : μ (Set.Icc I.1 I.2) ≤ ENNReal.ofReal (m j)
+hunroll : m j ≤ m j0 / ∏ i ∈ Finset.Ico j0 j, B i
+hprod : 2 ^ (j - j0) ≤ ∏ i ∈ Finset.Ico j0 j, B i
+h2pos : 0 < 2 ^ (j - j0)
+hrec : 1 / ∏ i ∈ Finset.Ico j0 j, B i ≤ 1 / 2 ^ (j - j0)
+hmul : m j0 * (1 / ∏ i ∈ Finset.Ico j0 j, B i) ≤ m j0 * (1 / 2 ^ (j - j0))
+⊢ m j ≤ m j0 * (2 ^ (j - j0))⁻¹
+EpiFormal/WindowPointMass.lean:96:25: error(lean.unknownIdentifier): Unknown constant `Filter.eventually_of_forall`

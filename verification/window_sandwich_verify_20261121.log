@@ -1,0 +1,2 @@
+﻿EpiFormal/WindowSandwich.lean:27:21: error(lean.unknownIdentifier): Unknown constant `Set.Iio_mem_nhds`
+'WindowSandwich.sandwich_of_tendsto' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

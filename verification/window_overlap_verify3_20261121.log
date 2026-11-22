@@ -1,0 +1,3 @@
+﻿'CoverCount.child_len_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CoverCount.stopped_cyl_len_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CoverCount.window_overlap_le' depends on axioms: [propext, Classical.choice, Quot.sound]

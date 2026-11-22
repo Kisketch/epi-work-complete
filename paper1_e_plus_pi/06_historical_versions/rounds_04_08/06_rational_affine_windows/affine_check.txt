@@ -1,0 +1,13 @@
+(1, 2, 1): 231 windows, 231 singletons, 226 digit shifts
+(1, 2, -1): 231 windows, 231 singletons, 226 digit shifts
+(1, 4, 1): 219 windows, 219 singletons, 210 digit shifts
+(1, 4, 3): 219 windows, 0 singletons, 194 digit shifts
+(1, 8, 3): 171 windows, 0 singletons, 122 digit shifts
+(2, 4, 2): 219 windows, 219 singletons, 202 digit shifts
+(6, 1, -1): 234 windows, 0 singletons, 231 digit shifts
+(6, 1, -2): 231 windows, 0 singletons, 226 digit shifts
+(-7, 4, 4): 219 windows, 0 singletons, 186 digit shifts
+(17, 3, -3): 226 windows, 0 singletons, 207 digit shifts
+(3, 2, 9): 154 windows, 0 singletons, 117 digit shifts
+Exact period shifts checked: 2147
+Complete residue periods checked for primitive triples: 3592

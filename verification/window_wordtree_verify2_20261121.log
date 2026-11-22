@@ -1,0 +1,8 @@
+﻿EpiFormal/WindowWordTree.lean:77:43: error: No goals to be solved
+'WindowWordTree.mem_childrenOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowWordTree.append_single_injective' depends on axioms: [propext]
+'WindowWordTree.childrenOf_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowWordTree.children_mem_next' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowWordTree.children_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowWordTree.nil_mem_levelWords_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowWordTree.uniform_level_count' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,2 @@
+﻿MiniRepro3.lean:8:41: error(lean.unknownIdentifier): Unknown identifier `hB`
+MiniRepro3.lean:8:45: error(lean.unknownIdentifier): Unknown identifier `hc`

@@ -1,0 +1,44 @@
+﻿EpiFormal/WindowMobiusCount.lean:51:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Mlo', which is 'noncomputable'
+EpiFormal/WindowMobiusCount.lean:55:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'box', which is 'noncomputable'
+EpiFormal/WindowMobiusCount.lean:59:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Mlo', which is 'noncomputable'
+EpiFormal/WindowMobiusCount.lean:63:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nlo', which is 'noncomputable'
+EpiFormal/WindowMobiusCount.lean:150:24: error: Application type mismatch: The argument
+  dvd_mul_right d k
+has type
+  d ∣ d * k
+but is expected to have type
+  d ∣ k * d
+in the application
+  ⟨⟨?m.128, ?m.129⟩, dvd_mul_right d k⟩
+EpiFormal/WindowMobiusCount.lean:155:10: warning: syntax 'Lean.Parser.Tactic.rwaAtLegacyLocation' has been deprecated: use `rw [...] at ... <;> assumption` instead
+
+Note: This linter can be disabled with `set_option linter.deprecated.syntax false`
+EpiFormal/WindowMobiusCount.lean:161:8: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+EpiFormal/WindowMobiusCount.lean:138:65: error: unsolved goals
+M d : ℕ
+hd : 1 ≤ d
+hd0 : d ≠ 0
+hinj : Function.Injective fun k => k * d
+himg : image (fun k => k * d) (Icc 1 (M / d)) = {m ∈ Icc 1 M | d ∣ m}
+⊢ M / d + 1 - 1 = M / d
+EpiFormal/WindowMobiusCount.lean:206:52: error(lean.unknownIdentifier): Unknown constant `Finset.not_mem_empty`
+EpiFormal/WindowMobiusCount.lean:207:12: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+Mlo Mhi d : ℕ
+hd : 1 ≤ d
+h1 : 1 ≤ Mlo
+hle : ¬Mlo ≤ Mhi
+m : ℕ
+⊢ (Mlo ≤ m ∧ m ≤ Mhi) ∧ d ∣ m ↔ m ∈ ∅
+EpiFormal/WindowMobiusCount.lean:213:4: error: Type mismatch
+  Nat.sub_eq_zero_of_le hdiv
+has type
+  Mhi / d - (Mlo - 1) / d = 0
+but is expected to have type
+  0 = Mhi / d - (Mlo - 1) / d

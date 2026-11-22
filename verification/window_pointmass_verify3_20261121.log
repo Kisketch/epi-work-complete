@@ -1,0 +1,20 @@
+﻿EpiFormal/WindowPointMass.lean:84:104: error: unsolved goals
+μ : MeasureTheory.Measure ℝ
+T : StoppedTree.TreeData
+m B : ℕ → ℝ
+j0 : ℕ
+hB2 : ∀ j ≥ j0, 2 ≤ B j
+hBpos : ∀ (i : ℕ), 0 < B i
+hm0 : ∀ I ∈ T.atoms j0, μ (Set.Icc I.1 I.2) ≤ ENNReal.ofReal (m j0)
+hm0nn : 0 ≤ m j0
+hmrec : ∀ j ≥ j0, m (j + 1) = m j / B j
+hsplit : ∀ j ≥ j0, ∀ I ∈ T.atoms j, ∀ C ∈ T.child j I, μ (Set.Icc C.1 C.2) ≤ μ (Set.Icc I.1 I.2) / ENNReal.ofReal (B j)
+hmem : ∀ j ≥ j0, ∀ I ∈ T.atoms (j + 1), ∃ P ∈ T.atoms j, I ∈ T.child j P
+hnest : ∀ (x : ℝ), ∀ j ≥ j0, ∃ I ∈ T.atoms j, x ∈ Set.Icc I.1 I.2
+x : ℝ
+hB1 : ∀ j ≥ j0, 1 ≤ B j
+hle : ∀ j ≥ j0, μ {x} ≤ ENNReal.ofReal (m j0 / 2 ^ (j - j0))
+k : ℕ
+hk : j0 + k - j0 = k
+⊢ m j0 / 2 ^ k = m j0 * (2 ^ k)⁻¹
+EpiFormal/WindowPointMass.lean:98:25: error(lean.unknownIdentifier): Unknown constant `Filter.eventually_of_forall`

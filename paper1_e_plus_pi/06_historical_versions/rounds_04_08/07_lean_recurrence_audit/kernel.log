@@ -1,0 +1,43 @@
+warning: mathlib: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\mathlib
+warning: plausible: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\plausible
+warning: LeanSearchClient: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\LeanSearchClient
+warning: importGraph: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\importGraph
+warning: proofwidgets: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\proofwidgets
+warning: aesop: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\aesop
+warning: Qq: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\Qq
+warning: batteries: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\batteries
+warning: Cli: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\Cli
+C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\论文一_e_plus_pi\连续三轮修订\07_Lean递推审计\AffineWindowAudit.lean:70:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\论文一_e_plus_pi\连续三轮修订\07_Lean递推审计\AffineWindowAudit.lean:89:4: warning: Unused tactic linter: `change (↑(u i) : ZMod p) = 0 ↔ (↑(u (i + 1)) : ZMod p) ≠ 0` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\论文一_e_plus_pi\连续三轮修订\07_Lean递推审计\AffineWindowAudit.lean:143:20: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\论文一_e_plus_pi\连续三轮修订\07_Lean递推审计\AffineWindowAudit.lean:143:20: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'AffineWindowAudit.no_five_alternations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AffineWindowAudit.no_modEight_middle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AffineWindowAudit.prime_no_five_divisibility' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AffineWindowAudit.eight_not_dvd_middle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AffineWindowAudit.selectedNumerator_step' depends on axioms: [propext, Quot.sound]
+'AffineWindowAudit.selectedNumerator_no_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AffineWindowAudit.selectedNumerator_no_eight_middle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AffineWindowAudit.sixthModel_four_products' does not depend on any axioms

@@ -1,0 +1,13 @@
+Pi, j <= 100, simple B=1 strip hit at 88 indices.
+Budget contradictions by B=1..12: [98, 98, 94, 92, 87, 83, 74, 67, 63, 56, 51, 47]
+Budget contradictions using gcd, same finite search: [98, 98, 94, 93, 90, 87, 82, 76, 75, 70, 65, 63]
+First/last indices for B=1: [3, 4, 5] [98, 99, 100]
+Pi, 432 certified partial quotients including integer part; longest ones run 5.
+6/1-e: 100 exact checks of the locking identity.
+17/3-e: 89 exact checks of the locking identity.
+43/7-e: 61 exact checks of the locking identity.
+-pi, n <= 240: 236 digits different from 1, last at n=240.
+Three factorial controls with k=0,1,4 certified.
+Discriminant 60, m=16, a=1,7,49: exact cycles (1, 6) (2, 3) (1, 6)
+Width-1 and unconstrained closed-walk counts checked exactly at 20 even lengths.
+Explicit sine eigenpair checked at widths 1..8 (floating-point regression).

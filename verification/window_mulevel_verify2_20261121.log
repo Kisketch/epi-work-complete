@@ -1,0 +1,24 @@
+﻿EpiFormal/WindowMuLevel.lean:32:34: error: Invalid projection: Type of
+  I
+is not known; cannot resolve projection `1`
+EpiFormal/WindowMuLevel.lean:32:38: error: Invalid projection: Type of
+  I
+is not known; cannot resolve projection `2`
+EpiFormal/WindowMuLevel.lean:68:10: error: Function expected at
+  Finset.mem_biUnion
+but this term has type
+  ?m.278 ∈ Finset.biUnion ?m.275 ?m.276 ↔ ∃ a ∈ ?m.275, ?m.278 ∈ ?m.276 a
+
+Note: Expected a function because this term is being applied to the argument
+  hIG
+EpiFormal/WindowMuLevel.lean:106:41: error: Application type mismatch: The argument
+  j0
+has type
+  ℕ
+of sort `Type` but is expected to have type
+  Tendsto (fun j => 1 / H j ^ 2) atTop (𝓝 0)
+of sort `Prop` in the application
+  WindowSandwich.sandwich_of_tendsto H j0
+'WindowMuLevel.filter_meet_card' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMuLevel.mu_le_at_level' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMuLevel.mu_le_of_sandwich' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

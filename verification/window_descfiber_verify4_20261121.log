@@ -1,0 +1,70 @@
+﻿EpiFormal/WindowDescFiber.lean:20:22: error: Application type mismatch: The argument
+  lvl
+has type
+  ℕ
+but is expected to have type
+  StoppedTree.TreeData
+in the application
+  desc lvl
+EpiFormal/WindowDescFiber.lean:32:15: warning: declaration uses `sorry`
+EpiFormal/WindowDescFiber.lean:23:8: warning: declaration uses `sorry`
+EpiFormal/WindowDescFiber.lean:24:5: warning: Variable name `hchild_mem` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hchild_mem
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+EpiFormal/WindowDescFiber.lean:39:4: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+EpiFormal/WindowDescFiber.lean:40:4: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+EpiFormal/WindowDescFiber.lean:39:4: warning: Unused tactic linter: `have hvd : v ∈ P (lvl + d) := ih u v hu hv` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+EpiFormal/WindowDescFiber.lean:40:4: warning: Unused tactic linter: `exact hchild_mem (lvl + d) v hvd hvt` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+EpiFormal/WindowDescFiber.lean:62:56: error: Application type mismatch: The argument
+  hu
+has type
+  u ∈ P lvl
+of sort `Prop` but is expected to have type
+  ℝ × ℝ
+of sort `Type` in the application
+  desc_mem hchild_mem hu
+EpiFormal/WindowDescFiber.lean:71:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∏ k ∈ Finset.Ico lvl (lvl + d + 1 + 1), ?f k
+in the target expression
+  ∏ k ∈ Finset.Ico lvl (lvl + d + 1), FmaxN k = (∏ k ∈ Finset.Ico lvl (lvl + d), FmaxN k) * FmaxN (lvl + d)
+
+T : StoppedTree.TreeData
+P : ℕ → Finset (ℝ × ℝ)
+FmaxN : ℕ → ℕ
+hchild_mem : ∀ (j : ℕ), ∀ u ∈ P j, T.child j u ⊆ P (j + 1)
+hfiber : ∀ (j : ℕ), ∀ v ∈ P j, (T.child j v).card ≤ FmaxN j
+lvl : ℕ
+u✝ : ℝ × ℝ
+hu✝ : u✝ ∈ P lvl
+d : ℕ
+ih :
+  ∀ u ∈ P lvl,
+    (match d, u with
+        | 0, u => {u}
+        | d.succ, u => sorry).card ≤
+      ∏ k ∈ Finset.Ico lvl (lvl + d), FmaxN k
+u : ℝ × ℝ
+hu : u ∈ P lvl
+hle : ((desc T lvl d u).biUnion (T.child (lvl + d))).card ≤ ∑ v ∈ desc T lvl d u, FmaxN (lvl + d)
+hsum : ∑ v ∈ desc T lvl d u, FmaxN (lvl + d) = (desc T lvl d u).card * FmaxN (lvl + d)
+hih :
+  (match d, u with
+      | 0, u => {u}
+      | d.succ, u => sorry).card ≤
+    ∏ k ∈ Finset.Ico lvl (lvl + d), FmaxN k
+he : lvl + (d + 1) = lvl + d + 1
+⊢ ∏ k ∈ Finset.Ico lvl (lvl + d + 1), FmaxN k = (∏ k ∈ Finset.Ico lvl (lvl + d), FmaxN k) * FmaxN (lvl + d)
+EpiFormal/WindowDescFiber.lean:53:15: warning: declaration uses `sorry`
+'WindowDescFiber.desc_mem' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowDescFiber.desc_card_le' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

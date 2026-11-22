@@ -1,0 +1,3 @@
+﻿EpiFormal/WindowMobiusCount.lean:157:10: warning: syntax 'Lean.Parser.Tactic.rwaAtLegacyLocation' has been deprecated: use `rw [...] at ... <;> assumption` instead
+
+Note: This linter can be disabled with `set_option linter.deprecated.syntax false`

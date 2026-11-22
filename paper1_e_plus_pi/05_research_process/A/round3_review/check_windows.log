@@ -1,0 +1,8 @@
+(6,1,-1): range=3..234, shifted checks=229, sample with content>1=None
+(11,2,-2): range=10..234, shifted checks=216, sample with content>1=None
+(17,3,-3): range=21..234, shifted checks=195, sample with content>1=None
+(-7,4,-4): range=37..234, shifted checks=165, sample with content>1=None
+(43,7,-7): range=111..234, shifted checks=25, sample with content>1=(114, 7, (228, 1, 13), (424, 1, 13))
+(12,2,-2): range=10..234, shifted checks=216, sample with content>1=(11, 2, (22, 1, 1), (38, 1, 1))
+(6,1,-2): range=80..234, shifted checks=0, sample with content>1=None
+(1,2,1): range=80..234, shifted checks=0, sample with content>1=None

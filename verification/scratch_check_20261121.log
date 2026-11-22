@@ -1,0 +1,23 @@
+﻿@coe_mul_zeta_apply : ∀ {R : Type u_1} [inst : Semiring R] {f : ArithmeticFunction R} {x : ℕ},
+  (f * ↑zeta) x = ∑ i ∈ x.divisors, f i
+@ArithmeticFunction.mul_apply : ∀ {R : Type u_1} [inst : Semiring R] {f g : ArithmeticFunction R} {n : ℕ},
+  (f * g) n = ∑ x ∈ n.divisorsAntidiagonal, f x.1 * g x.2
+moebius_mul_coe_zeta : moebius * ↑zeta = 1
+@Nat.lt_floor_add_one : ∀ {R : Type u_1} [inst : Semiring R] [inst_1 : LinearOrder R] [inst_2 : FloorSemiring R]
+  (a : R), a < ↑⌊a⌋₊ + 1
+@Nat.floor_le : ∀ {R : Type u_1} [inst : Semiring R] [inst_1 : LinearOrder R] [inst_2 : FloorSemiring R] {a : R},
+  0 ≤ a → ↑⌊a⌋₊ ≤ a
+ScratchCheck.lean:9:7: error: Ambiguous term
+  @dvd_gcd_iff
+Possible interpretations:
+  @_root_.dvd_gcd_iff : ∀ {α : Type ?u.3} [inst : CommMonoidWithZero α] [inst_1 : GCDMonoid α] (a b c : α),
+    a ∣ GCDMonoid.gcd b c ↔ a ∣ b ∧ a ∣ c
+  
+  @Finset.dvd_gcd_iff : ∀ {α : Type ?u.2} {β : Type ?u.1} [inst : CommMonoidWithZero α] [inst_1 : NormalizedGCDMonoid α]
+    {s : Finset β} {f : β → α} {a : α}, a ∣ s.gcd f ↔ ∀ b ∈ s, a ∣ f b
+@Nat.mem_divisors : ∀ {n m : ℕ}, n ∈ m.divisors ↔ n ∣ m ∧ m ≠ 0
+@sum_range_sub : ∀ {G : Type u_1} [inst : AddCommGroup G] (f : ℕ → G) (n : ℕ),
+  ∑ i ∈ range n, (f (i + 1) - f i) = f n - f 0
+@Real.log_le_sub_one_of_pos : ∀ {x : ℝ}, 0 < x → Real.log x ≤ x - 1
+@moebius_apply_prime_pow : ∀ {p k : ℕ}, Nat.Prime p → k ≠ 0 → moebius (p ^ k) = if k = 1 then -1 else 0
+Nat.card_Icc : ∀ (a b : ℕ), #(Icc a b) = b + 1 - a

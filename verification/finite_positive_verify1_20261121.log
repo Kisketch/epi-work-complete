@@ -1,0 +1,122 @@
+﻿EpiFormal/FiniteStatePositive.lean:56:15: warning: Variable name `u` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _u
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+EpiFormal/FiniteStatePositive.lean:66:9: error: unsolved goals
+case zero
+V : Type u
+inst✝ : Fintype V
+edges : V → V → Finset ℤ
+w : V → ℝ
+growth : ℝ
+hw : ∀ (v : V), ∑ u, adjacency edges v u * w u = growth * w v
+v : V
+⊢ ↑(Fintype.card (Path edges 0 v)) * w v = w v
+EpiFormal/FiniteStatePositive.lean:74:6: error: Tactic `rfl` failed: The left-hand side
+  ↑Finset.univ.card * ∑ q', w (endVertex edges q')
+is not definitionally equal to the right-hand side
+  adjacency edges v u * ∑ q', w (endVertex edges q')
+
+V : Type u
+inst✝ : Fintype V
+edges : V → V → Finset ℤ
+w : V → ℝ
+growth : ℝ
+hw : ∀ (v : V), ∑ u, adjacency edges v u * w u = growth * w v
+n : ℕ
+ih : ∀ (v : V), ∑ q, w (endVertex edges q) = growth ^ n * w v
+v u : V
+⊢ ↑Finset.univ.card * ∑ q', w (endVertex edges q') = adjacency edges v u * ∑ q', w (endVertex edges q')
+EpiFormal/FiniteStatePositive.lean:66:29: warning: This simp argument is unused:
+  walkMass
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [endVertex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+EpiFormal/FiniteStatePositive.lean:73:35: warning: This simp argument is unused:
+  Fintype.card_coe
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.sum_const, nsmul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+EpiFormal/FiniteStatePositive.lean:78:38: warning: This simp argument is unused:
+  endVertex
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Fintype.sum_prod_type]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+EpiFormal/FiniteStatePositive.lean:112:27: error: unsolved goals
+V : Type u
+inst✝ : Fintype V
+edges : V → V → Finset ℤ
+w : V → ℝ
+growth lo hi : ℝ
+hlo : 0 < lo
+hl : ∀ (u : V), lo ≤ w u
+hu : ∀ (u : V), w u ≤ hi
+hgrowth : 0 < growth
+n : ℕ
+v : V
+q : Path edges n v
+hwv : 0 < w v
+hD : 0 < growth ^ n * w v
+hhi : 0 < hi
+h1 : 1 ≤ w v / lo
+h2 : (1 / growth) ^ n * growth ^ n = 1
+hbig : w (endVertex edges q) ≤ hi * (w v / lo)
+⊢ growth ^ n * growth⁻¹ ^ n = 1
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+EpiFormal/FiniteStatePositive.lean:145:19: error: unsolved goals
+μ : Measure ℝ
+S : Set ℝ
+C : ℕ → Finset (Set ℝ)
+C0 Kgeo ρ rN : ℝ≥0∞
+hlam : ℝ≥0∞ → ℝ≥0∞
+Hcyl : ∀ (m : ℕ), ∀ c ∈ C m, μ c ≤ C0 * ρ ^ m
+Hmeet :
+  ∀ (T : Set ℝ),
+    Metric.ediam T ≤ rN →
+      ∃ F, F.card ≤ 3 ∧ T ∩ S ⊆ ⋃ c ∈ F, c ∧ ∀ c ∈ F, ∃ m, c ∈ C m ∧ ρ ^ m ≤ Kgeo * hlam (Metric.ediam T)
+T : Set ℝ
+hT : Metric.ediam T ≤ rN
+F : Finset (Set ℝ)
+hcard : F.card ≤ 3
+hsub : T ∩ S ⊆ ⋃ c ∈ F, c
+hF : ∀ c ∈ F, ∃ m, c ∈ C m ∧ ρ ^ m ≤ Kgeo * hlam (Metric.ediam T)
+hper : ∀ c ∈ F, μ c ≤ C0 * Kgeo * hlam (Metric.ediam T)
+hcard' : ↑F.card ≤ 3
+⊢ C0 * Kgeo * hlam (Metric.ediam T) * 3 = ?m.322
+EpiFormal/FiniteStatePositive.lean:144:8: error: 'calc' expression has type
+  ↑F.card * (C0 * Kgeo * hlam (Metric.ediam T)) ≤ ?m.322
+but is expected to have type
+  ↑F.card * (C0 * Kgeo * hlam (Metric.ediam T)) = 3 * C0 * Kgeo * hlam (Metric.ediam T)
+EpiFormal/FiniteStatePositive.lean:177:69: error: Application type mismatch: The argument
+  S
+has type
+  Set ℝ
+but is expected to have type
+  Measure ?m.102
+in the application
+  Measure.restrict_apply_self S
+'FiniteStateGauge.perron_word_mass_sum' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FiniteStateGauge.perron_word_mass_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FiniteStateGauge.muRestricted_elem_le' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FiniteStateGauge.muRestrict_le_mkMetric_hlam' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FiniteStateGauge.one_le_mkMetric_scaled' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FiniteStateGauge.pos_mkMetric_scaled' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

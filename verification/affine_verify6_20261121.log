@@ -1,0 +1,14 @@
+﻿EpiFormal/AffineWindowAssembly.lean:60:5: warning: Variable name `hP` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hP
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+EpiFormal/AffineWindowAssembly.lean:86:2: error: No goals to be solved
+'AffineWindow.T_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AffineWindow.D_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AffineWindow.D_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AffineWindow.r_ge_three' depends on axioms: [propext, Quot.sound]
+'AffineWindow.D_period' depends on axioms: [propext]
+'AffineWindow.r_period' does not depend on any axioms
+'AffineWindow.first_digit_shift' depends on axioms: [propext, Classical.choice, Quot.sound]

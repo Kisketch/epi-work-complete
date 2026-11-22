@@ -1,0 +1,99 @@
+﻿EpiFormal/GaugeExact.lean:62:45: error: unsolved goals
+n : ℕ
+⊢ 0 ≤ ⊥
+EpiFormal/GaugeExact.lean:91:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  0 + ?a
+in the target expression
+  volume (tailSet t ↑J) ≤ ⊥ + ↑ε
+
+c : ℝ
+c' : ℝ := max c 0
+hc'0 : 0 ≤ c'
+hmono0 : levelSet (ENNReal.ofReal c) ⊆ levelSet (ENNReal.ofReal c')
+t : ℝ := c' + 1
+hct : c' < t
+ht0 : 0 ≤ t
+hsub : levelSet (ENNReal.ofReal c) ⊆ ⋃ J, ⋃ m, (fun y => y + ↑m) '' tailSet t ↑J
+J : { J // 1 ≤ J }
+m : ℤ
+ε : ℝ≥0
+hε : 0 < ε
+a✝ : ⊥ < ∞
+⊢ volume (tailSet t ↑J) ≤ ⊥ + ↑ε
+EpiFormal/GaugeExact.lean:264:37: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  max ?m.225 ⊥
+in the target expression
+  max (dimH ({x | apprExponent x = ∞} ∩ Icc 0 1)) 0 = dimH ({x | apprExponent x = ∞} ∩ Icc 0 1)
+
+hcov : exactLimitSetα 0 0 ⊆ {x | apprExponent x = ∞} ∩ Icc 0 1 ∪ {x | apprExponent x < ∞}
+hdim0 : dimH (exactLimitSetα 0 0) = 1
+⊢ max (dimH ({x | apprExponent x = ∞} ∩ Icc 0 1)) 0 = dimH ({x | apprExponent x = ∞} ∩ Icc 0 1)
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+EpiFormal/GaugeExact.lean:353:10: error(lean.unknownIdentifier): Unknown constant `ENNReal.limsup_add_const`
+EpiFormal/GaugeExact.lean:434:4: error: Type mismatch
+  Eventually.of_forall hsum_le
+has type
+  ∀ᶠ (x : ℕ) in ?m.756, ∑ p, m (Metric.ediam (cov x p)) ≤ ENNReal.ofReal (C' * b ^ (-↑N))
+but is expected to have type
+  ∀ (b_1 : ℝ≥0∞), (∀ᶠ (n : ℕ) in atTop, b_1 ≤ ∑ p, m (Metric.ediam (cov n p))) → b_1 ≤ ENNReal.ofReal (C' * b ^ (-↑N))
+EpiFormal/GaugeExact.lean:465:41: error(nested.lean.propRecLargeElim): Tactic `cases` failed with a nested error:
+Tactic `induction` failed: recursor `Exists.casesOn` can only eliminate into `Prop`
+
+k : ℕ
+m : ℝ≥0∞ → ℝ≥0∞
+hm : Monotone m
+C : ℝ
+hbound : ∀ (n : ℕ), 1 ≤ n → m (ENNReal.ofReal (1 / ↑(Qsel n))) ≤ ENNReal.ofReal (C * (2 * ↑k + 1) ^ (-↑n))
+x : ℝ
+hx : x ∈ {x | apprExponent x = ENNReal.ofReal (↑k / 4)}
+hle : apprExponent x ≤ ENNReal.ofReal (↑k / 4)
+hmem : x ∈ ⋃ N, ⋃ m0, ⋃ m1, digitClass k (↑N) m0 m1
+x✝ : ∃ i, x ∈ ⋃ m0, ⋃ m1, digitClass k (↑i) m0 m1
+⊢ ?m.127
+EpiFormal/GaugeExact.lean:464:11: error: Tactic `rcases` failed: `x✝ : ?m.127` is not an inductive datatype
+EpiFormal/GaugeExact.lean:473:41: error(nested.lean.propRecLargeElim): Tactic `cases` failed with a nested error:
+Tactic `induction` failed: recursor `Exists.casesOn` can only eliminate into `Prop`
+
+k : ℕ
+m : ℝ≥0∞ → ℝ≥0∞
+hm : Monotone m
+C : ℝ
+hbound : ∀ (n : ℕ), 1 ≤ n → m (ENNReal.ofReal (1 / ↑(Qsel n))) ≤ ENNReal.ofReal (C * (2 * ↑k + 1) ^ (-↑n))
+x : ℝ
+hx : x ∈ {x | apprExponent x ≤ ENNReal.ofReal (↑k / 4)}
+hmem : x ∈ ⋃ N, ⋃ m0, ⋃ m1, digitClass k (↑N) m0 m1
+x✝ : ∃ i, x ∈ ⋃ m0, ⋃ m1, digitClass k (↑i) m0 m1
+⊢ ?m.153
+EpiFormal/GaugeExact.lean:472:11: error: Tactic `rcases` failed: `x✝ : ?m.153` is not an inductive datatype
+EpiFormal/GaugeExact.lean:508:29: error: Application type mismatch: The argument
+  ENNReal.coe_ne_top
+has type
+  ↑?m.203 ≠ ∞
+but is expected to have type
+  ↑c ≠ 0
+in the application
+  ENNReal.mul_iInf_of_ne ENNReal.coe_ne_top
+EpiFormal/GaugeExact.lean:538:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  0 + ?a
+in the target expression
+  (Measure.mkMetric h) E ≤ ⊥ + ↑η
+
+h g : ℝ≥0∞ → ℝ≥0∞
+hratio : ∀ (ε : ℝ≥0), 0 < ε → ∃ δ, 0 < δ ∧ ∀ r ≤ δ, h r ≤ ↑ε * g r
+E : Set ℝ
+hfin : (Measure.mkMetric g) E < ∞
+η : ℝ≥0
+hη : 0 < η
+a✝ : ⊥ < ∞
+⊢ (Measure.mkMetric h) E ≤ ⊥ + ↑η
+EpiFormal/GaugeExact.lean:795:4: error: Type mismatch
+  Eventually.of_forall hsum_le
+has type
+  ∀ᶠ (x : ℕ) in ?m.641, ∑ p, m (Metric.ediam (cov x p)) ≤ ENNReal.ofReal (C' * 2 ^ (-↑N))
+but is expected to have type
+  ∀ (b : ℝ≥0∞), (∀ᶠ (n : ℕ) in atTop, b ≤ ∑ p, m (Metric.ediam (cov n p))) → b ≤ ENNReal.ofReal (C' * 2 ^ (-↑N))

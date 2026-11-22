@@ -1,0 +1,82 @@
+﻿EpiFormal/WindowHinter.lean:67:27: error: Application type mismatch: The argument
+  Eq.symm haj
+has type
+  j = f a
+but is expected to have type
+  i = ?m.310
+in the application
+  Eq.trans hai (Eq.symm haj)
+EpiFormal/WindowHinter.lean:71:12: error(lean.unknownIdentifier): Unknown constant `Finset.sum_natCast`
+EpiFormal/WindowHinter.lean:82:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  f a
+in the target expression
+  meet a i
+
+ι α : Type
+inst✝² : DecidableEq ι
+inst✝¹ : DecidableEq α
+F : Finset ι
+A : Finset α
+meet : α → ι → Prop
+inst✝ : (a : α) → (i : ι) → Decidable (meet a i)
+hcover : ∀ a ∈ A, ∃ i ∈ F, meet a i
+Kc : ι → ℕ
+hKc : ∀ i ∈ F, ↑{a ∈ A | meet a i}.card ≤ ↑(Kc i)
+a0 : α
+ha0 : a0 ∈ A
+i0 : ι
+hi0F : i0 ∈ F
+right✝ : meet a0 i0
+f : α → ι
+hf : ∀ a ∈ A, f a ∈ F ∧ meet a (f a)
+hfF : ∀ a ∈ A, f a ∈ F
+hfmeet : ∀ a ∈ A, meet a (f a)
+hsub : Finset.image f A ⊆ F
+hAeq : A = (Finset.image f A).biUnion fun i => {a ∈ A | f a = i}
+hdisj : (↑(Finset.image f A)).PairwiseDisjoint fun i => {a ∈ A | f a = i}
+hcard : ↑A.card = ∑ i ∈ Finset.image f A, ↑{a ∈ A | f a = i}.card
+i : ι
+hi : i ∈ Finset.image f A
+hiF : i ∈ F
+a : α
+ha : a ∈ A ∧ f a = i
+⊢ meet a i
+EpiFormal/WindowHinter.lean:91:16: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  CanonicallyOrderedAdd ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowHinter.lean:92:16: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+ι α : Type
+inst✝² : DecidableEq ι
+inst✝¹ : DecidableEq α
+F : Finset ι
+A : Finset α
+meet : α → ι → Prop
+inst✝ : (a : α) → (i : ι) → Decidable (meet a i)
+hcover : ∀ a ∈ A, ∃ i ∈ F, meet a i
+Kc : ι → ℕ
+hKc : ∀ i ∈ F, ↑{a ∈ A | meet a i}.card ≤ ↑(Kc i)
+a0 : α
+ha0 : a0 ∈ A
+i0 : ι
+hi0F : i0 ∈ F
+right✝ : meet a0 i0
+f : α → ι
+hf : ∀ a ∈ A, f a ∈ F ∧ meet a (f a)
+hfF : ∀ a ∈ A, f a ∈ F
+hfmeet : ∀ a ∈ A, meet a (f a)
+hsub : Finset.image f A ⊆ F
+hAeq : A = (Finset.image f A).biUnion fun i => {a ∈ A | f a = i}
+hdisj : (↑(Finset.image f A)).PairwiseDisjoint fun i => {a ∈ A | f a = i}
+hcard : ↑A.card = ∑ i ∈ Finset.image f A, ↑{a ∈ A | f a = i}.card
+⊢ CanonicallyOrderedAdd ℝ
+EpiFormal/WindowHinter.lean:65:17: warning: This simp argument is unused:
+  Finset.coe_sort_coe
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.disjoint_filter]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'HinterBridge.thresh_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HinterBridge.fiber_count_ge' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

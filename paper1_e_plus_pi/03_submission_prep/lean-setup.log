@@ -1,0 +1,5 @@
+New-Item: 
+Line |
+  21 |  New-Item -ItemType Junction -Path "$check/.lake/packages" -Target "$s …
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | 拒绝访问。

@@ -1,0 +1,9 @@
+﻿EpiFormal/WindowLargeWindow.lean:47:40: error: Application type mismatch: The argument
+  hm0'
+has type
+  m0 ≤ Mpar * 10000 / R ^ 2
+but is expected to have type
+  Mpar * 10000 / R ^ 2 ≤ m0
+in the application
+  mul_le_mul_of_nonneg_left hm0'
+'WindowLargeWindow.mu_large_window' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

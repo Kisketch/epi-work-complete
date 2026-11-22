@@ -1,0 +1,40 @@
+﻿EpiFormal/WindowStoppedTree.lean:51:76: error: unexpected token ')'; expected ':'
+EpiFormal/WindowStoppedTree.lean:103:65: error: Application type mismatch: The argument
+  hPle
+has type
+  μ (Set.Icc P.1 P.2) ≤ ENNReal.ofReal (m j)
+of sort `Prop` but is expected to have type
+  ENNReal
+of sort `Type` in the application
+  ENNReal.div_le_div_right ?m.216 hPle
+EpiFormal/WindowStoppedTree.lean:106:26: error: Function expected at
+  ENNReal.ofReal_div_of_pos ?m.220
+but this term has type
+  ENNReal.ofReal (?m.218 / ?m.219) = ENNReal.ofReal ?m.218 / ENNReal.ofReal ?m.219
+
+Note: Expected a function because this term is being applied to the argument
+  hBpos
+EpiFormal/WindowStoppedTree.lean:105:40: error: unsolved goals
+T : TreeData
+μ : MeasureTheory.Measure ℝ
+j0 : ℕ
+m B : ℕ → ℝ
+hB1 : ∀ j ≥ j0, 1 ≤ B j
+hm0 : ∀ I ∈ T.atoms j0, μ (Set.Icc I.1 I.2) ≤ ENNReal.ofReal (m j0)
+hmrec : ∀ j ≥ j0, m (j + 1) = m j / B j
+hsplit : ∀ j ≥ j0, ∀ I ∈ T.atoms j, ∀ C ∈ T.child j I, μ (Set.Icc C.1 C.2) ≤ μ (Set.Icc I.1 I.2) / ENNReal.ofReal (B j)
+hmem : ∀ j ≥ j0, ∀ I ∈ T.atoms (j + 1), ∃ P ∈ T.atoms j, I ∈ T.child j P
+j✝ j : ℕ
+hj : j0 ≤ j
+ih : ∀ I ∈ T.atoms j, μ (Set.Icc I.1 I.2) ≤ ENNReal.ofReal (m j)
+I : ℝ × ℝ
+hI : I ∈ T.atoms (j + 1)
+P : ℝ × ℝ
+hP : P ∈ T.atoms j
+hm : I ∈ T.child j P
+hPle : μ (Set.Icc P.1 P.2) ≤ ENNReal.ofReal (m j)
+hBpos : 0 < B j
+⊢ ENNReal.ofReal (m j) / ENNReal.ofReal (B j) = ENNReal.ofReal (m j / B j)
+'StoppedTree.Ioo_subset_of_Icc_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppedTree.nodup_of_children_disjoint' does not depend on any axioms
+'StoppedTree.mass_le_of_split' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

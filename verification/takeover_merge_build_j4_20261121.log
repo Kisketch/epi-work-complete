@@ -1,0 +1,7 @@
+﻿lake : error: unknown short option '-j'
+At line:1 char:1
++ lake build -j4 2>&1 | Out-File -FilePath "C:\Users\Lgnatius\Documents ...
++ ~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (error: unknown short option '-j':String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

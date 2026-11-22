@@ -1,0 +1,49 @@
+﻿EpiFormal/CylinderFrostman.lean:44:47: warning: Variable name `hρ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hρ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+EpiFormal/CylinderFrostman.lean:80:2: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+EpiFormal/CylinderFrostman.lean:59:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+EpiFormal/CylinderFrostman.lean:218:4: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp at h1
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+EpiFormal/CylinderFrostman.lean:219:14: error(lean.unknownIdentifier): Unknown identifier `MeasureTheory.le_dimH_of_hausdorffMeasure_ne_zero`
+EpiFormal/CylinderFrostman.lean:211:35: error: unsolved goals
+K : Set ℝ
+s : ℝ
+hs0 : 0 < s
+hs1 : s ≤ 1
+hK : IsCompact K
+r0R : ℝ
+hr0R : 0 < r0R
+Hinter :
+  ∀ (ι : Type u) (V : ι → Set ℝ) (F : Finset ι),
+    (∀ (i : ι), IsOpen (V i)) →
+      K ⊆ ⋃ i ∈ F, V i → ∃ Kc M, 0 < M ∧ 1 ≤ ∑ i ∈ F, ↑(Kc i) / M ∧ ∀ i ∈ F, ↑(Kc i) / M ≤ diam (V i) ^ s
+h1 : 1 ≤ μH[s] K
+hne : μH[↑⟨s, ⋯⟩] K ≠ 0
+⊢ ENNReal.ofReal s ≤ dimH K
+EpiFormal/CylinderFrostman.lean:202:8: error: (kernel) unknown constant 'Cylinder.frostman_of_count_thresh'
+EpiFormal/CylinderFrostman.lean:225:0: error: Unexpected name `Cylinder` after `end`: The current section is unnamed
+
+Hint: Delete the name `Cylinder` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵C̵y̵l̵i̵n̵d̵e̵r̵
+'Cylinder.rpow_add_le_add_rpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.ediam_thickening_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.frostman_of_count_thresh' does not depend on any axioms
+'Cylinder.frostman_dimH_le' depends on axioms: [propext, Classical.choice, frostman_dimH_le, Quot.sound]

@@ -1,0 +1,7 @@
+﻿EpiFormal/WindowMassDist.lean:79:12: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Nonempty (t n).Nonempty
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowMassDist.lean:81:15: error: Invalid `⟨...⟩` notation: The expected type of this term could not be determined
+'WindowMass.ofReal_diam_le_mul_ediam_rpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMass.mass_distrib_of_diam_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

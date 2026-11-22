@@ -1,0 +1,32 @@
+﻿EpiFormal/WindowMassDist.lean:78:4: error: unsolved goals
+case pos
+μ : Measure ℝ
+K : Set ℝ
+C s : ℝ
+hC : 0 < C
+hs : 0 < s
+hK : ENNReal.ofReal C ≤ μ K
+h✝ : ∀ (V : Set ℝ), μ V ≤ ENNReal.ofReal (C * Metric.diam V ^ s)
+t : ℕ → Set ℝ
+hcov : K ⊆ ⋃ n, t n
+i✝ : ∀ (n : ℕ), Metric.ediam (t n) ≤ 1
+hsub : μ K ≤ ∑' (n : ℕ), μ (t n)
+hterm : ∀ (n : ℕ), μ (t n) ≤ ENNReal.ofReal C * Metric.ediam (t n) ^ s
+hCS : ENNReal.ofReal C ≤ ENNReal.ofReal C * ∑' (n : ℕ), Metric.ediam (t n) ^ s
+hC0 : ENNReal.ofReal C ≠ 0
+hCt : ENNReal.ofReal C ≠ ∞
+h2 : 1 ≤ ∑' (n : ℕ), Metric.ediam (t n) ^ s
+n : ℕ
+h : (t n).Nonempty
+⊢ ⨆ (_ : True), Metric.ediam (t n) ^ s = Metric.ediam (t n) ^ s
+EpiFormal/WindowMassDist.lean:80:6: warning: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+EpiFormal/WindowMassDist.lean:82:8: error(lean.unknownIdentifier): Unknown constant `ENNReal.zero_rpow`
+'WindowMass.ofReal_diam_le_mul_ediam_rpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMass.mass_distrib_of_diam_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

@@ -1,0 +1,43 @@
+﻿EpiFormal/WindowMuImplication.lean:35:18: error: expected token
+EpiFormal/WindowMuImplication.lean:53:62: error: unsolved goals
+m0 C b s j Oj K h : ℝ
+hm0 : 0 < m0
+hC : 0 < C
+hh : 0 < h
+hs : 0 ≤ s
+hexp : m0 ≤ C * rexp (-b * j * log j + Oj)
+hlog : log h⁻¹ ≤ 2 * j * log j + K
+⊢ m0 * (rexp (log h * s))⁻¹ = m0 * (rexp (s * log h))⁻¹
+EpiFormal/WindowMuImplication.lean:62:8: error: Tactic `apply` failed: could not unify the type of `mul_le_mul ?m.296 h1 (LT.lt.le (exp_pos (s * log h⁻¹))) le_rfl`
+  ?m.290 * rexp (s * log h⁻¹) ≤ 0 * rexp (s * (2 * j * log j + K))
+with the goal
+  m0 * rexp (s * log h⁻¹) ≤ C * rexp (-b * j * log j + Oj) * rexp (s * (2 * j * log j + K))
+
+m0 C b s j Oj K h : ℝ
+hm0 : 0 < m0
+hC : 0 < C
+hh : 0 < h
+hs : 0 ≤ s
+hexp : m0 ≤ C * rexp (-b * j * log j + Oj)
+hlog : log h⁻¹ ≤ 2 * j * log j + K
+hrw : m0 / h ^ s = m0 * rexp (s * log h⁻¹)
+h1 : rexp (s * log h⁻¹) ≤ rexp (s * (2 * j * log j + K))
+⊢ m0 * rexp (s * log h⁻¹) ≤ C * rexp (-b * j * log j + Oj) * rexp (s * (2 * j * log j + K))
+EpiFormal/WindowMuImplication.lean:65:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  rexp ?x * rexp ?y
+in the target expression
+  C * rexp (-b * j * log j + Oj) * rexp (s * (2 * j * log j + K)) = C * rexp (-(b - 2 * s) * j * log j + Oj + s * K)
+
+m0 C b s j Oj K h : ℝ
+hm0 : 0 < m0
+hC : 0 < C
+hh : 0 < h
+hs : 0 ≤ s
+hexp : m0 ≤ C * rexp (-b * j * log j + Oj)
+hlog : log h⁻¹ ≤ 2 * j * log j + K
+hrw : m0 / h ^ s = m0 * rexp (s * log h⁻¹)
+h1 : rexp (s * log h⁻¹) ≤ rexp (s * (2 * j * log j + K))
+⊢ C * rexp (-b * j * log j + Oj) * rexp (s * (2 * j * log j + K)) = C * rexp (-(b - 2 * s) * j * log j + Oj + s * K)
+'WindowMu.mu_biUnion_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMu.mu_window_le' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowMu.exp_ratio_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

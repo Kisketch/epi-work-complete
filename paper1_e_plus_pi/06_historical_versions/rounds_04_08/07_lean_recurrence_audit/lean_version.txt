@@ -1,0 +1,19 @@
+warning: mathlib: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\mathlib
+warning: plausible: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\plausible
+warning: LeanSearchClient: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\LeanSearchClient
+warning: importGraph: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\importGraph
+warning: proofwidgets: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\proofwidgets
+warning: aesop: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\aesop
+warning: Qq: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\Qq
+warning: batteries: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\batteries
+warning: Cli: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\Cli
+Lean (version 4.35.0, x86_64-w64-windows-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)

@@ -1,0 +1,11 @@
+﻿EpiFormal/WindowStoppedTree.lean:69:51: error: Application type mismatch: The argument
+  PB
+has type
+  ℝ × ℝ
+of sort `Type` but is expected to have type
+  ?m.221 ≠ PA
+of sort `Prop` in the application
+  ih ?m.222 (Finset.mem_coe.mpr hPA) PB
+'StoppedTree.Ioo_subset_of_Icc_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppedTree.nodup_of_children_disjoint' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'StoppedTree.mass_le_of_split' depends on axioms: [propext, Classical.choice, Quot.sound]

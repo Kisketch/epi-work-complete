@@ -1,0 +1,17 @@
+﻿EpiFormal/WindowHinter.lean:69:26: error: Application type mismatch: The argument
+  Eq.symm e2
+has type
+  j = f a
+but is expected to have type
+  i = ?m.316
+in the application
+  Eq.trans e1 (Eq.symm e2)
+EpiFormal/WindowHinter.lean:65:17: warning: This simp argument is unused:
+  Finset.coe_sort_coe
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.disjoint_filter]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'HinterBridge.thresh_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HinterBridge.fiber_count_ge' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

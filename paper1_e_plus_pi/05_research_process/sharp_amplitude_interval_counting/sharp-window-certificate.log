@@ -1,0 +1,4 @@
+720 exact residue-window checks, with starts of size up to 10^24.
+804 strict cubic-gap checks and four exact equality checks.
+Discrete sine-kernel scaled rates: 1.24171019, 1.23568745, 1.23419632, 1.23382443, 1.23373152
+Full-alphabet p=1/2 example, C_* = 3.94966656.

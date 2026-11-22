@@ -1,0 +1,97 @@
+﻿EpiFormal/WindowHinter.lean:1:0: error: expected token
+EpiFormal/WindowHinter.lean:25:9: error: unknown tactic
+EpiFormal/WindowHinter.lean:17:10: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LT ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowHinter.lean:17:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowHinter.lean:17:36: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowHinter.lean:18:20: error: Type mismatch
+  Kc i
+has type
+  ℕ
+but is expected to have type
+  ℝ
+EpiFormal/WindowHinter.lean:18:20: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowHinter.lean:19:11: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HDiv ℝ ℝ ?m.29
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowHinter.lean:20:26: error(lean.unknownIdentifier): Unknown identifier `Metric.diam`
+EpiFormal/WindowHinter.lean:20:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowHinter.lean:21:16: error: Type mismatch
+  Kc i
+has type
+  ℕ
+but is expected to have type
+  ℝ
+EpiFormal/WindowHinter.lean:21:35: error(lean.unknownIdentifier): Unknown identifier `Metric.diam`
+EpiFormal/WindowHinter.lean:21:34: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HPow ℝ ℝ ?m.51
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowHinter.lean:17:10: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat ℝ 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  ℝ
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowHinter.lean:17:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat ℝ 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  ℝ
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowHinter.lean:17:36: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat ℝ 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  ℝ
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowHinter.lean:15:42: error: Function expected at
+  Set
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  ℝ
+
+Hint: The identifier `Set` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+EpiFormal/WindowHinter.lean:15:54: error: Function expected at
+  Finset
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  ι
+
+Hint: The identifier `Finset` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+EpiFormal/WindowHinter.lean:23:8: error: Type mismatch
+  Kc i
+has type
+  ℕ
+of sort `Sort u_3` but is expected to have type
+  ℝ
+of sort `Type u_4`
+EpiFormal/WindowHinter.lean:23:26: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HDiv ℝ ℝ ?m.72
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+EpiFormal/WindowHinter.lean:37:21: error: expected token
+EpiFormal/WindowHinter.lean:99:14: error(lean.unknownIdentifier): Unknown constant `thresh_bridge`
+EpiFormal/WindowHinter.lean:100:14: error(lean.unknownIdentifier): Unknown constant `fiber_count_ge`

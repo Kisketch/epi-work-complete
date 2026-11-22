@@ -1,0 +1,29 @@
+﻿@Nat.dvd_gcd : ∀ {k m n : ℕ}, k ∣ m → k ∣ n → k ∣ m.gcd n
+Nat.gcd_dvd_left : ∀ (m n : ℕ), m.gcd n ∣ m
+Nat.gcd_dvd_right : ∀ (m n : ℕ), m.gcd n ∣ n
+@Nat.le_of_dvd : ∀ {m n : ℕ}, 0 < n → m ∣ n → m ≤ n
+@Nat.pos_of_dvd_of_pos : ∀ {m n : ℕ}, m ∣ n → 0 < n → 0 < m
+@Nat.gcd_pos_of_pos_left : ∀ {m : ℕ} (n : ℕ), 0 < m → 0 < m.gcd n
+@sum_boole : ∀ {ι : Type u_1} {R : Type u_2} [inst : AddCommMonoidWithOne R] (p : ι → Prop) [inst_1 : DecidablePred p]
+  (s : Finset ι), (∑ x ∈ s, if p x then 1 else 0) = ↑(#({x ∈ s | p x}))
+@card_product : ∀ {α : Type u_1} {β : Type u_2} (s : Finset α) (t : Finset β), #(s ×ˢ t) = #s * #t
+@card_image_of_injective : ∀ {α : Type u_1} {β : Type u_2} {f : α → β} [inst : DecidableEq β] (s : Finset α),
+  Function.Injective f → #(image f s) = #s
+@Nat.le_div_iff_mul_le : ∀ {k x y : ℕ}, 0 < k → (x ≤ y / k ↔ x * k ≤ y)
+@Nat.le_induction : ∀ {m : ℕ} {P : (n : ℕ) → m ≤ n → Prop},
+  P m ⋯ → (∀ (n : ℕ) (hmn : m ≤ n), P n hmn → P (n + 1) ⋯) → ∀ (n : ℕ) (hmn : m ≤ n), P n hmn
+@Real.log_le_log : ∀ {x y : ℝ}, 0 < x → x ≤ y → Real.log x ≤ Real.log y
+@sum_le_sum_of_subset_of_nonneg : ∀ {ι : Type u_1} {N : Type u_2} [inst : AddCommMonoid N] [inst_1 : Preorder N]
+  {f : ι → N} {s t : Finset ι} [AddLeftMono N], s ⊆ t → (∀ i ∈ t, i ∉ s → 0 ≤ f i) → ∑ i ∈ s, f i ≤ ∑ i ∈ t, f i
+Nat.prime_two : Nat.Prime 2
+Nat.prime_three : Nat.Prime 3
+@abs_moebius_le_one : ∀ {n : ℕ}, |moebius n| ≤ 1
+@Nat.cast_div_le : ∀ {α : Type u_1} [inst : Semifield α] [inst_1 : LinearOrder α] [IsStrictOrderedRing α] {m n : ℕ},
+  ↑(m / n) ≤ ↑m / ↑n
+Nat.div_add_mod : ∀ (m n : ℕ), n * (m / n) + m % n = m
+Nat.mod_lt : ∀ (x : ℕ) {y : ℕ}, 0 < y → x % y < y
+ScratchCheck.lean:23:8: error(lean.unknownIdentifier): Unknown constant `Finset.sum_Icc_consecutive`
+Real.exp_one_gt_d9 : 2.7182818283 < Real.exp 1
+@Nat.floor_mono : ∀ {R : Type u_1} [inst : Semiring R] [inst_1 : LinearOrder R] [inst_2 : FloorSemiring R],
+  Monotone Nat.floor
+ScratchCheck.lean:26:8: error(lean.unknownIdentifier): Unknown constant `Finset.Icc_union_Icc_eq_Icc`

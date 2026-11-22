@@ -1,0 +1,1195 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs,tabularx}
+
+\emergencystretch=4em
+\tolerance=3000
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Open Problem}
+\theoremstyle{remark}
+\newtheorem*{acknowledgement}{Acknowledgement}
+\numberwithin{equation}{section}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Qbar}{\overline{\mathbb{Q}}}
+\newcommand{\trdeg}{\operatorname{trdeg}}
+\newcommand{\irr}{\mu}
+\newcommand{\ee}{\mathrm{e}}
+\DeclareMathOperator{\wpfun}{\wp}
+
+\title[On the Irrationality of $e+\pi$]{On the Irrationality of $e+\pi$: Proven Results, New Reductions, and a Systematic Obstruction Analysis}
+\author{Automated Research Program}
+\thanks{This manuscript consolidates nine rounds of automated research and subsequent formalization work (November 13--15, 2026). The manuscript contains proofs, conditional deductions, and explicitly marked open steps; no priority is claimed for elementary combinations of classical tools. \textbf{This paper does not prove the irrationality of $e+\pi$; that problem remains open.} Every external theorem is cited with its verification status; results depending on unreviewed preprints are explicitly conditional. A summary theorem--source--application audit table is given in Appendix~\ref{app:audit}, with the declaration-level audit in the accompanying archive.}
+\date{November 15, 2026}
+\subjclass[2020]{Primary 11J82; Secondary 11J85, 11J72, 11A55.}
+\keywords{Irrationality, transcendence, $e+\pi$, irrationality measure, Schanuel's conjecture, Flint Hills series, continued fractions.}
+
+\begin{document}
+
+\begin{abstract}
+The irrationality of $e+\pi$ remains open. This manuscript collects elementary consequences of classical transcendence theorems, conditional reductions, and explicit obstructions encountered by selected constructions. It proves that rationality of any of $e+\pi$, $e-\pi$, $e\pi$, or $e/\pi$ forces $\irr(\pi)=2$, and derives a bridge from rationality to convergence of the Flint Hills series. It also records continued-fraction, signed-residual, adjacent-index, and factorial criteria. These criteria characterize rationality or give sufficient conditions for irrationality; their missing estimates for $\pi$ are not proved. The accompanying Lean archive records kernel-checked derivations relative to explicitly listed classical axioms, including $\irr(\ee)=2$ and selected continued-fraction error estimates. Symbolic checks and finite interval computations are distinguished from kernel verification. The obstruction analysis applies to the constructions examined, not to every possible method in a broad class. Algebraic independence of $e$ and $\pi$, supplied conditionally by the Schanuel instance at $(1,i\pi)$, is a sufficient hypothesis and is not claimed to be necessary for irrationality of their sum. The formalization also includes a kernel-checked escape reformulation of the adjacent-index criterion and a machine-certified boundary showing that the generic recurrence and rounding conditions alone cannot exclude eventual matching. A new kernel-checked quantitative reduction isolates the missing input into a single lattice-escape target $\mathrm{P1}:\forall B\ge1,\ B\pi\notin\Z+\Z\frac{e+1}{2}$, of the same difficulty as the original problem; the four combinations are reorganized under two expected-false necessary conditions (``$\pi$ is a Hurwitz number'', ``$\pi\in\mathbf{E}$''), and the routes $\irr(\pi)>2$ and Flint Hills divergence are flagged as expected false and abandoned. This revision corrects denominator bookkeeping, the Schanuel field argument, the irrationality-measure upper-bound table, and overstatements about exhausted proof routes; it supplies no proof of the central open problem.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Let $\ee=\exp(1)$ and let $\pi$ be the circle constant. The problem addressed in this paper is:
+
+\begin{problem}\label{prob:main}
+Is $e+\pi$ irrational? Is it transcendental? Are $e$ and $\pi$ algebraically independent over $\Q$?
+\end{problem}
+
+The transcendence of $\ee$ was proved by Hermite in 1873 \cite{Hermite1873}, and that of $\pi$ by Lindemann in 1882 \cite{Lindemann1882}. Nevertheless, essentially nothing is known about the arithmetic nature of sums, products, differences, or quotients of these two constants. The OEIS Wiki records the striking fact that there is no pair of nonzero integers $m,n$ for which the rationality or irrationality of $m\pi+n\ee$ is known \cite{OEIS}. One elementary unconditional result in the immediate vicinity of Problem~\ref{prob:main} is the disjunctive statement that at least one of $e+\pi$ and $e\pi$ is transcendental (Theorem~\ref{thm:vieta} below).
+
+\subsection{Contributions} This paper consolidates nine rounds of automated research. Its contributions are:
+\begin{enumerate}
+\item Proofs of selected classical unconditional results (Section~\ref{sec:unconditional}), including two classical irrationality proofs (Fourier's for $\ee$, Niven's for $\pi$) written out in full as a technical baseline.
+\item Elementary reductions and conditional implications (Section~\ref{sec:new}): the measure reduction (Theorem~\ref{thm:measure-reduction}), the continued-fraction necessary condition (Theorem~\ref{thm:cf}), the series rigidity propositions (Propositions~\ref{prop:window} and~\ref{prop:recurrence}), the four-exponentials obstruction (Proposition~\ref{prop:four-exp}), the translation identity for the $\irr(\pi)$ program (Theorem~\ref{thm:translation}), the scaling-closure proposition (Proposition~\ref{prop:scaling}), and the conditional Flint Hills bridge (Theorem~\ref{thm:flint}).
+\item A systematic obstruction analysis (Section~\ref{sec:obstructions}) of four proof routes and four candidate bridge identities, with the limitations of each examined construction stated explicitly. These observations do not exclude unexamined constructions or prove that an entire method is impossible.
+\item Machine verification and rigorous certificates (Section~\ref{sec:computation}): twelve symbolic verifications plus a separate cosine-integral check, and a 450-digit interval-arithmetic certificate.
+\item A summary audit table (Appendix~\ref{app:audit}) recording, for the principal external facts, their statement, source, verification method, status, and application sites; the full declaration-level audit is in the archive (\texttt{LEMMA\_AUDIT.md}, \texttt{Master\_Control\_Ledger.md}).
+\item A machine-verified formalization in Lean~4 (Section~\ref{sec:lean}): a non-degenerate definition of the irrationality measure and kernel-checked derivations of the registered declarations listed in the archive with no \texttt{sorryAx} and no \texttt{sorry} anywhere in the project. The \emph{Flint Hills case} of Meiburg's criterion is fully formalized (circle spacing, dyadic-block counting, Jordan bound, geometric summation), replacing the preprint axiom by a theorem; the Alekseyev direction (convergence $\Rightarrow\irr(\pi)\le5/2$) is now machine-verified via a nearest-integer argument, with the earlier density obstruction preserved as a historical record.
+\item A kernel-checked quantitative reduction of the escape target to a lattice-escape subproblem P1 (Section~\ref{sec:lean-reduction}): match $\Rightarrow$ super-approximation $\Rightarrow$ sharp bound $1/8$ $\Rightarrow$ collision with the classification gap $\Rightarrow$ $B\pi\in L$. This is a change of target, not a reduction in difficulty; P1 is of the same family as the original problem and remains open.
+\item A reorganization of the four combinations under two expected-false necessary conditions (Section~\ref{sec:expected-false}): ``$\pi$ is a Hurwitz number'' (via the classical Hurwitz theorem) and ``$\pi\in\mathbf{E}$'' (via the Fischler--Rivoal $E/G$-value rings). The routes $\irr(\pi)>2$ and Flint Hills divergence are flagged as expected false and abandoned as attack routes.
+\end{enumerate}
+
+\subsection{Honesty statement} This paper does not resolve Problem~\ref{prob:main}. No contradiction to $e+\pi\in\Q$ is obtained from the results used here. This is a statement about the present arguments, not an independence theorem or a proof that existing mathematics cannot resolve the problem. Results that depend on unreviewed preprints (Bertolin \cite{Bertolin2026}, Bai \cite{Bai2026}) are stated conditionally and flagged as such. Meiburg's criterion \cite{Meiburg2022} was originally used conditionally; its Flint Hills case is now machine-verified (Section~\ref{sec:lean}), so the bridge no longer rests on that preprint. The measure-theoretic intuition that $e+\pi$ is ``almost certainly'' transcendental is used only heuristically and never as evidence. One attribution error made in an intermediate round (concerning the Flint Hills criterion) was detected by primary-source verification and is corrected in Section~\ref{sec:flint-bridge}; the correction is part of the permanent record.
+
+\subsection{Organization} Section~\ref{sec:prelim} fixes notation and states the classical theorems used. Section~\ref{sec:unconditional} proves the unconditional results. Section~\ref{sec:new} contains the new results. Section~\ref{sec:obstructions} carries out the systematic attempts. Section~\ref{sec:conditional} treats the conditional frameworks (Schanuel, Ax--Schanuel, Zilber, Bertolin). Section~\ref{sec:computation} documents the machine verification. Section~\ref{sec:conclusion} gives the exclusion map, the surviving targets and their logical direction, and the research priorities. Section~\ref{sec:lean}, placed after the conclusion as a technical record, documents the Lean~4 formalization: the non-degenerate measure definition, the Flint Hills case of Meiburg's criterion, the Alekseyev direction, the supplement's joint compilation, the 2026 external developments, the algebraic-independence reduction, and the escape program with its machine-certified boundary. Appendices~\ref{app:audit} and~\ref{app:repro} give the summary audit table and reproducibility instructions.
+
+\section{Preliminaries and notation}\label{sec:prelim}
+
+\begin{definition}
+A complex number is \emph{algebraic} if it is a root of a nonzero polynomial with rational coefficients; otherwise it is \emph{transcendental}. We write $\Qbar$ for the field of algebraic numbers. A finite set $\{x_1,\dots,x_n\}\subset\C$ is \emph{algebraically independent over $\Q$} if no nonzero polynomial $P\in\Q[X_1,\dots,X_n]$ satisfies $P(x_1,\dots,x_n)=0$. The \emph{transcendence degree} $\trdeg_\Q K$ of a field extension $K/\Q$ is the cardinality of a maximal algebraically independent subset.
+\end{definition}
+
+\begin{definition}[Irrationality measure]\label{def:measure}
+For an irrational $x\in\R$, define
+\[
+\irr(x)=\sup\{\nu\ge0:\ |x-p/q|<q^{-\nu}
+\text{ for infinitely many }(p,q)\in\Z\times\N_{>0}\},
+\]
+with supremum in $[0,\infty]$. Equivalently, this is the infimum of positive exponents for which only finitely many such pairs exist. Exact equality $x=p/q$ cannot occur because $x$ is irrational.
+\end{definition}
+
+For irrational arguments we use $\irr(x)\ge2$ (Dirichlet) and $\irr(x)=2$ for algebraic $x$ (Roth \cite{Roth1955}). We make no convention for rational arguments in the mathematical discussion. The Lean definition in Section~\ref{sec:lean-def} extends the displayed supremum to all reals; because it includes exact approximations with unreduced pairs, its value at a rational is $+\infty$, not the alternative conventional value $1$. All arithmetic-measure applications here concern irrational arguments.
+
+\begin{definition}
+For an irrational $x$, its \emph{simple continued fraction} is $x=[a_0;a_1,a_2,\dots]$ with convergents $p_n/q_n$. We use the classical bound $|x-p_n/q_n|<1/q_n^2$.
+\end{definition}
+
+The following classical theorems are used as black boxes; each is cited with its source and is not reproved here.
+
+\begin{theorem}[Hermite--Lindemann; {\cite{Hermite1873,Lindemann1882}}]\label{thm:HL}
+If $\alpha\in\Qbar\setminus\{0\}$, then $\ee^\alpha$ is transcendental. In particular, $\ee$ and $\pi$ are transcendental.
+\end{theorem}
+
+\begin{theorem}[Lindemann--Weierstrass; {\cite{Lindemann1882}}]\label{thm:LW}
+If $\alpha_1,\dots,\alpha_n\in\Qbar$ are linearly independent over $\Q$, then $\ee^{\alpha_1},\dots,\ee^{\alpha_n}$ are algebraically independent over $\Q$.
+\end{theorem}
+
+\begin{theorem}[Gelfond--Schneider; {\cite{GS1934}}]\label{thm:GS}
+If $\alpha\in\Qbar\setminus\{0,1\}$ and $\beta\in\Qbar\setminus\Q$, then every value of $\alpha^\beta$ is transcendental.
+\end{theorem}
+
+\begin{theorem}[Schneider, elliptic case; {\cite{Duke}}]\label{thm:schneider}
+Let $\wp$ be a Weierstrass function with algebraic invariants $g_2,g_3$. If $z\in\Qbar\setminus\{0\}$, then $\wp(z)$ is transcendental.
+\end{theorem}
+
+\begin{definition}[Weierstrass function]
+For a lattice $\Omega\subset\C$, $\wp_\Omega(z)=z^{-2}+\sum_{\omega\in\Omega\setminus\{0\}}\bigl((z-\omega)^{-2}-\omega^{-2}\bigr)$. Its invariants are $g_2(\Omega)=60\sum_{\omega\ne0}\omega^{-4}$ and $g_3(\Omega)=140\sum_{\omega\ne0}\omega^{-6}$. The lattice has \emph{complex multiplication} (CM) if $\operatorname{End}(\C/\Omega)\otimes\Q$ is an imaginary quadratic field.
+\end{definition}
+
+We also use Euler's identity $\ee^{i\pi}=-1$ and, in Section~\ref{sec:conditional}, the statement of Schanuel's conjecture.
+
+\section{Unconditional results}\label{sec:unconditional}
+
+\subsection{The disjunctive transcendence theorem}
+
+\begin{theorem}\label{thm:vieta}
+At least one of $e+\pi$ and $e\pi$ is transcendental.
+\end{theorem}
+
+\begin{proof}
+Set $S=e+\pi$ and $P=e\pi$. By Vieta's formulas, $e$ and $\pi$ are precisely the two roots of
+\begin{equation}\label{eq:quadratic}
+x^2-Sx+P=0.
+\end{equation}
+Suppose, for contradiction, that both $S$ and $P$ are algebraic. The field $\Qbar$ of algebraic numbers is closed under addition, subtraction, multiplication, division, and extraction of square roots. Hence the quadratic formula applied to \eqref{eq:quadratic},
+\[
+x=\frac{S\pm\sqrt{S^2-4P}}{2},
+\]
+shows that both roots are algebraic. Thus $e$ and $\pi$ would both be algebraic, contradicting Theorem~\ref{thm:HL}. Therefore $S$ and $P$ cannot both be algebraic; at least one is transcendental.
+\end{proof}
+
+\begin{remark}
+The argument identifies neither which of the two is transcendental nor whether either could be rational. Any proof of the irrationality of $e+\pi$ must supply information beyond this elementary argument.
+\end{remark}
+
+\subsection{At most one rational among four combinations}
+
+\begin{theorem}\label{thm:four}
+Among the four numbers $e+\pi$, $e-\pi$, $e\pi$, $e/\pi$, at most one is rational.
+\end{theorem}
+
+\begin{proof}
+There are six unordered pairs; we exclude each. Throughout, we use that $\Q$ is closed under the four arithmetic operations, and that $e,\pi>0$ with $e\ne\pi$.
+
+\emph{Pair 1: $e+\pi$ and $e-\pi$.} If both are rational, their sum $2e$ and difference $2\pi$ are rational, so $e$ and $\pi$ are rational, contradicting Theorem~\ref{thm:HL}.
+
+\emph{Pair 2: $e+\pi$ and $e\pi$.} If both are rational, then by \eqref{eq:quadratic}, $e$ and $\pi$ are roots of a quadratic polynomial with rational coefficients, hence algebraic, contradicting Theorem~\ref{thm:HL}.
+
+\emph{Pair 3: $e-\pi$ and $e\pi$.} If both are rational, then $e$ and $-\pi$ are the roots of $x^2-(e-\pi)x-e\pi=0$, a quadratic with rational coefficients; hence $e$ and $\pi$ are algebraic, contradiction.
+
+\emph{Pair 4: $e+\pi$ and $e/\pi$.} Suppose $e+\pi=r\in\Q$ and $e/\pi=s\in\Q$. Then $e=s\pi$, so $(s+1)\pi=r$. Since $e,\pi>0$, we have $s>0$, hence $s+1\ne0$, and $\pi=r/(s+1)\in\Q$, contradiction.
+
+\emph{Pair 5: $e-\pi$ and $e/\pi$.} Suppose $e-\pi=r\in\Q$ and $e/\pi=s\in\Q$. Then $(s-1)\pi=r$. Since $e\ne\pi$, $s\ne1$, so $\pi=r/(s-1)\in\Q$, contradiction.
+
+\emph{Pair 6: $e\pi$ and $e/\pi$.} If $e\pi=r\in\Q$ and $e/\pi=s\in\Q$, then multiplying gives $e^2=rs\in\Q$, so $e$ is a root of $x^2-rs\in\Q[x]$, hence algebraic, contradiction.
+
+All six pairs are excluded, so at most one of the four numbers is rational.
+\end{proof}
+
+\subsection{Transcendence of \texorpdfstring{$e^\pi$}{e\^{}pi}}
+
+\begin{theorem}\label{thm:epi}
+$e^\pi$ is transcendental.
+\end{theorem}
+
+\begin{proof}
+By Euler's identity, $\ee^{i\pi}=-1$. Taking the principal branch,
+\[
+\ee^\pi=(\ee^{i\pi})^{-i}=(-1)^{-i}.
+\]
+The base $-1$ is algebraic and distinct from $0$ and $1$. The exponent $-i$ is algebraic (it satisfies $x^2+1=0$) and irrational. By the Gelfond--Schneider theorem (Theorem~\ref{thm:GS}), $(-1)^{-i}$ is transcendental. Hence $\ee^\pi$ is transcendental.
+\end{proof}
+
+\begin{remark}
+This proof exemplifies the only known paradigm for such results: transform the target constant into the standard input of a proved theorem. The transformation here exists solely because of Euler's identity. No analogous transformation is known for $e+\pi$.
+\end{remark}
+
+\subsection{Technical baseline: two classical irrationality proofs}
+
+We write out both proofs in full, since the obstruction analysis of Section~\ref{sec:obstructions} consists precisely of attempts to transplant their structure.
+
+\begin{theorem}[Fourier]\label{thm:fourier}
+$\ee$ is irrational.
+\end{theorem}
+
+\begin{proof}
+Suppose $\ee=a/b$ with $a,b\in\N$. Fix an integer $n\ge b$ and define
+\[
+I_n=n!\Bigl(\ee-\sum_{k=0}^{n}\frac{1}{k!}\Bigr).
+\]
+\emph{Step 1: $I_n\in\Z$.} Since $n\ge b$, $b\mid n!$, so $n!\ee=n!a/b\in\Z$. Also $n!\sum_{k=0}^n 1/k!=\sum_{k=0}^n n!/k!\in\Z$. The difference of two integers is an integer.
+
+\emph{Step 2: $0<I_n<1$.} Substituting $\ee=\sum_{k=0}^\infty 1/k!$,
+\[
+I_n=\sum_{k=n+1}^{\infty}\frac{n!}{k!}=\frac{1}{n+1}+\frac{1}{(n+1)(n+2)}+\cdots>0.
+\]
+For the upper bound, each denominator $(n+1)(n+2)\cdots(n+j)\ge(n+1)^j$, so
+\[
+I_n<\sum_{j=1}^{\infty}\frac{1}{(n+1)^j}=\frac{1}{n}\le 1.
+\]
+Thus $I_n$ is an integer strictly between $0$ and $1$, impossible.
+\end{proof}
+
+\begin{theorem}[Niven]\label{thm:niven}
+$\pi$ is irrational.
+\end{theorem}
+
+\begin{proof}
+Suppose $\pi=a/b$ with $a,b\in\N$. For $n\in\N$ define
+\[
+f(x)=\frac{x^n(a-bx)^n}{n!},\qquad F(x)=\sum_{j=0}^{n}(-1)^j f^{(2j)}(x).
+\]
+\emph{Step 1: integer values of derivatives at the endpoints.} Expanding, $f(x)=\frac{1}{n!}\sum_{j=0}^n\binom{n}{j}a^{n-j}(-b)^j x^{n+j}$, a polynomial of degree $2n$ whose coefficients are integers divided by $n!$. For $k<n$, $f^{(k)}(0)=0$. For $n\le k\le 2n$,
+\[
+f^{(k)}(0)=\frac{k!}{n!}\binom{n}{k-n}a^{2n-k}(-b)^{k-n}\in\Z,
+\]
+since $k!/n!\in\Z$. For $k>2n$ the derivative vanishes. Since $a=b\pi$, direct substitution gives $f(\pi-x)=(\pi-x)^n(bx)^n/n!=x^n(a-bx)^n/n!=f(x)$; differentiating $k$ times and evaluating at $x=0$ yields $f^{(k)}(\pi)=(-1)^k f^{(k)}(0)\in\Z$. Consequently $F(0)+F(\pi)\in\Z$.
+
+\emph{Step 2: the integral identity.} Since $\deg f=2n$, $f^{(2n+2)}=0$, and telescoping gives $F''+F=f$. Therefore
+\[
+\frac{d}{dx}\bigl(F'(x)\sin x-F(x)\cos x\bigr)=(F''(x)+F(x))\sin x=f(x)\sin x,
+\]
+and integrating over $[0,\pi]$,
+\[
+\int_0^\pi f(x)\sin x\,dx=\bigl[F'(x)\sin x-F(x)\cos x\bigr]_0^\pi=F(\pi)+F(0)\in\Z.
+\]
+
+\emph{Step 3: the estimate.} On $(0,\pi)$, $0<x<\pi$ and $0<a-bx<a$, so $0<f(x)\le\pi^n a^n/n!$; also $0<\sin x\le1$. Hence
+\[
+0<\int_0^\pi f(x)\sin x\,dx\le\frac{\pi^{n+1}a^n}{n!}\xrightarrow{n\to\infty}0.
+\]
+For $n$ large the integral lies strictly between $0$ and $1$ yet is an integer: contradiction.
+\end{proof}
+
+\begin{remark}[The paradigm]\label{rem:paradigm}
+Both proofs construct a quantity that is an integer under the rationality hypothesis and independently lies strictly in $(0,1)$. Three ingredients are required: (i) a rapidly convergent series or integral representation; (ii) a ``denominator-clearing'' mechanism making the main term integral; (iii) separation of main term and tail with controlled error. Section~\ref{sec:obstructions} shows that each attempted route to $e+\pi$ fails at ingredient (ii) or (iii), at an identifiable structural point. Expository accounts of these two classical proofs are given in \cite{Conrad}.
+\end{remark}
+
+\subsection{Stronger known results (statements only)}
+
+For context we record the following published results, used later only as stated: Nesterenko's theorem that $\pi$, $\ee^\pi$, $\Gamma(1/4)$ are algebraically independent over $\Q$ \cite{Nesterenko1996} (which already gives algebraic independence of $\pi$ and $\ee^\pi$); Tijdeman's work on algebraic independence of exponential values \cite{Tijdemann1971} (the precise ``at least two of $\ee,\pi,\ee^\pi$'' corollary is not verified from the original and is not relied upon); the conditional result that if $\ee^{\pi^2}$ is algebraic then $\ee$ and $\pi$ are algebraically independent, due to Brownawell/Waldschmidt \cite{Brownawell1974}; and the six exponentials theorem of Siegel--Lang--Ramachandra \cite{Lang1966,Ramachandra1968}. A systematic treatment of algebraic independence, including Nesterenko's method, is given in the monograph \cite{Zhu2024}.
+
+\section{New results}\label{sec:new}
+
+\subsection{The irrationality-measure reduction}
+
+\begin{lemma}[Invariance of the irrationality measure]\label{lem:invariance}
+Let $x\in\R$ be irrational, $r\in\Q$, and $s\in\Q\setminus\{0\}$. Then
+\[
+\irr(x+r)=\irr(x),\qquad \irr(sx)=\irr(x),\qquad \irr(1/x)=\irr(x).
+\]
+\end{lemma}
+
+\begin{proof}
+We give a denominator-preserving comparison up to fixed factors. If infinitely many pairs approximate an irrational real at a fixed positive exponent, their denominators are unbounded: for each fixed denominator the numerators lie in a bounded interval. Fix $\nu>0$ realized infinitely often and $0<\varepsilon<\nu$.
+
+\emph{Translation.} Write $r=a/b$ with $a\in\Z$, $b\in\N_{>0}$. Each approximation $|x-p/q|<q^{-\nu}$ gives
+\[
+\left|x+r-\frac{bp+aq}{bq}\right|<q^{-\nu}
+=b^\nu(bq)^{-\nu}<(bq)^{-(\nu-\varepsilon)}
+\]
+for all sufficiently large $q$. The new denominators $bq$ are unbounded, so $\irr(x+r)\ge\nu-\varepsilon$. Taking suprema and then letting $\varepsilon\downarrow0$ gives $\irr(x+r)\ge\irr(x)$, also when the supremum is infinite. Apply the same argument with $-r$ for the reverse inequality. No assertion that reduced denominators divide $q$ is required.
+
+\emph{Scaling.} Write $s=u/v$ with $u\in\Z\setminus\{0\}$ and $v\in\N_{>0}$. Then
+\[
+\left|sx-\frac{up}{vq}\right|<|s|q^{-\nu}
+=|s|v^\nu(vq)^{-\nu}<(vq)^{-(\nu-\varepsilon)}
+\]
+eventually. This proves $\irr(sx)\ge\irr(x)$; scaling by $1/s$ gives the opposite inequality.
+
+\emph{Reciprocal.} Since $x\ne0$, along the approximating pairs $p/q\to x$ and hence $|p|\asymp q$, with $p\ne0$ eventually. Put $q'=|p|$ and $p'=\operatorname{sgn}(p)q$. Then $p'/q'=q/p$ and
+\[
+\left|\frac1x-\frac{p'}{q'}\right|
+=\frac{q}{|x|\,|p|}\left|x-\frac pq\right|
+<C(q')^{-\nu}<(q')^{-(\nu-\varepsilon)}
+\]
+eventually, for a constant $C>0$ depending only on $x$ and $\nu$. Thus $\irr(1/x)\ge\irr(x)$; applying this inequality to $1/x$ proves equality.
+\end{proof}
+
+\begin{lemma}[Classical; Bundschuh, see {\cite{CNU2024}}]\label{lem:mue}
+$\irr(\ee)=2$. More generally, $\irr(\ee^r)=2$ for every $r\in\Q\setminus\{0\}$.
+\end{lemma}
+
+\begin{theorem}[Measure reduction]\label{thm:measure-reduction}
+If any one of $e+\pi$, $e-\pi$, $e\pi$, $e/\pi$ is rational, then $\irr(\pi)=2$.
+\end{theorem}
+
+\begin{proof}
+We treat the four cases using Lemmas~\ref{lem:invariance} and~\ref{lem:mue}.
+\begin{enumerate}
+\item If $e+\pi=r\in\Q$, then $\pi=r-e$, so $\irr(\pi)=\irr(-e)=\irr(e)=2$ (translation and scaling by $-1$).
+\item If $e-\pi=r\in\Q$, then $\pi=e-r$, so $\irr(\pi)=\irr(e)=2$.
+\item If $e\pi=r\in\Q$, then $r\ne0$ and $\pi=r/e$, so $\irr(\pi)=\irr(1/e)=\irr(e)=2$ (scaling and reciprocal).
+\item If $e/\pi=r\in\Q$, then $r\ne0$ and $\pi=e/r$, so $\irr(\pi)=\irr(e)=2$.
+\end{enumerate}
+In every case $\irr(\pi)=2$.
+\end{proof}
+
+\begin{corollary}\label{cor:four-irrational}
+If $\irr(\pi)>2$, then all four numbers $e+\pi$, $e-\pi$, $e\pi$, $e/\pi$ are irrational.
+\end{corollary}
+
+\begin{proof}
+Contrapositive of Theorem~\ref{thm:measure-reduction}.
+\end{proof}
+
+\begin{remark}[Status and honest assessment]
+The published upper bounds for $\irr(\pi)$ are: $\le42$ (Mahler 1953), $\le20.6$ (Mignotte 1974), $\le19.89$ (Chudnovsky 1982), $\le8.016045$ (Hata 1993), $\le7.606308$ (Salikhov 2008), $\le7.10320534$ (Zeilberger--Zudilin 2020) \cite{MathWorldMeasure,Alekseyev2011}; a 2026 preprint of Bai claims $<7.101862832357$ \cite{Bai2026}. Whether $\irr(\pi)=2$ is unknown; a preprint of Carella claims it \cite{CarellaMeasure} but is not accepted and is not used here. Since almost all real numbers have measure $2$ and $\irr(\pi)=2$ is the expected value, the sufficient target $\irr(\pi)>2$ is probably false. The value of Theorem~\ref{thm:measure-reduction} is structural: it connects the problem to an active research line, and any proof via Diophantine approximation must confront the measure. Note also the boundary of the method: Lemma~\ref{lem:invariance} concerns rational translations only; invariance under algebraic translation is unknown, so the reduction cannot even be started under the weaker hypothesis ``$e+\pi$ algebraic.''
+\end{remark}
+
+\subsection{A continued-fraction necessary condition}
+
+We use two classical results: Serret's theorem (two reals have eventually equal continued-fraction tails iff they lie in the same $\mathrm{PGL}(2,\Z)$-orbit) \cite{Panti2017}, and Raney's theorem (for an integer-coefficient linear fractional transformation $Mx=(ax+b)/(cx+d)$ with $ad-bc\ne0$, the partial quotients of $Mx$ are computed from those of $x$ by a finite-state transducer) \cite{Raney1973}.
+
+\begin{theorem}\label{thm:cf}
+If $e+\pi=p/q$ with $p,q\in\N$, then the sequence of partial quotients of $\pi$ is the image, under a finite-state transducer determined by $p,q$, of the explicitly known partial quotients of $\ee$.
+\end{theorem}
+
+\begin{proof}
+From $e+\pi=p/q$ we obtain $\pi=(p-qe)/q=(-q\cdot e+p)/q$, a linear fractional transformation of $e$ with integer coefficients and determinant $-q^2\ne0$. Raney's theorem applies directly. The partial quotients of $\ee$ are explicitly known: $\ee=[2;1,2,1,1,4,1,1,6,1,1,8,\dots]$, with the pattern $1,2k,1$ repeating.
+\end{proof}
+
+\begin{proposition}\label{prop:not-integer}
+$e+\pi\notin\Z$.
+\end{proposition}
+
+\begin{proof}
+From the rigorous decimal enclosures $2.71828<e<2.71829$ and $3.14159<\pi<3.14160$ we obtain $5.85987<e+\pi<5.85989$, an interval containing no integer.
+\end{proof}
+
+\begin{remark}[The obstruction]
+Theorem~\ref{thm:cf} is a strong structural necessary condition: a finite-state transduction of the explicit sequence of $\ee$ is highly structured. But no structural theorem about the partial quotients of $\pi$ is known (not even their unboundedness is proved), so no contradiction can be derived. Numerically the continued fraction of $\pi$ matches no such transduction for small $p/q$ (Section~\ref{sec:computation}), but computation is not proof.
+\end{remark}
+
+\subsection{Two expected-false necessary conditions: Hurwitz numbers and \texorpdfstring{$E$}{E}-values}\label{sec:expected-false}
+
+The measure reduction (Theorem~\ref{thm:measure-reduction}) and the continued-fraction condition (Theorem~\ref{thm:cf}) can be sharpened into two \emph{single} necessary conditions, each a proposition expected to be \emph{false}. This reorganization, suggested by external review, is the cleanest structural framing of the four combinations: a useful necessary condition should be expected false, so that proving it false would yield a contradiction. Both conditions below are classical consequences, not new theorems; their value is organizational.
+
+\paragraph{Hurwitz numbers.} A \emph{Hurwitz number} is a real whose continued fraction, from some index on, is formed by interleaving finitely many polynomials taking positive integer values (a quasi-periodic pattern). The classical Hurwitz theorem (Perron, \emph{Die Lehre von den Kettenbr\"uchen}, \S33; see also \cite{Hetyei2014}) states that Hurwitz numbers are preserved under non-degenerate integer-coefficient M\"obius transformations. Since $\ee=[2;1,2,1,1,4,1,1,6,\dots]$ is a Hurwitz number, rationality of any of $e\pm\pi$, $e\pi$, $e/\pi$ forces $\pi$ to be a Hurwitz number (each is a M\"obius transformation of $e$ with rational, hence integer-clearable, coefficients). Thus the four cases unify into the single target
+\[
+\text{``$\pi$ is a Hurwitz number''}\qquad(\text{expected false}).
+\]
+This is \emph{stronger} than Theorem~\ref{thm:measure-reduction}: Hurwitz numbers have polynomially growing partial quotients, hence irrationality measure $2$, so $\irr(\pi)=2$ is a corollary. \textbf{Honest boundary:} no current technique proves that $\pi$ is \emph{not} a Hurwitz number; even whether the partial quotients of $\pi$ are unbounded is open \cite{Hildebrand2024}. The condition is a reformulation, not a reduction in difficulty.
+
+\paragraph{Siegel \texorpdfstring{$E$}{E}/$G$-values.} Fischler and Rivoal \cite{FischlerRivoal2016} define the ring $\mathbf{E}$ of values of Siegel $E$-functions at algebraic points and the ring $\mathbf{G}$ of values of analytic continuations of $G$-functions at algebraic points. Known: $\overline{\Q}\subset\mathbf{E}$, the units of $\mathbf{E}$ contain $\overline{\Q}^*$ and $\exp(\overline{\Q})$ (so $e,1/e$ are units), and $\pi,1/\pi\in\mathbf{G}$ \cite{FischlerRivoal2014}. They conjecture $\mathbf{E}\cap\mathbf{G}=\overline{\Q}$ \cite{FischlerRivoal2024}. If any of $e\pm\pi,e\pi,e/\pi$ equals an algebraic number $a$, then $\pi$ equals $a-e$, $e-a$, $ae^{-1}$, or $ea^{-1}$ respectively, all in $\mathbf{E}$; hence $\pi\in\mathbf{E}\cap\mathbf{G}=\overline{\Q}$, contradicting Lindemann. So the single sufficient hypothesis
+\[
+\text{``$\pi\notin\mathbf{E}$''}\qquad(\text{expected true; independent of Schanuel})
+\]
+would resolve all four cases. \textbf{Status:} no partial result toward $\mathbf{E}\cap\mathbf{G}=\overline{\Q}$ or $\pi\notin\mathbf{E}$ is known. The recent preprint \cite{FischlerRivoal2026} proves $\mathbf{E}$ is not a field and conjectures its units are exactly $\alpha e^\beta$ ($\alpha,\beta\in\overline{\Q}$, $\alpha\ne0$); if that unit conjecture holds, $\pi$ is not a unit of $\mathbf{E}$, i.e.\ $\pi\notin\mathbf{E}$ or $1/\pi\notin\mathbf{E}$ (a corollary of the conjecture, not stated in the source). All 2026 preprints cited here are unreviewed.
+
+\begin{remark}[Why these are the right targets]
+Both conditions are expected false ($\pi$ Hurwitz) or expected true ($\pi\notin\mathbf{E}$) in the direction that would give a contradiction, unlike $\irr(\pi)>2$ or Flint Hills divergence, which are expected \emph{false} and hence cannot serve as attack routes (Section~\ref{sec:conclusion}). The factorial-Cantor digit criterion of Proposition~\ref{prop:window} is, by contrast, only a coordinate rewrite of $\pi=r-e$; the equivalence with $e+\pi\in\Q$ was independently recorded by Yu \cite{Yu2026}. These observations reorganize the necessary conditions; they supply no proof.
+\end{remark}
+
+\subsection{Exact rigidity of the series obstruction}
+
+\begin{proposition}[Window condition]\label{prop:window}
+Suppose $e+\pi=p/q$ with $p,q\in\N$. For every integer $n\ge q$ there exists $B_n\in\Z$ such that
+\[
+B_n-\frac1n<n!\,\pi<B_n.
+\]
+Equivalently, the fractional part satisfies $\{n!\pi\}=1-t_n\in(1-1/n,1)$, where $t_n=\sum_{k>n}n!/k!$.
+\end{proposition}
+
+\begin{proof}
+Since $n\ge q$, $q\mid n!$, so $n!(e+\pi)=n!p/q\in\Z$. Write $n!e=A_n+t_n$ with $A_n=\sum_{k=0}^n n!/k!\in\Z$ and $t_n=\sum_{k=n+1}^\infty n!/k!$. Subtracting, $n!\pi=B_n-t_n$ with $B_n=n!p/q-A_n\in\Z$.
+
+We estimate $t_n$. Clearly $t_n>1/(n+1)>0$. For the upper bound,
+\[
+t_n=\frac1{n+1}\Bigl(1+\frac1{n+2}+\frac1{(n+2)(n+3)}+\cdots\Bigr)
+<\frac1{n+1}\sum_{j=0}^\infty\frac1{(n+1)^j}=\frac1n.
+\]
+Thus $B_n-1/n<n!\pi<B_n$, and since $0<t_n<1/n<1$, the fractional part of $n!\pi$ is $1-t_n$.
+\end{proof}
+
+\begin{proposition}[Rigidity recurrence]\label{prop:recurrence}
+The tails satisfy the exact recurrence $t_{n+1}=(n+1)t_n-1$ for all $n\ge1$.
+\end{proposition}
+
+\begin{proof}
+Multiply the series by $n+1$:
+\[
+(n+1)t_n=\sum_{k=n+1}^{\infty}\frac{(n+1)!}{k!}=1+\sum_{k=n+2}^{\infty}\frac{(n+1)!}{k!}=1+t_{n+1},
+\]
+where the $k=n+1$ term equals $(n+1)!/(n+1)!=1$. Rearranging gives the claim.
+\end{proof}
+
+\begin{remark}
+Under the hypothesis of Proposition~\ref{prop:window}, the infinitely many integrality conditions $n!\pi+t_n\in\Z$ ($n\ge q$) are not independent: by Proposition~\ref{prop:recurrence} they are all determined by the single value $\{q!\pi\}$. The hypothesis is thus equivalent to a one-parameter orbit hitting integers at every step --- heuristically of probability zero, but internally consistent. The distribution of $\{n!\pi\}$ is completely unknown (even its density in $[0,1]$ is open), so no contradiction is available.
+\end{remark}
+
+\begin{remark}[Direction of the factorial criterion --- correction (review)]\label{rem:factorial-direction}
+The formalized factorial criterion is an \emph{equivalence}: $e+\pi\in\Q \iff n\{-n!\pi\}\to1$. Hence \textbf{proving the right-hand limit equals $1$ would imply \emph{rationality}, not irrationality}. To prove irrationality one must \emph{exclude} that limit. A clean sufficient target is
+\[
+\{n!\pi\}\le\tfrac12 \quad\text{for infinitely many }n,
+\]
+because on those indices $\{-n!\pi\}=1-\{n!\pi\}\ge\tfrac12$, so $n\{-n!\pi\}\ge n/2\to\infty$ and cannot tend to $1$. This is a precise, weaker goal than full distributional control of $\{n!\pi\}$. \textbf{Boundary:} the project currently has \emph{no} tool to control the factorial fractional parts of $\pi$; this must be pursued as an independent exploration line, and the fact that the criterion is formalized does \emph{not} mean the problem is close to a proof.
+\end{remark}
+
+\subsection{The four exponentials conjecture: application blocked}
+
+Recall the four exponentials conjecture: if $x_1,x_2$ and $y_1,y_2$ are respectively $\Q$-linearly independent, then at least one of the four numbers $\ee^{x_iy_j}$ is transcendental. To refute $e+\pi\in\Q$ by this conjecture one would need, under that hypothesis, a $2\times2$ matrix all of whose exponential entries are algebraic.
+
+\begin{proposition}\label{prop:four-exp}
+Assume $e+\pi=r\in\Q$. Then no $2\times2$ matrix of the form $(\ee^{x_iy_j})$ with all four entries algebraic can be constructed from the known algebraic exponential values; the standard application of the four exponentials conjecture is blocked.
+\end{proposition}
+
+\begin{proof}
+First we inventory the arithmetic nature of the relevant exponential values under the hypothesis.
+\begin{enumerate}
+\item $\ee^{ir}$ is transcendental: $ir$ is a nonzero algebraic number, so Theorem~\ref{thm:HL} applies.
+\item From Euler's identity and $\pi=r-e$: $\ee^{i(r-e)}=-1$, hence $\ee^{ie}=-\ee^{ir}$, which is transcendental by item 1.
+\item $\ee$ and $\ee^\pi$ are transcendental (Theorems~\ref{thm:HL} and~\ref{thm:epi}).
+\end{enumerate}
+Thus the hypothesis creates no new algebraic exponential values: the available ones remain $\ee^{qi\pi}$ for $q\in\Q$ (roots of unity, including $\ee^0=1$).
+
+Now suppose all four products $x_iy_j$ lay in $\Q\cdot i\pi$, so that all four entries are known algebraic values. Then
+\[
+\frac{y_1}{y_2}=\frac{x_1y_1}{x_1y_2}\in\Q,
+\]
+contradicting the $\Q$-linear independence of $y_1,y_2$. Hence no all-algebraic matrix can be built from the available values.
+\end{proof}
+
+\begin{remark}
+Proposition~\ref{prop:four-exp} blocks the standard application path; it is not a meta-theorem that the conjecture is useless in principle. An identical argument for the (proved) six exponentials theorem shows that at most one of the six values can be controlled as a known algebraic number: among $x_1,x_2,x_3$ at most one lies in $\Q\cdot i\pi$, and for that one, algebraicity of both $\ee^{x_1y_1}$ and $\ee^{x_1y_2}$ would force $y_1,y_2\in\Q$, contradicting their independence. This is far from the ``five algebraic force the sixth transcendental'' configuration.
+\end{remark}
+
+\subsection{Translation of the \texorpdfstring{$\irr(\pi)$}{mu(pi)} upper-bound program}
+
+\begin{theorem}[Translation identity]\label{thm:translation}
+Let $(L_n)$ be integer linear forms $L_n=a_n+b_n\pi$ ($a_n,b_n\in\Z$) with $|L_n|\le C\rho^n$ and $|b_n|\sim D^n$, where $0<\rho<1<D$. The standard argument yields the upper bound $\irr(\pi)\le M:=1+\log D/\log(1/\rho)$. If $e+\pi=p_0/q_0\in\Q$, the same forms translate into rational approximations to $\ee$ with approximation exponent
+\[
+\irr_0=\frac{\log(D/\rho)}{\log D}=1+\frac{1}{M-1}.
+\]
+Since $M\ge2$, one always has $\irr_0\le2$, consistent with $\irr(\ee)=2$; and $\irr_0>2\iff M<2$, which contradicts the irrationality of $\pi$. Hence no contradiction can be extracted from this program under the hypothesis.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: the upper bound.} For any rational $p/q$,
+\[
+b_n(q\pi-p)-qL_n=-(b_np+a_nq)\in\Z.
+\]
+Choose $n$ with $q|L_n|<1/2$ (possible since $|L_n|\to0$). If the integer is nonzero, $|b_n|\cdot|q\pi-p|\ge1-q|L_n|\ge1/2$, so $|\pi-p/q|\ge1/(2q|b_n|)$; if it is zero, $|\pi-p/q|=|L_n|/|b_n|$ and the bound holds a fortiori. Taking $n\approx\log q/\log(1/\rho)$ gives $|b_n|\approx D^n=q^{\log D/\log(1/\rho)}$, whence $|\pi-p/q|\ge c\,q^{-1-\log D/\log(1/\rho)}$ for all large $q$, i.e.\ $\irr(\pi)\le M$.
+
+\emph{Step 2: translation.} Under $\pi=p_0/q_0-e$,
+\[
+q_0L_n=(q_0a_n+p_0b_n)-q_0b_n\,e,
+\]
+so
+\[
+\Bigl|e-\frac{q_0a_n+p_0b_n}{q_0b_n}\Bigr|=\frac{|L_n|}{|b_n|}\approx\Bigl(\frac\rho D\Bigr)^n,
+\]
+with denominators $Q_n=q_0|b_n|\sim D^n$. The exponent of these approximations is
+\[
+\irr_0=\frac{\log(D/\rho)}{\log D}=1+\frac{\log(1/\rho)}{\log D}=1+\frac1{M-1}.
+\]
+
+\emph{Step 3: consistency and vacuity.} Since $\pi$ is irrational, $\irr(\pi)\ge2$, so every valid upper bound satisfies $M\ge2$, hence $\irr_0=1+1/(M-1)\le2$, compatible with $\irr(\ee)=2$ (Lemma~\ref{lem:mue}). Moreover $\irr_0>2\iff M<2$, impossible. Thus the translated approximations never violate the known measure of $\ee$, and the criterion is vacuous.
+\end{proof}
+
+\begin{remark}
+Numerically: $M=7.10320534$ gives $\irr_0\approx1.16385$; Bai's claimed $M=7.101862832357$ \cite{Bai2026} gives $\irr_0\approx1.16388$. The identity makes explicit that the entire $\irr(\pi)$ upper-bound program is internally consistent with the rationality hypothesis.
+\end{remark}
+
+\subsection{Scaling closure and the \texorpdfstring{$\wp$}{wp}-value subquestion}
+
+Let $S$ be the set of values $\wp_\Omega(p)$, where $\Omega$ is a CM lattice with algebraic invariants and $p\in\Qbar\setminus\{0\}$ is not a pole of $\wp_\Omega$.
+
+\begin{proposition}[Scaling closure]\label{prop:scaling}
+The set $S$ is closed under multiplication by nonzero algebraic numbers. Consequently, ``$\pi\in S$'' is equivalent to ``$\pi$ is an algebraic multiple of some algebraic-point $\wp$-value,'' i.e., to the existence of an algebraic-coefficient linear relation between $\pi$ and some element of $S$.
+\end{proposition}
+
+\begin{proof}
+Let $\lambda\in\Qbar\setminus\{0\}$. From the series definition,
+\[
+\wp_{\lambda\Omega}(\lambda z)=\frac1{\lambda^2z^2}+\sum_{\omega'\in\Omega\setminus\{0\}}\Bigl(\frac1{(\lambda z-\lambda\omega')^2}-\frac1{(\lambda\omega')^2}\Bigr)=\lambda^{-2}\wp_\Omega(z).
+\]
+The invariants transform as $g_2(\lambda\Omega)=\lambda^{-4}g_2(\Omega)$ and $g_3(\lambda\Omega)=\lambda^{-6}g_3(\Omega)$, which remain algebraic for algebraic $\lambda$; complex multiplication is preserved under scaling; and $\lambda p$ is algebraic when $p$ is. Hence if $v=\wp_\Omega(p)\in S$ and $a\in\Qbar\setminus\{0\}$, taking $\lambda=a^{-1/2}\in\Qbar$ gives $a\cdot v=\wp_{\lambda\Omega}(\lambda p)\in S$. The equivalence is immediate: if $\pi=a v$ with $a$ algebraic then $\pi\in S$; conversely if $\pi\in S$ take $v=\pi$ and $a=1$.
+\end{proof}
+
+\begin{corollary}[Conditional reduction; conditional on {\cite{Bertolin2026}}]\label{cor:bertolin}
+Assume Bertolin's theorem: for a lattice $\Omega$ with algebraic invariants and CM, if $t_1,\dots,t_s$ are $\Q$-linearly independent algebraic numbers and $p_1,\dots,p_n$ are $k$-linearly independent algebraic numbers ($k=\operatorname{End}(\mathcal E)\otimes\Q$), then $\ee^{t_1},\dots,\ee^{t_s},\wp(p_1),\dots,\wp(p_n)$ are algebraically independent over $\Qbar$. If $\pi=\wp_\Omega(p)$ for some algebraic $p\ne0$, then $\ee$ and $\pi$ are algebraically independent, and $e+\pi$ is transcendental.
+\end{corollary}
+
+\begin{proof}
+Take $s=n=1$, $t_1=1$, $p_1=p$. A single nonzero algebraic number is $k$-linearly independent, and $1$ is $\Q$-linearly independent. Bertolin's theorem gives algebraic independence of $\ee$ and $\wp_\Omega(p)=\pi$ over $\Qbar$, hence over $\Q$. If $e+\pi$ were algebraic with minimal polynomial $m(t)\in\Q[t]$, then $m(x+y)\in\Q[x,y]$ would be a nonzero polynomial vanishing at $(e,\pi)$, contradiction. Thus $e+\pi$ is transcendental.
+\end{proof}
+
+\begin{remark}
+The subquestion ``$\pi\in S$?'' is open. The Grothendieck--André period conjecture predicts $\pi\notin S$ (periods and algebraic-point values are motivically separated); Schneider's theorem (Theorem~\ref{thm:schneider}) shows every element of $S$ is transcendental, so no separation from $\pi$ arises there. The subquestion is at least as hard as Problem~\ref{prob:main}: an affirmative answer (with \cite{Bertolin2026} correct) solves it. Huber--W\"ustholz \cite{HuberWustholz2022} have completed the theory of \emph{linear} relations of $1$-periods; the present subquestion concerns \emph{algebraic} relations, which remain conjectural.
+\end{remark}
+
+\subsection{The Flint Hills bridge}\label{sec:flint-bridge}
+
+The Flint Hills series is $\sum_{n\ge1}1/(n^3\sin^2n)$; its convergence is a well-known open problem \cite{MathWorldFlint,FormalConjectures}. We first record the precise published results of Alekseyev \cite{Alekseyev2011}, verified by full-text reading.
+
+\begin{theorem}[Alekseyev, published]\label{thm:alekseyev}
+For $u,v>0$:
+\begin{enumerate}
+\item the terms satisfy $1/(n^u|\sin n|^v)=O(n^{-(u-(\irr(\pi)-1)v-\varepsilon)})$ for every $\varepsilon>0$;
+\item if the terms tend to $0$, then $\irr(\pi)\le1+u/v$; in particular, convergence of the Flint Hills series implies $\irr(\pi)\le5/2$;
+\item if $\irr(\pi)<1+(u-1)/v$, the series converges. For $(u,v)=(3,2)$ this threshold is $1+(3-1)/2=2$, which is never satisfied since $\irr(\pi)\ge2$; the sufficient condition is vacuous. Alekseyev explicitly notes that divergence of the Flint Hills series implies no nontrivial bound.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}[Correction of the record]
+An intermediate round of this research attributed the direction ``$\irr(\pi)<5/2\Rightarrow$ convergence'' to Alekseyev, following a secondary source. Full-text verification showed the attribution incorrect: Alekseyev's sufficient condition is the vacuous $\irr(\pi)<2$. The direction $\irr(\pi)<5/2\Rightarrow$ convergence is due to Meiburg \cite{Meiburg2022}, a preprint (math.NT, cited by subsequent literature, no peer-reviewed publication found). The correction is permanent. The bridge below was originally stated conditionally on Meiburg; the Flint Hills case of Meiburg's criterion has since been machine-verified (Section~\ref{sec:lean-f2}), so the bridge is kernel-checked relative to the explicitly listed classical axioms.
+\end{remark}
+
+\begin{theorem}[Meiburg, preprint; Flint Hills case machine-verified]\label{thm:meiburg}
+For any sine-like periodic function with irrational period $\alpha$, $v\ge1$, and $\irr(\alpha)<1+u/v$, the series $\sum n^{-u}P(n)^{-v}$ converges. In particular, $\irr(\pi)<5/2$ implies convergence of the Flint Hills series. The edge case $\irr(\pi)=5/2$ is undecidable by the measure alone: Meiburg constructs $\alpha$ with $\irr(\alpha)=5/2$ for which the series diverges.
+\end{theorem}
+
+\begin{remark}[Verification status]
+The proof architecture was verified in full across two rounds: (i) the sparsity lemma (good approximation denominators grow as $\Omega(n^{1/(1-\varepsilon_2)})$), proved by forming the difference quotient of two close good approximations and deriving an approximation of exponent $>\irr(\alpha)$, contradicting the definition; the multiplicity-bounding step is compressed but structurally complete; (ii) the partition of integers by approximation exponent into finitely many classes, each contributing a convergent subsum; the key linear function satisfies $f(\irr(\alpha))=1+u/v-\irr(\alpha)$ (independently recomputed) with derivative $1/(v(\irr(\alpha)-1))-1\le0$ (recomputed from the definition; the parsed manuscript contained a typesetting artifact at this formula). No error was found. The general statement remains a preprint; however, the Flint Hills case needed here has been fully machine-verified in Lean (Section~\ref{sec:lean-f2}), so the bridge below no longer depends on the preprint.
+\end{remark}
+
+\begin{theorem}[Flint Hills bridge; machine-verified]\label{thm:flint}
+If $e+\pi\in\Q$, then the Flint Hills series converges. Contrapositively, if the Flint Hills series diverges, then $\irr(\pi)\ge5/2>2$, and all four combinations $e+\pi$, $e-\pi$, $e\pi$, $e/\pi$ are irrational.
+\end{theorem}
+
+\begin{proof}
+If $e+\pi\in\Q$, Theorem~\ref{thm:measure-reduction} gives $\irr(\pi)=2<5/2$; Theorem~\ref{thm:meiburg} then yields convergence. For the contrapositive: divergence implies $\irr(\pi)\ge5/2$ (contrapositive of Theorem~\ref{thm:meiburg}), hence $\irr(\pi)>2$, and Corollary~\ref{cor:four-irrational} applies.
+\end{proof}
+
+\begin{remark}
+Since $\irr(\pi)=2$ is expected, the Flint Hills series is expected to converge, so the divergence target is probably false. The bridge gives a useful implication, but its direction matters: divergence would exclude rationality, whereas convergence alone gives no contradiction. In particular, convergence $\Rightarrow\irr(\pi)\le5/2$ and $e+\pi\in\Q\Rightarrow\irr(\pi)=2$ are compatible. The verified Meiburg derivation supplies the displayed rationality-to-convergence implication relative to the listed classical assumptions; no universal non-derivability statement is asserted.
+\end{remark}
+
+\section{Systematic attempts and obstruction analysis}\label{sec:obstructions}
+
+Each route below was carried to a rigorous terminal verdict. The verdicts concern the specific constructions; they are not meta-theorems that no proof along the general line can exist.
+
+\subsection{Route A: series and integer sequences}
+
+The construction and its necessary condition are Proposition~\ref{prop:window}; the rigidity is Proposition~\ref{prop:recurrence}. \emph{Verdict: blocked.} The distribution of $\{n!\pi\}$ is completely unknown; even density in $[0,1]$ is open. A refutation of the window condition would prove Problem~\ref{prob:main}; the condition is a necessary one and is not known to fail (it is not claimed to be equivalent in difficulty). The denominator-clearing mechanism is specific to the exponential series: the known fast series for $\pi$ (Machin-type arctangent, Chudnovsky) have partial-sum denominators that are products of powers and odd integers, and multiplying the tail by them does not produce integers --- so this particular factorial-clearing argument does not transfer directly. This does not exclude series proofs of the irrationality of $\pi$ or other denominator-clearing constructions.
+
+\subsection{Route B: Niven-type integrals}
+
+Transplant the polynomial $f(x)=x^n(a-bx)^n/n!$ to the endpoint $\alpha=e+\pi=a/b$. The first half succeeds: $f(\alpha-x)=f(x)$ (since $a=b\alpha$), so $f^{(k)}(0),f^{(k)}(\alpha)\in\Z$ exactly as in Theorem~\ref{thm:niven}; endpoint derivative integrality holds for \emph{any} rational endpoint.
+
+\emph{Verdict: blocked at the kernel.} Niven's proof uses $K=\sin x$, relying on $K(0)=K(\pi)=0$, $K'(0)=1$, $K'(\pi)=-1$, and $K''=-K$. For $\alpha=e+\pi$: $\sin\alpha=-\sin e\ne0$, since $0<e<\pi$ implies $\sin e>0$. Thus the endpoint cancellation used in Niven's proof fails for this kernel. Forcing $K(x)=\sin(\pi x/\alpha)$ gives the correct zeros but $K''=-(\pi/\alpha)^2K$, so the telescoping construction acquires coefficients involving powers of $(\alpha/\pi)^2=(1+e/\pi)^2$, whose arithmetic nature is unknown; integrality collapses. No known kernel vanishes at $e+\pi$ with arithmetically controlled derivatives.
+
+\subsection{Route C: algebraic and transcendental methods}
+
+\emph{Lindemann--Weierstrass attempt.} Suppose $S=e+\pi$ is algebraic. From $\pi=S-e$ and Euler's identity,
+\[
+\ee^{iS}\cdot\ee^{-ie}=\ee^{i(S-e)}=\ee^{i\pi}=-1,\qquad\text{so}\qquad \ee^{iS}=-\ee^{ie}.
+\]
+The left exponent $iS$ is nonzero algebraic, so $\ee^{iS}$ is transcendental (Theorem~\ref{thm:HL}); the right exponent $ie$ is transcendental, so the theorem gives no information about $\ee^{ie}$. The relation ties an exponential at an algebraic point to one at a transcendental point --- outside every proved theorem. With $S=e+\pi$, the identity holds without an algebraicity assumption on $S$; the extra hypothesis that $S$ is algebraic produces no contradiction by this argument.
+
+\emph{Baker's theory.} Baker's theory of linear forms in logarithms \cite{Baker} handles $\beta_0+\sum\beta_j\log\alpha_j$ with algebraic $\alpha_j,\beta_j$. Here $\pi=\log(-1)/i$ fits the framework, but $\ee$ has no known representation as a logarithm of an algebraic number. \emph{Verification note:} the popular assertion ``$\ee$ is not the logarithm of any algebraic number'' is not a theorem: $\ee=\log\alpha$ with $\alpha$ algebraic is equivalent to $\ee^\ee$ being algebraic, and the transcendence of $\ee^\ee$ is itself open. The accurate statement is ``no known representation.''
+
+\emph{Non-closure.} $\pi$ and $1-\pi$ are both transcendental with sum $1$ \cite{KepuAlgebraic}; individual transcendence logically cannot yield irrationality of the sum. Independence information is indispensable. (Unaccepted preprints claiming irrationality of $e\pi$ \cite{CarellaEpi} are recorded as negative leads only and are not used.)
+
+\emph{Verdict: blocked.} The cited transcendence theorems do not yield a contradiction in this direct application. No universal impossibility claim is made about additive constructions.
+
+\subsection{Route D: Diophantine approximation}
+
+Criterion: if integers $P_n$ and positive integers $Q_n$ satisfy $P_n/Q_n\ne\alpha$ and $|Q_n\alpha-P_n|\to0$, then $\alpha$ is irrational. Indeed, for $\alpha=A/B$ a nonzero such linear form has absolute value at least $1/B$.
+
+Combining convergents $a_n/b_n$ of $\ee$ and $c_n/d_n$ of $\pi$ with the product denominator gives
+\[
+\left|b_nd_n(e+\pi)-(a_nd_n+c_nb_n)\right|
+<\frac{d_n}{b_n}+\frac{b_n}{d_n}.
+\]
+The right side is at least $2$. This means only that this triangle-inequality estimate does not establish smallness: an upper bound bounded away from zero is not a lower bound for the actual error. It does not exclude cancellation of signed errors, reduction of the combined fraction, or a better common-denominator construction. If $L_n=\operatorname{lcm}(b_n,d_n)$, a sharper elementary upper bound for the corresponding integer linear form is
+\[
+L_n\left(b_n^{-2}+d_n^{-2}\right).
+\]
+The present argument does not show that this tends to zero, nor that the form is nonzero infinitely often. Either issue requires further work. In particular, no necessity of $\irr(\pi)>2$ follows from the failure of the displayed estimate. Theorem~\ref{thm:measure-reduction} provides a separate sufficient condition, not a classification of all approximation proofs.
+
+\subsection{Bridge identities: four candidates examined}
+
+\begin{enumerate}
+\item \emph{Gauss integral.} $\int_0^\infty \ee^{-x^2}dx=\sqrt\pi/2$ (symbolically verified), i.e.\ $\pi=4I^2$. Obstruction: quadratic in $I$; the paradigm requires integer \emph{linear} forms in $1,\pi$; no linearization with controlled denominators is known, and $I$ has no factorial-clearing series.
+\item \emph{Stirling.} $\lim_{n\to\infty}n!\ee^n/(n^n\sqrt{2\pi n})=1$ (symbolically verified). Obstruction: an asymptotic identity, not an exact algebraic relation; under $e=r-\pi$ it becomes a tautology about powers of $r-\pi$; the error term has no Diophantine control.
+\item \emph{Mixed integral.} $\int_0^\pi \ee^x\sin x\,dx=(\ee^\pi+1)/2$ (symbolically verified). Produces $\ee^\pi$, already known transcendental; no new information.
+\item \emph{Cosine integral.} $\int_0^\infty\cos x/(1+x^2)\,dx=\pi/(2\ee)$ (symbolically verified). Under the hypothesis, $\ee=r/(1+2J)$ with $J$ the integral: a multiplicative relation with an arithmetically uncontrolled integral.
+\end{enumerate}
+
+\begin{remark}[Mechanistic synthesis]
+The exponential and period identities examined here linking $\ee$ and $\pi$ --- Euler's identity, $\ee^\pi=(-1)^{-i}$, the partial fraction expansion $\pi\coth(\pi z)=1/z+\sum_{n\ge1}2z/(z^2+n^2)$ (whose Fourier expansion involves $\ee^{2\pi a}$), and modular forms ($\ee^{2\pi i\tau}$) --- illustrate several different ways these constants can occur together. None of the four tested integral or asymptotic identities supplies the required small nonzero integer linear forms. The number $\ee=\ee^1$ is an exponential value at an \emph{algebraic} point; no known identity connects algebraic-point exponential values to periods additively. This is the mechanistic explanation of the missing bridge. (An observation about the examined constructions, not a theorem about all possible identities.) A contrasting success: Powers \cite{Powers2025} proves algebraic independence of $\gamma^{(n)}+\delta^{(n)}/\ee$ combinations using Hardy's equation --- two individually unknown constants can be conquered when a structural bridge identity exists.
+\end{remark}
+
+\subsection{Mahler classification}
+
+It is known that $\ee$, $\pi$, $\log2$ are not $U$-numbers \cite{KepuAlgebraic}. Mahler classes are invariant under rational M\"obius transformations (heights distort by bounded factors depending on the transformation and degree; the defining $\limsup$ exponents are unchanged) \cite{Baker,HuberWustholz2022}. The hypothesis $e+\pi\in\Q$ would force $\pi$ into the same class as $\ee$; both are already known non-$U$. \emph{Verdict: no separation.}
+
+\section{Conditional frameworks and the frontier}\label{sec:conditional}
+
+\subsection{Schanuel's conjecture: complete conditional proof}
+
+\begin{theorem}[Schanuel, conjectural]\label{thm:schanuel}
+If $z_1,\dots,z_n\in\C$ are linearly independent over $\Q$, then $\trdeg_\Q\Q(z_1,\dots,z_n,\ee^{z_1},\dots,\ee^{z_n})\ge n$.
+\end{theorem}
+
+\begin{theorem}[Conditional]\label{thm:schanuel-consequence}
+Assume Theorem~\ref{thm:schanuel}. Then $\ee$ and $\pi$ are algebraically independent over $\Q$, and $e+\pi$ is transcendental.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: linear independence.} Take $z_1=1$, $z_2=i\pi$. If $a+b\cdot i\pi=0$ with $a,b\in\Q$ and $b\ne0$, then $\pi=ai/b$ is algebraic, contradicting Theorem~\ref{thm:HL}. Hence $b=0$ and $a=0$.
+
+\emph{Step 2: transcendence degree.} By the conjecture, $\trdeg_\Q\Q(1,i\pi,\ee,\ee^{i\pi})\ge2$. Since $\ee^{i\pi}=-1$, this field is $\Q(\ee,i\pi)$, so $\trdeg_\Q\Q(\ee,i\pi)\ge2$. Adjoining the algebraic number $i$ does not change transcendence degree: $\Q(\ee,i\pi,i)=\Q(\ee,\pi,i)$, and both are obtained by adjoining the algebraic element $i$ to the respective fields. Hence $\trdeg_\Q\Q(\ee,\pi)=\trdeg_\Q\Q(\ee,i\pi)\ge2$. Thus $\ee$ and $\pi$ are algebraically independent.
+
+\emph{Step 3: transcendence of the sum.} If $e+\pi$ were algebraic with minimal polynomial $m(t)\in\Q[t]$, then $m(x+y)\in\Q[x,y]$ is nonzero and vanishes at $(\ee,\pi)$, contradicting algebraic independence. Hence $e+\pi$ is transcendental (and irrational).
+\end{proof}
+
+\begin{remark}[Sufficient assumption hierarchy]
+The conjecture is proved only for $n=1$ (equivalent to Hermite--Lindemann); as of August 2026 the general case remains open \cite{SchanuelWiki}. The instance at $(1,i\pi)$ is \emph{equivalent} to algebraic independence of $\ee,\pi$; the hierarchy is
+\[
+\text{Schanuel}(1,i\pi)\iff \ee,\pi\text{ algebraically independent}\implies e+\pi\text{ transcendental}\implies e+\pi\text{ irrational}.
+\]
+This is a sufficient assumption hierarchy, not a minimality theorem. The argument does not show that irrationality of $e+\pi$ requires algebraic independence or this Schanuel instance. The four-exponentials application tested in Proposition~\ref{prop:four-exp} does not supply the required input. No strictly weaker named conjecture is known to imply the instance; proving $\ee,\pi$ algebraically independent is a strictly stronger goal than merely excluding $e+\pi\in\Q$. We therefore call it ``a clean sufficient hypothesis,'' not ``the minimal unproven assumption.''
+\end{remark}
+
+\subsection{Ax--Schanuel and arithmetic geometry}
+
+Ax proved the function-field analogue in 1971. Mok--Pila--Tsimerman (2019) proved Ax--Schanuel for Shimura varieties; Bakker--Tsimerman extended it to variations of polarized Hodge structures \cite{MPT2019}. These are function-field results, not equivalent to the number-field conjecture. Published analysis notes that the naive number-theoretic analogues of the functional results are false: the first counterexample comes from periods, whose Riemann--Legendre relations are quadratic and cannot be traced to the relevant hull structures \cite{CambridgeFF}. This is documented evidence that periods and function values obey different structural laws.
+
+\subsection{Zilber's model-theoretic program}
+
+Zilber axiomatized exponential fields satisfying Schanuel's conjecture and proved uniqueness (up to isomorphism) in cardinality continuum. If that field were isomorphic to $\C$, the conjecture would follow. The isomorphism question is open; o-minimality is a property of ordered structures, and the real structure underlying $\C_{\exp}$ is not o-minimal (the integers are definable), so the mature model theory of the real exponential field (Wilkie's theorem) does not transfer \cite{MO33817}.
+
+\subsection{The motivic frontier (2026)}
+
+Bertolin's preprint \cite{Bertolin2026} (Corollary~\ref{cor:bertolin}) simultaneously extends Lindemann--Weierstrass and Philippon--W\"ustholz (1983); it is a special case of the semi-elliptic LW conjecture, which follows from the Grothendieck--André period conjecture for $1$-motives. The proof mechanism: for the $1$-motive $M=[u:\Z\to\mathbb G_m^s\times\mathcal E^n]$ with $u(1)=(\ee^{t_i},P_j)$, the Lie algebra of the unipotent radical splits as $B\oplus Z(1)$; polynomial relations have degree at most $1$ and separate into elliptic and toric parts, excluded by Philippon--W\"ustholz and Lindemann--Weierstrass respectively. The interface with Problem~\ref{prob:main} is exactly the subquestion $\pi\in S$ (Proposition~\ref{prop:scaling}): the framework's value side accepts algebraic-point exponential values (including $\ee=\ee^1$) and algebraic-point $\wp$-values, while $\pi$ is a period. Waldschmidt \cite{Waldschmidt2025} proves a strong Schanuel property for $\ee^z,\wp,\zeta,\sigma$ and Serre functions for \emph{almost all} tuples --- a measure-theoretic result that cannot be specialized to specific constants. The Legendre relation expresses $\pi i$ as a bilinear combination of periods and quasi-periods \cite{DLMF23}: $\pi$ has exact period expressions, while $\ee$ has no known expression in the period ring --- the gap is precisely localized.
+
+\section{Computational verification and certificates}\label{sec:computation}
+
+\subsection{Symbolic machine verification}
+
+Twelve key algebraic steps were verified with sympy 1.14.0 (script \texttt{verify\_round3.py}); all passed: Vieta's root identity; the six pair solves of Theorem~\ref{thm:four}; the identity $\irr_0=1+1/(M-1)$ of Theorem~\ref{thm:translation}; the termwise recurrence identity $(n+1)\cdot n!/k!=(n+1)!/k!$; the Gauss integral; the mixed integral; the Stirling limit. The cosine integral was verified separately in \texttt{verify\_round4.py}. These verify algebraic identities, not kernel-checked formal proofs; transcendence facts are used as cited theorems.
+
+\subsection{Interval-arithmetic certificate (450 digits)}
+
+Using directed-rounding interval arithmetic (mpmath, 450 decimal digits), $e+\pi$ was enclosed in an interval of width $<9.13\times10^{-451}$. Two certificates were produced (\texttt{certificate\_\allowbreak{}round4.json}):
+\begin{enumerate}
+\item For every $q\le1000$, the open interval $(Lq,Uq)$ contains no integer; hence $e+\pi\ne p/q$ for all $q\le1000$, rigorously.
+\item The window condition of Proposition~\ref{prop:window} is rigorously violated at $n=2,4$ and all $7\le n\le60$ except $n=34$; every $q\le60$ has a certified first violation (for $q=34$ it is $n=35$).
+\end{enumerate}
+These are finite-range interval certificates, conditional on the stated implementation and directed-rounding computations, not progress on Problem~\ref{prob:main}; their value is methodological --- necessary conditions converted into reproducible certificates.
+
+\subsection{Continued-fraction experiment}
+
+For $q=1,\dots,12$, with $p$ the nearest integer to $(e+\pi)q$, the continued fraction of $p/q-e$ was compared with that of $\pi$ at 200-digit precision, using
+\[
+\pi=[3;7,15,1,292,1,1,1,2,1,3,1,14,2,\dots].
+\] All candidates diverge at partial-quotient position $1$ or $2$ ($q=7$, the best approximation among these, matches two positions). This visualizes the mechanism of Theorem~\ref{thm:cf}: approximation quality determines match length; the finitely many tested candidates disagree with $\pi$ at an identifiable step (numerically); this does not quantify over all rational candidates.
+
+\subsection{Flint Hills numerics}
+
+The partial sum is $S(10000)=30.31451083$ (numerical evidence, not proof). \textbf{Correction (2026-11-14):} an earlier version of this section stated that $S(10000)$ ``agrees with the literature's claimed limit $30.3144\dots$''. That comparison is withdrawn: all terms of the series are positive, so if the series converges to a finite limit $L$, then necessarily $L>S(10000)=30.31451083$; the quoted value $30.3144\dots$ is \emph{smaller} than the partial sum and therefore cannot be the limit. The largest term occurs at $n=355$ --- the numerator of the famous convergent $355/113$ of $\pi$ --- with value $24.6$ and $\sin(355)\approx-3.014\times10^{-5}$. The series' behavior is governed entirely by the Diophantine approximation properties of $\pi$, corroborating the logic of Theorem~\ref{thm:flint}. Generalized Flint Hills series and their critical convergence are studied in \cite{Dan2026}, which confirms the classical case remains undecided.
+
+\subsection{Chowla--Selberg exploration (closed)}
+
+The identity $\varpi=\Gamma(1/4)^2/(2\sqrt{2\pi})$ (lemniscatic constant) yields $\pi=\Gamma(1/4)^4/(8\varpi^2)$, verified at 120 digits (error $7.7\times10^{-121}$). Substituting into the subquestion $\pi=a\cdot\wp_\Omega(p)$ gives $\Gamma(1/4)^4=8a\varpi^2\wp_\Omega(p)$; but $\varpi^2=\Gamma(1/4)^4/(8\pi)$ is the same identity, so the substitution is circular and produces no new constraint. Nesterenko's theorem does not cover $\varpi$ or $\wp(p)$. \emph{Verdict: closed, with precise reason.} (The identity's literature source was not independently verified; it is recorded as numerically verified only.)
+
+\section{Conclusion}\label{sec:conclusion}
+
+\subsection{The exclusion map}
+
+\begin{center}
+\small\begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}p{0.18\textwidth}X@{}}
+\toprule
+Option & Verdict & Obstruction coordinate \\
+\midrule
+Series route & blocked & distribution of $\{n!\pi\}$ unknown (Prop.~\ref{prop:window}, \ref{prop:recurrence}) \\
+Integral route & blocked & no controlled kernel at $e+\pi$ (\S\ref{sec:obstructions}.2) \\
+Transcendence theorems, direct & blocked & bridge $\ee^{iS}=-\ee^{ie}$ outside all proved theorems \\
+Approximation route & estimate insufficient & cancellation and denominator savings unexamined \\
+$\irr(\pi)$ program translation & consistent & $\irr_0=1+1/(M-1)\le2$ (Thm.~\ref{thm:translation}) \\
+Mahler classification & no separation & $\ee,\pi$ both non-$U$ \\
+Bridge identities (4 candidates) & inconclusive & no controlled integer forms obtained \\
+Four/six exponentials & application blocked & Prop.~\ref{prop:four-exp} \\
+Conditional frameworks & unproven conjectures & sufficient input: Schanuel$(1,i\pi)$ instance \\
+Motivic framework (2026) & open subquestion & $\pi\in S$? (Prop.~\ref{prop:scaling}), expected negative \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Surviving targets and their logical direction}
+
+The first three sufficient conditions recorded earlier remain logically valid as implications: $\irr(\pi)>2$; divergence of the Flint Hills series; and membership $\pi\in S$ together with the cited conditional motivic theorem. \textbf{However, the first two are expected to be \emph{false} and should be abandoned as attack routes.} The external claim $\irr(\pi)=2$ (OpenAI, \cite{OpenAI2026}, with a Lean formalization but no independent specialist verification as of October 2026) would, if confirmed, directly negate both $\irr(\pi)>2$ and Flint Hills divergence; even if that claim fails, $\irr(\pi)=2$ is the universally expected value, so neither condition is a plausible target. The third, $\pi\in S$, is likewise expected false and does not lower the difficulty. A useful necessary condition must be expected \emph{false} in the direction that yields a contradiction; the two such conditions isolated in Section~\ref{sec:expected-false} (``$\pi$ is a Hurwitz number'', ``$\pi\in\mathbf{E}$'') satisfy this criterion, whereas the three above do not. None of these conditions is established here. A new identity or approximation construction is a research proposal, not a proposition that should be called ``expected false'' without justification.
+
+The supplement gives more explicit targets. Retain its notation $\delta_j=Q_je-P_j$, and for each positive integer $B$ put
+\[
+M_j(B)=\operatorname{round}(BQ_j\pi),\quad
+C_j=P_jQ_{j+1}-P_{j+1}Q_j=2(-1)^{j+1},
+\]
+\[
+T_j(B)=M_j(B)Q_{j+1}-M_{j+1}(B)Q_j,\qquad
+D_j(B)=T_j(B)+BC_j.
+\]
+By the recorded adjacent-index criterion, $B(e+\pi)\in\Z$ if and only if $D_j(B)=0$ eventually, and also if and only if it vanishes infinitely often. Consequently
+\[
+e+\pi\notin\Q
+\iff \forall B\ge1\ \forall N\ \exists j\ge N:\ D_j(B)\ne0.
+\]
+This follows directly from the existing forward implication and the infinite-match converse. The equivalence is now also kernel-checked in \texttt{EpiFormal/Escape.lean} (Section~\ref{sec:lean-escape}), conditional on the same $\delta$ axiom as the adjacent-index criterion. Equivalently (Section~\ref{sec:lean-escape}), for every $B$ all sufficiently large $j$ are mismatches; the two forms are interchangeable because infinitely many matches would force eventual matching. This replaces a demand for an explicit last match by an asymptotic non-vanishing statement, and does not reduce the logical difficulty of the open problem.
+
+Similarly, write $R_j(B)=BQ_j\pi-\operatorname{round}(BQ_j\pi)$. It would suffice to prove, for every $B\ge1$, that $R_j(B)=-B\delta_j$ for only finitely many $j$ (equivalently, $R_j(B)\ne-B\delta_j$ for all sufficiently large $j$); by the recorded criterion, infinitely many failures are in fact equivalent, since infinitely many matches would force eventual matching. The previously proposed positive-product estimate $R_j(B)\delta_j>0$ infinitely often is a stronger sufficient condition. A separate sufficient condition is $\|BQ_j\pi\|\ge\varepsilon_B$ infinitely often for some $\varepsilon_B>0$, since $\delta_j\to0$. Neither estimate is established for $\pi$.
+
+The factorial criterion has the direction
+\[
+e+\pi\in\Q\iff n\{-n!\pi\}\longrightarrow1.
+\]
+To prove irrationality by this route one must \emph{disprove} this limit; proving it would prove rationality. For example, infinitely many indices with $\{n!\pi\}\le1/2$ would suffice: $\pi$ is irrational, so these fractional parts are positive and $n\{-n!\pi\}\ge n/2$ along that subsequence. This escape condition is sufficient, not claimed equivalent, and is unproved here.
+
+\subsection{Research priorities and limitations}
+
+The immediate priorities are to study exact identities for $D_j(B)$ and the signed rounding errors, then seek estimates using a specific analytic representation of $\pi$. The recurrence for $Q_j$ and the universal bound $|R_j(B)|\le1/2$ alone cannot exclude matching: substituting $x=A/B-e$ for $\pi$ supplies real examples with eventual matching. Generic or almost-everywhere distribution theorems cannot be specialized to $\pi$ without an additional argument.
+
+The obstruction analysis is limited to the displayed constructions. It proves neither exhaustion of elementary mathematics nor a universal no-go theorem for series, integrals, Pad\'e approximation, or integer linear forms. A finite no-go search must retain its quantified family and parameter bounds. The algebraic-independence reduction is a clean sufficient framework, but it asks for a stronger conclusion than irrationality of the sum. The present contribution is an auditable collection of reductions and method-specific limitations, not a resolution of the central problem.
+
+\section{Machine-Verified Formalization in Lean}\label{sec:lean}
+
+This section records the formalization of the paper's derivations in the Lean~4 proof assistant (Lean 4.35.0 with mathlib v4.35.0). We distinguish three trust levels throughout: (i) \emph{kernel-checked} results, verified by the Lean kernel and audited with \texttt{\#print axioms}; (ii) \emph{human-verified preprint proof structures}, which were originally admitted as explicit axioms and flagged as such --- the Meiburg axiom has since been eliminated by a complete machine proof; (iii) \emph{symbolic/numeric auxiliary checks}, which are not proofs. The formalization verifies the \emph{logical correctness of the derivations}, not the open Problem~\ref{prob:main}.
+
+\subsection{The irrationality measure: a non-degenerate definition}\label{sec:lean-def}
+
+The skeleton supplied with the research archive contained a degenerate definition: allowing rational numerators gives infinitely many approximations even at $q=1$, because infinitely many rationals lie in $(x-1,x+1)$. Thus every nonnegative exponent is realized and the extended-real supremum becomes $+\infty$ for every $x$; this does not measure Diophantine approximation. We corrected this in two ways, both essential.
+
+\begin{definition}[Approximation pairs and measure]\label{def:lean-measure}
+For $x\in\R$ and $\nu\in\R$, the set of \emph{$\nu$-approximation pairs} is
+\[
+A(x,\nu)=\{(p,q)\in\Z\times\N: q>0,\ |x-p/q|<q^{-\nu}\}.
+\]
+The \emph{approximation-exponent set} is $S(x)=\{\nu\in\R_{\ge0}: A(x,\nu)\text{ is infinite}\}$, and the \emph{irrationality measure} is
+\[
+\irr(x)=\sup\,\iota(S(x))\ \in\ [0,\infty],
+\]
+where $\iota:\R_{\ge0}\hookrightarrow[0,\infty]$ is the embedding into the extended nonnegative reals. For irrational $x$ this agrees with Definition~\ref{def:measure}. For rational $x=a/b$, the exact pairs $(ka,kb)$ make every exponent admissible, so this formal extension has value $+\infty$. No assertion that it equals $1$ on rationals is used.
+\end{definition}
+
+Two design choices are forced. The numerator must range over $\Z$ (not $\Q$) to avoid the degeneracy above. The value must live in $[0,\infty]$ (Lean's \texttt{ENNReal}), not $\R$: a Liouville number has $\irr(x)=\infty$, and the supremum of an unbounded set in $\R$ does not exist. With \texttt{ENNReal}, $\sup$ is always defined, and the comparison lemma below avoids all boundedness side-conditions.
+
+\begin{lemma}[$\varepsilon$-absorption comparison]\label{lem:eps-abs}
+If for every $\nu\in S(y)$ and every $0<\varepsilon\le\nu$ one has $\nu-\varepsilon\in S(x)$, then $\irr(y)\le\irr(x)$.
+\end{lemma}
+\begin{proof}
+In \texttt{ENNReal} this is \texttt{le\_\allowbreak{}of\_\allowbreak{}forall\_\allowbreak{}pos\_\allowbreak{}le\_\allowbreak{}add}: when $\irr(x)=\infty$ the claim is trivial; otherwise approximate $\nu$ from below by $\nu-\varepsilon'$ with $\varepsilon'=\tfrac12\min(\varepsilon,\nu)$, use $\nu-\varepsilon'\in S(x)$ to bound $\nu\le\irr(x)+\varepsilon$, and let $\varepsilon\to0$. No nonemptiness or boundedness hypothesis is needed.
+\end{proof}
+
+The invariance lemmas (translation, scaling, reciprocal) and Theorem~\ref{thm:measure-reduction} are all kernel-checked; their proofs use a denominator-unboundedness lemma (fixed $q$ forces $p$ into a finite interval, and vice versa) together with constant absorption $C\,Q^{-\nu}\le Q^{-(\nu-\varepsilon)}$ on the cofinite subset $Q>T$. We do not repeat them here; the audit is summarized in \S\ref{sec:lean-status}.
+
+\subsection{Status of the formalization}\label{sec:lean-status}
+
+The full project builds with zero errors (\textbf{9068 jobs} after the escape/boundary modules of Section~\ref{sec:lean-escape}; build snapshots: 9056 baseline, 9064 supplement joint compilation, 9065 OpenAI bridge, 9066 algebraic-independence module) and contains \emph{no} \texttt{sorry} placeholders. The axiom audit of the registered declarations (31 before the supplement, 210 after the supplement joint compilation, 214 with the algebraic-independence theorems, 215 with the M9 surjectivity, and \textbf{232} including the 17 declarations of the escape/boundary modules) confirms that they depend only on the whitelist
+\[
+\{\texttt{e\_\allowbreak{}transcendental},\allowbreak \ \texttt{pi\_\allowbreak{}transcendental},\allowbreak \ \texttt{mu\_\allowbreak{}e\_\allowbreak{}eq\_\allowbreak{}two}\}
+\]
+together with Lean's base axioms (\texttt{propext}, \texttt{Classical.choice},\allowbreak  \texttt{Quot.sound}) and, for the supplement only, the two classical continued-fraction axioms \texttt{deltaSel\_\allowbreak{}tendsto\_\allowbreak{}zero} and \texttt{abs\_\allowbreak{}deltaSel\_\allowbreak{}lt} (Section~\ref{sec:lean-m6}); \emph{none carries \texttt{sorryAx}}. The Meiburg criterion, formerly an axiom, is now a theorem (Section~\ref{sec:lean-f2-remaining}). In particular the Flint Hills bridge (Theorem~\ref{thm:flint}) is kernel-checked with dependencies exactly $\{\texttt{mu\_\allowbreak{}e\_\allowbreak{}eq\_\allowbreak{}two},\texttt{pi\_\allowbreak{}transcendental}\}$. The Alekseyev direction (convergence $\Rightarrow\irr(\pi)\le5/2$) is now machine-verified via a nearest-integer argument (Section~\ref{sec:alekseyev}, theorem \texttt{alekseyev\_\allowbreak{}bound}, depending only on $\{\texttt{pi\_\allowbreak{}transcendental}\}$ plus base axioms); it is not needed for the bridge. For these principal bridge results, the remaining non-base assumptions are \texttt{mu\_\allowbreak{}e\_\allowbreak{}eq\_\allowbreak{}two} ($\irr(\ee)=2$, Bundschuh) and the transcendence of $\ee$ and $\pi$ (Hermite--Lindemann).
+
+\subsection{Formalizing Meiburg's criterion: the sparsity algebra}\label{sec:lean-f2}
+
+We describe the formalization that replaces the axiom \texttt{meiburg\_criterion} by a theorem. The key simplification is that the bridge needs only the special case $\irr(\pi)=2$, not the full statement for arbitrary $\irr(\alpha)<1+u/v$. This permits a direct dyadic-block counting argument rather than Meiburg's full fine partition. The development contains two \emph{separate} formalizations. The first is a sparsity algebra (good approximations cannot cluster), recorded in \texttt{EpiFormal/\allowbreak{}Meiburg.lean}; it is a self-contained verification of Meiburg's sparsity lemma and is \emph{not} used by the convergence proof. The second, in \texttt{EpiFormal/\allowbreak{}MeiburgConvergence.lean}, is a direct dyadic-block counting plus geometric-summation argument that proves the Flint Hills case without invoking the sparsity layer. Both are kernel-checked (no \texttt{sorry}); we record them separately to avoid implying a dependency that does not exist.
+
+\subsubsection{From the measure bound to finiteness and eventual lower bounds}
+
+\begin{lemma}[Good approximations are finite above the measure]\label{lem:f2-finite}
+If $\irr(x)\le M$ (with $M\in\R_{\ge0}$) and $\nu>M$, then $A(x,\nu)$ is finite.
+\end{lemma}
+\begin{proof}
+Suppose $A(x,\nu)$ were infinite. Since $\nu>M\ge0$, we have $\nu>0$, so $\nu$ defines an element of $S(x)$. By definition of $\irr$ as a supremum, $\nu\le\irr(x)\le M$, contradicting $\nu>M$. (In Lean: \texttt{by\_contra}, embed $\nu$ into \texttt{NNReal}, use \texttt{le\_sSup}, and cast the \texttt{ENNReal} inequality back to $\R$ via \texttt{coe\_le\_coe}.)
+\end{proof}
+
+\begin{lemma}[Eventual approximation lower bound, denominator form]\label{lem:f2-eventual}
+If $\irr(x)\le M$ and $\varepsilon>0$, then there exists $N$ such that for all $n\ge N$ and all $m\in\Z$,
+\[
+|x-m/n|\ge n^{-(M+\varepsilon)}.
+\]
+\end{lemma}
+\begin{proof}
+Apply Lemma~\ref{lem:f2-finite} with $\nu=M+\varepsilon$: the set $A(x,M+\varepsilon)$ is finite, so its projection to denominators is a finite set $S$ of naturals. Take $N=\max S+1$ (or $N=1$ if $S=\varnothing$). If some $n\ge N$ violated the bound, then $(m,n)\in A(x,M+\varepsilon)$, so $n\in S$ and $n\le\max S<N$, a contradiction.
+\end{proof}
+
+\begin{remark}[Why the denominator form matters]\label{rem:f2-denom}
+Lemma~\ref{lem:f2-eventual} uses $n$ as the \emph{denominator}. This is the direction that follows directly from the definition of $\irr$. The reverse direction needed for the Alekseyev bound (Theorem~\ref{thm:flint}, necessary side) involves $|\sin n|\le|n-m\pi|=|m|\,|\pi-n/m|$, where $n$ is the \emph{numerator}; conflating the two is the algebraic error $|n-m\pi|\ne n|\pi-m/n|$ that blocked an earlier attempt. The present lemmas deliberately stay on the measure-upper-bound side, where no such swap is needed.
+\end{remark}
+
+\subsubsection{The difference-quotient error bound}
+
+The sparsity lemma rests on a simple algebraic observation: two close approximations produce a new approximation whose error is controlled by the gap of the denominators.
+
+\begin{lemma}[Difference-quotient error bound]\label{lem:f2-dq}
+Let $q_1<q_2$ be positive integers, $p_1,p_2\in\Z$, and suppose $|x-p_i/q_i|\le A_i$ for $i=1,2$. Then
+\[
+\left|x-\frac{p_2-p_1}{q_2-q_1}\right|\le\frac{q_1 A_1+q_2 A_2}{q_2-q_1}.
+\]
+\end{lemma}
+\begin{proof}
+The key identity is
+\[
+x-\frac{p_2-p_1}{q_2-q_1}=\frac{q_2(x-p_2/q_2)-q_1(x-p_1/q_1)}{q_2-q_1},
+\]
+verified by clearing denominators (in Lean: \texttt{field\_simp}, \texttt{push\_cast}, \texttt{ring}). Taking absolute values and applying the triangle inequality,
+\[
+|q_2(x-p_2/q_2)-q_1(x-p_1/q_1)|\le q_2|x-p_2/q_2|+q_1|x-p_1/q_1|\le q_2 A_2+q_1 A_1,
+\]
+where we used $q_i>0$ to pull the factors out of the absolute values. Dividing by $q_2-q_1>0$ gives the claim.
+\end{proof}
+
+Specializing to good approximations yields a strict bound.
+
+\begin{lemma}[Good-approximation difference quotient]\label{lem:f2-good-dq}
+If $|x-p_i/q_i|<q_i^{-\nu}$ for $i=1,2$ and $q_1<q_2$, then
+\[
+\left|x-\frac{p_2-p_1}{q_2-q_1}\right|<\frac{q_1^{1-\nu}+q_2^{1-\nu}}{q_2-q_1}.
+\]
+\end{lemma}
+\begin{proof}
+Apply Lemma~\ref{lem:f2-dq} with $A_i=q_i^{-\nu}$ and use $q_i\cdot q_i^{-\nu}=q_i^{1-\nu}$ (the law $q^{1-\nu}=q^1\cdot q^{-\nu}$, i.e.\ \texttt{rpow\_add}). The strict inequality is preserved because both input bounds are strict and the operations are monotone.
+\end{proof}
+
+\subsubsection{The exponent estimate and the sparsity core}
+
+The next lemma is the real-analytic heart: under a numerical condition, the difference quotient is an approximation of \emph{strictly higher} exponent.
+
+\begin{lemma}[Sparsity exponent estimate]\label{lem:f2-exp}
+Let $\nu>1$, $\delta>0$, $1\le q_1<q_2\le2q_1$, and $Q=q_2-q_1>0$. If
+\begin{equation}\label{eq:f2-cond}
+2\,q_1^{1-\nu}<Q^{1-\nu-\delta},
+\end{equation}
+then
+\[
+\frac{q_1^{1-\nu}+q_2^{1-\nu}}{Q}<Q^{-\nu-\delta}.
+\]
+\end{lemma}
+\begin{proof}
+Since $\nu>1$, the exponent $1-\nu$ is negative; the function $t\mapsto t^{1-\nu}$ is antitone on $(0,\infty)$, so $q_1\le q_2$ gives $q_2^{1-\nu}\le q_1^{1-\nu}$. Hence the numerator is at most $2q_1^{1-\nu}$. For the denominator, $Q^{1-\nu-\delta}=Q^{-\nu-\delta}\cdot Q$ (again \texttt{rpow\_add}). Thus
+\[
+\frac{q_1^{1-\nu}+q_2^{1-\nu}}{Q}\le\frac{2q_1^{1-\nu}}{Q}<\frac{Q^{1-\nu-\delta}}{Q}=Q^{-\nu-\delta},
+\]
+where the strict step is exactly condition~\eqref{eq:f2-cond} divided by $Q>0$.
+\end{proof}
+
+Combining the two previous lemmas gives the sparsity core.
+
+\begin{lemma}[Sparsity core: the difference quotient is better]\label{lem:f2-core}
+Let $\nu>1$, $\delta>0$, $2\le q_1<q_2\le2q_1$, and suppose $(p_i,q_i)$ are $\nu$-good approximations of $x$ (i.e.\ $|x-p_i/q_i|<q_i^{-\nu}$). If $Q=q_2-q_1$ satisfies~\eqref{eq:f2-cond}, then
+\[
+\left|x-\frac{p_2-p_1}{Q}\right|<Q^{-(\nu+\delta)}.
+\]
+That is, the difference quotient is a $(\nu+\delta)$-good approximation.
+\end{lemma}
+\begin{proof}
+Lemma~\ref{lem:f2-good-dq} bounds the left side by $(q_1^{1-\nu}+q_2^{1-\nu})/Q$; Lemma~\ref{lem:f2-exp} bounds that by $Q^{-\nu-\delta}=Q^{-(\nu+\delta)}$. Chaining the two strict inequalities gives the result. (In Lean the only subtlety is that the denominator is written both as $(q_2-q_1:\N)$ cast to $\R$ and as $(q_2:\R)-(q_1:\R)$; these are definitionally equal via \texttt{Nat.cast\_sub}, and \texttt{simpa} reconciles them.)
+\end{proof}
+
+The meaning of Lemma~\ref{lem:f2-core} is exactly Meiburg's sparsity principle: if two $\nu$-good approximations have $\delta$-close denominators (so $Q$ is small relative to $q_1$) and $q_1$ is large enough for~\eqref{eq:f2-cond} to hold, their difference quotient is a $(\nu+\delta)$-good approximation. When $\nu$ is chosen just below $\irr(x)$, the exponent $\nu+\delta$ exceeds $\irr(x)$, so by Lemma~\ref{lem:f2-finite} only finitely many such difference quotients exist. This forces the good denominators to be sparse.
+
+\subsubsection{The multiplicity bound (fiber finiteness)}
+
+To turn ``finitely many difference quotients'' into a density bound on denominators, one must control how many pairs $(p_1,q_1),(p_2,q_2)$ can yield the \emph{same} difference $(p_2-p_1,q_2-q_1)$. The first ingredient is that a fixed denominator admits only finitely many good numerators.
+
+\begin{lemma}[Fixed-denominator fiber is finite]\label{lem:f2-fiber}
+For any $d\in\N_{>0}$, any $\nu\in\R$, and any $x\in\R$, the set
+\[
+\{p\in\Z:|x-p/d|<d^{-\nu}\}
+\]
+is finite.
+\end{lemma}
+\begin{proof}
+Multiplying by $d>0$, the condition is $|dx-p|<d^{1-\nu}$, i.e.
+\[
+dx-d^{1-\nu}<p<dx+d^{1-\nu}.
+\]
+Thus $p$ lies in an open interval of length $2d^{1-\nu}$, hence in the closed integer interval $[\lfloor L\rfloor,\lceil U\rceil]$ with $L=dx-d^{1-\nu}$, $U=dx+d^{1-\nu}$, which is finite. (In Lean: \texttt{Set.finite\_Icc}, with the floor/ceil bounds from \texttt{Int.floor\_le} and \texttt{Int.le\_ceil}.)
+\end{proof}
+
+Lemma~\ref{lem:f2-fiber} is the foundation of Meiburg's $Q_{\max}$ multiplicity bound: a fixed difference denominator $Q$ admits only finitely many difference numerators, so each difference quotient arises from a bounded number of pairs once the goodness and closeness constraints are imposed.
+
+\subsection{Completion of the convergence argument}\label{sec:lean-f2-remaining}
+
+The seven lemmas above (Lemmas~\ref{lem:f2-finite}--\ref{lem:f2-fiber}) form the algebraic core of the \emph{separate} sparsity formalization; they are not invoked by the convergence proof. The convergence itself is completed by the direct dyadic counting and geometric summation below, which replaces the Meiburg axiom by a theorem. Both developments are kernel-checked with no \texttt{sorry}. We record the completed steps, preserving the reasoning.
+
+\begin{lemma}[Circle spacing]\label{lem:f2-spacing}
+If $\irr(\pi)\le M<s$ with $s>1$, there is $c>0$ such that $\|h/\pi\|\ge c\,h^{1-s}$ for every positive integer $h$, where $\|x\|$ is the distance from $x$ to the nearest integer.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:f2-finite} the set of $s$-good approximations is finite; taking the minimum of $b^s|\pi-a/b|$ over these exceptions (positive by irrationality of $\pi$) and of $1$ gives a uniform constant $C>0$ with $|\pi-a/b|\ge C b^{-s}$ for all $a,b$. Let $j$ be the nearest integer to $h/\pi$. If $j\ge1$, then $\|h/\pi\|=(j/\pi)|\pi-h/j|\ge(C/\pi)j^{1-s}\ge(C/\pi)h^{1-s}$ since $j\le h$ and $1-s<0$. If $j=0$, then $\|h/\pi\|=h/\pi\ge h^{1-s}/\pi$. Take $c=\min(C,1)/\pi$. The two cases (in particular $j=0$) are handled separately in the formalization.
+\end{proof}
+
+\begin{lemma}[Dyadic-block counting]\label{lem:f2-count}
+With $\delta=c(2N)^{1-s}$, the number of $n\in[N,2N)$ with $\|n/\pi\|\le t$ is at most $2(\lfloor t/\delta\rfloor+1)$.
+\end{lemma}
+\begin{proof}
+Each point is at distance $\ge\delta$ from $0$ (Lemma~\ref{lem:f2-spacing}), and two distinct points are at circular distance $\ge\delta$ since $1\le|n-m|<2N$. Representing points in $[-1/2,1/2)$ and sorting each side of $0$, the $i$-th point is at distance $\ge i\delta$. The formalization uses a floor-injection $x\mapsto\lfloor x/\delta\rfloor$ (injective because two points in the same length-$\delta$ interval would be $<\delta$ apart) rather than an explicit sort, bounding each side by $\lfloor t/\delta\rfloor+1$.
+\end{proof}
+
+\begin{lemma}[Jordan bound and block sum]\label{lem:f2-blocksum}
+$|\sin n|\ge2\|n/\pi\|$, and $\sum_{N\le n<2N}\frac1{n^3\sin^2 n}\le C_s N^{2s-5}$ for a constant $C_s$ independent of $N$.
+\end{lemma}
+\begin{proof}
+Writing $n=\pi y+j\pi$ with $|y|=\|n/\pi\|\le1/2$, periodicity gives $|\sin n|=|\sin(\pi y)|\ge(2/\pi)|\pi y|=2\|n/\pi\|$ by Jordan's inequality. Combining with the counting lemma and the bound $\sum_{x\in S}x^{-2}\le(2/\delta^2)\sum_{i\ge1}(i+1)^{-2}$ for a $\delta$-separated set $S$ (proved by reindexing along the injection $x\mapsto\lfloor x/\delta\rfloor-1$), the block sum is $\le C_s N^{2s-5}$.
+\end{proof}
+
+\begin{theorem}[Convergence under the exponent threshold]\label{thm:f2-conv}
+If $\irr(\pi)<5/2$, the Flint Hills series converges.
+\end{theorem}
+\begin{proof}
+Fix $s$ with $\irr(\pi)<s<5/2$. The partial sums are monotone (nonnegative terms). Partitioning $[1,\infty)$ into dyadic blocks $[2^k,2^{k+1})$ and applying Lemma~\ref{lem:f2-blocksum}, the partial sums are bounded by $\sum_k C_s 2^{k(2s-5)}$, a convergent geometric series since $2s-5<0$. Monotone bounded partial sums converge.
+\end{proof}
+
+\paragraph{Wiring and axiom audit.} The declaration \texttt{meiburg\_\allowbreak{}criterion} is now a \emph{theorem}, proved by Theorem~\ref{thm:f2-conv}. The axiom audit (\texttt{\#print axioms}) confirms:
+\begin{itemize}
+\item \texttt{meiburg\_\allowbreak{}criterion}, \texttt{flint\_\allowbreak{}hills\_\allowbreak{}converges\_\allowbreak{}of\_\allowbreak{}mu\_\allowbreak{}lt}, \texttt{circle\_\allowbreak{}spacing}, \texttt{dyadic\_\allowbreak{}block\_\allowbreak{}count}, \texttt{block\_\allowbreak{}sum\_\allowbreak{}bound}: depend only on \texttt{pi\_transcendental} and Lean's base axioms, with no \texttt{sorryAx}.
+\item \texttt{proposition\_\allowbreak{}H'}: depends on \texttt{mu\_e\_eq\_two}, \texttt{pi\_transcendental} and Lean's base axioms. \textbf{The Meiburg preprint axiom has been eliminated.}
+\end{itemize}
+At that stage the project built with zero errors (9056 jobs); the final build count is reported in \S\ref{sec:lean-status}. Every declared theorem is machine-verified with \emph{no} \texttt{sorry} placeholders. The Alekseyev direction (Section~\ref{sec:alekseyev}) is now machine-verified as well (theorem \texttt{alekseyev\_\allowbreak{}bound}); the earlier density obstruction is preserved there as a historical record.
+
+\subsection{The Alekseyev direction: from a recorded obstruction to a machine-verified bound}\label{sec:alekseyev}
+
+The converse implication (Flint Hills converges $\Rightarrow\irr(\pi)\le5/2$, Alekseyev's corollary) is \emph{not} needed for the bridge $H'$. An earlier version of this section recorded it as a research-level gap: the naive termwise argument fails (the precise obstruction is preserved below as a permanent record), and the density argument of Alekseyev's original proof had not been formalized. \textbf{Update (2026-11-14):} a revised supplement supplied a correct paper proof via nearest integers that bypasses the obstruction entirely, and we have now formalized it in full. The bound $\irr(\pi)\le5/2$ is therefore \emph{machine-verified} (file \texttt{EpiFormal/\allowbreak{}Alekseyev.lean}, theorem \texttt{alekseyev\_\allowbreak{}bound}, no \texttt{sorryAx}), conditional on the convergence of the Flint Hills series, which remains an open problem. Three auxiliary lemmas were already machine-verified and are retained:
+
+\begin{lemma}[nonvanishing of $\sin n$] For $n\ge1$, $\sin n\ne0$.
+\end{lemma}
+\begin{proof} If $\sin n=0$ then $n=m\pi$ for some integer $m\ne0$, so $\pi=n/m\in\Q$, contradicting the transcendence of $\pi$.
+\end{proof}
+
+\begin{lemma}[eventual sine lower bound]\label{lem:sin-lower} If $a_n:=1/(n^3\sin^2 n)\to0$, then for every $\varepsilon>0$ there is $N$ such that $|\sin n|\ge n^{-3/2-\varepsilon}$ for all $n\ge N$.
+\end{lemma}
+\begin{proof} Since $a_n\to0$, eventually $a_n<1$, i.e.\ $n^3\sin^2 n>1$, so $|\sin n|>n^{-3/2}\ge n^{-3/2-\varepsilon}$ for $n\ge1$. The step $|\sin n|>n^{-3/2}$ from $\sin^2 n>n^{-3}$ uses $|x|=\sqrt{x^2}$ and monotonicity of $t\mapsto t^{1/2}$; the final inequality uses $n\ge1$ and $-\tfrac32\ge-\tfrac32-\varepsilon$.
+\end{proof}
+
+\begin{lemma}[factorization] For $m\ne0$, $|n-m\pi|=|m|\,|\pi-n/m|$.
+\end{lemma}
+\begin{proof} $n-m\pi=-m(\pi-n/m)$; take absolute values.
+\end{proof}
+
+\paragraph{The obstruction (historical record, preserved).} Combining Lemma~\ref{lem:sin-lower} with the periodicity bound $|\sin n|\le|n-m\pi|$ (formalized as \texttt{abs\_\allowbreak{}sin\_\allowbreak{}int\_\allowbreak{}le}) and the factorization gives
+\[
+|\pi-n/m|\ \ge\ \frac{n^{-3/2-\varepsilon}}{|m|}.
+\]
+To deduce the measure bound $\irr(\pi)\le5/2$ one would need $|\pi-n/m|\ge C\,|m|^{-5/2-\varepsilon}$, which is equivalent to $n^{-3/2-\varepsilon}\ge C\,|m|^{-3/2-\varepsilon}$, i.e.\ $n\le C'|m|$ (the exponent is negative). But the lower bound of Lemma~\ref{lem:sin-lower} holds for \emph{all} large $n$, including $n>\pi|m|$, where the inequality reverses. Hence the termwise argument ``$\sin$ lower bound $\Rightarrow\irr(\pi)\le5/2$'' is \textbf{invalid as stated}. This is the precise form of the numerator--denominator obstruction noted in the seventh research round. An earlier version of this section concluded that formalizing Alekseyev's density argument was a genuine research-level gap; that conclusion is now superseded by the nearest-integer argument below, which needs no density control at all. The failed route is kept on record.
+
+\paragraph{The nearest-integer argument (machine-verified).} The revised supplement (2026-11-14) closes the gap on paper by restricting the sine lower bound to the single nearest integer $p=\operatorname{round}(q\pi)$ for each denominator $q$, which automatically satisfies $p\asymp q$. We formalized the argument in full.
+
+\begin{lemma}[nearest-integer facts]\label{lem:nearest} For $q\ge1$, put $p=\operatorname{round}(q\pi)$. Then $|p-q\pi|\le\tfrac12$, $p\le4q$, and $p\to\infty$ as $q\to\infty$.
+\end{lemma}
+\begin{proof} $|p-q\pi|\le\tfrac12$ is the defining property of rounding. Since $\pi<4$, $p\le q\pi+\tfrac12<4q+\tfrac12<4q+1$, and integrality gives $p\le4q$. Finally $p>q\pi-\tfrac12\to\infty$.
+\end{proof}
+
+\begin{lemma}[uniform divergence]\label{lem:uniform} If the Flint Hills series converges, then for every $B>0$ there is $N$ such that $n^3\sin^2n>B$ for all $n\ge N$; consequently $p^{3/2}|\sin p|\to\infty$ along $p=\operatorname{round}(q\pi)$.
+\end{lemma}
+\begin{proof} Convergence gives $a_n\to0$, so eventually $a_n<1/B$, i.e.\ $n^3\sin^2n>B$. Taking square roots, $n^{3/2}|\sin n|>\sqrt B$ eventually; since $p\to\infty$ (Lemma~\ref{lem:nearest}), the claim follows.
+\end{proof}
+
+\begin{theorem}[Alekseyev direction; machine-verified]\label{thm:alekseyev-bound} If the Flint Hills series converges, then $\irr(\pi)\le5/2$.
+\end{theorem}
+\begin{proof} Fix $\varepsilon>0$. By Lemma~\ref{lem:uniform} with $B=4^{3/2}\cdot4^{3/2}=64$, for all large $q$, writing $p=\operatorname{round}(q\pi)$,
+\[
+p^{3/2}|\sin p|>4^{3/2}.
+\]
+For \emph{every} integer $a$, the nearest-integer property and the periodicity bound give $|q\pi-a|\ge|q\pi-p|\ge|\sin p|$, while $p\le4q$ gives $q^{3/2}\ge4^{-3/2}p^{3/2}$. Hence, uniformly in $a$,
+\[
+q^{5/2}\,|\pi-a/q|=q^{3/2}|q\pi-a|\ \ge\ q^{3/2}|q\pi-p|\ \ge\ q^{3/2}|\sin p|\ \ge\ 4^{-3/2}p^{3/2}|\sin p|\ >\ 1.
+\]
+Thus eventually $|\pi-a/q|>q^{-5/2}\ge q^{-(5/2+\varepsilon)}$ for all integers $a$ (using $q\ge1$). For any $\nu>5/2$, apply this with $\varepsilon=\nu-5/2$: the set of $\nu$-good approximation pairs is then contained in finitely many denominators, hence finite (each fixed denominator admits only finitely many good numerators). Therefore no $\nu>5/2$ lies in the approximation-exponent set of $\pi$, and $\irr(\pi)\le5/2$.
+\end{proof}
+
+The formalization adds six declarations to \texttt{EpiFormal/\allowbreak{}Alekseyev.lean}: \texttt{nearest\_\allowbreak{}int\_\allowbreak{}le\_\allowbreak{}four\_\allowbreak{}mul}, \texttt{nearest\_\allowbreak{}int\_\allowbreak{}tendsto\_\allowbreak{}atTop}, \texttt{term\_\allowbreak{}tendsto\_\allowbreak{}eventually\_\allowbreak{}gt}, \texttt{alekseyev\_\allowbreak{}eventual\_\allowbreak{}lower}, \texttt{apprPairs\_\allowbreak{}finite\_\allowbreak{}of\_\allowbreak{}flintHills}, and \texttt{alekseyev\_\allowbreak{}bound}. The axiom audit confirms that all six carry no \texttt{sorryAx}; \texttt{alekseyev\_\allowbreak{}bound} depends only on \texttt{pi\_transcendental} and Lean's base axioms. The key point is that the lower bound is applied only at $p=\operatorname{round}(q\pi)$, where $p\asymp q$ holds automatically, so replacing $q^{3/2}$ by $p^{3/2}$ costs only the constant $4^{-3/2}$; no density argument is needed.
+
+\paragraph{Honest status.} This formalization is pure engineering over already-established mathematics: it removes a preprint axiom and raises the trust level of the bridge, but adds no new information about Problem~\ref{prob:main}. Theorem~\ref{thm:alekseyev-bound} is conditional on the convergence of the Flint Hills series, which is itself open. The bridge remains the conditional statement ``$e+\pi\in\Q\Rightarrow$ Flint Hills converges''; convergence of the series is not itself a contradiction, so the irrationality of $e+\pi$ remains open.
+
+\subsection{The revised supplement S1--S7 and Propositions 3--4: full joint compilation}\label{sec:lean-m6}
+
+A revised supplement (2026-11-14) supplied paper proofs of a family of structural results around the selected continued-fraction convergents of $\ee$: the classification lattice (S1, Theorem~2), the quantitative gap (S2, Corollary~3), the finite spectrum (S3 Lemma~5 / S4 Theorem~6), signed clusters and realization (S5, Theorems~7--8), defect-tail equivalence and bijection (S6, Theorem~9 / Corollary~10), the two-index criterion (S7, Theorem~11), and the signed and factorial criteria (Propositions~3--4). These were developed as nine concurrent subtasks (A--I) and then independently re-compiled, foundation-normalized, and jointly compiled by the reviewer. We record the outcome with the same honesty discipline as above.
+
+\paragraph{Selected convergents and the two analytic axioms.} Let $P_j/Q_j$ be the convergent of the regular continued fraction of $\ee$ immediately preceding each partial quotient $2j$ ($j\ge1$); the first three are $3/1,19/7,193/71$. Write $\delta_j=Q_j\ee-P_j$. The integer infrastructure (recurrence $X_{j+2}=(4j+6)X_{j+1}+X_j$, determinant $P_jQ_{j+1}-P_{j+1}Q_j=2(-1)^{j+1}$, oddness, strict growth, doubling, and adjacent coprimality) is kernel-checked in \texttt{EpiFormal/\allowbreak{}EulerConvergents.lean} (subtask A, 13 items = 11 theorems + the 2 analytic axioms below, no \texttt{sorryAx}). Because the determinant is $\pm2$ rather than $\pm1$, coprimality is proved by induction on the $Q$-recurrence down to $\gcd(1,7)=1$, not from the determinant. Two classical analytic estimates are \emph{axiomatized}, since mathlib v4.35 has no continued-fraction expansion theorem for $\ee$:
+\[
+\texttt{deltaSel\_\allowbreak{}tendsto\_\allowbreak{}zero}:\ \delta_j\to0,\qquad
+\texttt{abs\_\allowbreak{}deltaSel\_\allowbreak{}lt}:\ |\delta_j|<\frac{1}{2j\,Q_j}\ (j\ge1).
+\]
+These are the only new assumptions introduced by the supplement; they are standard properties of regular continued-fraction convergents and are explicitly flagged as \emph{not} machine-verified.
+
+\paragraph{Machine-verified structural results.} With the foundation normalized to subtask A, the following are kernel-checked (no \texttt{sorryAx}); the file and axiom dependence are listed. \emph{Numbering note:} the Theorem/Corollary/Lemma/Proposition numbers in this list (2--11, 3--4) are those of the \emph{supplement} (labels S1--S7), not of the present paper.
+\begin{itemize}
+\item \textbf{S1/S2 (B, \texttt{Classification.lean}, 20 decls).} $j\|Q_j x\|\to0\iff x\in L:=\Z+\Z(\ee+1)/2$ (Supplement Theorem~2), and $x\notin L\Rightarrow\limsup_j j\|Q_j x\|\ge\tfrac14$ (Supplement Corollary~3). The proof uses the $\pm2$ determinant to construct integers $a,b$ with $2M_j=aP_j+bQ_j$ (no divisibility division), propagates by the common recurrence, and divides by $Q_j$. Depends on the two $\delta$ axioms; the propagation and determinant lemmas use only base axioms.
+\item \textbf{S3/S4 (C, \texttt{Spectrum.lean}, 30 decls).} The finite spectrum of $j\|Q_j x\|$ is exactly $\{k/4:k\in\N\}$ (Lemma~5 / Theorem~6). \emph{No axiom dependence beyond Lean's base axioms}: the core spectrum argument never uses the $\delta$ axioms, and the isolated $\delta$-dependent lemma was removed during normalization. (Subtask C uses the placeholder convention $P_0=Q_0=0$, differing from A's $P_0=Q_0=1$; the two agree for $j\ge1$, and C's construction depends on its own $j=0$ convention, so C retains an independent namespace foundation mathematically equivalent to A on $j\ge1$.)
+\item \textbf{S5 (D, \texttt{SignedClusters.lean}, 16 decls).} If $S(x)<\infty$ then the cluster set of $j\varepsilon_j$ is $\{k/4:k\text{ taken infinitely often by the integer defect}\}$ (Theorem~7), and every bounded integer sequence is realized as the eventual defect sequence of some $x$ with $S(x)<\infty$ (Theorem~8). Both depend only on base axioms (no $\delta$ axioms). Theorem~8 is an existence construction freely choosing $x$; it does \emph{not} determine the defect of $x=B\pi$.
+\item \textbf{S6 (E, \texttt{DefectFibres.lean}, 32 decls).} For $x,y$ with $S$ finite, equal defect tails $\iff x-y\in L$ (Theorem~9); the defect-tail map is a \emph{bijection} on $F/L$ (Corollary~10, injectivity \emph{and} surjectivity); a fine-scale ratio and a control example ($x=6\pm\ee$). Injectivity depends on \texttt{deltaSel\_\allowbreak{}tendsto\_\allowbreak{}zero}; \texttt{deltaSel\_\allowbreak{}ne\_\allowbreak{}zero} uses the whitelist axiom \texttt{e\_\allowbreak{}transcendental}. \textbf{Surjectivity is now wired} (\texttt{corollary10\_\allowbreak{}surjective}): it invokes D's Theorem~8 realization \texttt{xOfSeq}, bridges the identical defect definitions ($Mseq=Msel=\operatorname{round}(Q_j x)$), and proves the constructed real lies in $F$ via the residual bound; it depends \emph{only on base axioms} (no $\delta$ axioms), so the full bijection is kernel-checked.
+\item \textbf{S7 (F, \texttt{AdjacentWitness.lean}, 32 decls).} A two-index three-way equivalence (Theorem~11) with quantitative bounds. Depends on \texttt{deltaSel\_\allowbreak{}tendsto\_\allowbreak{}zero} (some lemmas base-only). The target ``for every $B$ the matching set is finite'' remains \emph{open}; Theorem~11 is only an equivalent criterion.
+\item \textbf{Proposition 3 (H, \texttt{SignedCriterion.lean}, 17 decls).} A signed criterion $e+\pi\in\Q\iff\exists B>0$ such that a signed-residual identity holds eventually (two-way equivalence). Depends on \texttt{deltaSel\_\allowbreak{}tendsto\_\allowbreak{}zero} (converse base-only). The sign estimate (infinitely many positive products for each $B$) is \emph{not established} and is recorded as open.
+\item \textbf{Proposition 4 (G, \texttt{FactorialCriterion.lean}, 21 decls).} A factorial criterion using only the exponential series, \emph{with no axioms beyond Lean's base axioms} and no dependence on the selected-convergent foundation. The right-hand limit $n\{-n!\pi\}\to1$ is \emph{not asserted}; it is equivalent to rationality, so an irrationality proof must exclude it.
+\end{itemize}
+Subtask I provides numerical/symbolic cross-checks (four \texttt{sympy}/\texttt{mpmath} scripts); these are auxiliary, \emph{not} kernel proofs, exclude only the integer case, and do not prove any open problem.
+
+\paragraph{Joint compilation and audit.} After foundation normalization (A as the single foundation; B/D/E/F/H import A; C independent but axiom-free; G independent and axiom-free), the archived joint-compilation report records zero errors (\textbf{9064 jobs}) and the extended \texttt{Audit.lean} reports \textbf{zero \texttt{sorryAx}} across all registered declarations. The supplement total is \textbf{210} registered declarations (31 + 179 theorem-items from A--H, where A's 13 items include its 2 axioms); adding the four algebraic-independence theorems gives 214, and the M9 Corollary-10 surjectivity gives 215, before the escape/boundary modules of \S\ref{sec:lean-escape}. The only non-base assumptions remain the whitelist $\{\texttt{e\_\allowbreak{}transcendental},\allowbreak \texttt{pi\_\allowbreak{}transcendental},\allowbreak \texttt{mu\_\allowbreak{}e\_\allowbreak{}eq\_\allowbreak{}two}\}$ together with the two $\delta$ axioms; C and G carry no axioms at all.
+
+\paragraph{Honest status.} As with the Alekseyev direction, this is engineering over established mathematics: it raises the trust level of the supplement's structural results but adds no information about Problem~\ref{prob:main}. The irrationality of $e+\pi$ remains open; the Proposition~3 sign estimate, the S7 ``finite matching set for every $B$'' target, and the Proposition~4 right-hand limit are all still open. (The surjectivity of Corollary~10, previously open, has since been wired and kernel-checked; see the S6 entry above.) The two $\delta$ axioms are classical facts assumed because mathlib lacks them, not machine-verified. The four auxiliary \texttt{.lean} files claimed by the original supplement were not supplied with the package and could not be cross-checked; this round is a reconstruction, not a verification of those files.
+
+\subsection{External developments in 2026 and a conditionally verified bridge}\label{sec:lean-external}
+
+We record the relevant external developments of 2026, strictly separating established results from claims that have not been independently verified, and we describe a new conditional bridge that \emph{is} kernel-checked in our project.
+
+\paragraph{The OpenAI $\irr(\pi)=2$ claim (unverified).} On 24 September 2026, OpenAI released a preprint \emph{The Irrationality Exponent of $\pi$ Is 2} in its \texttt{openai/\allowbreak{}math} repository, with a Lean formalization (\texttt{OAI/\allowbreak{}NumberTheory/\allowbreak{}PiExponent/\allowbreak{}}, toolchain Lean v4.34.1, mathlib4 pinned to commit \texttt{d13f23b}, depending on more than thirty external libraries). The proof uses an algebraic-geometric route (admissible-matrix interpolation, cohomology, jets). The repository's scope note (\url{https://github.com/openai/math/blob/main/lean/docs/017.md}, consulted 14 November 2026) describes formalization of the exact exponent and explicitly places the paper's Flint Hills convergence consequence outside that selected formal statement. \textbf{Verification status:} as recorded by MathWorld, independent specialist verification of the complete proof had not been reported (as of October 2026); the repository's own README cautions that some unformalized results may have issues. We therefore treat $\irr(\pi)=2$ as a \emph{claim}, not an established theorem. This project has not independently compiled that external proof with its pinned dependencies; \textbf{we do not claim to have independently verified OpenAI's proof}.
+
+\paragraph{Other 2026 developments.} (i) A claimed proof of Flint Hills convergence (arXiv:2502.03474) was \emph{withdrawn} on 14 September 2026; the authors acknowledged that the partial-sum argument does not establish convergence and that a numerical error ($-4$ versus $-30.31$) was present---the same pitfall as our withdrawn comparison in \S\ref{sec:computation}. We do not settle the status of Flint Hills convergence independently of the external claim above. (ii) A no-go audit for $e+\pi$ (arXiv:2606.17303) proves exact equivalences between $e+\pi\in\Q$ and eventual factorial-arithmetic phenomena (a ceiling recurrence, a factorial-Cantor digit condition, a divisibility criterion), closely related in spirit to our Proposition~4, and finds no non-circular Ap\'ery-type mechanism within tested low-complexity families; its bounded audit does not rule out all Ap'ery-type certificates (preprint, not peer-reviewed). (iii) Bertolin's 1-motive program (arXiv:2509.08700, v3 June 2026) \cite{BertolinMotives} proves the Grothendieck--Andr\'e period conjecture for 1-motives defined by CM elliptic curves with algebraic invariants and torsion points---a genuine but limited advance that does not reach the $(1,i\pi)$ instance needed for $e,\pi$. (iv) The cited Bai preprint reports the upper bound $\irr(\pi)\le 7.101862832357$ (Bai 2026, arXiv:2609.11276). Schanuel's conjecture and the algebraic independence of $e$ and $\pi$ remain open.
+
+\paragraph{A conditionally verified bridge (kernel-checked).} Independently of OpenAI's heavy proof, we formalized and kernel-checked the \emph{interface} between their claim and our project. In \texttt{EpiFormal/\allowbreak{}OpenAI\_\allowbreak{}mu\_\allowbreak{}pi\_\allowbreak{}bridge.lean} we (1) ingest OpenAI's exact definitions (\texttt{GoodRationalApproximations}, \texttt{ApproximationExponents}, \texttt{irrationalityExponent}, \texttt{EventualLowerBound}) verbatim; (2) prove that their eventual lower bound for $\pi$ implies our $\irr(\pi)\le 2$ (a genuine reconciliation of their $\mathbb R$-valued $\sup$ definition with our $\mathbb{R}_{\ge0}^\infty$-valued measure, via a global rectangle bound on good approximation pairs); and (3) compose with our already-verified Meiburg criterion to obtain:
+\begin{theorem}[Conditional bridge; machine-verified]\label{thm:conditional-bridge}
+If $\pi$ satisfies the eventual lower bound $\forall\nu>2\,\exists Q\,\forall p,q\ (q\ge Q\Rightarrow q^{-\nu}\le|\pi-p/q|)$ (the form of OpenAI's $\irr(\pi)=2$ claim), then the Flint Hills series converges.
+\end{theorem}
+The axiom audit of this bridge shows dependencies only on \texttt{pi\_transcendental} and Lean's base axioms, with \emph{no} \texttt{sorryAx}; the reconciliation lemma itself uses only base axioms. The build at that stage was \textbf{9065 jobs} (the final build is reported in \S\ref{sec:lean-status}). \textbf{The premise is OpenAI's unverified claim}; the theorem is conditional. If that claim is ever independently verified, this bridge immediately yields Flint Hills convergence inside our project, the bridge $H'$ is automatically satisfied, and the two surviving targets $\irr(\pi)>2$ and Flint Hills divergence are both closed. The irrationality of $e+\pi$ itself remains open regardless.
+
+\paragraph{Honest status.} This bridge is a verified \emph{conditional} statement, not a proof of $\irr(\pi)=2$ and not a proof of Flint Hills convergence. It demonstrates that our project's verified Meiburg machinery is the ready-made interface that would convert a verified $\irr(\pi)=2$ into Flint Hills convergence. In a period of numerous AI-assisted number-theoretic claims whose independent verification is pending, the value of kernel-checked, axiom-audited formalization is precisely that it provides reproducible, trustworthy conditional infrastructure.
+
+\subsection{Isolating the missing hypothesis: algebraic independence of \texorpdfstring{$e$}{e} and \texorpdfstring{$\pi$}{pi}}\label{sec:lean-ai}
+
+The obstruction analysis of \S\ref{sec:obstructions} and the 2026 literature survey above converge on a single structural diagnosis: the strongest available tools (the determinant/interpolation method behind the $\irr(\log r)=2$ results, and the period machinery) live on the \emph{multiplicative} side---logarithms and periods---whereas $e+\pi$ additively mixes an exponential value $e^1$ with a period $\pi$. The cleanest hypothesis that bridges the two sides is the algebraic independence of $e$ and $\pi$ over $\Q$, which is exactly what Schanuel's conjecture supplies for the pair $\{1,i\pi\}$ (via $e^1=e$ and $e^{i\pi}=-1$). We now \emph{isolate} this sufficient hypothesis as a machine-verified conditional reduction. Its stronger conclusion has a stronger premise; this is not an unconditional strengthening of the theorem in \S\ref{sec:unconditional}.
+
+\begin{theorem}[Algebraic-independence reduction; machine-verified]\label{thm:ai-reduction}
+Assume $e$ and $\pi$ are algebraically independent over $\Q$. Then all four elementary combinations
+\[
+e+\pi,\qquad e-\pi,\qquad e\cdot\pi,\qquad e/\pi
+\]
+are transcendental over $\Q$.
+\end{theorem}
+
+The conclusion under this stronger hypothesis is stronger than the conclusion of Theorem~\ref{thm:vieta} (``at least one of $e+\pi$, $e\pi$ is transcendental''): it closes \emph{all four} combinations at once, at the cost of upgrading the hypothesis from the separate transcendence of $e$ and $\pi$ to their algebraic independence---a statement essentially equivalent to the Schanuel instance needed for the problem.
+
+\paragraph{Proof mechanism (formalized).} In \texttt{EpiFormal/\allowbreak{}AlgebraicIndependence.lean} we argue by contradiction. If a combination $c=f(e,\pi)$ were algebraic, let $m\in\Q[T]$ be a nonzero annihilating polynomial, $m(c)=0$. For the sum, difference, and product we substitute $T\mapsto X_0\pm X_1$ or $X_0X_1$ into $m$, obtaining a bivariate polynomial $P\in\Q[X_0,X_1]$ with $P(e,\pi)=m(c)=0$; $P\neq0$ because each substitution map admits a left inverse (evaluation at $(X,0)$ or $(X,1)$, reducing to the univariate identity), hence is injective. For the quotient $e/\pi$ we use homogenization: $P=\operatorname{homogenize}(m,\deg m)$ satisfies $P(e,\pi)=\pi^{\deg m}\,m(e/\pi)=0$ and $P\neq0$. In every case algebraic independence (injectivity of $\operatorname{aeval}_{(e,\pi)}$) forces $P=0$, a contradiction. The four theorems are named \texttt{transcendental\_\allowbreak{}add/\allowbreak{}sub/\allowbreak{}mul/\allowbreak{}div\_\allowbreak{}of\_\allowbreak{}algebraicIndependent}.
+
+\paragraph{Axiom audit and honest status.} The kernel audit shows that all four theorems depend only on Lean's base axioms, with \emph{no} \texttt{sorryAx} and---notably---\emph{no} dependence on \texttt{e\_\allowbreak{}transcendental} or \texttt{pi\_\allowbreak{}transcendental},\allowbreak  since algebraic independence is a strictly stronger hypothesis that already implies both. \textbf{The premise is open:} the algebraic independence of $e$ and $\pi$ is not proved, and this module does not prove it. The result is a verified \emph{conditional} reduction that pins down precisely which single unproved hypothesis would close the four-combination transcendence question. This isolates one sufficient input. It does not prove that such an input is necessary, exclude other series or approximation constructions, or establish an equivalence between constructing an auxiliary function and proving Schanuel's conjecture; the memo's ``two-type auxiliary construction'' diagnosis is a heuristic judgment, not a proved equivalence, and must not be used to rule out other methods.
+
+\subsection{The escape program and a machine-certified boundary}\label{sec:lean-escape}
+
+The review of the source and proofs redirected the effort from adding further equivalent criteria to proving that $\pi$ \emph{escapes} the structure forced by rationality. Write $D_j(B):=T_j+B\,C_j$ with $M_j=\operatorname{round}(BQ_j\pi)$, $T_j=M_jQ_{j+1}-M_{j+1}Q_j$, $C_j=P_jQ_{j+1}-P_{j+1}Q_j=2(-1)^{j+1}$. By the three-way equivalence of \S\ref{sec:lean-m6}, $B(e+\pi)\in\Z$ iff $D_j(B)=0$ eventually, and also iff it vanishes infinitely often. Negating, the cleanest form of the target is
+\[
+e+\pi\notin\Q \iff \forall B\ge1,\ \exists N,\ \forall j\ge N:\quad D_j(B)\neq0,
+\]
+i.e.\ for every $B$ all sufficiently large $j$ are mismatches. The apparently weaker form $\forall B\ge1,\forall N,\exists j\ge N,\ D_j(B)\neq0$ (infinitely many mismatches) is \emph{equivalent}, not merely necessary: if it held while $D_j(B)=0$ infinitely often, the implication (a)$\Rightarrow$(b) would force $D_j(B)=0$ eventually, a contradiction. Thus an alternating match/mismatch sequence is \emph{not} a counterexample. In \texttt{EpiFormal/Escape.lean} we formalize the exact identity
+\[
+D_j(B)=\varepsilon_j Q_{j+1}-\varepsilon_{j+1}Q_j+B\,C_j,\qquad \varepsilon_j=M_j-BQ_j\pi,\quad|\varepsilon_j|\le\tfrac12,
+\]
+together with both equivalent restatements: \texttt{irrational\_iff\_inf\_mismatch} states the eventual form $\forall B\ge1,\forall^{\mathsf f}j,\ D_j(B)\neq0$, and \texttt{inf\_mismatch\_iff\_eventually} proves the equivalence of the eventual and infinitely-often forms for each $B$. These are kernel-checked (base axioms plus \texttt{deltaSel\_tendsto\_zero}); the right-hand non-vanishing is \emph{not} proved. Proving it does not reduce the logical difficulty of the open problem.
+
+\paragraph{A machine-certified boundary.} The review stressed that the generic conditions alone cannot exclude eventual matching. We now \emph{certify} this in \texttt{EpiFormal/EscapeBoundary.lean}: replacing $\pi$ by $\pi'=A/B-e$, all generic conditions (the $Q_j$ recurrence, $|\varepsilon|\le\tfrac12$, $\delta_j\to0$) still hold, yet
+\[
+\exists N,\ \forall j\ge N:\quad D'_j=0
+\]
+(\texttt{boundary\_eventual\_match}, kernel-checked, depending only on \texttt{deltaSel\_tendsto\_zero} and base axioms). Hence any argument using only the generic recurrence and rounding \emph{cannot} prove irrationality; the final step must inject a property specific to $\pi$. Numerically (mpmath, 300 digits) the identity holds to $<10^{-157}$ over $205$ pairs $(B,j)$, the true $\pi$ gives $D_j\neq0$ in $100\%$ of $j=0..40$ for $B=1..5$, and the counterexample $\pi'=6-e$ matches from $N=1$. These are corroborations, not proofs.
+
+\paragraph{What is missing (three-route survey).} Parallel literature surveys locate the same gap: a \emph{subsequence lower bound / distribution} fact about $\pi$ that no current tool supplies. The irrationality-measure upper bound $\mu(\pi)\le7.1032$ controls worst-case approximation over \emph{all} large denominators and gives no lower bound on the sparse subsequence $\|BQ_j\pi\|$; it is logically compatible with eventual matching. The sign/size route would require $Q_{j+1}\gg Q_j^{5.1}$ (super-polynomial growth of $e$'s partial quotients), which is unproved and not believed. The factorial route needs $\{n!\pi\}\le\tfrac12$ infinitely often, a distribution fact of the same difficulty as $\{(3/2)^n\}$; note the criterion is an equivalence, so proving the limit $=1$ would imply \emph{rationality}---one must \emph{exclude} it. Each route is an independent exploration line; formalizing a criterion does not bring the proof closer.
+
+\subsection{The \texorpdfstring{$D_j(B)$}{Dj(B)} reduction to a lattice-escape target}\label{sec:lean-reduction}
+
+The escape program of \S\ref{sec:lean-escape} restates the target but does not advance it. We now record a \emph{quantitative reduction} that isolates the missing input into a single, precisely stated subproblem. This is a change of target, \emph{not} a reduction in difficulty; the terminal subproblem is of the same family as the original open problem. The full chain is kernel-checked in \texttt{EpiFormal/EscapeReduction.lean} (seven declarations, no \texttt{sorryAx}; the only non-base axiom is \texttt{deltaSel\_tendsto\_zero}, inherited from the classification gap).
+
+\paragraph{The reduction chain.} Retain the notation of \S\ref{sec:lean-escape}. The pivotal identity $D_j(B)=\varepsilon_jQ_{j+1}-\varepsilon_{j+1}Q_j+BC_j$ with $|\varepsilon_j|\le\tfrac12$ and $|C_j|=2$ gives, on a match $D_j(B)=0$,
+\[
+|\varepsilon_j(B)|\le\frac{\tfrac12Q_j+2B}{Q_{j+1}}
+\qquad\text{(\texttt{match\_eps\_bound}).}
+\]
+Since $Q_{j+1}=(4j+2)Q_j+Q_{j-1}$ with $Q_{j-1}/Q_j\to0$ (\texttt{Qsel\_pred\_div\_tendsto\_zero}), one has $jQ_j/Q_{j+1}\to\tfrac14$ (\texttt{jQsel\_div\_Qsel\_succ\_tendsto}), hence
+\[
+j\,\frac{\tfrac12Q_j+2B}{Q_{j+1}}\longrightarrow\tfrac18
+\qquad\text{(\texttt{sharp\_bound\_tendsto}).}
+\]
+In particular the right-hand side is eventually $\le\tfrac15$. Combining with the match bound, if $D_j(B)=0$ eventually then $j\,\|BQ_j\pi\|\le\tfrac15$ eventually (\texttt{match\_eventually\_eps\_le\_fifth}), where we use $\|BQ_j\pi\|=|\varepsilon_j(B)|$ (the sign convention of \texttt{Classification.eps} is opposite to \texttt{Escape.eps}, but the absolute values agree).
+
+\paragraph{Collision with the classification gap.} The kernel-checked Corollary~3 of the classification (\texttt{Classification.corollary3\_gap}, \S\ref{sec:lean-m6}) states that for $x\notin L:=\Z+\Z\frac{e+1}{2}$ and any $c<\tfrac14$, it is \emph{not} the case that $j\|Q_jx\|\le c$ eventually. Taking $x=B\pi$ and $c=\tfrac15<\tfrac14$, the eventual bound above contradicts $B\pi\notin L$. Hence
+\[
+\forall B\ge1:\quad D_j(B)=0\ \text{eventually}\ \Longrightarrow\ B\pi\in L
+\qquad\text{(\texttt{reduction\_to\_lattice}).}
+\]
+Equivalently, with the open target
+\[
+\mathrm{P1}:\qquad \forall B\ge1,\quad B\pi\notin L,
+\]
+one has $\mathrm{P1}\Rightarrow e+\pi\notin\Q$ (\texttt{P1\_imp\_irrational}, a \emph{conditional} theorem: its premise P1 is not proved).
+
+\paragraph{Honest boundary (P1 is not easier).} Expanding $B\pi\in L$ gives $2B\pi-ne\in\Z$ for some $m,n\in\Z$. The case $n=0$ forces $\pi\in\Q$, already excluded; the case $n\ne0$ is an integral linear relation among $\{1,e,\pi\}$ with nonzero $\pi$-coefficient. The original problem $e+\pi\in\Q$ is itself the subfamily $n=-2B$ of this relation family. \emph{No known theorem excludes general integral linear relations among $\{1,e,\pi\}$.} Thus the reduction relocates the gap into P1 without lowering its difficulty; its value is (i) it connects the target to the linear-forms / Baker / Lindemann--Weierstrass literature interface, and (ii) any future lower bound on $|2B\pi-ne-k|$ can be fed back through the quantitative chain. The boundary test of \S\ref{sec:lean-escape} applies verbatim: every step of the chain holds for $\pi'=A/B-e$ as well, so the chain alone produces no contradiction; the contradiction can only come from P1, which fails for $\pi'$. This is precisely the red line: the reduction isolates the missing $\pi$-specific input into P1, it does not supply it.
+
+\paragraph{Numerical baseline (corroboration, not proof).} A rebuilt baseline (\texttt{compute\_dj.py}, mpmath, dynamic precision $\mathrm{digits}(Q_j)+500$) verifies over $B=1..20$, $j=1..80$ (1600 pairs): the recurrence and determinant $C_j=2(-1)^{j+1}$ hold termwise; $D_j(B)=0$ occurs $0$ times for the true $\pi$; the identity holds to relative error $<10^{-100}$; the boundary counterexamples $\pi'=6-e$ ($B=1$) and $\pi'=\tfrac{11}{2}-e$ ($B=2$) match eventually as predicted. The sharp-bound anchor $j(\tfrac12Q_j+2B)/Q_{j+1}$ increases toward $\tfrac18$ (values $0.113,0.119,0.122,0.123$ at $j=5,10,20,40$ for $B=1$). The sign statistic $\operatorname{sgn}(R_j\delta_j)>0$ occurs at ratio $0.42$--$0.48$ over $j=1..200$, $B=1..5$, consistent with no bias (the sign route carries no signal). These are finite computations, not proofs.
+
+\subsection{Feasibility audit of the attack routes (Phase~1 closing record)}\label{sec:feasibility}
+
+Two rounds of parallel reasoning (eight sub-investigations) audited every route we could identify against the precise target isolated above, equivalently $\forall B\ge1,\ \limsup_j j\|BQ_j\pi\|>\tfrac18$. \textbf{None yields an unconditional advance; all confirm the problem is open.} We record the verdicts as a negative-result audit, in the spirit of Yu's no-go audit \cite{Yu2026}.
+
+\paragraph{Round 1 (routes toward P1).}
+\emph{Quantitative gap (2C).} The classification gap is already \emph{uniform}: the quantitative lemma never uses $x\notin L$, which appears only as the terminal contradiction hypothesis. Hence $\limsup_j j\|Q_jx\|\ge\tfrac14$ for all $x\notin L$, independent of $\operatorname{dist}(x,L)$; a continuous $\varphi(\operatorname{dist})$ is unnecessary. The exact sufficient target is the sparse lower bound above. The known $\mu(\pi)\le7.1032$ bound decays to $0$ along the super-exponential $Q_j$ (gap $\sim10^{1010}$ at $j=80$), so it cannot supply the target. \emph{Baker linear forms (2A).} $e$ has no known representation as a logarithm of an algebraic number (asserting otherwise is itself open, tied to $e^e$); the target does not enter Baker's framework; the four/six-exponentials inventory is blocked exactly as Proposition~\ref{prop:four-exp}. \emph{Continued fractions (2B).} No known structural property of $\pi$'s partial quotients combines with the transducer theorem to force a contradiction; numerically the match length is constantly $1$--$2$ and does not grow with precision (no numerical handle). \emph{$\pi$-representations (Stage~3).} Machin/BBP/Chudnovsky produce no usable estimate; only the AGM/Legendre period representation passes the boundary test (``$\pi$ is a period''), but yields merely an interface diagram depending on the expected-false $\pi\in S$ and unreviewed preprints.
+
+\paragraph{Round 2 (fresh angles).}
+\emph{Integral positivity.} Niven/Beukers-type integrals give irrationality or power-type approximation \emph{upper} bounds, never the required subsequence \emph{lower} bound (the Beukers paradigm sends the integral to $0$, the wrong direction). \emph{Nesterenko contradiction mining.} Seven candidate paths from $e+\pi\in\Q$ to a violation of a proved theorem all fail: the proved theorems control exponentials at algebraic points, algebraic-base powers, and the modular triple $\{\pi,e^\pi,\Gamma(1/4)\}$, but \emph{none controls an algebraic relation between $e$ and $\pi$}; the hypothesis falls precisely in this blank. \emph{Period/$E$-$G$ conditional theorems.} We obtain two precise conditional results: $(\pi\notin\mathbf{E})\Rightarrow$ all four combinations transcendental, and $(\mathbf{E}\cap\mathbf{G}=\overline{\Q})\Rightarrow\pi\notin\mathbf{E}$; the weakest-premise order is Schanuel $\Rightarrow(\mathbf{E}\cap\mathbf{G}=\overline{\Q})\Rightarrow(\pi\notin\mathbf{E})\Rightarrow$ P1, with no genuine weakening below P1. The unit conjecture of \cite{FischlerRivoal2026} alone gives no advance (a disjunction that does not close). \emph{Literature scan (2024--2026).} No new result supplies the missing input; even the claimed $\mu(\pi)=2$ \cite{OpenAI2026}, if verified, is non-effective and gives no subsequence lower bound, hence is of the wrong type.
+
+\paragraph{Phase~1 conclusion.} The gap is now precisely localized: a sparse Diophantine lower bound for $\pi$ along the convergent denominators of $e$ (equivalently a linear-form lower bound for $\{1,e,\pi\}$, or $\pi\notin\mathbf{E}$). No current tool supplies it. This audit is a negative result about the examined routes, not an independence theorem. It motivates a Phase~2 pivot to a related, tractable problem: the metric theory (spectral gap and Hausdorff dimension of level sets) of the approximation exponent $\lambda(x)=\limsup_j j\|Q_jx\|$ along the same denominators, where the classification and gap theorems proved here yield genuine new theorems. That work is reported separately.
+
+\begin{thebibliography}{99}
+
+\bibitem{Hermite1873} C.~Hermite, \emph{Sur la fonction exponentielle}, 1873. (Transcendence of $\ee$; as recorded in \cite{KepuTrans}.)
+\bibitem{Lindemann1882} F.~Lindemann, \emph{\"Uber die Zahl $\pi$}, Math.~Ann.~20 (1882), 213--225.
+\bibitem{OEIS} OEIS Wiki, \emph{Pi+e}, \url{https://oeis.org/wiki/Pi\%2Be}. (No nonzero integer pair $m,n$ with $m\pi+n\ee$ of known rationality status.)
+\bibitem{Roth1955} K.~F.~Roth, \emph{Rational approximations to algebraic numbers}, Mathematika 2 (1955), 1--20.
+\bibitem{GS1934} A.~O.~Gelfond and Th.~Schneider, independent solutions of Hilbert's seventh problem, 1934--1935.
+\bibitem{Duke} W.~Duke, \emph{The zeros of the Weierstrass $\wp$-function}, preprint, \url{https://www.math.ucla.edu/~wdduke/preprints/zeros.pdf}. (Statement of Schneider's elliptic theorem.)
+\bibitem{Nesterenko1996} Yu.~V.~Nesterenko, \emph{Modular functions and transcendence questions}, Sb.~Math.~187 (1996), 1319--1348.
+\bibitem{Tijdemann1971} R.~Tijdeman, \emph{On the algebraic independence of certain numbers}, Indag.~Math.~33 (1971), 146--162. (The precise ``at least two of $\ee,\pi,\ee^\pi$'' corollary is not verified from the original; the safe attribution for $\pi,\ee^\pi$ algebraic independence is Nesterenko \cite{Nesterenko1996}.)
+\bibitem{KepuAlgebraic} Science Popularization China, \emph{Algebraic independence}, \url{https://www.kepuchina.cn/article/articleinfo?ar_id=261994}. (Secondary source: six exponentials theorem, non-$U$ facts, weak conditional result.)
+\bibitem{KepuTrans} Science Popularization China, \emph{Transcendental numbers}, \url{https://www.kepuchina.cn/article/articleinfo?ar_id=287693}.
+\bibitem{CNU2024} Z.~Liang and Y.~Wang, \emph{Irrationality measures of several types of irrational numbers}, J.~Capital Normal Univ.~(Nat.~Sci.), 2024. (Theorem 1: $\irr(\ee^r)=2$ for $r\in\Q^*$; Bundschuh's result.)
+\bibitem{MathWorldMeasure} Wolfram MathWorld, \emph{Irrationality Measure}, \url{https://mathworld.wolfram.com/IrrationalityMeasure.html}.
+\bibitem{Alekseyev2011} M.~A.~Alekseyev, \emph{On convergence of the Flint Hills series}, arXiv:1104.5100 (2011). Full text read; Theorems 2, 5, Corollaries 3, 4, 6 verified.
+\bibitem{Bai2026} Y.~Bai, \emph{The irrationality measure of $\pi$ is at most 7.101862832357}, arXiv:2609.11276 (2026). Preprint; abstract verified; local-minimizer claim only.
+\bibitem{CarellaMeasure} N.~A.~Carella, \emph{Irrationality Measure of Pi}, arXiv:1902.08817. Preprint, not accepted; recorded as a negative lead only.
+\bibitem{CarellaEpi} N.~A.~Carella, \emph{The Product $e\pi$ Is Irrational}, arXiv:1706.08394. Preprint, not accepted; public criticism by J.~D'Aurizio on Math StackExchange.
+\bibitem{Panti2017} G.~Panti, \emph{Slow continued fractions, transducers, and the Serret theorem}, arXiv:1706.00698; J.~Number Theory (2018).
+\bibitem{Raney1973} G.~N.~Raney, \emph{On continued fractions and finite automata}, Math.~Ann.~206 (1973), 265--283.
+\bibitem{Baker} A.~Baker, \emph{Transcendental Number Theory}, Cambridge, 1975. (Linear forms in logarithms; Fields Medal 1970.)
+\bibitem{Bertolin2026} C.~Bertolin, \emph{Algebraic independence of the exponential and Weierstrass $\wp$-functions}, arXiv:2609.15294 (2026). Preprint; abstract, introduction, and proof opening read. Published precursor: arXiv:1905.07247, J.~Pure Appl.~Algebra 224 (2020) 106396.
+\bibitem{HuberWustholz2022} A.~Huber and G.~W\"ustholz, \emph{Transcendence and Linear Relations of $1$-Periods}, Cambridge Tracts in Mathematics 227, Cambridge Univ.~Press, 2022.
+\bibitem{MathWorldFlint} Wolfram MathWorld, \emph{Flint Hills Series}, \url{https://mathworld.wolfram.com/FlintHillsSeries.html}.
+\bibitem{FormalConjectures} google-deepmind/formal-conjectures, issue \#3484, \emph{Convergence of the Flint Hills series}, closed 2026-03-17; Lean statement in repository; formalizability rating 1/5.
+\bibitem{Meiburg2022} A.~Meiburg, \emph{Bounds on Irrationality Measures and the Flint-Hills Series}, arXiv:2208.13356 (2022). Preprint (math.NT); full text parsed and proof structure verified (sparsity lemma, partition argument, $f(\mu)$ algebra recomputed).
+\bibitem{Powers2025} M.~R.~Powers, \emph{On the Algebraic Independence of a Set of Generalized Constants}, arXiv:2508.12123. Preprint.
+\bibitem{SchanuelWiki} Wikipedia, \emph{Schanuel's conjecture}, \url{https://en.wikipedia.org/wiki/Schanuel\%27s_conjecture}.
+\bibitem{MPT2019} N.~Mok, J.~Pila, J.~Tsimerman, \emph{Ax-Schanuel for Shimura varieties}, 2019; Bakker--Tsimerman extension to variations of polarized Hodge structures. (Media sources: thepaper.cn, weixin; flagged.)
+\bibitem{CambridgeFF} \emph{Schanuel's conjecture for non-isoconstant elliptic curves over function fields}, Cambridge volume (Model Theory with Applications to Algebra and Analysis). (Periods counterexample; Riemann--Legendre relations quadratic.)
+\bibitem{MO33817} MathOverflow, \emph{Work on independence of $\pi$ and $e$}, question 33817, \url{https://mathoverflow.net/questions/33817}. (Answers verified via API: Schanuel derivation; Zilber program.)
+\bibitem{Waldschmidt2025} M.~Waldschmidt, \emph{Schanuel Property for Elliptic and Quasi-Elliptic Functions}, arXiv:2504.14041. Preprint; almost-all result.
+\bibitem{DLMF23} NIST DLMF, \S23.2, \emph{Weierstrass Elliptic Functions: Definitions and Periodic Properties}, \url{https://dlmf.nist.gov/23.2}. (Quasi-periodicity verified; exact Legendre constants not extracted.)
+\bibitem{Dan2026} Y.~Dan, \emph{Critical convergence and Hausdorff measures for generalized Flint Hills series}, arXiv:2609.12338 (2026). Preprint; abstract verified; confirms classical Flint Hills undecided.
+\bibitem{Conrad} K.~Conrad, \emph{Irrationality of $\pi$ and $e$}, lecture notes, \url{https://kconrad.math.uconn.edu/blurbs/analysis/irrational.pdf}.
+\bibitem{Zhu2024} Y.~Zhu, \emph{Transcendental Numbers: Algebraic Independence}, USTC Press, 2024. (Chinese monograph.)
+\bibitem{Brownawell1974} W.~D.~Brownawell, \emph{The algebraic independence of certain numbers related by the exponential function}, J.~Number Theory 6 (1974), 22--31. (Source of the $\ee^{\pi^2}$ conditional result.)
+\bibitem{Lang1966} S.~Lang, \emph{Introduction to Transcendental Numbers}, Addison-Wesley, 1966; and \emph{Nombres transcendants}, S\'eminaire Bourbaki 1964/66, exp.~305. (Six exponentials theorem.)
+\bibitem{Ramachandra1968} K.~Ramachandra, \emph{Contributions to the theory of transcendental numbers (I)}, Acta Arith.~14 (1968), 65--72. (Six exponentials theorem.)
+\bibitem{BertolinMotives} C.~Bertolin, \emph{Algebraic independence of the exponential and Weierstrass $\wp$-functions} / 1-motive period program, arXiv:2509.08700 (2025). Preprint; CM elliptic + torsion case proved, does not reach $(1,i\pi)$.
+\bibitem{Hetyei2014} G.~Hetyei, \emph{Hurwitzian continued fractions}, SIAM J.~Discrete Math.~28 (2014). (Peer-reviewed secondary source for Hurwitz's theorem, Perron \S33, and the Hurwitz expansion of $\ee$; arXiv:1211.2494.)
+\bibitem{FischlerRivoal2016} S.~Fischler and T.~Rivoal, \emph{Arithmetic theory of $E$-operators}, J.~\'Ec.~polytech.~Math.~3 (2016), 31--65. (Defines $\mathbf{E}$, $\mathbf{G}$; units contain $\overline{\Q}^*$ and $\exp(\overline{\Q})$; arXiv:1406.5995.)
+\bibitem{FischlerRivoal2014} S.~Fischler and T.~Rivoal, \emph{On the values of $G$-functions}, Comment.~Math.~Helv.~89 (2014). ($\pi,1/\pi\in\mathbf{G}$; arXiv:1103.6022.)
+\bibitem{FischlerRivoal2024} S.~Fischler and T.~Rivoal, \emph{On the linear independence of values of $G$-functions}, J.~Number Theory 261 (2024). (Conjecture $\mathbf{E}\cap\mathbf{G}=\overline{\Q}$; arXiv:2301.13518.)
+\bibitem{FischlerRivoal2026} S.~Fischler and T.~Rivoal, \emph{The ring of values of $E$-functions is not a field}, arXiv:2610.16603 (2026). Preprint, unreviewed; $\mathbf{E}$ not a field, unit conjecture $\alpha e^\beta$.
+\bibitem{Hildebrand2024} A.~Hildebrand et al., \emph{On the continued fraction digits of $\pi$}, arXiv:2403.16761 (2024). (``We know almost nothing about the statistics of the continued fraction digits of $\pi$''; unboundedness open.)
+\bibitem{Yu2026} R.~Yu, \emph{A no-go audit for $e+\pi$}, arXiv:2606.17303 (2026). Preprint, unreviewed; equivalence of $e+\pi\in\Q$ with ceiling recurrence, factorial-Cantor digit condition, divisibility criterion; 145 candidates reduce to 133 primitive records, no non-circular Ap\'ery mechanism.
+\bibitem{OpenAI2026} OpenAI, \emph{The irrationality exponent of $\pi$ is 2}, preprint dated 2026-09-24, repository \texttt{openai/math} (public initial commit 2026-10-06), with Lean formalization \texttt{lean/OAI/NumberTheory/PiExponent/}. Claim $\irr(\pi)=2$ and \texttt{flint\_hills\_summable}; as of October 2026 no independent rebuild or specialist verification reported (MathWorld, VibeMathed ``Candidate, review pending''). Unreviewed claim; not independently compiled here.
+
+\end{thebibliography}
+
+\appendix
+
+\section{Theorem--source--application audit trail}\label{app:audit}
+
+This is a \emph{summary} audit table of the principal external facts, with verification method and application sites; it is not exhaustive. The declaration-level audit and the build/declaration ledger are in the archive as \texttt{LEMMA\_AUDIT.md} and \texttt{Master\_Control\_Ledger.md} (the earlier ``50-entry ledger'' is superseded by these files). Discipline: preprints are conditional; weak (popular-science) sources are flagged and, where possible, replaced by primary sources in the bibliography.
+
+\begin{center}
+\footnotesize\begin{tabularx}{\textwidth}{@{}p{0.19\textwidth}p{0.17\textwidth}p{0.27\textwidth}X@{}}
+\toprule
+Fact & Source & Verification & Applications \\
+\midrule
+$\ee,\pi$ transcendental & \cite{Hermite1873,Lindemann1882,KepuTrans} & secondary, cross-checked & Thms.~\ref{thm:vieta},\ref{thm:four},\ref{thm:schanuel-consequence} \\
+Hermite--Lindemann / LW & \cite{Lindemann1882,Bertolin2026} & restatement in read paper & \S\ref{sec:obstructions}.3; Prop.~\ref{prop:four-exp} \\
+Gelfond--Schneider & \cite{GS1934} & encyclopedia entry & Thm.~\ref{thm:epi} \\
+Schneider elliptic & \cite{Duke} & direct quotation & Prop.~\ref{prop:scaling} remark \\
+$\irr(\ee^r)=2$ & \cite{CNU2024} & theorem quotation & Lem.~\ref{lem:mue}, Thm.~\ref{thm:measure-reduction} \\
+$\irr(\pi)$ bounds history & \cite{MathWorldMeasure,Alekseyev2011} & table + full text & \S\ref{sec:new}.1 remark; Thm.~\ref{thm:translation} \\
+Serret / Raney & \cite{Panti2017,Raney1973} & abstract / publisher record & Thm.~\ref{thm:cf} \\
+Alekseyev criteria & \cite{Alekseyev2011} & full-text close reading & Thm.~\ref{thm:alekseyev}; correction \\
+Meiburg criteria & \cite{Meiburg2022} & proof structure verified; Flint Hills case machine-verified & Thms.~\ref{thm:meiburg},\ref{thm:flint} (classical axioms listed) \\
+Bertolin theorem & \cite{Bertolin2026} & abstract+intro+proof opening & Cor.~\ref{cor:bertolin} (conditional) \\
+Schanuel statement/status & \cite{SchanuelWiki,MO33817} & wiki + API-verified answers & Thms.~\ref{thm:schanuel},\ref{thm:schanuel-consequence} \\
+Nesterenko / Tijdeman & \cite{Nesterenko1996,KepuAlgebraic} & bibliography + secondary & \S\ref{sec:unconditional}.5; \S\ref{sec:computation}.5 \\
+non-$U$ facts & \cite{KepuAlgebraic} & secondary & \S\ref{sec:obstructions}.6 \\
+Ax--Schanuel line & \cite{MPT2019,CambridgeFF} & media (flagged) + volume & \S\ref{sec:conditional}.2 \\
+Zilber program & \cite{MO33817} & accepted answer via API & \S\ref{sec:conditional}.3 \\
+Integral identities & sympy & symbolic, 12/12 PASS & \S\ref{sec:obstructions}.5; \S\ref{sec:computation}.1 \\
+Interval certificates & mpmath iv & 450-digit, reproducible & \S\ref{sec:computation}.2 \\
+Chowla--Selberg identity & numerical only & 120-digit, literature unverified & \S\ref{sec:computation}.5 (flagged) \\
+Legendre relation & \cite{DLMF23} & framework verified, constants not & \S\ref{sec:conditional}.4 (flagged) \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Correction log: (1) Round 7 corrected the Round 6 attribution of the $\irr(\pi)<5/2$ convergence direction from Alekseyev to Meiburg (secondary-source error caught by primary-source reading); the Round 6 notes carry a permanent correction banner. (2) Round 9: a typesetting artifact in the parsed Meiburg manuscript ($f'$ formula) was not trusted; the derivative was recomputed from the definition of $f$ and matched the paper's conclusion. (3) 2026-11-14: the comparison of $S(10000)=30.31451083$ with the literature's claimed limit $30.3144\dots$ in \S\ref{sec:computation}.4 is withdrawn (positive terms force any finite limit to exceed the partial sum). (4) 2026-11-14: the Alekseyev direction, previously recorded as a research-level density gap (\S\ref{sec:alekseyev}), is closed by the nearest-integer argument of the revised supplement and fully machine-verified (\texttt{alekseyev\_\allowbreak{}bound}); the failed termwise route is preserved as a historical record.
+
+\section{Reproducibility}\label{app:repro}
+
+The authoritative source is \texttt{01\_\allowbreak{}Paper/\allowbreak{}paper.tex}; the PDF is regenerated from it with two passes of \texttt{pdflatex}. The numerical auxiliaries are in \texttt{03\_\allowbreak{}Numerical\_\allowbreak{}Verification/\allowbreak{}}: \texttt{verify\_\allowbreak{}round2.py}, \texttt{verify\_\allowbreak{}round3.py}, \texttt{verify\_\allowbreak{}round4.py}, and \texttt{verify\_\allowbreak{}round6.py}, with \texttt{certificate\_\allowbreak{}round4.json}. Their symbolic or numerical output is not a Lean kernel proof.
+
+The formal project is \texttt{02\_\allowbreak{}Lean\_\allowbreak{}Formalization/\allowbreak{}}, pinned by \texttt{lean-toolchain} and the dependency manifest. From that directory run \texttt{lake build} and \texttt{lake env lean Audit.lean} after installing the pinned toolchain and dependencies. The archive excludes the dependency/build cache. Historical successful builds and axiom audits are reported above; the present editorial and mathematical correction does not change Lean source and does not constitute a fresh complete Lean build. The escape formulations are additionally kernel-checked in \texttt{EpiFormal/Escape.lean} and \texttt{EpiFormal/EscapeBoundary.lean} (Section~\ref{sec:lean-escape}); the numerical escape checks are in \texttt{03\_\allowbreak{}Numerical\_\allowbreak{}Verification/\allowbreak{}escape\_\allowbreak{}numerics.py}. Historical subtask originals and review records are retained separately for provenance; they are not the authoritative revised paper.
+
+\end{document}
+
+

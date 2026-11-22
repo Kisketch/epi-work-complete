@@ -1,0 +1,3 @@
+lake env lean -j 1 OrbitAndFlow.lean: exit 0
+OrbitAndFlow.primeNorm_unitFactor: [propext]
+OrbitAndFlow.pathSlack_telescopes: [propext, Classical.choice, Quot.sound]

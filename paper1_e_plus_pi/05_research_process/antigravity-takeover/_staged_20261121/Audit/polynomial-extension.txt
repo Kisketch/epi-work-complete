@@ -1,0 +1,133 @@
+warning: mathlib: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\mathlib
+warning: plausible: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\plausible
+warning: LeanSearchClient: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\LeanSearchClient
+warning: importGraph: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\importGraph
+warning: proofwidgets: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\proofwidgets
+warning: aesop: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\aesop
+warning: Qq: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\Qq
+warning: batteries: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\batteries
+warning: Cli: repository has local changes:
+  C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\.lake/packages\Cli
+'TrichotomyAndPolyExtension.xPlus_mem_signedExactLimitSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TrichotomyAndPolyExtension.neg_xPlus_mem_signedExactLimitSet' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.add_latticeL_mem_signedExactLimitSet' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.signedExactLimitSet_pos_eq_coset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TrichotomyAndPolyExtension.signedExactLimitSet_neg_eq_coset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TrichotomyAndPolyExtension.signedExactLimitSet_zero_eq_latticeL' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.signedExactLimitSet_empty_of_not_quarter_int' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.trichotomy_part_iii_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_Q_ge_factorial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_pow_div_Q_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_Q_eq_lincomb' depends on axioms: [propext, Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_casorati' depends on axioms: [propext, Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.alphaU_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.alphaV_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_alpha_linear_relation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.theta_irrational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_dist_le_of_mem_latticePoly' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.polyWeightedExponent_eq_zero_of_mem_latticePoly' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.polyApprExponent_eq_zero_tfae' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.polyApprExponent_eq_zero_iff_mem_latticePoly' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.polyApprExponent_eq_zero_iff_defect_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_signed_defect_approx' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_abs_defect_approx' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_jr_mul_eps_tendsto_of_defect_const' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.polyApprExponent_xPlusPoly' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_spectral_gap_open_interval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_levelSet_eq_on_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_levelSet_below_eq_lattice' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_signed_exact_limit_iff_defect_const' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.xPlusPoly_mem_signedExactLimitSet' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.neg_xPlusPoly_mem_signedExactLimitSet' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_sub_mem_latticePoly_of_same_signed_limit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_add_latticePoly_mem_signedExactLimitSet' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_trichotomy_part_iii_complete' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_supercritical_levelSet_eq_lattice' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_supercritical_dimH_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_supercritical_empty_neg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_dimH_levelSet_finite' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_dimH_finiteLevel_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_volume_finiteLevel_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_ae_apprExponent_eq_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_volume_infiniteLevel_Icc' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_dimH_infiniteLevel_inter_Icc_eq_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_dimH_infiniteLevel_eq_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TrichotomyAndPolyExtension.PolyRecData.poly_range_apprExponent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

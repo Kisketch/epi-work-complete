@@ -1,0 +1,519 @@
+import EpiFormal.FiniteStateTail
+import EpiFormal.PolyWeightedLower
+import EpiFormal.PolyWeightedUpper
+import EpiFormal.HermiteResiduePeriod
+import EpiFormal.PolyGaugeAndPhaseTransition
+import EpiFormal.GaugeLiminfComplete
+import EpiFormal.FiniteStateGauge
+import EpiFormal.Elementary
+import EpiFormal.Measure
+import EpiFormal.Series
+import EpiFormal.FlintHills
+import EpiFormal.MeiburgConvergence
+import EpiFormal.Alekseyev
+import EpiFormal.EulerConvergents
+import EpiFormal.AdjacentWitness
+import EpiFormal.SignedCriterion
+import EpiFormal.Classification
+import EpiFormal.Spectrum
+import EpiFormal.SignedClusters
+import EpiFormal.DefectFibres
+import EpiFormal.FactorialCriterion
+import EpiFormal.Escape
+import EpiFormal.EscapeBoundary
+import EpiFormal.EscapeReduction
+import EpiFormal.SpectralGap
+import EpiFormal.DimHCore
+import EpiFormal.DimHFinite
+import EpiFormal.DeltaReduction
+import EpiFormal.PadeODE
+import EpiFormal.PadeIntegral
+import EpiFormal.PadeDeriv
+import EpiFormal.PadeBoundary
+import EpiFormal.PadeRecurrence
+import EpiFormal.DeltaSign
+import EpiFormal.ThresholdAttained
+import EpiFormal.QuarterPointCore
+import EpiFormal.QuarterPointTail
+import EpiFormal.QuarterPointFinal
+import EpiFormal.WeightedFiber
+import EpiFormal.WeightedDimHCore
+import EpiFormal.WeightedUpper
+import EpiFormal.WeightedFinal
+import EpiFormal.WeightedLower
+import EpiFormal.WeightedCantor
+import EpiFormal.WeightedExactDim
+import EpiFormal.GoldenOrbitRigidity
+import EpiFormal.FullSpectrumDiscrete
+import EpiFormal.GoldenOrbitB2Rigidity
+import EpiFormal.GaugeNull
+import EpiFormal.UnweightedCorrection
+import EpiFormal.GaugeExact
+import EpiFormal.WindowAndResidueCore
+import EpiFormal.GaugeCircle
+import EpiFormal.GeneralEndpointRigidity
+import EpiFormal.TrichotomyAndPolyExtension
+
+-- 公理审计：仅允许 Axioms/Measure 清单公理 + Lean 基础公理。
+-- meiburg_criterion 已由 F2 证明为定理（不再是公理）；全项目零 sorry。
+#print axioms vieta_identity
+#print axioms quadratic_roots_algebraic
+#print axioms at_least_one_transcendental
+#print axioms four_numbers_at_most_one_rational
+#print axioms mu0_identity
+#print axioms tail_summable
+#print axioms tail_recurrence
+#print axioms irrMeasure_neg
+#print axioms irrMeasure_add_rat
+#print axioms irrMeasure_mul_rat
+#print axioms irrMeasure_inv
+#print axioms theoremA_sum
+#print axioms theoremA_diff
+#print axioms theoremA_prod
+#print axioms theoremA_quot
+#print axioms proposition_H'
+#print axioms meiburg_criterion
+#print axioms flint_hills_diverges_bound
+#print axioms flint_hills_converges_of_mu_lt
+#print axioms circle_spacing
+#print axioms dyadic_block_count
+#print axioms block_sum_bound
+#print axioms sin_nat_ne_zero
+#print axioms sin_eventual_lower
+#print axioms abs_sub_mul_pi_factor
+-- T3 最近整数论证（2026-11-14 修订包更正 1 的形式化）
+#print axioms nearest_int_le_four_mul
+#print axioms nearest_int_tendsto_atTop
+#print axioms term_tendsto_eventually_gt
+#print axioms alekseyev_eventual_lower
+#print axioms apprPairs_finite_of_flintHills
+#print axioms alekseyev_bound
+-- 部分联合编译（2026-11-14，A 地基 + F 双指标 + H 符号判据；用户授权）
+-- A 地基（EulerConvergents）
+#print axioms Qsel_pos
+#print axioms Psel_rec
+#print axioms Qsel_rec
+#print axioms sel_determinant
+#print axioms Psel_odd
+#print axioms Qsel_odd
+#print axioms Qsel_strictMono
+#print axioms Qsel_double
+#print axioms Qsel_succ_coprime
+#print axioms Psel_div_Qsel_tendsto_exp
+#print axioms Qsel_tendsto_atTop
+-- F 双指标三等价（AdjacentWitness）
+#print axioms AdjacentWitness.theorem11_three_equiv
+#print axioms AdjacentWitness.pair_iff
+#print axioms AdjacentWitness.limit_integer
+#print axioms AdjacentWitness.quantitative_bound
+#print axioms AdjacentWitness.quantitative_bound_succ
+#print axioms AdjacentWitness.hpos_eventually_mismatch
+-- H 符号判据（SignedCriterion）
+#print axioms EpiFormalH.proposition3_signed_criterion
+#print axioms EpiFormalH.proposition3_forward
+#print axioms EpiFormalH.proposition3_converse
+-- 完整联合编译（2026-11-14，B/C/D/E/G 归一并入；用户授权「全部进行完毕」）
+-- B 分类格 + Cor3 间隙（Classification）
+#print axioms Classification.theorem2_classification
+#print axioms Classification.corollary3_gap
+#print axioms Classification.propagate
+#print axioms Classification.sel_determinant
+-- C 有限谱（Spectrum，无公理）
+#print axioms CSpectrum.theorem6_a
+#print axioms CSpectrum.theorem6_b
+#print axioms CSpectrum.lemma5_four_S_integer
+#print axioms CSpectrum.Qsel_pos
+-- D 符号聚类（SignedClusters，定理7/8不依赖deltaSel）
+#print axioms SignedClusters.theorem7_cluster_set
+#print axioms SignedClusters.theorem7_finite
+#print axioms SignedClusters.theorem8_realization
+-- E 缺陷尾 + 双射（DefectFibres，deltaSel_ne_zero用白名单e_transcendental）
+#print axioms DefectFibres.theorem9_tail_iff
+#print axioms DefectFibres.corollary10_injective
+#print axioms DefectFibres.finer_scale_ratio
+#print axioms DefectFibres.control_example
+#print axioms DefectFibres.deltaSel_ne_zero
+-- G 阶乘判据（FactorialCriterion，无公理）
+#print axioms FactorialCriterion.factorial_criterion
+#print axioms FactorialCriterion.tFrac_bounds
+#print axioms FactorialCriterion.recurrence_u
+
+#print axioms Escape.irrational_iff_inf_mismatch
+#print axioms Escape.D_eq_eps
+#print axioms EscapeBoundary.boundary_eventual_match
+#print axioms Escape.inf_mismatch_iff_eventually
+-- Dj 归约链（EscapeReduction，2026-11-15；D2-1~D2-6，仅 deltaSel_tendsto_zero + 基础公理）
+#print axioms EscapeReduction.match_eps_bound
+#print axioms EscapeReduction.Qsel_pred_div_tendsto_zero
+#print axioms EscapeReduction.jQsel_div_Qsel_succ_tendsto
+#print axioms EscapeReduction.sharp_bound_tendsto
+#print axioms EscapeReduction.match_eventually_eps_le_fifth
+#print axioms EscapeReduction.reduction_to_lattice
+#print axioms EscapeReduction.P1_imp_irrational
+-- 第二阶段：谱隙与水平集维数（SpectralGap，2026-11-15）
+#print axioms SpectralGap.apprExponent_eq_zero_iff
+#print axioms SpectralGap.spectral_gap
+#print axioms SpectralGap.levelSet_below_eq_lattice
+#print axioms SpectralGap.latticeL_countable
+#print axioms SpectralGap.dimH_levelSet_below
+-- 第二阶段维数零覆盖论证核心引理（DimHCore，2026-11-16，仅基础公理）
+#print axioms DimHCore.Qsel_ge_factorial
+#print axioms DimHCore.Qsel_succ_le
+#print axioms DimHCore.fiber_card_le
+-- 第二阶段 T-finite 组装（DimHFinite，2026-11-18）
+-- 覆盖论证核心：仅基础公理
+#print axioms DimHFinite.card_survSet_le
+#print axioms DimHFinite.centerOf_mem_survSet
+#print axioms DimHFinite.tailSet_cover
+#print axioms DimHFinite.tendsto_contentBound
+#print axioms DimHFinite.hausdorffMeasure_tailSet_zero
+#print axioms DimHFinite.dimH_tailSet_zero
+-- 周期性与最终定理：dimH_levelSet_finite 额外依赖两条 deltaSel 公理（OBL-5，经由 c<1/4 分支）
+#print axioms DimHFinite.apprExponent_add_intCast
+#print axioms DimHFinite.levelSet_subset_iUnion_tailSet
+#print axioms DimHFinite.dimH_levelSet_finite
+-- OBL-5 第一步：δ 两公理 → 单一符号交替命题的代数归约（DeltaReduction，2026-11-18，仅基础公理）
+#print axioms DeltaReduction.deltaSel_rec
+#print axioms DeltaReduction.cross_identity
+#print axioms DeltaReduction.abs_sum_eq_two
+#print axioms DeltaReduction.abs_deltaSel_lt_of_sign
+#print axioms DeltaReduction.deltaSel_tendsto_zero_of_sign
+-- OBL-5 第二步：Padé 原函数 ODE 与积分表示（PadeODE + PadeIntegral，2026-11-18，仅基础公理）
+#print axioms padéR_ode
+#print axioms PadeIntegral.pade_integral_repr
+-- OBL-5 完成：δ 两条原公理已证为定理（DeltaSign，2026-11-18，仅基础公理）
+#print axioms padéP_second_deriv
+#print axioms padeI_recurrence
+#print axioms DeltaSign.E_eq_I
+#print axioms DeltaSign.I_pos
+#print axioms DeltaSign.deltaSignAlternation_proved
+#print axioms DeltaSign.deltaSel_tendsto_zero_proved
+#print axioms DeltaSign.abs_deltaSel_lt_proved
+-- OBL-2 解决：阈值 1/4 可达（显式构造点 x0，2026-11-18，仅基础公理）
+#print axioms ThresholdAttained.apprSeq_tendsto_quarter
+#print axioms QuarterPointFinal.eps_bound
+#print axioms QuarterPointFinal.round_eq_M
+#print axioms QuarterPointFinal.defect_eventually_one
+#print axioms QuarterPointFinal.lambda_x0_eq_quarter
+-- OBL-3a 关键零件：加权分支上界（j^{1−α} 标度，2026-11-18，仅基础公理）
+#print axioms WeightedFiber.fiber_card_weighted_le
+-- OBL-3a 完全闭合：加权相变上界 dimH{Λ_α≤c}≤1−α（2026-11-18，仅基础公理）
+#print axioms WeightedDimH.card_wsurvSet_le
+#print axioms WeightedUpper.dimH_wtailSet_le
+#print axioms WeightedFinal.dimH_levelSetα_le
+-- OBL-3b 关键零件：分支下界（Frostman 必需，2026-11-18，仅基础公理）
+#print axioms WeightedLower.width_ge
+#print axioms WeightedLower.fiber_card_weighted_ge_scale
+-- OBL-3b 几何零件：同级区间分离（2026-11-18，仅基础公理）
+#print axioms WeightedCantor.winterv_disjoint
+-- 方向 1：黄金比轨道范数奇偶刚性与定理 B1 核心代数界（2026-11-20，仅基础公理）
+#print axioms GoldenOrbitRigidity.mobius_error_identity
+#print axioms GoldenOrbitRigidity.zphiNorm_even_iff
+#print axioms GoldenOrbitRigidity.m0_even
+#print axioms GoldenOrbitRigidity.norm_parity_rigidity_identity
+#print axioms GoldenOrbitRigidity.spectral_gap_constants
+#print axioms GoldenOrbitRigidity.norm_parity_rigidity_eq_iff
+#print axioms GoldenOrbitRigidity.norm_parity_rigidity_ge_second
+#print axioms GoldenOrbitRigidity.zphiNorm_not_two_three_four
+#print axioms GoldenOrbitRigidity.height_dichotomy
+#print axioms GoldenOrbitRigidity.case1_lower_bound
+#print axioms GoldenOrbitRigidity.case2_sub1_quadratic_ge
+#print axioms GoldenOrbitRigidity.case2_sub2_quadratic_ge
+#print axioms GoldenOrbitRigidity.case2_sub3_quadratic_ge
+#print axioms GoldenOrbitRigidity.second_limit_point_attained_value
+#print axioms GoldenOrbitRigidity.b2_control_model_constant
+-- OBL-3b 完全闭合：精确极限集与加权子水平集精确 Hausdorff 维数等式（2026-11-20，仅基础公理）
+#print axioms WeightedExactDim.one_le_hausdorffMeasure_cantorSet
+#print axioms WeightedExactDim.dimH_exactLimitSetα_ge
+#print axioms WeightedExactDim.dimH_exactLimitSetα_eq
+#print axioms WeightedExactDim.dimH_levelSetα_eq
+#print axioms WeightedExactDim.dimH_apprExponentα_eq_zero
+-- 深挖 1：论文二全谱完全离散化、正能级 k/4 精确三分法与一般 (cj+d) 递推（2026-11-20，仅基础公理）
+#print axioms FullSpectrumDiscrete.general_signed_defect_approx
+#print axioms FullSpectrumDiscrete.general_abs_defect_approx
+#print axioms FullSpectrumDiscrete.not_tendsto_open_interval_of_int_approx
+#print axioms FullSpectrumDiscrete.eventually_le_of_int_approx_in_gap
+#print axioms FullSpectrumDiscrete.eventually_eq_int_of_tendsto
+#print axioms FullSpectrumDiscrete.euler_signed_defect_approx
+#print axioms FullSpectrumDiscrete.euler_abs_defect_approx
+#print axioms FullSpectrumDiscrete.spectral_gap_open_interval
+#print axioms FullSpectrumDiscrete.eventually_abs_defect_le_of_apprExponent_le
+#print axioms FullSpectrumDiscrete.levelSet_eq_on_gap
+#print axioms FullSpectrumDiscrete.unsigned_exact_limit_iff_defect_binary
+#print axioms FullSpectrumDiscrete.signed_exact_limit_iff_defect_const
+#print axioms FullSpectrumDiscrete.sub_mem_latticeL_of_same_signed_limit
+#print axioms FullSpectrumDiscrete.signed_exact_limit_set_countable
+#print axioms FullSpectrumDiscrete.dimH_signed_exact_limit_set_zero
+-- 深挖 2：论文一有理端点 p/q 范数同余刚性与 B=2 对照模型精确值及第二极限点（2026-11-20，仅基础公理）
+#print axioms GoldenOrbitB2Rigidity.xi1_mul_xi2Conj
+#print axioms GoldenOrbitB2Rigidity.M_uv_norm_identity
+#print axioms GoldenOrbitB2Rigidity.rational_endpoint_rigidity_identity
+#print axioms GoldenOrbitB2Rigidity.zphiNorm_mod5_identity
+#print axioms GoldenOrbitB2Rigidity.five_dvd_zphiNorm_iff
+#print axioms GoldenOrbitB2Rigidity.m8q_mod4_identity
+#print axioms GoldenOrbitB2Rigidity.alpha8q_mul_gammaConj
+#print axioms GoldenOrbitB2Rigidity.m8q_norm_identity
+#print axioms GoldenOrbitB2Rigidity.m8q_odd
+#print axioms GoldenOrbitB2Rigidity.phi8q_odd_rigidity_identity
+#print axioms GoldenOrbitB2Rigidity.pell_b2_spectral_gap
+#print axioms GoldenOrbitB2Rigidity.phi85_eq_min_iff
+#print axioms GoldenOrbitB2Rigidity.phi83_eq_min_iff
+#print axioms GoldenOrbitB2Rigidity.phi85_ge_second
+#print axioms GoldenOrbitB2Rigidity.phi83_ge_second
+#print axioms GoldenOrbitB2Rigidity.phi85_second_attained
+#print axioms GoldenOrbitB2Rigidity.phi83_second_attained
+#print axioms GoldenOrbitB2Rigidity.b2_case1_85_lower_bound
+#print axioms GoldenOrbitB2Rigidity.b2_case1_83_lower_bound
+#print axioms GoldenOrbitB2Rigidity.b2_case2_sk_Q1_limit
+#print axioms GoldenOrbitB2Rigidity.b2_case2_sub1_quadratic_ge
+#print axioms GoldenOrbitB2Rigidity.b2_case2_sub3_quadratic_ge
+-- 临界能级严格子水平集与次临界规范 Hausdorff 测度零定理（GaugeNull + UnweightedCorrection，2026-11-20，仅基础公理）
+#print axioms GaugeNull.mkMetric_digitClass_null
+#print axioms GaugeNull.mkMetric_strictLevel_null
+#print axioms GaugeNull.mkMetric_levelSet_null_of_subgauge
+#print axioms UnweightedCorrection.witness
+-- §4 补集满测度/维数 1、§6 Theorem 13 σ-有限性 & L-不变性、Corollary 14(iii) 非 σ-有限性与 Theorem 16(ii) 二值规范（GaugeExact，2026-11-20，仅基础公理）
+#print axioms GaugeExact.dimH_finiteLevel_zero
+#print axioms GaugeExact.volume_finiteLevel_zero
+#print axioms GaugeExact.ae_apprExponent_eq_top
+#print axioms GaugeExact.volume_infiniteLevel_Icc
+#print axioms GaugeExact.volume_infiniteLevel_Icc_zero_one
+#print axioms GaugeExact.dimH_infiniteLevel_inter_Icc_zero_one
+#print axioms GaugeExact.dimH_infiniteLevel_eq_one
+#print axioms GaugeExact.apprExponent_add_latticeL
+#print axioms GaugeExact.exactLevel_add_latticeL
+#print axioms GaugeExact.mkMetric_digitClass_le
+#print axioms GaugeExact.mkMetric_digitClass_lt_top
+#print axioms GaugeExact.exactLevel_countable_cover_finite_mkMetric
+#print axioms GaugeExact.mkMetric_le_mul_of_eventually_le
+#print axioms GaugeExact.mkMetric_eq_zero_of_ratio_tendsto_zero_of_lt_top
+#print axioms GaugeExact.not_countable_union_finite_of_ratio_tendsto_zero
+#print axioms GaugeExact.gauge_ratio_adjacent_levels_tendsto_zero
+#print axioms GaugeExact.mkMetric_unsignedExactLimit_null_of_hk
+#print axioms GaugeExact.mkMetric_unsignedExactLimit_null_of_subgauge_base2
+#print axioms GaugeExact.unsignedExactLimit_countable_cover_finite_mkMetric_base2
+#print axioms GaugeExact.mkMetric_cantorTree_pos
+#print axioms GaugeExact.mkMetric_exactLevel_pos
+#print axioms GaugeExact.mkMetric_exactLevel_eq_top
+-- §7 连分数窗口与模 4 部分商残差核心引理（WindowAndResidueCore，2026-11-20，仅基础公理）
+#print axioms WindowAndResidueCore.thm18_terminal_denom_bounds
+#print axioms WindowAndResidueCore.thm18_append_four_crosses
+#print axioms WindowAndResidueCore.thm18_prescribed_count_crossing
+#print axioms WindowAndResidueCore.thm19_cond_prob_integral_identity
+#print axioms WindowAndResidueCore.thm19_cond_prob_lower_bound
+#print axioms WindowAndResidueCore.thm19_exp_moment_step_le
+#print axioms WindowAndResidueCore.thm20_rational_between_two_and_three
+#print axioms WindowAndResidueCore.thm20_terminal_denom_bounds
+#print axioms WindowAndResidueCore.thm21_shift_mod4_mem_alphabet
+#print axioms WindowAndResidueCore.thm21_tail_distance_ratio_identity
+#print axioms WindowAndResidueCore.thm21_tail_distance_ratio_le
+#print axioms WindowAndResidueCore.thm21_prefix_factor_bounds
+#print axioms WindowAndResidueCore.thm21_integer_certificate_power_enclosure
+#print axioms WindowAndResidueCore.thm21_transfer_operator_sub_super_iteration
+-- §6 临界规范显式构造（GaugeCircle）：R 与圆周 R/Z (UnitAddCircle) 原生测度、开弧无穷性与 Theorem 16(ii) 二值规范（2026-11-20，仅基础公理）
+#print axioms GaugeCircle.critGauge_zero
+#print axioms GaugeCircle.critGauge_mono
+#print axioms GaugeCircle.critGauge_continuous
+#print axioms GaugeCircle.critGauge_at_inv_Qsel
+#print axioms GaugeCircle.binaryGauge_zero
+#print axioms GaugeCircle.binaryGauge_mono
+#print axioms GaugeCircle.binaryGauge_continuous
+#print axioms GaugeCircle.binaryGauge_at_inv_Qsel
+#print axioms GaugeCircle.mkMetric_critGauge_strictLevel_null
+#print axioms GaugeCircle.mkMetric_critGauge_exactLevel_pos
+#print axioms GaugeCircle.mkMetric_critGauge_exactLevel_eq_top
+#print axioms GaugeCircle.critGauge_exactLevel_sigma_finite_cover
+#print axioms GaugeCircle.mkMetric_critGauge_exactLevel_inter_Ioo_eq_top
+#print axioms GaugeCircle.mkMetric_critGauge_exactLevel_inter_Icc_zero_one_eq_top
+#print axioms GaugeCircle.mkMetric_critGauge_exactLevel_inter_eq_top_of_Ioo_subset
+#print axioms GaugeCircle.mkMetric_binaryGauge_unsignedExactLimit_pos
+#print axioms GaugeCircle.mkMetric_binaryGauge_unsignedExactLimit_inter_Ioo_eq_top
+#print axioms GaugeCircle.mkMetric_binaryGauge_unsignedExactLimit_eq_top
+#print axioms GaugeCircle.binaryGauge_unsignedExactLimit_sigma_finite_cover
+#print axioms GaugeCircle.critGauge_unsignedExactLimit_null
+#print axioms GaugeCircle.mkMetric_powerGauge_exactLevel_null_of_gt
+#print axioms GaugeCircle.mkMetric_powerGauge_exactLevel_not_sigma_finite_of_lt
+#print axioms GaugeCircle.mkMetric_powerGauge_unsignedExactLimit_null_of_gt
+#print axioms GaugeCircle.mkMetric_powerGauge_unsignedExactLimit_not_sigma_finite_of_lt
+#print axioms GaugeCircle.critGauge_ge_one
+#print axioms GaugeCircle.critGauge_eq_segVal
+#print axioms GaugeCircle.binaryGauge_ge_one
+#print axioms GaugeCircle.binaryGauge_eq_segVal
+#print axioms GaugeCircle.mkMetric_critGauge_exactLevel_not_sigma_finite_of_ratio
+#print axioms GaugeCircle.critGauge_adjacent_ratio_tendsto_zero
+#print axioms GaugeCircle.critGauge_adjacent_level_separation
+#print axioms GaugeCircle.mkMetric_binaryGauge_unsignedExactLimit_inter_Icc_zero_one_eq_top
+#print axioms GaugeCircle.mkMetric_critGauge_circleStrictLevel_null
+#print axioms GaugeCircle.mkMetric_critGauge_circleExactLevel_inter_open_eq_top
+#print axioms GaugeCircle.mkMetric_critGauge_circleExactLevel_eq_top
+#print axioms GaugeCircle.mkMetric_critGauge_circleExactLevel_pos
+#print axioms GaugeCircle.critGauge_circleExactLevel_sigma_finite_cover
+#print axioms GaugeCircle.mkMetric_critGauge_circleExactLevel_not_sigma_finite_of_ratio
+#print axioms GaugeCircle.mkMetric_powerGauge_circleExactLevel_null_of_gt
+#print axioms GaugeCircle.mkMetric_powerGauge_circleExactLevel_not_sigma_finite_of_lt
+#print axioms GaugeCircle.critGauge_circleUnsignedExactLimit_null
+#print axioms GaugeCircle.binaryGauge_circleUnsignedExactLimit_sigma_finite_cover
+#print axioms GaugeCircle.mkMetric_binaryGauge_circleUnsignedExactLimit_inter_open_eq_top
+#print axioms GaugeCircle.mkMetric_binaryGauge_circleUnsignedExactLimit_eq_top
+#print axioms GaugeCircle.mkMetric_binaryGauge_circleUnsignedExactLimit_pos
+#print axioms GaugeCircle.mkMetric_powerGauge_circleUnsignedExactLimit_null_of_gt
+#print axioms GaugeCircle.mkMetric_powerGauge_circleUnsignedExactLimit_not_sigma_finite_of_lt
+#print axioms GaugeCircle.mkMetric_inter_Ioo_eq_top_of_compact_tree
+#print axioms GaugeCircle.mkMetric_binCantorTree_pos
+#print axioms GaugeCircle.unsignedExactLimit_add_latticeL
+#print axioms GaugeCircle.mkMetric_le_mul_of_eventually_le_circle
+#print axioms GaugeCircle.not_countable_union_finite_of_ratio_tendsto_zero_circle
+#print axioms GaugeCircle.mkMetric_circleLevelSet_null_of_subgauge
+-- Path 2A：共轭正性、一般有理端点四重算术刚性与 B = 3, 4, 5, 6 谱隙核心（GeneralEndpointRigidity，30 条，仅基础公理）
+#print axioms GeneralEndpointRigidity.cfMatrix_det
+#print axioms GeneralEndpointRigidity.cfMatrix_eval_eq
+#print axioms GeneralEndpointRigidity.eta_conj_ge_inv_sq_of_gt_one
+#print axioms GeneralEndpointRigidity.eta_conj_add_pos_gt_abs
+#print axioms GeneralEndpointRigidity.eta_conj_eq_inv_sq_at_two
+#print axioms GeneralEndpointRigidity.xi1_xi2Conj_identity
+#print axioms GeneralEndpointRigidity.Muv_norm_identity
+#print axioms GeneralEndpointRigidity.mobius_ratio_identity
+#print axioms GeneralEndpointRigidity.ratio_eq_Muv_sub_div
+#print axioms GeneralEndpointRigidity.inert_legendreSym_five_eq_neg_one
+#print axioms GeneralEndpointRigidity.inert_prime_dvd_zphiNorm_iff
+#print axioms GeneralEndpointRigidity.inert_prime_not_dvd_zphiNorm_of_cond
+#print axioms GeneralEndpointRigidity.inert_prime_not_dvd_zphiNorm
+#print axioms GeneralEndpointRigidity.inert_prime_not_dvd_zphiNorm_xi2
+#print axioms GeneralEndpointRigidity.even_D_Muv_even
+#print axioms GeneralEndpointRigidity.even_D_rigidity
+#print axioms GeneralEndpointRigidity.even_D_rigidity_functional
+#print axioms GeneralEndpointRigidity.mod_2D_sieve_q
+#print axioms GeneralEndpointRigidity.mod_2D_sieve_p
+#print axioms GeneralEndpointRigidity.mod_2d_sieve_special
+#print axioms GeneralEndpointRigidity.Muv_norm_ne_zero
+#print axioms GeneralEndpointRigidity.zphiNorm_xi2_dvd_norm_quot
+#print axioms GeneralEndpointRigidity.b3_inert_three_not_dvd_m
+#print axioms GeneralEndpointRigidity.b3_spectral_gap
+#print axioms GeneralEndpointRigidity.b4_mod16_excludes_37
+#print axioms GeneralEndpointRigidity.b4_spectral_gap
+#print axioms GeneralEndpointRigidity.b5_even_m
+#print axioms GeneralEndpointRigidity.b5_spectral_gap
+#print axioms GeneralEndpointRigidity.b6_inert_three_not_dvd_m
+#print axioms GeneralEndpointRigidity.b6_spectral_gap
+-- §6.2 Theorem 16(iii) 完整补全（8 条）与 §6.3 一般多项式增长递推理论（37 条）（TrichotomyAndPolyExtension，45 条，仅基础公理）
+#print axioms TrichotomyAndPolyExtension.xPlus_mem_signedExactLimitSet
+#print axioms TrichotomyAndPolyExtension.neg_xPlus_mem_signedExactLimitSet
+#print axioms TrichotomyAndPolyExtension.add_latticeL_mem_signedExactLimitSet
+#print axioms TrichotomyAndPolyExtension.signedExactLimitSet_pos_eq_coset
+#print axioms TrichotomyAndPolyExtension.signedExactLimitSet_neg_eq_coset
+#print axioms TrichotomyAndPolyExtension.signedExactLimitSet_zero_eq_latticeL
+#print axioms TrichotomyAndPolyExtension.signedExactLimitSet_empty_of_not_quarter_int
+#print axioms TrichotomyAndPolyExtension.trichotomy_part_iii_complete
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_Q_ge_factorial
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_pow_div_Q_tendsto_zero
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_Q_eq_lincomb
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_casorati
+#print axioms TrichotomyAndPolyExtension.PolyRecData.alphaU_error_bound
+#print axioms TrichotomyAndPolyExtension.PolyRecData.alphaV_error_bound
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_alpha_linear_relation
+#print axioms TrichotomyAndPolyExtension.PolyRecData.theta_irrational
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_dist_le_of_mem_latticePoly
+#print axioms TrichotomyAndPolyExtension.PolyRecData.polyWeightedExponent_eq_zero_of_mem_latticePoly
+#print axioms TrichotomyAndPolyExtension.PolyRecData.polyApprExponent_eq_zero_tfae
+#print axioms TrichotomyAndPolyExtension.PolyRecData.polyApprExponent_eq_zero_iff_mem_latticePoly
+#print axioms TrichotomyAndPolyExtension.PolyRecData.polyApprExponent_eq_zero_iff_defect_zero
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_signed_defect_approx
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_abs_defect_approx
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_jr_mul_eps_tendsto_of_defect_const
+#print axioms TrichotomyAndPolyExtension.PolyRecData.polyApprExponent_xPlusPoly
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_spectral_gap_open_interval
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_levelSet_eq_on_gap
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_levelSet_below_eq_lattice
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_signed_exact_limit_iff_defect_const
+#print axioms TrichotomyAndPolyExtension.PolyRecData.xPlusPoly_mem_signedExactLimitSet
+#print axioms TrichotomyAndPolyExtension.PolyRecData.neg_xPlusPoly_mem_signedExactLimitSet
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_sub_mem_latticePoly_of_same_signed_limit
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_add_latticePoly_mem_signedExactLimitSet
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_trichotomy_part_iii_complete
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_supercritical_levelSet_eq_lattice
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_supercritical_dimH_zero
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_supercritical_empty_neg
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_dimH_levelSet_finite
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_dimH_finiteLevel_zero
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_volume_finiteLevel_zero
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_ae_apprExponent_eq_top
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_volume_infiniteLevel_Icc
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_dimH_infiniteLevel_inter_Icc_eq_one
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_dimH_infiniteLevel_eq_one
+#print axioms TrichotomyAndPolyExtension.PolyRecData.poly_range_apprExponent
+
+#print axioms PolyGaugeAndPhaseTransition.poly_log_Q_asymptotic
+#print axioms PolyGaugeAndPhaseTransition.polyInterpGauge_log_scale_tendsto
+#print axioms PolyGaugeAndPhaseTransition.poly_unsigned_exact_limit_iff_defect_binary
+#print axioms PolyGaugeAndPhaseTransition.poly_unsigned_exact_limit_empty_of_not_div_c
+#print axioms PolyGaugeAndPhaseTransition.mkMetric_polyCritGauge_polyStrictLevel_null
+#print axioms PolyGaugeAndPhaseTransition.polyExactLevel_critGauge_sigma_finite
+#print axioms PolyGaugeAndPhaseTransition.mkMetric_polyUnsignedExactLimit_null_of_critGauge
+#print axioms PolyGaugeAndPhaseTransition.polyUnsignedExactLimit_binaryGauge_sigma_finite
+#print axioms PolyGaugeAndPhaseTransition.mkMetric_polyCritGauge_polyExactLevel_inter_open_eq_top
+#print axioms PolyGaugeAndPhaseTransition.mkMetric_polyBinaryGauge_unsignedExactLimit_inter_open_eq_top
+#print axioms PolyGaugeAndPhaseTransition.mkMetric_polyCritGauge_polyCircleStrictLevel_null
+#print axioms PolyGaugeAndPhaseTransition.mkMetric_polyCritGauge_polyCircleExactLevel_inter_open_eq_top
+#print axioms PolyGaugeAndPhaseTransition.polyCircleExactLevel_critGauge_sigma_finite
+#print axioms PolyGaugeAndPhaseTransition.mkMetric_polyCircleUnsignedExactLimit_null_of_critGauge
+#print axioms PolyGaugeAndPhaseTransition.mkMetric_polyBinaryGauge_polyCircleUnsignedExactLimit_inter_open_eq_top
+#print axioms PolyGaugeAndPhaseTransition.polyCircleUnsignedExactLimit_binaryGauge_sigma_finite
+#print axioms PolyGaugeAndPhaseTransition.polyExactLevel_power_gauge_dichotomy
+#print axioms PolyGaugeAndPhaseTransition.polyExactLevel_liminf_four_way
+#print axioms PolyGaugeAndPhaseTransition.polyUnsignedExactLimit_liminf_four_way
+#print axioms GaugeLiminf.mkMetric_digitClass_le_liminf
+#print axioms GaugeLiminf.mkMetric_binaryDigitClass_le_liminf
+#print axioms GaugeLiminf.mkMetric_levelSet_null_of_liminf_zero
+#print axioms GaugeLiminf.mkMetric_unsignedExactLimit_null_of_liminf_zero
+#print axioms GaugeLiminf.levelSet_countable_cover_of_liminf_lt_top
+#print axioms GaugeLiminf.unsignedExactLimit_countable_cover_of_liminf_lt_top
+#print axioms GaugeScaleComparison.small_radius_le_of_adjacent_scale_le
+#print axioms GaugeScaleComparison.not_countable_union_finite_of_adjacent_scale_ratio
+#print axioms GaugeScaleComparison.exists_small_radius_comparison_of_lt_liminf
+#print axioms GaugeScaleComparison.not_countable_union_finite_of_liminf_top
+#print axioms GaugeScaleComparison.mkMetric_eq_top_of_liminf_pos
+#print axioms GaugeLiminf.calibrated_exactLevel_eq_top
+#print axioms GaugeLiminf.exactLevel_eq_top_of_liminf_pos
+#print axioms GaugeLiminf.exactLevel_not_countable_union_finite_of_liminf_top
+#print axioms GaugeLiminf.circleExactLevel_liminf_trichotomy
+#print axioms GaugeLiminf.circleUnsignedExactLimit_liminf_trichotomy
+#print axioms GaugeLiminf.liminf_normalizedGaugeCost_zero_of_smaller_base
+#print axioms GaugeLiminf.mkMetric_circleStrictLevel_null_of_liminf_lt_top
+#print axioms FiniteStateGauge.walkMass_of_eigenvector
+#print axioms FiniteStateGauge.walkCount_bounds
+#print axioms PolyGaugeAndPhaseTransition.mkMetric_polyLevelSet_null_of_liminf_zero
+#print axioms PolyGaugeAndPhaseTransition.polyExactLevel_fast_gauge_null
+#print axioms PolyGaugeAndPhaseTransition.polyExactLevel_slow_gauge_non_sigma_finite
+#print axioms PolyWeightedUpper.dimH_polyWeightedExponent_le
+#print axioms HermiteResiduePeriod.state_eq_selected
+#print axioms HermiteResiduePeriod.selected_period
+#print axioms HermiteResiduePeriod.state_period_3
+#print axioms HermiteResiduePeriod.state_period_4
+#print axioms HermiteResiduePeriod.state_period_5
+#print axioms HermiteResiduePeriod.state_period_6
+
+#print axioms PolyWeightedLower.exists_lower_growth
+#print axioms PolyWeightedLower.exists_level_threshold
+#print axioms PolyWeightedLower.one_le_hausdorffMeasure_cantorSet
+#print axioms PolyWeightedLower.dimH_polyExactLimit_ge
+#print axioms PolyWeightedLower.dimH_polyExactLimit_eq
+#print axioms PolyWeightedLower.dimH_polyWeightedSublevel_eq
+#print axioms PolyWeightedLower.polyZeroWeightSublevel_eq_univ
+#print axioms PolyWeightedLower.polyExactLimit_zero_eq_empty
+
+
+#print axioms FiniteStateGauge.card_path_eq_walkMass
+#print axioms FiniteStateGauge.mkMetric_fixedTail_le
+#print axioms FiniteStateGauge.mkMetric_eventualTail_null
+#print axioms FiniteStateGauge.eventualTail_countable_cover_finite
+#print axioms FiniteStateGauge.fixedTail_finite_of_root_one
+#print axioms FiniteStateGauge.eventualTail_countable_of_root_one
+#print axioms FiniteStateGauge.mkMetric_circle_fixedTail_le
+#print axioms FiniteStateGauge.exists_marked_edge_with_return
+#print axioms FiniteStateGauge.frequently_defectShift_eq_level
+#print axioms FiniteStateGauge.exactTail_empty_of_no_marked_return
+#print axioms FiniteStateGauge.exists_component_suffix
+#print axioms FiniteStateGauge.exactTail_eq_iUnion_marked_components
+#print axioms FiniteStateGauge.exactTail_countable_of_marked_roots_one
+#print axioms FiniteStateGauge.mkMetric_exactTail_null_of_dominant_liminf_zero
+

@@ -1,0 +1,26 @@
+﻿EpiFormal/WindowThickening.lean:26:35: error: Application type mismatch: The argument
+  ofReal_ne_top
+has type
+  ENNReal.ofReal ?m.52 ≠ ∞
+but is expected to have type
+  2 ≠ ∞
+in the application
+  mul_ne_top ofReal_ne_top
+EpiFormal/WindowThickening.lean:51:25: error(lean.unknownIdentifier): Unknown identifier `Metric.dist`
+EpiFormal/WindowThickening.lean:55:2: error: linarith failed to find a contradiction
+s : Set ℝ
+δ : ℝ
+hδ : 0 < δ
+hbdd : Bornology.IsBounded (thickening δ s)
+x : ℝ
+hx : x ∈ s
+hball : ball x δ ⊆ thickening δ s
+hy1 : x - δ / 2 ∈ thickening δ s
+hy2 : x + δ / 2 ∈ thickening δ s
+hdist : δ ≤ sorry
+hle : dist (x - δ / 2) (x + δ / 2) ≤ diam (thickening δ s)
+a✝ : diam (thickening δ s) ≤ 0
+⊢ False
+failed
+'WindowThickening.isBounded_thickening_of_ediam' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WindowThickening.diam_thickening_pos' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

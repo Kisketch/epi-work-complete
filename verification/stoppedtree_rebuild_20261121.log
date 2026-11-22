@@ -1,0 +1,12 @@
+﻿✖ [2/2] Running EpiFormal.StoppedTree
+error: no such file or directory (error code: 4058)
+  file: C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\epi_formal\EpiFormal\StoppedTree.lean
+Some required targets logged failures:
+- EpiFormal.StoppedTree
+lake : error: build failed
+At line:1 char:1
++ lake build EpiFormal.StoppedTree 2>&1 | Out-File -FilePath "C:\Users\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (error: build failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

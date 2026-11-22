@@ -1,0 +1,3 @@
+﻿'Cylinder.consec_cross' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.consec_cross_abs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cylinder.childDen_ge_one' depends on axioms: [propext, Classical.choice, Quot.sound]

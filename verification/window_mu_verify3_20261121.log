@@ -1,0 +1,3 @@
+﻿'WindowMu.mu_biUnion_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMu.mu_window_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WindowMu.exp_ratio_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

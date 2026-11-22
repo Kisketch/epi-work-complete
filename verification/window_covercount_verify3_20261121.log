@@ -1,0 +1,3 @@
+﻿'CoverCount.left_separated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CoverCount.floor_lt_of_separated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CoverCount.meet_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]

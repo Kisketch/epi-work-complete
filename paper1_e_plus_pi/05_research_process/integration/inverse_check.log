@@ -1,0 +1,5 @@
+Both lower-bound and eight endpoint inequalities passed by rational arithmetic.
+(6, -2, 1) 40 exact slopes -2
+(17, -1, 3) 40 exact slopes -1/3
+(1, 2, 5) 40 exact slopes 2/5
+(-3, 1, 2) 40 exact slopes 1/2
