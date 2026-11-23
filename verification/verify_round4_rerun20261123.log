@@ -1,0 +1,9 @@
+=== Round 4 Verification: Cosine Integral & 450-digit Interval Certificate ===
+[PASS] SymPy cosine integral: sqrt(pi)*(-sqrt(pi)*sinh(1) + sqrt(pi)*cosh(1))/2 == pi*exp(-1)/2
+[PASS] High-precision oscillatory quadrature agreement: |err| = 0.0
+[PASS] e + pi enclosed in [L, U] with width <= 2.12421e-460 < 9.13e-451
+[PASS] Certificate 1: for all 1 <= q <= 1000, (L*q, U*q) contains no integer
+[PASS] Certificate 2: window condition violated at n=2, 4, and 7<=n<=60 except n=34 (passing in 1..60: [1, 3, 5, 6, 34])
+[PASS] Every q <= 60 has certified first violation (q=34 -> n=35)
+
+EXIT:0
