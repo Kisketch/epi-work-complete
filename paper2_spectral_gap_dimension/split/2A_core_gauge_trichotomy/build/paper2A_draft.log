@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  22 NOV 2026 23:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  22 NOV 2026 23:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -393,11 +393,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 {C:/Users/Lgnatius/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]) (../
 src_sections/sec-class.tex [3])
-(../src_sections/sec-spectrum.tex [4]
-
-LaTeX Warning: Reference `sec:num' on page 5 undefined on input line 22.
-
-[5]
+(../src_sections/sec-spectrum.tex [4] [5]
 
 LaTeX Warning: Reference `sec:poly-rec' on page 6 undefined on input line 114.
 
@@ -554,7 +550,8 @@ ctLimitSet[]zero[]eq[]latticeL\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 signedEx
 actLimitSet[]empty[]of[]not[]
  []
 
-) (../src_sections/refs.tex [22]) [23]
+) (../src_sections/sec-num-2A.tex [22]) (../src_sections/refs.tex [23])
+[24]
 (C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
 ctral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper2A_draft.aux)
  ***********
@@ -566,13 +563,13 @@ L3 programming layer <2026-09-09>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `paper2A_draft.out' has not changed.
-(rerunfilecheck)             Checksum: 6EAA85FB6ECB2387DF154C34E998E8A9;2874.
+(rerunfilecheck)             Checksum: D0B742FFF20CD4036AC8045623375B62;3011.
  ) 
 Here is how much of TeX's memory you used:
- 10138 strings out of 467392
- 160022 string characters out of 5404180
- 594999 words of memory out of 5000000
- 39261 multiletter control sequences out of 15000+600000
+ 10150 strings out of 467392
+ 160368 string characters out of 5404180
+ 595036 words of memory out of 5000000
+ 39265 multiletter control sequences out of 15000+600000
  644097 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  79i,12n,82p,641b,761s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -607,9 +604,9 @@ c/amsfonts/cm/cmti10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts
 MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud
 -panda\paper2_spectral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper
-2A_draft.pdf (23 pages, 495747 bytes).
+2A_draft.pdf (24 pages, 504549 bytes).
 PDF statistics:
- 491 PDF objects out of 1000 (max. 8388607)
- 96 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 506 PDF objects out of 1000 (max. 8388607)
+ 101 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
