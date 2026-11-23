@@ -468,7 +468,8 @@ we compare different sequences of allowed residues, including sequences
 that change from one position to the next.
 
 \begin{theorem}[Digit residues modulo four]\label{thm:residues}
-$\dimH E=\dimH F$, with $357/512<\dimH F<359/512$.
+$\dimH E=\dimH F$, with $357/512<\dimH F<179/256$; the closed bracket
+$357/512\le\dimH F\le179/256$ is machine-checked in Lean~4 (Remark~\ref{rem:residue-kernel}).
 \end{theorem}
 
 \begin{proof}
@@ -603,52 +604,52 @@ Likewise, a uniform pointwise lower inequality
 $\mathcal L_{s,\mathcal D}v\ge(1+\eta)v$ on $[0,1]$ ($\eta>0$) forces
 $(\mathcal L_{s,\mathcal D}^n1)(0)\ge(1+\eta)^n v(0)/\sup v$ and hence
 $P(s,\mathcal D)\ge\log(1+\eta)>0$. We apply the lower test at $s=357/512$ to
-the finite subalphabet $\mathcal D_N:=\{4k+1:0\le k<N\}$ with $N=2^{24}$ (whose
+the finite subalphabet $\mathcal D_N:=\{4k+1:0\le k<N\}$ with $N=2^{80}$ (whose
 limit set is contained in $F$, so $\dimH F\ge\dimH F_{\mathcal D_N}>357/512$),
-and the upper test at $s=359/512$ to the full alphabet $\mathcal D=\mathcal A$
-(certifying $\dimH F<359/512$).
+and the upper test at $s=179/256$ to the full alphabet $\mathcal D=\mathcal A$
+(certifying $\dimH F<179/256$).
 
-In both tests, $v$ is chosen as a positive step function on the $256$ uniform
-grid cells $C_j=[l_j,u_j)=[j/256,(j+1)/256)$ ($0\le j\le254$) and
-$C_{255}=[255/256,1]$. On a cell $[l,u]$, for each explicit branch $a=4k+1$
-($0\le k<64$) and $x\in[l,u]$, the weight $(a+x)^{-2s}$ is decreasing in $x$
+In both tests, $v$ is chosen as a positive step function on the $512$ uniform
+grid cells $C_j=[l_j,u_j)=[j/512,(j+1)/512)$ ($0\le j\le510$) and
+$C_{511}=[511/512,1]$. On a cell $[l,u]$, for each explicit branch $a=4k+1$
+($0\le k<130$) and $x\in[l,u]$, the weight $(a+x)^{-2s}$ is decreasing in $x$
 and thus lies in $[(a+u)^{-2s},(a+l)^{-2s}]$, while $f_a(x)=1/(a+x)$ lies in the
 closed image interval $[f_a(u),f_a(l)]=[1/(a+u),1/(a+l)]$; we bound $v(f_a(x))$
 from below and above by the minimum and maximum of $v$ over all grid cells
-intersected by $[f_a(u),f_a(l)]$. For all tail indices $k\ge64$, the digit is
-$a=4k+1\ge257>256$, so for every $x\in[0,1]$ the image point satisfies
-$0<f_a(x)=1/(4k+1+x)\le 1/257<1/256$ and therefore falls strictly inside the
-first cell $C_0=[0,1/256)$, where $v$ takes the constant value $v_0$. Putting
-$p:=2s>1$, we bound the tail sums over $k\ge64$ by monotone integral comparison:
+intersected by $[f_a(u),f_a(l)]$. For all tail indices $k\ge130$, the digit is
+$a=4k+1\ge521>512$, so for every $x\in[0,1]$ the image point satisfies
+$0<f_a(x)=1/(4k+1+x)\le 1/521<1/512$ and therefore falls strictly inside the
+first cell $C_0=[0,1/512)$, where $v$ takes the constant value $v_0$. Putting
+$p:=2s>1$, we bound the tail sums over $k\ge130$ by monotone integral comparison:
 for every $x\in[0,1]$ and every $t\in[k,k+1]$, we have
 $4k+1+x\le 4k+2\le 4t+2$, so
 \[
 (4k+1+x)^{-p}\ge(4k+2)^{-p}\ge\int_k^{k+1}(4t+2)^{-p}\,dt,
 \]
-and summing from $k=64$ to $N-1$ (where $4\cdot64+2=258$) gives the lower tail
+and summing from $k=130$ to $N-1$ (where $4\cdot130+2=522$) gives the lower tail
 bound
 \[
- \sum_{k=64}^{N-1}(4k+1+x)^{-p}v_0
- \ge v_0\int_{64}^N(4t+2)^{-p}\,dt
- =v_0\left[\frac{(4t+2)^{1-p}}{4(1-p)}\right]_{t=64}^{t=N}
- =v_0\,\frac{258^{1-p}-(4N+2)^{1-p}}{4(p-1)}.
+ \sum_{k=130}^{N-1}(4k+1+x)^{-p}v_0
+ \ge v_0\int_{130}^N(4t+2)^{-p}\,dt
+ =v_0\left[\frac{(4t+2)^{1-p}}{4(1-p)}\right]_{t=130}^{t=N}
+ =v_0\,\frac{522^{1-p}-(4N+2)^{1-p}}{4(p-1)}.
 \]
 In the opposite direction, for every $x\in[0,1]$ and every $t\in[k-1,k]$, we
 have $4k+1+x\ge 4k+1\ge 4t+1$, so
 \[
 (4k+1+x)^{-p}\le(4k+1)^{-p}\le\int_{k-1}^k(4t+1)^{-p}\,dt,
 \]
-and summing from $k=64$ to $\infty$ (where $4\cdot63+1=253$) gives the upper
+and summing from $k=130$ to $\infty$ (where $4\cdot129+1=517$) gives the upper
 tail bound
 \[
- \sum_{k=64}^{\infty}(4k+1+x)^{-p}v_0
- \le v_0\int_{63}^\infty(4t+1)^{-p}\,dt
- =v_0\left[\frac{(4t+1)^{1-p}}{4(1-p)}\right]_{t=63}^{t=\infty}
- =v_0\,\frac{253^{1-p}}{4(p-1)} .
+ \sum_{k=130}^{\infty}(4k+1+x)^{-p}v_0
+ \le v_0\int_{129}^\infty(4t+1)^{-p}\,dt
+ =v_0\left[\frac{(4t+1)^{1-p}}{4(1-p)}\right]_{t=129}^{t=\infty}
+ =v_0\,\frac{517^{1-p}}{4(p-1)} .
 \]
 
 \emph{Step 3: Exact integer-arithmetic verification.}
-The companion script \texttt{residue\_certificate.py} constructs a
+The companion script \texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py} constructs a
 positive integer vector of cell values for each test. Every branch
 weight and integral power is enclosed by rational endpoints. In
 particular, to enclose $S(y/z)^{-m/d}$, where $S=10^{13}$ and
@@ -658,12 +659,13 @@ integer endpoints $L,U$. Summation and comparison against the
 corresponding cell value use exact integer arithmetic. At $s=357/512$, the
 smallest relative lower margin $\min_j((\mathcal L_{s,\mathcal D_N}v-v)/v)|_{C_j}$
 equals
-$7204302042904417931/2465429597500000000000>29/10000>0$; at $s=359/512$, the
+$47991263886531665573/9862965570000000000000>48/10000>0$; at $s=179/256$, the
 smallest relative upper margin $\min_j((v-\mathcal L_{s,\mathcal A}v)/v)|_{C_j}$
 equals
-$65040245891337248463/9860138780000000000000>65/10000>0$. The
-strict signs certify the stated open interval $(357/512,359/512)$, of width
-$1/256$.
+$1350497164217210109/4931093915000000000000>27/100000>0$. The
+strict signs certify the stated open interval $(357/512,179/256)$, of width
+$1/512$. The same integer inequalities, re-encoded as Boolean checks, are
+evaluated by the Lean kernel (Remark~\ref{rem:residue-kernel}).
 \end{proof}
 
 As a comparison, Table~1 of \cite{CLU} bounds the dimension for
@@ -701,7 +703,8 @@ $\frac12<\dimH F_{m,r}$ for all $m\ge1,r\ge1$, and $\dimH F_{4,1}\le\frac45$.
 \item \emph{Exact integer certificates for $m\in\{2,3,4,5,6\}$.}
 Running the verified step-function inequalities in exact integer arithmetic
 (\texttt{verification/\allowbreak residue\_\allowbreak certificate\_\allowbreak general.py},
-grid $N=256$, scale $S=10^{13}$, $2^{80}$-precision enclosures) certifies the
+\texttt{\allowbreak residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py},
+grid $N=512$, scale $S=10^{13}$, $2^{80}$-precision enclosures) certifies the
 narrow rational brackets in Table~\ref{tab:residues-general}, with strict
 separation $\mathrm{upper}(F_{m,m})<\mathrm{lower}(F_{m,1})$ (and hence
 $\dimH F_{m,m}<\dimH F_{m,1}$) for every $m\in\{2,3,4,5,6\}$.
@@ -724,25 +727,51 @@ verification to finitely many grid cells. For~(iii), exact integer execution
 checks every cell inequality for each $(m,r)$ in Table~\ref{tab:residues-general}.
 All algebraic and measure-theoretic deductions in~(i)--(ii), together with the
 step-function soundness theorems for~(ii)--(iii), are machine-checked in Lean~4;
-the Python script \texttt{residue\_\allowbreak certificate\_\allowbreak general.py}
-performs the concrete grid arithmetic for $m\in\{2,3,4,5,6\}$.
+the concrete grid arithmetic for $m\in\{2,3,4,5,6\}$ is performed both in exact
+Python integer arithmetic and, for the closed brackets, by the Lean kernel
+(Remark~\ref{rem:residue-kernel}).
 \end{proof}
 
 \begin{table}[ht]
 \centering\small
 \begin{tabular}{c|c|c|c|c|c}
 $m$ & $r$ & $K_{\mathrm{tail}}$ & Lower bound & Upper bound & Width \\\hline
-$2$ & $1$ & $130$ & $419/512\,(0.818359)$ & $421/512\,(0.822266)$ & $1/256$ \\
-$2$ & $2$ & $130$ & $23/32\,(0.718750)$  & $369/512\,(0.720703)$ & $1/512$ \\\hline
-$3$ & $1$ & $120$ & $95/128\,(0.742188)$ & $191/256\,(0.746094)$ & $1/256$ \\
-$3$ & $3$ & $120$ & $41/64\,(0.640625)$  & $329/512\,(0.642578)$ & $1/512$ \\\hline
-$4$ & $1$ & $120$ & $357/512\,(0.697266)$ & $359/512\,(0.701172)$ & $1/256$ \\
-$4$ & $4$ & $120$ & $309/512\,(0.603516)$ & $155/256\,(0.605469)$ & $1/512$ \\\hline
+$2$ & $1$ & $258$ & $105/128\,(0.820312)$ & $421/512\,(0.822266)$ & $1/512$ \\
+$2$ & $2$ & $258$ & $23/32\,(0.718750)$ & $369/512\,(0.720703)$ & $1/512$ \\\hline
+$3$ & $1$ & $172$ & $95/128\,(0.742188)$ & $381/512\,(0.744141)$ & $1/512$ \\
+$3$ & $3$ & $172$ & $41/64\,(0.640625)$ & $329/512\,(0.642578)$ & $1/512$ \\\hline
+$4$ & $1$ & $130$ & $357/512\,(0.697266)$ & $179/256\,(0.699219)$ & $1/512$ \\
+$4$ & $4$ & $130$ & $309/512\,(0.603516)$ & $155/256\,(0.605469)$ & $1/512$ \\\hline
 $5$ & $1$ & $120$ & $171/256\,(0.667969)$ & $343/512\,(0.669922)$ & $1/512$ \\
 $5$ & $5$ & $120$ & $149/256\,(0.582031)$ & $299/512\,(0.583984)$ & $1/512$ \\\hline
-$6$ & $1$ & $120$ & $331/512\,(0.646484)$ & $333/512\,(0.650391)$ & $1/256$ \\
-$6$ & $6$ & $120$ & $291/512\,(0.568359)$ & $73/128\,(0.570312)$  & $1/512$
+$6$ & $1$ & $120$ & $331/512\,(0.646484)$ & $83/128\,(0.648438)$ & $1/512$ \\
+$6$ & $6$ & $120$ & $291/512\,(0.568359)$ & $73/128\,(0.570312)$ & $1/512$
 \end{tabular}
-\caption{Certified open intervals $(\mathrm{lower},\mathrm{upper})$ for $\dimH F_{m,r}$ ($m\in\{2,3,4,5,6\}$, $r\in\{1,m\}$) from \texttt{residue\_\allowbreak certificate\_\allowbreak general.py} ($N=256$, $S=10^{13}$, $2^{80}$-precision enclosures); for every $m$, $\mathrm{upper}(F_{m,m})<\mathrm{lower}(F_{m,1})$.}\label{tab:residues-general}
+\caption{Certified open intervals $(\mathrm{lower},\mathrm{upper})$ for $\dimH F_{m,r}$ ($m\in\{2,3,4,5,6\}$, $r\in\{1,m\}$) from \texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py} ($N=512$, $S=10^{13}$, $2^{80}$-precision enclosures), all of width $1/512$; for every $m$, $\mathrm{upper}(F_{m,m})<\mathrm{lower}(F_{m,1})$. The closed brackets are kernel-checked in Lean~4 (Remark~\ref{rem:residue-kernel}).}\label{tab:residues-general}
 \end{table}
+
+\begin{remark}[Kernel-checked brackets]\label{rem:residue-kernel}
+Independently of Bowen's formula, every closed bracket
+$\mathrm{lower}\le\dimH F_{m,r}\le\mathrm{upper}$ in Table~\ref{tab:residues-general}
+(twenty one-sided bounds) is a theorem of Lean~4 with Mathlib, proved from
+Theorem~\ref{thm:residues-general}(ii) and the integer certificate data. The proof is
+organised so that no floating-point computation is trusted: a generic soundness theorem
+(\texttt{EpiFormal/\allowbreak ResidueCertGenSound.lean}) shows that, if Boolean checkers on
+natural numbers (\texttt{EpiFormal/\allowbreak ResidueCertGenBase.lean}) return \texttt{true}
+on a vector $v\in\Z_{\ge1}^{512}$ and a coefficient table, then $\dimH F_{m,r}\le s$
+(respectively $\ge s$). The checkers verify that $v$ is non-increasing (so the maximum and
+minimum of the step function over each image cell are its values at the cell endpoints,
+whose indices are the closed forms $\min(N-1,\lfloor N^2/(aN+e)\rfloor)$), that each
+coefficient $c$ satisfies the exponent-cleared enclosure
+$S^qN^p\le c^q(aN+j)^p$ (upper) or $c^q(aN+j+1)^p\le S^qN^p$ (lower) for $2s=p/q$, the
+row inequalities, and the integral tail bounds. These checks are evaluated by the Lean
+kernel (\texttt{decide +kernel}, GMP-accelerated natural-number arithmetic; no
+\texttt{native\_decide}) on data emitted by \texttt{verification/\allowbreak
+emit\_cert\_gen.py} in $64$-row chunks; the resulting bounds and the strict separations
+$\dimH F_{m,m}<\dimH F_{m,1}$ ($2\le m\le6$) are collected in
+\texttt{EpiFormal/\allowbreak ResidueCertTable.lean}. Strictness of the brackets
+(open intervals) uses the positive margins and the pressure argument of
+Theorem~\ref{thm:residues}, which is not formalised.
+\end{remark}
+
 
