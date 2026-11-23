@@ -1,0 +1,152 @@
+﻿\subsection{Finite-state constraints on defect tails}\label{sec:finite-state-tail}
+
+Let $G$ be a finite directed graph with edge labels in
+$\{-k,\ldots,k\}$, with distinct labels on the outgoing edges at each
+vertex. Mark the edges labelled $k$ or $-k$. Let $S_k(G)\subset S_k$ be
+the points whose eventual defect sequence labels an infinite path in $G$.
+A strongly connected component is called marked if it contains an internal
+marked edge. Write $\lambda_C$ for the Perron root of the adjacency matrix
+of a marked component $C$, counting edge multiplicities.
+
+\begin{theorem}[Finite-state defect tails]\label{thm:finite-state-tail}
+If $G$ has no marked component, then $S_k(G)=\varnothing$.
+Otherwise put $\lambda_*=\max_C\lambda_C$, where $C$ ranges over
+the marked components. If $\lambda_*=1$, then $S_k(G)$ is countable.
+If $\lambda_*>1$, it satisfies the three measure conclusions of
+Corollary~\ref{cor:liminf-gauges}, with $S_k(G)$ in place of the named
+set and with $b=\lambda_*$. In the zero case the null conclusion refers
+to $S_k(G)$.
+\end{theorem}
+
+\begin{proof}
+First consider a strongly connected marked graph with Perron root
+$\lambda>1$. Take a positive right Perron vector $w$. The sum of
+terminal weights over paths of length $m$ from vertex $v$ equals
+$\lambda^m w_v$. Since the coordinates of $w$ are bounded above and
+away from zero, the path count is comparable to $\lambda^m$, uniformly
+over the initial vertex. The fixed initial-pair covering argument
+therefore gives at most $C\lambda^{n-N}$ intervals of diameter $r_n$
+for each fixed starting position, pair and vertex. This gives the
+zero and finite-cover conclusions when the normalized lower limit is
+zero or finite, respectively.
+
+To obtain positive critical measure, give an edge $v\to v'$ probability
+$w_{v'}/(\lambda w_v)$. The path-cylinder mass telescopes to
+$w_{v_m}/(\lambda^m w_{v_0})\le C\lambda^{-m}$. Fix one marked edge.
+From every vertex there is a path crossing it in at most some fixed
+number $L_0$ of steps, with probability at least $p>0$. Conditioning
+successively in blocks of length $L_0$ bounds the probability of
+avoiding the edge for $m$ blocks by $(1-p)^m$. Applying this after each
+starting time shows that almost every path crosses a marked edge
+infinitely often.
+
+Feed the edge labels into the defect recurrence, with the two
+initial integers zero and with starting index $N>8k$ sufficiently
+large. The construction in the proof of Theorem~\ref{thm:gauge} gives
+a point $x=\lim M_j/Q_j$ with
+$|Q_jx-M_j|\le 4kQ_j/Q_{j+1}<1/8$ for $j\ge N$.
+Thus the $M_j$ are its nearest integers and the prescribed labels
+are its defects. Infinitely many marked labels give $\Lam(x)=k/4$
+by the defect asymptotic. The pushforward of the path probability
+therefore gives full mass to $S_k(G)$.
+
+If a set of diameter $r$ satisfies $r_{n+1}\le r<r_n$, the difference
+between two of its coded values of $M_j$ is less than
+$1/4+Q_jr$. For $j<n$ with $j\ge N$ this is less than one, and
+at $j=n$ there are at most three possible adjacent integers.
+Consequently the set meets at most three label cylinders of length
+$n-N$. From a prescribed start vertex each label word specifies at
+most one path. Thus its mass is at most $3C\lambda^{-(n-N)}$, which is
+bounded by a fixed multiple of $h_\lambda(r)$ for the interpolated gauge
+$h_\lambda(r_n)=\lambda^{-n}$. Singleton mass is zero by the same
+cylinder estimate. The construction is in a real interval of length
+less than $1/2$ if $N$ is large, so projection to the circle is
+isometric there. The mass-distribution bound gives
+$\mathcal H^{h_\lambda}(S_k(G))>0$.
+
+For Borel measurability, intersect with the Borel level $S_k$. For each
+start and vertex, the condition that every finite prefix is admissible
+is a countable intersection of Borel conditions on the rounding
+functions. An infinite path exists by finite branching. Take the
+countable union over starts and the finite union over vertices.
+For $y\in L$, the defect asymptotic gives $d_j(y)=0$ eventually.
+Because the nearest-integer errors of $x\in S_k$ and of $y$ tend to
+zero, their nearest integers add eventually, so $d_j(x+y)=d_j(x)$
+eventually. Hence $S_k(G)$ is invariant under the dense group $L$
+and is Lebesgue-null. If its positive critical measure were finite,
+its normalized restriction would be invariant under this dense group
+and, by continuity against continuous test functions, under the
+entire circle. It would then be Haar measure, a contradiction.
+For a nonempty open set $U$, the family $U+\ell$, $\ell\in L\bmod 1$,
+covers the circle by density and has a finite subcover by compactness.
+Invariance under those translations would make the whole level have
+finite measure if $S_k(G)\cap U$ had finite measure. This proves local
+infinitude. The comparison of adjacent scales in
+Corollary~\ref{cor:liminf-gauges} now gives the three conclusions for
+every gauge. The middle case combines the countable covering by
+fixed initial-pair classes with local infinitude on the full level.
+
+For a general finite graph, each infinite path eventually remains
+in one strongly connected component, since the component graph is
+acyclic. If its point is in $S_k$, its defects have absolute value
+$k$ infinitely often. Thus the terminal component is marked, and
+\[
+ S_k(G)=\bigcup_{C\ {\rm marked}} S_k(C).
+\]
+For a marked component with $\lambda_C=1$, each vertex has exactly
+one internal outgoing edge. Indeed, two outgoing edges at one vertex
+give two return loops with distinct first edges. Traversing them in
+the two orders gives two distinct loops of equal length. Concatenating
+those equal-length loops contradicts the bounded path count at
+Perron root one. A marked component is therefore a directed cycle
+in this case. Each fixed start index, vertex and integer pair
+then specifies a unique defect tail and at most one real point:
+the recurrence determines all later $M_j$, and $M_j/Q_j\to x$.
+This gives countability.
+
+Finally, when $1<\lambda_C<\lambda_*$ and
+$\rho_{\lambda_*}(g)<\infty$, a bounded subsequence at base $\lambda_*$
+has normalized cost tending to zero at base $\lambda_C$ by the
+factor $(\lambda_C/\lambda_*)^n$. Such components are null.
+Countable components are also null. At least one component attains
+$\lambda_*$, giving local infinitude or local non-$\sigma$-finiteness
+in the corresponding regimes. The finite union of the component
+covers gives the asserted global finite-cover conclusion.
+\end{proof}
+
+\begin{remark}[Two graph examples]
+Forbidding successive marked labels gives the adjacency matrix
+\[
+ \begin{pmatrix}2k-1&2\\2k-1&0\end{pmatrix}.
+\]
+For $k\ge2$ its characteristic polynomial has opposite signs at $2$
+and $2k+1$, so its Perron root is strictly between those values.
+For a reducible example, take a disjoint unmarked vertex with the
+$2k-1$ unmarked loops and a marked vertex with the two loops labelled
+$\pm k$. For $k\ge2$ the larger adjacency root comes from the unmarked
+vertex, while $S_k(G)$ has critical base $2$. Thus the root of the
+whole adjacency matrix need not determine the gauge of an exact level.
+\end{remark}
+
+For comparison, the graph-directed similarity results of Mauldin
+and Williams \cite[Theorems~3 and~4]{MW} use a spectral radius of weighted
+similarity matrices and study the full construction. Here the scales
+are supplied by $Q_n$, and the insistence on infinitely many marked
+edges arises from exact-level membership. The local infinitude uses
+the arithmetic translation group of the level.
+
+\paragraph{Lean status.}
+All three regimes of Theorem~\ref{thm:finite-state-tail} are now kernel-checked at Layer~A in
+\texttt{EpiFormal/\allowbreak Finite\allowbreak State\allowbreak Complete.lean} ($12$ audited declarations
+ending in \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak complete} on $\R$
+and \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak complete}
+on \texttt{UnitAddCircle}, building on \texttt{Finite\allowbreak State\allowbreak Gauge.lean},
+\texttt{Finite\allowbreak State\allowbreak Tail.lean}, and
+\texttt{Finite\allowbreak State\allowbreak Positive.lean}, with base axioms only and zero \texttt{sorryAx}).
+Specifically, under the deterministic outgoing-label hypothesis of this subsection, the formalization proves
+compactness and subset embedding of the deterministic path tree (\texttt{graphTree}),
+direct finite-sum Frostman positivity (\texttt{mkMetric\_\allowbreak graphTree\_\allowbreak pos}),
+unmarked-tail nullity via backward-reachability stabilization at $L=|V|$ (\texttt{mkMetric\_\allowbreak unmarkedTail\_\allowbreak null}),
+$L$-translation invariance of exact graph tails, and the arbitrary-gauge $\liminf$ comparison;
+the positive right Perron--Frobenius eigenvector $(w_v,\lambda_C)$ on each marked strongly connected component is taken as an explicit hypothesis rather than derived via Lean matrix-eigenvalue machinery.
+

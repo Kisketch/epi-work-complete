@@ -1,0 +1,640 @@
+﻿\section{Critical levels, exact Hausdorff gauges, the positive-level trichotomy, and general recurrences}\label{sec:gauge}
+
+\subsection{Critical levels and exact gauges}
+
+For an integer $k\ge1$, set $b=2k+1$. Define an increasing continuous
+gauge $h_k$ by $h_k(0)=0$, $h_k(1/Q_n)=b^{-n}$ ($n\ge1$), and
+linear interpolation on each intervening interval $[1/Q_{n+1},1/Q_n]$ (with
+$h_k(t)=h_k(1/Q_1)$ for $t\ge1/Q_1$). Only its values near zero matter. Write
+$\mathcal H^{h_k}$ for Hausdorff measure with covering cost
+$h_k(\operatorname{diam} U)$.
+
+\begin{theorem}[Size of a critical spectral level, Layer~A in Lean]\label{thm:gauge}
+On the circle $\R/\Z$, the exact level $\{x:\Lam(x)=k/4\}$ has
+infinite but $\sigma$-finite $\mathcal H^{h_k}$ measure.
+The strict sublevel $\{x:\Lam(x)<k/4\}$ has zero $\mathcal H^{h_k}$ measure.
+In the family of gauges $g_\beta$ given by $g_\beta(1/Q_n)=\beta^{-n}$
+and the same linear interpolation ($\beta>1$), the exact level has zero
+$\mathcal H^{g_\beta}$ measure for $\beta>2k+1$, whereas for $1<\beta<2k+1$ its
+$\mathcal H^{g_\beta}$ measure is not $\sigma$-finite.
+\end{theorem}
+
+\begin{proof}
+\emph{Digits.} Use $M_j$, $u_j=Q_jx-M_j$, $A_j=4j+2$ and
+$d_j=M_{j+1}-A_jM_j-M_{j-1}=A_ju_j+u_{j-1}-u_{j+1}$ as in
+Section~\ref{sec:class}, with a fixed Borel rule at ties (for instance,
+$M_j=\lfloor Q_jx+1/2\rfloor$). Ties occur only on the
+countable set $\bigcup_{j\ge1}\{x:Q_jx\in\Z+\tfrac12\}$, which is null for every
+non-atomic measure and is avoided by the Cantor construction below.
+If $\Lam(x)\le k/4$, eventually $|u_j|\le(k+1)/j$, so
+$d_j-4ju_j=2u_j+u_{j-1}-u_{j+1}\to0$ and
+$\limsup_{j\to\infty}|d_j|=4\Lam(x)\le k$. Since $d_j\in\Z$, the integer digits
+eventually satisfy $|d_j|\le k$. For the \emph{strict} sublevel $\Lam(x)<k/4$,
+Corollary~\ref{thm:sub} improves this to $|d_j|\le k-1$ eventually.
+
+\emph{Upper bounds.} Partition the non-strict sublevel $\{\Lam\le k/4\}$ on
+$[0,1]$ (or $\R/\Z$) into countably many classes
+$\mathcal C(N,m_{N-1},m_N)$ indexed by a common starting index $N\ge2$ and the
+two starting integers $(M_{N-1},M_N)=(m_{N-1},m_N)\in\Z^2$, requiring
+$|u_j|\le(k+1)/j$ and $|d_j|\le k$ for all $j\ge N$. With a fixed Borel rounding
+rule these classes are Borel sets. Because $M_{j+1}=A_jM_j+M_{j-1}+d_j$ is
+determined inductively from $(M_{N-1},M_N)$ by the $n-N$ digits
+$d_N,\dots,d_{n-1}\in\{-k,\dots,k\}$, by level $n>N$ a class has at most
+$b^{\,n-N}$ possible values of $M_n$ ($b=2k+1$). Each value of $M_n$ confines
+$x$ to the interval $[M_n/Q_n-(k+1)/(nQ_n),M_n/Q_n+(k+1)/(nQ_n)]$ of diameter
+$2(k+1)/(nQ_n)\le1/Q_n$ for all $n\ge2(k+1)$ (or directly inside
+$[M_n/Q_n-1/(2Q_n),M_n/Q_n+1/(2Q_n)]$ of diameter $1/Q_n$ using $|u_n|\le1/2$).
+Since $1/Q_n\to0$, for every $\delta>0$ and all large $n$ this gives a finite
+$\delta$-cover of $\mathcal C(N,m_{N-1},m_N)$ with $\mathcal H_\delta^{h_k}$
+cost at most
+\[
+b^{\,n-N}h_k(1/Q_n)=b^{\,n-N}b^{-n}=b^{-N}<\infty.
+\]
+Letting $\delta\downarrow0$ gives
+$\mathcal H^{h_k}(\mathcal C(N,m_{N-1},m_N))\le b^{-N}<\infty$. For the strict
+sublevel $\{\Lam<k/4\}$, the allowed tail digits satisfy
+$d_j\in\{-(k-1),\dots,k-1\}$, so the count at level $n$ uses at most
+$(2k-1)^{n-N}$ values of $M_n$ with $2k-1<b=2k+1$. The $\mathcal H_\delta^{h_k}$
+covering cost of each class is therefore at most
+\[
+(2k-1)^{n-N}h_k(1/Q_n)=b^{-N}\left(\frac{2k-1}{2k+1}\right)^{n-N}\longrightarrow0
+\qquad(n\to\infty),
+\]
+so every class is $\mathcal H^{h_k}$-null, and countable subadditivity yields
+\begin{equation}\label{eq:strict-null}
+ \mathcal H^{h_k}\bigl(\{x:\Lam(x)<k/4\}\bigr)=0 .
+\end{equation}
+
+\emph{Positivity.} Fix a large integer $N\ge2$ (chosen below), set
+$M_{N-1}=M_N=0$, and prescribe arbitrary digits
+$\omega=(d_N,d_{N+1},\dots)\in\{-k,\ldots,k\}^{\{j\ge N\}}$ via the linear
+recurrence
+\[
+M_{j+1}=A_jM_j+M_{j-1}+d_j\qquad(j\ge N).
+\]
+Define the determinant sequence $W_j:=M_{j+1}Q_j-M_jQ_{j+1}$ for $j\ge N-1$, so
+that $W_{N-1}=M_NQ_{N-1}-M_{N-1}Q_N=0$. Using $M_{j+1}=A_jM_j+M_{j-1}+d_j$ and
+$Q_{j+1}=A_jQ_j+Q_{j-1}$ from \eqref{eq:rec}, the $A_jM_jQ_j$ terms cancel and
+we obtain the first-order recurrence
+\[
+W_j=(A_jM_j+M_{j-1}+d_j)Q_j-M_j(A_jQ_j+Q_{j-1})
+=d_jQ_j-(M_jQ_{j-1}-M_{j-1}Q_j)=d_jQ_j-W_{j-1}
+\]
+for all $j\ge N$. We claim by induction on $j\ge N-1$ that
+\begin{equation}\label{eq:Wj-bound}
+|W_j|\le 2kQ_j\qquad\text{for all }j\ge N-1.
+\end{equation}
+Indeed, for $j=N-1$, $|W_{N-1}|=0\le2kQ_{N-1}$. For $j\ge N$, since $Q_j\ge2Q_{j-1}$
+(in fact $Q_j\ge(4j-2)Q_{j-1}\ge6Q_{j-1}$ for $j\ge2$), the inductive
+hypothesis $|W_{j-1}|\le2kQ_{j-1}\le kQ_j$ and $|d_j|\le k$ yield
+\[
+|W_j|\le|d_j|Q_j+|W_{j-1}|\le kQ_j+2kQ_{j-1}\le kQ_j+kQ_j=2kQ_j,
+\]
+proving \eqref{eq:Wj-bound}. Dividing $W_j$ by $Q_jQ_{j+1}$ gives the adjacent
+rational difference
+\[
+\frac{M_{j+1}}{Q_{j+1}}-\frac{M_j}{Q_j}=\frac{W_j}{Q_jQ_{j+1}},\qquad
+\left|\frac{M_{j+1}}{Q_{j+1}}-\frac{M_j}{Q_j}\right|\le\frac{2k}{Q_{j+1}}.
+\]
+Because $Q_{j+2}\ge(4j+6)Q_{j+1}\ge2Q_{j+1}$ for all $j\ge1$, we have
+$Q_{m+1+r}\ge2^r Q_{m+1}$ for all $m\ge N$ and $r\ge0$. Consequently, the
+telescoping series converges uniformly on $\{-k,\dots,k\}^{\{j\ge N\}}$ to a
+real limit
+\[
+x(\omega):=\lim_{j\to\infty}\frac{M_j}{Q_j}
+=\frac{M_m}{Q_m}+\sum_{j=m}^\infty\frac{W_j}{Q_jQ_{j+1}}\qquad(m\ge N),
+\]
+with the uniform tail bound
+\begin{equation}\label{eq:telescoping-tail}
+\left|x(\omega)-\frac{M_m}{Q_m}\right|
+\le\sum_{j=m}^\infty\frac{|W_j|}{Q_jQ_{j+1}}
+\le\sum_{j=m}^\infty\frac{2k}{Q_{j+1}}
+\le\frac{2k}{Q_{m+1}}\sum_{r=0}^\infty 2^{-r}
+=\frac{4k}{Q_{m+1}}\qquad\text{for all }m\ge N.
+\end{equation}
+Multiplying \eqref{eq:telescoping-tail} by $Q_m$ gives, for every $m\ge N$,
+\[
+|Q_mx(\omega)-M_m|\le\frac{4kQ_m}{Q_{m+1}}\le\frac{4k}{4m+2}<\frac{k}{m}.
+\]
+Choose $N>8k$ (so $4k/Q_{N+1}<1/8$). Then for every $j\ge N$,
+$|Q_jx(\omega)-M_j|<k/j<1/8<1/2$, which ensures that $M_j$ is the \emph{unique}
+nearest integer to $Q_jx(\omega)$, that $u_j(x(\omega))=Q_jx(\omega)-M_j$ avoids
+all half-integer ties, and that the true recurrence digit of $x(\omega)$ at
+index $j$ is $M_{j+1}-A_jM_j-M_{j-1}=d_j$. Moreover,
+$|4ju_j(x(\omega))-d_j|\le2|u_j|+|u_{j-1}|+|u_{j+1}|\to0$, so
+$4\Lam(x(\omega))=\limsup_{j\to\infty}|d_j|\le k$. Hence the compact image
+$K:=x(\{-k,\dots,k\}^{\{j\ge N\}})$ lies in the \emph{non-strict} sublevel
+$\{x\in\R:\Lam(x)\le k/4\}$; because $M_N=0$ and $|x(\omega)|\le4k/Q_{N+1}$ by
+\eqref{eq:telescoping-tail} at $m=N$, $K$ is contained in
+$[-4k/Q_{N+1},4k/Q_{N+1}]$, an interval of length $8k/Q_{N+1}<1/4<1/2$ on which
+the canonical projection $\R\to\R/\Z$ is an isometric embedding.
+
+Equip $\{-k,\dots,k\}^{\{j\ge N\}}$ with the uniform Bernoulli product
+probability measure assigning independent weight $b^{-1}=(2k+1)^{-1}$ to each
+digit $d_j$, and let $\mu$ be its pushforward probability measure on $K$. Take
+any interval $U\subset\R$ of length $h=\operatorname{diam}(U)$ with
+$1/Q_{n+1}\le h<1/Q_n$ for some $n>N$. If $x,y\in K\cap U$, then for every index
+$j$ with $N\le j<n$, we have $|x-y|\le h<1/Q_n$, $|Q_jx-M_j(x)|<1/8$, and
+$|Q_jy-M_j(y)|<1/8$, so the triangle inequality gives
+\[
+|M_j(x)-M_j(y)|
+\le|M_j(x)-Q_jx|+Q_j|x-y|+|Q_jy-M_j(y)|
+<\frac18+\frac{Q_j}{Q_n}+\frac18=\frac14+\frac{Q_j}{Q_n}\le\frac14+\frac16<1.
+\]
+Since $M_j(x)$ and $M_j(y)$ are integers, $M_j(x)=M_j(y)$ for all $N\le j<n$
+(and $M_{N-1}=0$ by definition). At level $n$, the same estimate gives
+\[
+|M_n(x)-M_n(y)|<\frac14+Q_n h<\frac14+1=\frac54<2,
+\]
+so for all $x\in K\cap U$ the integer $M_n(x)$ can take at most $3$ consecutive
+integer values (differing by at most $1$ from $\min_{x\in K\cap U}M_n(x)$).
+Because the integer sequence $M_{N-1},M_N,\dots,M_n$ uniquely determines the
+first $n-N$ digits $d_N,\dots,d_{n-1}$ via $d_j=M_{j+1}-A_jM_j-M_{j-1}$, the
+intersection $K\cap U$ is contained in at most $3$ cylinder sets of depth $n-N$,
+each of $\mu$-measure $b^{-(n-N)}$. Since $h_k$ is nondecreasing and
+$h\ge1/Q_{n+1}$, we have $h_k(h)\ge h_k(1/Q_{n+1})=b^{-(n+1)}$, and therefore
+\[
+\mu(U)=\mu(K\cap U)\le 3b^{-(n-N)}=3b^{N+1}b^{-(n+1)}\le 3b^{N+1}h_k(h).
+\]
+Summing over any countable cover $\{U_i\}$ of $K$ with
+$\operatorname{diam}(U_i)<1/Q_{N+1}$ gives
+$\sum_i h_k(\operatorname{diam}U_i)\ge(3b^{N+1})^{-1}\sum_i\mu(U_i)\ge(3b^{N+1})^{-1}>0$
+(the mass distribution principle for $\mathcal H^{h_k}$), so
+$\mathcal H^{h_k}(K)\ge(3b^{N+1})^{-1}>0$. By the isometric embedding of
+$[-4k/Q_{N+1},4k/Q_{N+1}]$ into $\R/\Z$, the projection of $K$ to the circle has
+the same positive $\mathcal H^{h_k}$ measure. Since $K\subseteq\{\Lam\le k/4\}$
+and \eqref{eq:strict-null} shows that the strict sublevel $\{\Lam<k/4\}$ has
+$\mathcal H^{h_k}$ measure zero, we conclude that
+\[
+ \mathcal H^{h_k}\bigl(\{x\in\R/\Z:\Lam(x)=k/4\}\bigr)
+ \ \ge\ \mathcal H^{h_k}(K)-\mathcal H^{h_k}\bigl(\{\Lam<k/4\}\bigr)
+ \ =\ \mathcal H^{h_k}(K)\ >\ 0 .
+\]
+
+\emph{Measurability, infinitude and $\sigma$-finiteness.} The functions
+$x\mapsto j\|Q_jx\|$ are continuous on the circle $\R/\Z$. Hence $\Lam$ is Borel
+measurable as their pointwise limit superior, every sublevel $\{\Lam\le c\}$ and
+superlevel $\{\Lam\ge c\}=\bigcap_{m\ge1}\bigcup_{j\ge m}\{x:j\|Q_jx\|\ge c-1/m\}$
+is Borel, and so is the exact level
+$S_k:=\{x\in\R/\Z:\Lam(x)=k/4\}=\{\Lam\le k/4\}\cap\{\Lam\ge k/4\}$. By
+Corollary~\ref{cor:infinite-level} (or Theorem~\ref{thm:finite}), $S_k$ has
+Lebesgue measure zero. For any $y\in L=\Z+\Z\frac{\ee+1}{2}$, the triangle
+inequality for $\|\cdot\|$ gives
+$\bigl|j\|Q_j(x+y)\|-j\|Q_jx\|\bigr|\le j\|Q_jy\|\to0$ as $j\to\infty$ by
+Theorem~\ref{thm:class} (the critical weight $j$ is essential here), so
+$\Lam(x+y)=\Lam(x)$ and $S_k$ is invariant under translation by the subgroup
+$\bar L:=L/\Z\subset\R/\Z$. Since $(\ee+1)/2$ is irrational, Kronecker's theorem
+implies that $\bar L$ is dense in $\R/\Z$.
+
+Suppose for a contradiction that $0<\mathcal H^{h_k}(S_k)<\infty$. Then the
+normalized restriction
+\[
+\nu(B):=\frac{\mathcal H^{h_k}(S_k\cap B)}{\mathcal H^{h_k}(S_k)}
+\qquad(B\subseteq\R/\Z\text{ Borel})
+\]
+is a Borel probability measure on $\R/\Z$ concentrated on $S_k$ ($\nu(S_k)=1$).
+Because $\mathcal H^{h_k}$ is translation-invariant on $\R/\Z$ and $S_k+\ell=S_k$
+for every $\ell\in\bar L$, $\nu$ is invariant under rotation by every
+$\ell\in\bar L$: $\nu(B+\ell)=\nu(B)$ for all Borel $B\subseteq\R/\Z$. We show
+that $\nu$ is invariant under rotation by \emph{every} $t\in\R/\Z$. Let
+$f:\R/\Z\to\R$ be any continuous function. By uniform continuity on the compact
+group $\R/\Z$, for any $t\in\R/\Z$ we may choose a sequence $\ell_m\in\bar L$
+with $\ell_m\to t$ in $\R/\Z$, and then
+$\sup_{x\in\R/\Z}|f(x-\ell_m)-f(x-t)|\to0$ as $m\to\infty$. By $\bar L$-invariance
+of $\nu$ and bounded convergence,
+\[
+\int_{\R/\Z}f(x-t)\,d\nu(x)
+=\lim_{m\to\infty}\int_{\R/\Z}f(x-\ell_m)\,d\nu(x)
+=\lim_{m\to\infty}\int_{\R/\Z}f(x)\,d\nu(x)
+=\int_{\R/\Z}f(x)\,d\nu(x).
+\]
+Thus the rotated Borel probability measure $\nu_t(B):=\nu(B+t)$ has the same
+integral as $\nu$ on every continuous function $f\in C(\R/\Z)$ (or equivalently
+the same Fourier coefficients $\int_{\R/\Z}\ee^{2\pi i m x}\,d\nu(x)=0$ for all
+$m\in\Z\setminus\{0\}$), so $\nu_t=\nu$ for all $t\in\R/\Z$ by uniqueness of
+Haar probability measure on $\R/\Z$: concretely, for every integer $m\ge1$,
+partitioning $\R/\Z$ into $m$ disjoint half-open arcs of equal length $1/m$
+gives mass $1/m$ to each arc, Hence every arc of rational length $p/m$ has
+$\nu$-measure $p/m$, and monotonicity extends $\nu(I)=\operatorname{Leb}_{\R/\Z}(I)$
+to all open arcs $I\subset\R/\Z$, which generate the Borel $\sigma$-algebra.
+Thus $\nu=\operatorname{Leb}_{\R/\Z}$, contradicting
+$1=\nu(S_k)=\operatorname{Leb}_{\R/\Z}(S_k)=0$. Therefore
+$\mathcal H^{h_k}(S_k)=\infty$. Finally, $S_k$ has $\sigma$-finite
+$\mathcal H^{h_k}$ measure because $S_k\subseteq\{\Lam\le k/4\}$, which is
+covered by the countably many Borel classes $\mathcal C(N,m_{N-1},m_N)$ above,
+each of finite $\mathcal H^{h_k}$ measure $\le b^{-N}<\infty$.
+
+For the power-gauge family $g_\beta(1/Q_n)=\beta^{-n}$, on each linear
+interpolation interval $[1/Q_{n+1},1/Q_n]$ both $g_\beta$ and $h_k$ are affine
+with positive values at the endpoints, so the ratio $g_\beta(r)/h_k(r)$ is
+monotone on $[1/Q_{n+1},1/Q_n]$ and therefore lies between the endpoint values
+$(\beta/(2k+1))^{-n}$ and $(\beta/(2k+1))^{-n-1}$. Thus
+$g_\beta(r)/h_k(r)\to0$ when $\beta>2k+1$ and $h_k(r)/g_\beta(r)\to0$ when
+$1<\beta<2k+1$ as $r\downarrow0$, which are special cases of
+Corollary~\ref{cor:exact-gauge}(ii)--(iii).
+
+For comparison, Cabrelli, Mendivil, Molter and Shonkwiler
+\cite[\S5, Theorem~3]{CMMS} construct, for a Cantor set whose gap
+sequence is nonincreasing, a gauge $h$ for which the set is an $h$-set
+($1/32\le\mathcal H^h\le1$, a finite positive measure), whereas Moreira, Erazo
+and Angelini \cite{MEA} show that the classical Lagrange level at value $3$ is
+never $\sigma$-finite with positive measure for any gauge. Here the gauge comes
+from the recurrence's own scale, and the entire exact level has \emph{infinite}
+but $\sigma$-finite $\mathcal H^{h_k}$ measure.
+\end{proof}
+
+\paragraph{Lean status.}
+The null part \eqref{eq:strict-null} is kernel-checked at Layer~A in
+\texttt{EpiFormal/\allowbreak GaugeNull.lean} as
+\texttt{GaugeNull.\allowbreak mkMetric\_\allowbreak strictLevel\_\allowbreak null}
+for any nondecreasing function $m:\R_{\ge0\infty}\to\R_{\ge0\infty}$ satisfying
+$m(1/Q_n)\le C(2k+1)^{-n}$ ($n\ge1$), without requiring continuity of $m$; the
+same module kernel-checks Corollary~\ref{cor:exact-gauge}(ii) on $\R$ as
+\texttt{GaugeNull.\allowbreak mkMetric\_\allowbreak levelSet\_\allowbreak null\_\allowbreak of\_\allowbreak subgauge}.
+In \texttt{EpiFormal/\allowbreak GaugeExact.lean}, $L$-translation invariance
+(\texttt{exactLevel\_\allowbreak add\_\allowbreak latticeL}), the countable
+finite-measure covering
+(\texttt{exactLevel\_\allowbreak countable\_\allowbreak cover\_\allowbreak finite\_\allowbreak mkMetric}),
+and---for arbitrary monotone continuous $m$ satisfying matching two-sided
+bounds---the Cantor-tree lower bound
+(\texttt{mkMetric\_\allowbreak cantorTree\_\allowbreak pos}), exact-level
+positivity (\texttt{mkMetric\_\allowbreak exactLevel\_\allowbreak pos}),
+exact-level infinitude on $\R$
+(\texttt{mkMetric\_\allowbreak exactLevel\_\allowbreak eq\_\allowbreak top}),
+and the non-$\sigma$-finiteness criterion
+(\texttt{not\_\allowbreak countable\_\allowbreak union\_\allowbreak finite\_\allowbreak of\_\allowbreak ratio\_\allowbreak tendsto\_\allowbreak zero})
+are likewise kernel-checked.
+
+The external continuity hypothesis, the explicit piecewise-linear gauge
+construction, and the native quotient-metric circle statements on
+\texttt{UnitAddCircle} ($\R/\Z$) are completely discharged in
+\texttt{EpiFormal/\allowbreak GaugeCircle.lean}:
+the gauges $h_k$ (\texttt{critGauge k}), $g_2$ (\texttt{binaryGauge}), and
+$g_\beta$ (\texttt{interpGauge \ensuremath{\beta}}) are constructed explicitly
+with kernel-checked monotonicity (\texttt{critGauge\_\allowbreak mono}),
+continuity on $\R_{\ge0\infty}$ including $0^+$ and $\infty$
+(\texttt{critGauge\_\allowbreak continuous}), and exact endpoint and segment
+values (\texttt{critGauge\_\allowbreak at\_\allowbreak inv\_\allowbreak Qsel},
+\texttt{critGauge\_\allowbreak eq\_\allowbreak segVal}).
+This yields the assumption-free instantiations of Theorem~\ref{thm:gauge},
+Corollary~\ref{cor:exact-gauge}(i)--(iii), and Remark~\ref{rem:gauge-scale} both
+on $\R$
+(\texttt{mkMetric\_\allowbreak critGauge\_\allowbreak strictLevel\_\allowbreak null},
+\texttt{mkMetric\_\allowbreak critGauge\_\allowbreak exactLevel\_\allowbreak pos},
+\texttt{mkMetric\_\allowbreak critGauge\_\allowbreak exactLevel\_\allowbreak eq\_\allowbreak top},
+\texttt{critGauge\_\allowbreak exactLevel\_\allowbreak sigma\_\allowbreak finite\_\allowbreak cover},
+\texttt{mkMetric\_\allowbreak critGauge\_\allowbreak exactLevel\_\allowbreak inter\_\allowbreak Ioo\_\allowbreak eq\_\allowbreak top},
+\texttt{mkMetric\_\allowbreak powerGauge\_\allowbreak exactLevel\_\allowbreak null\_\allowbreak of\_\allowbreak gt},
+\texttt{mkMetric\_\allowbreak powerGauge\_\allowbreak exactLevel\_\allowbreak not\_\allowbreak sigma\_\allowbreak finite\_\allowbreak of\_\allowbreak lt},
+and \texttt{critGauge\_\allowbreak adjacent\_\allowbreak level\_\allowbreak separation})
+and natively on \texttt{UnitAddCircle} ($\R/\Z$)
+(\texttt{mkMetric\_\allowbreak critGauge\_\allowbreak circleStrictLevel\_\allowbreak null},
+\texttt{mkMetric\_\allowbreak circleLevelSet\_\allowbreak null\_\allowbreak of\_\allowbreak subgauge},
+\texttt{mkMetric\_\allowbreak critGauge\_\allowbreak circleExactLevel\_\allowbreak inter\_\allowbreak open\_\allowbreak eq\_\allowbreak top},
+\texttt{mkMetric\_\allowbreak critGauge\_\allowbreak circleExactLevel\_\allowbreak eq\_\allowbreak top},
+\texttt{critGauge\_\allowbreak circleExactLevel\_\allowbreak sigma\_\allowbreak finite\_\allowbreak cover},
+\texttt{mkMetric\_\allowbreak critGauge\_\allowbreak circleExactLevel\_\allowbreak not\_\allowbreak sigma\_\allowbreak finite\_\allowbreak of\_\allowbreak ratio},
+\texttt{mkMetric\_\allowbreak powerGauge\_\allowbreak circleExactLevel\_\allowbreak null\_\allowbreak of\_\allowbreak gt},
+and
+\texttt{mkMetric\_\allowbreak powerGauge\_\allowbreak circleExactLevel\_\allowbreak not\_\allowbreak sigma\_\allowbreak finite\_\allowbreak of\_\allowbreak lt}),
+proved constructively by splitting the Cantor tree into depth-$M$ cylinders,
+packing $\Omega\bigl((b-a)Q_{J+M+1}\bigr)$ disjoint $L$-translates using
+$\delta_j/2\in L$, and transferring across the local isometry
+$\R\to\R/\Z$ on intervals of length $\le1/2$. For the binary exact-limit
+regime of Theorem~\ref{thm:trichotomy}(ii), the binary Cantor-tree lower bound,
+global and open-set $\mathcal H^{g_2}$-infinitude, $\sigma$-finite covering,
+$\mathcal H^{h_k}$-nullity, and the $g_\beta$ threshold dichotomy ($\beta>2$ vs.\
+$1<\beta<2$) are likewise kernel-checked on both $\R$ and \texttt{UnitAddCircle}
+(\texttt{mkMetric\_\allowbreak binaryGauge\_\allowbreak unsigned\allowbreak ExactLimit\_\allowbreak pos},
+\texttt{mkMetric\_\allowbreak binaryGauge\_\allowbreak unsigned\allowbreak ExactLimit\_\allowbreak inter\_\allowbreak Ioo\_\allowbreak eq\_\allowbreak top},
+\texttt{mkMetric\_\allowbreak binaryGauge\_\allowbreak circle\allowbreak Unsigned\allowbreak ExactLimit\_\allowbreak inter\_\allowbreak open\_\allowbreak eq\_\allowbreak top},
+\texttt{mkMetric\_\allowbreak binaryGauge\_\allowbreak circle\allowbreak Unsigned\allowbreak ExactLimit\_\allowbreak eq\_\allowbreak top},
+\texttt{binaryGauge\_\allowbreak circle\allowbreak Unsigned\allowbreak ExactLimit\_\allowbreak sigma\_\allowbreak finite\_\allowbreak cover},
+\texttt{critGauge\_\allowbreak circle\allowbreak Unsigned\allowbreak ExactLimit\_\allowbreak null},
+\texttt{mkMetric\_\allowbreak powerGauge\_\allowbreak circle\allowbreak Unsigned\allowbreak ExactLimit\_\allowbreak null\_\allowbreak of\_\allowbreak gt},
+and
+\texttt{mkMetric\_\allowbreak powerGauge\_\allowbreak circle\allowbreak Unsigned\allowbreak ExactLimit\_\allowbreak not\_\allowbreak sigma\_\allowbreak finite\_\allowbreak of\_\allowbreak lt}).
+All 53 audited declarations in \texttt{GaugeCircle.lean} report only
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, with zero
+\texttt{sorryAx}.
+
+The gauge $h_k$ is exact for the level $k/4$ in the following sense.
+Here a gauge is a nondecreasing function $g:[0,\infty)\to[0,\infty)$
+with $g(0)=0$, and $\mathcal H^g$ is the Hausdorff measure on the circle
+with covering cost $g(\operatorname{diam}U)$.
+
+\begin{corollary}[Exact critical gauge]\label{cor:exact-gauge}
+Let $k\ge1$ and $S_k=\{x\in\R/\Z:\Lam(x)=k/4\}$.
+\begin{enumerate}[label=(\roman*)]
+\item For every nonempty open arc $I\subseteq\R/\Z$,
+$\mathcal H^{h_k}(S_k\cap I)=\infty$.
+\item If $g$ is a gauge with $g(1/Q_n)/h_k(1/Q_n)\to0$ as $n\to\infty$, then
+$\mathcal H^{g}(\{\Lam\le k/4\})=0$; in particular $\mathcal H^g(S_k)=0$.
+(Lean on $\R$ and $\R/\Z$: \texttt{GaugeNull.\allowbreak mkMetric\_\allowbreak levelSet\_\allowbreak null\_\allowbreak of\_\allowbreak subgauge} and \texttt{GaugeCircle.\allowbreak mkMetric\_\allowbreak circleLevelSet\_\allowbreak null\_\allowbreak of\_\allowbreak subgauge}.)
+\item If $g$ is a gauge with $h_k(t)/g(t)\to0$ as $t\to0^+$, then $S_k$ is
+not $\sigma$-finite for $\mathcal H^g$; in particular
+$\mathcal H^g(S_k)=\infty$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(i) Hausdorff measures on the circle are invariant under rotations, and
+$S_k$ is invariant under rotation by the elements of $L$ (proof of
+Theorem~\ref{thm:gauge}). Suppose $\mathcal H^{h_k}(S_k\cap I)<\infty$ for
+some nonempty open arc $I$. Since $L$ is dense modulo one, the arcs $I+\ell$
+($\ell\in L$) cover the circle, and by compactness finitely many of them,
+say $I+\ell_1,\ldots,I+\ell_N$, already do. Then
+$\mathcal H^{h_k}(S_k)\le\sum_{i=1}^N\mathcal H^{h_k}(S_k\cap(I+\ell_i))
+=N\,\mathcal H^{h_k}(S_k\cap I)<\infty$, contradicting
+Theorem~\ref{thm:gauge}.
+
+(ii) In the proof of Theorem~\ref{thm:gauge}, the non-strict sublevel
+$\{\Lam\le k/4\}$ is a countable union of classes. For a class with
+starting index $N$ and every large $n$, at most $b^{\,n-N}$ intervals of
+diameter at most $1/Q_n$ cover it, where $b=2k+1$. Since $g$ is
+nondecreasing, the $g$-cost of this cover is at most
+\[
+ b^{\,n-N}g(1/Q_n)=b^{-N}\,\frac{g(1/Q_n)}{h_k(1/Q_n)}\longrightarrow0 .
+\]
+So every class is $\mathcal H^g$-null, and so is their countable union.
+
+(iii) Fix $\varepsilon>0$ and choose $\delta>0$ with
+$h_k(t)\le\varepsilon g(t)$ for $0\le t<\delta$. Every $\delta$-cover then
+satisfies $\sum h_k(\operatorname{diam}U)\le
+\varepsilon\sum g(\operatorname{diam}U)$, so
+$\mathcal H^{h_k}(E)\le\varepsilon\,\mathcal H^g(E)$ for every set $E$.
+Hence $\mathcal H^g(E)<\infty$ implies $\mathcal H^{h_k}(E)=0$. If $S_k$
+were a countable union of sets $E_i$ with $\mathcal H^g(E_i)<\infty$, we
+would get $\mathcal H^{h_k}(S_k)=0$, contradicting Theorem~\ref{thm:gauge}.
+\end{proof}
+
+\begin{corollary}[Arbitrary gauges at the exact and unsigned levels]\label{cor:liminf-gauges}
+Let $g$ be a Hausdorff gauge, $r_n=1/Q_n$, and
+\[
+\rho_b(g)=\liminf_{n\to\infty} b^n g(r_n).
+\]
+For $S_k=\{\Lam=k/4\}$ take $b=2k+1$, and for
+$T_k=\{x:j\|Q_jx\|\to k/4\}$ take $b=2$, where $k\ge1$ and both sets
+are taken on the circle. In each case the named set is
+$\mathcal H^g$-null if $\rho_b(g)=0$. If $0<\rho_b(g)<\infty$, it is
+$\sigma$-finite and its intersection with every nonempty open set has
+infinite $\mathcal H^g$ measure. If $\rho_b(g)=\infty$, its intersection
+with every nonempty open set is non-$\sigma$-finite. For $b=2k+1$ the
+zero assertion applies to the full sublevel $\{\Lam\le k/4\}$, and
+$\rho_b(g)<\infty$ implies that $\{\Lam<k/4\}$ is $\mathcal H^g$-null.
+\end{corollary}
+
+\begin{proof}
+The fixed initial-pair classes of Theorems~\ref{thm:gauge}
+and~\ref{thm:trichotomy}(ii) have covers by at most $b^{n-N}$ intervals
+of diameter $r_n$ for a fixed starting level $N$ and all large $n$.
+Their gauge cost is bounded by $b^{-N}b^n g(r_n)$. Taking the lower
+limit along permissible scales gives zero or finite measure for each
+class, according as $\rho_b(g)$ is zero or finite, and the classes are
+countable. For the strict sublevel the same argument uses $2k-1$
+instead of $2k+1$. Bounded cost along a subsequence at base $2k+1$
+then tends to zero along that subsequence at base $2k-1$.
+
+Write $h_b(r_n)=b^{-n}$ with linear interpolation. If
+$r_{n+1}\le r\le r_n$, then
+\[
+ h_b(r)\le b^{-n},\qquad g(r)\ge g(r_{n+1}).
+\]
+For any $0<A<\rho_b(g)$, eventually $b^{n+1}g(r_{n+1})\ge A$,
+so $h_b(r)\le(b/A)g(r)$ for all sufficiently small $r$. The critical
+reference measure is infinite on the intersection with every nonempty
+open set, by Corollary~\ref{cor:exact-gauge}(i) and
+Theorem~\ref{thm:trichotomy}(ii), respectively. The comparison gives the
+same local infinitude for $g$. When $\rho_b(g)=\infty$, $A$ can be
+arbitrarily large, so any set of finite $\mathcal H^g$ measure is
+$\mathcal H^{h_b}$-null. A countable union of such sets cannot cover
+a nonempty open intersection of the named set.
+\end{proof}
+
+\begin{remark}[Oscillating normalized costs]
+Let $n_j=2^j$ and prescribe $g(r_n)=b^{-n_j}$ for
+$n_j\le n<n_{j+1}$, interpolating linearly in $r$. The lower and upper
+limits of $b^ng(r_n)$ are $1$ and $\infty$. Prescribing
+$g(r_n)=b^{-(n_{j+1}-1)}$ instead gives lower and upper limits $0$ and $1$.
+Both prescriptions are nondecreasing as functions of $r$ and tend to zero
+at the origin. They can be made strictly increasing near zero by adding
+$h_b^2$, which adds $b^{-n}$ to the normalized costs at the nodes.
+\end{remark}
+
+\paragraph{Lean verification.}
+The accompanying \texttt{GaugeLiminfComplete.lean} verifies
+Corollary~\ref{cor:liminf-gauges} on \texttt{UnitAddCircle}, including
+the strict-sublevel assertion and the non-$\sigma$-finite conclusion on
+each nonempty open set. Its three principal declarations are
+\texttt{circleExactLevel\_\allowbreak liminf\_\allowbreak trichotomy},
+\texttt{circleUnsigned\allowbreak ExactLimit\_\allowbreak liminf\_\allowbreak trichotomy}, and
+\texttt{mkMetric\_\allowbreak circleStrictLevel\_\allowbreak null\_\allowbreak of\_\allowbreak liminf\_\allowbreak lt\_\allowbreak top}.
+All eighteen audited declarations use only the three base axioms.
+
+\begin{remark}[Level separation and interpolation-free logarithmic scale]\label{rem:gauge-scale}
+The gauges $h_k$ strictly separate the critical levels. Indeed, for $k\ge2$,
+$h_k(1/Q_n)/h_{k-1}(1/Q_n)=\bigl((2k-1)/(2k+1)\bigr)^n\to0$, and on each
+interval $[1/Q_{n+1},1/Q_n]$ both gauges are linear, so their ratio lies
+between its values at the endpoints. Hence $h_k(t)/h_{k-1}(t)\to0$ as
+$t\to0^+$. By Corollary~\ref{cor:exact-gauge}(iii), the level $S_k$ is not
+$\sigma$-finite for $\mathcal H^{h_{k-1}}$, whereas $S_{k-1}$ has infinite
+but $\sigma$-finite $\mathcal H^{h_{k-1}}$ measure. By
+Corollary~\ref{cor:exact-gauge}(ii), the level $S_{k-1}$ is
+$\mathcal H^{h_k}$-null, consistent with \eqref{eq:strict-null}.
+
+Moreover, the scale of the critical gauge $h_k$ can be read without reference
+to the linear interpolation. For $1/Q_{n+1}\le r\le1/Q_n$ the quantity
+$-\log h_k(r)$ lies between $n\log(2k+1)$ and $(n+1)\log(2k+1)$.
+By \eqref{eq:rec} both endpoints for $\log(1/r)$ are asymptotic to
+$n\log n$, giving
+\[
+ -\log h_k(r)\sim \log(2k+1)\,
+             \frac{\log(1/r)}{\log\log(1/r)}\qquad(r\downarrow0).
+\]
+In particular, any gauge $g$ whose corresponding logarithmic rate exists and is
+strictly greater than $\log(2k+1)$ satisfies $g(1/Q_n)/h_k(1/Q_n)\to0$ and
+therefore gives zero measure to $S_k$, while any gauge with a strictly smaller
+logarithmic rate satisfies $h_k(t)/g(t)\to0$ and gives a non-$\sigma$-finite
+measure on $S_k$.
+\end{remark}
+
+\subsection{The three-way splitting at each positive spectral level}
+
+While every subcritical weight $0\le\alpha<1$ assigns the same Hausdorff
+dimension $1-\alpha$ to the sublevel set $\{\Lam_\alpha\le c\}$ and to the
+exact limit set $\{j^\alpha\|Q_jx\|\to c\}$ (Theorem~\ref{conj:weight}), the
+critical weight $\alpha=1$ exhibits a dramatic three-way splitting at each
+positive quantized level $c=k/4$ ($k\in\Z_{\ge1}$), governed by the allowed
+tail alphabet of the integer recurrence digits $d_j(x)$.
+
+\begin{theorem}[Trichotomy at positive spectral levels, Layer~A in Lean]\label{thm:trichotomy}
+Fix an integer $k\ge1$ and let $u_j(x)=Q_jx-\mathrm{round}(Q_jx)$. At the
+spectral level $c=k/4$, the sublevel set, the unsigned exact limit set, and
+the signed exact limit sets split into three distinct regimes:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item \textbf{Limsup level (alphabet of size $2k+1$, gauge base $2k+1$):}
+$x\in E_{k/4}=\{\Lam\le k/4\}$ if and only if $u_j(x)\to0$ and eventually
+$d_j(x)\in\{-k,-k+1,\dots,k\}$. On $\R/\Z$, both $E_{k/4}$ and the exact
+limsup level $\{\Lam=k/4\}$ have infinite, $\sigma$-finite $\mathcal H^{h_k}$
+measure for the exact critical gauge $h_k(1/Q_n)=(2k+1)^{-n}$
+(Theorem~\ref{thm:gauge} and Corollary~\ref{cor:exact-gauge}).
+\item \textbf{Unsigned exact limit set (universal binary alphabet of size $2$, gauge base $2$):}
+Define $E_{\mathrm{lim}}(k/4):=\{x\in\R:\lim_{j\to\infty}j\|Q_jx\|=k/4\}$.
+Then $x\in E_{\mathrm{lim}}(k/4)$ if and only if $u_j(x)\to0$ and eventually
+$|d_j(x)|=k$, i.e.\ $d_j(x)\in\{-k,+k\}$ (exactly two branches per step,
+\emph{independently} of $k\ge1$). Consequently, in the interpolated gauge
+family $g_\beta(1/Q_n)=\beta^{-n}$, the exact critical gauge for
+$E_{\mathrm{lim}}(k/4)$ is $h_{\mathrm{lim}}:=g_2$ ($h_{\mathrm{lim}}(1/Q_n)=2^{-n}$)
+for \emph{every} $k\ge1$: on $\R/\Z$, $E_{\mathrm{lim}}(k/4)$ has infinite,
+$\sigma$-finite $\mathcal H^{g_2}$ measure (and infinite $\mathcal H^{g_2}$
+measure in every nonempty open arc, whereas
+$\mathcal H^{h_k}(E_{\mathrm{lim}}(k/4))=0$ since $2<2k+1$), and
+$E_{\mathrm{lim}}(c)=\emptyset$ for all $c\notin\frac14\Z_{\ge0}$.
+\item \textbf{Signed exact limit sets (single tail branch, single countable $L$-coset):}
+For each sign $\pm$, define
+$E_{\mathrm{lim}}^\pm(k/4):=\{x\in\R:\lim_{j\to\infty}j\,u_j(x)=\pm k/4\}$.
+Then $x\in E_{\mathrm{lim}}^\pm(k/4)$ if and only if $u_j(x)\to0$ and
+eventually $d_j(x)=\pm k$. For any $x,y\in E_{\mathrm{lim}}^\pm(k/4)$, their
+difference satisfies $x-y\in L=\Z+\Z\frac{\ee+1}{2}$. Hence each signed limit
+set is a single countable coset of $L$:
+\[
+E_{\mathrm{lim}}^+(k/4)=x_k^+ + L,\qquad
+E_{\mathrm{lim}}^-(k/4)=x_k^- + L\quad(x_k^-=-x_k^+),
+\]
+and therefore is countable and has zero measure for every non-atomic Hausdorff
+gauge.
+\end{enumerate}
+(Lean declarations in \texttt{Full\allowbreak Spectrum\allowbreak Discrete.lean},
+\texttt{Gauge\allowbreak Circle.lean}, and
+\texttt{Trichotomy\allowbreak And\allowbreak Poly\allowbreak Extension.lean}:
+the binary digit characterization \texttt{unsigned\_\allowbreak exact\_\allowbreak limit\_\allowbreak iff\_\allowbreak defect\_\allowbreak binary},
+the constant digit characterization \texttt{signed\_\allowbreak exact\_\allowbreak limit\_\allowbreak iff\_\allowbreak defect\_\allowbreak const},
+the $L$-coset difference theorem \texttt{sub\_\allowbreak mem\_\allowbreak latticeL\_\allowbreak of\_\allowbreak same\_\allowbreak signed\_\allowbreak limit},
+countability \texttt{signed\_\allowbreak exact\_\allowbreak limit\_\allowbreak set\_\allowbreak countable},
+zero dimension \texttt{dimH\_\allowbreak signed\_\allowbreak exact\_\allowbreak limit\_\allowbreak set\_\allowbreak zero},
+the native $\R$ and \texttt{UnitAddCircle} binary-gauge theorems for~(ii) in \texttt{GaugeCircle.lean},
+and the full signed-coset collapse for~(iii) via
+\texttt{xPlus\_\allowbreak mem\_\allowbreak signed\allowbreak Exact\allowbreak LimitSet},
+\texttt{signed\allowbreak Exact\allowbreak LimitSet\_\allowbreak pos\_\allowbreak eq\_\allowbreak coset},
+\texttt{signed\allowbreak Exact\allowbreak LimitSet\_\allowbreak neg\_\allowbreak eq\_\allowbreak coset}, and
+\texttt{trichotomy\_\allowbreak part\_\allowbreak iii\_\allowbreak complete}.)
+\end{theorem}
+
+\begin{proof}
+Statement~(i) is immediate from Theorem~\ref{thm:full-spectrum},
+Corollary~\ref{thm:sub}, Theorem~\ref{thm:gauge}, and
+Corollary~\ref{cor:exact-gauge}.
+
+For~(ii), if $j\|Q_jx\|\to k/4$, then $u_j(x)=O(1/j)\to0$, and
+\eqref{eq:digit-asymp} gives $|d_j(x)|\to k$. Since $|d_j(x)|\in\Z_{\ge0}$, we
+must have $|d_j(x)|=k$, i.e.\ $d_j(x)\in\{-k,+k\}$, for all sufficiently large
+$j$. Conversely, if $u_j(x)\to0$ and eventually $d_j(x)\in\{-k,+k\}$, then
+$|d_j(x)|=k$ eventually, so \eqref{eq:digit-asymp} implies $4j\|Q_jx\|\to k$,
+that is, $x\in E_{\mathrm{lim}}(k/4)$ (and if $c\notin\frac14\Z_{\ge0}$, no
+integer sequence $|d_j|$ can converge to $4c$, so $E_{\mathrm{lim}}(c)=\emptyset$).
+We now verify each metric assertion for $E_{\mathrm{lim}}(k/4)$ on $\R/\Z$ under
+the binary gauge $g_2(1/Q_n)=2^{-n}$:
+\begin{itemize}[leftmargin=1.8em]
+\item \emph{$\sigma$-finiteness under $\mathcal H^{g_2}$ and nullity under $\mathcal H^{h_k}$:}
+Partition $E_{\mathrm{lim}}(k/4)$ into countably many Borel classes
+$\mathcal C_{\mathrm{bin}}(N,m_{N-1},m_N)$ indexed by a starting index $N\ge2$
+and starting pair $(M_{N-1},M_N)=(m_{N-1},m_N)\in\Z^2$, requiring
+$|u_j|\le(k+1)/j$ and $d_j\in\{-k,+k\}$ for all $j\ge N$. Since at each step
+$j\ge N$ there are only $2$ choices for $d_j\in\{-k,+k\}$, at level $n>N$ a
+class has at most $2^{n-N}$ possible values of $M_n$, each confining $x$ to an
+interval of diameter $2(k+1)/(nQ_n)\le1/Q_n$ for all $n\ge2(k+1)$. Thus the
+$\mathcal H_\delta^{g_2}$ covering cost of $\mathcal C_{\mathrm{bin}}(N,m_{N-1},m_N)$
+is at most $2^{n-N}g_2(1/Q_n)=2^{-N}<\infty$, proving that
+$E_{\mathrm{lim}}(k/4)$ is $\sigma$-finite for $\mathcal H^{g_2}$. For the
+larger-base gauge $h_k=g_{2k+1}$, since $2<2k+1$ for every $k\ge1$, the
+$\mathcal H_\delta^{h_k}$ covering cost of each class is at most
+\[
+2^{n-N}h_k(1/Q_n)=(2k+1)^{-N}\left(\frac{2}{2k+1}\right)^{n-N}\longrightarrow0
+\qquad(n\to\infty),
+\]
+so every class is $\mathcal H^{h_k}$-null and
+$\mathcal H^{h_k}(E_{\mathrm{lim}}(k/4))=0$. More generally, any gauge $g$ with
+$g(1/Q_n)/g_2(1/Q_n)=2^ng(1/Q_n)\to0$ gives
+$\mathcal H^g(E_{\mathrm{lim}}(k/4))=0$.
+\item \emph{Positivity under $\mathcal H^{g_2}$:}
+Fix $N>8k$, set $M_{N-1}=M_N=0$, and restrict the digit sequences in the
+\emph{Positivity} step of Theorem~\ref{thm:gauge} to the binary space
+$\{-k,+k\}^{\{j\ge N\}}$. By \eqref{eq:telescoping-tail}, every resulting point
+$x(\omega)=\lim_{j\to\infty}M_j/Q_j$ satisfies $|Q_jx(\omega)-M_j|<k/j<1/8$ and
+has true recurrence digits $d_j(x(\omega))=d_j\in\{-k,+k\}$ for all $j\ge N$, so
+$|d_j(x(\omega))|=k$ and $j\|Q_jx(\omega)\|\to k/4$. Hence the compact binary
+Cantor image $K_{\mathrm{bin}}:=x(\{-k,+k\}^{\{j\ge N\}})$ lies entirely inside
+$E_{\mathrm{lim}}(k/4)\cap[-4k/Q_{N+1},4k/Q_{N+1}]$ (no strict sublevel needs to
+be subtracted). Equip $\{-k,+k\}^{\{j\ge N\}}$ with the uniform Bernoulli
+product measure assigning weight $1/2$ to $-k$ and $1/2$ to $+k$, and let
+$\mu_{\mathrm{bin}}$ be its pushforward to $K_{\mathrm{bin}}$. As in the proof
+of Theorem~\ref{thm:gauge}, any interval $U$ of length
+$1/Q_{n+1}\le h<1/Q_n$ ($n>N$) determines a unique $M_j$ for each $N\le j<n$ and
+at most $3$ values of $M_n$, so $K_{\mathrm{bin}}\cap U$ meets at most $3$ binary
+cylinders of depth $n-N$, each of $\mu_{\mathrm{bin}}$-mass $2^{-(n-N)}$. Thus
+\[
+\mu_{\mathrm{bin}}(U)\le 3\cdot 2^{-(n-N)}=3\cdot 2^{N+1}\cdot 2^{-(n+1)}
+\le 3\cdot 2^{N+1}g_2(h),
+\]
+and the mass distribution principle gives
+$\mathcal H^{g_2}(E_{\mathrm{lim}}(k/4))\ge\mathcal H^{g_2}(K_{\mathrm{bin}})\ge(3\cdot 2^{N+1})^{-1}>0$.
+\item \emph{Infinitude on every nonempty open arc and non-$\sigma$-finiteness for larger gauges:}
+For any $y\in L$, $j\|Q_jy\|\to0$ by Theorem~\ref{thm:class}, so
+$\bigl|j\|Q_j(x+y)\|-j\|Q_jx\|\bigr|\le j\|Q_jy\|\to0$; hence
+$E_{\mathrm{lim}}(k/4)$ is Borel, Lebesgue-null (since
+$E_{\mathrm{lim}}(k/4)\subseteq E_{k/4}$), and invariant under translation by
+the dense subgroup $\bar L=L/\Z$ on $\R/\Z$. The Haar-uniqueness argument of
+Theorem~\ref{thm:gauge} therefore forces
+$\mathcal H^{g_2}(E_{\mathrm{lim}}(k/4))=\infty$ on $\R/\Z$, and the compactness
+covering argument of Corollary~\ref{cor:exact-gauge}(i),(iii) with $g_2$ in
+place of $h_k$ shows that $\mathcal H^{g_2}(E_{\mathrm{lim}}(k/4)\cap I)=\infty$
+for every nonempty open arc $I\subseteq\R/\Z$ and that $E_{\mathrm{lim}}(k/4)$
+is not $\sigma$-finite for $\mathcal H^g$ whenever $g_2(t)/g(t)\to0$ as
+$t\to0^+$ (in particular for $g_\beta$ with $1<\beta<2$).
+\end{itemize}
+
+For~(iii), the signed asymptotic $d_j(x)-4ju_j(x)\to0$ in
+\eqref{eq:digit-asymp} shows that $ju_j(x)\to\pm k/4$ if and only if
+$u_j(x)\to0$ and the integer $d_j(x)$ is eventually constant and equal to
+$\pm k$. The existence of a witness $x_k^+\in E_{\mathrm{lim}}^+(k/4)$ (and
+$x_k^-=-x_k^+\in E_{\mathrm{lim}}^-(k/4)$) is given by the constant-digit
+construction $d_j\equiv k$ in Theorem~\ref{thm:gauge}. If
+$x,y\in E_{\mathrm{lim}}^\pm(k/4)$, then $j(u_j(x)-u_j(y))\to0$; since
+$Q_j(x-y)=\bigl(M_j(x)-M_j(y)\bigr)+\bigl(u_j(x)-u_j(y)\bigr)$ with
+$M_j(x)-M_j(y)\in\Z$, we have $\|Q_j(x-y)\|\le|u_j(x)-u_j(y)|$, hence
+$j\|Q_j(x-y)\|\to0$. By Theorem~\ref{thm:class}, $x-y\in L$. Conversely, for
+any $z\in L$, $j\|Q_jz\|\to0$ gives $u_j(z)=o(1/j)\to0$; for
+$x\in E_{\mathrm{lim}}^\pm(k/4)$, since $u_j(x)=O(1/j)\to0$, we have
+$|u_j(x)+u_j(z)|<1/2$ for all large $j$, so $Q_j(x+z)$ rounds to
+$M_j(x)+M_j(z)$ and $u_j(x+z)=u_j(x)+u_j(z)$, whence
+$j\,u_j(x+z)=j\,u_j(x)+j\,u_j(z)\to\pm k/4$. Thus $x+z\in E_{\mathrm{lim}}^\pm(k/4)$
+and $E_{\mathrm{lim}}^\pm(k/4)=x_k^\pm+L$.
+\end{proof}
+
+\paragraph{Lean status for Theorem~\ref{thm:trichotomy}.}
+All three parts~(i), (ii), and~(iii) of Theorem~\ref{thm:trichotomy} are now
+kernel-checked at Layer~A (using only the three Lean base axioms
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, with zero
+\texttt{sorryAx}). Specifically, the digit characterizations, signed-limit
+$L$-difference, countability, and dimension-zero lemmas are proved in
+\texttt{EpiFormal/\allowbreak Full\allowbreak Spectrum\allowbreak Discrete.lean};
+all metric gauge statements for the limsup regime~(i) and the binary exact-limit
+regime $E_{\mathrm{lim}}(k/4)$ in~(ii)---binary Cantor-tree positivity, global
+and nonempty-open-subset $\mathcal H^{g_2}$-infinitude, $\sigma$-finite
+covering, $\mathcal H^{h_k}$-nullity, and the $g_\beta$ threshold dichotomy
+($\beta>2$ vs.\ $1<\beta<2$)---are proved natively on both $\R$ and
+\texttt{UnitAddCircle} ($\R/\Z$) in
+\texttt{EpiFormal/\allowbreak GaugeCircle.lean} (building on
+\texttt{GaugeNull.lean} and \texttt{GaugeExact.lean}); and the full
+signed-coset collapse $E_{\mathrm{lim}}^\pm(k/4)=x_k^\pm+L$ in part~(iii) is
+proved in
+\texttt{EpiFormal/\allowbreak TrichotomyAndPolyExtension.lean} across eight
+audited declarations (\texttt{xPlus\_\allowbreak mem\_\allowbreak signedExactLimitSet},
+\texttt{neg\_\allowbreak xPlus\_\allowbreak mem\_\allowbreak signedExactLimitSet},
+\texttt{add\_\allowbreak latticeL\_\allowbreak mem\_\allowbreak signedExactLimitSet},
+\texttt{signedExactLimitSet\_\allowbreak pos\_\allowbreak eq\_\allowbreak coset},
+\texttt{signedExactLimitSet\_\allowbreak neg\_\allowbreak eq\_\allowbreak coset},
+\texttt{signedExactLimitSet\_\allowbreak zero\_\allowbreak eq\_\allowbreak latticeL},
+\texttt{signedExactLimitSet\_\allowbreak empty\_\allowbreak of\_\allowbreak not\_\allowbreak quarter\_\allowbreak int},
+and \texttt{trichotomy\_\allowbreak part\_\allowbreak iii\_\allowbreak complete}).
+

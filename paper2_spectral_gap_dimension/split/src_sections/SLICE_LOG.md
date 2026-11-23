@@ -85,3 +85,4 @@ src_bytes=253919 asm_bytes=253919
 - 未修改原版 `.tex`，未触碰 `historical_versions/`、`verification/`、`epi_formal/`。
 - 三轨草案仅含导言占位、`\input` 引用与注释，未复制任何正文。
 - 草案中对子段（gauge 前半 1177–1816、finite-state-tail 1817–1968、poly 1969–2500）的精确切分仍待正式抽正文时执行；当前 `sec-gauge.tex` 为整节切片。
+2026-11-23 gauge 二次切分：sec-gauge.tex(1324行，L1177-2500)=sec-gauge-core(640行，L1177-1816)+sec-finstate(152行，L1817-1968)+sec-poly(532行，L1969-2500)；三轨draft已改\input指向子片，全序拼接SHA与原版一致。

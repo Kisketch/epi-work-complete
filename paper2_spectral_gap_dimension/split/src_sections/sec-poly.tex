@@ -1,0 +1,532 @@
+﻿\subsection{General polynomial-growth denominator recurrences}\label{sec:poly-rec}
+
+The quantization, exact gauge, three-way positive-level splitting, and
+subcritical dimension phase transition extend from the Euler recurrence
+\eqref{eq:rec} to arbitrary polynomial-growth three-term recurrences. Throughout
+this subsection, fix a degree $r\in\Z_{\ge1}$, a leading coefficient
+$c\in\Z_{\ge1}$, and an integer shift $d\in\Z$. Set $A_j:=cj^r+d$, choose an
+integer $J_0\ge1$ such that $A_{J_0}=cJ_0^r+d\ge2$ (so $A_j$ is strictly
+increasing and $A_j\ge2$ for all $j\ge J_0$), and let $(Q_j)_{j\ge0}$ be any
+sequence of positive integers satisfying
+\begin{equation}\label{eq:poly-rec}
+Q_{j+1}=(cj^r+d)Q_j+Q_{j-1}\qquad\text{for all }j\ge J_0.
+\end{equation}
+For $x\in\R$ and $\alpha\ge0$, define the weighted approximation exponents
+\[
+\Lam^{(r,c,d)}(x):=\limsup_{j\to\infty}j^r\|Q_jx\|\in[0,\infty],\qquad
+\Lam_\alpha^{(r,c,d)}(x):=\limsup_{j\to\infty}j^\alpha\|Q_jx\|\in[0,\infty],
+\]
+so that $\Lam^{(r,c,d)}=\Lam_r^{(r,c,d)}$. Fix the Borel rounding rule
+$M_j(x):=\lfloor Q_jx+1/2\rfloor\in\Z$ and signed remainder
+$u_j(x):=Q_jx-M_j(x)\in[-1/2,1/2)$ (so $|u_j(x)|=\|Q_jx\|$), and for $j\ge J_0$
+define the integer recurrence defect (digit)
+\begin{equation}\label{eq:poly-defect-id}
+d_j(x):=M_{j+1}(x)-A_jM_j(x)-M_{j-1}(x)=A_ju_j(x)+u_{j-1}(x)-u_{j+1}(x)\in\Z.
+\end{equation}
+
+\begin{lemma}[Basic growth and non-asymptotic factorial bound, Layer~A in Lean]\label{lem:poly-growth}
+Put $J_1:=\max(J_0+1,\,2|d|+1)$. Then:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item For all $j\ge J_0$, $Q_{j+1}>A_jQ_j\ge2Q_j$.
+\item For all $j\ge J_0+1$, $0<Q_{j-1}<\frac12Q_j<Q_j$, and hence
+\[
+cj^r+d<\frac{Q_{j+1}}{Q_j}<cj^r+d+1\le(c+|d|+1)j^r.
+\]
+\item For all $j\ge J_1$, $A_j\ge\frac{c}{2}j^r$, and for every $m\ge J_1$,
+\[
+Q_m\ge C_{J_1}\left(\frac{c}{2^{r+1}}\right)^m(m!)^r,\qquad
+C_{J_1}:=Q_{J_1}\left(\frac{c}{2}\right)^{-J_1}\bigl((J_1-1)!\bigr)^{-r}>0.
+\]
+\item As $n\to\infty$, $\log Q_n=rn\log n+(\log c-r)n+O(\log n)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Since $Q_{j-1}\ge1$ and $A_j\ge2$ for $j\ge J_0$, \eqref{eq:poly-rec} yields
+$Q_{j+1}>A_jQ_j\ge2Q_j$, proving~(i). If $j\ge J_0+1$, then $j-1\ge J_0$, so~(i)
+gives $Q_j>2Q_{j-1}$, i.e.\ $0<Q_{j-1}/Q_j<1/2<1$; adding $A_j$ gives
+$cj^r+d<Q_{j+1}/Q_j<cj^r+d+1\le(c+|d|+1)j^r$ (using $j^r\ge1$), proving~(ii). For
+$j\ge J_1$, we have $|d|<j/2\le\frac12 cj^r$ and therefore $A_j\ge\frac{c}{2}j^r$.
+Multiplying $Q_{j+1}>A_jQ_j\ge\frac{c}{2}j^r Q_j$ over $j=J_1,\dots,m-1$ gives
+\[
+Q_m\ge Q_{J_1}\left(\frac{c}{2}\right)^{m-J_1}
+\left(\frac{(m-1)!}{(J_1-1)!}\right)^r
+=C_{J_1}\left(\frac{c}{2}\right)^m\frac{(m!)^r}{m^r}
+\ge C_{J_1}\left(\frac{c}{2^{r+1}}\right)^m(m!)^r,
+\]
+since $m\le2^m$ for all $m\ge1$ implies $m^r\le(2^r)^m$, proving~(iii). Finally,
+by~(ii), $\log(Q_{j+1}/Q_j)=r\log j+\log c+O(j^{-r})$ for $j\ge J_1$; summing
+over $j=J_1,\dots,n-1$ and using $\sum_{j=1}^{n-1}\log j=n\log n-n+O(\log n)$
+together with $\sum_{j=J_1}^{n-1}j^{-r}=O(\log n)$ (for $r=1$) or $O(1)$ (for
+$r\ge2$) gives~(iv).
+\end{proof}
+
+When no pre-existing convergent sequence of $\ee$ is present, the role of the
+group $L=\Z+\Z\frac{\ee+1}{2}$ is played by an intrinsic rank-$2$ lattice built
+directly from the homogeneous recurrence $X_{j+1}=A_jX_j+X_{j-1}$ ($j\ge J_0$).
+Let $(U_j)_{j\ge J_0-1}$ and $(V_j)_{j\ge J_0-1}$ be the two fundamental integer
+solutions specified by
+\[
+U_{J_0-1}=1,\quad U_{J_0}=0;\qquad V_{J_0-1}=0,\quad V_{J_0}=1.
+\]
+
+\begin{lemma}[Intrinsic zero-level lattice and Casorati rigidity, Layer~A in Lean]\label{lem:poly-lattice}
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item For all $j\ge J_0-1$, $Q_j=Q_{J_0-1}U_j+Q_{J_0}V_j$ and
+$U_jV_{j+1}-U_{j+1}V_j=(-1)^{j-J_0+1}$.
+\item The limits $\alpha_U:=\lim_{j\to\infty}U_j/Q_j$ and
+$\alpha_V:=\lim_{j\to\infty}V_j/Q_j$ exist, satisfy
+$Q_{J_0-1}\alpha_U+Q_{J_0}\alpha_V=1$, and obey
+\[
+\left|\alpha_U-\frac{U_j}{Q_j}\right|<\frac{Q_{J_0}}{Q_jQ_{j+1}},\qquad
+\left|\alpha_V-\frac{V_j}{Q_j}\right|<\frac{Q_{J_0-1}}{Q_jQ_{j+1}}
+\qquad\text{for all }j\ge J_0.
+\]
+\item Set $g:=\gcd(Q_{J_0-1},Q_{J_0})\ge1$, write $Q_{J_0-1}=gq_0$ and
+$Q_{J_0}=gq_1$ with $\gcd(q_0,q_1)=1$, pick integers $p_0,p_1\in\Z$ with
+$p_0q_1-p_1q_0=1$, and put $\tilde Q_j:=Q_j/g=q_0U_j+q_1V_j$ and
+$\tilde P_j:=p_0U_j+p_1V_j$. Then
+\[
+\theta:=\lim_{j\to\infty}\frac{\tilde P_j}{\tilde Q_j}=g(p_0\alpha_U+p_1\alpha_V)\in\R\setminus\Q,
+\]
+and the intrinsic rank-$2$ lattice
+\[
+L^{(r,c,d)}:=\Z\alpha_U+\Z\alpha_V=\frac{1}{g}\bigl(\Z+\Z\theta\bigr)
+\]
+is independent of the choice of $(p_0,p_1)$, contains $\Z$, and projects to a
+dense countable subgroup $\bar L^{(r,c,d)}:=L^{(r,c,d)}/\Z$ of $\R/\Z$.
+\item For $x\in\R$, $\Lam^{(r,c,d)}(x)=0$ if and only if $u_j(x)\to0$ and
+eventually $d_j(x)=0$, if and only if $x\in L^{(r,c,d)}$. Moreover, every
+$x\in L^{(r,c,d)}$ satisfies $\|Q_jx\|=O(1/Q_{j+1})$, whence
+$\Lam_\alpha^{(r,c,d)}(x)=0$ for all $\alpha\ge0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part~(i) holds at $j=J_0-1$ by inspection and propagates to all $j\ge J_0-1$
+because $(U_j),(V_j),(Q_j)$ satisfy the same recurrence \eqref{eq:poly-rec} whose
+transfer matrices $\bigl(\begin{smallmatrix}A_j&1\\1&0\end{smallmatrix}\bigr)$
+have determinant $-1$. Expanding $Q_j=Q_{J_0-1}U_j+Q_{J_0}V_j$ in the adjacent
+ratio differences yields, for $j\ge J_0$,
+\[
+\frac{U_{j+1}}{Q_{j+1}}-\frac{U_j}{Q_j}
+=\frac{(-1)^{j-J_0}Q_{J_0}}{Q_jQ_{j+1}},\qquad
+\frac{V_{j+1}}{Q_{j+1}}-\frac{V_j}{Q_j}
+=\frac{(-1)^{j-J_0+1}Q_{J_0-1}}{Q_jQ_{j+1}}.
+\]
+By Lemma~\ref{lem:poly-growth}(i), $Q_{j+2}>2Q_{j+1}>Q_j$ for all $j\ge J_0$,
+so $1/(Q_jQ_{j+1})$ decreases strictly to $0$; the alternating series test
+gives convergence and bounds the tail strictly by the magnitude of the first
+term, proving~(ii) (and $Q_{J_0-1}\alpha_U+Q_{J_0}\alpha_V=1$ follows by taking
+$j\to\infty$ in $Q_{J_0-1}(U_j/Q_j)+Q_{J_0}(V_j/Q_j)=1$).
+
+For~(iii), $\bigl(\begin{smallmatrix}p_0&p_1\\q_0&q_1\end{smallmatrix}\bigr)\in\mathrm{SL}_2(\Z)$
+gives $\tilde P_j\tilde Q_{j+1}-\tilde P_{j+1}\tilde Q_j=(-1)^{j-J_0+1}$, so
+$\theta=\lim_{j\to\infty}\tilde P_j/\tilde Q_j=\lim_{j\to\infty}g(p_0U_j+p_1V_j)/Q_j=g(p_0\alpha_U+p_1\alpha_V)$
+satisfies $0<|\theta-\tilde P_j/\tilde Q_j|<(\tilde Q_j\tilde Q_{j+1})^{-1}$ for
+all $j\ge J_0$. If $\theta=p/q\in\Q$ ($q\ge1$), then
+$0<|q\tilde P_j-p\tilde Q_j|<q/\tilde Q_{j+1}<1$ for large $j$, contradicting
+$|q\tilde P_j-p\tilde Q_j|\in\Z_{\ge1}$; hence $\theta\notin\Q$. Since
+$\bigl(\begin{smallmatrix}p_0&p_1\\q_0&q_1\end{smallmatrix}\bigr)\in\mathrm{SL}_2(\Z)$
+is unimodular and $q_0\alpha_U+q_1\alpha_V=1/g$, we have
+$\Z\alpha_U+\Z\alpha_V=\Z(q_0\alpha_U+q_1\alpha_V)+\Z(p_0\alpha_U+p_1\alpha_V)
+=\Z\frac{1}{g}+\Z\frac{\theta}{g}=\frac{1}{g}(\Z+\Z\theta)$, which is thus
+independent of $(p_0,p_1)$ and contains $1=g\cdot\frac{1}{g}$. Because
+$\theta/g\notin\Q$, Kronecker's theorem shows that $\bar L^{(r,c,d)}$ is dense
+in $\R/\Z$.
+
+For~(iv), if $\Lam^{(r,c,d)}(x)=0$, then $j^r|u_j(x)|\to0$, so
+$|d_j(x)|\le cj^r|u_j(x)|+|d||u_j(x)|+|u_{j-1}(x)|+|u_{j+1}(x)|\to0$; since
+$d_j(x)\in\Z$, eventually $d_j(x)=0$. Conversely, if $u_j(x)\to0$ and $d_j(x)=0$
+for all $j\ge N\ge J_0+1$, then by~(i)
+$\det\bigl(\begin{smallmatrix}U_{N-1}&V_{N-1}\\U_N&V_N\end{smallmatrix}\bigr)=\pm1$,
+so $(M_{N-1},M_N)=a(U_{N-1},U_N)+b(V_{N-1},V_N)$ for unique $a,b\in\Z$, and by
+induction $M_j(x)=aU_j+bV_j$ for all $j\ge N-1$; dividing by $Q_j$ and using
+$u_j(x)\to0$ yields $x=a\alpha_U+b\alpha_V\in L^{(r,c,d)}$. Finally, if
+$x=a\alpha_U+b\alpha_V\in L^{(r,c,d)}$, then~(ii) gives
+$\|Q_jx\|\le|Q_jx-(aU_j+bV_j)|\le(|a|Q_{J_0}+|b|Q_{J_0-1})/Q_{j+1}$ for
+$j\ge J_0$, and Lemma~\ref{lem:poly-growth}(iii) yields $j^\alpha/Q_{j+1}\to0$
+for every $\alpha\ge0$.
+\end{proof}
+
+\begin{theorem}[General $(cj^r+d)$ recurrences: complete spectrum discretization,
+Layer~A in Lean]\label{thm:general-rec}
+For any $r,c\in\Z_{\ge1}$, $d\in\Z$, and $(Q_j)_{j\ge0}$ satisfying
+\eqref{eq:poly-rec}:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item Whenever $u_j(x)\to0$ (in particular, whenever $\Lam^{(r,c,d)}(x)<\infty$),
+the digits $d_j(x)$ satisfy
+\[
+\lim_{j\to\infty}\bigl(d_j(x)-cj^ru_j(x)\bigr)=0,\qquad
+\lim_{j\to\infty}\bigl(|d_j(x)|-cj^r\|Q_jx\|\bigr)=0.
+\]
+\item The full spectrum of $\Lam^{(r,c,d)}$ is completely discrete with step $1/c$:
+\[
+\Lam^{(r,c,d)}(\R)=\frac{1}{c}\Z_{\ge0}\cup\{\infty\}
+=\left\{0,\frac{1}{c},\frac{2}{c},\frac{3}{c},\dots\right\}\cup\{\infty\},
+\]
+so every open interval $\bigl(\frac{k}{c},\frac{k+1}{c}\bigr)$ ($k\in\Z_{\ge0}$)
+is an empty spectral gap, and for every $t\in\bigl[\frac{k}{c},\frac{k+1}{c}\bigr)$
+the sublevel set $E_t^{(r,c,d)}:=\{x\in\R:\Lam^{(r,c,d)}(x)\le t\}$ equals
+$E_{k/c}^{(r,c,d)}=\{x\in\R:u_j(x)\to0\text{ and }\limsup_{j\to\infty}|d_j(x)|\le k\}$
+(with $E_t^{(r,c,d)}=L^{(r,c,d)}$ for $t<1/c$).
+\end{enumerate}
+(Lean: for all $r\ge1$, proved at Layer~A in
+\texttt{EpiFormal/\allowbreak TrichotomyAndPolyExtension.lean} via
+\texttt{PolyRecData.\allowbreak poly\_\allowbreak signed\_\allowbreak defect\_\allowbreak approx},
+\texttt{poly\_\allowbreak abs\_\allowbreak defect\_\allowbreak approx},
+\texttt{poly\_\allowbreak spectral\_\allowbreak gap\_\allowbreak open\_\allowbreak interval},
+\texttt{poly\_\allowbreak levelSet\_\allowbreak eq\_\allowbreak on\_\allowbreak gap},
+\texttt{poly\_\allowbreak levelSet\_\allowbreak below\_\allowbreak eq\_\allowbreak lattice}, and
+\texttt{poly\_\allowbreak range\_\allowbreak apprExponent}; the $r=1$
+specialization also appears in
+\texttt{EpiFormal/\allowbreak Full\allowbreak Spectrum\allowbreak Discrete.lean}.)
+\end{theorem}
+
+\begin{proof}
+Rearranging \eqref{eq:poly-defect-id} gives
+$d_j(x)-cj^ru_j(x)=du_j(x)+u_{j-1}(x)-u_{j+1}(x)\to0$ whenever $u_j(x)\to0$
+(which holds whenever $\Lam^{(r,c,d)}(x)<\infty$), and the reverse triangle
+inequality $\bigl||d_j(x)|-cj^r|u_j(x)|\bigr|\le|d_j(x)-cj^ru_j(x)|$ proves~(i).
+Since $|d_j(x)|\in\Z_{\ge0}$, whenever $\Lam^{(r,c,d)}(x)<\infty$ we obtain
+$c\Lam^{(r,c,d)}(x)=\limsup_{j\to\infty}|d_j(x)|\in\Z_{\ge0}$, excluding all
+open intervals $(k/c,(k+1)/c)$ and forcing $E_t^{(r,c,d)}=E_{k/c}^{(r,c,d)}$ on
+$[k/c,(k+1)/c)$. Conversely, $0\in L^{(r,c,d)}$ realizes $0$,
+Theorem~\ref{thm:poly-phase-transition}(i) below realizes $\infty$ on a set of
+full Lebesgue measure, and for each $k\ge1$ the constant-digit construction
+$d_j\equiv k$ in Theorem~\ref{thm:poly-gauge-trichotomy} below produces a point
+$x_k^+$ with $|u_j(x_k^+)|<4k/A_j=O(j^{-r})\to0$ and $d_j(x_k^+)=k$ for large
+$j$, giving $\Lam^{(r,c,d)}(x_k^+)=k/c$ by~(i). The $t<1/c$ identity follows from
+Lemma~\ref{lem:poly-lattice}(iv).
+\end{proof}
+
+For each integer $k\ge1$, define the continuous nondecreasing critical gauge
+$h_k^{(r,c,d)}:[0,\infty)\to[0,\infty)$ by $h_k^{(r,c,d)}(0)=0$,
+$h_k^{(r,c,d)}(1/Q_n)=(2k+1)^{-n}$ for all $n\ge J_0$, linear interpolation on
+each $[1/Q_{n+1},1/Q_n]$ ($n\ge J_0$), and constant value $(2k+1)^{-J_0}$ for
+$t\ge1/Q_{J_0}$ (well-defined because $Q_n$ is strictly increasing for
+$n\ge J_0$ by Lemma~\ref{lem:poly-growth}(i)). Similarly define the universal
+binary gauge $g_2^{(r,c,d)}(1/Q_n):=2^{-n}$ ($n\ge J_0$).
+
+\begin{theorem}[Critical gauges and positive-level trichotomy for general $(cj^r+d)$, Layer~A in Lean]\label{thm:poly-gauge-trichotomy}
+Fix an integer $k\ge1$. At the positive spectral level $k/c$:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item \textbf{Limsup level (alphabet size $2k+1$, gauge base $2k+1$):}
+$x\in E_{k/c}^{(r,c,d)}$ if and only if $u_j(x)\to0$ and eventually
+$d_j(x)\in\{-k,\dots,k\}$. On $\R/\Z$, the exact level
+$S_k^{(r,c,d)}:=\{x\in\R/\Z:\Lam^{(r,c,d)}(x)=k/c\}$ has infinite but
+$\sigma$-finite $\mathcal H^{h_k^{(r,c,d)}}$ measure (with infinite measure in
+every nonempty open arc), whereas $\{\Lam^{(r,c,d)}<k/c\}$ is
+$\mathcal H^{h_k^{(r,c,d)}}$-null.
+\item \textbf{Unsigned exact limit set (universal binary alphabet $\{\pm k\}$, gauge base $2$):}
+$E_{\mathrm{lim}}^{(r,c,d)}(k/c):=\{x\in\R:\lim_{j\to\infty}j^r\|Q_jx\|=k/c\}$
+consists precisely of those $x$ with $u_j(x)\to0$ and eventually
+$d_j(x)\in\{-k,+k\}$ (two branches per step, independently of $k\ge1$). On
+$\R/\Z$, $E_{\mathrm{lim}}^{(r,c,d)}(k/c)$ has infinite, $\sigma$-finite
+$\mathcal H^{g_2^{(r,c,d)}}$ measure (infinite on every nonempty open arc),
+while $\mathcal H^{h_k^{(r,c,d)}}(E_{\mathrm{lim}}^{(r,c,d)}(k/c))=0$. For
+$t\notin\frac1c\Z_{\ge0}$, $E_{\mathrm{lim}}^{(r,c,d)}(t)=\emptyset$.
+\item \textbf{Signed exact limit sets (single tail branch, coset collapse):}
+$E_{\mathrm{lim}}^{(r,c,d),\pm}(k/c):=\{x\in\R:\lim_{j\to\infty}j^ru_j(x)=\pm k/c\}$
+consists precisely of those $x$ with $u_j(x)\to0$ and eventually $d_j(x)=\pm k$.
+With $x_k^+$ built from $d_j\equiv+k$ ($j\ge N$) and $x_k^-:=-x_k^+$, each signed
+exact limit set collapses to a single countable coset of the intrinsic lattice
+$L^{(r,c,d)}$ of Lemma~\ref{lem:poly-lattice}:
+\[
+E_{\mathrm{lim}}^{(r,c,d),+}(k/c)=x_k^+ + L^{(r,c,d)},\qquad
+E_{\mathrm{lim}}^{(r,c,d),-}(k/c)=x_k^- + L^{(r,c,d)},
+\]
+and is therefore null for every non-atomic Hausdorff gauge.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The digit characterizations follow directly from Theorem~\ref{thm:general-rec}.
+For the upper bounds and $\sigma$-finiteness on $[0,1]$ (hence on $\R/\Z$ since
+the quotient map is $1$-Lipschitz), partition $E_{k/c}^{(r,c,d)}\cap[0,1]$ into
+countably many Borel classes $\mathcal C(N,m_{N-1},m_N)$ ($N\ge J_0+1$,
+$m_{N-1},m_N\in\Z$) requiring $M_{N-1}=m_{N-1}$, $M_N=m_N$,
+$|u_j|\le(k+1)/(cj^r)$, and $d_j\in\Sigma$ for all $j\ge N$, where
+$\Sigma=\{-k,\dots,k\}$ ($|\Sigma|=2k+1$) for $E_{k/c}^{(r,c,d)}$,
+$\Sigma=\{-(k-1),\dots,k-1\}$ ($|\Sigma|=2k-1$) for $\{\Lam^{(r,c,d)}<k/c\}$,
+and $\Sigma=\{-k,+k\}$ ($|\Sigma|=2$) for $E_{\mathrm{lim}}^{(r,c,d)}(k/c)$.
+At level $n>N$, the recurrence $M_{j+1}=A_jM_j+M_{j-1}+d_j$ yields at most
+$|\Sigma|^{n-N}$ values of $M_n$, each confining $x$ to an interval of diameter
+at most $1/Q_n$ (using $|u_n|\le1/2$). Since $n>J_0$, covering with these
+intervals gives $\mathcal H_\delta^{h_k^{(r,c,d)}}$ cost at most
+$(2k+1)^{-N}\bigl(|\Sigma|/(2k+1)\bigr)^{n-N}$ (bounded by $(2k+1)^{-N}<\infty$
+when $|\Sigma|=2k+1$, and $\to0$ when $|\Sigma|<2k+1$), and when $\Sigma=\{-k,+k\}$
+gives $\mathcal H_\delta^{g_2^{(r,c,d)}}$ cost at most $2^{n-N}2^{-n}=2^{-N}<\infty$.
+
+For the lower bounds, choose an integer $N\ge J_0+1$ such that
+$A_N=cN^r+d>32k$. Since $A_j\ge A_N>32k\ge32>6$ and $Q_N\ge1$, Lemma~\ref{lem:poly-growth}(i)
+gives $Q_{N+1}>32kQ_N\ge32k$ and $Q_{j+1}>6Q_j$ for all $j\ge N$. Set
+$M_{N-1}=M_N=0$ and, for $\Sigma\in\{\{-k,\dots,k\},\{-k,+k\}\}$ and
+$\omega=(d_N,d_{N+1},\dots)\in\Sigma^{\{j\ge N\}}$, define $M_{j+1}=A_jM_j+M_{j-1}+d_j$
+($j\ge N$). Then $W_j:=M_{j+1}Q_j-M_jQ_{j+1}$ satisfies $W_{N-1}=0$ and
+$W_j=d_jQ_j-W_{j-1}$ ($j\ge N$). Since $j\ge N\ge J_0+1$ implies $Q_j>2Q_{j-1}$,
+induction gives $|W_j|\le2kQ_j$ for all $j\ge N-1$, whence
+$|M_{j+1}/Q_{j+1}-M_j/Q_j|\le2k/Q_{j+1}$. Using $Q_{m+1+s}\ge2^sQ_{m+1}$,
+$x(\omega):=\lim_{j\to\infty}M_j/Q_j$ satisfies $|x(\omega)-M_m/Q_m|\le4k/Q_{m+1}$
+for all $m\ge N$ (in particular $|x(\omega)|\le4k/Q_{N+1}$ since $M_N=0$).
+Multiplying by $Q_m$ gives $|Q_mx(\omega)-M_m|\le4kQ_m/Q_{m+1}\le4k/A_m\le4k/A_N<1/8<1/2$
+for all $m\ge N$, and at $m=N-1$ we also have $Q_{N-1}|x(\omega)|\le4kQ_{N-1}/Q_{N+1}<1/16<1/2$
+(since $Q_{N+1}>32kQ_N>64kQ_{N-1}$). Hence $M_m(x(\omega))=M_m$ for all $m\ge N-1$,
+no half-integer ties occur, and $d_j(x(\omega))=d_j$ for all $j\ge N$. Moreover,
+$K_\Sigma:=x(\Sigma^{\{j\ge N\}})\subseteq[-4k/Q_{N+1},4k/Q_{N+1}]$, an interval
+of length $<1/4<1/2$ embedding isometrically into $\R/\Z$. Pushing forward the
+uniform Bernoulli product measure on $\Sigma^{\{j\ge N\}}$ yields $\mu$ on $K_\Sigma$.
+For any interval $U$ of length $1/Q_{n+1}\le h<1/Q_n$ ($n>N$) and any $x,y\in K_\Sigma\cap U$,
+we have $|M_j(x)-M_j(y)|<\frac14+\frac{Q_j}{Q_n}\le\frac14+\frac16<1$ for $N\le j<n$
+(so $M_j(x)=M_j(y)$) and $|M_n(x)-M_n(y)|<\frac14+Q_nh<\frac54<2$ (at most $3$ values).
+Thus $K_\Sigma\cap U$ meets at most $3$ cylinders of depth $n-N$, so
+$\mu(U)\le3|\Sigma|^{-(n-N)}=3|\Sigma|^{N+1}|\Sigma|^{-(n+1)}\le3|\Sigma|^{N+1}g_{|\Sigma|}(h)$
+(as $n+1>J_0$), where $g_{2k+1}:=h_k^{(r,c,d)}$ and $g_2:=g_2^{(r,c,d)}$. The
+mass distribution principle yields $\mathcal H^{g_{|\Sigma|}}(K_\Sigma)\ge(3|\Sigma|^{N+1})^{-1}>0$.
+Taking $\Sigma=\{-k,\dots,k\}$ and subtracting the $\mathcal H^{h_k^{(r,c,d)}}$-null
+set $\{\Lam^{(r,c,d)}<k/c\}$ gives $\mathcal H^{h_k^{(r,c,d)}}(S_k^{(r,c,d)})>0$;
+taking $\Sigma=\{-k,+k\}$ gives $K_\Sigma\subseteq E_{\mathrm{lim}}^{(r,c,d)}(k/c)$
+and $\mathcal H^{g_2^{(r,c,d)}}(E_{\mathrm{lim}}^{(r,c,d)}(k/c))>0$.
+
+By Lemma~\ref{lem:poly-lattice}(iv), $j^r\|Q_jy\|\to0$ for every $y\in L^{(r,c,d)}$,
+so both $S_k^{(r,c,d)}$ and $E_{\mathrm{lim}}^{(r,c,d)}(k/c)$ are Borel,
+Lebesgue-null (by Theorem~\ref{thm:poly-phase-transition}(i), or directly since
+$\operatorname{Leb}_{\R/\Z}(\{\|Q_jx\|\le m/j^r\})=2m/j^r\to0$), and invariant
+under translation by the dense subgroup $\bar L^{(r,c,d)}\subset\R/\Z$ of
+Lemma~\ref{lem:poly-lattice}(iii). The exact Haar-uniqueness and compactness
+covering arguments of Theorem~\ref{thm:gauge} and Corollary~\ref{cor:exact-gauge}(i)
+then force both $\mathcal H^{h_k^{(r,c,d)}}(S_k^{(r,c,d)}\cap I)=\infty$ and
+$\mathcal H^{g_2^{(r,c,d)}}(E_{\mathrm{lim}}^{(r,c,d)}(k/c)\cap I)=\infty$ on
+every nonempty open arc $I\subseteq\R/\Z$.
+
+Finally, for~(iii), take $x_k^+$ from the constant sequence $d_j\equiv+k$ ($j\ge N$).
+Since $|u_j(x_k^+)|<1/8<1/2$ for all $j\ge N-1$, $x_k^-=-x_k^+$ satisfies
+$M_j(x_k^-)=-M_j(x_k^+)$ and $u_j(x_k^-)=-u_j(x_k^+)$ for $j\ge N-1$, so
+$d_j(x_k^-)=-k$ for $j\ge N$ and $x_k^\pm\in E_{\mathrm{lim}}^{(r,c,d),\pm}(k/c)$.
+If $x,y\in E_{\mathrm{lim}}^{(r,c,d),\pm}(k/c)$, then
+$j^r\|Q_j(x-y)\|\le j^r|u_j(x)-u_j(y)|\to0$, so $x-y\in L^{(r,c,d)}$ by
+Lemma~\ref{lem:poly-lattice}(iv). Conversely, if $z\in L^{(r,c,d)}$, then
+$u_j(z)=o(j^{-r})\to0$ while $u_j(x_k^\pm)=O(j^{-r})\to0$, so eventually
+$|u_j(x_k^\pm)+u_j(z)|<1/2$, forcing $u_j(x_k^\pm+z)=u_j(x_k^\pm)+u_j(z)$ and
+$j^ru_j(x_k^\pm+z)\to\pm k/c$. Thus $E_{\mathrm{lim}}^{(r,c,d),\pm}(k/c)=x_k^\pm+L^{(r,c,d)}$.
+\end{proof}
+
+\begin{corollary}[Exact critical gauge for $(cj^r+d)$, Layer~A in Lean]\label{cor:poly-exact-gauge}
+Let $k\ge1$ and let $g:[0,\infty)\to[0,\infty)$ be any nondecreasing gauge with $g(0)=0$.
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item If $g(1/Q_n)/h_k^{(r,c,d)}(1/Q_n)\to0$ as $n\to\infty$, then
+$\mathcal H^g(\{\Lam^{(r,c,d)}\le k/c\})=0$.
+\item If $h_k^{(r,c,d)}(t)/g(t)\to0$ as $t\to0^+$, then $S_k^{(r,c,d)}$ is not
+$\sigma$-finite for $\mathcal H^g$ (in particular $\mathcal H^g(S_k^{(r,c,d)})=\infty$).
+\end{enumerate}
+The exact same dichotomy holds for $E_{\mathrm{lim}}^{(r,c,d)}(k/c)$ with
+$g_2^{(r,c,d)}$ in place of $h_k^{(r,c,d)}$.
+\end{corollary}
+
+\begin{proof}
+This follows by the identical covering comparison and $\sigma$-finiteness
+contradiction of Corollary~\ref{cor:exact-gauge}(ii)--(iii), using the upper
+covers from Theorem~\ref{thm:poly-gauge-trichotomy}.
+\end{proof}
+
+\begin{remark}[Interpolation-free logarithmic scale and the $1/r$ factor]\label{rem:poly-gauge-scale}
+For $1/Q_{n+1}\le t\le 1/Q_n$ ($n\ge J_0$), $-\log h_k^{(r,c,d)}(t)$ lies between
+$n\log(2k+1)$ and $(n+1)\log(2k+1)$. By Lemma~\ref{lem:poly-growth}(iv),
+$\log(1/t)=rn\log n+O(n)$, so $\log\log(1/t)=\log n+O(\log\log n)\sim\log n$,
+yielding $\frac{\log(1/t)}{\log\log(1/t)}\sim rn$ and therefore
+\[
+-\log h_k^{(r,c,d)}(t)\sim\frac{\log(2k+1)}{r}\cdot\frac{\log(1/t)}{\log\log(1/t)},\qquad
+-\log g_2^{(r,c,d)}(t)\sim\frac{\log2}{r}\cdot\frac{\log(1/t)}{\log\log(1/t)}
+\qquad(t\downarrow0).
+\]
+Consequently, any gauge $g$ whose logarithmic rate against
+$\frac{\log(1/t)}{\log\log(1/t)}$ exceeds $\frac{\log(2k+1)}{r}$ gives
+$\mathcal H^g(\{\Lam^{(r,c,d)}\le k/c\})=0$, while any strictly smaller rate
+yields non-$\sigma$-finite $\mathcal H^g$ measure on $S_k^{(r,c,d)}$.
+\end{remark}
+
+\begin{theorem}[Critical dimension zero, subcritical phase transition $1-\alpha/r$,
+and supercritical collapse, Layer~A in Lean]\label{thm:poly-phase-transition}
+For any $r,c\in\Z_{\ge1}$, $d\in\Z$, and $(Q_j)_{j\ge0}$ satisfying \eqref{eq:poly-rec}:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item \textbf{Critical weight ($\alpha=r$):} For every finite $t\in\R$,
+$\dimH\{x\in\R:\Lam^{(r,c,d)}(x)\le t\}=0$. Thus
+$F^{(r,c,d)}:=\{x\in\R:\Lam^{(r,c,d)}(x)<\infty\}$ has Hausdorff dimension $0$
+and Lebesgue measure $0$, while its complement
+$F_\infty^{(r,c,d)}:=\{x\in\R:\Lam^{(r,c,d)}(x)=\infty\}$ has full Lebesgue
+measure and $\dimH(F_\infty^{(r,c,d)}\cap[a,b])=1$ for every $a<b$.
+\item \textbf{Subcritical weights ($0\le\alpha<r$):} For every $0\le\alpha<r$ and
+every $t\ge0$ (with $0\le t\le1/2$ when $\alpha=0$),
+\[
+\dimH\bigl\{x\in[0,1]:j^\alpha\|Q_jx\|\longrightarrow t\bigr\}
+=\dimH\bigl\{x\in\R:\Lam_\alpha^{(r,c,d)}(x)\le t\bigr\}
+=1-\frac{\alpha}{r}.
+\]
+(For $\alpha=0$ and $t>1/2$, the prescribed-limit set is empty while
+$\{\Lam_0^{(r,c,d)}\le t\}=\R$ has dimension $1=1-0/r$.)
+\item \textbf{Supercritical weights ($\alpha>r$):} For every finite $t\ge0$,
+$\{x\in\R:\Lam_\alpha^{(r,c,d)}(x)\le t\}=L^{(r,c,d)}$ (countable, Hausdorff
+dimension $0$), while for $t<0$ the sublevel set is empty.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: Upper bound $\dimH\{x\in\R:\Lam_\alpha^{(r,c,d)}(x)\le t\}\le1-\alpha/r$
+for all $0\le\alpha\le r$.} Fix $0\le\alpha\le r$ and $t\in\R$, and put
+$t_0:=\max(t,0)+1>0$. By $\Z$-periodicity and countable stability, it suffices to
+show $\dimH C_{J,\alpha}\le1-\alpha/r$ for each $J\ge J_1$ (from
+Lemma~\ref{lem:poly-growth}), where
+$C_{J,\alpha}:=[0,1]\cap\bigcap_{j=J}^\infty\{x:\|Q_jx\|\le t_0j^{-\alpha}\}$.
+Put $r_{j,\alpha}:=t_0/(j^\alpha Q_j)$ and
+$I_{j,\alpha}(k):=[k/Q_j-r_{j,\alpha},k/Q_j+r_{j,\alpha}]$. Any $x\in C_{J,\alpha}$
+satisfies $x\in I_{j,\alpha}(k_j(x))$ for $k_j(x)=\mathrm{round}(Q_jx)\in\{0,\dots,Q_j\}$,
+with $|k_j(x)/Q_j-k_{j+1}(x)/Q_{j+1}|\le r_{j,\alpha}+r_{j+1,\alpha}$. Multiplying
+by $2Q_{j+1}$ and using Lemma~\ref{lem:poly-growth}(ii) together with
+$1/(j+1)^\alpha\le1\le j^{r-\alpha}$ ($0\le\alpha\le r$, $j\ge1$), each parent
+$k$ yields child centers $k'$ in an interval of length
+\[
+2(r_{j,\alpha}+r_{j+1,\alpha})Q_{j+1}
+=2t_0\left(\frac{Q_{j+1}}{j^\alpha Q_j}+\frac{1}{(j+1)^\alpha}\right)
+\le 2t_0(c+|d|+2)j^{r-\alpha},
+\]
+so each parent has at most $Kj^{r-\alpha}$ children, where $K:=2t_0(c+|d|+2)+1$.
+Hence the surviving center set $S_{n,\alpha}\subseteq\{0,\dots,Q_{J+n}\}$ at
+level $m:=J+n\ge J_1$ satisfies
+$|S_{n,\alpha}|\le(Q_J+1)K^n(m!)^{r-\alpha}$, while
+Lemma~\ref{lem:poly-growth}(iii) and $m^\alpha\ge1$ give
+$\operatorname{diam}I_{m,\alpha}(k)=2t_0/(m^\alpha Q_m)\le2t_0/(C_{J_1}(c/2^{r+1})^m(m!)^r)\to0$.
+For any $s>1-\alpha/r$, set $\beta:=rs-(r-\alpha)=r(s-(1-\alpha/r))>0$ and
+$K_2:=K(2^{r+1}/c)^s>0$. Using $m!\ge(m/\ee)^m$, the $s$-dimensional covering
+cost satisfies
+\begin{align*}
+\sum_{k\in S_{n,\alpha}}\bigl(\operatorname{diam}I_{m,\alpha}(k)\bigr)^s
+&\le(Q_J+1)K^{-J}\left(\frac{2t_0}{C_{J_1}}\right)^s K_2^m(m!)^{-\beta}\\
+&\le(Q_J+1)K^{-J}\left(\frac{2t_0}{C_{J_1}}\right)^s
+\left(\frac{\ee K_2^{1/\beta}}{m}\right)^{\beta m}\longrightarrow0
+\end{align*}
+as $m\to\infty$. Thus $\mathcal H^s(C_{J,\alpha})=0$ for every $s>1-\alpha/r$,
+giving $\dimH\{x\in\R:\Lam_\alpha^{(r,c,d)}(x)\le t\}\le1-\alpha/r$. Taking
+$\alpha=r$ proves~(i) (with $\operatorname{Leb}(F^{(r,c,d)})=0$ and
+$\dimH(F_\infty^{(r,c,d)}\cap[a,b])=1$ exactly as in Corollary~\ref{cor:infinite-level}).
+
+\emph{Step 2: Lower bound $\dimH\{x\in[0,1]:j^\alpha\|Q_jx\|\to t\}\ge1-\alpha/r$
+for $0\le\alpha<r$.} Fix $0\le\alpha<r$ and $t\ge0$ (with $0\le t\le1/2$ if
+$\alpha=0$). Put $w_j:=j^{-\alpha}/\log(j+2)$ and $r_j:=w_j/Q_j$. Since
+$r-\alpha>0$ and $c\ge1$, Lemma~\ref{lem:poly-growth}(ii) gives
+$2w_j(cj^r+d-1)-1\sim2c\,j^{r-\alpha}/\log(j+2)$; choose $N\ge\max(J_1,3)$ large
+enough that for all $j\ge N$, $w_j<1/8$, $tj^{-\alpha}+w_j\le1/2$ (when
+$\alpha>0$ or $\alpha=0,t<1/2$),
+\[
+2w_j(cj^r+d-1)-1\ge\frac{j^{r-\alpha}}{\log(j+2)}\ge b_j:=\left\lfloor\frac{j^{r-\alpha}}{\log(j+2)}\right\rfloor\ge2,
+\]
+and $Q_N\ge2$ (so $I_N(1)\subseteq(0,1)$). Defining the clamped shifts
+$\theta_j\in[w_j,1/2-w_j]$ and disjoint intervals
+$I_j(k):=[(k+\theta_j-w_j)/Q_j,(k+\theta_j+w_j)/Q_j]$ as in
+Theorem~\ref{conj:weight}, every $x\in I_j(k)$ obeys
+$|j^\alpha\|Q_jx\|-t|\le2/\log(j+2)\to0$. By Lemma~\ref{lem:poly-growth}(ii)
+and $w_{j+1}\le w_j$, the nesting count inside each $I_j(k)$ is at least
+\[
+2(r_j-r_{j+1})Q_{j+1}-1=2\left(w_j\frac{Q_{j+1}}{Q_j}-w_{j+1}\right)-1
+>2w_j(cj^r+d-1)-1\ge b_j\ge2.
+\]
+Retaining $b_j$ children per parent from $I_N(1)$ gives
+$M_n:=\prod_{j=N}^{n-1}b_j$ intervals at level $n\ge N$ and a compact subset
+$K\subseteq\{x\in[0,1]:j^\alpha\|Q_jx\|\to t\}$ carrying the uniform Bernoulli
+probability measure $\mu$ ($\mu(I_n(k))=M_n^{-1}$). Since
+$\log b_j=(r-\alpha)\log j-\log\log(j+2)+O(1)$, we have
+$\log M_n=(r-\alpha)n\log n+o(n\log n)$, while Lemma~\ref{lem:poly-growth}(iv)
+gives $\log Q_{n+1}=rn\log n+O(n)$. Thus for any $0<s<1-\alpha/r$,
+\[
+\log\left(\frac{3}{M_nQ_{n+1}^{-s}}\right)
+=s\log Q_{n+1}-\log M_n+\log3
+=-r\left(\left(1-\frac{\alpha}{r}\right)-s\right)n\log n+o(n\log n)\longrightarrow-\infty,
+\]
+so $3/M_n\le Q_{n+1}^{-s}$ for all $n\ge N_s$. Any set $U_i$ with
+$Q_{n_i+1}^{-1}\le h_i:=\operatorname{diam}(U_i)<Q_{n_i}^{-1}$ ($n_i\ge N_s$)
+satisfies $h_i+2r_{n_i}<(1+1/4)Q_{n_i}^{-1}<2Q_{n_i}^{-1}$ and thus meets at
+most $3$ retained intervals, yielding $\mu(U_i)\le3/M_{n_i}\le Q_{n_i+1}^{-s}\le h_i^s$.
+The mass distribution principle gives $\mathcal H^s(K)\ge1$, hence
+$\dimH\{x\in[0,1]:j^\alpha\|Q_jx\|\to t\}\ge1-\alpha/r$. Combined with Step~1,
+this proves~(ii).
+
+\emph{Step 3: Supercritical collapse ($\alpha>r$).} If $t<0$, the sublevel set
+is empty because $\Lam_\alpha^{(r,c,d)}\ge0$. Fix $t\ge0$. If
+$\Lam_\alpha^{(r,c,d)}(x)\le t$, then $\|Q_jx\|=O(j^{-\alpha})=o(j^{-r})$, so
+$\Lam^{(r,c,d)}(x)=0$ and $x\in L^{(r,c,d)}$ by Lemma~\ref{lem:poly-lattice}(iv);
+conversely, every $x\in L^{(r,c,d)}$ satisfies $\Lam_\alpha^{(r,c,d)}(x)=0\le t$
+by Lemma~\ref{lem:poly-lattice}(iv), proving~(iii).
+\end{proof}
+
+\paragraph{Lean status for Section~\ref{sec:poly-rec}.}
+The entire general-$(r,c,d)$ theory of Section~\ref{sec:poly-rec} for
+\emph{all} degrees $r\ge1$, leading coefficients $c\ge1$, and shifts $d\in\Z$
+is kernel-checked at Layer~A (base axioms only: \texttt{propext},
+\texttt{Classical.choice}, \texttt{Quot.sound}; zero \texttt{sorryAx}) across
+four modules totaling $68$ audited declarations under \texttt{PolyRecData}:
+\texttt{EpiFormal/\allowbreak TrichotomyAndPolyExtension.lean} ($37$
+declarations), \texttt{EpiFormal/\allowbreak PolyGaugeAndPhaseTransition.lean}
+($22$ declarations), \texttt{EpiFormal/\allowbreak PolyWeightedUpper.lean} ($1$
+declaration), and \texttt{EpiFormal/\allowbreak PolyWeightedLower.lean} ($8$
+declarations):
+\begin{itemize}[leftmargin=1.8em]
+\item Lemma~\ref{lem:poly-growth}(i)--(iv) and decay of $m^\alpha/Q_m$
+(\texttt{poly\_\allowbreak Q\_\allowbreak ge\_\allowbreak factorial},
+\texttt{poly\_\allowbreak pow\_\allowbreak div\_\allowbreak Q\_\allowbreak tendsto\_\allowbreak zero},
+\texttt{poly\_\allowbreak log\_\allowbreak Q\_\allowbreak asymptotic});
+\item Lemma~\ref{lem:poly-lattice}(i)--(iv) including the Casorati identity,
+fundamental solution error bounds, irrationality $\theta\notin\Q$, and
+zero-level lattice equivalence
+(\texttt{poly\_\allowbreak casorati},
+\texttt{alphaU\_\allowbreak error\_\allowbreak bound},
+\texttt{alphaV\_\allowbreak error\_\allowbreak bound},
+\texttt{poly\_\allowbreak alpha\_\allowbreak linear\_\allowbreak relation},
+\texttt{theta\_\allowbreak irrational},
+\texttt{polyApprExponent\_\allowbreak eq\_\allowbreak zero\_\allowbreak tfae},
+\texttt{polyApprExponent\_\allowbreak eq\_\allowbreak zero\_\allowbreak iff\_\allowbreak mem\_\allowbreak latticePoly});
+\item Theorem~\ref{thm:general-rec}(i)--(ii), establishing the full discrete
+spectrum $\Lam^{(r,c,d)}(\R)=\frac{1}{c}\Z_{\ge0}\cup\{\infty\}$ for all
+$r\ge1$
+(\texttt{poly\_\allowbreak signed\_\allowbreak defect\_\allowbreak approx},
+\texttt{poly\_\allowbreak abs\_\allowbreak defect\_\allowbreak approx},
+\texttt{polyApprExponent\_\allowbreak xPlusPoly},
+\texttt{poly\_\allowbreak spectral\_\allowbreak gap\_\allowbreak open\_\allowbreak interval},
+\texttt{poly\_\allowbreak levelSet\_\allowbreak eq\_\allowbreak on\_\allowbreak gap},
+\texttt{poly\_\allowbreak levelSet\_\allowbreak below\_\allowbreak eq\_\allowbreak lattice},
+\texttt{poly\_\allowbreak range\_\allowbreak apprExponent});
+\item Theorem~\ref{thm:poly-gauge-trichotomy}(i)--(iii),
+Corollary~\ref{cor:poly-exact-gauge}, and Remark~\ref{rem:poly-gauge-scale} on
+both $\R$ and $\R/\Z$ (\texttt{UnitAddCircle}): critical-gauge and
+binary-gauge nullity, $\sigma$-finiteness, open-interval/open-arc infinitude,
+fast/slow gauge dichotomy, $\liminf$ four-way characterizations, logarithmic
+gauge scale (\texttt{polyInterpGauge\_\allowbreak log\_\allowbreak scale\_\allowbreak tendsto},
+\texttt{mkMetric\_\allowbreak polyCritGauge\_\allowbreak polyCircleExactLevel\_\allowbreak inter\_\allowbreak open\_\allowbreak eq\_\allowbreak top},
+\texttt{mkMetric\_\allowbreak polyBinaryGauge\_\allowbreak polyCircleUnsignedExactLimit\_\allowbreak inter\_\allowbreak open\_\allowbreak eq\_\allowbreak top},
+\texttt{polyExactLevel\_\allowbreak fast\_\allowbreak gauge\_\allowbreak null},
+\texttt{polyExactLevel\_\allowbreak slow\_\allowbreak gauge\_\allowbreak non\_\allowbreak sigma\_\allowbreak finite},
+\texttt{polyExactLevel\_\allowbreak liminf\_\allowbreak four\_\allowbreak way},
+\texttt{polyUnsignedExactLimit\_\allowbreak liminf\_\allowbreak four\_\allowbreak way}),
+and signed exact-limit coset collapse
+$E_{\mathrm{lim}}^{(r,c,d),\pm}(k/c)=x_k^\pm+L^{(r,c,d)}$
+(\texttt{poly\_\allowbreak trichotomy\_\allowbreak part\_\allowbreak iii\_\allowbreak complete});
+\item Theorem~\ref{thm:poly-phase-transition}(i)--(iii): critical weight
+$\alpha=r$ (\texttt{poly\_\allowbreak dimH\_\allowbreak levelSet\_\allowbreak finite},
+\texttt{poly\_\allowbreak dimH\_\allowbreak finiteLevel\_\allowbreak zero},
+\texttt{poly\_\allowbreak volume\_\allowbreak finiteLevel\_\allowbreak zero},
+\texttt{poly\_\allowbreak ae\_\allowbreak apprExponent\_\allowbreak eq\_\allowbreak top},
+\texttt{poly\_\allowbreak dimH\_\allowbreak infiniteLevel\_\allowbreak inter\_\allowbreak Icc\_\allowbreak eq\_\allowbreak one},
+\texttt{poly\_\allowbreak dimH\_\allowbreak infiniteLevel\_\allowbreak eq\_\allowbreak one}),
+subcritical $0\le\alpha<r$ exact Hausdorff dimension $1-\alpha/r$
+(\texttt{Poly\allowbreak Weighted\allowbreak Upper.\allowbreak dimH\_\allowbreak poly\allowbreak Weighted\allowbreak Exponent\_\allowbreak le},
+\texttt{Poly\allowbreak Weighted\allowbreak Lower.\allowbreak dimH\_\allowbreak poly\allowbreak Exact\allowbreak Limit\_\allowbreak eq},
+\texttt{Poly\allowbreak Weighted\allowbreak Lower.\allowbreak dimH\_\allowbreak poly\allowbreak Weighted\allowbreak Sublevel\_\allowbreak eq},
+\texttt{Poly\allowbreak Weighted\allowbreak Lower.\allowbreak poly\allowbreak Zero\allowbreak Weight\allowbreak Sublevel\_\allowbreak eq\_\allowbreak univ},
+\texttt{Poly\allowbreak Weighted\allowbreak Lower.\allowbreak poly\allowbreak Exact\allowbreak Limit\_\allowbreak zero\_\allowbreak eq\_\allowbreak empty}),
+and supercritical collapse $\alpha>r$
+(\texttt{poly\_\allowbreak supercritical\_\allowbreak levelSet\_\allowbreak eq\_\allowbreak lattice},
+\texttt{poly\_\allowbreak supercritical\_\allowbreak dimH\_\allowbreak zero},
+\texttt{poly\_\allowbreak supercritical\_\allowbreak empty\_\allowbreak neg}).
+\end{itemize}
+These kernel-checked theorems are additionally corroborated numerically by the
+$400/50$-digit \texttt{mpmath} checks in
+\texttt{verify\_\allowbreak poly\_\allowbreak recurrence\_\allowbreak 2b.py}.
+
