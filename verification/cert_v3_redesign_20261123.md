@@ -40,3 +40,9 @@
 3. 核心 Lean 证书文件被 Mathlib 文件导入时注意命名空间 `ResidueCertV3`，并在 `Audit.lean` 登记新声明后重跑 `check_audit_reconcile.py`。
 
 旧草案 `ResidueCertChunk0_Draft.lean` / `ResidueCertData41179_*_Draft.lean` 由本方案取代，未删除，留作留痕。
+
+## 5. 后续（同日）：v3 专用版已被通用框架取代
+
+- 单一大 `decide` 合并检查在 3.9 GB 机器上被 OOM 杀掉，改为 64 行分块。
+- 随后把方案推广为参数化通用框架：`EpiFormal/ResidueCertGenBase.lean`（通用布尔检查器）+ `EpiFormal/ResidueCertGen/`（20 个证书 × 10 个模块，由 `verification/emit_cert_gen.py` 生成）。论文表 `tab:residues-general` 的 10 个区间、上下界共 20 个单侧证书，其整数层全部在内核通过，见 `verification/lean_check_certgen_core_20261123.log`（201/201 EXIT 0）。
+- `emit_cert_core_v3.py` 与 `ResidueCertCoreV3_0_512_Draft.lean` 已删除（git 历史 `639a620` 可取回）；旧草案 `ResidueCertChunk0_Draft`、`ResidueCertData41179_*`、`ResidueUpper358_Draft` 移至 `verification/lean_drafts/superseded/`。
