@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  23 NOV 2026 00:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  23 NOV 2026 00:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -550,11 +550,11 @@ Package rerunfilecheck Info: File `paper2C_draft.out' has not changed.
 Here is how much of TeX's memory you used:
  10095 strings out of 467392
  159407 string characters out of 5404180
- 606135 words of memory out of 5000000
+ 608136 words of memory out of 5000000
  39241 multiletter control sequences out of 15000+600000
  643021 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,12n,82p,3266b,753s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,12n,82p,3266b,729s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\t
 crm1095.pk><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/t
@@ -586,7 +586,7 @@ c/amsfonts/cm/cmti10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts
 MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud
 -panda\paper2_spectral_gap_dimension\split\2C_windows_residues_finstate\build\p
-aper2C_draft.pdf (20 pages, 465009 bytes).
+aper2C_draft.pdf (20 pages, 466682 bytes).
 PDF statistics:
  388 PDF objects out of 1000 (max. 8388607)
  75 named destinations out of 1000 (max. 500000)
