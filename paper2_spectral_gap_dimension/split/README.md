@@ -57,8 +57,8 @@
 * 共享切片新增：`preamble.tex`（原 L1–35）、`frontmatter.tex`（L36–389）、`refs.tex`（verif 切片 bibliography 块）、`intro-shared.tex`（frontmatter 中 abstract 之后 237 行）。
 * 三轨独立摘要：`frontmatter-2A/2B/2C.tex`（忠实原稿压缩，均声明 `e+π` 开放；作者占位未动）。
 * 2A 引言裁剪：`intro_trim_2A.py` 从 `intro-shared` 确定性生成 `intro-2A.tex`（237→169 行）：删 finite-state-tail 两句、poly+growing 整块、窗口/残差整块、P11 混装块，贡献清单改写为 2A-only；S5/S16 改写暂缓留原样。
-* 编译：2A 23 页 / 2B 17 页 / 2C 22 页，`pdflatex`（track 目录为 CWD）均 0 error。
-* 引用审计（`undef_ref_audit.py`，两遍编译后）：2A 仅剩 2 个未定义引用，均为正文体内已知非自足点——`sec-spectrum.tex` L22 数值指针（`sec:num`）与 L114 `thm:trichotomy(iii)` 完成依赖 `sec:poly-rec` 的 $r=1$ 情形（后者是 2A 独立成篇前必须移入的关键论证）；2B/2C 引言改写未动，未定义数维持 22/20 全为跨轨。
+* 编译：2A 24 页 / 2B 17 页 / 2C 22 页，`pdflatex`（track 目录为 CWD）均 0 error。
+* 引用审计（`undef_ref_audit.py`，两遍编译后）：2A 仅剩 1 个未定义引用——`sec-spectrum.tex` L114 `thm:trichotomy(iii)` 完成依赖 `sec:poly-rec` 的 $r=1$ 情形（2A 独立成篇前必须移入的关键论证）；另 L22 数值指针已用 `sec-num-2A.tex`（原 L1–44 摘录）闭合。2B/2C 引言改写未动，未定义数维持 22/20 全为跨轨。
 * 中间修正：gauge 子片初版 `Out-File utf8` 带 BOM 致 +9 字节，已二进制重切，13 片拼接 253919B SHA 与原版一致。
 
 ## 七、它没做到（截至 v4）
