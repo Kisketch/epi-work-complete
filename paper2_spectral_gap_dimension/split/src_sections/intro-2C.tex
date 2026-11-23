@@ -1,0 +1,72 @@
+
+\section{Introduction}
+
+[2C-NEW-OPEN] This article determines the dimensions and almost-sure
+frequencies of Hermite continued-fraction window constraints, the Hausdorff
+dimensions of modular digit-residue sets, and the finite-state tail gauge
+theory, along the selected convergent denominators of $e$.
+
+Corollary~\ref{cor:liminf-gauges} classifies every nondecreasing gauge by
+its lower limit along the recurrence scales, even when the normalized
+cost oscillates. Theorem~\ref{thm:finite-state-tail} shows how this
+classification changes under constraints on consecutive defects.
+The largest Perron root is taken only over components in which a path
+can revisit an extreme defect infinitely often.
+[2C-NEW-NOT] We use the notation of the core paper (2A):
+$S_k=\{x\in\R/\Z:\Lambda(x)=k/4\}$ for the exact levels and $d_j(x)$
+for the consecutive-defect sequence; proofs of the quoted gauge results
+are in 2A.
+In Section~\ref{sec:windows-residues}, Theorems~\ref{thm:windows}--\ref{thm:no-short-dim}
+Section~\ref{sec:windows-residues}, Theorems~\ref{thm:windows}--\ref{thm:no-short-dim}
+determine the Hausdorff dimensions and almost-sure frequency of Hermite
+continued-fraction window constraints, Theorem~\ref{thm:residues} proves
+that eventual periodicity of ordinary continued-fraction digits modulo $4$ has
+the same Hausdorff dimension as the fixed alphabet $1\bmod 4$, bounded strictly
+between $357/512$ and $359/512$, Theorem~\ref{thm:residues-general} extends this
+to every modulus $m\ge2$ (via a uniform $24$-Lipschitz sandwich, an unconditional
+transfer-operator Hausdorff-dimension framework, and exact integer certificates
+for $m\in\{2,3,4,5,6\}$), and Theorem~\ref{thm:residues-asymptotic} proves the
+global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$
+together with the exact two-term large-$m$ asymptotic expansion governed by the
+reciprocal Fibonacci constant $\psi_{\mathrm{Fib}}=\sum_{k=1}^\infty 1/F_k$ and
+its metallic-continuant generalizations $C_r=\sum_{k=1}^\infty 1/q_k(r)$.
+
+\subsection{Setup}
+
+The continued fraction of $\ee$ is $[2;1,2,1,1,4,1,1,6,\dots]$. Let $P_j/Q_j$
+be the convergent immediately preceding the partial quotient $2j$; the first
+few are $3/1,19/7,193/71,2721/1001$. The denominators satisfy
+\begin{equation}\label{eq:rec}
+Q_{j+1}=(4j+2)Q_j+Q_{j-1}\quad(j\ge2),\qquad Q_1=1,\ Q_2=7,
+\end{equation}
+so $Q_{j+1}/Q_j\sim 4j$ and $\log Q_j\sim j\log j$ (super-exponential growth).
+Write $\|y\|=\dist(y,\Z)$ and define
+\[
+\Lam(x):=\limsup_{j\to\infty} j\,\|Q_j x\|\in[0,\infty].
+\]
+More generally, for $\alpha\ge0$ put
+$\Lam_\alpha(x):=\limsup_{j\to\infty} j^\alpha\|Q_j x\|\in[0,\infty]$,
+so that $\Lam=\Lam_1$.
+
+\subsection{Relation to prior work}\label{sec:prior}
+
+For the modular continued-fraction alphabets $F_{m,r}=\{[0;a_1,a_2,\dots]:a_n\equiv r\pmod m\}$,
+infinite-alphabet thermodynamic-formalism dimension theory goes back to Hensley,
+Jenkinson--Pollicott, and Chousionis--Leykekhman--Urba\'nski \cite{CLU}; here
+Theorem~\ref{thm:residues-asymptotic} combines an exact closed-form resolvent
+identity for the truncated metallic-continuant transfer operator with our
+unconditional transfer-operator sandwich to prove $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$
+for every $m\ge2$ and to extract the explicit two-term asymptotic expansion
+$\dimH F_{m,r}=\frac12+\frac{C_r}{2m}-\frac{C_r^2\log m}{2m^2}+O(m^{-2})$ governed
+by the reciprocal metallic-continuant series $C_r=\sum_{k=1}^\infty 1/q_k(r)$ and,
+at $r=1$, the reciprocal Fibonacci constant $\psi_{\mathrm{Fib}}=\sum_{k=1}^\infty 1/F_k$
+(a targeted negative search of arXiv and prior continued-fraction dimension
+literature found no prior appearance of $\psi_{\mathrm{Fib}}$ or $C_r$ as the
+asymptotic dimension constant of modular continued-fraction digit sets).
+[2C-NEW-S30] The main new contributions are the window dimension and
+short-window laws (Theorems~\ref{thm:windows}--\ref{thm:no-short-dim}),
+the residue dimensions and asymptotics (Theorems~\ref{thm:residues},
+~\ref{thm:residues-general} and~\ref{thm:residues-asymptotic} with
+Tables~\ref{tab:residues-general} and~\ref{tab:residues-asymptotic}), and
+the finite-state tail theorem (Theorem~\ref{thm:finite-state-tail}).
+

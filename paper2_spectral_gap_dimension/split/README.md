@@ -57,22 +57,22 @@
 * 共享切片新增：`preamble.tex`（原 L1–35）、`frontmatter.tex`（L36–389）、`refs.tex`（verif 切片 bibliography 块）、`intro-shared.tex`（frontmatter 中 abstract 之后 237 行）。
 * 三轨独立摘要：`frontmatter-2A/2B/2C.tex`（忠实原稿压缩，均声明 `e+π` 开放；作者占位未动）。
 * 2A 引言裁剪：`intro_trim_2A.py` 从 `intro-shared` 确定性生成 `intro-2A.tex`（237→169 行）：删 finite-state-tail 两句、poly+growing 整块、窗口/残差整块、P11 混装块，贡献清单改写为 2A-only；S5/S16 改写暂缓留原样。
-* 编译：2A 24 页 / 2B 15 页 / 2C 22 页，`pdflatex`（track 目录为 CWD）均 0 error。
-* 引用审计（`undef_ref_audit.py`，两遍编译后）：2A 仅剩 1 个（`sec:poly-rec`，方案A：定稿改写归属句）；2B 归零——`intro-2B.tex`（66 行，`intro_trim_2B.py` 确定性生成，新写句标 `[2B-NEW]`）+ `prereq-2B.tex`（6 个 2A 背景事实复述备查，证明归姊妹篇）；2C 维持 20 个待处理。
+* 2C 引言改写：`intro_trim_2C.py` 按行号生成 `intro-2C.tex`（237→73 行）：新开篇 + S7/S8/S9（含记号段）+ S17 + 内联 Setup 子集 + S29 + 2C-only 贡献；其余整块删。
+* 编译：2A 24 页 / 2B 15 页 / 2C 20 页，`pdflatex`（track 目录为 CWD）均 0 error。
+* 引用审计（`undef_ref_audit.py`，两遍编译后）：2A 仅剩 1 个（`sec:poly-rec`，方案A：定稿改写归属句）；2B 归零（`intro-2B` 66 行 + `prereq-2B` 6 背景）；2C 归零——`intro-2C.tex`（73 行，`intro_trim_2C.py` 按行号生成，新写句标 `[2C-NEW]`）+ `prereq-2C.tex`（复述 `thm:gauge`/`cor:liminf-gauges`，`eq:rec` 由内联 Setup 覆盖）。引用三轨全零缺失。
 * r=1 分析留痕：gauge-core 内 `(iii)` 陈述+证明已完整自足；`sec-poly` 无独立 $r=1$ 专段（`general-rec(i)` 与 `poly-gauge-trichotomy(iii)` 互引且为 2B 标题定理，整段搬会断 2B 主干），故不动数学、只改归属句。另正文审计口径双重记账（`TrichotomyAndPolyExtension` 在 gauge-core 记 8 条、在 sec-poly 记 37 条）实为同一文件前后两部分分属两轨，定稿时各自准确表述。
 * 中间修正：gauge 子片初版 `Out-File utf8` 带 BOM 致 +9 字节，已二进制重切，13 片拼接 253919B SHA 与原版一致。
 
-## 七、它没做到（截至 v4）
+## 七、它没做到（截至 v5）
 
-* 三 draft 仍为 `\input` 组装草案；2A 引言已裁剪至 2 个已知体内非自足点，2B/2C 引言改写未动；交叉引用跨轨未定义（编译 0 error，警告预期内）。
+* 三 draft 仍为 `\input` 组装草案（2A/2B/2C 引言与背景已闭合，剩余 2A 的 `sec:poly-rec` 归属句待定稿改写）；2B/2C 新写句与背景复述待人审措辞。
 
-* 三 draft 仍为 `\input` 组装草案，非独立撰写；2B/2C 标题摘要为新写占位，交叉引用跨轨未定义。
-* 未复跑 `lake build` 与 Python 证书；Lean 937 与扩展验证记作者自报 + 日志在列。
+* 三 draft 为 `\input` 组装草案（三轨引言与背景已闭合；2A 剩 `sec:poly-rec` 归属句待定稿改写）。
+* 2B/2C 新写句与背景复述待人审措辞；未复跑 `lake build` 与 Python 证书（记作者自报）。
 * `e+π` 无理性仍开放，拆分不构成原问题进展。
 
 ## 八、下一步（全自动继续）
 
-1. ~~三轨未定义引用清单~~已完成；2A 剩余 `sec:poly-rec` 1 个已有方案A决议（定稿改写归属句），草案阶段保留。
-2. 2B/2C 引言改写：2B 按裁剪表改写（主语换 $A_j$ + 自版三分法 + 跨篇引用 2A 基座策略先定）；2C 需先补 $S_k/d_j$ 记号段。
+1. ~~三轨未定义引用清单~~已完成；~~2B/2C 引言改写~~已完成（2B 66 行 + prereq，2C 73 行 + prereq，引用归零）。
+2. 2B/2C 人审：新写摘要/引言/背景复述措辞；2A 定稿改写 L114 归属句（方案A）。
 3. 审计口径：`TrichotomyAndPolyExtension` 双重记账在 2A/2B 定稿时各自准确表述 8 条 vs 37 条。
-3. 台账与映射文档口径同步后提交推送。
