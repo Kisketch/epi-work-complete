@@ -17,6 +17,9 @@ opencode.json.*
 *.fdb_latexmk
 *.synctex.gz
 
+# Split-track regenerable PDFs (logs kept, PDFs rebuilt on demand)
+paper2_spectral_gap_dimension/split/*/build/*.pdf
+
 # OS clutter
 .DS_Store
 Thumbs.db
