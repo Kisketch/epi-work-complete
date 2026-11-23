@@ -1,0 +1,51 @@
+=== Paper 2 Merge & Integrity Verification ===
+Paper 2 source: paper2_spectral_gap_dimension\paper2_spectral_gap_dimension.tex (4064 lines)
+Historical B draft: paper1_e_plus_pi\02_companion_paper\Phase2_revised.tex (4905 lines)
+Labels: 75 (all unique); Undefined refs: 0
+Bibitems: 14/14 (100% cited in body, 0 missing)
+Braces balanced (4415); Environments balanced (149)
+Residual 'Proof sketch': 0
+  [OK] Desktop: Author placeholder
+  [OK] Desktop: KL 2*Lambda(x) normalization
+  [OK] Desktop: Lemma A
+  [OK] Desktop: Theorem 1 Classification
+  [OK] Desktop: Theorem 2 Gap
+  [OK] Desktop: Remark 4 (1,e,pi linear indep.)
+  [OK] Desktop: GaugeNull.mkMetric_strictLevel_null
+  [OK] Desktop: Cor 14 Exact critical gauge
+  [OK] Desktop: Remark 15 level separation
+  [OK] Desktop: Numerical box-counting 0.371..0.446
+  [OK] Desktop: Numerical Caveat 10^{60}
+  [OK] Desktop: Use of AI section
+  [OK] Workspace: Full spectrum 1/4 Z
+  [OK] Workspace: Trichotomy
+  [OK] Workspace: General cj+d
+  [OK] Workspace: WeightedExactDim
+  [OK] Workspace: Hermite windows
+  [OK] Workspace: Short windows a.e.
+  [OK] Workspace: Divergent windows
+  [OK] Workspace: Residues 357/512 < dim < 359/512
+  [OK] Workspace: Residues upper 359/512
+  [OK] Workspace: 256 cells & N=2^{24}
+  [OK] Workspace: Margins 29/10000 & 65/10000
+  [OK] Workspace: Lipschitz 10/3 & 40/3
+  [OK] Workspace: residue_certificate.py
+  [OK] Workspace: General modulus m=2..6 thm
+  [OK] Workspace: Table residues-general
+  [OK] Workspace: WindowShortAeRealize
+  [OK] Workspace: ResidueModGeneral
+  [OK] Workspace: TransferOperatorDim
+  [OK] Workspace: FiniteStateComplete
+  [OK] Workspace: ResidueAsymptotic
+  [OK] Workspace: GeneralGrowingRec
+  [OK] Workspace: GeneralGrowingDim
+  [OK] Workspace: Thm residues-asymptotic
+  [OK] Workspace: Thm growing-rec-spectrum
+  [OK] Workspace: Thm growing-rec-dim-phase
+  [OK] Workspace: Cor growing-rec-three-regimes
+  [OK] Workspace: residue_certificate_general.py
+  [OK] Workspace: verify_paper2_extensions.py
+  [OK] Workspace: Audit 937 declarations
+ALL MERGE & INTEGRITY CHECKS PASSED.
+
+EXIT:0
