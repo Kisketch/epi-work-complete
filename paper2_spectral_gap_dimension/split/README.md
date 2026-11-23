@@ -58,7 +58,8 @@
 * 三轨独立摘要：`frontmatter-2A/2B/2C.tex`（忠实原稿压缩，均声明 `e+π` 开放；作者占位未动）。
 * 2A 定稿打磨：`frontmatter-2A.tex` 摘要重写为投稿标准（动机句 + 谱/规范/三分法 + Lean 一句 + `e+π` 开放声明）；D6 将 CMMS/MEA 对比压缩为指针句（详版留 S32），已折叠进 `intro_trim_2A.py` 行号操作，再生字节一致。
 * 2C 引言改写：`intro_trim_2C.py` 按行号生成 `intro-2C.tex`（237→73 行）：新开篇 + S7/S8/S9（含记号段）+ S17 + 内联 Setup 子集 + S29 + 2C-only 贡献；其余整块删。
-* 背景复述保真度升级（`patch_prereq_fidelity.py` 确定性执行，与原文逐项对账）：`thm:gauge` 补 $g_\beta$ 两向结论，`cor:liminf-gauges` 展开三态分类；2B/2C 重编译 0 error、引用维持归零。
+* 形式化推进（截至本提交）：`ResidueRpowBridge_Draft.lean`（包络引理两条，DRAFT 未编译）+ `emit_cert_data_41179.py`（确定性生成器）+ `ResidueCertData41179_Draft.lean`（1.8MB 数据 + h_hi/hcert 单 decide 义务，DRAFT 未编译）。注意目标已随 N512 前移：形式化上界为 179/256 = 358/512（严于正文 359/512）；2C 定稿表同步更新 N512 四处收紧值。编译验证待串行构建完成后执行。
+* 背景复述保真度：`patch_prereq_fidelity.py` 已执行（`thm:gauge` 补 $g_\beta$ 两向结论，`cor:liminf-gauges` 展开三态），2B/2C 重编译 0 error、引用归零。
 * N512 证书：10/10 区间收至 1/512 地板（4 处收紧：m=2,3,4,6 的 r=1 侧各丢一格已回收）；`tab:residues-general` 原表未动，2C 定稿时更新。
 * 编译：2A 24 页 / 2B 15 页 / 2C 20 页，`pdflatex`（track 目录为 CWD）均 0 error。
 * 引用审计（`undef_ref_audit.py`，两遍编译后）：2A 仅剩 1 个（`sec:poly-rec`，方案A：定稿改写归属句）；2B 归零（`intro-2B` 66 行 + `prereq-2B` 6 背景）；2C 归零——`intro-2C.tex`（73 行，`intro_trim_2C.py` 按行号生成，新写句标 `[2C-NEW]`）+ `prereq-2C.tex`（复述 `thm:gauge`/`cor:liminf-gauges`，`eq:rec` 由内联 Setup 覆盖）。引用三轨全零缺失。
