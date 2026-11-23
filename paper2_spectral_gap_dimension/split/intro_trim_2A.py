@@ -55,6 +55,20 @@ and the machine-checked dimension-zero and subcritical dimension theorems
 assert d5_old in t
 t = t.replace(d5_old, d5_new)
 
+# D6 S5: CMMS/MEA 对比压缩为一句指针（行号定位，稳健；L29 后半句属 S6，保留其后续行）
+ls = t.split("\n")
+assert ls[24].startswith("This differs both from the $h$-sets of Cabrelli"), ls[24]
+assert ls[28].rstrip().endswith("measure for every dimension function. Corollary~\\ref{cor:exact-gauge} shows"), ls[28]
+assert ls[29].startswith("that $h_k$ is the exact critical gauge"), ls[29]
+d6_new_lines = [
+    "This contrasts with the $h$-sets of \\cite[\\S5, Theorem~3]{CMMS} and the",
+    "classical Lagrange level at value $3$ of \\cite{MEA}; see the detailed comparison",
+    "in \\S\\ref{sec:gauge} below. Corollary~\\ref{cor:exact-gauge} shows",
+]
+t = "\n".join(ls[:24] + d6_new_lines + ls[29:])
+# S32 详版保留 Shonkwiler 属预期；断言 D6 目标句已替换
+assert "This contrasts with the $h$-sets" in t
+
 while "\n\n\n" in t:
     t = t.replace("\n\n\n", "\n\n")
 
