@@ -95,14 +95,15 @@
 需安装 Python `sympy >= 1.14` 与 `mpmath >= 1.3`：
 
 ```powershell
-# 1. 核对 Lean 公理审计 872/872 双射、0 sorryAx、23 白名单、0 项目自加公理、0 逃逸关键字
+# 1. 核对 Lean 公理审计 937/937 双射、0 sorryAx、23 白名单、0 项目自加公理、0 逃逸关键字
 python verification\check_audit_reconcile.py verification\audit_final_20261122.log
 
-# 2. 复跑核心符号、450 位区间、整数转移算子（m=4 与一般 m=2..6）及论文二完整性检查
+# 2. 复跑核心符号、450 位区间、整数转移算子（m=4 与一般 m=2..6）、论文二两项新拓展 50 位验证及完整性检查
 python verification\verify_round3.py
 python verification\verify_round4.py
 python verification\residue_certificate.py
 python verification\residue_certificate_general.py
+python verification\verify_paper2_extensions.py
 python verification\verify_paper2_merge.py
 ```
 
@@ -149,7 +150,7 @@ pdflatex -interaction=nonstopmode paper2_spectral_gap_dimension.tex
 2. **数值认证与 Lean 内核分工边界**：`thm:windows`、`thm:short-ae`、`thm:no-short-dim`（含 $\dim_{\mathrm{H}}=1$ 与 $\operatorname{Leb}=0$）、`thm:finite-state-tail`（$\mathbb{R}$ 与 $\mathbb{T}$）以及 `thm:residues`/`thm:residues-general` 的一般模 Lipschitz/移位/最终周期不变性与转移算子可靠性桥接均已入 Lean 4 内核闭环；但 `thm:residues` 与 Table `tab:residues-general` 中 $N=256$、$K\in\{120,130\}$、$2^{80}$ 精度的具体有理矩阵谱隙数值求值仍由可复现精确整数脚本 [`residue_certificate.py`](verification/residue_certificate.py) 与 [`residue_certificate_general.py`](verification/residue_certificate_general.py) 执行，未在 Lean 内核中直接展开大矩阵算术计算。
 3. **重耗时高精度脚本与联网洁净重构边界**：
    - 本轮批量复验中，4 个 2500 位高精度长耗时脚本（[`verify_golden_b3_b4_exact.py`](verification/verify_golden_b3_b4_exact.py)、[`verify_golden_b5_b6_multiscale.py`](verification/verify_golden_b5_b6_multiscale.py)、[`verify_golden_general_b.py`](verification/verify_golden_general_b.py)、[`verify_weighted_lower.py`](verification/verify_weighted_lower.py)）未等待其全程结束，仓内保留源码与历史 `.log` 供按需完整重跑；
-   - 未在完全无缓存的联网环境中重新执行 `lake exe cache get && lake build EpiFormal`（已在本地完成 `9176 jobs` 全量构建、872/872 审计对账及全源码归档完整性校验）。
+   - 未在完全无缓存的联网环境中重新执行 `lake exe cache get && lake build EpiFormal`（已在本地完成 `9179 jobs` 全量构建、937/937 审计对账及全源码归档完整性校验）。
 4. **投稿前人工完善项**：
    - [`paper2_spectral_gap_dimension.tex`](paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex) 仍保留作者/单位占位符（`[Author name]`, `[Affiliation]`）与 `% TODO before submission:` 注释待正式投稿前由作者补充；
    - [`epi_formal/README.md`](epi_formal/README.md)、[`LEMMA_AUDIT.md`](epi_formal/LEMMA_AUDIT.md)、[`PROOF_GAPS.md`](epi_formal/PROOF_GAPS.md)、[`FINAL_REVIEW.md`](epi_formal/FINAL_REVIEW.md) 保留了 2026-11-14 初版 31 条基线记录作为历史档案，当前最新全量审计口径以本 `README.md`、[`Audit.lean`](epi_formal/Audit.lean) 及 [`verification/audit_final_20261122.log`](verification/audit_final_20261122.log) 为准。

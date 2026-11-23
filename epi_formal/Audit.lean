@@ -126,6 +126,10 @@ import EpiFormal.FiniteStateComplete
 import EpiFormal.ResidueAsymptotic
 import EpiFormal.GeneralGrowingRec
 import EpiFormal.GeneralGrowingDim
+import EpiFormal.Axioms
+import EpiFormal.Basic
+import EpiFormal.Meiburg
+import EpiFormal.WeightedPhase
 
 -- 公理审计：仅允许 Axioms/Measure 清单公理 + Lean 基础公理。
 -- meiburg_criterion 已由 F2 证明为定理（不再是公理）；全项目零 sorry。

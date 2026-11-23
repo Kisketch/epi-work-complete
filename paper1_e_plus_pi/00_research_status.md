@@ -1,5 +1,8 @@
 # e+π 研究进度与证明审查
 
+> [!NOTE]
+> **2026-11-22 最终版状态同步**：下文保留了 2026-11-20/21 接续验收记录。截至 **2026-11-22**，下文表中列为待完成的 P4（有限状态尾约束正测度下界、开弧无穷测度与 Mathlib 正则连分数窗口实现 `FiniteStateComplete.lean`、`WindowShortAeRealize.lean`）与 P5（任意模 $m\ge2$ 余数最终周期性维数、无条件转移算子框架、全模 $m\ge2$ 全局严格分离与倒数 Fibonacci 常数 $\psi_{\mathrm{Fib}}$ 二阶渐近展开 `ResidueModGeneral.lean`、`TransferOperatorDim.lean`、`ResidueAsymptotic.lean`），以及任意增长商三项递推 $Q_{j+1}=A_jQ_j+Q_{j-1}$ 的完整谱、量规、亚临界维数畸变 $(1-\tau)/(1+\tau\gamma_{\sup})$ 与超临界二次相变（`GeneralGrowingRec.lean`、`GeneralGrowingDim.lean`）均已在 Lean 4（`v4.35.0`）Layer A 完整闭合。全工作区现共 **134 个 `.lean` 文件（9179 build jobs，937 条 `#print axioms` 审计声明 = 914 条纯基础公理 + 23 条白名单经典公理 + 0 条项目自加公理，`sorryAx = 0`）**；两篇主论文已同步重编（论文一 72 页，论文二 58 页，均 0 错误 / 0 警告 / 0 Overfull `\hbox`）。详见根目录 [../README.md](../README.md)。
+
 ## 有限状态缺陷尾部
 
 2026 年 11 月 21 日。论文二第 24–25 页、定理 20 及其证明已更新。新模块 `FiniteStateTail.lean` 验证真实最近整数递推的路径覆盖、标记强连通分量分解、无标记分量时的空集结论，以及 Perron 根为 \(1\) 时的可数性。固定起点上界在实线和圆周均已通过 Lean，常数为

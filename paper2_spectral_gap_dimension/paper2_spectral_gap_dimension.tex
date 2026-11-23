@@ -2757,30 +2757,58 @@ and $\gamma_{\sup}=\infty$.
 All results of Section~\ref{sec:growing-rec} are kernel-checked at Layer~A in two
 self-contained modules:
 \texttt{EpiFormal/\allowbreak General\allowbreak Growing\allowbreak Rec.lean}
-($21$ audited declarations: \texttt{PolyRecData.\allowbreak toGrowingRecData},
+(all $21$ audited declarations: \texttt{PolyRecData.\allowbreak toGrowingRecData},
+\texttt{grow\_\allowbreak pow\_\allowbreak div\_\allowbreak Q\_\allowbreak tendsto\_\allowbreak zero},
+\texttt{grow\_\allowbreak nat\_\allowbreak div\_\allowbreak log\_\allowbreak Q\_\allowbreak tendsto\_\allowbreak zero},
+\texttt{grow\_\allowbreak alpha\_\allowbreak linear\_\allowbreak relation},
 \texttt{growKLRatio\_\allowbreak eq\_\allowbreak growLambda},
 \texttt{growLambda\_\allowbreak eq\_\allowbreak zero\_\allowbreak tfae},
+\texttt{growLevelSet\_\allowbreak zero\_\allowbreak eq\_\allowbreak lattice},
 \texttt{grow\_\allowbreak telescoping\_\allowbreak digit\_\allowbreak realize},
 \texttt{grow\_\allowbreak spectral\_\allowbreak gap\_\allowbreak open\_\allowbreak interval},
+\texttt{dimH\_\allowbreak growLevelSet\_\allowbreak nat\_\allowbreak eq\_\allowbreak zero},
 \texttt{dimH\_\allowbreak growFiniteSet\_\allowbreak eq\_\allowbreak zero},
+\texttt{volume\_\allowbreak growFiniteSet\_\allowbreak eq\_\allowbreak zero},
 \texttt{ae\_\allowbreak growLambda\_\allowbreak eq\_\allowbreak top},
 \texttt{dimH\_\allowbreak growInfiniteSet\_\allowbreak eq\_\allowbreak one},
 \texttt{grow\_\allowbreak range\_\allowbreak lambda},
 \texttt{growSignedExactLimitSet\_\allowbreak coset\_\allowbreak collapse},
 \texttt{grow\_\allowbreak three\_\allowbreak way\_\allowbreak gauge\_\allowbreak splitting},
 \texttt{grow\_\allowbreak power\_\allowbreak gauge\_\allowbreak dichotomy},
+\texttt{growExactLevel\_\allowbreak power\_\allowbreak gauge\_\allowbreak dichotomy},
 \texttt{growExactLevel\_\allowbreak liminf\_\allowbreak four\_\allowbreak way}, and
 \texttt{growUnsignedExactLimit\_\allowbreak liminf\_\allowbreak four\_\allowbreak way}) and
 \texttt{EpiFormal/\allowbreak General\allowbreak Growing\allowbreak Dim.lean}
-($29$ audited declarations: \texttt{dimH\_\allowbreak grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq},
+(all $29$ audited declarations:
+\texttt{grow\_\allowbreak Q\_\allowbreak le\_\allowbreak two\_\allowbreak pow\_\allowbreak mul\_\allowbreak prod\_\allowbreak A},
+\texttt{grow\_\allowbreak prod\_\allowbreak A\_\allowbreak le\_\allowbreak Q\_\allowbreak simple},
+\texttt{dimH\_\allowbreak grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak le},
+\texttt{le\_\allowbreak dimH\_\allowbreak grow\allowbreak Weighted\allowbreak ExactLimitSet\_\allowbreak zero},
+\texttt{dimH\_\allowbreak grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq},
 \texttt{dimH\_\allowbreak grow\allowbreak Weighted\allowbreak ExactLimitSet\_\allowbreak zero\_\allowbreak eq},
 \texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak subset\_\allowbreak lattice},
+\texttt{dimH\_\allowbreak grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak of\_\allowbreak one\_\allowbreak lt},
+\texttt{grow\allowbreak RatLattice\_\allowbreak subset\_\allowbreak weightedLevelSet},
+\texttt{grow\allowbreak RatLattice\_\allowbreak ssubset\_\allowbreak growLatticeL},
 \texttt{grow\allowbreak Weighted\allowbreak Seq\_\allowbreak bounds\_\allowbreak of\_\allowbreak lattice\_\allowbreak irrational},
+\texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq\_\allowbreak lattice\_\allowbreak of\_\allowbreak tendsto\_\allowbreak zero},
 \texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq\_\allowbreak lattice\_\allowbreak of\_\allowbreak mul\_\allowbreak gamma\_\allowbreak lt\_\allowbreak one},
+\texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq\_\allowbreak lattice\_\allowbreak of\_\allowbreak gamma\_\allowbreak zero},
+\texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq\_\allowbreak ratLattice\_\allowbreak of\_\allowbreak limsup\_\allowbreak top},
 \texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq\_\allowbreak ratLattice\_\allowbreak of\_\allowbreak one\_\allowbreak lt\_\allowbreak mul\_\allowbreak gamma},
-and all concrete regime theorems for \texttt{expGrowingRec},
-\texttt{doubleExpGrowingRec} including \texttt{doubleExpGrowingRec\_\allowbreak critical\_\allowbreak two},
-and \texttt{superDoubleExpGrowingRec}), using only \texttt{propext},
+\texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq\_\allowbreak ratLattice\_\allowbreak of\_\allowbreak gamma\_\allowbreak top},
+\texttt{growGammaSup\_\allowbreak exp\allowbreak Growing\allowbreak Rec},
+\texttt{dimH\_\allowbreak exp\allowbreak Growing\allowbreak Rec\_\allowbreak sub\allowbreak critical},
+\texttt{exp\allowbreak Growing\allowbreak Rec\_\allowbreak super\allowbreak critical},
+\texttt{growGammaSup\_\allowbreak double\allowbreak Exp\allowbreak Growing\allowbreak Rec},
+\texttt{dimH\_\allowbreak double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak sub\allowbreak critical},
+\texttt{double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak super\allowbreak critical\_\allowbreak lt\_\allowbreak two},
+\texttt{double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak super\allowbreak critical\_\allowbreak gt\_\allowbreak two},
+\texttt{double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak critical\_\allowbreak two},
+\texttt{growGammaSup\_\allowbreak super\allowbreak Double\allowbreak Exp\allowbreak Growing\allowbreak Rec},
+\texttt{dimH\_\allowbreak super\allowbreak Double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak zero},
+\texttt{dimH\_\allowbreak super\allowbreak Double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak pos\_\allowbreak sub\allowbreak critical},
+and \texttt{super\allowbreak Double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak super\allowbreak critical}), using only \texttt{propext},
 \texttt{Classical.choice}, and \texttt{Quot.sound} ($0$~\texttt{sorryAx}).
 
 \section{Continued-fraction window constraints and digit residues}\label{sec:windows-residues}
@@ -3670,7 +3698,7 @@ $m$ & $F_{m,m}$ ($0\bmod m$ alphabet) & $C_\infty=1.000000000000$ & $0.500496546
 
 \paragraph{Lean status of Section~\ref{sec:windows-residues}.}
 All of Theorems~\ref{thm:windows}, \ref{thm:short-ae}, and~\ref{thm:no-short-dim}---including the exact dimension-$1$ identity for \texttt{prescribed\allowbreak ParitySet}, the exact dimension-$1/2$ identities for \texttt{bounded\allowbreak IncSet}, \texttt{prescribed\allowbreak IncSet}, and \texttt{prescribed\allowbreak IncSetAt}, the almost-everywhere short-window lower bound $Z_J(x)\ge\frac{1-\ee^{-1}}{160}\log J$ (\texttt{thm\_\allowbreak short\_\allowbreak ae\_\allowbreak explicit}), and the full conjunction $\dimH(\texttt{div\allowbreak WindowSet}\,\epsilon)=1\wedge\operatorname{Leb}(\texttt{div\allowbreak WindowSet}\,\epsilon)=0$ (\texttt{thm\_\allowbreak no\_\allowbreak short\_\allowbreak dim\_\allowbreak complete})---are now kernel-checked end-to-end at Layer~A for mathlib's \texttt{GenContFract.of} across thirteen Lean~4 modules: the counting and Frostman-scale pipeline (\texttt{Window\allowbreak Mobius\allowbreak Count.lean}, \texttt{No\allowbreak Short\allowbreak Dim\allowbreak Count.lean}, \texttt{Window\allowbreak Tree\allowbreak Prune.lean}, \texttt{Window\allowbreak Asymp\allowbreak Thresh.lean}, \texttt{Window\allowbreak Frostman\allowbreak Discharge.lean}, and \texttt{Window\allowbreak Paper\allowbreak Scale.lean}), the CF realization and bounded-increment pipeline (\texttt{Window\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak CF\allowbreak Bridge.lean}, \texttt{Window\allowbreak No\allowbreak Short\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak Prescribed\allowbreak CF\allowbreak Realize.lean}, and \texttt{Window\allowbreak Bounded\allowbreak Upper.lean}), and the short-window measure pipeline (\texttt{Window\allowbreak Short\allowbreak Ae.lean} and \texttt{Window\allowbreak Short\allowbreak Ae\allowbreak Realize.lean}, $14$ declarations; base axioms only, zero \texttt{sorryAx}; see Remark~\ref{rem:windows-lean}).
-For Theorems~\ref{thm:residues}, \ref{thm:residues-general}, and~\ref{thm:residues-asymptotic}, the entire general-modulus $m\ge2$ Lipschitz shift equivalence, sandwich, and eventual-periodicity theorem is kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak ModGeneral.lean} ($7$ declarations: \texttt{lipschitz\allowbreak OnWith\_\allowbreak cfShift}, \texttt{dimH\_\allowbreak residueSeqSet\_\allowbreak sandwich}, \texttt{dimH\_\allowbreak eventually\allowbreak PeriodicResidueSet\_\allowbreak eq}), the unconditional transfer-operator Hausdorff-dimension framework, $\frac12<\dimH F_{m,r}$, $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness (\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound}, \texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}) are kernel-checked in \texttt{EpiFormal/\allowbreak Transfer\allowbreak Operator\allowbreak Dim.lean} ($11$ declarations, base axioms only), and the complete resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$, exact dimension-excess ratios, and eventual strict monotonicity in~$r$ of Theorem~\ref{thm:residues-asymptotic} are kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} ($15$ declarations: \texttt{metalQ\_\allowbreak one\_\allowbreak eq\_\allowbreak fib}, \texttt{metalC\_\allowbreak one\_\allowbreak eq\_\allowbreak psiFib}, \texttt{resolventV\_\allowbreak branch\_\allowbreak eq}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak m1}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak eventuallyPeriodic}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak residue\_\allowbreak ratio\_\allowbreak eq\_\allowbreak metalC}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak eventuallyPeriodic\_\allowbreak ratio\_\allowbreak eq\_\allowbreak psiFib}, and \texttt{eventually\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak strictAnti}; base axioms only, zero \texttt{sorryAx}), alongside the $14$ helper lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}; only the finite-precision integer grid runs in \texttt{residue\_\allowbreak certificate.py} and \texttt{residue\_\allowbreak certificate\_\allowbreak general.py} validating the narrow brackets in Table~\ref{tab:residues-general} execute in Python.
+For Theorems~\ref{thm:residues}, \ref{thm:residues-general}, and~\ref{thm:residues-asymptotic}, the entire general-modulus $m\ge2$ Lipschitz shift equivalence, sandwich, and eventual-periodicity theorem is kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak ModGeneral.lean} ($7$ declarations: \texttt{lipschitz\allowbreak OnWith\_\allowbreak cfShift}, \texttt{dimH\_\allowbreak residueSeqSet\_\allowbreak sandwich}, \texttt{dimH\_\allowbreak eventually\allowbreak PeriodicResidueSet\_\allowbreak eq}), the unconditional transfer-operator Hausdorff-dimension framework, $\frac12<\dimH F_{m,r}$, $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness (\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound}, \texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}) are kernel-checked in \texttt{EpiFormal/\allowbreak Transfer\allowbreak Operator\allowbreak Dim.lean} ($11$ declarations, base axioms only), and the complete resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$, exact dimension-excess ratios, and eventual strict monotonicity in~$r$ of Theorem~\ref{thm:residues-asymptotic} are kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} (all $15$ declarations: \texttt{metalQ\_\allowbreak one\_\allowbreak eq\_\allowbreak fib}, \texttt{metalC\_\allowbreak one\_\allowbreak eq\_\allowbreak psiFib}, \texttt{resolventV\_\allowbreak branch\_\allowbreak eq}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak le\_\allowbreak of\_\allowbreak resolvent}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak of\_\allowbreak resolvent}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak le}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak mm}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak m1}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak eventuallyPeriodic}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{tendsto\_\allowbreak mul\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak sub\_\allowbreak half}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak residue\_\allowbreak ratio\_\allowbreak eq\_\allowbreak metalC}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak eventuallyPeriodic\_\allowbreak ratio\_\allowbreak eq\_\allowbreak psiFib}, and \texttt{eventually\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak strictAnti}; base axioms only, zero \texttt{sorryAx}), alongside the $14$ helper lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}; only the finite-precision integer grid runs in \texttt{residue\_\allowbreak certificate.py} and \texttt{residue\_\allowbreak certificate\_\allowbreak general.py} validating the narrow brackets in Table~\ref{tab:residues-general} execute in Python.
 
 \section{Numerical evidence}\label{sec:num}
 

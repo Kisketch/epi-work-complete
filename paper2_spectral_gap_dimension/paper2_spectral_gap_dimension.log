@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  22 NOV 2026 22:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  22 NOV 2026 23:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -628,95 +628,151 @@ Underfull \hbox (badness 3601) in paragraph at lines 2629--2631
  []
 
 [35] [36]
-Underfull \hbox (badness 1028) in paragraph at lines 2757--2785
-\OT1/cmr/m/n/10.95 Layer A in two self-contained mod-ules: \OT1/cmtt/m/n/10.95 
-EpiFormal/GeneralGrowingRec.lean \OT1/cmr/m/n/10.95 ($21$ au-dited
- []
-
-
-Underfull \hbox (badness 4001) in paragraph at lines 2757--2785
-\OT1/cmr/m/n/10.95 dec-la-ra-tions: \OT1/cmtt/m/n/10.95 PolyRecData.toGrowingRe
-cData\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 growKLRatio[]eq[]growLambda\OT1/c
-mr/m/n/10.95 , \OT1/cmtt/m/n/10.95 growLambda[]
- []
-
-
-Underfull \hbox (badness 1635) in paragraph at lines 2757--2785
+Underfull \hbox (badness 10000) in paragraph at lines 2757--2813
 \OT1/cmtt/m/n/10.95 eq[]zero[]tfae\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 grow
-[]telescoping[]digit[]realize\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 grow[]spe
-ctral[]gap[]open[]interval\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 dimH[]
+LevelSet[]zero[]eq[]lattice\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 grow[]teles
+coping[]digit[]realize\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 grow[]
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2757--2785
-\OT1/cmtt/m/n/10.95 power[]gauge[]dichotomy\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/1
-0.95 growExactLevel[]liminf[]four[]way\OT1/cmr/m/n/10.95 , and \OT1/cmtt/m/n/10
-.95 growUnsignedExactLimit[]
+Underfull \hbox (badness 10000) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 grow[]power[]gauge[]dichotomy\OT1/cmr/m/n/10.95 , \OT1/cmtt
+/m/n/10.95 growExactLevel[]power[]gauge[]dichotomy\OT1/cmr/m/n/10.95 , \OT1/cmt
+t/m/n/10.95 growExactLevel[]
  []
 
 
-Underfull \hbox (badness 4316) in paragraph at lines 2757--2785
-\OT1/cmtt/m/n/10.95 WeightedLevelSet[]eq\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.9
-5 dimH[]growWeightedExactLimitSet[]zero[]eq\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/1
-0.95 growWeightedLevelSet[]
+Underfull \hbox (badness 1292) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 liminf[]four[]way\OT1/cmr/m/n/10.95 , and \OT1/cmtt/m/n/10.
+95 growUnsignedExactLimit[]liminf[]four[]way\OT1/cmr/m/n/10.95 ) and \OT1/cmtt/
+m/n/10.95 EpiFormal/General
  []
 
 
-Underfull \hbox (badness 1762) in paragraph at lines 2757--2785
-\OT1/cmtt/m/n/10.95 subset[]lattice\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 gro
-wWeightedSeq[]bounds[]of[]lattice[]irrational\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n
-/10.95 growWeightedLevelSet[]
+Underfull \hbox (badness 10000) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 le[]Q[]simple\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 dimH[
+]growWeightedLevelSet[]le\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 le[]dimH[]gro
+wWeightedExactLimitSet[]zero\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2757--2785
-\OT1/cmtt/m/n/10.95 eq[]lattice[]of[]mul[]gamma[]lt[]one\OT1/cmr/m/n/10.95 , \O
-T1/cmtt/m/n/10.95 growWeightedLevelSet[]eq[]ratLattice[]of[]one[]lt[]mul[]
+Underfull \hbox (badness 4316) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 dimH[]growWeightedLevelSet[]eq\OT1/cmr/m/n/10.95 , \OT1/cmt
+t/m/n/10.95 dimH[]growWeightedExactLimitSet[]zero[]eq\OT1/cmr/m/n/10.95 , \OT1/
+cmtt/m/n/10.95 growWeighted
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 weightedLevelSet\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 gr
+owRatLattice[]ssubset[]growLatticeL\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 gro
+wWeightedSeq[]bounds[]of[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 lattice[]irrational\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95
+ growWeightedLevelSet[]eq[]lattice[]of[]tendsto[]zero\OT1/cmr/m/n/10.95 , \OT1/
+cmtt/m/n/10.95 growWeighted
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 LevelSet[]eq[]lattice[]of[]mul[]gamma[]lt[]one\OT1/cmr/m/n/
+10.95 , \OT1/cmtt/m/n/10.95 growWeightedLevelSet[]eq[]lattice[]of[]gamma[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 zero\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 growWeightedLe
+velSet[]eq[]ratLattice[]of[]limsup[]top\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95
+ growWeightedLevelSet[]eq[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 ratLattice[]of[]one[]lt[]mul[]gamma\OT1/cmr/m/n/10.95 , \OT
+1/cmtt/m/n/10.95 growWeightedLevelSet[]eq[]ratLattice[]of[]gamma[]top\OT1/cmr/m
+/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 growGammaSup[]expGrowingRec\OT1/cmr/m/n/10.95 , \OT1/cmtt/m
+/n/10.95 dimH[]expGrowingRec[]subcritical\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.
+95 expGrowingRec[]super
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 critical\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 growGammaS
+up[]doubleExpGrowingRec\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 dimH[]doubleExp
+GrowingRec[]subcritical\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 doubleExpGrowingRec[]supercritical[]lt[]two\OT1/cmr/m/n/10.
+95 , \OT1/cmtt/m/n/10.95 doubleExpGrowingRec[]supercritical[]gt[]
+ []
+
+
+Underfull \hbox (badness 8113) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 superDoubleExpGrowingRec[]zero\OT1/cmr/m/n/10.95 , \OT1/cmt
+t/m/n/10.95 dimH[]superDoubleExpGrowingRec[]pos[]subcritical\OT1/cmr/m/n/10.95 
+, and
+ []
+
+
+Underfull \hbox (badness 1496) in paragraph at lines 2757--2813
+\OT1/cmtt/m/n/10.95 superDoubleExpGrowingRec[]supercritical\OT1/cmr/m/n/10.95 )
+, us-ing only \OT1/cmtt/m/n/10.95 propext\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.
+95 Classical.choice\OT1/cmr/m/n/10.95 , and
  []
 
 [37] [38] [39] [40] [41] [42] [43]
-Underfull \hbox (badness 10000) in paragraph at lines 3229--3238
+Underfull \hbox (badness 10000) in paragraph at lines 3257--3266
 \OT1/cmr/m/n/10.95 wit-nesses (\OT1/cmtt/m/n/10.95 WindowPaperScale.nonvacuous[
 ]factorial[]tree[]dimH\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 nonvacuous[]fact
 orial[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3229--3238
+Underfull \hbox (badness 10000) in paragraph at lines 3257--3266
 \OT1/cmtt/m/n/10.95 distrib[]of[]local[]diam[]bound\OT1/cmr/m/n/10.95 , \OT1/cm
 tt/m/n/10.95 mu[]window[]cascade[]full\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 
 dimH[]ge[]of[]mu[]window[]cascade\OT1/cmr/m/n/10.95 );
  []
 
 
-Underfull \hbox (badness 2042) in paragraph at lines 3229--3238
+Underfull \hbox (badness 2042) in paragraph at lines 3257--3266
 \OT1/cmr/m/n/10.95 dis-charg-ing ev-ery tree-interface hy-poth-e-sis un-con-di-
 tion-ally (\OT1/cmtt/m/n/10.95 WindowCFRealize.dimH[]ge[]one[]
  []
 
 
-Underfull \hbox (badness 2073) in paragraph at lines 3229--3238
+Underfull \hbox (badness 2073) in paragraph at lines 3257--3266
 \OT1/cmtt/m/n/10.95 mobius[]eq\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 dens[]mo
 bius[]eq\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 dens[]of[]mono\OT1/cmr/m/n/10.
 95 ), ir-ra-tional-ity and reg-u-lar CF stop-ping in-dex
  []
 
 
-Underfull \hbox (badness 1776) in paragraph at lines 3229--3238
+Underfull \hbox (badness 1776) in paragraph at lines 3257--3266
 \OT1/cmr/m/n/10.95 and prov-ing \OT1/cmtt/m/n/10.95 dimH[]ge[]gamma[]noShortSet
  \OT1/cmr/m/n/10.95 and ex-act $[][]([] \OML/cmm/m/it/10.95 ^^O\OT1/cmr/m/n/10.
 95 ) = 1$ in \OT1/cmtt/m/n/10.95 dimH[]
  []
 
 
-Underfull \hbox (badness 6428) in paragraph at lines 3229--3238
+Underfull \hbox (badness 6428) in paragraph at lines 3257--3266
 \OT1/cmtt/m/n/10.95 dimH[]ge[]half[]prescribedIncSetAt \OT1/cmr/m/n/10.95 / \OT
 1/cmtt/m/n/10.95 exists[]start[]dimH[]ge[]half[]prescribedIncSetAt \OT1/cmr/m/n
 /10.95 for
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 3229--3238
+Underfull \hbox (badness 1215) in paragraph at lines 3257--3266
 \OT1/cmr/m/n/10.95 ev-ery $\OML/cmm/m/it/10.95 s > \OT1/cmr/m/n/10.95 1\OML/cmm
 /m/it/10.95 =\OT1/cmr/m/n/10.95 2$ (\OT1/cmtt/m/n/10.95 hausdorffMeasure[]bound
 edIncSet[]zero\OT1/cmr/m/n/10.95 ), and the ex-act iden-ti-ties \OT1/cmtt/m/n/1
@@ -724,94 +780,122 @@ edIncSet[]zero\OT1/cmr/m/n/10.95 ), and the ex-act iden-ti-ties \OT1/cmtt/m/n/1
  []
 
 [44] [45] [46] [47] [48] [49]
-Underfull \hbox (badness 2042) in paragraph at lines 3565--3569
+Underfull \hbox (badness 2042) in paragraph at lines 3593--3597
 [][]\OT1/cmr/bx/it/10.95 Exact metallic-
  []
 
 [50] [51]
-Underfull \hbox (badness 1286) in paragraph at lines 3672--3674
+Underfull \hbox (badness 1286) in paragraph at lines 3700--3702
 \OT1/cmr/m/n/10.95 iden-tity for \OT1/cmtt/m/n/10.95 prescribedParitySet\OT1/cm
 r/m/n/10.95 , the ex-act dimension-$1\OML/cmm/m/it/10.95 =\OT1/cmr/m/n/10.95 2$
  iden-ti-ties for \OT1/cmtt/m/n/10.95 boundedIncSet\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 3672--3674
+Underfull \hbox (badness 1270) in paragraph at lines 3700--3702
 \OT1/cmtt/m/n/10.95 Prune.lean\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 WindowAs
 ympThresh.lean\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 WindowFrostmanDischarge.
 lean\OT1/cmr/m/n/10.95 , and \OT1/cmtt/m/n/10.95 WindowPaper
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 3672--3674
+Underfull \hbox (badness 1168) in paragraph at lines 3700--3702
 \OT1/cmtt/m/n/10.95 Scale.lean\OT1/cmr/m/n/10.95 ), the CF re-al-iza-tion and b
 ounded-increment pipeline (\OT1/cmtt/m/n/10.95 WindowCFRealize.lean\OT1/cmr/m/n
 /10.95 ,
  []
 
 
-Underfull \hbox (badness 4660) in paragraph at lines 3672--3674
+Underfull \hbox (badness 4660) in paragraph at lines 3700--3702
 \OT1/cmtt/m/n/10.95 WindowCFBridge.lean\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95
  WindowNoShortCFRealize.lean\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 WindowPres
 cribedCFRealize.lean\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 7522) in paragraph at lines 3672--3674
+Underfull \hbox (badness 7522) in paragraph at lines 3700--3702
 \OT1/cmtt/m/n/10.95 dimH[]eventuallyPeriodicResidueSet[]eq\OT1/cmr/m/n/10.95 ),
  the un-con-di-tional transfer-operator Hausdorff-
  []
 
 
-Underfull \hbox (badness 1635) in paragraph at lines 3672--3674
+Underfull \hbox (badness 1635) in paragraph at lines 3700--3702
 \OT1/cmtt/m/n/10.95 metalQ[]one[]eq[]fib\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.9
 5 metalC[]one[]eq[]psiFib\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 resolventV[]b
 ranch[]eq\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 dimH[]residueConstSet[]
  []
 
 
-Underfull \hbox (badness 1383) in paragraph at lines 3672--3674
-\OT1/cmtt/m/n/10.95 mm[]lt[]m1\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 dimH[]re
-sidueConstSet[]mm[]lt[]eventuallyPeriodic\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.
-95 dimH[]residueConstSet[]asymp[]
+Underfull \hbox (badness 10000) in paragraph at lines 3700--3702
+\OT1/cmtt/m/n/10.95 le[]of[]resolvent\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 l
+e[]dimH[]residueConstSet[]of[]resolvent\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95
+ dimH[]residueConstSet[]mm[]le\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 6461) in paragraph at lines 3700--3702
+\OT1/cmtt/m/n/10.95 le[]dimH[]residueConstSet[]mm\OT1/cmr/m/n/10.95 , \OT1/cmtt
+/m/n/10.95 dimH[]residueConstSet[]mm[]lt[]m1\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/
+10.95 dimH[]residueConstSet[]mm[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3700--3702
+\OT1/cmtt/m/n/10.95 lt[]eventuallyPeriodic\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10
+.95 dimH[]residueConstSet[]asymp[]two[]term\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/1
+0.95 dimH[]residueConstSet[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3700--3702
+\OT1/cmtt/m/n/10.95 mm[]asymp[]two[]term\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.9
+5 tendsto[]mul[]dimH[]residueConstSet[]sub[]half\OT1/cmr/m/n/10.95 , \OT1/cmtt/
+m/n/10.95 tendsto[]dimH[]residue[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3700--3702
+\OT1/cmtt/m/n/10.95 ratio[]eq[]metalC\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 t
+endsto[]dimH[]eventuallyPeriodic[]ratio[]eq[]psiFib\OT1/cmr/m/n/10.95 , and \OT
+1/cmtt/m/n/10.95 eventually[]
  []
 
 [52] [53]
-Underfull \hbox (badness 2302) in paragraph at lines 3786--3817
+Underfull \hbox (badness 2302) in paragraph at lines 3814--3845
 \OT1/cmtt/m/n/10.95 PolyWeightedUpper.lean \OT1/cmr/m/n/10.95 ($1$ dec-la-ra-ti
 on), and \OT1/cmtt/m/n/10.95 EpiFormal/PolyWeightedLower.lean \OT1/cmr/m/n/10.9
 5 ($8$
  []
 
 [54]
-Underfull \hbox (badness 5446) in paragraph at lines 3817--3832
+Underfull \hbox (badness 5446) in paragraph at lines 3845--3860
 \OT1/cmr/m/n/10.95 (\OT1/cmtt/m/n/10.95 volume[]finiteLevel[]zero\OT1/cmr/m/n/1
 0.95 , \OT1/cmtt/m/n/10.95 ae[]apprExponent[]eq[]top\OT1/cmr/m/n/10.95 , \OT1/c
 mtt/m/n/10.95 volume[]infiniteLevel[]Icc\OT1/cmr/m/n/10.95 , and
  []
 
 
-Underfull \hbox (badness 1107) in paragraph at lines 3851--3876
+Underfull \hbox (badness 1107) in paragraph at lines 3879--3904
 \OT1/cmtt/m/n/10.95 GaugeCircle.lean \OT1/cmr/m/n/10.95 ex-plic-itly con-struct
 s the piecewise-linear gauges $\OML/cmm/m/it/10.95 h[]$ \OT1/cmr/m/n/10.95 (\OT
 1/cmtt/m/n/10.95 critGauge\OT1/cmr/m/n/10.95 ), $\OML/cmm/m/it/10.95 g[]$
  []
 
-
-Underfull \hbox (badness 1019) in paragraph at lines 3883--3932
+[55]
+Underfull \hbox (badness 1019) in paragraph at lines 3911--3960
 \OT1/cmtt/m/n/10.95 divWindowSet[]eq[]zero \OT1/cmr/m/n/10.95 and \OT1/cmtt/m/n
 /10.95 thm[]no[]short[]dim[]complete\OT1/cmr/m/n/10.95 , to-gether with M^^?obi
 us count-ing
  []
 
 
-Underfull \hbox (badness 4927) in paragraph at lines 3883--3932
+Underfull \hbox (badness 4927) in paragraph at lines 3911--3960
 \OT1/cmtt/m/n/10.95 FrostmanDischarge.lean\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10
 .95 WindowPaperScale.lean\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 WindowCFReali
 ze.lean\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 WindowCF
  []
 
-[55] [56] [57] [58] (paper2_spectral_gap_dimension.aux)
+[56] [57] [58] (paper2_spectral_gap_dimension.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-09-09>
@@ -823,11 +907,11 @@ hanged.
 Here is how much of TeX's memory you used:
  10270 strings out of 467392
  158779 string characters out of 5404180
- 605853 words of memory out of 5000000
+ 604853 words of memory out of 5000000
  39294 multiletter control sequences out of 15000+600000
  644947 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,12n,79p,2770b,915s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,12n,79p,3241b,915s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\t
 crm1095.pk><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/t
@@ -861,7 +945,7 @@ cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Lgnatiu
 s/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/U
 sers/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols
 /msbm10.pfb>
-Output written on paper2_spectral_gap_dimension.pdf (58 pages, 839002 bytes).
+Output written on paper2_spectral_gap_dimension.pdf (58 pages, 841123 bytes).
 PDF statistics:
  1046 PDF objects out of 1200 (max. 8388607)
  224 named destinations out of 1000 (max. 500000)
