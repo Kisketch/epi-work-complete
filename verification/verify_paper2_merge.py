@@ -94,8 +94,16 @@ def main():
         ("Workspace: ResidueModGeneral", "ResidueModGeneral"),
         ("Workspace: TransferOperatorDim", "TransferOperatorDim"),
         ("Workspace: FiniteStateComplete", "FiniteStateComplete"),
+        ("Workspace: ResidueAsymptotic", "ResidueAsymptotic"),
+        ("Workspace: GeneralGrowingRec", "GeneralGrowingRec"),
+        ("Workspace: GeneralGrowingDim", "GeneralGrowingDim"),
+        ("Workspace: Thm residues-asymptotic", r"\label{thm:residues-asymptotic}"),
+        ("Workspace: Thm growing-rec-spectrum", r"\label{thm:growing-rec-spectrum}"),
+        ("Workspace: Thm growing-rec-dim-phase", r"\label{thm:growing-rec-dim-phase}"),
+        ("Workspace: Cor growing-rec-three-regimes", r"\label{cor:growing-rec-three-regimes}"),
         ("Workspace: residue_certificate_general.py", "residue\\_certificate\\_general.py"),
-        ("Workspace: Audit 872 declarations", "872"),
+        ("Workspace: verify_paper2_extensions.py", "verify\\_paper2\\_extensions.py"),
+        ("Workspace: Audit 937 declarations", "937"),
     ]
     for label, pat in items:
         found = pat in norm_merged

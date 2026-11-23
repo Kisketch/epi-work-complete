@@ -1,0 +1,42 @@
+=== Paper 2 Extensions High-Precision Verification (120-digit mpmath) ===
+
+[1] Metallic & Reciprocal-Fibonacci Constants C_r = sum_{n>=0} 1/q_n(r) (50 digits):
+  r=1: C_1 = 3.359885666243177553172011302918927179688905133732
+       D_1 = 1.9683981156040210959089220462381257736652430097614
+  r=2: C_2 = 1.8422030498275285807923715832798083890052702118544
+       D_2 = 1.1104568683110540805709179422058134483414883636318
+  r=3: C_3 = 1.4767947263188873180011826066609759912939348007662
+       D_3 = 0.77097487553771653808263004535214586541161787085388
+  r=4: C_4 = 1.3270042778660563942717621918999865915505325032491
+       D_4 = 0.59909674679093919551446783395064746884707658619861
+  r=5: C_5 = 1.2476357311727238485260286888507249152767491774755
+       D_5 = 0.49580538659357069674673575051735053781158552957185
+  [PASS] C_1 = psi_Fib verified to 48+ digits and C_1 > C_2 > C_3 > C_4 > C_5 > 1.
+
+[2] Non-Asymptotic Resolvent Brackets & Two-Term Asymptotics for F_{m,1} and F_{m,m}:
+  m=    2: asymp(F_{m,1})=0.36186868432377, asymp(F_{m,m})=0.66335660243001, excess_ratio=-0.845581467914
+  m=    3: asymp(F_{m,1})=0.37097820995227, asymp(F_{m,m})=0.60563265062955, excess_ratio=-1.2214196016
+  m=    4: asymp(F_{m,1})=0.43093434216189, asymp(F_{m,m})=0.581678301215, excess_ratio=-0.845581467914
+  m=    5: asymp(F_{m,1})=0.47261509243756, asymp(F_{m,m})=0.56781124175132, excess_ratio=-0.40384023143
+  m=    6: asymp(F_{m,1})=0.49906170722186, asymp(F_{m,m})=0.55844778514961, excess_ratio=-0.0160535215446
+  m=   10: asymp(F_{m,1})=0.53802680547599, asymp(F_{m,m})=0.53848707453503, excess_ratio=0.988040944535
+  m=   20: asymp(F_{m,1})=0.54172424487467, asymp(F_{m,m})=0.52125533465806, excess_ratio=1.9630010793
+  m=   50: asymp(F_{m,1})=0.52476642280712, asymp(F_{m,m})=0.50921759539891, excess_ratio=2.68686373564
+  m=  100: asymp(F_{m,1})=0.51420007877449, asymp(F_{m,m})=0.5047697414907, excess_ratio=2.97711706225
+  m=  500: asymp(F_{m,1})=0.50321957433656, asymp(F_{m,m})=0.5009875707838, excess_ratio=3.26009475914
+  m= 1000: asymp(F_{m,1})=0.50164095258977, asymp(F_{m,m})=0.50049654612236, excess_ratio=3.30473346961
+  m= 5000: asymp(F_{m,1})=0.50033406558342, asymp(F_{m,m})=0.50009982965614, excess_ratio=3.34635614652
+  m=20000: asymp(F_{m,1})=0.50008385739315, asymp(F_{m,m})=0.50002498762064, excess_ratio=3.35595751021
+  [PASS] Global separation 1/2 + 1/(2m) < 1/2 + 11/(16m) and excess_ratio -> C_1 = psi_Fib verified.
+
+[3] Concrete Growing-Quotient Regimes (expGrowingRec, doubleExpGrowingRec, superDoubleExpGrowingRec):
+  Regime I (A_j = 2^{j+1}): at j=15, log(A_j)/log(Q_j) = 0.134035 -> 0 (gamma_sup = 0)
+  Regime II (A_j = 2^{2^j}): (1/4)A_j <= Q_j <= A_j verified for j=2..8; at j=8, log(A_j)/log(Q_j) = 1.00652591 -> 1 (gamma_sup = 1)
+  Regime II Supercritical Secondary Transition on x = theta in L_G \ Z:
+    tau=1.5: j=2 -> 0.787038, j=4 -> 0.0123427, j=6 -> 7.35682e-10, j=7 -> 1.71289e-19
+    tau=2.0: j=2 -> 3.14815, j=4 -> 3.15973, j=6 -> 3.15973, j=7 -> 3.15973
+    tau=2.5: j=2 -> 12.5926, j=4 -> 808.891, j=6 -> 1.35709e+10, j=7 -> 5.82868e+19
+  [PASS] Regime II critical boundary tau=2 verified: tau=1.5 -> 0, tau=2.0 in [1/6, 4] (~3.20000), tau=2.5 -> +inf.
+  Regime III (A_j = 2^{2^{j^2}}): at j=4, log(A_4)/log(Q_4) = 123.58 -> +inf (gamma_sup = top)
+
+ALL PAPER 2 EXTENSION VERIFICATION CHECKS PASSED!

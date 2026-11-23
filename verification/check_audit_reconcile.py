@@ -106,6 +106,9 @@ new_prefixes = (
     "ResidueModGeneral.",
     "TransferOperatorDim.",
     "FiniteStateComplete.",
+    "ResidueAsymptotic.",
+    "GeneralGrowingRec.",
+    "GeneralGrowingDim.",
 )
 new_exact = {"rational_endpoint_cutoff"}
 new_decls = {k: v for k, v in log_map.items() if k.startswith(new_prefixes) or k in new_exact}
@@ -122,6 +125,6 @@ assert len(unexpected_axioms) == 0, f"Found unexpected axioms: {unexpected_axiom
 assert len(non_core) == 23, f"Expected strictly 23 whitelisted classical declarations, got {len(non_core)}"
 assert len(escape_hits) == 0, f"Found escape keywords: {escape_hits}"
 assert len(axiom_decls) == 3, f"Expected strictly 3 source axiom declarations, got {len(axiom_decls)}: {axiom_decls}"
-assert len(new_decls) == 226, f"Expected 226 new/integrated declarations (182 + 44), got {len(new_decls)}"
+assert len(new_decls) == 291, f"Expected 291 new/integrated declarations (226 + 65), got {len(new_decls)}"
 assert len(new_non_core) == 0, f"New declarations used non-core axioms: {new_non_core}"
 print("ALL RECONCILIATION CHECKS PASSED!")

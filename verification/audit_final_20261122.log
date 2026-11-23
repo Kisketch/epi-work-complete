@@ -1061,3 +1061,116 @@
  Quot.sound]
 'FiniteStateComplete.thm_finite_state_tail_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
 'FiniteStateComplete.thm_finite_state_tail_circle_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueAsymptotic.metalQ_one_eq_fib' depends on axioms: [propext, Quot.sound]
+'ResidueAsymptotic.metalC_one_eq_psiFib' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueAsymptotic.resolventV_branch_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueAsymptotic.dimH_residueConstSet_le_of_resolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueAsymptotic.le_dimH_residueConstSet_of_resolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueAsymptotic.dimH_residueConstSet_mm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueAsymptotic.le_dimH_residueConstSet_mm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueAsymptotic.dimH_residueConstSet_mm_lt_m1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueAsymptotic.dimH_residueConstSet_mm_lt_eventuallyPeriodic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ResidueAsymptotic.dimH_residueConstSet_asymp_two_term' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueAsymptotic.dimH_residueConstSet_mm_asymp_two_term' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueAsymptotic.tendsto_mul_dimH_residueConstSet_sub_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueAsymptotic.tendsto_dimH_residue_ratio_eq_metalC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueAsymptotic.tendsto_dimH_eventuallyPeriodic_ratio_eq_psiFib' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ResidueAsymptotic.eventually_dimH_residueConstSet_strictAnti' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.PolyRecData.toGrowingRecData' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingRec.GrowingRecData.grow_pow_div_Q_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.GrowingRecData.grow_nat_div_log_Q_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.GrowingRecData.grow_alpha_linear_relation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingRec.GrowingRecData.growKLRatio_eq_growLambda' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingRec.GrowingRecData.growLambda_eq_zero_tfae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingRec.GrowingRecData.growLevelSet_zero_eq_lattice' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.GrowingRecData.grow_telescoping_digit_realize' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.GrowingRecData.grow_spectral_gap_open_interval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.GrowingRecData.dimH_growLevelSet_nat_eq_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.GrowingRecData.dimH_growFiniteSet_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingRec.GrowingRecData.volume_growFiniteSet_eq_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.GrowingRecData.ae_growLambda_eq_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingRec.GrowingRecData.dimH_growInfiniteSet_eq_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.GrowingRecData.grow_range_lambda' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingRec.GrowingRecData.growSignedExactLimitSet_coset_collapse' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.GrowingRecData.grow_three_way_gauge_splitting' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.GrowingRecData.grow_power_gauge_dichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingRec.GrowingRecData.growExactLevel_power_gauge_dichotomy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.GrowingRecData.growExactLevel_liminf_four_way' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingRec.GrowingRecData.growUnsignedExactLimit_liminf_four_way' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingDim.grow_Q_le_two_pow_mul_prod_A' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.grow_prod_A_le_Q_simple' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.dimH_growWeightedLevelSet_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.le_dimH_growWeightedExactLimitSet_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.dimH_growWeightedLevelSet_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.dimH_growWeightedExactLimitSet_zero_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.growWeightedLevelSet_subset_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.dimH_growWeightedLevelSet_of_one_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.growRatLattice_subset_weightedLevelSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.growRatLattice_ssubset_growLatticeL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.growWeightedSeq_bounds_of_lattice_irrational' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingDim.growWeightedLevelSet_eq_lattice_of_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingDim.growWeightedLevelSet_eq_lattice_of_mul_gamma_lt_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingDim.growWeightedLevelSet_eq_lattice_of_gamma_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingDim.growWeightedLevelSet_eq_ratLattice_of_limsup_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingDim.growWeightedLevelSet_eq_ratLattice_of_one_lt_mul_gamma' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingDim.growWeightedLevelSet_eq_ratLattice_of_gamma_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingDim.growGammaSup_expGrowingRec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.dimH_expGrowingRec_subcritical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.expGrowingRec_supercritical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.growGammaSup_doubleExpGrowingRec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.dimH_doubleExpGrowingRec_subcritical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.doubleExpGrowingRec_supercritical_lt_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.doubleExpGrowingRec_supercritical_gt_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.doubleExpGrowingRec_critical_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.growGammaSup_superDoubleExpGrowingRec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.dimH_superDoubleExpGrowingRec_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralGrowingDim.dimH_superDoubleExpGrowingRec_pos_subcritical' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralGrowingDim.superDoubleExpGrowingRec_supercritical' depends on axioms: [propext, Classical.choice, Quot.sound]

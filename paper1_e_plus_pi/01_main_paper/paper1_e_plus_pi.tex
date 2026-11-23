@@ -4118,11 +4118,11 @@ The invariance lemmas (translation, scaling, reciprocal) and Theorem~\ref{thm:me
 The earlier 9098-job, 9099-job, and 9101-job baselines were built and
 reproduced separately. In the current fully integrated sources
 (2026-11-22), \texttt{lake build EpiFormal} completed cleanly
-(9176 jobs, exit code~0) and \texttt{lake env lean Audit.lean}
+(9179 jobs, exit code~0) and \texttt{lake env lean Audit.lean}
 (recorded in \texttt{verification/\allowbreak audit\_\allowbreak final\_\allowbreak 20261122.log}
 and reconciled by \texttt{verification/\allowbreak check\_\allowbreak audit\_\allowbreak reconcile.py})
-reports 872 audited declarations across 131 scanned Lean files with zero \texttt{sorryAx} and zero
-project-added axioms. Of these, 849 use only the Lean base axioms
+reports 937 audited declarations across 134 scanned Lean files with zero \texttt{sorryAx} and zero
+project-added axioms. Of these, 914 use only the Lean base axioms
 (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound},
 including 5 axiom-free declarations) and 23 also use the three
 whitelisted classical inputs (\texttt{e\_transcendental},
@@ -4686,8 +4686,8 @@ other seven Paper~1 helper modules (\texttt{GoldenAffineEndpoint.lean},
 \texttt{ResearchAdvance.lean}, and \texttt{TraceMarkov.lean}) are now
 integrated directly inside \texttt{epi\_formal/\allowbreak EpiFormal/}
 and audited in \texttt{Audit.lean}. The 2026-11-22 rerun built the full
-integrated project (\texttt{9176 jobs}, exit code~0) and verified all
-872 audited declarations across 131 Lean files (849 base-only + 23 whitelisted classical,
+integrated project (\texttt{9179 jobs}, exit code~0) and verified all
+937 audited declarations across 134 Lean files (914 base-only + 23 whitelisted classical,
 zero \texttt{sorryAx}, zero project-added axioms) in
 \texttt{verification/\allowbreak audit\_\allowbreak final\_\allowbreak 20261122.log}.
 
