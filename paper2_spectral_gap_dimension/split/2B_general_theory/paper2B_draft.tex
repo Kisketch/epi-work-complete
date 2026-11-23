@@ -1,25 +1,19 @@
-% ============================================================================
-% paper2B_draft.tex  —  2B 一般递推理论轨道（草案）
-% ----------------------------------------------------------------------------
-% 来源：paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex
-% 声明：未抽正文，仅 \input 占位；正文全部来自 ../src_sections/ 的逐行切片。
-% 切片来源行号：
-%   poly-rec：sec-gauge.tex 内 L1969-2500（sec:poly-rec，需按行号切出）；
-%   growing-rec：sec-growing.tex L2501-2813。
-% 前言：仅占位，当前不启用原版前言（sec-preface.tex 针对合并稿）。
-% 注意：poly 段尚无独立碎片文件；下方 \input sec-gauge.tex 会带入
-%   1177-1968。正式抽正文前须把 sec-gauge.tex 的 1969-2500 单独切出。
-% ============================================================================
+% paper2B_draft.tex — 2B 一般递推理论轨道（wiring v2）
+% 来源行号：poly 1969-2500（sec-poly.tex）；growing 2501-2813（sec-growing.tex）。
+% 共用 preamble.tex（原 L1-35）；前言/标题待 2B 独立撰写，此处仅放占位标题。
+% 排除：gauge-core 1177-1816（2A）、finstate 1817-1968（2C）。
 
-% 导言占位：正式 2B 需自写 preamble；此处不复制正文导言。
-\documentclass[11pt]{article}
+\input{../src_sections/preamble.tex}
+
+\title{General recurrences: complete discretization, exact gauges,\\trichotomy and dimension phase transitions\\(2B split draft, placeholder title)}
+\author{[Author name]\\ \relax[Affiliation]}
+
 \begin{document}
+\maketitle
 
-% \input{../src_sections/sec-preface.tex}  % ← 前言占位，启用前须裁剪
-
-% poly 段已切为 sec-poly.tex（原 L1969-2500）。
 \input{../src_sections/sec-poly.tex}
-
 \input{../src_sections/sec-growing.tex}
+
+\input{../src_sections/refs.tex}
 
 \end{document}
