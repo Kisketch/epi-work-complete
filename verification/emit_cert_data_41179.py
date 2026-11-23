@@ -34,18 +34,22 @@ assert N == 512
 K = k_cut
 print(f"N={N} K={K} tail={upper_tail}")
 
-# Recompute the exact per-cell upper numerators M[j][k] = hi * maxV.
+# Recompute the exact per-cell upper numerators M[j][k] = hi * maxV,
+# plus the pure vector majorants maxV (needed for v_hi in the assembly).
 mat = []
+maxvmat = []
 cell_l = []
 cell_r = []
 for j, row in enumerate(rows):
-    mrow, lrow, rrow = [], [], []
+    mrow, vrow, lrow, rrow = [], [], [], []
     for (lo, hi, left, right) in row:
         maxv = max(vector[left : right + 1])
         mrow.append(hi * maxv)
+        vrow.append(maxv)
         lrow.append(left)
         rrow.append(right)
     mat.append(mrow)
+    maxvmat.append(vrow)
     cell_l.append(lrow)
     cell_r.append(rrow)
 
@@ -92,6 +96,8 @@ out.append("")
 out.append(f"def certVec : Array Nat := {arr1(vector)}")
 out.append("")
 out.append(f"def certHi : Array (Array Nat) := {arr2(mat)}")
+out.append("")
+out.append(f"def certMaxV : Array (Array Nat) := {arr2(maxvmat)}")
 out.append("")
 out.append(f"def certCellL : Array (Array Nat) := {arr2(cell_l)}")
 out.append("")
