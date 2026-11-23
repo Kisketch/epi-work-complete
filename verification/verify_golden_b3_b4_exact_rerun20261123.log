@@ -1,0 +1,71 @@
+=== 1. Conjugate Positivity on E_phi cap (1, inf) \ {phi} ===
+Counterexample eta = phi + 1 = [2; 1,1,...]:
+  eta' = phi^(-2) = 0.3819660112501051517954132 < 0.5 < phi - 1 = 0.6180339887498948482045868
+Exhaustive GL_2(Z) cap [-12, 12]^4: 2920 matrices, 708 with eta > 1, eta != phi.
+  min(eta') = 0.381966011250105151795413165634 == phi^(-2), attained e.g. at (-8, -5, -3, -2); 0 exceptions.
+
+=== 2. Lemma lem:general-endpoint-rigidity (1)-(4) Check (744 Matrices x 5 Endpoints) ===
+  Endpoint (18/5, 0/1) [D=18]: all 744 matrices passed (1)-(4) with 0 errors.
+  Endpoint (18/7, 0/1) [D=18]: all 744 matrices passed (1)-(4) with 0 errors.
+  Endpoint (32/7, 0/1) [D=32]: all 744 matrices passed (1)-(4) with 0 errors.
+  Endpoint (3/2, 1/2) [D= 8]: all 744 matrices passed (1)-(4) with 0 errors.
+  Endpoint (7/3, 2/5) [D=41]: all 744 matrices passed (1)-(4) with 0 errors.
+
+=== 3. Lemma lem:even-suffix-sep Gap Delta(S) Check (All 12 Suffixes for B = 3, 4) ===
+  B=3, S^(1)     S=[17, 1]                u=18       Delta(S)=1/2          (0.50000000)
+  B=3, S^(5)     S=[3, 1, 1, 2]           u=18/5     Delta(S)=1/35         (0.02857143)
+  B=3, S^(7)     S=[2, 1, 1, 3]           u=18/7     Delta(S)=1/63         (0.01587302)
+  B=3, S^(11)    S=[1, 1, 1, 1, 2, 1]     u=18/11    Delta(S)=1/209        (0.00478469)
+  B=3, S^(13)    S=[1, 2, 1, 1, 1, 1]     u=18/13    Delta(S)=1/273        (0.00366300)
+  B=3, S^(17)    S=[1, 17]                u=18/17    Delta(S)=1/306        (0.00326797)
+  B=4, S^(7)     S=[4, 1, 1, 3]           u=32/7     Delta(S)=1/63         (0.01587302)
+  B=4, S^(9)     S=[3, 1, 1, 4]           u=32/9     Delta(S)=1/99         (0.01010101)
+  B=4, S^(15)    S=[2, 7, 1, 1]           u=32/15    Delta(S)=1/345        (0.00289855)
+  B=4, S^(23)    S=[1, 2, 1, 1, 3, 1]     u=32/23    Delta(S)=1/943        (0.00106045)
+  B=4, S^(25)    S=[1, 3, 1, 1, 2, 1]     u=32/25    Delta(S)=1/1075       (0.00093023)
+  B=4, S^(31)    S=[1, 31]                u=32/31    Delta(S)=1/992        (0.00100806)
+
+=== 4. Theorem thm:golden-b3-exact (B = 3: 10/3 - e and 11/3 - e, 2500 digits) ===
+c_min^(3) = 1 - 20/(9*sqrt(5)) = 0.006192010000093468262589480563877228693059
+c_sec^(3) = 22/(9*sqrt(5)) - 1 = 0.09318878899989718491115157137973504843764
+Verified Q_j mod 3 has period 6: [1,1,1,2,2,2,...] and never 0.
+Algebraic 4*tau inversion at D = 18 (m = 20 and m = 22):
+  m=20: {1: [], 5: [[3]], 7: [[2]], 11: [[]], 13: [[1, 2]], 17: []}
+  m=22: {1: [], 5: [[2]], 7: [[2, 1, 1, 2]], 11: [[1, 1, 1, 1, 2]], 13: [[]], 17: []}
+Verified Phi_{18/q0,0}(phi) corresponds to m in {10, 14, 16, 20, 22, 26}.
+Case 2 bounds (B=3): theta=phi-1 Q=2: 0.391331186, Q>=bj+1: 0.602476804
+                     theta=2-phi Q>=bj+1: 0.391331186, other: 0.2484519975
+  10/3 - e: 320 windows verified (period 18, b_{j+18}=b_j+4); max_dev_ext=0.0002397, max_dev_sec=0.003089; non-extremal scan (3392 pts) min = 0.09011634346 (c_sec = 0.093188789)
+  11/3 - e: 320 windows verified (period 18, b_{j+18}=b_j+4); max_dev_ext=0.0002376, max_dev_sec=0.003092; non-extremal scan (3392 pts) min = 0.09009649059 (c_sec = 0.093188789)
+
+=== 5. Theorem thm:golden-b4-exact (B = 4: 13/4 - e and 15/4 - e, 2500 digits) ===
+c_min^(4) = 1 - 35/(16*sqrt(5)) = 0.02172025984384200782098651993006664699473
+forbidden m=37: 37/(16*sqrt(5))-1 = 0.03418143959365273458924282178821525889129
+c_sec^(4) = 1 - 33/(16*sqrt(5)) = 0.07762195928133675023121586164834855288074
+Verified (P_j, Q_j) mod 16 minimal period = 8; mod 32 minimal period = 16.
+Verified mod-16 subgroup {+-1, +-7} closes under multiplication and strictly excludes m = 37 (5 mod 16).
+Algebraic 4*tau inversion at D = 32 (m = 35, 37, 33):
+  m=35: {7: [[4]], 9: [[3]], 15: [], 23: [[1, 2]], 25: [[1, 3]], 31: []}
+  m=37: {7: [], 9: [], 15: [], 23: [], 25: [], 31: []}
+  m=33: {7: [], 9: [], 15: [[2], [2, 7]], 23: [], 25: [], 31: []}
+Verified Phi_{32/q0,0}(phi) corresponds to m in {23, 25, 31, 39, 41, 47}.
+Case 2 exact bounds (B=4):
+  theta=phi-1, Q_n=2 (r_2=1/32):     0.369591636219 (replaces erroneous 0.53730!)
+  theta=phi-1, Q_n=b_j-1 (r_1=7/32): 0.537296734531
+  theta=phi-1, Q_n>=b_j+1 (r_1=31/32): 0.580737254219
+  theta=2-phi, Q_n>=b_j+1 (r_1=31/32): 0.369591636219
+  theta=2-phi, Q_n=b_j-1 (r_1=7/32):   0.748442352531
+  theta not in {phi-1,2-phi}, min(r1_min, 1-r1_max)=1/32 -> sqrt(5)/16 = 0.139754248594
+Verified Q_n=1, theta=phi-1: q1'=17 gives exact c_sec^(4), q1'=23 gives 39/(16*sqrt(5))-1 > c_sec^(4).
+  13/4 - e: 283 windows verified (S_j & r_j min period 8, b_{j+8}=b_j+1); non-extremal scan (2015 pts) min = 0.07312857623 (c_sec = 0.07762195928)
+  15/4 - e: 283 windows verified (S_j & r_j min period 8, b_{j+8}=b_j+1); non-extremal scan (1731 pts) min = 0.07306756259 (c_sec = 0.07762195928)
+
+=== 6. B = 5, 6, 7 and (1+e)/6, (1+e)/3, (1+2e)/3 Mechanisms ===
+B=5 (16/5..19/5 - e): 4 classes share identical 20-element q0 set; m=56 (0.00175845392) & m=54 (0.03401863372) attained (last-cycle best_ext=0.0019288569, best_sec=0.033483622).
+B=6 (19/6, 23/6 - e): D=72, inert 3|36 forbids m=81; m=79 (0.01861460988) > c_min^(2),c_min^(3),c_min^(5).
+B=7 (22/7 - e): T=98 D_j distribution = {14: 48, 98: 42, 2: 8}; W_59=[1, 1, 1], W_60=[5928, 1, 1].
+(1+e)/6: T=12 D_j dist={1: 8, 3: 4}, min=7/(3*sqrt(5))-1=0.0434983895, 2nd=1-sqrt(5)/3=0.2546440075
+(1+e)/3: T=6  D_j dist={2: 4, 6: 2}, min=1-2/sqrt(5)=0.105572809, 2nd=8/(3*sqrt(5))-1=0.192569588
+(1+2e)/3: T=12 D_j dist={4: 8, 12: 4}, min=1-13/(6*sqrt(5))=0.03103720975 (>0!), 2nd=sqrt(5)/2-1=0.1180339887
+ALL VERIFICATION CHECKS PASSED WITH 0 ASSERTION FAILURES.
+EXIT:0
