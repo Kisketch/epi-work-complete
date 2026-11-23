@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  22 NOV 2026 23:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  22 NOV 2026 23:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -301,33 +301,35 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enitdp@description=\count312
 )
 \c@theorem=\count313
-)
+) (../src_sections/frontmatter-2B.tex
 (C:\Users\Lgnatius\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\l3backend-p
 dftex.def
 File: l3backend-pdftex.def 2026-09-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count314
 )
-No file paper2B_draft.aux.
+(C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
+ctral_gap_dimension\split\2B_general_theory\build\paper2B_draft.aux)
 \openout1 = `paper2B_draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 1.
+LaTeX Font Info:    ... okay on input line 1.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 1.
+LaTeX Font Info:    ... okay on input line 1.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 1.
+LaTeX Font Info:    ... okay on input line 1.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 1.
+LaTeX Font Info:    ... okay on input line 1.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 1.
+LaTeX Font Info:    ... okay on input line 1.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 1.
+LaTeX Font Info:    ... okay on input line 1.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 1.
+LaTeX Font Info:    ... okay on input line 1.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 1.
+LaTeX Font Info:    ... okay on input line 1.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 1.
+LaTeX Font Info:    ... okay on input line 1.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -362,211 +364,211 @@ LaTeX Font Info:    ... okay on input line 11.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 11.
+Package hyperref Info: Link coloring OFF on input line 1.
+
+(C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
+ctral_gap_dimension\split\2B_general_theory\build\paper2B_draft.out)
+(C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
+ctral_gap_dimension\split\2B_general_theory\build\paper2B_draft.out)
 \@outlinefile=\write3
 \openout3 = `paper2B_draft.out'.
 
-(../src_sections/sec-poly.tex
+LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
 
-LaTeX Warning: Reference `eq:rec' on page 1 undefined on input line 5.
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 6.
 (C:\Users\Lgnatius\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
 
 (C:\Users\Lgnatius\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 6.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 5.
 
 
 (C:\Users\Lgnatius\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-)
+))
+(../src_sections/intro-shared.tex
 
-LaTeX Warning: Reference `eq:poly-rec' on page 1 undefined on input line 45.
+LaTeX Warning: Reference `thm:full-spectrum' on page 1 undefined on input line 
+7.
+
+
+LaTeX Warning: Reference `thm:sub' on page 1 undefined on input line 17.
+
+
+LaTeX Warning: Reference `thm:gauge' on page 1 undefined on input line 19.
+
+
+LaTeX Warning: Reference `cor:exact-gauge' on page 1 undefined on input line 29
+.
+
+
+LaTeX Warning: Reference `cor:liminf-gauges' on page 1 undefined on input line 
+34.
+
+
+LaTeX Warning: Reference `thm:finite-state-tail' on page 1 undefined on input l
+ine 36.
+
+
+LaTeX Warning: Reference `thm:trichotomy' on page 1 undefined on input line 40.
+
 
 [1
 
 {C:/Users/Lgnatius/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+
+LaTeX Warning: Reference `thm:finite' on page 2 undefined on input line 65.
+
+
+LaTeX Warning: Reference `thm:upper' on page 2 undefined on input line 70.
+
+
+LaTeX Warning: Reference `conj:weight' on page 2 undefined on input line 70.
+
+
+LaTeX Warning: Reference `sec:windows-residues' on page 2 undefined on input li
+ne 77.
+
+
+LaTeX Warning: Reference `thm:windows' on page 2 undefined on input line 77.
+
+
+LaTeX Warning: Reference `thm:no-short-dim' on page 2 undefined on input line 7
+7.
+
+
+LaTeX Warning: Reference `thm:residues' on page 2 undefined on input line 79.
+
+
+LaTeX Warning: Reference `thm:residues-general' on page 2 undefined on input li
+ne 82.
+
+
+LaTeX Warning: Reference `thm:residues-asymptotic' on page 2 undefined on input
+ line 85.
+
+
+LaTeX Warning: Reference `sec:class' on page 2 undefined on input line 92.
+
+[2]
+
+LaTeX Warning: Reference `thm:class' on page 3 undefined on input line 132.
+
+
+LaTeX Warning: Reference `thm:gap' on page 3 undefined on input line 132.
+
+
+LaTeX Warning: Reference `rem:unweighted' on page 3 undefined on input line 145
+.
+
+
+LaTeX Warning: Reference `thm:gap' on page 3 undefined on input line 157.
+
+
+LaTeX Warning: Reference `thm:full-spectrum' on page 3 undefined on input line 
+158.
+
+
+LaTeX Warning: Reference `thm:residues-asymptotic' on page 3 undefined on input
+ line 181.
+
+
+LaTeX Warning: Reference `thm:class' on page 3 undefined on input line 192.
+
+
+LaTeX Warning: Reference `thm:gap' on page 3 undefined on input line 192.
+
+
+LaTeX Warning: Reference `thm:full-spectrum' on page 3 undefined on input line 
+194.
+
+
+LaTeX Warning: Reference `thm:trichotomy' on page 3 undefined on input line 195
+.
+
+
+LaTeX Warning: Reference `thm:gauge' on page 3 undefined on input line 197.
+
+
+LaTeX Warning: Reference `cor:exact-gauge' on page 3 undefined on input line 19
+7.
+
+
+LaTeX Warning: Reference `thm:finite' on page 3 undefined on input line 198.
+
+
+LaTeX Warning: Reference `thm:upper' on page 3 undefined on input line 199.
+
+
+LaTeX Warning: Reference `conj:weight' on page 3 undefined on input line 199.
+
+
+LaTeX Warning: Reference `thm:windows' on page 3 undefined on input line 200.
+
+
+LaTeX Warning: Reference `thm:residues-asymptotic' on page 3 undefined on input
+ line 200.
+
+[3]
+
+LaTeX Warning: Reference `conj:weight' on page 4 undefined on input line 205.
+
+
+LaTeX Warning: Reference `thm:finite' on page 4 undefined on input line 233.
+
+) (../src_sections/sec-poly.tex
+
+LaTeX Warning: Reference `eq:rec' on page 4 undefined on input line 5.
+
+[4]
 Underfull \hbox (badness 10000) in paragraph at lines 75--77
 [][]\OT1/cmr/m/it/10.95 For all
  []
 
-
-LaTeX Warning: Reference `eq:poly-rec' on page 2 undefined on input line 107.
-
-
-LaTeX Warning: Reference `lem:poly-growth' on page 2 undefined on input line 11
-7.
-
-[2]
-
-LaTeX Warning: Reference `lem:poly-growth' on page 3 undefined on input line 14
-8.
-
-
-LaTeX Warning: Reference `eq:poly-rec' on page 3 undefined on input line 155.
-
-
-LaTeX Warning: Reference `eq:poly-defect-id' on page 3 undefined on input line 
-187.
-
-
-LaTeX Warning: Reference `thm:poly-phase-transition' on page 3 undefined on inp
-ut line 195.
-
-
-LaTeX Warning: Reference `thm:poly-gauge-trichotomy' on page 3 undefined on inp
-ut line 197.
-
-
-LaTeX Warning: Reference `lem:poly-lattice' on page 3 undefined on input line 2
-00.
-
-
-LaTeX Warning: Reference `lem:poly-growth' on page 3 undefined on input line 20
-8.
-
-[3]
+[5] [6]
 Underfull \hbox (badness 1590) in paragraph at lines 221--229
 []\OT1/cmr/bx/it/10.95 Unsigned ex-act limit set (uni-ver-sal bi-nary al-pha-be
 t $\OMS/cmsy/m/n/10.95 f^^F\OML/cmm/m/it/10.95 k\OMS/cmsy/m/n/10.95 g$\OT1/cmr/
 bx/it/10.95 , gauge base $\OT1/cmr/m/n/10.95 2$\OT1/cmr/bx/it/10.95 ):
  []
 
-
-LaTeX Warning: Reference `lem:poly-lattice' on page 4 undefined on input line 2
-34.
-
-
-LaTeX Warning: Reference `thm:general-rec' on page 4 undefined on input line 24
-4.
-
-
-LaTeX Warning: Reference `lem:poly-growth' on page 4 undefined on input line 26
-2.
-
-[4]
-
-LaTeX Warning: Reference `lem:poly-lattice' on page 5 undefined on input line 2
-91.
-
-
-LaTeX Warning: Reference `thm:poly-phase-transition' on page 5 undefined on inp
-ut line 293.
-
-
-LaTeX Warning: Reference `lem:poly-lattice' on page 5 undefined on input line 2
-96.
-
-
-LaTeX Warning: Reference `thm:gauge' on page 5 undefined on input line 297.
-
-
-LaTeX Warning: Reference `cor:exact-gauge' on page 5 undefined on input line 29
-7.
-
-
-LaTeX Warning: Reference `lem:poly-lattice' on page 5 undefined on input line 3
-08.
-
-
-LaTeX Warning: Reference `cor:exact-gauge' on page 5 undefined on input line 32
-8.
-
-
-LaTeX Warning: Reference `thm:poly-gauge-trichotomy' on page 5 undefined on inp
-ut line 329.
-
-
-LaTeX Warning: Reference `lem:poly-growth' on page 5 undefined on input line 33
-4.
-
-[5]
-
-LaTeX Warning: Reference `eq:poly-rec' on page 6 undefined on input line 350.
-
-
-LaTeX Warning: Reference `lem:poly-growth' on page 6 undefined on input line 37
-8.
-
-
-LaTeX Warning: Reference `lem:poly-growth' on page 6 undefined on input line 38
-4.
-
-
-LaTeX Warning: Reference `lem:poly-growth' on page 6 undefined on input line 39
-6.
-
-
-LaTeX Warning: Reference `cor:infinite-level' on page 6 undefined on input line
- 410.
-
-
-LaTeX Warning: Reference `lem:poly-growth' on page 6 undefined on input line 41
-5.
-
-[6]
-
-LaTeX Warning: Reference `conj:weight' on page 7 undefined on input line 425.
-
-
-LaTeX Warning: Reference `lem:poly-growth' on page 7 undefined on input line 42
-6.
-
-
-LaTeX Warning: Reference `lem:poly-growth' on page 7 undefined on input line 43
-7.
-
-
-LaTeX Warning: Reference `lem:poly-lattice' on page 7 undefined on input line 4
-55.
-
-
-LaTeX Warning: Reference `lem:poly-lattice' on page 7 undefined on input line 4
-57.
-
-
-LaTeX Warning: Reference `sec:poly-rec' on page 7 undefined on input line 461.
-
-
-LaTeX Warning: Reference `sec:poly-rec' on page 7 undefined on input line 461.
-
-
-LaTeX Warning: Reference `lem:poly-growth' on page 7 undefined on input line 47
-2.
-
-
-LaTeX Warning: Reference `lem:poly-lattice' on page 7 undefined on input line 4
-76.
-
-
-LaTeX Warning: Reference `thm:general-rec' on page 7 undefined on input line 48
-6.
-
-
-Underfull \hbox (badness 1077) in paragraph at lines 486--496
-\OT1/cmr/m/n/10.95 all $\OML/cmm/m/it/10.95 r \OMS/cmsy/m/n/10.95 ^^U \OT1/cmr/
-m/n/10.95 1$ (\OT1/cmtt/m/n/10.95 poly[]signed[]defect[]approx\OT1/cmr/m/n/10.9
-5 , \OT1/cmtt/m/n/10.95 poly[]abs[]defect[]approx\OT1/cmr/m/n/10.95 , \OT1/cmtt
-/m/n/10.95 polyApprExponent[]
- []
-
 [7]
 
-LaTeX Warning: Reference `thm:poly-gauge-trichotomy' on page 8 undefined on inp
-ut line 496.
+LaTeX Warning: Reference `thm:gauge' on page 8 undefined on input line 297.
 
 
-LaTeX Warning: Reference `cor:poly-exact-gauge' on page 8 undefined on input li
-ne 497.
+LaTeX Warning: Reference `cor:exact-gauge' on page 8 undefined on input line 29
+7.
+
+[8]
+
+LaTeX Warning: Reference `cor:exact-gauge' on page 9 undefined on input line 32
+8.
+
+[9]
+
+LaTeX Warning: Reference `cor:infinite-level' on page 10 undefined on input lin
+e 410.
 
 
-LaTeX Warning: Reference `rem:poly-gauge-scale' on page 8 undefined on input li
-ne 497.
+LaTeX Warning: Reference `conj:weight' on page 10 undefined on input line 425.
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 486--496
+\OT1/cmr/m/n/10.95 (\OT1/cmtt/m/n/10.95 poly[]signed[]defect[]approx\OT1/cmr/m/
+n/10.95 , \OT1/cmtt/m/n/10.95 poly[]abs[]defect[]approx\OT1/cmr/m/n/10.95 , \OT
+1/cmtt/m/n/10.95 polyApprExponent[]xPlusPoly\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 2486) in paragraph at lines 486--496
+\OT1/cmtt/m/n/10.95 poly[]spectral[]gap[]open[]interval\OT1/cmr/m/n/10.95 , \OT
+1/cmtt/m/n/10.95 poly[]levelSet[]eq[]on[]gap\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/
+10.95 poly[]levelSet[]below[]eq[]
+ []
 
 
 Underfull \hbox (badness 3049) in paragraph at lines 496--511
@@ -608,15 +610,11 @@ Limit[]liminf[]four[]way\OT1/cmr/m/n/10.95 ),
  []
 
 
-LaTeX Warning: Reference `thm:poly-phase-transition' on page 8 undefined on inp
-ut line 511.
-
-
-Underfull \hbox (badness 1137) in paragraph at lines 511--528
-[]\OT1/cmr/m/n/10.95 Theorem [](i)--(iii): crit-i-cal weight $\OML/cmm/m/it/10.
-95  \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 r$ \OT1/cmr/m/n/10.95 (\OT1/cmtt/
-m/n/10.95 poly[]dimH[]levelSet[]finite\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 
-poly[]dimH[]
+Underfull \hbox (badness 1715) in paragraph at lines 511--528
+[]\OT1/cmr/m/n/10.95 Theorem []7[](i)--(iii): crit-i-cal weight $\OML/cmm/m/it/
+10.95  \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 r$ \OT1/cmr/m/n/10.95 (\OT1/cm
+tt/m/n/10.95 poly[]dimH[]levelSet[]finite\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.
+95 poly[]dimH[]
  []
 
 
@@ -639,42 +637,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 511--528
 T1/cmtt/m/n/10.95 PolyWeightedLower.polyZeroWeightSublevel[]
  []
 
-) (../src_sections/sec-growing.tex
+) (../src_sections/sec-growing.tex [11] [12]
 
-LaTeX Warning: Reference `eq:growing-rec' on page 8 undefined on input line 27.
-
-
-[8]
-
-LaTeX Warning: Reference `eq:growing-rec' on page 9 undefined on input line 40.
+LaTeX Warning: Reference `cor:liminf-gauges' on page 13 undefined on input line
+ 76.
 
 
-
-LaTeX Warning: Reference `cor:liminf-gauges' on page 9 undefined on input line 
-76.
+LaTeX Warning: Reference `thm:gauge' on page 13 undefined on input line 109.
 
 
-LaTeX Warning: Reference `thm:gauge' on page 9 undefined on input line 109.
-
-
-LaTeX Warning: Reference `thm:trichotomy' on page 9 undefined on input line 109
-.
-
-
-LaTeX Warning: Reference `sec:poly-rec' on page 9 undefined on input line 109.
-
-[9]
-
-LaTeX Warning: Reference `eq:growing-rec' on page 10 undefined on input line 11
-5.
-
-
-LaTeX Warning: Reference `eq:growing-rec' on page 10 undefined on input line 12
+LaTeX Warning: Reference `thm:trichotomy' on page 13 undefined on input line 10
 9.
-
-
-LaTeX Warning: Reference `eq:gamma-sup' on page 10 undefined on input line 130.
-
 
 
 Underfull \hbox (badness 5036) in paragraph at lines 129--131
@@ -683,41 +656,7 @@ di-men-sion and su-per-crit-i-cal phase tran-si-tion)\OT1/cmr/bx/n/10.95 . \OT1
 /cmr/m/it/10.95 Let
  []
 
-[10]
-
-LaTeX Warning: Reference `eq:growing-subcritical-dim' on page 11 undefined on i
-nput line 189.
-
-
-LaTeX Warning: Reference `thm:growing-rec-spectrum' on page 11 undefined on inp
-ut line 193.
-
-
-LaTeX Warning: Reference `eq:growing-theta-error' on page 11 undefined on input
- line 198.
-
-
-LaTeX Warning: Reference `eq:growing-supercritical-sandwich' on page 11 undefin
-ed on input line 206.
-
-
-LaTeX Warning: Reference `eq:growing-supercritical-sandwich' on page 11 undefin
-ed on input line 207.
-
-
-LaTeX Warning: Reference `eq:growing-supercritical-sandwich' on page 11 undefin
-ed on input line 248.
-
-[11]
-
-LaTeX Warning: Reference `sec:growing-rec' on page 12 undefined on input line 2
-57.
-
-
-LaTeX Warning: Reference `sec:growing-rec' on page 12 undefined on input line 2
-57.
-
-
+[13] [14]
 Underfull \hbox (badness 10000) in paragraph at lines 257--313
 \OT1/cmtt/m/n/10.95 eq[]zero[]tfae\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 grow
 LevelSet[]zero[]eq[]lattice\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 grow[]teles
@@ -820,7 +759,7 @@ Underfull \hbox (badness 1496) in paragraph at lines 257--313
 95 Classical.choice\OT1/cmr/m/n/10.95 , and
  []
 
-) (../src_sections/refs.tex [12]) [13]
+[15]) (../src_sections/refs.tex) [16] [17]
 (C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
 ctral_gap_dimension\split\2B_general_theory\build\paper2B_draft.aux)
  ***********
@@ -840,47 +779,58 @@ Package rerunfilecheck Warning: File `paper2B_draft.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `paper2B_draft.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  79BDD064D51F4D6FA5F1B7C606C94627;670.
+(rerunfilecheck)             Before: 79BDD064D51F4D6FA5F1B7C606C94627;670
+(rerunfilecheck)             After:  28AE0A53F76D8C4D9ABBFDBD0B5B7BE1;1049.
  ) 
 Here is how much of TeX's memory you used:
- 10023 strings out of 467392
- 156619 string characters out of 5404180
- 597871 words of memory out of 5000000
- 39189 multiletter control sequences out of 15000+600000
- 637531 words of font info for 74 fonts, out of 8000000 for 9000
+ 10090 strings out of 467392
+ 158778 string characters out of 5404180
+ 599492 words of memory out of 5000000
+ 39231 multiletter control sequences out of 15000+600000
+ 640033 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,12n,82p,552b,599s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\t
-crm1095.pk><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmbx10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Lgnatius/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/Lgnatius/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Lgnatius
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C
-:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
-mitt10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmmi10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Lgnatius/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Lgnatius/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Lg
-natius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><
-C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmr6.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmr8.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Lgnatius/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Lgnatius/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Lgna
-tius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C
-:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symb
-ols/msbm10.pfb>
+ 79i,12n,82p,595b,915s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{subsection.0.2} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.0.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+ <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcr
+m1095.pk><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmbx10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/Lgnatius/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Lgnatius/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/
+Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmi
+tt10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmmi10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Lgnatius/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Lgnatius/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Lgna
+tius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
+/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+r17.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmr6.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmr7.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Lgnatius/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Lgnatius/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Lgnatius
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Use
+rs/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmti10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmtt10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud
 -panda\paper2_spectral_gap_dimension\split\2B_general_theory\build\paper2B_draf
-t.pdf (13 pages, 379812 bytes).
+t.pdf (17 pages, 446666 bytes).
 PDF statistics:
- 252 PDF objects out of 1000 (max. 8388607)
- 82 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 383 PDF objects out of 1000 (max. 8388607)
+ 92 named destinations out of 1000 (max. 500000)
+ 17 words of extra memory for PDF output out of 10000 (max. 10000000)
 
