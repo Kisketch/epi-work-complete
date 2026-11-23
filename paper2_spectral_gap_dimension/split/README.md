@@ -52,14 +52,21 @@
 * `sec:growing-rec`：任意增长商 `A_j→∞` 三项递推的谱 `Z_{\ge0}∪{∞}`、零层 TFAE、三路分裂与 `γ_sup` 维数相变 + 三 regime 实例（含 `A_j=2^{2^j}` 临界 `τ=2`）。
 * `sec:residues-asymptotic`：金属均值预解恒等式 → 全 `m≥2` 严格分离 + 倒 Fibonacci 二项渐近（`C_1=ψ_Fib`）；`verify_paper2_extensions.py` 120 位 mpmath 全 PASS（`m≤6` 超额比为负系小区间渐近代数失效，正文只报 `m=5000`，另日志 `~3.20000` 系笔误）。
 
-## 六、它没做到（本次骨架阶段）
+## 六、接线进展（2026-11-23 wiring v2→v3，原版一字未动）
 
-* 未复制任何正文到 2A/2B/2C，未改原版一字；四轨目录现为空壳，待下一步按映射表抽取。
-* 未复跑 `lake build` 与 Python 证书；Lean 937 与扩展验证均为作者自报 + 静态存在确认。
+* 共享切片新增：`preamble.tex`（原 L1–35）、`frontmatter.tex`（L36–389）、`refs.tex`（verif 切片 bibliography 块）、`intro-shared.tex`（frontmatter 中 abstract 之后 237 行）。
+* 三轨独立摘要：`frontmatter-2A/2B/2C.tex`（忠实原稿压缩，均声明 `e+π` 开放；作者占位未动）。
+* 编译：2A 24 页 / 2B 17 页 / 2C 22 页，`pdflatex`（track 目录为 CWD）均 0 error；警告为跨轨未定义引用与 under/overfull，预期内；PDF/aux 已删，log 留存。
+* 中间修正：gauge 子片初版 `Out-File utf8` 带 BOM 致 +9 字节，已二进制重切，13 片拼接 253919B SHA 与原版一致。
+
+## 七、它没做到（截至 v3）
+
+* 三 draft 仍为 `\input` 组装草案，非独立撰写；2B/2C 标题摘要为新写占位，交叉引用跨轨未定义。
+* 未复跑 `lake build` 与 Python 证书；Lean 937 与扩展验证记作者自报 + 日志在列。
 * `e+π` 无理性仍开放，拆分不构成原问题进展。
 
-## 七、下一步（全自动继续）
+## 八、下一步（全自动继续）
 
-1. Lean 盘点回后补声明级映射表。
-2. 按映射表生成 2A/2B/2C 的 `\input` 抽取草案（仍保留原版）。
-3. 更新台账与 README 口径后提交推送，注释写明本次四件事。
+1. 三轨未定义引用清单（分轨内可闭合 vs 跨轨依赖），指导引用闭合。
+2. 2A 精修：独立引言去重（intro-shared 与 2A 范围重叠检查）、主定理提炼。
+3. 台账与映射文档口径同步后提交推送。
