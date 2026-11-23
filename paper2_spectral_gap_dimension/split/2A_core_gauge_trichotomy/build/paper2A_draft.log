@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  22 NOV 2026 23:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  22 NOV 2026 23:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -389,138 +389,17 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 3.
 (C:\Users\Lgnatius\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ))
-(../src_sections/intro-shared.tex
+(../src_sections/intro-2A.tex [1
 
-LaTeX Warning: Reference `thm:finite-state-tail' on page 1 undefined on input l
-ine 36.
+{C:/Users/Lgnatius/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]) (../
+src_sections/sec-class.tex [3])
+(../src_sections/sec-spectrum.tex [4]
 
+LaTeX Warning: Reference `sec:num' on page 5 undefined on input line 22.
 
-LaTeX Warning: Reference `thm:general-rec' on page 1 undefined on input line 46
-.
+[5]
 
-
-LaTeX Warning: Reference `thm:poly-phase-transition' on page 1 undefined on inp
-ut line 46.
-
-
-LaTeX Warning: Reference `sec:growing-rec' on page 1 undefined on input line 54
-.
-
-
-LaTeX Warning: Reference `thm:growing-rec-spectrum' on page 1 undefined on inpu
-t line 55.
-
-
-LaTeX Warning: Reference `thm:growing-rec-dim-phase' on page 1 undefined on inp
-ut line 55.
-
-
-LaTeX Warning: Reference `cor:growing-rec-three-regimes' on page 1 undefined on
- input line 56.
-
-[1
-
-{C:/Users/Lgnatius/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-
-LaTeX Warning: Reference `sec:windows-residues' on page 2 undefined on input li
-ne 77.
-
-
-LaTeX Warning: Reference `thm:windows' on page 2 undefined on input line 77.
-
-
-LaTeX Warning: Reference `thm:no-short-dim' on page 2 undefined on input line 7
-7.
-
-
-LaTeX Warning: Reference `thm:residues' on page 2 undefined on input line 79.
-
-
-LaTeX Warning: Reference `thm:residues-general' on page 2 undefined on input li
-ne 82.
-
-
-LaTeX Warning: Reference `thm:residues-asymptotic' on page 2 undefined on input
- line 85.
-
-[2]
-
-LaTeX Warning: Reference `thm:general-rec' on page 3 undefined on input line 16
-4.
-
-
-LaTeX Warning: Reference `thm:poly-phase-transition' on page 3 undefined on inp
-ut line 164.
-
-
-LaTeX Warning: Reference `sec:growing-rec' on page 3 undefined on input line 16
-5.
-
-
-LaTeX Warning: Reference `thm:growing-rec-spectrum' on page 3 undefined on inpu
-t line 165.
-
-
-LaTeX Warning: Reference `thm:growing-rec-dim-phase' on page 3 undefined on inp
-ut line 166.
-
-
-LaTeX Warning: Reference `cor:growing-rec-three-regimes' on page 3 undefined on
- input line 167.
-
-
-LaTeX Warning: Reference `thm:growing-rec-spectrum' on page 3 undefined on inpu
-t line 169.
-
-
-LaTeX Warning: Reference `thm:growing-rec-dim-phase' on page 3 undefined on inp
-ut line 173.
-
-
-LaTeX Warning: Reference `thm:residues-asymptotic' on page 3 undefined on input
- line 181.
-
-
-LaTeX Warning: Reference `thm:general-rec' on page 3 undefined on input line 19
-5.
-
-
-LaTeX Warning: Reference `thm:poly-phase-transition' on page 3 undefined on inp
-ut line 195.
-
-
-LaTeX Warning: Reference `thm:growing-rec-spectrum' on page 3 undefined on inpu
-t line 196.
-
-
-LaTeX Warning: Reference `thm:growing-rec-dim-phase' on page 3 undefined on inp
-ut line 196.
-
-
-LaTeX Warning: Reference `thm:windows' on page 3 undefined on input line 200.
-
-
-LaTeX Warning: Reference `thm:residues-asymptotic' on page 3 undefined on input
- line 200.
-
-[3]) (../src_sections/sec-class.tex
-
-LaTeX Warning: Reference `eq:rec' on page 4 undefined on input line 11.
-
-[4]
-
-LaTeX Warning: Reference `eq:rec' on page 5 undefined on input line 33.
-
-
-LaTeX Warning: Reference `eq:rec' on page 5 undefined on input line 44.
-
-) (../src_sections/sec-spectrum.tex [5]
-
-LaTeX Warning: Reference `sec:num' on page 6 undefined on input line 22.
-
-[6]
-
-LaTeX Warning: Reference `sec:poly-rec' on page 7 undefined on input line 114.
+LaTeX Warning: Reference `sec:poly-rec' on page 6 undefined on input line 114.
 
 
 Underfull \hbox (badness 1436) in paragraph at lines 95--117
@@ -543,29 +422,15 @@ tomyAndPolyExtension.lean \OT1/cmr/m/n/10.95 (which com-pletes The-o-rem []19[]
 (iii) and
  []
 
-) (../src_sections/sec-finite.tex
-
-LaTeX Warning: Reference `eq:rec' on page 7 undefined on input line 20.
-
-
-LaTeX Warning: Reference `eq:rec' on page 7 undefined on input line 46.
-
-[7] [8] [9]) (../src_sections/sec-weights.tex [10] [11]
+) (../src_sections/sec-finite.tex [6] [7] [8]) (../src_sections/sec-weights.tex
+[9] [10]
 Underfull \hbox (badness 1496) in paragraph at lines 111--119
 \OT1/cmr/m/n/10.95 (formalized in \OT1/cmtt/m/n/10.95 WeightedPhase.content[]co
 re[]tendsto \OT1/cmr/m/n/10.95 via \OT1/cmtt/m/n/10.95 FloorSemiring.tendsto[]p
 ow[]div[]
  []
 
-[12]
-
-LaTeX Warning: Reference `eq:rec' on page 13 undefined on input line 215.
-
-[13] [14]) (../src_sections/sec-gauge-core.tex [15]
-
-LaTeX Warning: Reference `eq:rec' on page 16 undefined on input line 77.
-
-[16] [17]
+[11] [12] [13]) (../src_sections/sec-gauge-core.tex [14] [15] [16]
 Underfull \hbox (badness 1910) in paragraph at lines 227--235
 []\OT1/cmr/m/n/10.95 For the power-gauge fam-ily $\OML/cmm/m/it/10.95 g[]\OT1/c
 mr/m/n/10.95 (1\OML/cmm/m/it/10.95 =Q[]\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.
@@ -579,7 +444,7 @@ Underfull \hbox (badness 2478) in paragraph at lines 247--267
 OT1/cmtt/m/n/10.95 exactLevel[]add[]latticeL\OT1/cmr/m/n/10.95 ), the
  []
 
-[18]
+[17]
 Underfull \hbox (badness 2582) in paragraph at lines 268--320
 \OT1/cmtt/m/n/10.95 strictLevel[]null\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 m
 kMetric[]critGauge[]exactLevel[]pos\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 mkM
@@ -661,11 +526,7 @@ lean \OT1/cmr/m/n/10.95 re-port only \OT1/cmtt/m/n/10.95 propext\OT1/cmr/m/n/10
 .95 , \OT1/cmtt/m/n/10.95 Classical.choice\OT1/cmr/m/n/10.95 , and
  []
 
-[19] [20]
-
-LaTeX Warning: Reference `eq:rec' on page 21 undefined on input line 448.
-
-[21]
+[18] [19] [20]
 Underfull \hbox (badness 1448) in paragraph at lines 507--521
 \OT1/cmtt/m/it/10.95 PolyExtension.lean\OT1/cmr/m/it/10.95 : the bi-nary digit 
 char-ac-ter-i-za-tion \OT1/cmtt/m/it/10.95 unsigned[]exact[]limit[]iff[]defect[
@@ -679,7 +540,7 @@ r-i-za-tion \OT1/cmtt/m/it/10.95 signed[]exact[]limit[]iff[]defect[]const\OT1/c
 mr/m/it/10.95 , the $\OML/cmm/m/it/10.95 L$\OT1/cmr/m/it/10.95 -
  []
 
-[22]
+[21]
 Underfull \hbox (badness 1762) in paragraph at lines 615--640
 \OT1/cmtt/m/n/10.95 mem[]signedExactLimitSet\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/
 10.95 signedExactLimitSet[]pos[]eq[]coset\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.
@@ -693,7 +554,7 @@ ctLimitSet[]zero[]eq[]latticeL\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 signedEx
 actLimitSet[]empty[]of[]not[]
  []
 
-) (../src_sections/refs.tex [23]) [24]
+) (../src_sections/refs.tex [22]) [23]
 (C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
 ctral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper2A_draft.aux)
  ***********
@@ -704,68 +565,51 @@ L3 programming layer <2026-09-09>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `paper2A_draft.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `paper2A_draft.out':
-(rerunfilecheck)             Before: B38943CC83BACD73057C039AF9F946A6;2512
-(rerunfilecheck)             After:  6EAA85FB6ECB2387DF154C34E998E8A9;2874.
+Package rerunfilecheck Info: File `paper2A_draft.out' has not changed.
+(rerunfilecheck)             Checksum: 6EAA85FB6ECB2387DF154C34E998E8A9;2874.
  ) 
 Here is how much of TeX's memory you used:
- 10151 strings out of 467392
- 160320 string characters out of 5404180
- 594910 words of memory out of 5000000
- 39271 multiletter control sequences out of 15000+600000
+ 10138 strings out of 467392
+ 160022 string characters out of 5404180
+ 594999 words of memory out of 5000000
+ 39261 multiletter control sequences out of 15000+600000
  644097 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  79i,12n,82p,641b,761s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{subsection.5.2} has been referenced but does not ex
-ist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.5.1} has been referenced but does not ex
-ist, replaced by a fixed one
-
- <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcr
-m1095.pk><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmbx10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/Lgnatius/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Lgnatius/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Use
-rs/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10
-.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmmi12.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmmi5.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Lgnatius/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Lgnatius/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Lgnatius
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Use
-rs/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.
-pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmr17.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmr6.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Lgnatius/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Lgnatius/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Lgnatius/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/L
-gnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-<C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmsy8.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmti10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+ <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\t
+crm1095.pk><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmbx10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Lgnatius/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/Lgnatius/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Lgnatius
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/U
+sers/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi
+10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmmi12.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmmi5.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Lgnatius/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Lgnatius/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Lgnati
+us/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/U
+sers/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr1
+2.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmr17.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmr6.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Lgnatius/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Lgnatius/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Lgnatius/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users
+/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pf
+b><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmsy8.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmti10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud
 -panda\paper2_spectral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper
-2A_draft.pdf (24 pages, 503320 bytes).
+2A_draft.pdf (23 pages, 495747 bytes).
 PDF statistics:
- 482 PDF objects out of 1000 (max. 8388607)
- 99 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 491 PDF objects out of 1000 (max. 8388607)
+ 96 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
