@@ -9,6 +9,11 @@
 import Mathlib
 
 set_option maxHeartbeats 2000000
+set_option maxRecDepth 100000
+
+/-- Panic-free nested indexing (avoids `a[j]![k]!` parse fragility). --/
+def get1 (a : Array Nat) (i : Nat) : Nat := a[i]!
+def get2 (a : Array (Array Nat)) (j k : Nat) : Nat := ((a[j]!)[k]!)
 
 def certN0 : Nat := 512
 def certK0 : Nat := 130
@@ -32,20 +37,20 @@ def certCellR : Array (Array Nat) := #[#[511, 102, 56, 39, 30, 24, 20, 17, 15, 1
 /-- Cellwise upper bounds hold on every cell (single decide). --/
 theorem cert_h_hi_data : ∀ j ∈ Finset.range 512, ∀ k ∈ Finset.range 130,
     ∀ i ∈ Finset.range 512,
-    certCellL[j]![k]! ≤ i → i ≤ certCellR[j]![k]! →
-    certVec[i]! ≤ certHi[j]![k]! := by
+    get2 certCellL j k ≤ i → i ≤ get2 certCellR j k →
+    get1 certVec i ≤ get2 certHi j k := by
   decide
 
 /-- Cellwise vector bounds against the pure majorants (single decide). --/
 theorem cert_h_hi_maxV : ∀ j ∈ Finset.range 512, ∀ k ∈ Finset.range 130,
     ∀ i ∈ Finset.range 512,
-    certCellL[j]![k]! ≤ i → i ≤ certCellR[j]![k]! →
-    certVec[i]! ≤ certMaxV[j]![k]! := by
+    get2 certCellL j k ≤ i → i ≤ get2 certCellR j k →
+    get1 certVec i ≤ get2 certMaxV j k := by
   decide
 
 /-- Every head row plus tail is strictly below the scaled test value. --/
 theorem cert_hcert_data : ∀ j ∈ Finset.range 512,
-    (Finset.range 130).sum (fun k => certHi[j]![k]!) +
-      certTailU * certVec[0]! < 10000000000000 * certVec[j]! := by
+    (Finset.range 130).sum (fun k => get2 certHi j k) +
+      certTailU * get1 certVec 0 < 10000000000000 * get1 certVec j := by
   decide
 

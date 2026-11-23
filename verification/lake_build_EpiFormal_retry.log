@@ -1,0 +1,8 @@
+lake : error: unknown short option '-j'
+At line:1 char:1
++ lake build EpiFormal -j4 > ..\verification\lake_build_EpiFormal_retry ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (error: unknown short option '-j':String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+EXIT:1

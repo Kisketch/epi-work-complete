@@ -1,0 +1,39 @@
+EpiFormal/ResidueCertChunk0_Draft.lean:11:4: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+EpiFormal/ResidueCertChunk0_Draft.lean:22:9: error: Application type mismatch: The argument
+  certCellLC0
+has type
+  Array (Array ℕ)
+but is expected to have type
+  Array ℕ
+in the application
+  get1 certCellLC0
+EpiFormal/ResidueCertChunk0_Draft.lean:22:46: error: Application type mismatch: The argument
+  certCellRC0
+has type
+  Array (Array ℕ)
+but is expected to have type
+  Array ℕ
+in the application
+  get1 certCellRC0
+EpiFormal/ResidueCertChunk0_Draft.lean:23:28: error: Application type mismatch: The argument
+  certMaxVC0
+has type
+  Array (Array ℕ)
+but is expected to have type
+  Array ℕ
+in the application
+  get1 certMaxVC0
+EpiFormal/ResidueCertChunk0_Draft.lean:27:42: error: Application type mismatch: The argument
+  certHiC0
+has type
+  Array (Array ℕ)
+but is expected to have type
+  Array ℕ
+in the application
+  get1 certHiC0
+EpiFormal/ResidueCertChunk0_Draft.lean:29:2: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+EXIT:1

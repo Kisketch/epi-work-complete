@@ -1,0 +1,34 @@
+EpiFormal/ResidueCertData41179_Draft.lean:24:4: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+EpiFormal/ResidueCertData41179_Draft.lean:26:4: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+EpiFormal/ResidueCertData41179_Draft.lean:28:4: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+EpiFormal/ResidueCertData41179_Draft.lean:30:4: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+EpiFormal/ResidueCertData41179_Draft.lean:35:16: error: unexpected token '!['; expected ':=', 'where' or '|'
+EpiFormal/ResidueCertData41179_Draft.lean:35:4: error: type expected, got
+  (certCellL[j] : Array ℕ)
+EpiFormal/ResidueCertData41179_Draft.lean:35:4: error: failed to prove index is valid, possible solutions:
+  - Use `have`-expressions to prove the index is valid
+  - Use `a[i]!` notation instead, runtime check is performed, and 'Panic' error message is produced if index is not valid
+  - Use `a[i]?` notation instead, result is an `Option` type
+  - Use `a[i]'h` notation instead, where `h` is a proof that index is valid
+j k i : ℕ
+⊢ j < certCellL.size
+EpiFormal/ResidueCertData41179_Draft.lean:42:16: error: unexpected token '!['; expected ':=', 'where' or '|'
+EpiFormal/ResidueCertData41179_Draft.lean:42:4: error: type expected, got
+  (certCellL[j] : Array ℕ)
+EpiFormal/ResidueCertData41179_Draft.lean:42:4: error: failed to prove index is valid, possible solutions:
+  - Use `have`-expressions to prove the index is valid
+  - Use `a[i]!` notation instead, runtime check is performed, and 'Panic' error message is produced if index is not valid
+  - Use `a[i]?` notation instead, result is an `Option` type
+  - Use `a[i]'h` notation instead, where `h` is a proof that index is valid
+j k i : ℕ
+⊢ j < certCellL.size
+EpiFormal/ResidueCertData41179_Draft.lean:48:46: error: unexpected token '!['; expected ')', ',' or ':'
+EXIT:1
