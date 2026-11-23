@@ -57,8 +57,9 @@
 * 共享切片新增：`preamble.tex`（原 L1–35）、`frontmatter.tex`（L36–389）、`refs.tex`（verif 切片 bibliography 块）、`intro-shared.tex`（frontmatter 中 abstract 之后 237 行）。
 * 三轨独立摘要：`frontmatter-2A/2B/2C.tex`（忠实原稿压缩，均声明 `e+π` 开放；作者占位未动）。
 * 2A 引言裁剪：`intro_trim_2A.py` 从 `intro-shared` 确定性生成 `intro-2A.tex`（237→169 行）：删 finite-state-tail 两句、poly+growing 整块、窗口/残差整块、P11 混装块，贡献清单改写为 2A-only；S5/S16 改写暂缓留原样。
-* 编译：2A 24 页 / 2B 17 页 / 2C 22 页，`pdflatex`（track 目录为 CWD）均 0 error。
-* 引用审计（`undef_ref_audit.py`，两遍编译后）：2A 仅剩 1 个未定义引用——`sec-spectrum.tex` L114 `thm:trichotomy(iii)` 完成依赖 `sec:poly-rec` 的 $r=1$ 情形（2A 独立成篇前必须移入的关键论证）；另 L22 数值指针已用 `sec-num-2A.tex`（原 L1–44 摘录）闭合。2B/2C 引言改写未动，未定义数维持 22/20 全为跨轨。
+* 编译：2A 24 页 / 2B 15 页 / 2C 22 页，`pdflatex`（track 目录为 CWD）均 0 error。
+* 引用审计（`undef_ref_audit.py`，两遍编译后）：2A 仅剩 1 个（`sec:poly-rec`，方案A：定稿改写归属句）；2B 归零——`intro-2B.tex`（66 行，`intro_trim_2B.py` 确定性生成，新写句标 `[2B-NEW]`）+ `prereq-2B.tex`（6 个 2A 背景事实复述备查，证明归姊妹篇）；2C 维持 20 个待处理。
+* r=1 分析留痕：gauge-core 内 `(iii)` 陈述+证明已完整自足；`sec-poly` 无独立 $r=1$ 专段（`general-rec(i)` 与 `poly-gauge-trichotomy(iii)` 互引且为 2B 标题定理，整段搬会断 2B 主干），故不动数学、只改归属句。另正文审计口径双重记账（`TrichotomyAndPolyExtension` 在 gauge-core 记 8 条、在 sec-poly 记 37 条）实为同一文件前后两部分分属两轨，定稿时各自准确表述。
 * 中间修正：gauge 子片初版 `Out-File utf8` 带 BOM 致 +9 字节，已二进制重切，13 片拼接 253919B SHA 与原版一致。
 
 ## 七、它没做到（截至 v4）
@@ -71,6 +72,7 @@
 
 ## 八、下一步（全自动继续）
 
-1. ~~三轨未定义引用清单~~已完成（`undef_ref_audit.log`）；2A 剩余 2 个体内非自足点处理：L22 数值指针改写 + L114 $r=1$ 情形移入方案。
-2. 2B/2C 引言改写（按裁剪表 S1/S4/S10/S18/S24/S25/S30 句级改写，需先补 2B→2A 跨篇引用策略）。
+1. ~~三轨未定义引用清单~~已完成；2A 剩余 `sec:poly-rec` 1 个已有方案A决议（定稿改写归属句），草案阶段保留。
+2. 2B/2C 引言改写：2B 按裁剪表改写（主语换 $A_j$ + 自版三分法 + 跨篇引用 2A 基座策略先定）；2C 需先补 $S_k/d_j$ 记号段。
+3. 审计口径：`TrichotomyAndPolyExtension` 双重记账在 2A/2B 定稿时各自准确表述 8 条 vs 37 条。
 3. 台账与映射文档口径同步后提交推送。
