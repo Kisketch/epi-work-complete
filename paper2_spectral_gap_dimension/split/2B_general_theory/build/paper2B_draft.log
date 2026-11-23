@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  22 NOV 2026 23:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  23 NOV 2026 00:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -607,11 +607,11 @@ Package rerunfilecheck Info: File `paper2B_draft.out' has not changed.
 (rerunfilecheck)             Checksum: F3990621B4C4DEE1AFD07782401AFC28;1316.
  ) 
 Here is how much of TeX's memory you used:
- 10088 strings out of 467392
- 158893 string characters out of 5404180
+ 10096 strings out of 467392
+ 158969 string characters out of 5404180
  599888 words of memory out of 5000000
- 39223 multiletter control sequences out of 15000+600000
- 640033 words of font info for 86 fonts, out of 8000000 for 9000
+ 39227 multiletter control sequences out of 15000+600000
+ 641273 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  79i,12n,82p,595b,915s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\t
@@ -644,7 +644,7 @@ public/amsfonts/cm/cmtt10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud
 -panda\paper2_spectral_gap_dimension\split\2B_general_theory\build\paper2B_draf
-t.pdf (15 pages, 433258 bytes).
+t.pdf (15 pages, 434347 bytes).
 PDF statistics:
  383 PDF objects out of 1000 (max. 8388607)
  95 named destinations out of 1000 (max. 500000)
