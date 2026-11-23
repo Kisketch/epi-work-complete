@@ -1,0 +1,16 @@
+# 2026-11-23T10:36:48Z host=linux-sandbox lean=Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+# python: Python 3.13.5 mpmath==1.3.0 sympy==1.14.0
+$ python verification/emit_cert_core_v3.py 0 512
+python check OK: 512/512 rows, min margin = 2.738737e-04 (== certify_side)
+wrote ResidueCertCoreV3_0_512_Draft.lean 904448 bytes
+$ sha256sum
+da13db3156b43f9d959faff26565d16f2df9d051cfea311ae86a8d99ca1e7b0e  ../epi_formal/EpiFormal/ResidueCertCoreV3_0_512_Draft.lean
+$ lean epi_formal/EpiFormal/ResidueCertCoreV3_0_512_Draft.lean
+'ResidueCertV3.vec_anti' depends on axioms: [propext]
+'ResidueCertV3.row0' depends on axioms: [propext]
+'ResidueCertV3.hiok511' does not depend on any axioms
+'ResidueCertV3.tail_ok' does not depend on any axioms
+EXIT 0 wall 41.8s maxRSS 2779 MB
+$ grep -c sorry
+0
+# negative controls (scratch copies, not kept): hi0[0]*1000 -> row0 rejected; swap vec[0],vec[1] -> vec_anti,row0 rejected; hi5[1] := least_valid-1 -> hiok5 rejected; hi5[1]-1 (still >= least_valid, slack 1) -> accepted (correct)
