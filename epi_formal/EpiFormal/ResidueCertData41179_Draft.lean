@@ -8,6 +8,8 @@
 
 import Mathlib
 
+set_option maxHeartbeats 2000000
+
 def certN0 : Nat := 512
 def certK0 : Nat := 130
 def certM0 : Nat := 4
@@ -32,6 +34,13 @@ theorem cert_h_hi_data : ∀ j ∈ Finset.range 512, ∀ k ∈ Finset.range 130,
     ∀ i ∈ Finset.range 512,
     certCellL[j]![k]! ≤ i → i ≤ certCellR[j]![k]! →
     certVec[i]! ≤ certHi[j]![k]! := by
+  decide
+
+/-- Cellwise vector bounds against the pure majorants (single decide). --/
+theorem cert_h_hi_maxV : ∀ j ∈ Finset.range 512, ∀ k ∈ Finset.range 130,
+    ∀ i ∈ Finset.range 512,
+    certCellL[j]![k]! ≤ i → i ≤ certCellR[j]![k]! →
+    certVec[i]! ≤ certMaxV[j]![k]! := by
   decide
 
 /-- Every head row plus tail is strictly below the scaled test value. --/

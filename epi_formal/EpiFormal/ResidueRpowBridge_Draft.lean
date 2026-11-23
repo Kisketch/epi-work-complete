@@ -3,7 +3,7 @@ import Mathlib
 /-
   ResidueRpowBridge_DRAFT.lean — DRAFT, NOT TYPECHECKED (in progress).
 
-  Status: proof text under iteration; pending `lake env lean` check.
+  Status: CHECKED 2026-11-23 via `lake env lean` (exit 0) + `lake build`; #print axioms = base three for both lemmas. Still DRAFT: not imported.
   Do NOT import from `EpiFormal.lean` / `Audit.lean` until checked
   (currently inert: no importer).
 -/
