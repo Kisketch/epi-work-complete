@@ -1,0 +1,389 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\setlength{\emergencystretch}{3em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem*{lemmaA}{Lemma A}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\dimH}{\dim_{\mathrm{H}}}
+\newcommand{\Lam}{\Lambda}
+
+\title{Complete spectrum discretization, exact Hausdorff gauges,\\
+and dimension phase transitions for Diophantine approximation\\
+along the convergent denominators of \texorpdfstring{$e$}{e}}
+% TODO before submission: replace with the real author name(s) and affiliation(s).
+\author{[Author name]\\ \relax[Affiliation]}
+\date{Integrated draft, November 22, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $(Q_j)_{j\ge1}$ be the selected convergent denominators of $\ee$
+immediately preceding the partial quotients $2j$
+($Q_1=1,Q_2=7$, $Q_{j+1}=(4j+2)Q_j+Q_{j-1}$), let $\|y\|=\dist(y,\Z)$, and
+define the weighted approximation exponent
+$\Lam(x)=\limsup_{j\to\infty} j\,\|Q_j x\|$. We prove that the full spectrum is
+completely discrete:
+$\Lam(\R)=\frac14\Z_{\ge0}\cup\{\infty\}=\{0,1/4,1/2,3/4,1,\dots\}\cup\{\infty\}$,
+so every open interval $(k/4,(k+1)/4)$ ($k\in\Z_{\ge0}$) is an unconditional
+empty spectral gap, and $\Lam(x)=0$ exactly on the countable group
+$L=\Z+\Z\frac{\ee+1}{2}$.
+
+Our main metric results measure the critical levels and their fine structure.
+For an integer $k\ge1$ let $h_k$ be the gauge with $h_k(1/Q_n)=(2k+1)^{-n}$,
+interpolated linearly. On the circle $\R/\Z$, the exact level $\{\Lam=k/4\}$
+has infinite but $\sigma$-finite $\mathcal H^{h_k}$ measure, while
+$\{\Lam<k/4\}$ is $\mathcal H^{h_k}$-null. The gauge $h_k$ is exact: the level
+has infinite $\mathcal H^{h_k}$ measure in every nonempty open arc, every gauge
+of smaller order gives $\{\Lam\le k/4\}$ measure zero, and for every gauge of
+larger order $\{\Lam=k/4\}$ is not $\sigma$-finite. For arbitrary gauges,
+including oscillating ones, the three measure regimes are determined by
+$\liminf_n (2k+1)^n g(1/Q_n)$, or by $\liminf_n 2^n g(1/Q_n)$ for the
+unsigned exact-limit set. For finite-state tail constraints the base is
+the largest Perron root among components supporting infinitely many
+extreme defects. Furthermore, at each
+positive level $c=k/4$ ($k\ge1$) we establish a sharp three-way splitting
+between the limsup level (digit alphabet of size $2k+1$, critical gauge base
+$2k+1$), the unsigned exact limit set $\{x:j\|Q_jx\|\to k/4\}$ (universal binary
+alphabet $\{\pm k\}$, critical gauge base $2$ \emph{independently} of
+$k\ge1$), and each signed exact limit set
+$\{x:j(Q_jx-\mathrm{round}(Q_jx))\to\pm k/4\}$ (which collapses to a single
+countable coset of $L$). More generally, for any polynomial-growth recurrence
+$Q_{j+1}=(cj^r+d)Q_j+Q_{j-1}$ ($r,c\in\Z_{\ge1}$, $d\in\Z$), the critical
+exponent $\Lam^{(r,c,d)}(x)=\limsup_{j\to\infty}j^r\|Q_jx\|$ has full
+spectrum $\frac1c\Z_{\ge0}\cup\{\infty\}$, intrinsic rank-$2$ zero-level
+lattice $L^{(r,c,d)}$, critical gauges $h_k^{(r,c,d)}(1/Q_n)=(2k+1)^{-n}$
+with $1/r$-scaled logarithmic order and positive-level three-way splitting, and
+subcritical Hausdorff dimension phase transition $1-\alpha/r$ ($0\le\alpha<r$).
+Even more generally, for \emph{any} growing-quotient recurrence
+$Q_{j+1}=A_jQ_j+Q_{j-1}$ ($A_j\in\Z_{\ge2}$, $A_j\to\infty$), the normalized
+approximation functional $\Lam_G(x)=\limsup_{j\to\infty}A_j\|Q_jx\|$ agrees
+identically with the Kraaikamp--Liardet error ratio, has full discrete spectrum
+$\Z_{\ge0}\cup\{\infty\}$ with zero-level lattice $L_G=\frac{1}{g}(\Z+\Z\theta)$
+($g=\gcd(Q_{J_0-1},Q_{J_0})$), universal critical and binary gauges on $\R$ and
+$\R/\Z$, subcritical Hausdorff dimension $(1-\tau)/(1+\tau\gamma_{\sup})$ for
+$\Lam_{G,\tau}(x)=\limsup_{j\to\infty}A_j^\tau\|Q_jx\|$ ($0\le\tau<1$, where
+$\gamma_{\sup}=\limsup_{j\to\infty}\frac{\log A_j}{\log Q_j}\in[0,\infty]$),
+and a supercritical ($\tau>1$) secondary phase transition at
+$\tau_{\mathrm{crit}}=1+1/\gamma_{\sup}$ where finite sublevel sets jump from
+the rank-$2$ lattice $L_G$ to the strict rank-$1$ rational sublattice
+$\frac{1}{g}\Z\subsetneq L_G$.
+
+Next, every finite level set $\{\Lam\le c\}$ has Hausdorff dimension $0$.
+Hence $\{\Lam<\infty\}$ has dimension $0$, and $\Lam=\infty$ Lebesgue-almost
+everywhere (with Hausdorff dimension $1$). For $0\le\alpha<1$, the sublevel set $\{\Lam_\alpha\le c\}$ for $c\ge0$
+has Hausdorff dimension $1-\alpha$. The same holds for the set where
+$j^\alpha\|Q_jx\|\to c$ for $c\ge0$ if $\alpha>0$, and for
+$c\in[0,1/2]$ if $\alpha=0$. The unweighted case also follows from work
+of Bugeaud, Liao and Rams. For ordinary continued fractions,
+we determine the Hausdorff dimensions of Hermite window-count constraints,
+show that eventual periodicity of the partial quotients modulo $m$ ($m\ge2$) has
+the same Hausdorff dimension as the fixed residue alphabet $F_{m,1}$ (strictly
+between $357/512$ and $359/512$ for $m=4$), prove the global strict separation
+$\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for \emph{all} moduli $m\ge2$ via an
+exact resolvent identity, and establish the two-term asymptotic expansion
+$\dimH F_{m,r}=\frac12+\frac{C_r}{2m}-\frac{C_r^2\log m}{2m^2}+O(m^{-2})$ as
+$m\to\infty$ for fixed $r\ge1$ (where $C_r=\sum_{k=1}^\infty 1/q_k(r)$ is the
+reciprocal metallic-continuant series and $C_1=\psi_{\mathrm{Fib}}=\sum_{k=1}^\infty 1/F_k\approx3.3598856662$ is the reciprocal Fibonacci constant), while
+$\dimH F_{m,m}=\frac12+\frac{1}{2m}-\frac{\log m}{2m^2}+O(m^{-2})$.
+
+The classification of $\{\Lam=0\}$, the initial and full spectral-gap ladder,
+Theorem~\ref{thm:gauge},
+Corollaries~\ref{cor:exact-gauge} and~\ref{cor:liminf-gauges},
+Remark~\ref{rem:gauge-scale}, all three parts (i)--(iii) of
+Theorem~\ref{thm:trichotomy} on both $\R$ and $\R/\Z$ (\texttt{UnitAddCircle},
+including the binary exact-limit gauge regime and the signed-coset collapse
+$E_{\mathrm{lim}}^\pm(k/4)=x_k^\pm+L$), the dimension-zero theorem for all
+finite sublevels (and full Lebesgue measure of $\{\Lam=\infty\}$), both the upper
+and lower bounds for the subcritical dimension $1-\alpha$, the complete
+general polynomial-growth recurrence theory ($r\ge1$)---Lemmas~\ref{lem:poly-growth}--\ref{lem:poly-lattice},
+Theorems~\ref{thm:general-rec}--\ref{thm:poly-phase-transition},
+Corollary~\ref{cor:poly-exact-gauge}, and Remark~\ref{rem:poly-gauge-scale}---and
+its universal extension to arbitrary growing-quotient recurrences
+$Q_{j+1}=A_jQ_j+Q_{j-1}$ (Theorems~\ref{thm:growing-rec-spectrum}
+and~\ref{thm:growing-rec-dim-phase}, and
+Corollary~\ref{cor:growing-rec-three-regimes}), together
+with all Hausdorff-dimension statements of Theorem~\ref{thm:windows} (both the
+exact $\dimH=1$ prescribed-parity statement and the exact $\dimH=1/2$ upper and lower bounds for eventually bounded and prescribed
+increments), together with all of Theorems~\ref{thm:short-ae} and~\ref{thm:no-short-dim}
+(both the almost-everywhere logarithmic short-window frequency, the
+Hausdorff-dimension identity $\dimH=1$, and the Lebesgue-nullity deduction
+pointwise for mathlib's regular continued fractions), all parts~(1)--(3) of
+Theorem~\ref{thm:finite-state-tail} (under distinct outgoing edge labels at each
+vertex and given explicit positive right Perron--Frobenius eigenvectors on marked
+strongly connected components), as well as the general-modulus ($m\ge2$)
+uniform $24$-Lipschitz coordinate-shift sandwich, eventual-periodicity dimension
+equality, unconditional transfer-operator Hausdorff-dimension criterion
+(bypassing Bowen-pressure axioms), strict lower bound $\dimH F_{m,r}>1/2$, upper
+bound $\dimH F_{4,1}\le 4/5$, step-function certificate soundness for
+Theorems~\ref{thm:residues} and~\ref{thm:residues-general}, and the complete
+resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$
+for all $m\ge2$, and two-term reciprocal-Fibonacci/metallic asymptotic expansions of
+Theorem~\ref{thm:residues-asymptotic}---are machine-checked in
+Lean~4 using only the base axioms \texttt{propext}, \texttt{Classical.choice}
+and \texttt{Quot.sound}.
+Only the finite-dimensional linear-algebraic Perron--Frobenius eigenvector
+existence input in Theorem~\ref{thm:finite-state-tail} and the Python-executed
+exact integer-arithmetic verification of the narrow $m\in\{2,3,4,5,6\}$ brackets
+remain outside the Lean kernel (Section~\ref{sec:verification}, $937$ audited
+declarations across $134$ Lean files).
+The classification and the first gap are a subsequence analogue of a criterion
+of Kraaikamp and Liardet. The work is a spin-off of a project on the
+irrationality of $e+\pi$ and does \emph{not} resolve that open problem.
+\end{abstract}
+
+\section{Introduction}
+
+This article studies the metric theory of Diophantine approximation along a
+\emph{sparse, super-exponentially growing} subsequence of denominators: the
+selected convergent denominators $(Q_j)_{j\ge1}$ of $\ee$ (notation in the
+Setup below). We first show in Theorem~\ref{thm:full-spectrum} that the integer
+three-term recurrence for $(Q_j)$ forces complete discretization of the weighted
+approximation spectrum:
+\[
+\Lam(\R)=\frac14\Z_{\ge0}\cup\{\infty\}
+=\left\{0,\frac14,\frac12,\frac34,1,\dots\right\}\cup\{\infty\},
+\]
+creating an infinite family of equidistant empty spectral gaps
+$(k/4,(k+1)/4)$ of width $1/4$ and forcing the sublevel sets
+$E_c=\{x:\Lam(x)\le c\}$ to be constant across each gap
+($E_c=E_{k/4}$ for $c\in[k/4,(k+1)/4)$, Corollary~\ref{thm:sub}).
+
+Our main metric result at the critical weight, Theorem~\ref{thm:gauge},
+measures each positive quantized level of $\Lam$: for each integer $k\ge1$
+there is an explicit Hausdorff gauge $h_k$ with $h_k(1/Q_n)=(2k+1)^{-n}$, built
+from the recurrence itself, for which the exact level $\{\Lam=k/4\}$ has
+infinite but $\sigma$-finite Hausdorff measure $\mathcal H^{h_k}$ on the circle
+$\R/\Z$, while the strict sublevel $\{\Lam<k/4\}$ is $\mathcal H^{h_k}$-null.
+This differs both from the $h$-sets of Cabrelli, Mendivil, Molter and
+Shonkwiler \cite[\S5, Theorem~3]{CMMS}, whose gauge gives a finite positive
+measure, and from the classical Lagrange level at value $3$ studied by Moreira,
+Erazo and Angelini \cite{MEA}, which has either zero or non-$\sigma$-finite
+measure for every dimension function. Corollary~\ref{cor:exact-gauge} shows
+that $h_k$ is the exact critical gauge of the level $k/4$: smaller gauges give
+measure zero even on the non-strict sublevel $\{\Lam\le k/4\}$, larger gauges
+destroy $\sigma$-finiteness on $\{\Lam=k/4\}$, and the $\mathcal H^{h_k}$
+measure of $\{\Lam=k/4\}$ is infinite in every nonempty open arc.
+Corollary~\ref{cor:liminf-gauges} classifies every nondecreasing gauge by
+its lower limit along the recurrence scales, even when the normalized
+cost oscillates. Theorem~\ref{thm:finite-state-tail} shows how this
+classification changes under constraints on consecutive defects.
+The largest Perron root is taken only over components in which a path
+can revisit an extreme defect infinitely often.
+Furthermore, Theorem~\ref{thm:trichotomy} establishes a sharp three-way
+splitting at each positive spectral level $k/4$ ($k\ge1$) comparing the limsup
+level $\{\Lam=k/4\}$ (gauge base $2k+1$), the unsigned exact limit set
+$\{x:j\|Q_jx\|\to k/4\}$ (universal critical gauge base $2$ for \emph{all}
+$k\ge1$), and the signed exact limit sets
+$\{x:j(Q_jx-\mathrm{round}(Q_jx))\to\pm k/4\}$ (each of which collapses to a
+single countable $L$-coset). Theorems~\ref{thm:general-rec}--\ref{thm:poly-phase-transition}
+extend the quantization, reference gauges, three-way splitting and
+dimension results to general polynomial-growth recurrences
+$Q_{j+1}=(cj^r+d)Q_j+Q_{j-1}$ ($r,c\in\Z_{\ge1}$, $d\in\Z$), replacing the
+$\ee$-convergent lattice $L$ by an intrinsic rank-$2$ lattice $L^{(r,c,d)}$
+spanned by fundamental solutions and establishing the discretized spectrum
+$\frac1c\Z_{\ge0}\cup\{\infty\}$, exact gauges with $1/r$-scaled logarithmic
+asymptotics, positive-level trichotomy, and subcritical dimension phase
+transition $1-\alpha/r$ ($0\le\alpha<r$). In Section~\ref{sec:growing-rec}
+(Theorems~\ref{thm:growing-rec-spectrum} and~\ref{thm:growing-rec-dim-phase},
+and Corollary~\ref{cor:growing-rec-three-regimes}), we remove the polynomial
+growth hypothesis altogether and establish the complete spectral, gauge, and
+Hausdorff-dimension phase diagram for arbitrary integer recurrences
+$Q_{j+1}=A_jQ_j+Q_{j-1}$ with $A_j\ge2$ and $A_j\to\infty$, uncovering both the
+universal subcritical distortion law $\dimH=(1-\tau)/(1+\tau\gamma_{\sup})$ and
+a secondary supercritical phase transition at $\tau_{\mathrm{crit}}=1+1/\gamma_{\sup}$
+where the level sets collapse from the rank-$2$ lattice $L_G$ to the rank-$1$
+rational sublattice $\frac{1}{g}\Z$.
+
+On the coarse scale of Hausdorff dimension, Theorem~\ref{thm:finite} shows that
+every finite level set $E_c$ has Hausdorff dimension $0$, so $\{\Lam<\infty\}$
+has dimension $0$ while its complement $\{\Lam=\infty\}$ has full Lebesgue
+measure and Hausdorff dimension $1$. At subcritical weights
+$\Lam_\alpha(x)=\limsup_{j\to\infty}j^\alpha\|Q_jx\|$ ($0\le\alpha<1$),
+Theorems~\ref{thm:upper} and~\ref{conj:weight} give exact Hausdorff dimension $1-\alpha$ for
+$\{x:\Lam_\alpha(x)\le c\}$ for every $c\ge0$, and for
+$\{x\in[0,1]:j^\alpha\|Q_jx\|\to c\}$ for every admissible target $c$.
+For $\alpha=0$ such targets are $0\le c\le 1/2$.
+The proof uses a covering bound and a shifted-grid Moran construction;
+the case $\alpha=0$ also follows from Bugeaud, Liao and Rams \cite{BLR}, and
+both bounds for $0\le\alpha<1$ are machine-checked in Lean~4. Finally, in
+Section~\ref{sec:windows-residues}, Theorems~\ref{thm:windows}--\ref{thm:no-short-dim}
+determine the Hausdorff dimensions and almost-sure frequency of Hermite
+continued-fraction window constraints, Theorem~\ref{thm:residues} proves
+that eventual periodicity of ordinary continued-fraction digits modulo $4$ has
+the same Hausdorff dimension as the fixed alphabet $1\bmod 4$, bounded strictly
+between $357/512$ and $359/512$, Theorem~\ref{thm:residues-general} extends this
+to every modulus $m\ge2$ (via a uniform $24$-Lipschitz sandwich, an unconditional
+transfer-operator Hausdorff-dimension framework, and exact integer certificates
+for $m\in\{2,3,4,5,6\}$), and Theorem~\ref{thm:residues-asymptotic} proves the
+global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$
+together with the exact two-term large-$m$ asymptotic expansion governed by the
+reciprocal Fibonacci constant $\psi_{\mathrm{Fib}}=\sum_{k=1}^\infty 1/F_k$ and
+its metallic-continuant generalizations $C_r=\sum_{k=1}^\infty 1/q_k(r)$.
+
+These results build on the zero-level classification and initial spectral gap
+(Section~\ref{sec:class}), which arose as machinery in a separate formalization
+project on the (open) irrationality of $e+\pi$ \cite{Phase1}.
+
+\subsection{Setup}
+
+The continued fraction of $\ee$ is $[2;1,2,1,1,4,1,1,6,\dots]$. Let $P_j/Q_j$
+be the convergent immediately preceding the partial quotient $2j$; the first
+few are $3/1,19/7,193/71,2721/1001$. The denominators satisfy
+\begin{equation}\label{eq:rec}
+Q_{j+1}=(4j+2)Q_j+Q_{j-1}\quad(j\ge2),\qquad Q_1=1,\ Q_2=7,
+\end{equation}
+so $Q_{j+1}/Q_j\sim 4j$ and $\log Q_j\sim j\log j$ (super-exponential growth).
+Write $\|y\|=\dist(y,\Z)$ and define
+\[
+\Lam(x):=\limsup_{j\to\infty} j\,\|Q_j x\|\in[0,\infty].
+\]
+More generally, for $\alpha\ge0$ put
+$\Lam_\alpha(x):=\limsup_{j\to\infty} j^\alpha\|Q_j x\|\in[0,\infty]$,
+so that $\Lam=\Lam_1$.
+Let $L:=\Z+\Z\frac{\ee+1}{2}$, a countable dense subgroup of $\R$.
+
+\subsection{Relation to prior work}\label{sec:prior}
+
+The \emph{phenomenon} (a spectral gap plus zero-dimensional sub-threshold level
+sets) is classical: in the classical Lagrange spectrum, the spectrum below
+$\sqrt5$ (and below $3$) is countable (Hausdorff dimension $0$), and Hall's ray
+gives a half-line. Moreira \cite{Moreira} studies the Hausdorff dimension of
+portions of the classical Markov and Lagrange spectra below a threshold. Lima
+and Moreira \cite{LimaMoreira} prove phase transitions for the \emph{dynamical}
+Markov and Lagrange spectra of generic horseshoes; the corresponding question
+for the classical spectra is left open there. Note that our level sets $E_c$ are
+subsets of the space of inputs $x\in\R$.
+
+The closest prior continued-fraction result is a theorem of Kraaikamp and
+Liardet \cite{KL}, quoted as Lemma~4.1 in \cite{BDS}. Let $\alpha$ be irrational
+with convergents $p_n/q_n$. Then a real $\beta$ lies outside
+$\Z+\Z\alpha$ if and only if
+$\|q_n\beta\|>\tfrac14\,q_n|q_n\alpha-p_n|$ for infinitely many $n$. This
+is a classification together with a gap, with constant $1/4$, for the
+normalized quantity $\|q_n\beta\|/(q_n|q_n\alpha-p_n|)$ along \emph{all}
+convergent denominators. Theorems~\ref{thm:class} and~\ref{thm:gap} can be
+compared with this criterion in two complementary ways:
+\begin{itemize}[leftmargin=1.8em]
+\item \emph{As a subsequence along the convergents of $\ee$:} Passing from all
+convergent denominators of $\ee$ to the subsequence $(Q_j)$ of every third
+convergent denominator changes two things. First, the zero group grows from
+$\Z+\Z\ee$ to $L$: for $x=(\ee+1)/2$ the quantity $j\|Q_jx\|$ tends to $0$, so
+the infinitely many $n$ supplied by Kraaikamp and Liardet for $\alpha=\ee$ lie
+outside the subsequence $(Q_j)$. Second, the normalization changes. Since
+$2j+1<1/(Q_j|Q_j\ee-P_j|)<2j+2$, one has
+$\limsup_{j\to\infty}\|Q_jx\|/(Q_j|Q_j\ee-P_j|)=2\Lam(x)$. Thus the gap
+$\Lam\ge1/4$ reads $\limsup\ge1/2$ in their normalization, and the value
+$\Lam(x_0)=1/4$ is attained by the explicit point $x_0$ in
+Remark~\ref{rem:unweighted}. The two constants $1/4$ therefore refer to
+different normalizations.
+\item \emph{As the full convergent sequence of $\beta=(\ee+1)/2$:} Put
+$R_j=(P_j+Q_j)/2\in\Z$. The fractions $R_j/Q_j$ are the convergents of
+$\beta=(\ee+1)/2=[1;1,6,10,14,\dots]$, whose initial convergent pairs are
+$(1,1)$ and $(2,1)$ and whose remaining partial quotients are $4j+2$ for
+$j\ge1$. Applying the Kraaikamp--Liardet criterion \cite{KL} (in the form
+recorded on p.~106 of \cite{BDS}) directly to $\beta$ gives
+$\|Q_jx\|>\tfrac14 Q_j|Q_j\beta-R_j|$ infinitely often for $x\notin L$. Since
+the continued-fraction error formula gives $jQ_j|Q_j\beta-R_j|\to1/4$, this
+black-box application yields $\Lam(x)\ge1/16$ outside $L$, which already
+recovers the zero-level classification $\{\Lam=0\}=L$, whereas the direct
+three-term recurrence analysis in Theorems~\ref{thm:gap}
+and~\ref{thm:full-spectrum} yields the sharp initial gap $1/4$ and the complete
+quantization $\Lam(\R)=\frac14\Z_{\ge0}\cup\{\infty\}$.
+\end{itemize}
+For a general irrational $\alpha$ whose partial quotients tend to infinity, we
+First treat polynomial-growth denominator recurrences
+$Q_{j+1}=(cj^r+d)Q_j+Q_{j-1}$ in
+Theorems~\ref{thm:general-rec}--\ref{thm:poly-phase-transition} and then, in
+Section~\ref{sec:growing-rec} (Theorems~\ref{thm:growing-rec-spectrum}
+and~\ref{thm:growing-rec-dim-phase}, and
+Corollary~\ref{cor:growing-rec-three-regimes}), establish the complete unified
+theory for arbitrary growing-quotient recurrences $Q_{j+1}=A_jQ_j+Q_{j-1}$ with
+$A_j\in\Z_{\ge2}$ and $A_j\to\infty$. In particular, Theorem~\ref{thm:growing-rec-spectrum}(i)
+proves the exact asymptotic identity
+$\limsup_{j\to\infty}\|Q_jx\|/(Q_j|Q_j\theta-P_j|)=\limsup_{j\to\infty}A_j\|Q_jx\|$
+matching the Kraaikamp--Liardet error normalization across all growing-quotient
+recurrences, while Theorem~\ref{thm:growing-rec-dim-phase} reveals how the upper
+logarithmic growth exponent $\gamma_{\sup}=\limsup_{j\to\infty}\frac{\log A_j}{\log Q_j}\in[0,\infty]$
+governs both the subcritical Hausdorff-dimension distortion
+$(1-\tau)/(1+\tau\gamma_{\sup})$ ($0\le\tau<1$) and the supercritical secondary
+collapse from $L_G$ to $\frac{1}{g}\Z$ across $\tau_{\mathrm{crit}}=1+1/\gamma_{\sup}$.
+For the modular continued-fraction alphabets $F_{m,r}=\{[0;a_1,a_2,\dots]:a_n\equiv r\pmod m\}$,
+infinite-alphabet thermodynamic-formalism dimension theory goes back to Hensley,
+Jenkinson--Pollicott, and Chousionis--Leykekhman--Urba\'nski \cite{CLU}; here
+Theorem~\ref{thm:residues-asymptotic} combines an exact closed-form resolvent
+identity for the truncated metallic-continuant transfer operator with our
+unconditional transfer-operator sandwich to prove $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$
+for every $m\ge2$ and to extract the explicit two-term asymptotic expansion
+$\dimH F_{m,r}=\frac12+\frac{C_r}{2m}-\frac{C_r^2\log m}{2m^2}+O(m^{-2})$ governed
+by the reciprocal metallic-continuant series $C_r=\sum_{k=1}^\infty 1/q_k(r)$ and,
+at $r=1$, the reciprocal Fibonacci constant $\psi_{\mathrm{Fib}}=\sum_{k=1}^\infty 1/F_k$
+(a targeted negative search of arXiv and prior continued-fraction dimension
+literature found no prior appearance of $\psi_{\mathrm{Fib}}$ or $C_r$ as the
+asymptotic dimension constant of modular continued-fraction digit sets).
+Accordingly, we
+regard Theorems~\ref{thm:class} and~\ref{thm:gap} as a variant of known results.
+The main new contributions are the complete spectrum discretization and
+three-way positive-level splitting (Theorems~\ref{thm:full-spectrum},
+\ref{thm:trichotomy}, \ref{thm:general-rec}--\ref{thm:poly-phase-transition},
+and~\ref{thm:growing-rec-spectrum}--\ref{thm:growing-rec-dim-phase}), the critical gauge theorems
+(Theorem~\ref{thm:gauge} and Corollary~\ref{cor:exact-gauge}), the machine-checked
+dimension-zero and subcritical dimension theorems (Theorems~\ref{thm:finite},
+\ref{thm:upper}, and~\ref{conj:weight}), and the continued-fraction window and
+residue theorems (Theorems~\ref{thm:windows}--\ref{thm:residues-asymptotic}).
+
+For the selected sequence $(Q_j)$, Corollary~8 of Bugeaud, Liao and Rams
+\cite{BLR} applies directly since $Q_{j+1}/Q_j\to\infty$. It gives dimension
+one for every constant target $c\in[0,1/2]$ at weight $\alpha=0$ in
+Theorem~\ref{conj:weight} (in particular for $\{x:\|Q_jx\|\to0\}$), by taking
+the centres equal to $c$ and using $|\|y\|-\|c\||\le\|y-c\|$; integer
+translation invariance transfers full dimension between $\R$ and $[0,1]$. For
+nonzero weights $0<\alpha<1$, the logarithmic growth condition (1.6) of their
+Theorem~7 fails for the linear maps $x\mapsto Q_jx$ because
+$\log Q_{j+1}/\log Q_j\to1$, and classical mass-transference methods for
+$\limsup$ shrinking-target sets \cite{BV} do not apply to the eventual
+(liminf-type) bounds defining $E_c$ and the prescribed-limit sets. We establish
+the exact dimension $1-\alpha$ here by an elementary covering upper bound and a
+shifted-grid Moran construction.
+
+Regarding Hausdorff gauges at critical levels, Cabrelli, Mendivil, Molter and
+Shonkwiler \cite[\S5, Theorem~3]{CMMS} construct a gauge giving positive
+\emph{finite} measure to a Cantor set from its gap sequence, whereas Moreira,
+Erazo and Angelini \cite{MEA} show that the classical Lagrange level at value
+$3$ has either zero or non-$\sigma$-finite measure for every dimension function.
+Here the recurrence specifies the gauge $h_k(1/Q_n)=(2k+1)^{-n}$, and the entire
+critical level $\{\Lam=k/4\}$ on $\R/\Z$ has \emph{infinite, $\sigma$-finite}
+$\mathcal H^{h_k}$ measure, proved by combining a countable decomposition by
+initial recurrence data with translation invariance under the dense subgroup
+$L$.
+
+Relative to earlier literature, our setting has four distinguishing features:
+(i) a \emph{subsequence} of convergent denominators of $\ee$ (every third),
+(ii) the critical \emph{weight} $j$, (iii) the lattice
+$L=\Z+\Z\frac{\ee+1}{2}$ (note $(\ee+1)/2$, not $\ee$), and (iv) the
+\emph{sharp} quantum $1/4$. The weight $j$ is \emph{critical} for the covering
+argument: it makes the per-parent branching number uniformly bounded, yielding
+dimension $0$ for \emph{all} finite level sets (Theorem~\ref{thm:finite}),
+whereas without the weight the branching grows linearly and the unweighted
+zero-set $\{x:\|Q_jx\|\to0\}$ has full dimension $1$, while the weighted
+zero-set $\{x:j\|Q_jx\|\to0\}$ equals the countable group $L$.
+

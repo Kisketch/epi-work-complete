@@ -1,0 +1,141 @@
+\subsection{Resolvent identity, global strict separation for all \texorpdfstring{$m\ge2$}{m >= 2}, and reciprocal-Fibonacci asymptotics}\label{sec:residues-asymptotic}
+
+Table~\ref{tab:residues-general} certifies $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$
+for $m\in\{2,3,4,5,6\}$ via $256$-cell transfer-operator grid certificates. To
+prove this strict separation unconditionally for \emph{every} modulus $m\ge2$ and
+to determine the exact asymptotic law of $\dimH F_{m,r}$ as $m\to\infty$, we
+introduce a family of closed-form rational test functions derived from the
+metallic-mean continuants of~$r$.
+
+For any integer $r\ge1$, define the metallic-mean continuant sequence
+$(q_n(r))_{n\ge0}$ (\texttt{metalQ r n}, with predecessor $q_{-1}(r):=0$,
+\texttt{metalQPrev r n}) by
+\begin{equation}\label{eq:metallic-continuant}
+q_0(r)=1,\qquad q_1(r)=r,\qquad q_{n+2}(r)=r\,q_{n+1}(r)+q_n(r)\quad(n\ge0).
+\end{equation}
+In particular, for $r=1$, $q_n(1)=F_{n+1}$ is the $(n+1)$-st Fibonacci number
+($F_1=F_2=1,F_3=2,F_4=3,F_5=5,\dots$, \texttt{metalQ\_\allowbreak one\_\allowbreak eq\_\allowbreak fib}).
+For $s\ge1/2$, define the metallic-continuant series (\texttt{metalC r s}) and
+the associated resolvent test profile on $[0,1]$ (\texttt{resolventV r s x}) by
+\begin{equation}\label{eq:Cr-Dr}
+C_r(s):=\sum_{n=0}^\infty q_n(r)^{-2s},\quad
+C_r:=C_r(1/2)=\sum_{n=0}^\infty\frac{1}{q_n(r)},\quad
+C_1=\psi_{\mathrm{Fib}}:=\sum_{k=1}^\infty\frac{1}{F_k}\approx 3.3598856662,
+\end{equation}
+\[
+V_{r,s}(x):=\sum_{n=0}^\infty\bigl(q_n(r)+q_{n-1}(r)\,x\bigr)^{-2s}\qquad(x\in[0,1]),
+\]
+so that $V_{r,s}(0)=C_r(s)$ and the $n=0$ term of $V_{r,s}(x)$ is $(1+0\cdot x)^{-2s}=1$.
+
+\begin{theorem}[Resolvent identity and reciprocal-Fibonacci asymptotics]\label{thm:residues-asymptotic}
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item \textbf{Exact metallic-continuant resolvent identity:}
+For every integer $r\ge1$, every $s\ge1/2$, and every $x\in[0,1]$, the first
+branch $a=r$ ($k=0$) of the transfer operator $\mathcal L_{s,F_{m,r}}$ acts on
+$V_{r,s}$ by the exact algebraic identity
+\begin{equation}\label{eq:resolvent-branch}
+(r+x)^{-2s}\,V_{r,s}\!\left(\frac{1}{r+x}\right)
+=V_{r,s}(x)-1.
+\end{equation}
+\item \textbf{Global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$:}
+For every modulus $m\ge2$,
+\begin{equation}\label{eq:global-strict-sep}
+\dimH F_{m,m}
+<\dimH F_{m,1}
+=\dimH E_m.
+\end{equation}
+\item \textbf{Two-term asymptotic expansions ($m\to\infty$):}
+For every fixed integer $r\ge1$, there exists an explicit constant $B_r>0$ such
+that for all sufficiently large $m$,
+\begin{equation}\label{eq:dimH-Fmr-two-term}
+\left|\dimH F_{m,r}-\left(\frac12+\frac{C_r}{2m}-\frac{C_r^2\log m}{2m^2}\right)\right|
+\le\frac{B_r}{m^2},
+\end{equation}
+where $C_r=\sum_{n=0}^\infty 1/q_n(r)$ and $C_1=\psi_{\mathrm{Fib}}=\sum_{k=1}^\infty 1/F_k$.
+In contrast, for the $0\bmod m$ residue alphabet $F_{m,m}$ there exists $B_0>0$
+such that for all sufficiently large $m$,
+\begin{equation}\label{eq:dimH-Fmm-two-term}
+\left|\dimH F_{m,m}-\left(\frac12+\frac{1}{2m}-\frac{\log m}{2m^2}\right)\right|
+\le\frac{B_0}{m^2}.
+\end{equation}
+\item \textbf{Asymptotic dimension-excess ratios and eventual strict monotonicity in~$r$:}
+For every fixed $r\ge1$, $\lim_{m\to\infty}m(\dimH F_{m,r}-1/2)=C_r/2$, and
+\[
+\lim_{m\to\infty}\frac{\dimH F_{m,r}-1/2}{\dimH F_{m,m}-1/2}=C_r,\qquad
+\lim_{m\to\infty}\frac{\dimH E_m-1/2}{\dimH F_{m,m}-1/2}=\psi_{\mathrm{Fib}},
+\]
+and since $r\mapsto C_r$ is strictly decreasing on $\Z_{\ge1}$, whenever
+$1\le r_1<r_2$ we have $\dimH F_{m,r_2}<\dimH F_{m,r_1}$ for all sufficiently
+large~$m$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For~(i), since $q_{n+2}(r)\ge 2\,q_n(r)$, $q_n(r)\ge 2^{\lfloor n/2\rfloor}$ grows
+exponentially and $V_{r,s}(x)$ converges absolutely for all $s\ge1/2$ and $x\in[0,1]$.
+For each $n\ge0$, the recurrence $q_{n+1}(r)=r\,q_n(r)+q_{n-1}(r)$ gives
+\[
+(r+x)\cdot\left(q_n(r)+q_{n-1}(r)\,\frac{1}{r+x}\right)
+=r\,q_n(r)+q_{n-1}(r)+q_n(r)x
+=q_{n+1}(r)+q_n(r)x.
+\]
+Raising both sides to the power $-2s$ and summing over $n\ge0$ shifts the index
+$n\mapsto n+1$ and separates the $n=0$ term $(q_0(r)+q_{-1}(r)x)^{-2s}=1^{-2s}=1$,
+yielding~\eqref{eq:resolvent-branch} (\texttt{resolventV\_\allowbreak branch\_\allowbreak eq}).
+
+For~(ii), by \eqref{eq:resolvent-branch} the first branch $k=0$ ($a=r$) of the
+transfer operator $\mathcal L_{s,F_{m,r}}$ cancels $V_{r,s}(x)-1$ identically:
+\[
+(\mathcal L_{s,F_{m,r}}V_{r,s})(x)-V_{r,s}(x)
+=\sum_{k=1}^\infty(km+r+x)^{-2s}\,V_{r,s}\!\left(\frac{1}{km+r+x}\right)-1.
+\]
+Since $V_{r,s}$ is decreasing on $[0,1]$ with $C_r(s)\ge V_{r,s}(1/(km+r+x))\ge V_{r,s}(1/(m+r))$,
+combining Theorem~\ref{thm:residues-general}(ii) with standard integral comparisons for
+$\sum_{k=1}^\infty(km+r+x)^{-2s}$ gives the non-asymptotic resolvent criteria
+(\texttt{dimH\_\allowbreak residueConstSet\_\allowbreak le\_\allowbreak of\_\allowbreak resolvent}
+and \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak of\_\allowbreak resolvent}):
+for $s>1/2$, $C_r(s)\,m^{-2s}\bigl(1+\frac{1}{2s-1}\bigr)\le 1$ implies $\dimH F_{m,r}\le s$,
+and $V_{r,s}\bigl(\frac{1}{m+r}\bigr)\frac{(m+r+1)^{1-2s}}{m(2s-1)}>1$ implies $\dimH F_{m,r}\ge s$,
+while applying the same comparison to the constant test function $v\equiv 1$ on
+$F_{m,m}$ ($a=km$, $k\ge1$) yields \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak le}
+and \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak mm}.
+Evaluating these two criteria at explicit rational test exponents separates
+$\dimH F_{m,m}$ and $\dimH F_{m,1}$ for every $m\ge2$
+(\texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak m1}),
+and Theorem~\ref{thm:residues-general}(i) identifies $\dimH E_m=\dimH F_{m,1}$.
+
+For~(iii) and~(iv), for fixed $r\ge1$ and large $m$, write $s=\frac12+\frac{\alpha}{2m}$
+with $\alpha=C_r-\frac{C_r^2\log m}{m}\pm\frac{2B_r}{m}$. Because $2s-1=\alpha/m\to0$,
+we have $C_r(s)=C_r+O(2s-1)=C_r+O(m^{-1})$,
+$V_{r,s}(1/(m+r))=C_r(s)+O(m^{-1})=C_r+O(m^{-1})$, and
+$m^{-(2s-1)}=\exp(-\frac{\alpha\log m}{m})=1-\frac{C_r\log m}{m}+O\bigl((\frac{\log m}{m})^2\bigr)$.
+Substituting $\alpha_u=C_r-\frac{C_r^2\log m}{m}+\frac{2B_r}{m}$ into the upper
+resolvent criterion and $\alpha_l=C_r-\frac{C_r^2\log m}{m}-\frac{2B_r}{m}$ into the
+lower resolvent criterion establishes~\eqref{eq:dimH-Fmr-two-term}
+(\texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}),
+while the constant-$1$ criteria establish~\eqref{eq:dimH-Fmm-two-term}
+(\texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}).
+Dividing $m(\dimH F_{m,r}-1/2)\to C_r/2$ by $m(\dimH F_{m,m}-1/2)\to 1/2$ gives the
+exact dimension-excess ratio $C_r$ (and $\psi_{\mathrm{Fib}}$ for $E_m$ via
+$\dimH E_m=\dimH F_{m,1}$), and strict monotonicity $q_n(r_1)<q_n(r_2)$ for $n\ge1$
+implies $C_{r_2}<C_{r_1}$ and hence $\dimH F_{m,r_2}<\dimH F_{m,r_1}$ for all large~$m$.
+\end{proof}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{c|c|c|c|c}
+$r$ & Continuants $(q_n(r))_{n\ge0}$ & $C_r=\sum_{n=0}^\infty 1/q_n(r)$ & $s_{\mathrm{2term}}(1000,r)$ & Ratio ($m=5000$) \\\hline
+$1$ & $1,1,2,3,5,8,13,\dots$ ($F_{n+1}$) & $\psi_{\mathrm{Fib}}\approx 3.359885666243$ & $0.5016409526$ & $3.346356$ \\
+$2$ & $1,2,5,12,29,70,169,\dots$ (Pell) & $1.842203049828$ & $0.5009093801$ & $1.839556$ \\
+$3$ & $1,3,10,33,109,360,\dots$ & $1.476794726319$ & $0.5007308647$ & $1.475593$ \\
+$4$ & $1,4,17,72,305,1292,\dots$ & $1.327004277866$ & $0.5006574201$ & $1.326264$ \\
+$5$ & $1,5,26,135,701,3640,\dots$ & $1.247635731173$ & $0.5006184416$ & $1.247109$ \\\hline
+$m$ & $F_{m,m}$ ($0\bmod m$ alphabet) & $C_\infty=1.000000000000$ & $0.5004965461$ & $1.000000$
+\end{tabular}
+\caption{High-precision ($50$-digit \texttt{mpmath}, \texttt{verify\_\allowbreak paper2\_\allowbreak extensions.py}) values of the reciprocal metallic-continuant constants $C_r=\sum_{k=1}^\infty 1/q_k(r)$ ($C_1=\psi_{\mathrm{Fib}}$), the two-term asymptotic approximation $\frac12+\frac{C_r}{2m}-\frac{C_r^2\log m}{2m^2}$ at $m=1000$, and the two-term dimension-excess ratio $(\dimH F_{m,r}-1/2)/(\dimH F_{m,m}-1/2)$ at $m=5000$ converging to $C_r$.}\label{tab:residues-asymptotic}
+\end{table}
+
+\paragraph{Lean status of Section~\ref{sec:windows-residues}.}
+All of Theorems~\ref{thm:windows}, \ref{thm:short-ae}, and~\ref{thm:no-short-dim}---including the exact dimension-$1$ identity for \texttt{prescribed\allowbreak ParitySet}, the exact dimension-$1/2$ identities for \texttt{bounded\allowbreak IncSet}, \texttt{prescribed\allowbreak IncSet}, and \texttt{prescribed\allowbreak IncSetAt}, the almost-everywhere short-window lower bound $Z_J(x)\ge\frac{1-\ee^{-1}}{160}\log J$ (\texttt{thm\_\allowbreak short\_\allowbreak ae\_\allowbreak explicit}), and the full conjunction $\dimH(\texttt{div\allowbreak WindowSet}\,\epsilon)=1\wedge\operatorname{Leb}(\texttt{div\allowbreak WindowSet}\,\epsilon)=0$ (\texttt{thm\_\allowbreak no\_\allowbreak short\_\allowbreak dim\_\allowbreak complete})---are now kernel-checked end-to-end at Layer~A for mathlib's \texttt{GenContFract.of} across thirteen Lean~4 modules: the counting and Frostman-scale pipeline (\texttt{Window\allowbreak Mobius\allowbreak Count.lean}, \texttt{No\allowbreak Short\allowbreak Dim\allowbreak Count.lean}, \texttt{Window\allowbreak Tree\allowbreak Prune.lean}, \texttt{Window\allowbreak Asymp\allowbreak Thresh.lean}, \texttt{Window\allowbreak Frostman\allowbreak Discharge.lean}, and \texttt{Window\allowbreak Paper\allowbreak Scale.lean}), the CF realization and bounded-increment pipeline (\texttt{Window\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak CF\allowbreak Bridge.lean}, \texttt{Window\allowbreak No\allowbreak Short\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak Prescribed\allowbreak CF\allowbreak Realize.lean}, and \texttt{Window\allowbreak Bounded\allowbreak Upper.lean}), and the short-window measure pipeline (\texttt{Window\allowbreak Short\allowbreak Ae.lean} and \texttt{Window\allowbreak Short\allowbreak Ae\allowbreak Realize.lean}, $14$ declarations; base axioms only, zero \texttt{sorryAx}; see Remark~\ref{rem:windows-lean}).
+For Theorems~\ref{thm:residues}, \ref{thm:residues-general}, and~\ref{thm:residues-asymptotic}, the entire general-modulus $m\ge2$ Lipschitz shift equivalence, sandwich, and eventual-periodicity theorem is kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak ModGeneral.lean} ($7$ declarations: \texttt{lipschitz\allowbreak OnWith\_\allowbreak cfShift}, \texttt{dimH\_\allowbreak residueSeqSet\_\allowbreak sandwich}, \texttt{dimH\_\allowbreak eventually\allowbreak PeriodicResidueSet\_\allowbreak eq}), the unconditional transfer-operator Hausdorff-dimension framework, $\frac12<\dimH F_{m,r}$, $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness (\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound}, \texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}) are kernel-checked in \texttt{EpiFormal/\allowbreak Transfer\allowbreak Operator\allowbreak Dim.lean} ($11$ declarations, base axioms only), and the complete resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$, exact dimension-excess ratios, and eventual strict monotonicity in~$r$ of Theorem~\ref{thm:residues-asymptotic} are kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} (all $15$ declarations: \texttt{metalQ\_\allowbreak one\_\allowbreak eq\_\allowbreak fib}, \texttt{metalC\_\allowbreak one\_\allowbreak eq\_\allowbreak psiFib}, \texttt{resolventV\_\allowbreak branch\_\allowbreak eq}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak le\_\allowbreak of\_\allowbreak resolvent}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak of\_\allowbreak resolvent}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak le}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak mm}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak m1}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak eventuallyPeriodic}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{tendsto\_\allowbreak mul\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak sub\_\allowbreak half}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak residue\_\allowbreak ratio\_\allowbreak eq\_\allowbreak metalC}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak eventuallyPeriodic\_\allowbreak ratio\_\allowbreak eq\_\allowbreak psiFib}, and \texttt{eventually\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak strictAnti}; base axioms only, zero \texttt{sorryAx}), alongside the $14$ helper lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}; only the finite-precision integer grid runs in \texttt{residue\_\allowbreak certificate.py} and \texttt{residue\_\allowbreak certificate\_\allowbreak general.py} validating the narrow brackets in Table~\ref{tab:residues-general} execute in Python.
+

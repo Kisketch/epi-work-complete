@@ -1,0 +1,313 @@
+\subsection{Universal extension to arbitrary growing-quotient recurrences}\label{sec:growing-rec}
+
+The polynomial recurrence $Q_{j+1}=(cj^r+d)Q_j+Q_{j-1}$ has $\log A_j=r\log j+O(1)$
+and $\log Q_j\sim r\,j\log j$, so $\frac{\log A_j}{\log Q_j}\to 0$. We now drop
+all functional-form assumptions on $A_j$ and consider an arbitrary integer
+three-term recurrence (\texttt{GrowingRecData})
+\begin{equation}\label{eq:growing-rec}
+Q_{j+1}=A_j Q_j+Q_{j-1}\ \ (j\ge J_0\ge 1),\quad Q_j\in\Z_{\ge1}\ (\forall j\ge0),
+\quad A_j\in\Z_{\ge2}\ (\forall j\ge J_0),\quad \lim_{j\to\infty}A_j=\infty.
+\end{equation}
+Set $g:=\gcd(Q_{J_0-1},Q_{J_0})\ge1$ and write $\widetilde Q_j:=Q_j/g\in\Z_{\ge1}$
+for $j\ge J_0-1$, so $\gcd(\widetilde Q_{J_0-1},\widetilde Q_{J_0})=1$. Define the
+fundamental companion numerator solution $\widetilde P_j\in\Z$ by
+$\widetilde P_{J_0-1}=0$, $\widetilde P_{J_0}=1$, and
+$\widetilde P_{j+1}=A_j\widetilde P_j+\widetilde P_{j-1}$ for $j\ge J_0$. Then
+$\widetilde P_{j+1}\widetilde Q_j-\widetilde P_j\widetilde Q_{j+1}=(-1)^{j-J_0}$,
+so $\theta:=\lim_{j\to\infty}\widetilde P_j/\widetilde Q_j\in\R\setminus\Q$ exists
+and satisfies
+\begin{equation}\label{eq:growing-theta-error}
+\frac{1}{2\,\widetilde Q_j\,\widetilde Q_{j+1}}
+<\left|\theta-\frac{\widetilde P_j}{\widetilde Q_j}\right|
+<\frac{1}{\widetilde Q_j\,\widetilde Q_{j+1}}
+\qquad(\forall j\ge J_0).
+\end{equation}
+Let $L_G:=\frac{1}{g}(\Z+\Z\theta)$ denote the intrinsic rank-$2$ lattice of~$G$,
+and let $L_{G,\mathrm{rat}}:=\frac{1}{g}\Z\subsetneq L_G$ denote its rank-$1$
+rational sublattice. Since the natural critical weight for \eqref{eq:growing-rec}
+is $A_j$ rather than $j^r$, we define the critical and $\tau$-weighted
+approximation functionals ($\tau\in\R$) by
+\[
+\Lam_G(x):=\limsup_{j\to\infty} A_j\|Q_j x\|\in[0,\infty],\qquad
+\Lam_{G,\tau}(x):=\limsup_{j\to\infty} A_j^\tau\|Q_j x\|\in[0,\infty]\quad(\Lam_G=\Lam_{G,1}),
+\]
+with sublevel sets $E_{G,\tau}(t):=\{x\in\R:\Lam_{G,\tau}(x)\le t\}$ ($E_G(t):=E_{G,1}(t)$),
+unsigned exact limit sets $E_{G,\tau,\mathrm{lim}}(t):=\{x\in\R:\lim_{j\to\infty}A_j^\tau\|Q_j x\|=t\}$
+($E_{G,\mathrm{lim}}(t):=E_{G,1,\mathrm{lim}}(t)$), and signed exact limit sets
+$E_{G,\mathrm{lim}}^\pm(k):=\{x\in\R:\lim_{j\to\infty}A_j(Q_j x-\mathrm{round}(Q_j x))=\pm k\}$.
+
+\begin{theorem}[Universal discrete spectrum, Kraaikamp--Liardet equivalence, and critical gauges for arbitrary growing-quotient recurrences]\label{thm:growing-rec-spectrum}
+Let $G=(J_0,A_j,Q_j)$ satisfy~\eqref{eq:growing-rec}.
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item \textbf{Kraaikamp--Liardet ratio equivalence and zero-level TFAE:}
+For every $x\in\R$, the Kraaikamp--Liardet normalized error functional satisfies
+\[
+\Lam_G^{\mathrm{KL}}(x)
+:=\limsup_{j\to\infty}\frac{\|Q_j x\|}{\widetilde Q_j\,|\widetilde Q_j\theta-\widetilde P_j|}
+=\Lam_G(x).
+\]
+Moreover, the following five conditions are equivalent:
+\textup{(1)}~$\Lam_G(x)=0$; \textup{(2)}~$\Lam_G(x)<1$;
+\textup{(3)}~$\Lam_G^{\mathrm{KL}}(x)<1$;
+\textup{(4)}~$d_j(x):=\mathrm{round}(Q_{j+1}x)-A_j\mathrm{round}(Q_j x)-\mathrm{round}(Q_{j-1}x)=0$ for all sufficiently large~$j$; and
+\textup{(5)}~$x\in L_G=\frac{1}{g}(\Z+\Z\theta)$.
+\item \textbf{Full quantized spectrum and coarse metric collapse:}
+We have $\Lam_G(\R)=\Z_{\ge0}\cup\{\infty\}$. Every open interval $(k,k+1)$
+($k\in\Z_{\ge0}$) is an empty spectral gap: $E_G(t)=E_G(k)$ for all $t\in[k,k+1)$,
+$E_G(t)=L_G$ for all $t\in[0,1)$, $\dimH E_G(t)=0$ for all finite $t<\infty$,
+$\dimH\{\Lam_G<\infty\}=0$, $\operatorname{Leb}\{\Lam_G<\infty\}=0$, and
+$\Lam_G(x)=\infty$ for Lebesgue-almost every $x\in\R$ (with
+$\dimH(\{\Lam_G=\infty\}\cap[a,b])=1$ on every interval $a<b$).
+\item \textbf{Three-way positive-level splitting and critical gauges on $\R$ and $\R/\Z$:}
+For each integer $k\ge1$, let $h_k^G$ and $g_2^G$ be the piecewise-linear Hausdorff
+gauges determined by $h_k^G(1/Q_n)=(2k+1)^{-n}$ and $g_2^G(1/Q_n)=2^{-n}$. Then:
+\begin{enumerate}[label=(\alph*),leftmargin=1.6em]
+\item On both $\R$ and $\R/\Z$ (\texttt{UnitAddCircle}), the exact level
+$\{\Lam_G=k\}$ has $\sigma$-finite $\mathcal H^{h_k^G}$ measure that is infinite
+on every nonempty open interval/arc, whereas $\{\Lam_G<k\}$ is
+$\mathcal H^{h_k^G}$-null;
+\item The unsigned exact limit set $E_{G,\mathrm{lim}}(k)$ has $\sigma$-finite
+$\mathcal H^{g_2^G}$ measure that is infinite on every nonempty open interval/arc
+(with gauge base~$2$ independent of $k\ge1$) and is $\mathcal H^{h_k^G}$-null;
+\item Each signed exact limit set collapses to a single countable $L_G$-coset:
+$E_{G,\mathrm{lim}}^\pm(k)=x_k^\pm+L_G$ for explicit telescoping witnesses
+$x_k^\pm\in E_{G,\mathrm{lim}}^\pm(k)$; and
+\item For every nondecreasing gauge $g$ on $[0,\infty)$ with $g(0)=0$, the four-way
+$\liminf$ measure classification of Corollary~\ref{cor:liminf-gauges} holds verbatim
+for $\{\Lam_G=k\}$ with respect to $\liminf_{n\to\infty}(2k+1)^n g(1/Q_n)$ and for
+$E_{G,\mathrm{lim}}(k)$ with respect to $\liminf_{n\to\infty}2^n g(1/Q_n)$, including
+the power-gauge threshold dichotomy for $g_\beta^G(1/Q_n)=\beta^{-n}$ at $\beta=2k+1$
+and $\beta=2$.
+\end{enumerate}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Write $M_j=\mathrm{round}(Q_j x)\in\Z$ and $u_j=Q_j x-M_j\in[-1/2,1/2]$. From
+$Q_{j+1}=A_jQ_j+Q_{j-1}$, the integer defect $d_j=M_{j+1}-A_jM_j-M_{j-1}\in\Z$
+satisfies $d_j=A_ju_j+u_{j-1}-u_{j+1}$, hence $|A_j\|Q_j x\|-|d_j||\le 1$ and,
+since $A_j\to\infty$ and $|u_{j\pm1}|\le 1/2$, only steps with $A_j|u_j|$ small or
+large can occur once $A_j>2$: specifically, $|d_j-A_j u_j|\le|u_{j-1}|+|u_{j+1}|$.
+Whenever $\Lam_G(x)<\infty$, $u_j=O(1/A_j)\to0$, so $A_j u_j-d_j\to0$ and
+$A_j\|Q_j x\|-|d_j|\to0$. Because $|d_j|\in\Z_{\ge0}$, $\Lam_G(x)=\limsup_{j\to\infty}|d_j|\in\Z_{\ge0}\cup\{\infty\}$.
+Furthermore, from the continued-fraction identity
+$\widetilde Q_j|\widetilde Q_j\theta-\widetilde P_j|=(\widetilde Q_{j+1}/\widetilde Q_j+\theta_j)^{-1}=(A_j+O(1))^{-1}$
+with $A_j\to\infty$, the ratio $\widetilde Q_j|\widetilde Q_j\theta-\widetilde P_j|\cdot A_j$
+tends to~$1$, yielding $\Lam_G^{\mathrm{KL}}(x)=\Lam_G(x)$ for all $x\in\R$.
+If $d_j=0$ for all $j\ge N$, unimodularity of
+$\bigl(\begin{smallmatrix}\widetilde P_{N-1}&\widetilde Q_{N-1}\\\widetilde P_N&\widetilde Q_N\end{smallmatrix}\bigr)$
+gives integers $a,b$ with $M_j=a\widetilde P_j+b\widetilde Q_j$ for all $j\ge N-1$,
+whence $Q_j(x-(b+a\theta)/g)=u_j+a(\widetilde Q_j\theta-\widetilde P_j)\to0$ and
+$x=(b+a\theta)/g\in L_G$; conversely, every $x\in L_G$ satisfies $A_j\|Q_j x\|=O(1/Q_j)\to0$.
+For any bounded digit sequence $(d_j)_{j\ge J_0}$ ($(|d_j|\le B)$), the alternating
+telescoping series around index $N$ produces a real $x$ whose nearest integers
+satisfy $M_{j+1}-A_j M_j-M_{j-1}=d_j$ for all $j\ge N$, realizing every level
+$k\in\Z_{\ge0}$ (constant digit $d_j=k$ gives $x_k^+\in E_{G,\mathrm{lim}}^+(k)$)
+and $\infty$, and yielding $E_{G,\mathrm{lim}}^\pm(k)=x_k^\pm+L_G$ by subtracting
+two solutions with eventually identical digits. Finally, because $A_j\to\infty$
+implies $(2k+1)^j/Q_j\to0$, the Cantor-tree Frostman measure and covering gauge
+machinery of Theorems~\ref{thm:gauge} and~\ref{thm:trichotomy} and Section~\ref{sec:poly-rec}
+applies with branching $(2k+1)$ on $\{\Lam_G\le k\}$ and branching~$2$ on
+$E_{G,\mathrm{lim}}(k)$, establishing~(ii) and~(iii)(a)--(d).
+\end{proof}
+
+To describe the weighted Hausdorff-dimension and supercritical structure of a
+general recurrence~\eqref{eq:growing-rec}, define the \emph{upper logarithmic
+quotient-to-denominator exponent}
+\begin{equation}\label{eq:gamma-sup}
+\gamma_{\sup}(G):=\limsup_{j\to\infty}\frac{\log A_j}{\log Q_j}\in[0,\infty].
+\end{equation}
+Whenever $\gamma_{\sup}(G)=0$ (which includes all polynomial recurrences
+$A_j=cj^r+d$ as well as $A_j=2^{j+1}$, since $\log Q_j\ge\sum_{i\le j-1}\log A_i\gg j^2$),
+$\log Q_{j+1}/\log Q_j=1+\frac{\log A_j}{\log Q_j}+o(1)\to1$. When $A_j$ grows
+double-exponentially or faster, however, $\gamma_{\sup}(G)>0$ measures the
+non-negligible ratio between the step-by-step window contraction $A_j^{-\tau}$ and
+the grid spacing $Q_j^{-1}$, producing both a subcritical Hausdorff-dimension
+distortion and a supercritical secondary phase transition inside $L_G$:
+
+\begin{theorem}[Universal subcritical dimension and supercritical phase transition]\label{thm:growing-rec-dim-phase}
+Let $G=(J_0,A_j,Q_j)$ satisfy~\eqref{eq:growing-rec} and let
+$\gamma_{\sup}=\gamma_{\sup}(G)\in[0,\infty]$ be defined by~\eqref{eq:gamma-sup}.
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item \textbf{Subcritical Hausdorff dimension ($0\le\tau<1$):}
+For every $0\le\tau<1$ and every finite threshold $0\le t<\infty$,
+\begin{equation}\label{eq:growing-subcritical-dim}
+\dimH E_{G,\tau}(t)
+=\dimH E_{G,\tau,\mathrm{lim}}(0)
+=\frac{1-\tau}{1+\tau\gamma_{\sup}},
+\end{equation}
+interpreted as $1$ when $\tau=0$ and as $0$ when $\tau>0$ and $\gamma_{\sup}=\infty$.
+\item \textbf{Supercritical collapse to $L_G$ and secondary phase transition ($\tau>1$):}
+For every $\tau>1$ and every finite $0\le t<\infty$, $E_{G,\tau}(t)\subseteq L_G$
+(hence $E_{G,\tau}(t)$ is countable with $\dimH E_{G,\tau}(t)=0$), and the
+rational sublattice satisfies $L_{G,\mathrm{rat}}=\frac{1}{g}\Z\subseteq E_{G,\tau}(t)$.
+Moreover, for every irrational lattice element $x=(m+n\theta)/g\in L_G\setminus L_{G,\mathrm{rat}}$
+($m,n\in\Z$, $n\ne0$) and all sufficiently large~$j$,
+\begin{equation}\label{eq:growing-supercritical-sandwich}
+\frac{|n|g}{6}\,\frac{A_j^{\tau-1}}{Q_j}
+\le A_j^\tau\|Q_j x\|
+\le |n|g\,\frac{A_j^{\tau-1}}{Q_j}.
+\end{equation}
+Consequently:
+\begin{enumerate}[label=(\alph*),leftmargin=1.6em]
+\item If $A_j^{\tau-1}/Q_j\to0$---in particular whenever
+$(\tau-1)\gamma_{\sup}<1$ (and for \emph{all} $\tau>1$ when $\gamma_{\sup}=0$)---then
+$E_{G,\tau}(t)=L_G$ for every finite $0\le t<\infty$;
+\item If $\limsup_{j\to\infty}A_j^{\tau-1}/Q_j=\infty$---in particular whenever
+$(\tau-1)\gamma_{\sup}>1$ (and for \emph{all} $\tau>1$ when $\gamma_{\sup}=\infty$)---then
+$\Lam_{G,\tau}(x)=\infty$ for every $x\in L_G\setminus L_{G,\mathrm{rat}}$, so
+$E_{G,\tau}(t)=L_{G,\mathrm{rat}}=\frac{1}{g}\Z\subsetneq L_G$ for every finite
+$0\le t<\infty$.
+\end{enumerate}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For~(i), fix $0\le\tau<1$ and $t<\infty$. At level $j\ge J_0+1$, each step-$j$
+surviving window has length $\asymp(Q_j A_j^\tau)^{-1}$, while the step-$j$ grid
+of centers $m/Q_j$ inside a step-$(j-1)$ window of length $\asymp(Q_{j-1}A_{j-1}^\tau)^{-1}$
+contains $\asymp\frac{Q_j}{Q_{j-1}A_{j-1}^\tau}\asymp A_{j-1}^{1-\tau}$ children.
+Thus after $n$ steps from a base index $J$, the total number of surviving windows
+in $[0,1]$ is $N_n\asymp\prod_{i=J}^{J+n-1}A_i^{1-\tau}\asymp Q_{J+n}^{1-\tau}$
+(up to a factor $2^{\pm n}$, which is $Q_{J+n}^{o(1)}$ because $\log Q_j/j\to\infty$),
+while the level-$(J+n)$ window diameter is $\delta_{J+n}\asymp(Q_{J+n}A_{J+n}^\tau)^{-1}$.
+Taking logarithms gives
+\[
+\frac{\log N_n}{-\log\delta_{J+n}}
+=\frac{(1-\tau)\log Q_{J+n}+O(n)}{\log Q_{J+n}+\tau\log A_{J+n}+O(1)}
+=\frac{1-\tau+o(1)}{1+\tau\frac{\log A_{J+n}}{\log Q_{J+n}}+o(1)}.
+\]
+Choosing a subsequence $(j_k)$ along which $\frac{\log A_{j_k}}{\log Q_{j_k}}\to\gamma_{\sup}$
+shows that for any $s>\frac{1-\tau}{1+\tau\gamma_{\sup}}$, the $s$-dimensional
+covering sum $N_n\delta_{J+n}^s$ tends to $0$ along $J+n=j_k$, proving
+$\dimH E_{G,\tau}(t)\le\frac{1-\tau}{1+\tau\gamma_{\sup}}$. Conversely, for any
+$0<s<\frac{1-\tau}{1+\tau\gamma_{\sup}}$ (so $\gamma_{\sup}<\infty$), for all
+sufficiently large $j$ we have $(Q_j A_j^\tau)^s\le Q_j^{1-\tau-\delta}$ for some
+$\delta>0$; running our shifted-grid homogeneous Moran/Frostman tree construction
+with decay schedule $\varepsilon_j\to0$ inside $E_{G,\tau,\mathrm{lim}}(0)$ shows
+that the local mass of every ball $B(x,r)$ satisfies $\mu(B(x,r))\ll r^s$, giving
+$\dimH E_{G,\tau,\mathrm{lim}}(0)\ge s$ and proving~\eqref{eq:growing-subcritical-dim}.
+
+For~(ii), if $\tau>1$ and $x\in E_{G,\tau}(t)$ with $t<\infty$, then for large $j$,
+$A_j\|Q_j x\|=A_j^{-(\tau-1)}(A_j^\tau\|Q_j x\|)\le(t+1)A_j^{-(\tau-1)}\to0$, so
+$\Lam_G(x)=0$ and $x\in L_G$ by Theorem~\ref{thm:growing-rec-spectrum}(i). For
+$x=m/g\in L_{G,\mathrm{rat}}$, $Q_j x=m\widetilde Q_j\in\Z$ for all $j\ge J_0-1$,
+so $\|Q_j x\|=0$ and $x\in E_{G,\tau}(t)$. Now let $x=(m+n\theta)/g\in L_G$ with
+$n\in\Z\setminus\{0\}$ and put $M_j:=m\widetilde Q_j+n\widetilde P_j\in\Z$. Then
+$Q_j x-M_j=n\widetilde Q_j(\theta-\widetilde P_j/\widetilde Q_j)$, so by
+\eqref{eq:growing-theta-error} and $Q_{j+1}=g\widetilde Q_{j+1}$,
+\[
+\frac{|n|g}{2 Q_{j+1}}
+<|Q_j x-M_j|
+<\frac{|n|g}{Q_{j+1}}.
+\]
+For all large $j$, $|n|g/Q_{j+1}<1/2$, so $\mathrm{round}(Q_j x)=M_j$ and
+$\|Q_j x\|=|Q_j x-M_j|$. Using $A_j Q_j\le Q_{j+1}\le 2 A_j Q_j$ (for $j\ge J_0+1$)
+and multiplying by $A_j^\tau$ gives~\eqref{eq:growing-supercritical-sandwich}.
+Claims~(a) and~(b) follow immediately upon taking $\limsup_{j\to\infty}$ in~\eqref{eq:growing-supercritical-sandwich}
+and relating $\frac{\log(A_j^{\tau-1}/Q_j)}{\log Q_j}=(\tau-1)\frac{\log A_j}{\log Q_j}-1$
+to $(\tau-1)\gamma_{\sup}-1$.
+\end{proof}
+
+\begin{corollary}[Three canonical growth regimes and the critical boundary $\tau_{\mathrm{crit}}=2$]\label{cor:growing-rec-three-regimes}
+Consider the unit-initialized recurrences ($J_0=1$, $Q_0=Q_1=1$, $g=1$,
+$L_{G,\mathrm{rat}}=\Z$, $L_G=\Z+\Z\theta_G$):
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item \textbf{Regime~I (exponential partial quotients, $A_j=2^{j+1}$):}
+We have $\gamma_{\sup}=0$, $\dimH E_{G,\tau}(t)=\dimH E_{G,\tau,\mathrm{lim}}(0)=1-\tau$
+for all $0\le\tau<1$ and $t<\infty$, and $E_{G,\tau}(t)=L_G$ for all $\tau>1$ and $t<\infty$
+(no secondary supercritical collapse occurs).
+\item \textbf{Regime~II (double-exponential partial quotients, $A_j=2^{2^j}$):}
+For all $j\ge2$, $\frac14 A_j\le Q_j\le A_j-1$ (with $\lim_{j\to\infty}Q_j/A_j\approx0.316420$),
+so $\gamma_{\sup}=1$. Consequently:
+\begin{itemize}[leftmargin=1.5em]
+\item for $0\le\tau<1$ and $t<\infty$, $\dimH E_{G,\tau}(t)=\dimH E_{G,\tau,\mathrm{lim}}(0)=\frac{1-\tau}{1+\tau}$;
+\item for $1<\tau<2$ and $t<\infty$, $E_{G,\tau}(t)=L_G=\Z+\Z\theta_G$;
+\item for $\tau>2$ and $t<\infty$, $E_{G,\tau}(t)=\Z\subsetneq L_G$; and
+\item at the critical secondary-transition boundary $\tau=\tau_{\mathrm{crit}}=2$,
+the sublevel sets stratify the rank-$2$ lattice $L_G$ by the coefficient~$|n|$:
+$E_{G,2}(0)=\Z$, the generator $\theta_G\in L_G\setminus\Z$ satisfies
+$\frac16\le\Lam_{G,2}(\theta_G)\le 4$ (with numerical limit
+$\Lam_{G,2}(\theta_G)=(\lim_{j\to\infty}Q_j/A_j)^{-1}\approx3.15973\in[1/6,4]$, hence
+$\theta_G\in E_{G,2}(4)\setminus\Z$), and $\bigcup_{K\in\Z_{\ge0}}E_{G,2}(K)=L_G$.
+\end{itemize}
+\item \textbf{Regime~III (super-double-exponential partial quotients, $A_j=2^{2^{j^2}}$):}
+We have $\gamma_{\sup}=\infty$. Thus $\dimH E_{G,0}(t)=\dimH E_{G,0,\mathrm{lim}}(0)=1$,
+whereas $\dimH E_{G,\tau}(t)=\dimH E_{G,\tau,\mathrm{lim}}(0)=0$ for all $0<\tau<1$
+and $t<\infty$, and $E_{G,\tau}(t)=\Z\subsetneq L_G$ for all $\tau>1$ and $t<\infty$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+For~(i), $\sum_{k=1}^{j-1}\log_2 A_k=\sum_{k=1}^{j-1}(k+1)=\frac{(j-1)(j+2)}{2}$,
+so $\frac{\log A_j}{\log Q_j}\le\frac{2(j+1)}{j(j-1)}\to0$ and $\gamma_{\sup}=0$.
+For~(ii), $A_{k+1}=A_k^2$ for $A_k=2^{2^k}$; induction from $Q_2=5\in[\frac14 A_2,A_2-1]$
+($A_2=16$) gives $\frac14 A_j=\prod_{k=1}^{j-1}A_k\le Q_j$ and
+$Q_{j+1}=A_jQ_j+Q_{j-1}\le A_j(A_j-1)+(A_j-1)=A_j^2-1=A_{j+1}-1$, so
+$1\le\frac{\log A_j}{\log Q_j}\le 1+\frac{\log 4}{\log Q_j}\to1$ and $\gamma_{\sup}=1$.
+At $\tau=2$, \eqref{eq:growing-supercritical-sandwich} with $1\le A_j/Q_j\le 4$
+gives $\frac{|n|}{6}\le A_j^2\|Q_j x\|\le 4|n|$ eventually for $x=m+n\theta_G$ ($n\ne0$),
+so $\Lam_{G,2}(x)\in[|n|/6,4|n|]$, proving $E_{G,2}(0)=\Z$, $\theta_G\in E_{G,2}(4)\setminus\Z$,
+and $\bigcup_{K\ge0}E_{G,2}(K)=L_G$. For~(iii), $Q_j\le 2^{j\cdot 2^{(j-1)^2}}$ while
+$A_j=2^{2^{j^2}}$, so $\frac{\log A_j}{\log Q_j}\ge\frac{2^{j^2-(j-1)^2}}{j}\ge\frac{2^j}{j+1}\to\infty$
+and $\gamma_{\sup}=\infty$.
+\end{proof}
+
+\paragraph{Lean~4 formalization of Section~\ref{sec:growing-rec}.}
+All results of Section~\ref{sec:growing-rec} are kernel-checked at Layer~A in two
+self-contained modules:
+\texttt{EpiFormal/\allowbreak General\allowbreak Growing\allowbreak Rec.lean}
+(all $21$ audited declarations: \texttt{PolyRecData.\allowbreak toGrowingRecData},
+\texttt{grow\_\allowbreak pow\_\allowbreak div\_\allowbreak Q\_\allowbreak tendsto\_\allowbreak zero},
+\texttt{grow\_\allowbreak nat\_\allowbreak div\_\allowbreak log\_\allowbreak Q\_\allowbreak tendsto\_\allowbreak zero},
+\texttt{grow\_\allowbreak alpha\_\allowbreak linear\_\allowbreak relation},
+\texttt{growKLRatio\_\allowbreak eq\_\allowbreak growLambda},
+\texttt{growLambda\_\allowbreak eq\_\allowbreak zero\_\allowbreak tfae},
+\texttt{growLevelSet\_\allowbreak zero\_\allowbreak eq\_\allowbreak lattice},
+\texttt{grow\_\allowbreak telescoping\_\allowbreak digit\_\allowbreak realize},
+\texttt{grow\_\allowbreak spectral\_\allowbreak gap\_\allowbreak open\_\allowbreak interval},
+\texttt{dimH\_\allowbreak growLevelSet\_\allowbreak nat\_\allowbreak eq\_\allowbreak zero},
+\texttt{dimH\_\allowbreak growFiniteSet\_\allowbreak eq\_\allowbreak zero},
+\texttt{volume\_\allowbreak growFiniteSet\_\allowbreak eq\_\allowbreak zero},
+\texttt{ae\_\allowbreak growLambda\_\allowbreak eq\_\allowbreak top},
+\texttt{dimH\_\allowbreak growInfiniteSet\_\allowbreak eq\_\allowbreak one},
+\texttt{grow\_\allowbreak range\_\allowbreak lambda},
+\texttt{growSignedExactLimitSet\_\allowbreak coset\_\allowbreak collapse},
+\texttt{grow\_\allowbreak three\_\allowbreak way\_\allowbreak gauge\_\allowbreak splitting},
+\texttt{grow\_\allowbreak power\_\allowbreak gauge\_\allowbreak dichotomy},
+\texttt{growExactLevel\_\allowbreak power\_\allowbreak gauge\_\allowbreak dichotomy},
+\texttt{growExactLevel\_\allowbreak liminf\_\allowbreak four\_\allowbreak way}, and
+\texttt{growUnsignedExactLimit\_\allowbreak liminf\_\allowbreak four\_\allowbreak way}) and
+\texttt{EpiFormal/\allowbreak General\allowbreak Growing\allowbreak Dim.lean}
+(all $29$ audited declarations:
+\texttt{grow\_\allowbreak Q\_\allowbreak le\_\allowbreak two\_\allowbreak pow\_\allowbreak mul\_\allowbreak prod\_\allowbreak A},
+\texttt{grow\_\allowbreak prod\_\allowbreak A\_\allowbreak le\_\allowbreak Q\_\allowbreak simple},
+\texttt{dimH\_\allowbreak grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak le},
+\texttt{le\_\allowbreak dimH\_\allowbreak grow\allowbreak Weighted\allowbreak ExactLimitSet\_\allowbreak zero},
+\texttt{dimH\_\allowbreak grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq},
+\texttt{dimH\_\allowbreak grow\allowbreak Weighted\allowbreak ExactLimitSet\_\allowbreak zero\_\allowbreak eq},
+\texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak subset\_\allowbreak lattice},
+\texttt{dimH\_\allowbreak grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak of\_\allowbreak one\_\allowbreak lt},
+\texttt{grow\allowbreak RatLattice\_\allowbreak subset\_\allowbreak weightedLevelSet},
+\texttt{grow\allowbreak RatLattice\_\allowbreak ssubset\_\allowbreak growLatticeL},
+\texttt{grow\allowbreak Weighted\allowbreak Seq\_\allowbreak bounds\_\allowbreak of\_\allowbreak lattice\_\allowbreak irrational},
+\texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq\_\allowbreak lattice\_\allowbreak of\_\allowbreak tendsto\_\allowbreak zero},
+\texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq\_\allowbreak lattice\_\allowbreak of\_\allowbreak mul\_\allowbreak gamma\_\allowbreak lt\_\allowbreak one},
+\texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq\_\allowbreak lattice\_\allowbreak of\_\allowbreak gamma\_\allowbreak zero},
+\texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq\_\allowbreak ratLattice\_\allowbreak of\_\allowbreak limsup\_\allowbreak top},
+\texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq\_\allowbreak ratLattice\_\allowbreak of\_\allowbreak one\_\allowbreak lt\_\allowbreak mul\_\allowbreak gamma},
+\texttt{grow\allowbreak Weighted\allowbreak LevelSet\_\allowbreak eq\_\allowbreak ratLattice\_\allowbreak of\_\allowbreak gamma\_\allowbreak top},
+\texttt{growGammaSup\_\allowbreak exp\allowbreak Growing\allowbreak Rec},
+\texttt{dimH\_\allowbreak exp\allowbreak Growing\allowbreak Rec\_\allowbreak sub\allowbreak critical},
+\texttt{exp\allowbreak Growing\allowbreak Rec\_\allowbreak super\allowbreak critical},
+\texttt{growGammaSup\_\allowbreak double\allowbreak Exp\allowbreak Growing\allowbreak Rec},
+\texttt{dimH\_\allowbreak double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak sub\allowbreak critical},
+\texttt{double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak super\allowbreak critical\_\allowbreak lt\_\allowbreak two},
+\texttt{double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak super\allowbreak critical\_\allowbreak gt\_\allowbreak two},
+\texttt{double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak critical\_\allowbreak two},
+\texttt{growGammaSup\_\allowbreak super\allowbreak Double\allowbreak Exp\allowbreak Growing\allowbreak Rec},
+\texttt{dimH\_\allowbreak super\allowbreak Double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak zero},
+\texttt{dimH\_\allowbreak super\allowbreak Double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak pos\_\allowbreak sub\allowbreak critical},
+and \texttt{super\allowbreak Double\allowbreak Exp\allowbreak Growing\allowbreak Rec\_\allowbreak super\allowbreak critical}), using only \texttt{propext},
+\texttt{Classical.choice}, and \texttt{Quot.sound} ($0$~\texttt{sorryAx}).
+

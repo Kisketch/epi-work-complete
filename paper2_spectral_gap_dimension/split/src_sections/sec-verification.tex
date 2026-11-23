@@ -1,0 +1,279 @@
+\section{Honesty statement, scope, and formal verification}\label{sec:verification}
+
+\begin{itemize}[leftmargin=1.5em]
+\item Theorems~\ref{thm:class} and~\ref{thm:gap} have short self-contained paper
+proofs in Section~\ref{sec:class} and are kernel-checked at Layer~A in
+\texttt{EpiFormal/\allowbreak Classification.lean}
+(\texttt{theorem2\_classification} and \texttt{corollary3\_gap}), using only the
+three Lean base axioms \texttt{propext}, \texttt{Classical.choice} and
+\texttt{Quot.sound}; the former $\delta_j$ axioms are now proved theorems
+(\texttt{DeltaSign.lean}).
+\item Corollaries~\ref{thm:spectral} and~\ref{thm:sub} (for $c<1/4$), and the
+countability and dimension-$0$ statements for $c<1/4$, are kernel-checked at
+Layer~A in \texttt{EpiFormal/\allowbreak SpectralGap.lean} (five declarations,
+no \texttt{sorryAx}). The complete spectrum discretization
+$\Lam(\R)=\frac14\Z_{\ge0}\cup\{\infty\}$ and open-interval spectral-gap
+exclusion (Theorem~\ref{thm:full-spectrum}), the gap constancy $E_c=E_{k/4}$
+(Corollary~\ref{thm:sub}), the three-way digit rigidity and signed-limit
+$L$-difference, countability, and dimension-$0$ lemmas
+(Theorem~\ref{thm:trichotomy}), and the $r=1$ linear $(cj+d)$ defect
+approximation lemmas are kernel-checked at Layer~A in
+\texttt{EpiFormal/\allowbreak FullSpectrumDiscrete.lean} (15 audited
+declarations, base axioms only, no \texttt{sorryAx}). The remaining signed-coset
+collapse $E_{\mathrm{lim}}^\pm(k/4)=x_k^\pm+L$ in
+Theorem~\ref{thm:trichotomy}(iii) is now likewise kernel-checked at Layer~A in
+\texttt{EpiFormal/\allowbreak TrichotomyAndPolyExtension.lean} (8 declarations,
+ending in \texttt{trichotomy\_\allowbreak part\_\allowbreak iii\_\allowbreak complete},
+base axioms only, no \texttt{sorryAx}), completing Layer~A verification of all
+three parts~(i)--(iii) of Theorem~\ref{thm:trichotomy}.
+\item For the general polynomial-growth denominator recurrences ($r\ge1$) of
+Section~\ref{sec:poly-rec}, the entire theory---Lemmas~\ref{lem:poly-growth}(i)--(iv)
+and~\ref{lem:poly-lattice}, Theorem~\ref{thm:general-rec} (full spectrum
+$\frac{1}{c}\Z_{\ge0}\cup\{\infty\}$ for all $r\ge1$),
+Theorem~\ref{thm:poly-gauge-trichotomy}(i)--(iii) (critical-gauge and
+binary-gauge metric measure trichotomy on $\R$ and $\R/\Z$ plus signed-coset
+collapse), Corollary~\ref{cor:poly-exact-gauge},
+Remark~\ref{rem:poly-gauge-scale}, and
+Theorem~\ref{thm:poly-phase-transition}(i)--(iii) (critical $\alpha=r$,
+subcritical $0\le\alpha<r$ exact dimension $1-\alpha/r$, and supercritical
+$\alpha>r$ collapse)---is kernel-checked at Layer~A across
+\texttt{EpiFormal/\allowbreak TrichotomyAndPolyExtension.lean} ($37$
+declarations), \texttt{EpiFormal/\allowbreak PolyGaugeAndPhaseTransition.lean}
+($22$ declarations), \texttt{EpiFormal/\allowbreak PolyWeightedUpper.lean} ($1$
+declaration), and \texttt{EpiFormal/\allowbreak PolyWeightedLower.lean} ($8$
+declarations; all $68$ declarations on base axioms only, zero \texttt{sorryAx}),
+and corroborated by high-precision \texttt{mpmath} checks. Furthermore, the
+universal extension to arbitrary growing-quotient recurrences
+$Q_{j+1}=A_jQ_j+Q_{j-1}$ ($A_j\ge2$, $A_j\to\infty$) in
+Section~\ref{sec:growing-rec}---Theorem~\ref{thm:growing-rec-spectrum}(i)--(iii)
+(Kraaikamp--Liardet ratio identity, zero-level TFAE, full discrete spectrum
+$\Z_{\ge0}\cup\{\infty\}$, and three-way positive-level splitting and critical
+gauges on $\R$ and $\R/\Z$), Theorem~\ref{thm:growing-rec-dim-phase}(i)--(ii)
+(subcritical dimension $(1-\tau)/(1+\tau\gamma_{\sup})$ and supercritical
+secondary phase transition between $L_G$ and $\frac{1}{g}\Z$ at
+$\tau_{\mathrm{crit}}=1+1/\gamma_{\sup}$), and
+Corollary~\ref{cor:growing-rec-three-regimes}(i)--(iii) (Regimes~I--III including
+the critical boundary $\tau=2$ for $A_j=2^{2^j}$)---is kernel-checked at Layer~A
+across \texttt{EpiFormal/\allowbreak General\allowbreak Growing\allowbreak Rec.lean}
+($21$ declarations) and \texttt{EpiFormal/\allowbreak General\allowbreak Growing\allowbreak Dim.lean}
+($29$ declarations; all $50$ declarations on base axioms only, zero \texttt{sorryAx}).
+\item Theorem~\ref{thm:finite} ($\dimH E_c=0$ for all $c\in\R$) is \emph{fully
+machine-checked at Layer~A} (\texttt{DimHCore.lean} + \texttt{DimHFinite.lean},
+base axioms only: \texttt{propext}, \texttt{Classical.choice},
+\texttt{Quot.sound}; no $\delta$ axioms, no \texttt{sorryAx}). The assembly uses
+a surviving-center \texttt{Finset} recursion (\texttt{survSet}) rather than path
+encoding; the growth estimate is explicit
+(\texttt{tendsto\_pow\_div\_factorial\_atTop}), not asymptotic. Moreover, the
+complementary infinite-level conclusions of
+Corollary~\ref{cor:infinite-level}---Lebesgue-nullity of $\{\Lam<\infty\}$,
+full Lebesgue measure on every interval $[a,b]$ and a.e.\ $\Lam=\infty$, and
+$\dimH\{\Lam=\infty\}=1$---are likewise kernel-checked at Layer~A in
+\texttt{EpiFormal/\allowbreak{}GaugeExact.lean}
+(\texttt{volume\_finiteLevel\_zero}, \texttt{ae\_apprExponent\_eq\_top},
+\texttt{volume\_infiniteLevel\_Icc}, and
+\texttt{dimH\_infiniteLevel\_eq\_one}).
+\item Theorems~\ref{thm:upper} ($0\le\alpha\le1$, all $c\in\R$)
+and~\ref{conj:weight} ($0\le\alpha<1$, prescribed limits, sublevel sets for all
+$c\ge0$, and the zero-level set) are \emph{fully machine-checked at Layer~A}
+(both the upper and lower bounds). The upper bound is proved in
+\texttt{Weighted\allowbreak Fiber.lean}, \texttt{Weighted\allowbreak DimHCore.lean},
+\texttt{Weighted\allowbreak Upper.lean}, and \texttt{Weighted\allowbreak Final.lean}
+(as \texttt{dimH\_\allowbreak levelSet\ensuremath{\alpha}\_le}); the
+matching lower bound and exact dimension identities are proved in
+\texttt{Weighted\allowbreak ExactDim.lean}
+(as \texttt{one\_\allowbreak le\_\allowbreak hausdorff\allowbreak Measure\_\allowbreak cantorSet},
+\texttt{dimH\_\allowbreak exact\allowbreak LimitSet\ensuremath{\alpha}\_ge},
+\texttt{dimH\_\allowbreak exact\allowbreak LimitSet\ensuremath{\alpha}\_eq},
+\texttt{dimH\_\allowbreak levelSet\ensuremath{\alpha}\_eq}, and
+\texttt{dimH\_\allowbreak appr\allowbreak Exponent\ensuremath{\alpha}\_eq\_\allowbreak zero}; base
+axioms only, no \texttt{sorryAx}). The existence of $x_0$ with $\Lam(x_0)=1/4$
+(as \texttt{lambda\_\allowbreak x0\_\allowbreak eq\_\allowbreak quarter} in \texttt{Quarter\allowbreak Point\allowbreak Final.lean}) and the
+unweighted-zero strictness witness
+(\texttt{Unweighted\allowbreak Correction.\allowbreak witness} in Remark~\ref{rem:unweighted})
+are likewise kernel-checked at Layer~A.
+\item Theorem~\ref{thm:gauge}, Corollary~\ref{cor:exact-gauge},
+Remark~\ref{rem:gauge-scale}, and Theorem~\ref{thm:trichotomy}(i)--(iii) are now
+\emph{fully machine-checked at Layer~A} both on $\R$ and (for the metric gauge
+statements of parts~(i)--(ii)) natively on the
+quotient metric space $\R/\Z$ (\texttt{UnitAddCircle}) across
+\texttt{EpiFormal/\allowbreak GaugeNull.lean} (3 declarations),
+\texttt{EpiFormal/\allowbreak GaugeExact.lean} (22 declarations),
+\texttt{EpiFormal/\allowbreak GaugeCircle.lean} (53 declarations),
+\texttt{EpiFormal/\allowbreak FullSpectrumDiscrete.lean} (15 declarations), and
+\texttt{EpiFormal/\allowbreak TrichotomyAndPolyExtension.lean} (8 part-(iii)
+declarations), using only
+the three Lean base axioms \texttt{propext}, \texttt{Classical.choice}, and
+\texttt{Quot.sound}, with zero \texttt{sorryAx}. In particular,
+\texttt{GaugeCircle.lean} explicitly constructs the piecewise-linear gauges
+$h_k$ (\texttt{critGauge}), $g_2$ (\texttt{binaryGauge}), and $g_\beta$
+(\texttt{interpGauge}), discharges all external continuity hypotheses for
+Theorem~\ref{thm:gauge} and Remark~\ref{rem:gauge-scale}, constructively proves
+open-interval and open-arc $\mathcal H^{h_k}$-infinitude
+(Corollary~\ref{cor:exact-gauge}(i) on $\R$ and \texttt{UnitAddCircle}), and
+verifies the binary Cantor-tree positivity, $\mathcal H^{g_2}$-infinitude on
+every nonempty open subset of $\R/\Z$, $\sigma$-finiteness,
+$\mathcal H^{h_k}$-nullity, and $g_\beta$ threshold dichotomy for
+$E_{\mathrm{lim}}(k/4)$ in Theorem~\ref{thm:trichotomy}(ii), while
+\texttt{TrichotomyAndPolyExtension.lean} proves the signed-limit coset collapse
+$E_{\mathrm{lim}}^\pm(k/4)=x_k^\pm+L$ in Theorem~\ref{thm:trichotomy}(iii).
+\item Theorem~\ref{thm:finite-state-tail} (the marked-component critical gauge
+theorem, both on $\R$ via \texttt{thm\_\allowbreak finite\_\allowbreak
+state\_\allowbreak tail\_\allowbreak complete} and on $\R/\Z$ via
+\texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak
+circle\_\allowbreak complete}) is now \emph{fully machine-checked at Layer~A}
+in \texttt{EpiFormal/\allowbreak Finite\allowbreak State\allowbreak Complete.lean}
+(12 audited declarations, base axioms only, zero \texttt{sorryAx}).
+\item For the continued-fraction window and residue results
+(Theorems~\ref{thm:windows}--\ref{thm:residues} and~\ref{thm:residues-general}),
+the entirety of Theorem~\ref{thm:windows} (both the exact $\dimH=1$
+prescribed-parity statement and the exact $\dimH=1/2$ upper and lower bounds
+for bounded/prescribed increments), the Lebesgue-measure zero-tail law of
+Theorem~\ref{thm:short-ae} (explicit positive constant $c = (1-\ee^{-1})/160$ in
+\texttt{thm\_\allowbreak short\_\allowbreak ae\_\allowbreak explicit}), and
+both parts of Theorem~\ref{thm:no-short-dim} ($\dimH=1$ and
+$\operatorname{Leb}=0$, via
+\texttt{volume\_\allowbreak divWindowSet\_\allowbreak eq\_\allowbreak zero}
+and \texttt{thm\_\allowbreak no\_\allowbreak short\_\allowbreak dim\_\allowbreak
+complete}, together with M\"obius counting cores, paper-scale Frostman
+discharge, concrete stopped-cylinder CF trees, pointwise regular CF
+identification with mathlib's \texttt{GenContFract.of}, and level-$n$ cylinder
+$\zeta(2t)^n$ covering) are kernel-checked at Layer~A across
+\texttt{Window\allowbreak Mobius\allowbreak Count.lean},
+\texttt{No\allowbreak Short\allowbreak Dim\allowbreak Count.lean},
+\texttt{Window\allowbreak Frostman\allowbreak Discharge.lean},
+\texttt{Window\allowbreak Paper\allowbreak Scale.lean},
+\texttt{Window\allowbreak CF\allowbreak Realize.lean},
+\texttt{Window\allowbreak CF\allowbreak Bridge.lean},
+\texttt{Window\allowbreak No\allowbreak Short\allowbreak CF\allowbreak Realize.lean},
+\texttt{Window\allowbreak Prescribed\allowbreak CF\allowbreak Realize.lean},
+\texttt{Window\allowbreak Bounded\allowbreak Upper.lean},
+\texttt{Window\allowbreak Short\allowbreak Ae.lean},
+\texttt{Window\allowbreak Short\allowbreak Ae\allowbreak Realize.lean}, and the fourteen
+core lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}
+(base axioms only, zero \texttt{sorryAx}; see Remark~\ref{rem:windows-lean}).
+For Theorems~\ref{thm:residues} and~\ref{thm:residues-general}, the
+transfer-operator Hausdorff-dimension bridge, the qualitative gap
+$\dimH > 1/2$ for $E_{\equiv 1\pmod 4}$, the proved upper bound
+$\dimH \le 4/5$, the finite-step matrix-certificate soundness theorems
+(\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound} and
+\texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}), and
+the M\"obius/eventual/periodic residue invariance identities are kernel-checked
+in \texttt{Residue\allowbreak ModGeneral.lean} and
+\texttt{Transfer\allowbreak Operator\allowbreak Dim.lean}, while the sharp
+$256$-point dyadic numerical intervals in Theorem~\ref{thm:residues} and
+Table~\ref{tab:residues-general} are certified by the reproducible exact
+integer-arithmetic scripts \texttt{residue\_certificate.py} and
+\texttt{residue\_\allowbreak certificate\_\allowbreak general.py}. Finally,
+Theorem~\ref{thm:residues-asymptotic}(i)--(iv) (exact metallic-continuant
+resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$
+for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$,
+exact dimension-excess ratios, and eventual strict monotonicity in~$r$) is
+kernel-checked at Layer~A in
+\texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} ($15$ audited
+declarations, base axioms only, zero \texttt{sorryAx}) and corroborated by
+\texttt{verify\_\allowbreak paper2\_\allowbreak extensions.py}.
+\item This article does \emph{not} prove the irrationality of $e+\pi$ (which
+remains an open problem). It is a metric-theory spin-off; the connection is
+that the zero-level classification machinery arose from the $e+\pi$ escape
+program \cite{Phase1}.
+\item The zero-level classification and initial gap (Theorems~\ref{thm:class}
+and~\ref{thm:gap}) are a subsequence variant of the Kraaikamp--Liardet
+criterion \cite{KL}, quoted as Lemma~4.1 of \cite{BDS}; see
+Section~\ref{sec:prior}. The independent contributions concern the complete
+spectrum discretization and three-way positive-level splitting
+(Theorems~\ref{thm:full-spectrum}, \ref{thm:trichotomy},
+\ref{thm:general-rec}--\ref{thm:poly-phase-transition},
+and~\ref{thm:growing-rec-spectrum}--\ref{thm:growing-rec-dim-phase}, all kernel-checked
+in Lean~4), the critical gauge theorems
+(Theorem~\ref{thm:gauge} and Corollaries~\ref{cor:exact-gauge}
+and~\ref{cor:liminf-gauges}), the kernel-checked marked-component gauge
+(Theorem~\ref{thm:finite-state-tail}, mechanized in
+\texttt{Finite\allowbreak State\allowbreak Complete.lean}), the machine-checked
+dimension-zero and subcritical dimension theorems
+(Theorems~\ref{thm:finite}, \ref{thm:upper}, and~\ref{conj:weight}), and the
+window and residue theorems (Theorems~\ref{thm:windows}--\ref{thm:residues-asymptotic}).
+\end{itemize}
+
+\section*{Use of AI and formal verification}
+% TODO before submission: adapt this statement to the target journal's AI-use policy.
+This work was carried out with substantial assistance from generative AI
+systems (including ChatGPT and Codex), both for developing and drafting
+mathematical arguments and text, preparing the numerical certificates, and
+writing the Lean~4 formalization. The results marked as machine-checked (Layer~A)
+were verified by the Lean~4 kernel, and their axiom dependencies were audited
+with \texttt{\#print axioms} in \texttt{Audit.lean} ($937$ audited declarations
+across $134$ Lean files as of 2026-11-22, $9179$ build jobs, of which $23$ additionally use the three whitelisted classical
+axioms \texttt{e\_transcendental}, \texttt{pi\_transcendental}, and
+\texttt{mu\_e\_eq\_two} in the companion $e+\pi$ paper's modules; the other $914$
+depend only on the Lean base axioms \texttt{propext}, \texttt{Classical.choice},
+and \texttt{Quot.sound}---with zero
+project-added axioms and zero \texttt{sorryAx}). The only portions not inside
+the Lean kernel are the finite-dimensional linear-algebraic Perron--Frobenius
+eigenvector existence input on marked strongly connected components in
+Theorem~\ref{thm:finite-state-tail} (whose positive right eigenvector is passed
+explicitly to \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak complete}
+and \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak complete}
+in \texttt{FiniteStateComplete.lean}) and the Python exact integer-arithmetic
+execution of \texttt{residue\_\allowbreak certificate.py} and
+\texttt{residue\_\allowbreak certificate\_\allowbreak general.py}
+for the $256$-cell grid certificates in Table~\ref{tab:residues-general}
+(whose transfer-operator dimension soundness theorems are verified in
+\texttt{TransferOperatorDim.lean}).
+% TODO before submission: state who checked the paper proofs, and how.
+
+\begin{thebibliography}{99}
+\bibitem{BDS} A.~B\'ir\'o, J.-M.~Deshouillers, V.~T.~S\'os, \emph{Good
+approximation and characterization of subgroups of $\R/\Z$}, Studia Sci.\ Math.\ Hungar.\ 38 (2001), 97--113.
+
+\bibitem{BV} V.~Beresnevich and S.~Velani, \emph{A mass transference principle
+and the Duffin--Schaeffer conjecture}, Ann.\ of Math.\ (2) 164 (2006), 971--992.
+
+\bibitem{BLR} Y.~Bugeaud, L.~Liao, M.~Rams, \emph{Metrical results on the
+distribution of fractional parts of powers of real numbers}, Proc.\ Edinb.\ Math.\ Soc.\ (2) 62 (2019), 505--521, doi:10.1017/\allowbreak S0013091518000585; arXiv:1710.03596. (Cor.~8, the hypothesis is $Q_{j+1}/Q_j\to\infty$.)
+
+\bibitem{CMMS} C.~Cabrelli, F.~Mendivil, U.~M.~Molter, R.~Shonkwiler,
+\emph{On the Hausdorff $h$-measure of Cantor sets}, Pacific J.\ Math.\ 217
+(2004), 45--59, doi:10.2140/\allowbreak pjm.2004.217.45.
+
+\bibitem{CLU} V.~Chousionis, D.~Leykekhman, M.~Urba\'nski, \emph{On the
+dimension spectrum of infinite subsystems of continued fractions}, Trans.\ Amer.\ Math.\ Soc.\ 373 (2020), 1009--1042, arXiv:1805.11904.
+
+\bibitem{Falconer} K.~Falconer, \emph{Fractal Geometry: Mathematical
+Foundations and Applications}, 2nd ed., Wiley, 2003. (Countable sets have
+Hausdorff dimension~$0$.)
+
+\bibitem{FLLW} A.-H.~Fan, L.-M.~Liao, B.-W.~Wang, J.~Wu, \emph{On Khintchine
+exponents and Lyapunov exponents of continued fractions}, Ergodic Theory Dynam.\ Systems 29 (2009), 73--109.
+
+\bibitem{FWW} D.-J.~Feng, Z.-Y.~Wen, J.~Wu, \emph{Some dimensional results
+for homogeneous Moran sets}, Sci.\ China Ser.\ A 40 (1997), 475--482,
+doi:10.1007/\allowbreak BF02896955.
+
+\bibitem{KL} C.~Kraaikamp and P.~Liardet, \emph{Good approximations and
+continued fractions}, Proc.\ Amer.\ Math.\ Soc.\ 112 (1991), 303--309.
+
+\bibitem{LimaMoreira} D.~Lima and C.~G.~Moreira, \emph{Phase transitions on
+the Markov and Lagrange dynamical spectra}, Ann.\ Inst.\ H.~Poincar\'e
+C Anal.\ Non Lin\'eaire 38 (2021), 1429--1459,
+doi:10.1016/\allowbreak j.anihpc.2020.11.007; arXiv:1801.04636.
+
+\bibitem{Moreira} C.~G.~Moreira, \emph{Geometric properties of the Markov and
+Lagrange spectra}, Ann.\ of Math.\ (2) 188 (2018), 145--170,
+doi:10.4007/\allowbreak annals.2018.188.1.3.
+
+\bibitem{MEA} C.~G.~Moreira, H.~Erazo, N.~Angelini,
+\emph{Generalized Hausdorff measure of irrationals with Lagrange value exactly 3},
+arXiv:2511.10328v3.
+
+{\sloppy
+\bibitem{MW} R.~D.~Mauldin and S.~C.~Williams,
+\emph{Hausdorff dimension in graph directed constructions},
+Trans.~Amer.~Math.~Soc.~309 (1988), no.~2, 811--829.
+}
+
+\bibitem{Phase1} Phase-1 archive, \emph{On the irrationality of $e+\pi$}
+(formalization project), Lean~4 modules \texttt{EpiFormal/\allowbreak Classification.lean}
+(Theorem~2 and Corollary~3) and \texttt{EpiFormal/\allowbreak Spectral\allowbreak Gap.lean}, 2026-11-15.
+\end{thebibliography}
+
+\end{document}

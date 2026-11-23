@@ -1,0 +1,29 @@
+% ============================================================================
+% paper2A_draft.tex  —  2A 核心规范 / 三分法轨道（草案）
+% ----------------------------------------------------------------------------
+% 来源：paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex
+% 声明：未抽正文，仅 \input 占位；正文全部来自 ../src_sections/ 的逐行切片。
+% 切片来源行号：
+%   前言/导言 1-389；sec:class 390-477；sec:spectrum 478-594；
+%   sec:finite-levels 595-826；sec:weights 827-1176；sec:gauge 1177-2500。
+% 本轨实际需要的 gauge 前半：1177-1816（critical levels + trichotomy）。
+% 明确排除：
+%   - growing-rec 2501-2813（归 2B，不在本切片内）；
+%   - finite-state-tail 1817-1968（归 2C，位于 sec-gauge.tex 内）；
+%   - poly-rec 1969-2500（归 2B，位于 sec-gauge.tex 内）。
+% 注意：当前 sec-gauge.tex 是整节 1177-2500 切片，直接 \input 会连带带入
+%   1817-1968 与 1969-2500。正式抽正文前须按上述行号二次切分。
+% 导言：由 sec-preface.tex 提供原版 preamble 与 \begin{document}。
+% ============================================================================
+
+\input{../src_sections/sec-preface.tex}
+
+\input{../src_sections/sec-class.tex}
+\input{../src_sections/sec-spectrum.tex}
+\input{../src_sections/sec-finite.tex}
+\input{../src_sections/sec-weights.tex}
+
+% 仅取 L1177-1816；当前整节切片为占位，含待排除的 finite-state-tail 与 poly。
+\input{../src_sections/sec-gauge.tex}
+
+\end{document}

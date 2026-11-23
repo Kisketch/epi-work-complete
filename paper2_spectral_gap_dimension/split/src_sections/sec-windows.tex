@@ -1,0 +1,748 @@
+\section{Continued-fraction window constraints and digit residues}\label{sec:windows-residues}
+
+\subsection{Dimensions of continued-fraction window constraints}
+
+Put $H_j=\lfloor Q_j\sqrt j\rfloor$. For irrational $x\in(0,1)$ let
+$k(j)$ be its last convergent index with denominator at most $H_j$
+(the integer part has index zero) and $r_j=k(j+1)-k(j)$.
+
+\begin{theorem}[Hermite window constraints]\label{thm:windows}
+For each prescribed sequence $\epsilon_j\in\{0,1\}$, the set with
+$k(j)\equiv\epsilon_j\pmod2$ eventually has Hausdorff dimension one.
+The set with eventually bounded $r_j$ has dimension $1/2$.
+For every bounded sequence of positive integers $(m_j)$, the set
+with $r_j=m_j$ eventually has dimension $1/2$. At a sufficiently
+large starting index, either initial parity of $k(j)$ can be imposed.
+\end{theorem}
+
+\begin{proof}
+Since $Q_{j+1}=(4j+2)Q_j+Q_{j-1}$ gives $Q_{j+1}/Q_j=4j+O(1)$, the window
+thresholds $H_j=\lfloor Q_j\sqrt j\rfloor$ satisfy $H_{j+1}/H_j=4j+O(1)\asymp j$
+and $\log H_j=j\log j+O(j)$. We work with fundamental cylinders of finite
+regular continued fractions: for positive integers $a_1,\dots,a_r\ge1$, let
+$I(a_1,\dots,a_r)$ be the closure of the set of irrationals in $(0,1)$ whose
+first $r$ partial quotients are $a_1,\dots,a_r$. If $p_{r-1}/q_{r-1}$ and
+$p_r/q_r$ are the last two convergents of $[0;a_1,\dots,a_r]$ and we write
+$u:=q_r$, $v:=q_{r-1}$, then $I(a_1,\dots,a_r)$ is the closed interval with
+endpoints $\frac{p_r}{u}$ and $\frac{p_r+p_{r-1}}{u+v}$, of length
+\[
+\bigl|I(a_1,\dots,a_r)\bigr|=\frac{1}{u(u+v)}\in\left[\frac{1}{2u^2},\frac{1}{u^2}\right].
+\]
+At stage $j$ we stop each constructed cylinder at the first convergent index
+$\tau_j=k(j)+1$ whose denominator $u=q_{\tau_j}$ crosses $H_j$, maintaining the
+two-sided invariant
+\[
+\frac43 H_j\le u\le \frac52 H_j.
+\]
+In the construction prescribing parity, the stopped cylinder will also have
+last partial quotient $a_{\tau_j}=4$, so that $v=q_{\tau_j-1}$ satisfies
+$u=4v+q_{\tau_j-2}>4v$, i.e.\ $v<u/4$. To initialize either construction at any
+sufficiently large starting stage $j_0$, choose an integer $d$ with
+$H_{j_0}/3\le d\le H_{j_0}/2$: the rational $1/d$ has the two terminal continued
+fraction representations $[0;d]$ (length $1$, terminal denominator $d$) and
+$[0;d-1,1]$ (length $2$, terminal denominator $(d-1)\cdot1+1=d$). Choosing the
+representation whose terminal index has parity $\epsilon_{j_0}$ and appending
+the digit $4$ gives a stopped cylinder at index $\tau_{j_0}=k(j_0)+1$ with
+$k(j_0)\equiv\epsilon_{j_0}\pmod2$ and denominator
+$u\in\{4d+1,4d+(d-1)\}\subset[4H_{j_0}/3,5H_{j_0}/2]$.
+
+\emph{Full-dimensional parity construction.} Fix stage $j\ge j_0$ and a parent
+cylinder stopped at $\tau_j=k(j)+1$ with last two denominators $u=q_{\tau_j}$
+and $v=q_{\tau_j-1}\le u/4$. Write $T:=H_{j+1}$ and $R:=T/u\asymp j$. We choose
+coprime positive integers $(m,n)$ in the rectangle
+\[
+\mathcal R_R:=\bigl[0.34R,0.36R\bigr]\times\bigl[0.20R,0.22R\bigr]\cap\Z^2.
+\]
+By M\"obius inversion $\sum_{d\mid\gcd(m,n)}\mu(d)=\mathbf 1_{\gcd(m,n)=1}$, the
+number of coprime integer pairs in $\mathcal R_R$ is
+\begin{align*}
+\#\{(m,n)\in\mathcal R_R:\gcd(m,n)=1\}
+&=\sum_{d=1}^{\lfloor0.36R\rfloor}\mu(d)
+\left(\left\lfloor\frac{0.36R}{d}\right\rfloor-\left\lceil\frac{0.34R}{d}\right\rceil+1\right)\\
+&\qquad\times\left(\left\lfloor\frac{0.22R}{d}\right\rfloor-\left\lceil\frac{0.20R}{d}\right\rceil+1\right)\\
+&=\sum_{d=1}^{\lfloor0.36R\rfloor}\mu(d)
+\left(\frac{0.02R}{d}+O(1)\right)\left(\frac{0.02R}{d}+O(1)\right)\\
+&=0.0004R^2\sum_{d=1}^{\lfloor0.36R\rfloor}\frac{\mu(d)}{d^2}
++O\left(R\sum_{d=1}^{\lfloor0.36R\rfloor}\frac1d\right)\\
+&=\frac{0.0004}{\zeta(2)}R^2+O(R\log R),
+\end{align*}
+since $\sum_{d>\lfloor0.36R\rfloor}d^{-2}=O(R^{-1})$. Thus there are $\gg R^2\asymp j^2$
+coprime pairs $(m,n)\in\mathcal R_R$ uniformly for all large $j$.
+
+For each coprime pair $(m,n)\in\mathcal R_R$, we have
+$1<\frac{0.34}{0.22}\le\frac{m}{n}\le\frac{0.36}{0.20}=1.8$, so $m/n>1$ has a
+standard finite regular continued-fraction expansion $[b_1;b_2,\dots,b_s]$ with
+$b_1=\lfloor m/n\rfloor=1$, $s\ge2$, and $b_s\ge2$, as well as the paired
+expansion $[b_1;b_2,\dots,b_s-1,1]$ of length $s+1$. By the standard matrix
+identity for continuants, if $\begin{pmatrix}m & m'\\ n & n'\end{pmatrix}
+=\begin{pmatrix}b_1 & 1\\ 1 & 0\end{pmatrix}\cdots\begin{pmatrix}b_s & 1\\ 1 & 0\end{pmatrix}$,
+then replacing $\begin{pmatrix}b_s & 1\\ 1 & 0\end{pmatrix}$ by
+$\begin{pmatrix}b_s-1 & 1\\ 1 & 0\end{pmatrix}\begin{pmatrix}1 & 1\\ 1 & 0\end{pmatrix}
+=\begin{pmatrix}b_s & b_s-1\\ 1 & 1\end{pmatrix}$ leaves the first column
+$\binom{m}{n}$ unchanged. Consequently, when we append either representation of
+$m/n$ to the parent cylinder (whose denominator matrix has final row $(u,v)$),
+the resulting terminal denominator is
+\[
+t=mu+nv,
+\]
+independently of which of the two terminal representations of $m/n$ is chosen
+(and every intermediate denominator along the appended tail is strictly less
+than $t$, while the penultimate denominator $t'=m'u+n'v$ satisfies $1\le t'<t$).
+Using $0.34R\le m\le0.36R$, $0.20R\le n\le0.22R$, $u>0$, $0<v\le u/4$, and
+$Ru=T$, we obtain the two-sided inequality
+\[
+\frac13 T<0.34T=0.34Ru<mu+nv\le\left(0.36+\frac{0.22}{4}\right)Ru=0.415T<\frac12 T.
+\]
+Thus $t\in(T/3,T/2)$, so the appended tail of $m/n$ has not yet crossed
+$T=H_{j+1}$. Choose the representation of $m/n$ (of length $s$ or $s+1$) that
+makes the terminal convergent index have parity $\epsilon_{j+1}\pmod2$, and
+then append the digit $4$. The new terminal denominator is
+\[
+u_{\mathrm{new}}=4t+t',
+\]
+where $0<t'<t$ implies
+\[
+\frac43 T<4t<u_{\mathrm{new}}=4t+t'<5t<\frac52 T,
+\]
+and the new penultimate denominator $v_{\mathrm{new}}=t$ satisfies
+$v_{\mathrm{new}}<u_{\mathrm{new}}/4$. Thus the first crossing of $T=H_{j+1}$
+occurs precisely at the appended digit $4$ (index $\tau_{j+1}=k(j+1)+1$), so the
+index immediately preceding the $4$ is indeed $k(j+1)$ and satisfies
+$k(j+1)\equiv\epsilon_{j+1}\pmod2$, while $(u_{\mathrm{new}},v_{\mathrm{new}})$
+restores the stage-$(j+1)$ invariant. Moreover, distinct coprime pairs
+$(m,n)\in\mathcal R_R$ produce stopped child cylinders with disjoint interiors:
+each child word is stopped at its first denominator crossing of $T$, so no child
+word is a prefix of another, and deleting the parent prefix and the final digit
+$4$ recovers the chosen representation of $m/n$ and hence the unique coprime
+pair $(m,n)$.
+
+\emph{Prescribed bounded increment construction.} Given a bounded sequence of
+positive integers $(m_j)$ ($1\le m_j\le M_*$), start from a stage-$j$ cylinder
+stopped at $\tau_j=k(j)+1$ with denominator $4H_j/3\le u\le5H_j/2$ and previous
+denominator $0<v<u$. Append $m_j-1$ copies of the digit $1$ (appending no digit
+if $m_j=1$), and let $u_*,v_*$ be the resulting last two denominators. By the
+Fibonacci continuant relation, $u\le u_*\le F_{m_j+1}u\le F_{M_*+1}u$, so for all
+sufficiently large $j$ we have $u_*<T/2$ ($T=H_{j+1}$), meaning none of the
+$m_j-1$ ones crosses $T$. Next choose a final digit $a\in\Z_{\ge1}$ such that
+the next denominator $u_{\mathrm{new}}=au_*+v_*$ satisfies
+\[
+\frac43 T\le au_*+v_*\le\frac52 T.
+\]
+Since $0<v_*<u_*$, this condition holds for all integers $a$ in an interval of
+length $(7/6)T/u_*\asymp j$, giving $\gg T/u_*\gg j$ eligible choices of $a$.
+For each such $a$, the first crossing of $T=H_{j+1}$ occurs at this final digit
+$a$, so $\tau_{j+1}=\tau_j+m_j$, i.e.\ $r_j=k(j+1)-k(j)=\tau_{j+1}-\tau_j=m_j$,
+and the new stopped denominator $u_{\mathrm{new}}\in[4T/3,5T/2]$ restores the
+inductive hypothesis. Note that $k(j+1)=k(j)+m_j$ is determined thereafter by
+the initial parity $k(j_0)\pmod2$ and the cumulative sums of $m_i$; in
+particular, taking $m_j\equiv3\pmod2$ alternates the parity of $k(j)$ and
+preserves the condition that $k(j)+j$ is odd.
+
+\emph{Mass distribution lower bounds.} In both constructions, assign equal
+conditional probability to the retained children of each level-$j$ stopped
+cylinder. Let $b=2$ for the full-dimensional parity construction (where each
+parent has $\gg R^2\gg j^2$ children) and $b=1$ for the prescribed-count
+construction (where each parent has $\gg j$ children). By stage $j$, the
+measure $\mu(I_j)$ of any retained stopped cylinder $I_j$ satisfies
+\[
+\mu(I_j)\le\prod_{i=j_0}^{j-1}\bigl(C_1 i^{-b}\bigr)=\exp\bigl(-bj\log j+O(j)\bigr).
+\]
+Every retained level-$j$ cylinder $I_j$ has last denominator
+$u\in[4H_j/3,5H_j/2]$, so its length $|I_j|=1/(u(u+v))$ satisfies
+$(25/2)^{-1}H_j^{-2}\le|I_j|\le(9/16)H_j^{-2}$, and the interiors of distinct
+level-$j$ cylinders are disjoint. Consequently, any interval $U\subset(0,1)$ of
+length $h\in[H_{j+1}^{-2},H_j^{-2}]$ can intersect the interiors of at most
+$\lceil h/((25/2)^{-1}H_j^{-2})\rceil+2\le 15$ level-$j$ cylinders (and its
+endpoints meet at most $2$ more). Since
+$\log(h^{-1})\le2\log H_{j+1}=2j\log j+O(j)$, for every $0<s<b/2$ we have
+\[
+\mu(U)\le 17\exp\bigl(-bj\log j+O(j)\bigr)
+=O\bigl(\exp(-2s j\log j- (b-2s)j\log j+O(j))\bigr)=O(h^s).
+\]
+By the mass distribution principle, the Hausdorff dimension is at least $b/2$
+ for every $s<b/2$, yielding $\dimH\ge1$ in the first construction (hence $=1$)
+and $\dimH\ge1/2$ in the second.
+
+\emph{Upper bound $1/2$ for eventually bounded $r_j$.} If $r_j(x)$ is
+eventually bounded, then there exist integers $C\ge1$ and $N_0\ge1$ such that
+$k(j)\le Cj$ for all $j\ge N_0$. For any $n\ge2CN_0$, setting
+$j=\lfloor n/(2C)\rfloor\ge N_0$ gives $k(j)\le Cj\le n/2<n$, so the $n$th
+convergent denominator $d_n(x)=q_n(x)$ has already passed $H_j$:
+\[
+\frac{\log d_n(x)}{n}\ge\frac{\log H_{\lfloor n/(2C)\rfloor}}{n}
+=\frac{\frac{n}{2C}\log\frac{n}{2C}+O(n)}{n}\longrightarrow\infty
+\qquad(n\to\infty).
+\]
+Thus for every $M>0$, every point $x$ with eventually bounded $r_j(x)$ satisfies
+$d_n(x)\ge\ee^{Mn}$ for all sufficiently large $n$. Fix any $s>1/2$ and choose
+$t\in(1/2,s)$. Since $d_n(a_1,\dots,a_n)\ge\prod_{i=1}^n a_i$, summing
+$d_n^{-2t}$ over all $(a_1,\dots,a_n)\in\Z_{\ge1}^n$ gives
+\[
+\sum_{a_1,\dots,a_n\ge1} d_n(a_1,\dots,a_n)^{-2t}
+\le\sum_{a_1,\dots,a_n\ge1}\prod_{i=1}^n a_i^{-2t}=\zeta(2t)^n<\infty.
+\]
+For the subfamily of level-$n$ cylinders $I(a_1,\dots,a_n)$ with
+$d_n\ge\ee^{Mn}$, each cylinder has diameter
+$|I(a_1,\dots,a_n)|\le d_n^{-2}\le\ee^{-2Mn}$, and their $s$-dimensional
+covering cost is bounded by
+\[
+\sum_{d_n\ge\ee^{Mn}}\bigl|I(a_1,\dots,a_n)\bigr|^s
+\le\sum_{d_n\ge\ee^{Mn}} d_n^{-2s}
+\le\ee^{-2M(s-t)n}\sum_{a_1,\dots,a_n\ge1} d_n^{-2t}
+\le\bigl(\zeta(2t)\ee^{-2M(s-t)}\bigr)^n.
+\]
+Choosing $M>\frac{\log\zeta(2t)}{2(s-t)}$ makes the base
+$\zeta(2t)\ee^{-2M(s-t)}<1$, so the $s$-cost tends to $0$ as $n\to\infty$.
+Taking the countable union over starting indices $N_1$ of the tail sets
+$\bigcap_{n\ge N_1}\{d_n\ge\ee^{Mn}\}$ shows that the set of points with
+eventually bounded $r_j$ has $\mathcal H^s$-measure zero for all $s>1/2$, hence
+Hausdorff dimension at most $1/2$. Together with the lower bound $1/2$, both
+sets have exact Hausdorff dimension $1/2$.
+\end{proof}
+
+For related spectra of continued-fraction growth see Fan, Liao, Wang
+and Wu~\cite{FLLW}. The lower constructions here prescribe the
+Hermite windows themselves. Removing the countable set $\Q+\Q\ee$
+leaves both dimensions unchanged. These statements concern sets of
+variable $x$ and leave the window pattern of the single point $\pi$
+undetermined (translation by its integer part preserves denominators).
+
+\subsection{Short continued-fraction windows and divergent window counts}
+
+For $x\in(0,1)\setminus\Q$, retain $H_j,k(j),r_j$ from the window
+constraints above.
+
+\begin{theorem}[Short windows at almost every point]\label{thm:short-ae}
+There is a constant $c>0$ such that for Lebesgue-almost every $x\in(0,1)$,
+\[
+ \#\{1\le j\le J:r_j(x)\le1\}\ge c\log J
+\]
+for all sufficiently large $J$ (with a starting index depending on $x$).
+\end{theorem}
+
+\begin{proof}
+For irrational $x=[0;a_1,a_2,\dots]\in(0,1)\setminus\Q$, let
+$\tau_j(x):=k(j)+1$ be the first convergent index whose denominator $q_{\tau_j}$
+strictly exceeds $H_j$. Stop each continued-fraction cylinder at index $\tau_j$
+and denote by $\mathcal F_j$ the $\sigma$-field generated by the countable
+partition of $(0,1)\setminus\Q$ into stopped cylinders
+$I(a_1,\dots,a_{\tau_j})$. Because the stopping condition is determined by the
+first crossing of $H_j$, the stopping words at level $j$ are prefix-free and cover
+$(0,1)\setminus\Q$. Since $H_j<H_{j+1}$, we have $\tau_j\le\tau_{j+1}$, so
+$\mathcal F_j\subseteq\mathcal F_{j+1}$, and the short-window event
+\[
+E_j:=\bigl\{x\in(0,1)\setminus\Q:r_j(x)=\tau_{j+1}(x)-\tau_j(x)\le1\bigr\}
+\]
+belongs to $\mathcal F_{j+1}$.
+
+Fix a stopped cylinder $I=I(a_1,\dots,a_r)$ in $\mathcal F_j$ (so $r=\tau_j$),
+and write $p/q=p_r/q_r$ and $p'/q'=p_{r-1}/q_{r-1}$ for its last two
+convergents, with $q>H_j$ and $0\le q'\le q$. Any irrational $x\in I$ is
+uniquely parameterized by its remaining tail $t=[0;a_{r+1},a_{r+2},\dots]\in(0,1)\setminus\Q$
+via the M\"obius transformation
+\[
+x=\Phi_I(t):=\frac{p+p't}{q+q't},\qquad t\in(0,1).
+\]
+Since $|pq'-p'q|=1$, the Jacobian derivative of $\Phi_I$ is
+$|\Phi'_I(t)|=(q+q't)^{-2}$, while the total Lebesgue measure of $I$ is
+$\operatorname{Leb}(I)=\int_0^1(q+q't)^{-2}\,dt=\frac{1}{q(q+q')}$. Dividing
+$|\Phi'_I(t)|$ by $\operatorname{Leb}(I)$ shows that, conditionally on $I$, the
+tail $t\in(0,1)$ has the explicit probability density
+\[
+p_I(t)=\frac{|\Phi'_I(t)|}{\operatorname{Leb}(I)}=\frac{q(q+q')}{(q+q't)^2},
+\qquad 0<t<1.
+\]
+We now bound $\mathbb P(E_j\mid I)$. There are two cases:
+\begin{itemize}[leftmargin=1.8em]
+\item If $q>H_{j+1}$, then the denominator $q_{\tau_j}=q$ has already crossed
+$H_{j+1}$, so $\tau_{j+1}=\tau_j$ and $r_j=0\le1$ identically on $I$; hence
+$\mathbb P(E_j\mid I)=1$.
+\item If $H_j<q\le H_{j+1}$, put $A:=\lfloor H_{j+1}/q\rfloor+1\ge2$, so that
+$A-1\le H_{j+1}/q<A$. Whenever the next partial quotient $a=a_{r+1}$ satisfies
+$a\ge A$, the next denominator is $q_{r+1}=aq+q'\ge Aq>H_{j+1}$, which forces
+$\tau_{j+1}=r+1=\tau_j+1$ and hence $r_j=1$ ($E_j$ occurs). In terms of the tail
+$t=[0;a,a_{r+2},\dots]\in(0,1)$, the condition $a=\lfloor 1/t\rfloor\ge A$ is
+equivalent to $0<t<1/A$ (up to the rational endpoint $1/A$). Integrating the
+conditional density $p_I(t)$ over $(0,1/A)$ gives
+\[
+\mathbb P(E_j\mid I)\ge\mathbb P(a_{r+1}\ge A\mid I)
+=\int_0^{1/A}\frac{q(q+q')}{(q+q't)^2}\,dt
+=\left[-\frac{q(q+q')}{q'(q+q't)}\right]_{t=0}^{t=1/A}
+=\frac{q+q'}{Aq+q'}.
+\]
+Because $A\ge1$ and $q'\ge0$, we have $A(q+q')=Aq+Aq'\ge Aq+q'$, so
+$\frac{q+q'}{Aq+q'}\ge\frac1A$. Moreover, since $q>H_j$ and $H_{j+1}/q\ge1$, we
+have $A=\lfloor H_{j+1}/q\rfloor+1\le\frac{H_{j+1}}{q}+1\le\frac{2H_{j+1}}{q}<\frac{2H_{j+1}}{H_j}$,
+which yields
+\[
+\mathbb P(E_j\mid I)\ge\frac{q+q'}{Aq+q'}\ge\frac1A\ge\frac{H_j}{2H_{j+1}}.
+\]
+\end{itemize}
+Since $H_j/(2H_{j+1})<1$, the bound $\mathbb P(E_j\mid I)\ge H_j/(2H_{j+1})$
+holds in the first case $q>H_{j+1}$ as well, and therefore holds uniformly on
+every atom $I$ of $\mathcal F_j$:
+\[
+\mathbb P(E_j\mid\mathcal F_j)\ge\frac{H_j}{2H_{j+1}}.
+\]
+By \eqref{eq:rec} and $H_j=\lfloor Q_j\sqrt j\rfloor$, we have
+$H_{j+1}/H_j=4j+O(1)$, so there exist an index $j_0\ge1$ and a constant
+$c_0>0$ such that
+\[
+\mathbb P(E_j\mid\mathcal F_j)\ge\frac{c_0}{j}\qquad\text{almost surely for all }j\ge j_0.
+\]
+
+Write $Z_J:=\sum_{j=1}^J\mathbf 1_{E_j}$. Since $E_1,\dots,E_{j-1}$ are
+$\mathcal F_j$-measurable, $Z_{j-1}$ is $\mathcal F_j$-measurable, while on binary
+indicators $\mathbf 1_{E_j}\in\{0,1\}$ we have the exact identity
+$\ee^{-\mathbf 1_{E_j}}=1-(1-\ee^{-1})\mathbf 1_{E_j}$. Using $1-u\le\ee^{-u}$
+for all $u\in\R$, the one-step conditional expectation for $j\ge j_0$ satisfies
+\[
+\mathbb E\bigl[\ee^{-\mathbf 1_{E_j}}\bigm|\mathcal F_j\bigr]
+=1-(1-\ee^{-1})\mathbb P(E_j\mid\mathcal F_j)
+\le 1-\frac{(1-\ee^{-1})c_0}{j}
+\le\exp\left(-\frac{b}{j}\right),\qquad b:=(1-\ee^{-1})c_0>0.
+\]
+Iterating the tower property $\mathbb E[\ee^{-Z_j}]=\mathbb E\bigl[\ee^{-Z_{j-1}}\mathbb E[\ee^{-\mathbf 1_{E_j}}\mid\mathcal F_j]\bigr]$
+from $j=j_0$ to $J$ and using $\sum_{j=j_0}^J\frac1j\ge\log J-\log j_0$ gives
+\[
+\mathbb E\bigl[\ee^{-Z_J}\bigr]
+\le\exp\left(-b\sum_{j=j_0}^J\frac1j\right)
+\le C J^{-b},\qquad C:=\ee^{b\log j_0}.
+\]
+By Markov's inequality applied to the nonnegative random variable $\ee^{-Z_J}$,
+\[
+\mathbb P\left(Z_J<\frac{b}{2}\log J\right)
+=\mathbb P\left(\ee^{-Z_J}>J^{-b/2}\right)
+\le J^{b/2}\mathbb E\bigl[\ee^{-Z_J}\bigr]
+\le C J^{-b/2}.
+\]
+Evaluating along the dyadic subsequence $J_m:=2^m$ ($m\ge1$), the probabilities
+$\mathbb P(Z_{2^m}<(b/2)\log(2^m))\le C\cdot(2^{-b/2})^m$ form a convergent
+geometric series $\sum_{m=1}^\infty C(2^{-b/2})^m<\infty$ since $b>0$. By the
+first Borel--Cantelli lemma, for Lebesgue-almost every $x\in(0,1)$ there exists
+$m_0(x)\ge2$ such that $Z_{2^m}(x)\ge\frac{b}{2}\log(2^m)$ for all
+$m\ge m_0(x)$. Finally, for any integer $J\ge 2^{m_0(x)}$, choose $m\ge m_0(x)$
+with $2^m\le J<2^{m+1}$; since $J\mapsto Z_J(x)$ is nondecreasing and
+$m\ge\frac{m+1}{2}>\frac{\log_2 J}{2}$ for $m\ge1$, we obtain
+\[
+Z_J(x)\ge Z_{2^m}(x)\ge\frac{b}{2}\log(2^m)>\frac{b}{4}\log(2^{m+1})>\frac{b}{4}\log J,
+\]
+proving the theorem with $c:=b/4>0$.
+\end{proof}
+
+The argument applies to any increasing integer thresholds tending to
+infinity with successive ratios $O(j)$. The estimate concerns
+Lebesgue measure on the variable $x$ and supplies a frequency bound
+for the short-window criterion of the Phase-1 project.
+
+\begin{theorem}[Full dimension for divergent window counts]\label{thm:no-short-dim}
+Let $\varphi=(1+\sqrt5)/2$ and prescribe arbitrary
+$\epsilon_j\in\{0,1\}$. For any $0<\eta<1/\log\varphi$, the set of
+$x\in(0,1)$ satisfying both $r_j(x)\ge\eta\log j$ and
+$k(j)\equiv\epsilon_j\pmod2$ eventually has Hausdorff dimension at
+least $1-\eta\log\varphi$. The set satisfying the prescribed
+eventual parity and $r_j(x)\to\infty$ has Hausdorff dimension one
+and Lebesgue measure zero.
+\end{theorem}
+
+\begin{proof}
+We modify the stopped-cylinder construction of Theorem~\ref{thm:windows},
+initialized at a large stage $j_0$ with the prescribed parity
+$k(j_0)\equiv\epsilon_{j_0}\pmod2$. At stage $j\ge j_0$, a retained cylinder ends
+at index $\tau_j=k(j)+1$ with last partial quotient $a_{\tau_j}=4$ and last two
+denominators $u=q_{\tau_j}$ and $v=q_{\tau_j-1}$, where
+\[
+\frac43 H_j\le u\le\frac52 H_j,\qquad 0<v\le\frac{u}{4}.
+\]
+First append $\ell_j:=\lceil\eta\log j\rceil$ partial quotients equal to $1$.
+Write $u':=q_{\tau_j+\ell_j}$ and $v':=q_{\tau_j+\ell_j-1}$ for the resulting
+last two denominators. Since multiplication by $\begin{pmatrix}1 & 1\\ 1 & 0\end{pmatrix}^{\ell_j}
+=\begin{pmatrix}F_{\ell_j+1} & F_{\ell_j}\\ F_{\ell_j} & F_{\ell_j-1}\end{pmatrix}$
+governs the denominator recurrence during a block of $\ell_j$ ones (where
+$F_0=0,F_1=1,F_{i+1}=F_i+F_{i-1}$ are the Fibonacci numbers), we have
+\[
+\begin{pmatrix}u'\\ v'\end{pmatrix}
+=\begin{pmatrix}F_{\ell_j+1} & F_{\ell_j}\\ F_{\ell_j} & F_{\ell_j-1}\end{pmatrix}
+\begin{pmatrix}u\\ v\end{pmatrix},
+\]
+so $0<v'\le u'$ and, using $v\le u$ and $F_{\ell_j+1}+F_{\ell_j}=F_{\ell_j+2}\le\varphi^{\ell_j+1}$,
+\[
+u\le u'=F_{\ell_j+1}u+F_{\ell_j}v\le F_{\ell_j+2}u\le\varphi^{\ell_j+1}u
+\le\varphi^2 j^{\eta\log\varphi}u.
+\]
+With $T:=H_{j+1}$ and $H_{j+1}/H_j=4j+O(1)$, the remaining scale ratio
+$R:=T/u'$ satisfies
+\[
+R=\frac{T}{u'}\ge\frac{H_{j+1}}{\varphi^2 j^{\eta\log\varphi}\cdot(5H_j/2)}
+\ge c_1 j^{1-\eta\log\varphi}
+\]
+for a constant $c_1>0$. Since $0<\eta<1/\log\varphi$, the exponent
+$\gamma:=1-\eta\log\varphi>0$ is strictly positive, so $R\to\infty$ uniformly as
+$j\to\infty$; in particular, $u'=T/R<T$ for all large $j$, so the prelude of
+$\ell_j$ ones stays strictly below $T$.
+
+Next, choose coprime positive integers $(m,n)$ in the rectangle
+\[
+\mathcal R'_R:=\bigl[0.34R,0.35R\bigr]\times\bigl[0.12R,0.13R\bigr]\cap\Z^2.
+\]
+By the same M\"obius inversion calculation as in Theorem~\ref{thm:windows}, the
+number of coprime pairs $(m,n)\in\mathcal R'_R$ is
+$\frac{0.01\times0.01}{\zeta(2)}R^2+O(R\log R)\gg R^2\ge c_2 j^{2\gamma}$. For
+every $(m,n)\in\mathcal R'_R$, the quotient $m/n$ satisfies
+\[
+2<\frac{34}{13}=\frac{0.34R}{0.13R}\le\frac{m}{n}\le\frac{0.35R}{0.12R}=\frac{35}{12}<3.
+\]
+Thus $m/n\in(2,3)$ has first partial quotient $\lfloor m/n\rfloor=2$ and two
+finite regular continued-fraction representations of opposite lengths modulo
+two (both of length at least $2$). Append the digits of $m/n$ using the
+representation whose terminal convergent index has parity
+$\epsilon_{j+1}\pmod2$. As shown in Theorem~\ref{thm:windows}, both
+representations produce the same terminal denominator
+\[
+t=mu'+nv'
+\]
+(and all intermediate denominators along the tail of $m/n$ are at most $t$).
+Using $0.34R\le m\le0.35R$, $0.12R\le n\le0.13R$, $0<v'\le u'$, and $Ru'=T$, we
+obtain
+\[
+\frac13 T<0.34T=0.34Ru'<t=mu'+nv'\le(0.35+0.13)Ru'=0.48T<\frac12 T.
+\]
+Thus $t\in(T/3,T/2)$ stays below $T=H_{j+1}$. Now append the final digit $4$.
+The new denominator is $u_{\mathrm{new}}=4t+t'$ with $0<t'<t$, so
+\[
+\frac43 T<4t<u_{\mathrm{new}}=4t+t'<5t<\frac52 T
+\]
+and $v_{\mathrm{new}}=t<u_{\mathrm{new}}/4$. Hence the first crossing of
+$T=H_{j+1}$ occurs at this final digit $4$ (index $\tau_{j+1}=k(j+1)+1$), so the
+index immediately before the $4$ is $k(j+1)$ with
+$k(j+1)\equiv\epsilon_{j+1}\pmod2$, and the window increment satisfies
+\[
+r_j=\tau_{j+1}-\tau_j=\ell_j+\operatorname{len}(m/n)+1\ge\ell_j+3>\eta\log j.
+\]
+Distinct coprime pairs $(m,n)\in\mathcal R'_R$ produce stopped child cylinders
+with disjoint interiors because each child stops at its first crossing of $T$,
+and deleting the parent prefix, the fixed prelude of $\ell_j$ ones, and the
+terminal digit $4$ uniquely recovers the chosen representation of $m/n$.
+
+Since each stage-$j$ parent has at least $c_2 j^{2\gamma}$ children, assigning
+equal conditional masses gives each level-$j$ stopped cylinder a measure at most
+$\prod_{i=j_0}^{j-1}(c_2^{-1}i^{-2\gamma})=\exp(-2\gamma j\log j+O(j))$, while
+its length is comparable to $H_j^{-2}$. As in Theorem~\ref{thm:windows}, any
+interval of length $h\in[H_{j+1}^{-2},H_j^{-2}]$ meets at most $17$ level-$j$
+cylinders, and since $\log H_{j+1}=j\log j+O(j)$, its measure is $O(h^s)$ for
+every $0<s<\gamma$. The mass distribution principle yields Hausdorff dimension
+at least $\gamma=1-\eta\log\varphi$. Finally, every point in the constructed
+set for a given $\eta>0$ satisfies $r_j(x)\ge\eta\log j\to\infty$ and
+$k(j)\equiv\epsilon_j\pmod2$ eventually, so the set with $r_j(x)\to\infty$ and
+prescribed eventual parity contains these sets for all $\eta\in(0,1/\log\varphi)$;
+letting $\eta\downarrow0$ shows that it has Hausdorff dimension~$1$, while
+Theorem~\ref{thm:short-ae} implies that it has Lebesgue measure zero (since
+almost every $x$ has $r_j(x)\le1$ infinitely often).
+\end{proof}
+
+\begin{remark}[Machine-checked counting core, Frostman assembly, CF tree realizations, regular CF bridge, bounded-window upper bound, and almost-everywhere short windows for Theorems~\ref{thm:windows}--\ref{thm:no-short-dim}]\label{rem:windows-lean}
+The M\"obius counting cores, the stopped-tree Frostman dimension assembly, all three concrete continued-fraction stopped-cylinder tree realizations, the pointwise regular continued-fraction bridge into mathlib's \texttt{GenContFract.of}, the $\dimH\le1/2$ upper bound for eventually bounded window counts, and the measure-theoretic instantiation of Theorem~\ref{thm:short-ae} together with the Lebesgue-nullity deduction of Theorem~\ref{thm:no-short-dim} (completing all of Theorems~\ref{thm:windows}, \ref{thm:short-ae}, and~\ref{thm:no-short-dim} at Layer~A) have been verified by the Lean~4 kernel (Lean~4.35.0 with mathlib~v4.35.0):
+(i)~the M\"obius inversion identity \texttt{WindowMobiusCount.\allowbreak coprime\_\allowbreak count\_\allowbreak eq}, the partial-sum lower bound $359/900$ (\texttt{moebius\_\allowbreak partial}), and the rectangle-counting lower bounds $R^2/10000$ (\texttt{WindowMobiusCount.\allowbreak coprime\_\allowbreak count\_\allowbreak ge} on $[0.34R,0.36R]\times[0.20R,0.22R]$) and $R^2/100000$ (\texttt{NoShortDim.\allowbreak coprimeS\_\allowbreak count\_\allowbreak ge} on $[0.34R,0.35R]\times[0.12R,0.13R]$) for $R\ge10^6$;
+(ii)~the scale growth and inverse-square decay of $H_j=\lfloor Q_j\sqrt{j}\rfloor$ (\texttt{WindowPaperScale.\allowbreak Hpaper\_\allowbreak inv\_\allowbreak sq\_\allowbreak tendsto}, \texttt{Hpaper\_\allowbreak log\_\allowbreak le}), the uniform-branching pruning and Cantor double-counting lemmas (\texttt{WindowTreePrune.*}), the real-exponent asymptotic Frostman threshold (\texttt{WindowAsympThresh.\allowbreak asymp\_\allowbreak thresh\_\allowbreak exists\_\allowbreak rpow}), and the full per-window Frostman discharge (\texttt{WindowFrostmanDischarge.\allowbreak frostman\_\allowbreak of\_\allowbreak uniform\_\allowbreak tree}, \texttt{dimH\_\allowbreak ge\_\allowbreak of\_\allowbreak stopped\_\allowbreak tree\_\allowbreak rpow}) instantiated at the paper scale~$H_j$ in \texttt{WindowPaperScale.\allowbreak dimH\_\allowbreak ge\_\allowbreak one\_\allowbreak windows\_\allowbreak paper\_\allowbreak scale} ($b=2$, $\dimH\ge 1$), \texttt{dimH\_\allowbreak ge\_\allowbreak half\_\allowbreak prescribed\_\allowbreak paper\_\allowbreak scale} ($b=1$, $\dimH\ge 1/2$), and \texttt{dimH\_\allowbreak ge\_\allowbreak gamma\_\allowbreak no\_\allowbreak short\_\allowbreak paper\_\allowbreak scale} / \texttt{dimH\_\allowbreak ge\_\allowbreak one\_\allowbreak of\_\allowbreak gamma\_\allowbreak family} ($\dimH\ge 1-\eta\log\varphi\uparrow 1$), together with concrete tree- and measure-based non-vacuity witnesses (\texttt{WindowPaperScale.\allowbreak nonvacuous\_\allowbreak factorial\_\allowbreak tree\_\allowbreak dimH}, \texttt{nonvacuous\_\allowbreak factorial\_\allowbreak measure\_\allowbreak dimH}) and the local-scale / cascade measure bounds (\texttt{WindowFrostmanDischarge.\allowbreak mass\_\allowbreak distrib\_\allowbreak of\_\allowbreak local\_\allowbreak diam\_\allowbreak bound}, \texttt{mu\_\allowbreak window\_\allowbreak cascade\_\allowbreak full}, \texttt{dimH\_\allowbreak ge\_\allowbreak of\_\allowbreak mu\_\allowbreak window\_\allowbreak cascade});
+(iii)~the concrete continued-fraction stopped-cylinder tree \texttt{WindowCFRealize.\allowbreak cfWindowsTree} for Theorem~\ref{thm:windows} (constructed via \texttt{euclidCF}, parity twin \texttt{flipLast}, and cylinder geometry \texttt{cylPair}), discharging every tree-interface hypothesis unconditionally (\texttt{WindowCFRealize.\allowbreak dimH\_\allowbreak ge\_\allowbreak one\_\allowbreak cfWindowsTree});
+(iv)~the pointwise regular continued-fraction bridge in \texttt{WindowCFBridge.lean} ($20$ audited declarations), proving strict cylinder nesting (\texttt{cylPair\_\allowbreak nest\_\allowbreak strict}), open-cylinder M\"obius inversion (\texttt{exists\_\allowbreak mobius\_\allowbreak of\_\allowbreak mem\_\allowbreak Ioo\_\allowbreak cylPair}), exact partial-quotient and convergent-denominator identification with mathlib's \texttt{GenContFract.of} (\texttt{stream\_\allowbreak mobius\_\allowbreak spec}, \texttt{contsAux\_\allowbreak mobius\_\allowbreak eq}, \texttt{dens\_\allowbreak mobius\_\allowbreak eq}, \texttt{dens\_\allowbreak of\_\allowbreak mono}), irrationality and regular CF stopping index \texttt{cfStopIdx} (defined directly against \texttt{NoShortDim.H j} $=\lfloor Q_j\sqrt{j}\rfloor$) matching for any stopped CF word tree (\texttt{stopped\_\allowbreak word\_\allowbreak tree\_\allowbreak cf\_\allowbreak bridge}), and the end-to-end Theorem~\ref{thm:windows} exact parity dimension $\dimH(\texttt{prescribedParitySet}\,\epsilon)=1$ (\texttt{WindowCFBridge.\allowbreak dimH\_\allowbreak prescribedParitySet\_\allowbreak eq\_\allowbreak one});
+(v)~the concrete prelude-of-ones CF tree \texttt{WindowNoShortCFRealize.\allowbreak cfNoShortTree} for Theorem~\ref{thm:no-short-dim} ($18$ audited declarations, discharging \texttt{dimH\_\allowbreak ge\_\allowbreak gamma\_\allowbreak no\_\allowbreak short\_\allowbreak paper\_\allowbreak scale} and proving \texttt{dimH\_\allowbreak ge\_\allowbreak gamma\_\allowbreak noShortSet} and exact $\dimH(\texttt{divWindowSet}\,\epsilon)=1$ in \texttt{dimH\_\allowbreak divWindowSet\_\allowbreak eq\_\allowbreak one} unconditionally via $\eta\downarrow0$) and the concrete $b=1$ prescribed-count CF tree \texttt{WindowPrescribedCFRealize.\allowbreak cfPrescribedTree} for Theorem~\ref{thm:windows} ($16$ audited declarations, discharging \texttt{dimH\_\allowbreak ge\_\allowbreak half\_\allowbreak prescribed\_\allowbreak paper\_\allowbreak scale} and proving \texttt{prescribedIncSetAt\_\allowbreak disjoint}, \texttt{dimH\_\allowbreak ge\_\allowbreak half\_\allowbreak prescribedIncSetAt} / \texttt{exists\_\allowbreak start\_\allowbreak dimH\_\allowbreak ge\_\allowbreak half\_\allowbreak prescribedIncSetAt} for both disjoint initial parities at a fixed starting index, \texttt{dimH\_\allowbreak ge\_\allowbreak half\_\allowbreak prescribedIncSet}, and \texttt{dimH\_\allowbreak ge\_\allowbreak half\_\allowbreak boundedIncSet} unconditionally);
+(vi)~the bounded-window upper bound and exact $1/2$-dimension closure in \texttt{WindowBoundedUpper.lean} ($21$ audited declarations), proving finite-word denominator product and length lower bounds (\texttt{cfProd\_\allowbreak den\_\allowbreak ge\_\allowbreak length}, \texttt{cfProd\_\allowbreak den\_\allowbreak ge\_\allowbreak prod}), the factorial growth bound on~$H_j$ (\texttt{Hpaper\_\allowbreak ge\_\allowbreak fact}), super-exponential denominator growth on \texttt{boundedIncSet} (\texttt{boundedIncSet\_\allowbreak dens\_\allowbreak exp\_\allowbreak growth}), level-$n$ cylinder covering and $\zeta(2t)^n$ \texttt{ENNReal} \texttt{tsum} bounds (\texttt{exists\_\allowbreak word\_\allowbreak cover\_\allowbreak of\_\allowbreak irrational}, \texttt{tsum\_\allowbreak cfProd\_\allowbreak den\_\allowbreak rpow\_\allowbreak le}), $\mathcal H^s$-nullity for every $s>1/2$ (\texttt{hausdorffMeasure\_\allowbreak boundedIncSet\_\allowbreak zero}), and the exact identities \texttt{dimH\_\allowbreak boundedIncSet\_\allowbreak le\_\allowbreak half}, \texttt{dimH\_\allowbreak boundedIncSet\_\allowbreak eq\_\allowbreak half}, \texttt{dimH\_\allowbreak prescribedIncSet\_\allowbreak eq\_\allowbreak half}, and \texttt{dimH\_\allowbreak prescribedIncSetAt\_\allowbreak eq\_\allowbreak half}, completing Layer~A verification of all of Theorem~\ref{thm:windows};
+(vii)~the full measure-theoretic realization of Theorem~\ref{thm:short-ae} and the Lebesgue-nullity deduction in Theorem~\ref{thm:no-short-dim} in \texttt{WindowShortAeRealize.lean} ($14$ audited declarations): prefix-free stopped-word cylinder partitions of $(0,1)\setminus\Q$, constancy of \texttt{cfStopIdx} on stopped cylinders, measurability of the short-window events $E_j$, the explicit atom conditional volume lower bound $1/(40j)$ for $j\ge3$, the exponential step inequality yielding the explicit constant $c=(1-\ee^{-1})/160>0$ in \texttt{thm\_\allowbreak short\_\allowbreak ae\_\allowbreak explicit} and \texttt{thm\_\allowbreak short\_\allowbreak ae}, and the complete conjunction $\dimH(\texttt{divWindowSet}\,\epsilon)=1\wedge\operatorname{Leb}(\texttt{divWindowSet}\,\epsilon)=0$ in \texttt{volume\_\allowbreak divWindowSet\_\allowbreak eq\_\allowbreak zero} and \texttt{thm\_\allowbreak no\_\allowbreak short\_\allowbreak dim\_\allowbreak complete}.
+All declarations in these modules depend only on the Lean base axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, as audited with \texttt{\#print axioms} in \texttt{Audit.lean} (see \texttt{verification/\allowbreak audit\_\allowbreak final\_\allowbreak 20261122.log}, $872$ audited declarations across $131$ Lean files with zero \texttt{sorryAx} and zero project-added axioms).
+\end{remark}
+
+In particular, the set with eventually $r_j\ge3$ has Lebesgue
+measure zero and full Hausdorff dimension~$1$. The same is true if one
+also imposes any prescribed parity of the terminal convergent
+indices.
+
+\subsection{Eventual periodicity of digit residues}
+
+For irrational $x=[0;a_1,a_2,\ldots]$ in $(0,1)$ let $E$ consist of
+the points for which $(a_i\bmod4)$ is eventually periodic. Let $F$
+consist of points with every digit in $\mathcal A=\{1,5,9,\ldots\}$.
+Continued fractions with a fixed arithmetic-progression alphabet are
+studied by Chousionis, Leykekhman and Urba\'nski~\cite{CLU}. Here
+we compare different sequences of allowed residues, including sequences
+that change from one position to the next.
+
+\begin{theorem}[Digit residues modulo four]\label{thm:residues}
+$\dimH E=\dimH F$, with $357/512<\dimH F<359/512$.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: Uniform Lipschitz equivalence and $\dimH E=\dimH F$.}
+Fix any sequence of residue shifts $\mathbf c=(c_1,c_2,\dots)\in\{0,1,2,3\}^{\N}$,
+and define the digit-shift map $\Psi_{\mathbf c}:F\to(0,1)\setminus\Q$ by
+\[
+\Psi_{\mathbf c}\bigl([0;a_1,a_2,\dots]\bigr):=[0;a_1+c_1,a_2+c_2,\dots]
+\qquad(a_i\in\mathcal A=\{1,5,9,\dots\}).
+\]
+We prove that $\Psi_{\mathbf c}$ is Lipschitz on $F$ with Lipschitz constant
+$40/3$, \emph{uniformly} over all shift sequences $\mathbf c$. Let
+$x=[0;a_1,a_2,\dots]$ and $y=[0;b_1,b_2,\dots]$ be two distinct points of $F$,
+and let $n\ge0$ be the length of their longest common prefix (so $a_i=b_i$ for
+$1\le i\le n$ and $a_{n+1}\ne b_{n+1}$). By symmetry we may assume
+$a:=a_{n+1}<b:=b_{n+1}$. Since $a,b\in\mathcal A=\{1,5,9,\dots\}$ are distinct
+positive integers congruent to $1\bmod4$, we have $a\ge1$ and $b-a\ge4$ (in
+particular $b\ge5$). Write the source tails starting at position $n+1$ as
+\[
+x_t:=[0;a,x_1]=\frac{1}{a+x_1},\qquad
+y_t:=[0;b,y_1]=\frac{1}{b+y_1}\qquad\bigl(x_1,y_1\in(0,1)\bigr),
+\]
+and the shifted image tails as
+\begin{align*}
+x'_t&:=[0;a+c,x'_1]=\frac{1}{a+c+x'_1},\\
+y'_t&:=[0;b+c,y'_1]=\frac{1}{b+c+y'_1}\qquad\bigl(c:=c_{n+1}\in\{0,1,2,3\},\ x'_1,y'_1\in(0,1)\bigr).
+\end{align*}
+Since $0<x_1,y_1<1$ and $a+1<b$, the source tail distance is bounded below by
+\[
+|x_t-y_t|=\frac{1}{a+x_1}-\frac{1}{b+y_1}
+>\frac{1}{a+1}-\frac{1}{b}=\frac{b-a-1}{(a+1)b}>0.
+\]
+Similarly, since $0<x'_1,y'_1<1$ and $c\ge0$, the shifted tail distance is
+bounded above by
+\[
+|x'_t-y'_t|=\frac{1}{a+c+x'_1}-\frac{1}{b+c+y'_1}
+<\frac{1}{a+c}-\frac{1}{b+c+1}=\frac{b-a+1}{(a+c)(b+c+1)}
+\le\frac{b-a+1}{a(b+1)}.
+\]
+Combining these two inequalities bounds the tail distance ratio by
+\[
+\frac{|x'_t-y'_t|}{|x_t-y_t|}
+\le\frac{b-a+1}{b-a-1}\cdot\frac{(a+1)b}{a(b+1)}.
+\]
+Put $d:=b-a\ge4$. Then $\frac{d+1}{d-1}=1+\frac{2}{d-1}$ is strictly decreasing
+in $d\ge4$, so $\frac{b-a+1}{b-a-1}\le\frac{4+1}{4-1}=\frac53$. Moreover,
+since $b\ge a+4$ and $a\ge1$, we have
+\[
+\frac{(a+1)b}{a(b+1)}
+=\frac{a+1}{a}\cdot\frac{b}{b+1}
+<2\cdot1=2
+\quad\left(\text{and in fact }\frac{b-a+1}{b-a-1}\frac{(a+1)b}{a(b+1)}\le\frac53\cdot\frac{2\cdot5}{1\cdot6}=\frac{50}{18}<\frac{10}{3}\right),
+\]
+so in all cases
+\[
+|x'_t-y'_t|\le\frac{10}{3}|x_t-y_t|.
+\]
+Now restore the common prefix of length $n$. For the source points,
+$x=M(x_t)$ and $y=M(y_t)$, where $M(t)=\frac{p_n+p_{n-1}t}{q_n+q_{n-1}t}$ is the
+M\"obius map of the common prefix $(a_1,\dots,a_n)$, with last denominator
+$q:=q_n\ge1$ and previous denominator $0\le q_{n-1}\le q$. For all $t\in[0,1]$,
+$q\le q+q_{n-1}t\le 2q$, so the derivative $|M'(t)|=(q+q_{n-1}t)^{-2}$ satisfies
+\[
+\frac{1}{4q^2}\le |M'(t)|\le\frac{1}{q^2}\qquad\text{for all }t\in[0,1].
+\]
+By the mean value theorem, $|x-y|=|M(x_t)-M(y_t)|\ge\frac{1}{4q^2}|x_t-y_t|$.
+For the shifted points, $\Psi_{\mathbf c}(x)=M'(x'_t)$ and
+$\Psi_{\mathbf c}(y)=M'(y'_t)$, where $M'$ is the M\"obius map of the shifted
+prefix $(a_1+c_1,\dots,a_n+c_n)$ with last denominator $q_{\mathrm{new}}$.
+Because the continuant $q_n(d_1,\dots,d_n)$ is strictly increasing in each
+partial quotient $d_i\ge1$ and $a_i+c_i\ge a_i$, we have
+$q_{\mathrm{new}}\ge q$, and the mean value theorem gives
+\[
+\bigl|\Psi_{\mathbf c}(x)-\Psi_{\mathbf c}(y)\bigr|
+=\bigl|M'(x'_t)-M'(y'_t)\bigr|
+\le\frac{1}{q_{\mathrm{new}}^2}|x'_t-y'_t|
+\le\frac{1}{q^2}|x'_t-y'_t|.
+\]
+Combining the prefix and tail bounds yields the uniform Lipschitz inequality
+\[
+\bigl|\Psi_{\mathbf c}(x)-\Psi_{\mathbf c}(y)\bigr|
+\le\frac{1}{q^2}\cdot\frac{10}{3}|x_t-y_t|
+\le 4\cdot\frac{10}{3}|x-y|=\frac{40}{3}|x-y|\qquad\text{for all }x,y\in F.
+\]
+Hence $\dimH\Psi_{\mathbf c}(F)\le\dimH F$ for every shift sequence
+$\mathbf c\in\{0,1,2,3\}^{\N}$. Conversely, every point
+$x=[0;d_1,d_2,\ldots]\in E$ has $(d_i\bmod4)$ eventually periodic; setting
+$c_i:=(d_i-1)\bmod4\in\{0,1,2,3\}$ gives an eventually periodic sequence
+$\mathbf c=(c_1,c_2,\dots)\in\{0,1,2,3\}^{\N}$ such that
+$a_i:=d_i-c_i=4\lfloor(d_i-1)/4\rfloor+1\in\mathcal A$ for every $i\ge1$, so
+$x=\Psi_{\mathbf c}([0;a_1,a_2,\dots])\in\Psi_{\mathbf c}(F)$. Thus $E$ is the
+union of $\Psi_{\mathbf c}(F)$ over the countable set of eventually periodic
+sequences $\mathbf c\in\{0,1,2,3\}^{\N}$ (each determined by a preperiod length,
+a period length, and finitely many residues in $\{0,1,2,3\}$). Countable
+stability gives $\dimH E\le\dimH F$, while $F\subset E$ (corresponding to
+$c_i\equiv0$) gives $\dimH F\le\dimH E$. Therefore $\dimH E=\dimH F$.
+
+\emph{Step 2: Transfer operator, Bowen's formula, and integral tail bounds.}
+For the numerical bounds on $\dimH F$, let $f_a(x)=1/(a+x)$ for $0\le x\le1$.
+For an alphabet $\mathcal D\subseteq\mathcal A$ and $s>1/2$ define the
+Perron--Frobenius transfer operator on bounded positive functions $v:[0,1]\to(0,\infty)$
+by
+\[
+ (\mathcal L_{s,\mathcal D}v)(x)
+   =\sum_{a\in\mathcal D}(a+x)^{-2s}v(f_a(x)).
+\]
+The topological pressure $P(s,\mathcal D)$ is the limit of
+$n^{-1}\log(\mathcal L_{s,\mathcal D}^n1)(0)$ as $n\to\infty$.
+Indeed, the derivative of an $n$-letter cylinder map
+$f_{a_1}\circ\cdots\circ f_{a_n}(x)$ has magnitude $(q_n+xq_{n-1})^{-2}$, which
+is maximal at $x=0$ and varies by at most a factor of $4$ on $[0,1]$. The
+pressure $s\mapsto P(s,\mathcal D)$ is continuous and strictly decreasing on
+$(1/2,\infty)$, and Bowen's formula identifies its unique zero with the
+Hausdorff dimension of the limit set coded by $\mathcal D$
+\cite[\S2, Theorem~2.3]{CLU}. To satisfy the strict uniform contraction
+convention in that reference (since $f_1'(0)=-1$), one passes to the system of
+all two-letter branches $f_a\circ f_b$ ($a,b\in\mathcal D$): their derivatives
+satisfy $|(f_a\circ f_b)'(x)|=(ab+ax+1)^{-2}\le(1\cdot1+0+1)^{-2}=1/4<1$ on
+$[0,1]$, their cylinder interiors are disjoint, their transfer operator is
+$\mathcal L_{s,\mathcal D}^2$ (so its pressure is $2P(s,\mathcal D)$, with the
+same zero), and the limit set coded by paired words in $\mathcal D^2$ is
+identical to the limit set coded by $\mathcal D$.
+
+For any bounded positive function $v:[0,1]\to(0,\infty)$ with
+$\inf_{[0,1]}v>0$, a uniform pointwise upper inequality
+$\mathcal L_{s,\mathcal D}v\le(1-\eta)v$ on $[0,1]$ ($0<\eta<1$) forces
+$P(s,\mathcal D)\le\log(1-\eta)<0$: by positivity of $\mathcal L_{s,\mathcal D}$,
+iteration gives $\mathcal L_{s,\mathcal D}^n v\le(1-\eta)^n v$, and comparing $1$
+with $v/\inf v$ yields
+$(\mathcal L_{s,\mathcal D}^n1)(0)\le(1-\eta)^n v(0)/\inf v$.
+Likewise, a uniform pointwise lower inequality
+$\mathcal L_{s,\mathcal D}v\ge(1+\eta)v$ on $[0,1]$ ($\eta>0$) forces
+$(\mathcal L_{s,\mathcal D}^n1)(0)\ge(1+\eta)^n v(0)/\sup v$ and hence
+$P(s,\mathcal D)\ge\log(1+\eta)>0$. We apply the lower test at $s=357/512$ to
+the finite subalphabet $\mathcal D_N:=\{4k+1:0\le k<N\}$ with $N=2^{24}$ (whose
+limit set is contained in $F$, so $\dimH F\ge\dimH F_{\mathcal D_N}>357/512$),
+and the upper test at $s=359/512$ to the full alphabet $\mathcal D=\mathcal A$
+(certifying $\dimH F<359/512$).
+
+In both tests, $v$ is chosen as a positive step function on the $256$ uniform
+grid cells $C_j=[l_j,u_j)=[j/256,(j+1)/256)$ ($0\le j\le254$) and
+$C_{255}=[255/256,1]$. On a cell $[l,u]$, for each explicit branch $a=4k+1$
+($0\le k<64$) and $x\in[l,u]$, the weight $(a+x)^{-2s}$ is decreasing in $x$
+and thus lies in $[(a+u)^{-2s},(a+l)^{-2s}]$, while $f_a(x)=1/(a+x)$ lies in the
+closed image interval $[f_a(u),f_a(l)]=[1/(a+u),1/(a+l)]$; we bound $v(f_a(x))$
+from below and above by the minimum and maximum of $v$ over all grid cells
+intersected by $[f_a(u),f_a(l)]$. For all tail indices $k\ge64$, the digit is
+$a=4k+1\ge257>256$, so for every $x\in[0,1]$ the image point satisfies
+$0<f_a(x)=1/(4k+1+x)\le 1/257<1/256$ and therefore falls strictly inside the
+first cell $C_0=[0,1/256)$, where $v$ takes the constant value $v_0$. Putting
+$p:=2s>1$, we bound the tail sums over $k\ge64$ by monotone integral comparison:
+for every $x\in[0,1]$ and every $t\in[k,k+1]$, we have
+$4k+1+x\le 4k+2\le 4t+2$, so
+\[
+(4k+1+x)^{-p}\ge(4k+2)^{-p}\ge\int_k^{k+1}(4t+2)^{-p}\,dt,
+\]
+and summing from $k=64$ to $N-1$ (where $4\cdot64+2=258$) gives the lower tail
+bound
+\[
+ \sum_{k=64}^{N-1}(4k+1+x)^{-p}v_0
+ \ge v_0\int_{64}^N(4t+2)^{-p}\,dt
+ =v_0\left[\frac{(4t+2)^{1-p}}{4(1-p)}\right]_{t=64}^{t=N}
+ =v_0\,\frac{258^{1-p}-(4N+2)^{1-p}}{4(p-1)}.
+\]
+In the opposite direction, for every $x\in[0,1]$ and every $t\in[k-1,k]$, we
+have $4k+1+x\ge 4k+1\ge 4t+1$, so
+\[
+(4k+1+x)^{-p}\le(4k+1)^{-p}\le\int_{k-1}^k(4t+1)^{-p}\,dt,
+\]
+and summing from $k=64$ to $\infty$ (where $4\cdot63+1=253$) gives the upper
+tail bound
+\[
+ \sum_{k=64}^{\infty}(4k+1+x)^{-p}v_0
+ \le v_0\int_{63}^\infty(4t+1)^{-p}\,dt
+ =v_0\left[\frac{(4t+1)^{1-p}}{4(1-p)}\right]_{t=63}^{t=\infty}
+ =v_0\,\frac{253^{1-p}}{4(p-1)} .
+\]
+
+\emph{Step 3: Exact integer-arithmetic verification.}
+The companion script \texttt{residue\_certificate.py} constructs a
+positive integer vector of cell values for each test. Every branch
+weight and integral power is enclosed by rational endpoints. In
+particular, to enclose $S(y/z)^{-m/d}$, where $S=10^{13}$ and
+$y,z,m,d$ are positive integers, the script checks the exact
+integer inequalities $L^d y^m\le S^d z^m\le U^d y^m$ for the proposed
+integer endpoints $L,U$. Summation and comparison against the
+corresponding cell value use exact integer arithmetic. At $s=357/512$, the
+smallest relative lower margin $\min_j((\mathcal L_{s,\mathcal D_N}v-v)/v)|_{C_j}$
+equals
+$7204302042904417931/2465429597500000000000>29/10000>0$; at $s=359/512$, the
+smallest relative upper margin $\min_j((v-\mathcal L_{s,\mathcal A}v)/v)|_{C_j}$
+equals
+$65040245891337248463/9860138780000000000000>65/10000>0$. The
+strict signs certify the stated open interval $(357/512,359/512)$, of width
+$1/256$.
+\end{proof}
+
+As a comparison, Table~1 of \cite{CLU} bounds the dimension for
+$\{1,4,7,\ldots\}$ by $0.743586$. Its Proposition~2.7 transfers this upper bound
+to $\{1,5,9,\ldots\}$ by the increasing bijection $1+3k\mapsto 1+4k$.
+
+\begin{theorem}[General-modulus residue sandwich, transfer-operator soundness, and certified $m\in\{2,3,4,5,6\}$ brackets]\label{thm:residues-general}
+Let $m\ge2$ be an integer modulus. For every sequence $\mathbf r=(r_i)_{i\ge1}$
+with $1\le r_i\le m$, write
+\[
+F_m(\mathbf r)
+:=\bigl\{x=[0;a_1,a_2,\dots]\in(0,1)\setminus\Q:\ a_i\ge r_i\text{ and }a_i\equiv r_i\pmod m\ \forall i\ge1\bigr\},
+\]
+put $F_{m,r}:=F_m(r,r,\dots)$ for $1\le r\le m$, and let $E_m\subset(0,1)\setminus\Q$
+be the set of irrationals whose partial quotients $(a_i\bmod m)_{i\ge1}$ are
+eventually periodic.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+\item \emph{Uniform Lipschitz shift invariance and sandwich.}
+For every integer shift sequence $\mathbf c=(c_i)_{i\ge1}\in\Z_{\ge0}^{\N}$ and every
+$\mathbf r\in\Z_{\ge1}^{\N}$, the shift map $\Psi_{\mathbf c}([0;a_1,a_2,\dots]):=[0;a_1+c_1,a_2+c_2,\dots]$
+is uniformly $24$-Lipschitz on $F_m(\mathbf r)$ (in particular, with $K=24$
+uniformly in $m\ge2$). Consequently, for every sequence $\mathbf r$ with
+$1\le r_i\le m$,
+\[
+\dimH F_{m,m}\le \dimH F_m(\mathbf r)\le \dimH F_{m,1},
+\]
+and every eventually periodic modulus-$m$ residue set satisfies $\dimH E_m=\dimH F_{m,1}$.
+\item \emph{Unconditional transfer-operator criterion and Lean soundness.}
+Without appealing to Bowen's pressure formula or external \cite{CLU} citations,
+a step-function upper inequality $\mathcal L_{s,\mathcal A_{m,r}}v\le(1-\eta)v$
+or finite-$K$ subalphabet lower inequality $\mathcal L_{s,\mathcal D_K}v\ge(1+\eta)v$
+yields $\dimH F_{m,r}\le s$ or $s\le\dimH F_{m,r}$ directly from
+Hausdorff-measure covering and Frostman mass distribution. In particular,
+$\frac12<\dimH F_{m,r}$ for all $m\ge1,r\ge1$, and $\dimH F_{4,1}\le\frac45$.
+\item \emph{Exact integer certificates for $m\in\{2,3,4,5,6\}$.}
+Running the verified step-function inequalities in exact integer arithmetic
+(\texttt{verification/\allowbreak residue\_\allowbreak certificate\_\allowbreak general.py},
+grid $N=256$, scale $S=10^{13}$, $2^{80}$-precision enclosures) certifies the
+narrow rational brackets in Table~\ref{tab:residues-general}, with strict
+separation $\mathrm{upper}(F_{m,m})<\mathrm{lower}(F_{m,1})$ (and hence
+$\dimH F_{m,m}<\dimH F_{m,1}$) for every $m\in\{2,3,4,5,6\}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For~(i), on any two distinct points $x,y\in F_m(\mathbf r)$ with first differing
+partial quotient $a_{n+1}<b_{n+1}$, the congruence $a_{n+1}\equiv b_{n+1}\pmod m$
+with $m\ge2$ forces $b_{n+1}-a_{n+1}\ge m\ge2$, giving a uniform tail expansion
+ratio bound~$6$ and common-prefix Möbius distortion bound~$4$, hence global
+$24$-Lipschitz constant across all~$m\ge2$; covering $E_m$ by countably many
+Möbius images of shifted sets $F_m(\mathbf r)$ then yields $\dimH E_m=\dimH F_{m,1}$.
+For~(ii), submultiplicativity of cylinder diameters yields the upper
+Hausdorff-measure estimate directly from $\mathcal L_{s,\mathcal A}v\le v$, while
+Frostman measure pushforward on compact subtrees gives the lower bound from
+$\mathcal L_{s,\mathcal D_K}v\ge v$; both elementary tail bounds (monotone
+integral upper bound vs.\ midpoint-shifted integral lower bound) reduce step-function
+verification to finitely many grid cells. For~(iii), exact integer execution
+checks every cell inequality for each $(m,r)$ in Table~\ref{tab:residues-general}.
+All algebraic and measure-theoretic deductions in~(i)--(ii), together with the
+step-function soundness theorems for~(ii)--(iii), are machine-checked in Lean~4;
+the Python script \texttt{residue\_\allowbreak certificate\_\allowbreak general.py}
+performs the concrete grid arithmetic for $m\in\{2,3,4,5,6\}$.
+\end{proof}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{c|c|c|c|c|c}
+$m$ & $r$ & $K_{\mathrm{tail}}$ & Lower bound & Upper bound & Width \\\hline
+$2$ & $1$ & $130$ & $419/512\,(0.818359)$ & $421/512\,(0.822266)$ & $1/256$ \\
+$2$ & $2$ & $130$ & $23/32\,(0.718750)$  & $369/512\,(0.720703)$ & $1/512$ \\\hline
+$3$ & $1$ & $120$ & $95/128\,(0.742188)$ & $191/256\,(0.746094)$ & $1/256$ \\
+$3$ & $3$ & $120$ & $41/64\,(0.640625)$  & $329/512\,(0.642578)$ & $1/512$ \\\hline
+$4$ & $1$ & $120$ & $357/512\,(0.697266)$ & $359/512\,(0.701172)$ & $1/256$ \\
+$4$ & $4$ & $120$ & $309/512\,(0.603516)$ & $155/256\,(0.605469)$ & $1/512$ \\\hline
+$5$ & $1$ & $120$ & $171/256\,(0.667969)$ & $343/512\,(0.669922)$ & $1/512$ \\
+$5$ & $5$ & $120$ & $149/256\,(0.582031)$ & $299/512\,(0.583984)$ & $1/512$ \\\hline
+$6$ & $1$ & $120$ & $331/512\,(0.646484)$ & $333/512\,(0.650391)$ & $1/256$ \\
+$6$ & $6$ & $120$ & $291/512\,(0.568359)$ & $73/128\,(0.570312)$  & $1/512$
+\end{tabular}
+\caption{Certified open intervals $(\mathrm{lower},\mathrm{upper})$ for $\dimH F_{m,r}$ ($m\in\{2,3,4,5,6\}$, $r\in\{1,m\}$) from \texttt{residue\_\allowbreak certificate\_\allowbreak general.py} ($N=256$, $S=10^{13}$, $2^{80}$-precision enclosures); for every $m$, $\mathrm{upper}(F_{m,m})<\mathrm{lower}(F_{m,1})$.}\label{tab:residues-general}
+\end{table}
+

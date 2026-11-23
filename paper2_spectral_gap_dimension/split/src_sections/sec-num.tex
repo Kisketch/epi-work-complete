@@ -1,0 +1,83 @@
+\section{Numerical evidence}\label{sec:num}
+
+All high-precision computations use \texttt{mpmath} with dynamic precision
+$\mathrm{digits}(Q_j)+300$ (or 100 decimal digits for fixed-horizon checks up
+to $j=35$) to survive the catastrophic cancellation in
+$Q_jx-\mathrm{round}(Q_jx)$. These are corroborations, not proofs.
+
+\paragraph{Spectral gap.} For $x=B\pi$ ($B=1,\dots,10$), $\sqrt2$, the golden
+ratio $\varphi$, and random reals, $\max_{j\le60}j\|Q_jx\|$ lies in $22$--$29$
+and grows $\sim j/4$ in this finite sample; the data do not establish an
+infinite limsup. For $x\in L$ (e.g.\ $(\ee+1)/2$, $1+(\ee+1)/2$),
+$j\|Q_jx\|<10^{-12}$ already for $j\ge10$ and $\sim10^{-117}$ at $j=60$,
+confirming $\Lam=0$.
+
+\paragraph{Dimension (box-counting).} Exact rational covering trees give the
+following box-counting estimates for $E_c\cap[0,1]$:
+\begin{center}
+\begin{tabular}{c|cccc}
+$c$ & $N=4$ & $N=12$ & path $N=400$ & bound $n=1500$\\\hline
+$1/4$ & 0.371 & 0.323 & 0.171 & 0.180\\
+$1/2$ & 0.630 & --- & 0.251 & 0.270\\
+$1$   & 0.863 & --- & 0.343 & 0.360\\
+$2$   & 1.000 & --- & 0.442 & 0.446
+\end{tabular}
+\end{center}
+The finite counts suggest the branching scale $\lfloor8c\rfloor+1$ ($3,5,9,17$), and
+the rigorous upper bound decays as $\log B/\log n\to0$. \textbf{Caveat:} the
+decay is only $O(1/\log n)$; at accessible $N$ the estimates are far from $0$
+(e.g.\ $s=0.01$ needs $n\approx10^{60}$). The numerics are consistent with
+$\dimH=0$ but cannot resolve it directly; the proof is the covering argument of
+Theorem~\ref{thm:finite}. Below the gap ($c=0.24$) the covering upper bound
+still grows exponentially while the true branching tends to $0$: the covering
+method is not sharp below the gap, which is why the exact classification
+(Theorem~\ref{thm:class}) is needed there.
+
+\paragraph{Discrete spectral ladder and three-way splitting.} The 100-digit
+\texttt{mpmath} script \texttt{verify\_\allowbreak full\_\allowbreak spectrum\_\allowbreak discrete.py} verifies
+the quantized levels $\Lam(x_k)=k/4$ for $k=1,2,3,4$ (with $|4ju_j(x_k)-k|\approx7.14\times10^{-3}\cdot k$ at $j=35$), confirms that two points in
+$E_{\mathrm{lim}}^+(k/4)$ with distinct initial digits have difference in $L$ to
+within $5.95\times10^{-97}$, and checks that the alternating binary digit choice
+$d_j=(-1)^j k\in\{-k,+k\}$ in $E_{\mathrm{lim}}(k/4)$ outside $E_{\mathrm{lim}}^+(k/4)\cup E_{\mathrm{lim}}^-(k/4)$ satisfies $4j\|Q_jx\|\to k$ while $4ju_j(x)$ oscillates
+between $+k$ and $-k$. The companion script \texttt{verify\_\allowbreak weighted\_\allowbreak lower.py}
+confirms the Falconer tree-density ratio convergence toward $1-\alpha$ for
+subcritical weights $\alpha\in\{0.25,0.50,0.75\}$.
+
+\paragraph{General polynomial-growth recurrences.} The script
+\texttt{verify\_\allowbreak poly\_\allowbreak recurrence\_\allowbreak 2b.py}
+(at least $400$-digit effective \texttt{mpmath} precision for Experiments~1--3
+and $50$-digit precision up to $N=10^5$ for Experiments~4--5) passes all
+assertions across $r\in\{1,2,3\}$ and $c\in\{1,2,4\}$: it verifies the
+non-asymptotic factorial lower bound of Lemma~\ref{lem:poly-growth}, the
+$O(j^{-r})$ convergence of $j^r\|Q_jx\|\to k/c$ for $k\in\{1,3\}$, the
+intrinsic lattice $L^{(r,c,d)}=\frac{1}{g}(\Z+\Z\theta)$ (including the
+non-coprime case $(2,4,0)$ with $Q_0=3,Q_1=6,g=3$, where
+$q_0\alpha_U+q_1\alpha_V=1/3$ to within $5.14\times10^{-1079}$ and $x_2-x_1\in
+L^{(2,4,0)}$ to within $6.0\times10^{-1072}$) alongside alternating-digit
+oscillation in $E_{\mathrm{lim}}^{(r,c,d)}(k/c)$, the subcritical Falconer
+dimension trajectories approaching $1-\alpha/r$ (for both fixed $t>0$ and the
+slowly decaying $t=0$ radius) versus decay toward $0$ at critical $\alpha=r$
+($s_{10^5}\approx0.033$ for $(2,1,-1)$ and $0.056$ for $(3,2,-3)$), and the
+exact gauge ratio $\log(2k+1)/\log2$ at $n=10^5$ (with the $17.6\%$--$39.5\%$
+finite-$n$ excess over the asymptotic scale factor $1/r$ matching the
+$O(\log\log n/\log n)$ subleading term $\frac{\log n+\log\log n+\log r}{\log n+(\log c-r)/r}$
+to within $0.009$).
+
+\paragraph{Reciprocal-Fibonacci residue asymptotics and growing-quotient phase transitions.}
+The $50$-digit \texttt{mpmath} script
+\texttt{verify\_\allowbreak paper2\_\allowbreak extensions.py} (logged in
+\texttt{verification/\allowbreak verify\_\allowbreak paper2\_\allowbreak extensions.log})
+computes $C_r$ ($1\le r\le 5$, Table~\ref{tab:residues-asymptotic}) to $50$ decimal
+places, verifies the global separation sandwich
+$\frac12+\frac{1}{2m}<\frac12+\frac{11}{16m}$ alongside the certified bounds of
+Table~\ref{tab:residues-general}, checks the convergence of the two-term
+excess ratio $(\dimH F_{m,r}-1/2)/(\dimH F_{m,m}-1/2)\to C_r$ up to $m=20000$
+(reaching $3.355958$ vs.\ $\psi_{\mathrm{Fib}}\approx3.359886$ at $r=1$), and
+verifies all three growing-quotient regimes of
+Corollary~\ref{cor:growing-rec-three-regimes} ($\log A_j/\log Q_j\to 0$, $1$,
+and $\infty$, respectively), including the supercritical behavior of
+$A_j^\tau\|Q_j\theta_G\|$ on the double-exponential recurrence $A_j=2^{2^j}$ at
+$\tau=1.5$ ($1.71\times10^{-19}$ at $j=7$), $\tau=2.0$ (stabilizing to
+$(\lim Q_j/A_j)^{-1}\approx 3.15973\in[1/6,4]$), and $\tau=2.5$
+($5.83\times10^{19}$ at $j=7$).
+
