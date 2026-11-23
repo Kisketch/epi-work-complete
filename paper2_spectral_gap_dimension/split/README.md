@@ -62,20 +62,18 @@
 * 背景复述保真度：`patch_prereq_fidelity.py` 已执行（`thm:gauge` 补 $g_\beta$ 两向结论，`cor:liminf-gauges` 展开三态），2B/2C 重编译 0 error、引用归零。
 * N512 证书：10/10 区间收至 1/512 地板（4 处收紧：m=2,3,4,6 的 r=1 侧各丢一格已回收）；`tab:residues-general` 原表未动，2C 定稿时更新。
 * 编译：2A 24 页 / 2B 15 页 / 2C 20 页，`pdflatex`（track 目录为 CWD）均 0 error。
-* 引用审计（`undef_ref_audit.py`，两遍编译后）：2A 仅剩 1 个（`sec:poly-rec`，方案A：定稿改写归属句）；2B 归零（`intro-2B` 66 行 + `prereq-2B` 6 背景）；2C 归零——`intro-2C.tex`（73 行，`intro_trim_2C.py` 按行号生成，新写句标 `[2C-NEW]`）+ `prereq-2C.tex`（复述 `thm:gauge`/`cor:liminf-gauges`，`eq:rec` 由内联 Setup 覆盖）。引用三轨全零缺失。
+* 引用审计（`undef_ref_audit.py`，两遍编译后）：三轨全部归零。2A 的 `sec:poly-rec` 已用方案A彻底消解（`derive_spectrum_2A.py` 生成 `sec-spectrum-2A.tex` 派生切片：仅改写审计归属段，删 `and Section` 跨轨引用；原切片冻结，diff 仅该段）。
 * r=1 分析留痕：gauge-core 内 `(iii)` 陈述+证明已完整自足；`sec-poly` 无独立 $r=1$ 专段（`general-rec(i)` 与 `poly-gauge-trichotomy(iii)` 互引且为 2B 标题定理，整段搬会断 2B 主干），故不动数学、只改归属句。另正文审计口径双重记账（`TrichotomyAndPolyExtension` 在 gauge-core 记 8 条、在 sec-poly 记 37 条）实为同一文件前后两部分分属两轨，定稿时各自准确表述。
 * 中间修正：gauge 子片初版 `Out-File utf8` 带 BOM 致 +9 字节，已二进制重切，13 片拼接 253919B SHA 与原版一致。
 
-## 七、它没做到（截至 v5）
+## 七、它没做到（截至 v6）
 
-* 三 draft 仍为 `\input` 组装草案（2A/2B/2C 引言与背景已闭合，剩余 2A 的 `sec:poly-rec` 归属句待定稿改写）；2B/2C 新写句与背景复述待人审措辞。
-
-* 三 draft 为 `\input` 组装草案（三轨引言与背景已闭合；2A 剩 `sec:poly-rec` 归属句待定稿改写）。
-* 2B/2C 新写句与背景复述待人审措辞；未复跑 `lake build` 与 Python 证书（记作者自报）。
+* 三 draft 为 `\input` 组装草案（引言/背景/归属已闭合，引用全零）；2B/2C 新写句与背景复述待人审措辞。
+* Lean 主库已串行构建 132/132；Python 证书已全部独立复跑；`Audit.lean` 审计日志复跑待执行。
 * `e+π` 无理性仍开放，拆分不构成原问题进展。
 
 ## 八、下一步（全自动继续）
 
-1. ~~三轨未定义引用清单~~已完成；~~2B/2C 引言改写~~已完成（2B 66 行 + prereq，2C 73 行 + prereq，引用归零）；S 补充轨已组装（0 error，39 主文指向属预期）。
-2. 2B/2C 人审：新写摘要/引言/背景复述措辞；2A 定稿改写 L114 归属句（方案A）。
-3. Draft 入口存在性已程序化验证（21/6/61 全存在，主入口 132/132）；转正需重跑 `lake build`，未执行；审计口径双重记账定稿时各自表述。
+1. ~~三轨未定义引用清单~~、`~~2B/2C 引言改写~~`、`~~2A 归属句~~`已完成（引用全零）；S 补充轨已组装。
+2. 等待：证书数据单 decide 核查（后台运行中）→ 全量 `lake build` → Audit 审计复跑（届时 937 由作者自报转已复跑）。
+3. Draft 入口存在性已验证（21/6/61）；审计口径双重记账定稿时各自表述；组装 358/512 定理待数据核查通过后开工。

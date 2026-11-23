@@ -1,0 +1,112 @@
+\section{Complete spectrum discretization and step-function collapse}\label{sec:spectrum}
+
+\begin{corollary}[Initial spectral gap, Layer~A in Lean]\label{thm:spectral}
+For every $x\in\R$, either $\Lam(x)=0$ or $\Lam(x)\ge1/4$. Thus
+$\Lam(\R)\subseteq\{0\}\cup[1/4,\infty]$, and $\Lam(x)=0\iff x\in L$.
+\end{corollary}
+
+This is an immediate consequence of Theorems~\ref{thm:class}
+and~\ref{thm:gap}; we state it separately because it is the form used
+below and the form directly machine-checked in \texttt{SpectralGap.lean}.
+
+\begin{proof}
+If $x\in L$, Theorem~\ref{thm:class} gives $j\|Q_jx\|\to0$, hence $\Lam(x)=0$.
+If $x\notin L$, Theorem~\ref{thm:gap} gives $\Lam(x)\ge1/4$. The dichotomy and
+the characterization of the zero value follow.
+\end{proof}
+
+\begin{remark}\label{rem:linear-indep}
+In particular $\Lam(\ee)=0$, since $\ee=2\cdot\frac{\ee+1}{2}-1\in L$; $\ee$ is
+\emph{not} a generic point for this exponent. For $x=B\pi$ ($B=1,\dots,10$),
+$\sqrt2$, the golden ratio and random reals, the values $j\|Q_jx\|$ for
+$j\le60$ are large (Section~\ref{sec:num}), but such finite data do not
+determine $\Lam(x)$. By Corollary~\ref{thm:spectral}, the statement
+``$\Lam(B\pi)>0$ for every integer $B\ge1$'' is equivalent to
+$B\pi\notin L$ for all $B\ge1$, i.e.\ to the linear independence of
+$1,\ee,\pi$ over $\Q$, which is open. Nothing in this article decides it.
+\end{remark}
+
+We now show that the initial gap $(0,1/4)$ is merely the bottom rung of an
+infinite ladder of equidistant spectral gaps: the entire finite spectrum of
+$\Lam$ is quantized in multiples of $1/4$.
+
+\begin{theorem}[Complete discretization of the spectrum, Layer~A in Lean]\label{thm:full-spectrum}
+For every $x\in\R$ with $\Lam(x)<\infty$, one has $u_j=O(1/j)\to0$ and
+\begin{equation}\label{eq:digit-asymp}
+\lim_{j\to\infty}\bigl(d_j-4ju_j\bigr)=0,\qquad
+\lim_{j\to\infty}\bigl(|d_j|-4j\|Q_jx\|\bigr)=0.
+\end{equation}
+Consequently $4\Lam(x)=\limsup_{j\to\infty}|d_j|\in\Z_{\ge0}$ whenever
+$\Lam(x)<\infty$, and the full spectrum of $\Lam$ is given by the exact identity
+\begin{equation}\label{eq:full-spectrum}
+\Lam(\R)=\frac14\Z_{\ge0}\cup\{\infty\}
+=\left\{0,\frac14,\frac12,\frac34,1,\dots\right\}\cup\{\infty\}.
+\end{equation}
+In particular, for every integer $k\ge0$, the open interval
+$\bigl(\frac{k}{4},\frac{k+1}{4}\bigr)$ is an unconditional empty spectral gap
+for $\Lam$.
+(Lean, module \texttt{FullSpectrumDiscrete}:
+\texttt{euler\_\allowbreak signed\_\allowbreak defect\_\allowbreak approx},
+\texttt{euler\_\allowbreak abs\_\allowbreak defect\_\allowbreak approx}, and
+\texttt{spectral\_\allowbreak gap\_\allowbreak open\_\allowbreak interval}.)
+\end{theorem}
+
+\begin{proof}
+If $\Lam(x)<\infty$, then $\|Q_jx\|=|u_j|\le(\Lam(x)+1)/j$ for all large $j$,
+so $u_j\to0$. Rearranging \eqref{eq:defect-id} gives
+$d_j-4ju_j=2u_j+u_{j-1}-u_{j+1}\to0$, and the reverse triangle inequality
+$\bigl||d_j|-4j|u_j|\bigr|\le|d_j-4ju_j|$ yields \eqref{eq:digit-asymp}.
+Since $|d_j|\in\Z_{\ge0}$, the sequence $(|d_j|)$ can only have a nonnegative
+integer or $\infty$ as its limit superior. By \eqref{eq:digit-asymp},
+$4\Lam(x)=\limsup_{j\to\infty}4j\|Q_jx\|=\limsup_{j\to\infty}|d_j|\in\Z_{\ge0}\cup\{\infty\}$,
+which excludes every open interval $(k/4,(k+1)/4)$ from $\Lam(\R)$.
+Conversely, $\Lam(0)=0$, $\Lam=\infty$ holds on a set of full Lebesgue measure
+(Section~\ref{sec:finite-levels}), and for each integer $k\ge1$ choosing a
+sufficiently large starting index $N$ and constant digits $d_j\equiv k$ for
+$j\ge N$ (as in the proof of Theorem~\ref{thm:gauge} below) produces a point
+$x_k\in\R$ with $|u_j|<1/8$ for $j\ge N$, $M_j=\mathrm{round}(Q_jx_k)$, and
+$4j\|Q_jx_k\|\to k$, so $\Lam(x_k)=k/4$. Thus every value in
+$\frac14\Z_{\ge0}\cup\{\infty\}$ is attained.
+\end{proof}
+
+For $c\ge0$ write $E_c:=\{x\in\R:\Lam(x)\le c\}$.
+
+\begin{corollary}[Sub-threshold level sets and gap constancy, Layer~A in Lean]\label{thm:sub}
+For every integer $k\ge0$ and every $c\in\bigl[\frac{k}{4},\frac{k+1}{4}\bigr)$,
+one has $E_c=E_{k/4}=\{x\in\R:u_j(x)\to0\text{ and }\limsup_{j\to\infty}|d_j(x)|\le k\}$.
+In particular, if $c<1/4$ ($k=0$), then $E_c=E_0=L$, so $E_c$ is countable and
+$\dimH E_c=0$.
+(Lean, modules \texttt{FullSpectrumDiscrete} and \texttt{SpectralGap}:
+\texttt{eventually\_\allowbreak abs\_\allowbreak defect\_\allowbreak le\_\allowbreak of\_\allowbreak apprExponent\_\allowbreak le},
+\texttt{levelSet\_\allowbreak eq\_\allowbreak on\_\allowbreak gap},
+\texttt{levelSet\_\allowbreak below\_\allowbreak eq\_\allowbreak lattice}, and
+\texttt{dimH\_\allowbreak levelSet\_\allowbreak below}.)
+\end{corollary}
+
+\begin{proof}
+Clearly $E_{k/4}\subseteq E_c$ for $c\ge k/4$. Conversely, if $x\in E_c$ with
+$c<(k+1)/4$, then $\Lam(x)\le c<(k+1)/4$ cannot lie in the empty spectral gap
+$(k/4,(k+1)/4)$ by Theorem~\ref{thm:full-spectrum}, so $\Lam(x)\le k/4$ and
+eventually $|d_j(x)|\le k$. For $k=0$, $\Lam(x)=0\iff x\in L$ by
+Corollary~\ref{thm:spectral}, and $L$ is a countable image of $\Z^2$, hence has
+Hausdorff dimension $0$ \cite{Falconer}.
+\end{proof}
+
+\paragraph{Lean status.} Corollaries~\ref{thm:spectral} and~\ref{thm:sub} (for
+$c<1/4$), together with the countability of $L$ and $\dimH E_c=0$ for $c<1/4$,
+are kernel-checked at Layer~A in \texttt{EpiFormal/\allowbreak SpectralGap.lean}
+(five declarations: \texttt{apprExponent\_eq\_zero\_iff},
+\texttt{spectral\_gap}, \texttt{levelSet\_below\_eq\_lattice},
+\texttt{latticeL\_countable}, and \texttt{dimH\_levelSet\_below}; no
+\texttt{sorryAx}). The full spectrum discretization, open-interval spectral-gap
+exclusion $(k/4,(k+1)/4)$, and the step-function constancy $E_c=E_{k/4}$ across
+each gap are kernel-checked at Layer~A in
+\texttt{EpiFormal/\allowbreak FullSpectrumDiscrete.lean} (15 declarations, base
+axioms only, no \texttt{sorryAx}). All of these modules---along with
+\texttt{Gauge\allowbreak Liminf\allowbreak Complete.lean} and the part-(iii)
+portion of \texttt{Trichotomy\allowbreak And\allowbreak Poly\allowbreak Extension.lean},
+which completes Theorem~\ref{thm:trichotomy}(iii) (its general $(cj^r+d)$ half
+is treated in the companion general-theory paper)---are audited together in
+\texttt{Audit.lean} with zero \texttt{sorryAx} and only the three Lean base
+axioms; the full-library audit now spans $937$ declarations across $134$ files.
+
