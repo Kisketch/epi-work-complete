@@ -38,8 +38,15 @@ def arr1(xs):
     return "#[" + ", ".join(str(int(x)) for x in xs) + "]"
 
 
-def arr2(xss):
-    return "#[" + ", ".join(arr1(r) for r in xss) + "]"
+def emit_rows(tag, xss, C):
+    """Emit one flat def per row plus a matrix def referencing them (shallow elaboration)."""
+    names = []
+    for i, r in enumerate(xss):
+        nm = f"cert{tag}C{C}_r{i}"
+        out.append(f"def {nm} : Array Nat := {arr1(r)}")
+        names.append(nm)
+    out.append(f"def cert{tag}C{C} : Array (Array Nat) := #[{', '.join(names)}]")
+    out.append("")
 
 
 o = []
@@ -53,24 +60,20 @@ o.append("def get2 (a : Array (Array Nat)) (j k : Nat) : Nat := ((a[j]!)[k]!)")
 o.append("")
 o.append(f"def certVecC{C} : Array Nat := {arr1(vector)}")
 o.append("")
-o.append(f"def certHiC{C} : Array (Array Nat) := {arr2(mat)}")
-o.append("")
-o.append(f"def certMaxVC{C} : Array (Array Nat) := {arr2(maxvmat)}")
-o.append("")
-o.append(f"def certCellLC{C} : Array (Array Nat) := {arr2(cell_l)}")
-o.append("")
-o.append(f"def certCellRC{C} : Array (Array Nat) := {arr2(cell_r)}")
-o.append("")
+emit_rows("Hi", mat, C)
+emit_rows("MaxV", maxvmat, C)
+emit_rows("CellL", cell_l, C)
+emit_rows("CellR", cell_r, C)
 LOV, HIV = LO, HI
 o.append(f"theorem cert_h_hi_c{C} : ∀ j ∈ Finset.range 512, ∀ k ∈ Finset.range 130,")
 o.append("    ∀ i ∈ Finset.range 512,")
 o.append(f"    {LOV} ≤ j → j < {HIV} →")
-o.append(f"    get1 certCellLC{C} (j - {LOV}) k ≤ i → i ≤ get1 certCellRC{C} (j - {LOV}) k →")
-o.append(f"    get1 certVecC{C} i ≤ get1 certMaxVC{C} (j - {LOV}) k := by")
+o.append(f"    get2 certCellLC{C} (j - {LOV}) k ≤ i → i ≤ get2 certCellRC{C} (j - {LOV}) k →")
+o.append(f"    get1 certVecC{C} i ≤ get2 certMaxVC{C} (j - {LOV}) k := by")
 o.append("  decide")
 o.append("")
 o.append(f"theorem cert_hcert_c{C} : ∀ j ∈ Finset.range 512, {LOV} ≤ j → j < {HIV} →")
-o.append(f"    (Finset.range 130).sum (fun k => get1 certHiC{C} (j - {LOV}) k) +")
+o.append(f"    (Finset.range 130).sum (fun k => get2 certHiC{C} (j - {LOV}) k) +")
 o.append(f"      {upper_tail} * get1 certVecC{C} 0 < 10000000000000 * get1 certVecC{C} j := by")
 o.append("  decide")
 o.append("")
