@@ -76,3 +76,14 @@
 7. （扩展）Hausdorff dimension continued fractions partial quotients congruent modulo m residue class asymptotic dimension tends to 1/2
 8. （扩展）"arithmetic progression" continued fraction Cantor set Hausdorff dimension asymptotic expansion large common difference Hensley
 9. reciprocal Fibonacci constant Hausdorff dimension continued fractions partial quotients asymptotic
+
+## 5. 第二轮（子代理并行，2026-11-23）
+
+### 5.1 BLR 比较说明的对抗复核
+- 结论：两段说明**无数学错误**；"其余情形"划分是精确的（$j\ge J_0+1$ 时 $0\le\log Q_{j+1}-\log Q_j-\log A_j\le\log2$，故 (1.6) 成立当且仅当 $\lim\log A_j/\log Q_j=\infty$）；增长商情形的形式求值中 liminf/limsup 处理正确（振荡例 $\gamma_{\sup}=2$ 数值复核）。
+- 已按意见修正（`patch_blr_remarks_fix_20261123.py`）：引言 "It gives" 失去先行词 → "Corollary~8 gives"；"维数公式给出 0" → 每点局部维数 0 再推整体维数 0；限定 $0<\tau<1$；$c\to\kappa$（避免与多项式首项系数重名）；求和下标 $J_0\le j$、$1\le j$；注明 BLR 推论 8 在 v1 中无证明、其证明草图提示 (1.6) 或可由 Baker 插补去掉（未成定理）；补 $E_{G,\tau,\mathrm{lim}}(0)\subseteq E_{G,\tau}(t)$。重编 59 页，2A/2B/2C 0 未定义引用，切片拼接与主 tex 逐字节一致。
+
+### 5.2 R2/R3 深度先例检索
+- 16 次检索、打开 6 份：Erdős–Taylor (1957)、BDS (2001)、Tan–Tian–Wang–Wu (arXiv:2511.02492)、Pedersen–Phillips (arXiv:1312.1406，仅摘要)、Zuberman (arXiv:1612.08895，仅摘要) 等。**负搜索未找到** R2（精确规范 $h_k$、$\sigma$-有限但无穷的水平集、liminf 三分法）与 R3（三向分裂、普适二进规范）的先例。
+- 方法相关：任意规范三分法很可能是齐次 Moran / Cantor 集 $h$-测度技巧（FWW、CMMS，Qu–Rao–Su 未核到）的推论，论文应在该处归功技巧来源（待作者确认措辞）。R3 的有符号陪集坍缩依赖 KL/BDS 刻画（部分重叠，论文已引用）。
+- `[BDS] Lemma 4.1` 从解码 PDF 文本核到：常数 1/4 的 Kraaikamp–Liardet 判据（据页眉约 p. 106）；但解码文本中 Proposition 1 的证明里出现第二个 "Lemma 4.1" 标签，可能是原文编号重复或提取伪影，**引用编号待对照原件**。

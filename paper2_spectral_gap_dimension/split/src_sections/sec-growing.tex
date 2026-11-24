@@ -212,20 +212,27 @@ to $(\tau-1)\gamma_{\sup}-1$.
 \begin{remark}[Comparison with Bugeaud--Liao--Rams]\label{rem:growing-BLR}
 Part~(i) of Theorem~\ref{thm:growing-rec-dim-phase} overlaps with \cite{BLR} in two
 boundary regimes. For $\tau=0$, since $Q_{j+1}/Q_j\ge A_j\to\infty$, Corollary~8 of
-\cite{BLR} already gives $\dimH E_{G,0,\mathrm{lim}}(0)=1$, hence also
-$\dimH E_{G,0}(t)=1$. For $\tau>0$ and $\lim_{j\to\infty}\log A_j/\log Q_j=\infty$
+\cite{BLR} (stated there without proof) already gives
+$\dimH E_{G,0,\mathrm{lim}}(0)=1$, hence also
+$\dimH E_{G,0}(t)=1$. For $0<\tau<1$ and $\lim_{j\to\infty}\log A_j/\log Q_j=\infty$
 (a limit, not only a $\limsup$), one has $\log Q_{j+1}/\log Q_j\to\infty$ because
 $Q_{j+1}\ge A_jQ_j$; then, for $N$ large, the maps $x\mapsto Q_{j+N}x$ with
 $\delta_j=(t+1)A_{j+N}^{-\tau}$ satisfy conditions~(1.1), (1.5) and~(1.6) of
-\cite[Theorem~7]{BLR}, its dimension formula gives $0$, and
+\cite[Theorem~7]{BLR}, its formula gives local dimension $0$ at every point (hence
+Hausdorff dimension $0$, covering $\R$ by countably many bounded intervals), and
 $E_{G,\tau}(t)\subseteq\bigcup_N\{x:\|Q_jx\|\le(t+1)A_j^{-\tau}\ \forall j\ge N\}$
-yields $\dimH E_{G,\tau}(t)=0$ by countable stability. In all other cases---in
+yields $\dimH E_{G,\tau}(t)=0$ by countable stability, hence also
+$\dimH E_{G,\tau,\mathrm{lim}}(0)=0$ since $E_{G,\tau,\mathrm{lim}}(0)\subseteq E_{G,\tau}(t)$.
+In all other cases---in
 particular whenever $\gamma_{\sup}<\infty$, where $\log Q_{j+1}/\log Q_j$ stays
 bounded---condition~(1.6) fails and \cite[Theorem~7]{BLR} does not apply. Its
-right-hand side, evaluated formally at $f_j(x)=Q_jx$ and $\delta_j=cA_j^{-\tau}$, is
-nevertheless $(1-\tau)/(1+\tau\gamma_{\sup})$ (using $\log Q_n=\sum_{j<n}\log A_j+O(n)$
+right-hand side, evaluated formally at $f_j(x)=Q_jx$ and $\delta_j=\kappa A_j^{-\tau}$
+($\kappa>0$, $j\ge J_0$), is
+nevertheless $(1-\tau)/(1+\tau\gamma_{\sup})$ (using $\log Q_n=\sum_{J_0\le j<n}\log A_j+O(n)$
 and $n=o(\log Q_n)$), so~\eqref{eq:growing-subcritical-dim} may be read as an extension
-of that formula beyond condition~(1.6). (Hypotheses as stated in arXiv:1710.03596v1.)
+of that formula beyond condition~(1.6). (Hypotheses as stated in arXiv:1710.03596v1, whose proof sketch indicates that
+condition~(1.6) may be removable by an interpolation device of Baker; this is not
+stated there as a theorem.)
 \end{remark}
 
 \begin{corollary}[Three canonical growth regimes and the critical boundary $\tau_{\mathrm{crit}}=2$]\label{cor:growing-rec-three-regimes}

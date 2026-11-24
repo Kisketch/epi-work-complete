@@ -459,14 +459,17 @@ by Lemma~\ref{lem:poly-lattice}(iv), proving~(iii).
 
 \begin{remark}[Comparison with Bugeaud--Liao--Rams]\label{rem:poly-BLR}
 For $\alpha=0$ the dimension assertion in Theorem~\ref{thm:poly-phase-transition}(ii)
-also follows from Corollary~8 of \cite{BLR}, since $Q_{j+1}/Q_j\to\infty$, by taking
+also follows from Corollary~8 of \cite{BLR} (stated there without proof), since
+$Q_{j+1}/Q_j\to\infty$, by taking
 constant centres $y_j=t$ exactly as for the convergent denominators of~$e$.
 For $0<\alpha<r$, the right-hand side of the dimension formula in
-\cite[Theorem~7]{BLR}, evaluated formally at $f_j(x)=Q_jx$ and $\delta_j=t_0j^{-\alpha}$,
-is $\liminf_n(\log Q_n+\sum_{j<n}\log\delta_j)/(\log Q_n-\log\delta_n)=1-\alpha/r$,
+\cite[Theorem~7]{BLR}, evaluated formally at $f_j(x)=Q_jx$ and $\delta_j=\kappa j^{-\alpha}$ ($\kappa>0$, $j\ge1$),
+is $\liminf_n(\log Q_n+\sum_{1\le j<n}\log\delta_j)/(\log Q_n-\log\delta_n)=1-\alpha/r$,
 the value in~(ii). That theorem does not apply, however: its condition~(1.6) requires
 $\log f'_{j+1}/\log f'_j\to\infty$, whereas here $\log Q_{j+1}/\log Q_j\to1$, and the
-proof above does not use that condition. (Hypotheses as stated in arXiv:1710.03596v1.)
+proof above does not use that condition. (Hypotheses as stated in arXiv:1710.03596v1, whose proof sketch indicates that
+condition~(1.6) may be removable by an interpolation device of Baker; this is not
+stated there as a theorem.)
 \end{remark}
 
 \paragraph{Lean status for Section~\ref{sec:poly-rec}.}
