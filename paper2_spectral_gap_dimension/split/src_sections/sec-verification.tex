@@ -210,7 +210,11 @@ depend only on the Lean base axioms \texttt{propext}, \texttt{Classical.choice},
 and \texttt{Quot.sound}---with zero
 project-added axioms and zero \texttt{sorryAx}); the $27$ declarations of the
 residue-certificate layer (Remark~\ref{rem:residue-kernel}) are audited separately in
-\texttt{AuditResidueCert.lean}, again with base axioms only. The only portions not inside
+\texttt{AuditResidueCert.lean}, again with base axioms only. The build and this audit were independently reproduced on 2026-11-23 from a
+clean clone of the public repository on a separate machine (Lean~4.35.0,
+Mathlib v4.35.0): \texttt{lake build} succeeded, the $937$
+\texttt{\#print axioms} outputs coincide entry by entry with the recorded log, and the $27$ residue-certificate entries depend only on the base axioms
+(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}). The only portions not inside
 the Lean kernel are the finite-dimensional linear-algebraic Perron--Frobenius
 eigenvector existence input on marked strongly connected components in
 Theorem~\ref{thm:finite-state-tail} (whose positive right eigenvector is passed

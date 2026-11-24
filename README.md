@@ -22,6 +22,8 @@
 
 ## 二、三层公理依赖实测清单（`verification/audit_final_20261122.log`）
 
+> **2026-11-23 独立机器复现（已核实）**：在 Google Colab（8 vCPU / 50 GB）上从公开仓库全新克隆（提交 `3563f85`），全量 `lake build` 退出码 0（21 分 14 秒），`Audit.lean` 的 937 条 `#print axioms` 输出与下述日志**逐条一致（0 条差异）**，`check_audit_reconcile.py` 全部通过；残差证书层 `AuditResidueCert.lean` 27 条仅基础三公理。详见 [`verification/colab_rebuild_audit_20261123.md`](verification/colab_rebuild_audit_20261123.md)。按 `AGENTS.md` §5，下列 Lean 结论据此由“作者自报”改为**已核实**。
+
 经 [`epi_formal/`](epi_formal/)（Lean `v4.35.0` + Mathlib `v4.35.0`）执行 `lake build EpiFormal`（**9179 jobs**，EXIT 0）与 `lake env lean Audit.lean`（EXIT 0），并由 [`verification/check_audit_reconcile.py`](verification/check_audit_reconcile.py) 自动对账核实：
 
 - **审计声明总计**：**937 条**（`Audit.lean` 与原始日志 **937/937** 严格双射，重复 0）

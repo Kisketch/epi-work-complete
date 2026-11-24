@@ -3905,7 +3905,7 @@ metric problem on sets of targets.
 
 \section*{Use of AI and formal verification}
 This work was carried out with substantial assistance from
-generative AI systems (including ChatGPT and Codex), both for
+generative AI systems (including ChatGPT, Codex, and Claude), both for
 developing and drafting mathematical arguments and text,
 preparing the numerical certificates, and writing the Lean~4
 formalization. The results marked as kernel-checked were verified
@@ -3918,7 +3918,11 @@ declarations project-wide across 134 Lean files as of 2026-11-22, recorded in
 registered transcendence/irrationality-measure whitelist axioms
 \texttt{e\_transcendental}, \texttt{pi\_transcendental}, and
 \texttt{mu\_e\_eq\_two}; zero project-added axioms and zero
-\texttt{sorryAx}). The remaining
+\texttt{sorryAx}). The build and this audit were independently reproduced on 2026-11-23 from a
+clean clone of the public repository on a separate machine (Lean~4.35.0,
+Mathlib v4.35.0): \texttt{lake build} succeeded, and the $937$
+\texttt{\#print axioms} outputs coincide entry by entry with the recorded log
+(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}). The remaining
 paper proofs---including the window and spectrum computations of
 Sections~\ref{sec:windows}--\ref{sec:quadratic} and the obstruction
 analysis---are not machine-checked; they have been checked by
