@@ -1,0 +1,106 @@
+note: Running TeX ...
+warning: paper1_e_plus_pi.tex:122: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper1_e_plus_pi.tex:1287: Underfull \hbox (badness 10000) in paragraph at lines 1281--1287
+warning: paper1_e_plus_pi.tex:2063: Underfull \hbox (badness 5533) in paragraph at lines 2055--2063
+warning: paper1_e_plus_pi.tex:2529: Underfull \hbox (badness 1852) in paragraph at lines 2523--2529
+warning: paper1_e_plus_pi.tex:2544: Underfull \hbox (badness 4013) in paragraph at lines 2534--2544
+warning: paper1_e_plus_pi.tex:3698: Underfull \hbox (badness 1009) in paragraph at lines 3697--3698
+warning: paper1_e_plus_pi.tex:3702: Underfull \hbox (badness 1342) in paragraph at lines 3701--3702
+warning: paper1_e_plus_pi.tex:3721: Underfull \hbox (badness 10000) in paragraph at lines 3721--3721
+warning: paper1_e_plus_pi.tex:3721: Underfull \hbox (badness 10000) in paragraph at lines 3721--3721
+warning: paper1_e_plus_pi.tex:3721: Underfull \hbox (badness 10000) in paragraph at lines 3721--3721
+warning: paper1_e_plus_pi.tex:3722: Underfull \vbox (badness 1596) has occurred while \output is active
+warning: paper1_e_plus_pi.tex:3771: Underfull \hbox (badness 1590) in paragraph at lines 3766--3771
+warning: paper1_e_plus_pi.tex:3966: Underfull \hbox (badness 6110) in paragraph at lines 3965--3966
+warning: paper1_e_plus_pi.tex:3973: Underfull \hbox (badness 3138) in paragraph at lines 3972--3973
+warning: paper1_e_plus_pi.tex:3976: Underfull \hbox (badness 1383) in paragraph at lines 3975--3976
+warning: paper1_e_plus_pi.tex:3976: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper1_e_plus_pi.tex:3977: Underfull \hbox (badness 3078) in paragraph at lines 3976--3977
+warning: paper1_e_plus_pi.tex:4006: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper1_e_plus_pi.tex:4203: Underfull \hbox (badness 1762) in paragraph at lines 4176--4203
+warning: paper1_e_plus_pi.tex:4203: Underfull \hbox (badness 1796) in paragraph at lines 4176--4203
+warning: paper1_e_plus_pi.tex:4203: Underfull \hbox (badness 2837) in paragraph at lines 4176--4203
+warning: paper1_e_plus_pi.tex:4207: Underfull \hbox (badness 1997) in paragraph at lines 4204--4207
+warning: paper1_e_plus_pi.tex:4207: Underfull \hbox (badness 1708) in paragraph at lines 4204--4207
+warning: paper1_e_plus_pi.tex:4362: Underfull \hbox (badness 3460) in paragraph at lines 4361--4362
+warning: paper1_e_plus_pi.tex:4553: Underfull \hbox (badness 1939) in paragraph at lines 4552--4553
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 10000) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 10000) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 10000) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 2922) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 1448) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4721: Underfull \hbox (badness 10000) in paragraph at lines 4694--4721
+warning: paper1_e_plus_pi.tex:4721: Underfull \hbox (badness 10000) in paragraph at lines 4694--4721
+warning: paper1_e_plus_pi.tex:4734: Underfull \hbox (badness 10000) in paragraph at lines 4722--4734
+warning: paper1_e_plus_pi.tex:4734: Underfull \hbox (badness 10000) in paragraph at lines 4722--4734
+note: Rerunning TeX because "paper1_e_plus_pi.out" changed ...
+warning: paper1_e_plus_pi.tex:110: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper1_e_plus_pi.tex:1287: Underfull \hbox (badness 10000) in paragraph at lines 1281--1287
+warning: paper1_e_plus_pi.tex:2063: Underfull \hbox (badness 5533) in paragraph at lines 2055--2063
+warning: paper1_e_plus_pi.tex:2529: Underfull \hbox (badness 1852) in paragraph at lines 2523--2529
+warning: paper1_e_plus_pi.tex:2544: Underfull \hbox (badness 4013) in paragraph at lines 2534--2544
+warning: paper1_e_plus_pi.tex:3698: Underfull \hbox (badness 1009) in paragraph at lines 3697--3698
+warning: paper1_e_plus_pi.tex:3721: Underfull \hbox (badness 10000) in paragraph at lines 3721--3721
+warning: paper1_e_plus_pi.tex:3721: Underfull \hbox (badness 10000) in paragraph at lines 3721--3721
+warning: paper1_e_plus_pi.tex:3721: Underfull \hbox (badness 10000) in paragraph at lines 3721--3721
+warning: paper1_e_plus_pi.tex:3771: Underfull \hbox (badness 1590) in paragraph at lines 3766--3771
+warning: paper1_e_plus_pi.tex:3966: Underfull \hbox (badness 6110) in paragraph at lines 3965--3966
+warning: paper1_e_plus_pi.tex:3973: Underfull \hbox (badness 3138) in paragraph at lines 3972--3973
+warning: paper1_e_plus_pi.tex:3976: Underfull \hbox (badness 1383) in paragraph at lines 3975--3976
+warning: paper1_e_plus_pi.tex:3976: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper1_e_plus_pi.tex:3977: Underfull \hbox (badness 3078) in paragraph at lines 3976--3977
+warning: paper1_e_plus_pi.tex:4006: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper1_e_plus_pi.tex:4203: Underfull \hbox (badness 1762) in paragraph at lines 4176--4203
+warning: paper1_e_plus_pi.tex:4203: Underfull \hbox (badness 1796) in paragraph at lines 4176--4203
+warning: paper1_e_plus_pi.tex:4203: Underfull \hbox (badness 2837) in paragraph at lines 4176--4203
+warning: paper1_e_plus_pi.tex:4207: Underfull \hbox (badness 1675) in paragraph at lines 4204--4207
+warning: paper1_e_plus_pi.tex:4207: Underfull \hbox (badness 1062) in paragraph at lines 4204--4207
+warning: paper1_e_plus_pi.tex:4362: Underfull \hbox (badness 3460) in paragraph at lines 4361--4362
+warning: paper1_e_plus_pi.tex:4553: Underfull \hbox (badness 1939) in paragraph at lines 4552--4553
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 10000) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 10000) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 2922) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 1448) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4721: Underfull \hbox (badness 10000) in paragraph at lines 4694--4721
+warning: paper1_e_plus_pi.tex:4721: Underfull \hbox (badness 10000) in paragraph at lines 4694--4721
+warning: paper1_e_plus_pi.tex:4734: Underfull \hbox (badness 10000) in paragraph at lines 4722--4734
+warning: paper1_e_plus_pi.tex:4734: Underfull \hbox (badness 10000) in paragraph at lines 4722--4734
+warning: paper1_e_plus_pi.tex:4751: Underfull \hbox (badness 1762) in paragraph at lines 4735--4751
+note: Rerunning TeX because "paper1_e_plus_pi.aux" changed ...
+warning: paper1_e_plus_pi.tex:110: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper1_e_plus_pi.tex:1287: Underfull \hbox (badness 10000) in paragraph at lines 1281--1287
+warning: paper1_e_plus_pi.tex:2063: Underfull \hbox (badness 5533) in paragraph at lines 2055--2063
+warning: paper1_e_plus_pi.tex:2529: Underfull \hbox (badness 1852) in paragraph at lines 2523--2529
+warning: paper1_e_plus_pi.tex:2544: Underfull \hbox (badness 4013) in paragraph at lines 2534--2544
+warning: paper1_e_plus_pi.tex:3698: Underfull \hbox (badness 1009) in paragraph at lines 3697--3698
+warning: paper1_e_plus_pi.tex:3721: Underfull \hbox (badness 10000) in paragraph at lines 3721--3721
+warning: paper1_e_plus_pi.tex:3721: Underfull \hbox (badness 10000) in paragraph at lines 3721--3721
+warning: paper1_e_plus_pi.tex:3721: Underfull \hbox (badness 10000) in paragraph at lines 3721--3721
+warning: paper1_e_plus_pi.tex:3771: Underfull \hbox (badness 1590) in paragraph at lines 3766--3771
+warning: paper1_e_plus_pi.tex:3966: Underfull \hbox (badness 6110) in paragraph at lines 3965--3966
+warning: paper1_e_plus_pi.tex:3973: Underfull \hbox (badness 3138) in paragraph at lines 3972--3973
+warning: paper1_e_plus_pi.tex:3976: Underfull \hbox (badness 1383) in paragraph at lines 3975--3976
+warning: paper1_e_plus_pi.tex:3976: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper1_e_plus_pi.tex:3977: Underfull \hbox (badness 3078) in paragraph at lines 3976--3977
+warning: paper1_e_plus_pi.tex:4006: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper1_e_plus_pi.tex:4203: Underfull \hbox (badness 1762) in paragraph at lines 4176--4203
+warning: paper1_e_plus_pi.tex:4203: Underfull \hbox (badness 1796) in paragraph at lines 4176--4203
+warning: paper1_e_plus_pi.tex:4203: Underfull \hbox (badness 2837) in paragraph at lines 4176--4203
+warning: paper1_e_plus_pi.tex:4207: Underfull \hbox (badness 1675) in paragraph at lines 4204--4207
+warning: paper1_e_plus_pi.tex:4207: Underfull \hbox (badness 1062) in paragraph at lines 4204--4207
+warning: paper1_e_plus_pi.tex:4362: Underfull \hbox (badness 3460) in paragraph at lines 4361--4362
+warning: paper1_e_plus_pi.tex:4553: Underfull \hbox (badness 1939) in paragraph at lines 4552--4553
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 10000) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 10000) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 2922) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4687: Underfull \hbox (badness 1448) in paragraph at lines 4687--4687
+warning: paper1_e_plus_pi.tex:4721: Underfull \hbox (badness 10000) in paragraph at lines 4694--4721
+warning: paper1_e_plus_pi.tex:4721: Underfull \hbox (badness 10000) in paragraph at lines 4694--4721
+warning: paper1_e_plus_pi.tex:4734: Underfull \hbox (badness 10000) in paragraph at lines 4722--4734
+warning: paper1_e_plus_pi.tex:4734: Underfull \hbox (badness 10000) in paragraph at lines 4722--4734
+warning: paper1_e_plus_pi.tex:4751: Underfull \hbox (badness 1762) in paragraph at lines 4735--4751
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+note: Writing `paper1_e_plus_pi.log` (20.47 KiB)
+note: Writing `paper1_e_plus_pi.pdf` (660.13 KiB)
+note: Skipped writing 2 intermediate files (use --keep-intermediates to keep them)

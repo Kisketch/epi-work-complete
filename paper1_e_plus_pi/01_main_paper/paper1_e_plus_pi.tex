@@ -102,7 +102,7 @@ the admissible trace lattice and the leading common count.
 \item Elementary reductions and conditional implications (Section~\ref{sec:new}): the measure reduction (Theorem~\ref{thm:measure-reduction}), the continued-fraction necessary condition (Theorem~\ref{thm:cf}), the series rigidity propositions (Propositions~\ref{prop:window} and~\ref{prop:recurrence}), the four-exponentials obstruction (Proposition~\ref{prop:four-exp}), the translation identity for the $\irr(\pi)$ program (Theorem~\ref{thm:translation}), the scaling-closure proposition (Proposition~\ref{prop:scaling}), and the conditional Flint Hills bridge (Theorem~\ref{thm:flint}), together with the exclusion map, the surviving targets, and the adaptive-window and factorial digit-quantization criteria (Theorems~\ref{thm:adaptive-strip} and~\ref{thm:factorial-quantization}), with the required infinite behavior at $\pi$ still open.
 \item A systematic obstruction analysis (\S\ref{sec:obstructions}) of four proof routes and four candidate bridge identities, with the limitations of each examined construction stated explicitly. These observations do not exclude unexamined constructions or prove that an entire method is impossible.
 \item Proofs of selected classical unconditional results (Section~\ref{sec:unconditional}), including a compressed technical baseline comparing Fourier's and Niven's irrationality proofs.
-\item Machine verification and rigorous certificates (Appendix~\ref{sec:computation}): twelve symbolic verifications plus a separate cosine-integral check, and a 450-digit interval-arithmetic certificate.
+\item Machine verification and rigorous certificates (Appendix~\ref{sec:computation}): twelve symbolic verifications plus a separate cosine-integral check, a 450-digit interval-arithmetic certificate, and rigorous large-denominator exclusions (Proposition~\ref{prop:denominator-bounds}).
 \item A summary audit table (Appendix~\ref{app:audit}) recording, for the principal external facts, their statement, source, verification method, status, and application sites; the full declaration-level audit is in the archive (\texttt{LEMMA\_AUDIT.md}, \texttt{PROOF\_GAPS.md}, \texttt{FINAL\_REVIEW.md}, and \texttt{verification/\allowbreak audit\_\allowbreak final\_\allowbreak 20261122.log}).
 \item A machine-verified formalization in Lean~4 (Appendix~\ref{sec:lean}): a non-degenerate definition of the irrationality measure and kernel-checked derivations of the registered declarations listed in the archive with no \texttt{sorryAx} in the audited declarations. The \emph{Flint Hills case} of Meiburg's criterion is fully formalized (circle spacing, dyadic-block counting, Jordan bound, geometric summation), replacing the preprint axiom by a theorem; the Alekseyev direction (convergence $\Rightarrow\irr(\pi)\le5/2$) is now machine-verified via a nearest-integer argument, with the earlier density obstruction preserved as a historical record.
 \item A kernel-checked quantitative reduction of the escape target to a lattice-escape subproblem P1 (\S\ref{sec:lean-reduction}): match $\Rightarrow$ super-approximation $\Rightarrow$ upper envelope tending to $1/8$ $\Rightarrow$ collision with the classification gap $\Rightarrow$ $B\pi\in L$. This is a change of target, not a reduction in difficulty; P1 is of the same family as the original problem and remains open.
@@ -3934,6 +3934,9 @@ have not yet been examined by an independent human referee.
 
 \bibitem{Hermite1873} C.~Hermite, \emph{Sur la fonction exponentielle}, C.~R.~Acad.~Sci.~Paris~77 (1873), 18--24, 74--79, 226--233, 285--293.
 \bibitem{Lindemann1882} F.~Lindemann, \emph{\"Uber die Zahl $\pi$}, Math.~Ann.~20 (1882), 213--225.
+\bibitem{Johansson2017Arb} F.~Johansson, \emph{Arb: efficient arbitrary-precision midpoint-radius interval arithmetic}, IEEE Trans.~Comput.~66 (2017), no.~8, 1281--1292, doi:10.1109/TC.2017.2690633.
+\bibitem{Bailey1988} D.~H.~Bailey, \emph{Numerical results on the transcendence of constants involving $\pi$, $e$, and Euler's constant}, Math.~Comp.~50 (1988), no.~181, 275--281, doi:10.1090/S0025-5718-1988-0917835-1.
+\bibitem{OEISA058651} OEIS Foundation, \emph{Sequence A058651: Continued fraction for $\pi+e$}, \url{https://oeis.org/A058651} (b-file with $20000$ terms).
 \bibitem{OEIS} OEIS Wiki, \emph{Pi+e}, \url{https://oeis.org/wiki/Pi\%2Be}. (No nonzero integer pair $m,n$ with $m\pi+n\ee$ of known rationality status.)
 \bibitem{Roth1955} K.~F.~Roth, \emph{Rational approximations to algebraic numbers}, Mathematika 2 (1955), 1--20.
 \bibitem{GS1934} A.~O.~Gelfond and Th.~Schneider, independent solutions of Hilbert's seventh problem, 1934--1935.
@@ -4025,6 +4028,56 @@ Using directed-rounding interval arithmetic (mpmath, 450 decimal digits), $e+\pi
 \item The window condition of Proposition~\ref{prop:window} is rigorously violated at $n=2,4$ and all $7\le n\le60$ except $n=34$; every $q\le60$ has a certified first violation (for $q=34$ it is $n=35$).
 \end{enumerate}
 These are finite-range interval certificates, conditional on the stated implementation and directed-rounding computations, not progress on Problem~\ref{prob:main}; their value is methodological --- necessary conditions converted into reproducible certificates.
+
+% BEGIN denominator-bounds (auto)
+\subsection{Rigorous large-denominator exclusions}\label{sub:denominator-bounds}
+
+Let $x$ be one of $e+\pi$, $e\pi$, $\pi-e$, $\pi/e$. Ball arithmetic
+(Arb~\cite{Johansson2017Arb}, through python-flint) gives an interval $I=[\ell,u]$ with exact
+dyadic endpoints and width below $10^{-D}$ that rigorously contains $x$. Let $h/k$ be the
+rational number of least denominator in $I$; it is unique and is computed exactly from $\ell$
+and $u$ by the continued-fraction algorithm for the simplest rational in a closed interval. If
+$x=p/q$ with integers $p,q\ge1$, then $p/q\in I$, hence $q\ge k$.
+
+\begin{proposition}[Finite exclusion of small denominators]\label{prop:denominator-bounds}
+If $x\in\{e+\pi,\ e\pi,\ \pi-e,\ \pi/e\}$ and $x=p/q$ with integers $p,q$ and $q\ge1$, then $q\ge10^{500{,}018}$.
+\end{proposition}
+
+\begin{proof}[Computation]
+Apply the argument above with $D=1{,}000{,}000$; the least denominators $k$ are listed in
+Table~\ref{tab:denominator-bounds}. Each of these runs was carried out on two different machines
+with identical results (least-denominator size, number of common partial quotients, and the
+first $40$ partial quotients).
+\end{proof}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{c|c|c|c|c}
+$x$ & digits $D$ & $q\ge$ & common CF terms & machines \\\hline
+$e+\pi$ & $1{,}000{,}000$ & $10^{500{,}018}$ & $970{,}298$ & 2 \\
+$e\pi$ & $1{,}000{,}000$ & $10^{500{,}018}$ & $970{,}424$ & 2 \\
+$\pi-e$ & $1{,}000{,}000$ & $10^{500{,}018}$ & $971{,}039$ & 2 \\
+$\pi/e$ & $1{,}000{,}000$ & $10^{500{,}018}$ & $970{,}306$ & 2 \\
+\end{tabular}
+\caption{If $x=p/q$ then $q$ is at least the stated power of $10$ (the least denominator $k$ in $I$ has one more decimal digit than the exponent). ``Common CF terms'' is the number of
+partial quotients shared by both endpoints of $I$ (all of them are partial quotients of $x$);
+``machines'' is the number of independent machines on which the run was reproduced with
+identical output.}
+\label{tab:denominator-bounds}
+\end{table}
+
+\noindent The computation is reproducible with
+\texttt{verification/\allowbreak rational\_\allowbreak exclusion\_\allowbreak bound\_\allowbreak 20261124.py};
+its self-test recomputes the simplest rational with an independent exact implementation and the
+continued-fraction prefix with \texttt{mpmath} at higher precision. These are \emph{finite}
+exclusions: they say nothing about the irrationality of $x$, since rationals of larger
+denominator are not excluded, and they do not lower the difficulty of
+Problem~\ref{prob:main}. For comparison, the $20000$ partial quotients of $e+\pi$ tabulated in
+OEIS~A058651~\cite{OEISA058651} (all of which agree with the partial quotients certified by an
+enclosure with $D=25{,}000$) give a bound of the same kind, $q\ge q_{19998}\ge10^{10{,}148}$, and, according to the abstract
+of~\cite{Bailey1988}, $e+\pi$ satisfies no algebraic equation of degree at most $8$ with
+integer coefficients of Euclidean norm at most $10^{9}$.
+% END denominator-bounds (auto)
 
 \begin{proposition}[Certified separation on a denominator range]\label{prop:farey-gap}
 Set $s=e+\pi$. For all integers $a,b$ with $1\le b<3635695100$,

@@ -1,0 +1,5 @@
+b-file sha256 758a15a964451f94ef235eef848bfd038dbc34bf5ab6ab47f0f1cf3186bad74b  terms 20000
+Arb enclosure: digits 25000, rigorous common CF prefix length 24641
+compared 20000 terms; first mismatch: None
+digits of q_19998 = 10149, q_19999 = 10150 (from b-file terms)
+ALL 20000 B-FILE TERMS CONFIRMED
