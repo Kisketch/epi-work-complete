@@ -351,8 +351,14 @@ dimension-zero and subcritical dimension theorems (Theorems~\ref{thm:finite},
 \ref{thm:upper}, and~\ref{conj:weight}), and the continued-fraction window and
 residue theorems (Theorems~\ref{thm:windows}--\ref{thm:residues-asymptotic}).
 
+Related metric questions for Cantor series expansions, where the approximation
+is measured by the tail $x-\omega_n(x)$ of the partial sums, were studied by
+Cheng and Zhang~\cite{CZ}, who determine Hausdorff dimensions of the
+corresponding limsup sets; spectra and exact gauges are not considered there.
 For the selected sequence $(Q_j)$, Corollary~8 of Bugeaud, Liao and Rams
-\cite{BLR} applies directly since $Q_{j+1}/Q_j\to\infty$. It gives dimension
+\cite{BLR} applies directly since $Q_{j+1}/Q_j\to\infty$. Theorems~\ref{thm:poly-phase-transition} and
+\ref{thm:growing-rec-dim-phase} are compared with \cite{BLR} in
+Remarks~\ref{rem:poly-BLR} and~\ref{rem:growing-BLR}. It gives dimension
 one for every constant target $c\in[0,1/2]$ at weight $\alpha=0$ in
 Theorem~\ref{conj:weight} (in particular for $\{x:\|Q_jx\|\to0\}$), by taking
 the centres equal to $c$ and using $|\|y\|-\|c\||\le\|y-c\|$; integer
@@ -2425,6 +2431,18 @@ conversely, every $x\in L^{(r,c,d)}$ satisfies $\Lam_\alpha^{(r,c,d)}(x)=0\le t$
 by Lemma~\ref{lem:poly-lattice}(iv), proving~(iii).
 \end{proof}
 
+\begin{remark}[Comparison with Bugeaud--Liao--Rams]\label{rem:poly-BLR}
+For $\alpha=0$ the dimension assertion in Theorem~\ref{thm:poly-phase-transition}(ii)
+also follows from Corollary~8 of \cite{BLR}, since $Q_{j+1}/Q_j\to\infty$, by taking
+constant centres $y_j=t$ exactly as for the convergent denominators of~$e$.
+For $0<\alpha<r$, the right-hand side of the dimension formula in
+\cite[Theorem~7]{BLR}, evaluated formally at $f_j(x)=Q_jx$ and $\delta_j=t_0j^{-\alpha}$,
+is $\liminf_n(\log Q_n+\sum_{j<n}\log\delta_j)/(\log Q_n-\log\delta_n)=1-\alpha/r$,
+the value in~(ii). That theorem does not apply, however: its condition~(1.6) requires
+$\log f'_{j+1}/\log f'_j\to\infty$, whereas here $\log Q_{j+1}/\log Q_j\to1$, and the
+proof above does not use that condition. (Hypotheses as stated in arXiv:1710.03596v1.)
+\end{remark}
+
 \paragraph{Lean status for Section~\ref{sec:poly-rec}.}
 The entire general-$(r,c,d)$ theory of Section~\ref{sec:poly-rec} for
 \emph{all} degrees $r\ge1$, leading coefficients $c\ge1$, and shifts $d\in\Z$
@@ -2708,6 +2726,25 @@ Claims~(a) and~(b) follow immediately upon taking $\limsup_{j\to\infty}$ in~\eqr
 and relating $\frac{\log(A_j^{\tau-1}/Q_j)}{\log Q_j}=(\tau-1)\frac{\log A_j}{\log Q_j}-1$
 to $(\tau-1)\gamma_{\sup}-1$.
 \end{proof}
+
+\begin{remark}[Comparison with Bugeaud--Liao--Rams]\label{rem:growing-BLR}
+Part~(i) of Theorem~\ref{thm:growing-rec-dim-phase} overlaps with \cite{BLR} in two
+boundary regimes. For $\tau=0$, since $Q_{j+1}/Q_j\ge A_j\to\infty$, Corollary~8 of
+\cite{BLR} already gives $\dimH E_{G,0,\mathrm{lim}}(0)=1$, hence also
+$\dimH E_{G,0}(t)=1$. For $\tau>0$ and $\lim_{j\to\infty}\log A_j/\log Q_j=\infty$
+(a limit, not only a $\limsup$), one has $\log Q_{j+1}/\log Q_j\to\infty$ because
+$Q_{j+1}\ge A_jQ_j$; then, for $N$ large, the maps $x\mapsto Q_{j+N}x$ with
+$\delta_j=(t+1)A_{j+N}^{-\tau}$ satisfy conditions~(1.1), (1.5) and~(1.6) of
+\cite[Theorem~7]{BLR}, its dimension formula gives $0$, and
+$E_{G,\tau}(t)\subseteq\bigcup_N\{x:\|Q_jx\|\le(t+1)A_j^{-\tau}\ \forall j\ge N\}$
+yields $\dimH E_{G,\tau}(t)=0$ by countable stability. In all other cases---in
+particular whenever $\gamma_{\sup}<\infty$, where $\log Q_{j+1}/\log Q_j$ stays
+bounded---condition~(1.6) fails and \cite[Theorem~7]{BLR} does not apply. Its
+right-hand side, evaluated formally at $f_j(x)=Q_jx$ and $\delta_j=cA_j^{-\tau}$, is
+nevertheless $(1-\tau)/(1+\tau\gamma_{\sup})$ (using $\log Q_n=\sum_{j<n}\log A_j+O(n)$
+and $n=o(\log Q_n)$), so~\eqref{eq:growing-subcritical-dim} may be read as an extension
+of that formula beyond condition~(1.6). (Hypotheses as stated in arXiv:1710.03596v1.)
+\end{remark}
 
 \begin{corollary}[Three canonical growth regimes and the critical boundary $\tau_{\mathrm{crit}}=2$]\label{cor:growing-rec-three-regimes}
 Consider the unit-initialized recurrences ($J_0=1$, $Q_0=Q_1=1$, $g=1$,
@@ -3515,8 +3552,7 @@ Hausdorff-measure covering and Frostman mass distribution. In particular,
 $\frac12<\dimH F_{m,r}$ for all $m\ge1,r\ge1$, and $\dimH F_{4,1}\le\frac45$.
 \item \emph{Exact integer certificates for $m\in\{2,3,4,5,6\}$.}
 Running the verified step-function inequalities in exact integer arithmetic
-(\texttt{verification/\allowbreak residue\_\allowbreak certificate\_\allowbreak general.py},
-\texttt{\allowbreak residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py},
+(\texttt{verification/\allowbreak residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py},
 grid $N=512$, scale $S=10^{13}$, $2^{80}$-precision enclosures) certifies the
 narrow rational brackets in Table~\ref{tab:residues-general}, with strict
 separation $\mathrm{upper}(F_{m,m})<\mathrm{lower}(F_{m,1})$ (and hence
@@ -3727,7 +3763,7 @@ $m$ & $F_{m,m}$ ($0\bmod m$ alphabet) & $C_\infty=1.000000000000$ & $0.500496546
 
 \paragraph{Lean status of Section~\ref{sec:windows-residues}.}
 All of Theorems~\ref{thm:windows}, \ref{thm:short-ae}, and~\ref{thm:no-short-dim}---including the exact dimension-$1$ identity for \texttt{prescribed\allowbreak ParitySet}, the exact dimension-$1/2$ identities for \texttt{bounded\allowbreak IncSet}, \texttt{prescribed\allowbreak IncSet}, and \texttt{prescribed\allowbreak IncSetAt}, the almost-everywhere short-window lower bound $Z_J(x)\ge\frac{1-\ee^{-1}}{160}\log J$ (\texttt{thm\_\allowbreak short\_\allowbreak ae\_\allowbreak explicit}), and the full conjunction $\dimH(\texttt{div\allowbreak WindowSet}\,\epsilon)=1\wedge\operatorname{Leb}(\texttt{div\allowbreak WindowSet}\,\epsilon)=0$ (\texttt{thm\_\allowbreak no\_\allowbreak short\_\allowbreak dim\_\allowbreak complete})---are now kernel-checked end-to-end at Layer~A for mathlib's \texttt{GenContFract.of} across thirteen Lean~4 modules: the counting and Frostman-scale pipeline (\texttt{Window\allowbreak Mobius\allowbreak Count.lean}, \texttt{No\allowbreak Short\allowbreak Dim\allowbreak Count.lean}, \texttt{Window\allowbreak Tree\allowbreak Prune.lean}, \texttt{Window\allowbreak Asymp\allowbreak Thresh.lean}, \texttt{Window\allowbreak Frostman\allowbreak Discharge.lean}, and \texttt{Window\allowbreak Paper\allowbreak Scale.lean}), the CF realization and bounded-increment pipeline (\texttt{Window\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak CF\allowbreak Bridge.lean}, \texttt{Window\allowbreak No\allowbreak Short\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak Prescribed\allowbreak CF\allowbreak Realize.lean}, and \texttt{Window\allowbreak Bounded\allowbreak Upper.lean}), and the short-window measure pipeline (\texttt{Window\allowbreak Short\allowbreak Ae.lean} and \texttt{Window\allowbreak Short\allowbreak Ae\allowbreak Realize.lean}, $14$ declarations; base axioms only, zero \texttt{sorryAx}; see Remark~\ref{rem:windows-lean}).
-For Theorems~\ref{thm:residues}, \ref{thm:residues-general}, and~\ref{thm:residues-asymptotic}, the entire general-modulus $m\ge2$ Lipschitz shift equivalence, sandwich, and eventual-periodicity theorem is kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak ModGeneral.lean} ($7$ declarations: \texttt{lipschitz\allowbreak OnWith\_\allowbreak cfShift}, \texttt{dimH\_\allowbreak residueSeqSet\_\allowbreak sandwich}, \texttt{dimH\_\allowbreak eventually\allowbreak PeriodicResidueSet\_\allowbreak eq}), the unconditional transfer-operator Hausdorff-dimension framework, $\frac12<\dimH F_{m,r}$, $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness (\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound}, \texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}) are kernel-checked in \texttt{EpiFormal/\allowbreak Transfer\allowbreak Operator\allowbreak Dim.lean} ($11$ declarations, base axioms only), and the complete resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$, exact dimension-excess ratios, and eventual strict monotonicity in~$r$ of Theorem~\ref{thm:residues-asymptotic} are kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} (all $15$ declarations: \texttt{metalQ\_\allowbreak one\_\allowbreak eq\_\allowbreak fib}, \texttt{metalC\_\allowbreak one\_\allowbreak eq\_\allowbreak psiFib}, \texttt{resolventV\_\allowbreak branch\_\allowbreak eq}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak le\_\allowbreak of\_\allowbreak resolvent}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak of\_\allowbreak resolvent}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak le}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak mm}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak m1}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak eventuallyPeriodic}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{tendsto\_\allowbreak mul\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak sub\_\allowbreak half}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak residue\_\allowbreak ratio\_\allowbreak eq\_\allowbreak metalC}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak eventuallyPeriodic\_\allowbreak ratio\_\allowbreak eq\_\allowbreak psiFib}, and \texttt{eventually\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak strictAnti}; base axioms only, zero \texttt{sorryAx}), alongside the $14$ helper lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}; only the finite-precision integer grid runs in \texttt{residue\_\allowbreak certificate.py} and \texttt{residue\_\allowbreak certificate\_\allowbreak general.py} validating the narrow brackets in Table~\ref{tab:residues-general} execute in Python.
+For Theorems~\ref{thm:residues}, \ref{thm:residues-general}, and~\ref{thm:residues-asymptotic}, the entire general-modulus $m\ge2$ Lipschitz shift equivalence, sandwich, and eventual-periodicity theorem is kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak ModGeneral.lean} ($7$ declarations: \texttt{lipschitz\allowbreak OnWith\_\allowbreak cfShift}, \texttt{dimH\_\allowbreak residueSeqSet\_\allowbreak sandwich}, \texttt{dimH\_\allowbreak eventually\allowbreak PeriodicResidueSet\_\allowbreak eq}), the unconditional transfer-operator Hausdorff-dimension framework, $\frac12<\dimH F_{m,r}$, $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness (\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound}, \texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}) are kernel-checked in \texttt{EpiFormal/\allowbreak Transfer\allowbreak Operator\allowbreak Dim.lean} ($11$ declarations, base axioms only), and the complete resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$, exact dimension-excess ratios, and eventual strict monotonicity in~$r$ of Theorem~\ref{thm:residues-asymptotic} are kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} (all $15$ declarations: \texttt{metalQ\_\allowbreak one\_\allowbreak eq\_\allowbreak fib}, \texttt{metalC\_\allowbreak one\_\allowbreak eq\_\allowbreak psiFib}, \texttt{resolventV\_\allowbreak branch\_\allowbreak eq}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak le\_\allowbreak of\_\allowbreak resolvent}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak of\_\allowbreak resolvent}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak le}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak mm}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak m1}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak eventuallyPeriodic}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{tendsto\_\allowbreak mul\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak sub\_\allowbreak half}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak residue\_\allowbreak ratio\_\allowbreak eq\_\allowbreak metalC}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak eventuallyPeriodic\_\allowbreak ratio\_\allowbreak eq\_\allowbreak psiFib}, and \texttt{eventually\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak strictAnti}; base axioms only, zero \texttt{sorryAx}), alongside the $14$ helper lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}; the integer grid certificates for the narrow brackets in Table~\ref{tab:residues-general} are run in exact Python arithmetic (\texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py}) and, as closed brackets, re-checked by the Lean kernel in \texttt{Residue\allowbreak Cert\allowbreak Table.lean} (Remark~\ref{rem:residue-kernel}).
 
 \section{Numerical evidence}\label{sec:num}
 
@@ -3974,10 +4010,11 @@ $\dimH \le 4/5$, the finite-step matrix-certificate soundness theorems
 the M\"obius/eventual/periodic residue invariance identities are kernel-checked
 in \texttt{Residue\allowbreak ModGeneral.lean} and
 \texttt{Transfer\allowbreak Operator\allowbreak Dim.lean}, while the sharp
-$256$-point dyadic numerical intervals in Theorem~\ref{thm:residues} and
+$512$-point dyadic numerical intervals in Theorem~\ref{thm:residues} and
 Table~\ref{tab:residues-general} are certified by the reproducible exact
-integer-arithmetic scripts \texttt{residue\_certificate.py} and
-\texttt{residue\_\allowbreak certificate\_\allowbreak general.py}. Finally,
+integer-arithmetic script \texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py},
+and their closed versions are kernel-checked in
+\texttt{Residue\allowbreak Cert\allowbreak Table.lean} (Remark~\ref{rem:residue-kernel}). Finally,
 Theorem~\ref{thm:residues-asymptotic}(i)--(iv) (exact metallic-continuant
 resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$
 for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$,
@@ -4011,7 +4048,7 @@ window and residue theorems (Theorems~\ref{thm:windows}--\ref{thm:residues-asymp
 \section*{Use of AI and formal verification}
 % TODO before submission: adapt this statement to the target journal's AI-use policy.
 This work was carried out with substantial assistance from generative AI
-systems (including ChatGPT and Codex), both for developing and drafting
+systems (including ChatGPT, Codex, and Claude), both for developing and drafting
 mathematical arguments and text, preparing the numerical certificates, and
 writing the Lean~4 formalization. The results marked as machine-checked (Layer~A)
 were verified by the Lean~4 kernel, and their axiom dependencies were audited
@@ -4021,29 +4058,32 @@ axioms \texttt{e\_transcendental}, \texttt{pi\_transcendental}, and
 \texttt{mu\_e\_eq\_two} in the companion $e+\pi$ paper's modules; the other $914$
 depend only on the Lean base axioms \texttt{propext}, \texttt{Classical.choice},
 and \texttt{Quot.sound}---with zero
-project-added axioms and zero \texttt{sorryAx}). The only portions not inside
+project-added axioms and zero \texttt{sorryAx}); the $27$ declarations of the
+residue-certificate layer (Remark~\ref{rem:residue-kernel}) are audited separately in
+\texttt{AuditResidueCert.lean}, again with base axioms only. The only portions not inside
 the Lean kernel are the finite-dimensional linear-algebraic Perron--Frobenius
 eigenvector existence input on marked strongly connected components in
 Theorem~\ref{thm:finite-state-tail} (whose positive right eigenvector is passed
 explicitly to \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak complete}
 and \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak complete}
-in \texttt{FiniteStateComplete.lean}) and the Python exact integer-arithmetic
-execution of \texttt{residue\_\allowbreak certificate.py} and
-\texttt{residue\_\allowbreak certificate\_\allowbreak general.py}
-for the $256$-cell grid certificates in Table~\ref{tab:residues-general}
-(whose transfer-operator dimension soundness theorems are verified in
-\texttt{TransferOperatorDim.lean}).
+in \texttt{FiniteStateComplete.lean}) and the strictness of the brackets in
+Theorem~\ref{thm:residues} and Table~\ref{tab:residues-general}, which uses the
+cited pressure formalism (the closed brackets themselves are kernel-checked,
+Remark~\ref{rem:residue-kernel}).
 % TODO before submission: state who checked the paper proofs, and how.
 
 \begin{thebibliography}{99}
 \bibitem{BDS} A.~B\'ir\'o, J.-M.~Deshouillers, V.~T.~S\'os, \emph{Good
-approximation and characterization of subgroups of $\R/\Z$}, Studia Sci.\ Math.\ Hungar.\ 38 (2001), 97--113.
+approximation and characterization of subgroups of $\R/\Z$}, Studia Sci.\ Math.\ Hungar.\ 38 (2001), 97--113, doi:10.1556/\allowbreak sscmath.38.2001.1-4.7.
 
 \bibitem{BV} V.~Beresnevich and S.~Velani, \emph{A mass transference principle
 and the Duffin--Schaeffer conjecture}, Ann.\ of Math.\ (2) 164 (2006), 971--992.
 
 \bibitem{BLR} Y.~Bugeaud, L.~Liao, M.~Rams, \emph{Metrical results on the
 distribution of fractional parts of powers of real numbers}, Proc.\ Edinb.\ Math.\ Soc.\ (2) 62 (2019), 505--521, doi:10.1017/\allowbreak S0013091518000585; arXiv:1710.03596. (Cor.~8, the hypothesis is $Q_{j+1}/Q_j\to\infty$.)
+
+\bibitem{CZ} W.~Cheng and X.~Zhang, \emph{Exact approximation order of real numbers in
+Cantor series expansions}, arXiv:2606.30435v2 (2026).
 
 \bibitem{CMMS} C.~Cabrelli, F.~Mendivil, U.~M.~Molter, R.~Shonkwiler,
 \emph{On the Hausdorff $h$-measure of Cantor sets}, Pacific J.\ Math.\ 217
@@ -4064,7 +4104,7 @@ for homogeneous Moran sets}, Sci.\ China Ser.\ A 40 (1997), 475--482,
 doi:10.1007/\allowbreak BF02896955.
 
 \bibitem{KL} C.~Kraaikamp and P.~Liardet, \emph{Good approximations and
-continued fractions}, Proc.\ Amer.\ Math.\ Soc.\ 112 (1991), 303--309.
+continued fractions}, Proc.\ Amer.\ Math.\ Soc.\ 112 (1991), 303--309, doi:10.1090/\allowbreak s0002-9939-1991-1062392-7.
 
 \bibitem{LimaMoreira} D.~Lima and C.~G.~Moreira, \emph{Phase transitions on
 the Markov and Lagrange dynamical spectra}, Ann.\ Inst.\ H.~Poincar\'e

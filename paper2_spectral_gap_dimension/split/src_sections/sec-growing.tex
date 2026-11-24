@@ -209,6 +209,25 @@ and relating $\frac{\log(A_j^{\tau-1}/Q_j)}{\log Q_j}=(\tau-1)\frac{\log A_j}{\l
 to $(\tau-1)\gamma_{\sup}-1$.
 \end{proof}
 
+\begin{remark}[Comparison with Bugeaud--Liao--Rams]\label{rem:growing-BLR}
+Part~(i) of Theorem~\ref{thm:growing-rec-dim-phase} overlaps with \cite{BLR} in two
+boundary regimes. For $\tau=0$, since $Q_{j+1}/Q_j\ge A_j\to\infty$, Corollary~8 of
+\cite{BLR} already gives $\dimH E_{G,0,\mathrm{lim}}(0)=1$, hence also
+$\dimH E_{G,0}(t)=1$. For $\tau>0$ and $\lim_{j\to\infty}\log A_j/\log Q_j=\infty$
+(a limit, not only a $\limsup$), one has $\log Q_{j+1}/\log Q_j\to\infty$ because
+$Q_{j+1}\ge A_jQ_j$; then, for $N$ large, the maps $x\mapsto Q_{j+N}x$ with
+$\delta_j=(t+1)A_{j+N}^{-\tau}$ satisfy conditions~(1.1), (1.5) and~(1.6) of
+\cite[Theorem~7]{BLR}, its dimension formula gives $0$, and
+$E_{G,\tau}(t)\subseteq\bigcup_N\{x:\|Q_jx\|\le(t+1)A_j^{-\tau}\ \forall j\ge N\}$
+yields $\dimH E_{G,\tau}(t)=0$ by countable stability. In all other cases---in
+particular whenever $\gamma_{\sup}<\infty$, where $\log Q_{j+1}/\log Q_j$ stays
+bounded---condition~(1.6) fails and \cite[Theorem~7]{BLR} does not apply. Its
+right-hand side, evaluated formally at $f_j(x)=Q_jx$ and $\delta_j=cA_j^{-\tau}$, is
+nevertheless $(1-\tau)/(1+\tau\gamma_{\sup})$ (using $\log Q_n=\sum_{j<n}\log A_j+O(n)$
+and $n=o(\log Q_n)$), so~\eqref{eq:growing-subcritical-dim} may be read as an extension
+of that formula beyond condition~(1.6). (Hypotheses as stated in arXiv:1710.03596v1.)
+\end{remark}
+
 \begin{corollary}[Three canonical growth regimes and the critical boundary $\tau_{\mathrm{crit}}=2$]\label{cor:growing-rec-three-regimes}
 Consider the unit-initialized recurrences ($J_0=1$, $Q_0=Q_1=1$, $g=1$,
 $L_{G,\mathrm{rat}}=\Z$, $L_G=\Z+\Z\theta_G$):

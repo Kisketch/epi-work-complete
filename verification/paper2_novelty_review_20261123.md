@@ -37,7 +37,26 @@
 - CLU 已在既有记录 `residues_literature_20261121.md` 中逐条核对，本次未重复。
 - Fang, Moreira, Zhang, arXiv:2409.00521v1（2024-08-31，56 页，无期刊信息）：逐字读到的部分（约 0–40k 与 140k–170k 字符）没有等差数字集或大参数展开；中间部分只读到模型摘要，**未逐字核对**。
 
-## 3. 建议的论文修改（未执行，待作者确认）
+## 3. 论文修改（2026-11-23 已执行，见 §3b）
+
+### 3a. BLR 子情形逐条核对结论（依据 arXiv:1710.03596v1 逐字条件；为本项目自行推导，属文献核查与复现）
+
+| 子情形 | (1.1) | (1.5) | (1.6) | 结论 |
+| :--- | :--- | :--- | :--- | :--- |
+| R5，$\tau=0$；R4，$\alpha=0$ | — | — | — | 由 BLR 推论 8（只需 $Q_{j+1}/Q_j\to\infty$）直接得到维数 1：**被 BLR 覆盖** |
+| R5，$\tau>0$，$\lim\log A_j/\log Q_j=\infty$ | 成立（导数为常数） | 平移 $N$ 位后成立：$Q_{j+1}/Q_j\cdot\delta_j\ge(t+1)A_j^{1-\tau}\ge2$，$\delta_j<1/4$ | 成立：$Q_{j+1}\ge A_jQ_j$ ⇒ $\log Q_{j+1}/\log Q_j\to\infty$ | 定理 7 给出维数 0，加可数稳定性：**被 BLR 覆盖** |
+| R5，$\gamma_{\sup}<\infty$；或 $\gamma_{\sup}=\infty$ 但只是上极限 | 成立 | 成立 | **不成立** | BLR 不适用；论文二结论超出 BLR |
+| R4，$0<\alpha<r$ | 成立 | 成立 | **不成立**（$\log Q_{j+1}/\log Q_j\to1$） | BLR 不适用；论文二结论超出 BLR |
+
+### 3b. 已执行的修改
+
+- `patch_blr_remarks_20261123.py`：新增 `rem:poly-BLR`（多项式递推）与 `rem:growing-BLR`（增长商递推），写明上表的覆盖关系与公式重合；引言补 Cheng–Zhang 相关工作；KL、BDS 补 Crossref DOI；新增书目 `CZ`。2A 轨道不含这两节，自动删去引言中的交叉引用句。
+- `patch_stale_N512_20261123.py`：清理上一轮 N=512 改稿遗留的 256 网格与"仅 Python"表述，在验证段落登记 `AuditResidueCert.lean` 的 27 条声明，AI 使用声明补上 Claude。
+- tectonic 重编：主论文 59 页、2A 24 页、2B 15 页、2C 21 页，四份均 0 未定义引用。
+- 未执行：Devos 等人未引用（发表信息未核到）；新颖性措辞（"to our knowledge"）的全文统一未做。
+
+### 3c. 原建议（保留留痕）
+
 
 1. **必做**：论文已对 $e$ 情形与 BLR 定理 7 做了比较（第 355–362、1167–1170 行），但没有写明两者的公式值重合。建议在 `thm:poly-phase-transition` 与 `thm:growing-rec-dim-phase` 后加一段同样的比较，并单独说明 $\lim\log A_j/\log Q_j=\infty$ 子情形与 BLR 定理 7 的关系，大意如下：
    > Formally, the value $1-\alpha/r$ (resp. $(1-\tau)/(1+\tau\gamma_{\sup})$) coincides with the dimension formula of Bugeaud–Liao–Rams [BLR, Theorem 7] for sets $\{x:\|f_n(x)-y_n\|\le\delta_n\ \forall n\}$, evaluated at $f_n(x)=Q_nx$. Their theorem assumes $\log f'_{n+1}/\log f'_n\to\infty$ (condition (1.6)), which fails for the present sequences since $\log Q_{j+1}/\log Q_j\to1$ (resp. stays bounded when $\gamma_{\sup}<\infty$); our proofs do not use that condition.

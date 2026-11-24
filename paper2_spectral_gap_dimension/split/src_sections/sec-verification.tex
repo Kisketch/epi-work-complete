@@ -160,10 +160,11 @@ $\dimH \le 4/5$, the finite-step matrix-certificate soundness theorems
 the M\"obius/eventual/periodic residue invariance identities are kernel-checked
 in \texttt{Residue\allowbreak ModGeneral.lean} and
 \texttt{Transfer\allowbreak Operator\allowbreak Dim.lean}, while the sharp
-$256$-point dyadic numerical intervals in Theorem~\ref{thm:residues} and
+$512$-point dyadic numerical intervals in Theorem~\ref{thm:residues} and
 Table~\ref{tab:residues-general} are certified by the reproducible exact
-integer-arithmetic scripts \texttt{residue\_certificate.py} and
-\texttt{residue\_\allowbreak certificate\_\allowbreak general.py}. Finally,
+integer-arithmetic script \texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py},
+and their closed versions are kernel-checked in
+\texttt{Residue\allowbreak Cert\allowbreak Table.lean} (Remark~\ref{rem:residue-kernel}). Finally,
 Theorem~\ref{thm:residues-asymptotic}(i)--(iv) (exact metallic-continuant
 resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$
 for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$,
@@ -197,7 +198,7 @@ window and residue theorems (Theorems~\ref{thm:windows}--\ref{thm:residues-asymp
 \section*{Use of AI and formal verification}
 % TODO before submission: adapt this statement to the target journal's AI-use policy.
 This work was carried out with substantial assistance from generative AI
-systems (including ChatGPT and Codex), both for developing and drafting
+systems (including ChatGPT, Codex, and Claude), both for developing and drafting
 mathematical arguments and text, preparing the numerical certificates, and
 writing the Lean~4 formalization. The results marked as machine-checked (Layer~A)
 were verified by the Lean~4 kernel, and their axiom dependencies were audited
@@ -207,29 +208,32 @@ axioms \texttt{e\_transcendental}, \texttt{pi\_transcendental}, and
 \texttt{mu\_e\_eq\_two} in the companion $e+\pi$ paper's modules; the other $914$
 depend only on the Lean base axioms \texttt{propext}, \texttt{Classical.choice},
 and \texttt{Quot.sound}---with zero
-project-added axioms and zero \texttt{sorryAx}). The only portions not inside
+project-added axioms and zero \texttt{sorryAx}); the $27$ declarations of the
+residue-certificate layer (Remark~\ref{rem:residue-kernel}) are audited separately in
+\texttt{AuditResidueCert.lean}, again with base axioms only. The only portions not inside
 the Lean kernel are the finite-dimensional linear-algebraic Perron--Frobenius
 eigenvector existence input on marked strongly connected components in
 Theorem~\ref{thm:finite-state-tail} (whose positive right eigenvector is passed
 explicitly to \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak complete}
 and \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak complete}
-in \texttt{FiniteStateComplete.lean}) and the Python exact integer-arithmetic
-execution of \texttt{residue\_\allowbreak certificate.py} and
-\texttt{residue\_\allowbreak certificate\_\allowbreak general.py}
-for the $256$-cell grid certificates in Table~\ref{tab:residues-general}
-(whose transfer-operator dimension soundness theorems are verified in
-\texttt{TransferOperatorDim.lean}).
+in \texttt{FiniteStateComplete.lean}) and the strictness of the brackets in
+Theorem~\ref{thm:residues} and Table~\ref{tab:residues-general}, which uses the
+cited pressure formalism (the closed brackets themselves are kernel-checked,
+Remark~\ref{rem:residue-kernel}).
 % TODO before submission: state who checked the paper proofs, and how.
 
 \begin{thebibliography}{99}
 \bibitem{BDS} A.~B\'ir\'o, J.-M.~Deshouillers, V.~T.~S\'os, \emph{Good
-approximation and characterization of subgroups of $\R/\Z$}, Studia Sci.\ Math.\ Hungar.\ 38 (2001), 97--113.
+approximation and characterization of subgroups of $\R/\Z$}, Studia Sci.\ Math.\ Hungar.\ 38 (2001), 97--113, doi:10.1556/\allowbreak sscmath.38.2001.1-4.7.
 
 \bibitem{BV} V.~Beresnevich and S.~Velani, \emph{A mass transference principle
 and the Duffin--Schaeffer conjecture}, Ann.\ of Math.\ (2) 164 (2006), 971--992.
 
 \bibitem{BLR} Y.~Bugeaud, L.~Liao, M.~Rams, \emph{Metrical results on the
 distribution of fractional parts of powers of real numbers}, Proc.\ Edinb.\ Math.\ Soc.\ (2) 62 (2019), 505--521, doi:10.1017/\allowbreak S0013091518000585; arXiv:1710.03596. (Cor.~8, the hypothesis is $Q_{j+1}/Q_j\to\infty$.)
+
+\bibitem{CZ} W.~Cheng and X.~Zhang, \emph{Exact approximation order of real numbers in
+Cantor series expansions}, arXiv:2606.30435v2 (2026).
 
 \bibitem{CMMS} C.~Cabrelli, F.~Mendivil, U.~M.~Molter, R.~Shonkwiler,
 \emph{On the Hausdorff $h$-measure of Cantor sets}, Pacific J.\ Math.\ 217
@@ -250,7 +254,7 @@ for homogeneous Moran sets}, Sci.\ China Ser.\ A 40 (1997), 475--482,
 doi:10.1007/\allowbreak BF02896955.
 
 \bibitem{KL} C.~Kraaikamp and P.~Liardet, \emph{Good approximations and
-continued fractions}, Proc.\ Amer.\ Math.\ Soc.\ 112 (1991), 303--309.
+continued fractions}, Proc.\ Amer.\ Math.\ Soc.\ 112 (1991), 303--309, doi:10.1090/\allowbreak s0002-9939-1991-1062392-7.
 
 \bibitem{LimaMoreira} D.~Lima and C.~G.~Moreira, \emph{Phase transitions on
 the Markov and Lagrange dynamical spectra}, Ann.\ Inst.\ H.~Poincar\'e
