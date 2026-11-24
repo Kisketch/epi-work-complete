@@ -171,6 +171,20 @@ pdflatex -interaction=nonstopmode paper2_spectral_gap_dimension.tex
 pdflatex -interaction=nonstopmode paper2_spectral_gap_dimension.tex
 ```
 
+### 4.4 CI：Lean 重建与公理审计（GitHub Actions）
+
+[`.github/workflows/lean-audit.yml`](.github/workflows/lean-audit.yml) 在每次 push / pull request 到 `main` 以及手动触发（`workflow_dispatch`）时，在 GitHub 托管的 `ubuntu-latest` 机器上自动重做 [`verification/colab_rebuild_audit_20261124.md`](verification/colab_rebuild_audit_20261124.md) 里的手工 Colab 流程：
+
+1. 安装 elan，按 `epi_formal/lean-toolchain` / `lake-manifest.json` 取 Lean 4.35.0 + Mathlib v4.35.0；`lake exe cache get` → `lake build`（另显式构建 `EpiFormal.ResidueCertTable`、`EpiFormal.ResidueMultiAsymptotic`）。
+2. `lake env lean` 分别运行 `Audit.lean`、`AuditResidueCert.lean`、`AuditResidueMultiAsymptotic.lean`，用 [`verification/compare_audit_logs.py`](verification/compare_audit_logs.py) 与 `audit_final_20261122.log`（937 条）、`audit_residue_cert_20261123.log`（27 条）、`audit_residue_multi_asymptotic_20261123.log`（24 条）逐条比较（后两者另断言公理集合 ⊆ `[propext, Classical.choice, Quot.sound]`），再对新输出跑 `check_audit_reconcile.py`。任何差异、多余输出行（如报错）或断言失败都让任务失败。
+3. 另一个轻量任务在 Linux 上跑 `verify_repo_integrity.py`。新审计输出、构建日志、峰值内存与 SHA-256 作为 artifact 上传（保留 90 天）。
+
+缓存策略：`.lake/packages`（Mathlib 及其依赖，由 manifest 锁定）按 toolchain + manifest 缓存；项目自身的 `.lake/build` **只在 pull request 上**增量复用。push 到 `main` 与手动触发（默认 `clean_build: true`）都从源码重编译全部 `EpiFormal` 模块。
+
+运行资源：GitHub 文档写明，公开仓库的标准 Linux runner 为 4 vCPU / 16 GB RAM / 14 GB SSD，单个 job 上限 6 小时（2026-11-24 查阅）。Colab 上 8 vCPU / 50 GB 的全量构建用时 16m41s–21m15s，据此估计 4 核 runner 全量构建约 35–50 分钟，workflow 的 `timeout-minutes: 150` 留有余量。16 GB 内存与 14 GB 磁盘是否够用，**尚待首次 CI 运行实测**：工作流先删除部分预装工具链以腾出磁盘，并用 `/usr/bin/time -v` 记录峰值内存。
+
+按 `AGENTS.md` §5：只有 CI 实际跑通（绿色），才算又一次独立重建与公理审计；workflow 文件本身不构成核实。
+
 ---
 
 ## 五、它没做到什么（诚实边界与留存待办）

@@ -1,0 +1,198 @@
+# Independent rebuild + axiom audit of epi_formal/ (AGENTS.md §5).
+#
+# Reproduces the manual Google Colab procedure in
+# verification/colab_rebuild_audit_20261124.md:
+#   elan -> lake exe cache get -> lake build -> three `#print axioms` entry points
+#   -> entry-by-entry comparison with the committed reference logs
+#   -> check_audit_reconcile.py.
+# Any difference fails the job.
+#
+# Runner sizing (GitHub docs, checked 2026-11-24): a standard ubuntu-latest runner for a
+# public repository has 4 vCPU / 16 GB RAM / 14 GB SSD, and a job may run for at most
+# 6 hours. The Colab build took 16m41s-21m15s on 8 vCPU / 50 GB, so a from-scratch build
+# here is expected to take roughly 35-50 min; timeout-minutes is set well above that and
+# well below the 6 h cap. See README ("CI: Lean audit") for the cache policy.
+
+name: Lean build and axiom audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      clean_build:
+        description: "Rebuild every EpiFormal module from source (ignore the cached project build)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lean-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BASE_AXIOMS: "propext,Classical.choice,Quot.sound"
+
+jobs:
+  lean-audit:
+    name: "lake build + #print axioms audit"
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Free disk space (Mathlib oleans + project build need several GB)
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true
+          df -h /
+
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Show toolchain (pinned by epi_formal/lean-toolchain)
+        working-directory: epi_formal
+        run: |
+          cat lean-toolchain
+          lean --version
+          lake --version
+          grep -A3 '"name": "mathlib"' lake-manifest.json || true
+
+      - name: Compute cache keys
+        id: keys
+        run: |
+          deps='${{ hashFiles('epi_formal/lean-toolchain', 'epi_formal/lake-manifest.json', 'epi_formal/lakefile.toml') }}'
+          src='${{ hashFiles('epi_formal/EpiFormal.lean', 'epi_formal/EpiFormal/**/*.lean') }}'
+          echo "deps=$deps" >> "$GITHUB_OUTPUT"
+          echo "src=$src" >> "$GITHUB_OUTPUT"
+          # Pull requests reuse the project build incrementally; pushes to main and manual
+          # runs (default clean_build=true) rebuild every EpiFormal module from source.
+          if [[ "${{ github.event_name }}" == "pull_request" ]] || \
+             [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.clean_build }}" != "true" ]]; then
+            echo "restore_build=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "restore_build=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Mathlib and its dependencies are pinned by lake-manifest.json, so their checked-out
+      # sources and downloaded oleans are immutable for a given key.
+      - name: Restore Mathlib packages (.lake/packages)
+        uses: actions/cache@v4
+        with:
+          path: epi_formal/.lake/packages
+          key: lake-packages-${{ runner.os }}-${{ steps.keys.outputs.deps }}
+
+      - name: Restore EpiFormal build (.lake/build, pull requests only)
+        if: steps.keys.outputs.restore_build == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: epi_formal/.lake/build
+          key: epi-build-${{ runner.os }}-${{ steps.keys.outputs.deps }}-${{ steps.keys.outputs.src }}
+          restore-keys: |
+            epi-build-${{ runner.os }}-${{ steps.keys.outputs.deps }}-
+
+      - name: lake exe cache get
+        working-directory: epi_formal
+        run: lake exe cache get
+
+      - name: lake build
+        id: build
+        working-directory: epi_formal
+        run: |
+          set -o pipefail
+          mkdir -p "$GITHUB_WORKSPACE/audit-output"
+          # GNU time -v records wall time and the peak RSS of the largest single process,
+          # so the 16 GB runner limit can be checked from the uploaded artifact.
+          command -v /usr/bin/time >/dev/null || sudo apt-get install -y -qq time
+          /usr/bin/time -v -o "$GITHUB_WORKSPACE/audit-output/build_time.txt" \
+            lake build 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/lake_build.log"
+          # The two standalone audit entry points import these; build them explicitly as
+          # the README does (no-op if the default target already covered them).
+          lake build EpiFormal.ResidueCertTable EpiFormal.ResidueMultiAsymptotic 2>&1 \
+            | tee -a "$GITHUB_WORKSPACE/audit-output/lake_build.log"
+          grep -E 'Elapsed|Maximum resident' "$GITHUB_WORKSPACE/audit-output/build_time.txt"
+          free -h
+
+      - name: Save EpiFormal build cache
+        if: steps.build.outcome == 'success'
+        uses: actions/cache/save@v4
+        with:
+          path: epi_formal/.lake/build
+          key: epi-build-${{ runner.os }}-${{ steps.keys.outputs.deps }}-${{ steps.keys.outputs.src }}
+
+      - name: "lake env lean Audit.lean (937 entries)"
+        working-directory: epi_formal
+        run: |
+          set -o pipefail
+          lake env lean Audit.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit.log"
+
+      - name: "lake env lean AuditResidueCert.lean (27 entries)"
+        working-directory: epi_formal
+        run: |
+          set -o pipefail
+          lake env lean AuditResidueCert.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit_residue_cert.log"
+
+      - name: "lake env lean AuditResidueMultiAsymptotic.lean (24 entries)"
+        working-directory: epi_formal
+        run: |
+          set -o pipefail
+          lake env lean AuditResidueMultiAsymptotic.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit_residue_multi_asymptotic.log"
+
+      - name: Compare Audit.lean output with verification/audit_final_20261122.log
+        run: |
+          python3 verification/compare_audit_logs.py audit-output/audit.log \
+            verification/audit_final_20261122.log --count 937
+
+      - name: Compare AuditResidueCert output with verification/audit_residue_cert_20261123.log
+        run: |
+          python3 verification/compare_audit_logs.py audit-output/audit_residue_cert.log \
+            verification/audit_residue_cert_20261123.log --count 27 --only-axioms "$BASE_AXIOMS"
+
+      - name: Compare AuditResidueMultiAsymptotic output with verification/audit_residue_multi_asymptotic_20261123.log
+        run: |
+          python3 verification/compare_audit_logs.py audit-output/audit_residue_multi_asymptotic.log \
+            verification/audit_residue_multi_asymptotic_20261123.log --count 24 --only-axioms "$BASE_AXIOMS"
+
+      - name: check_audit_reconcile.py on the fresh Audit.lean output
+        run: |
+          set -o pipefail
+          python3 verification/check_audit_reconcile.py audit-output/audit.log \
+            | tee audit-output/check_audit_reconcile.log
+          grep -qx 'ALL RECONCILIATION CHECKS PASSED!' audit-output/check_audit_reconcile.log
+
+      - name: Record SHA-256 of the audit outputs
+        if: always()
+        run: |
+          cd audit-output 2>/dev/null && sha256sum *.log | tee SHA256SUMS || true
+
+      - name: Upload audit outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean-audit-${{ github.sha }}
+          path: audit-output/
+          if-no-files-found: warn
+          retention-days: 90
+
+  repo-integrity:
+    name: verify_repo_integrity.py
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout with full history (zero-loss check needs two baseline commits)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run repository integrity checks
+        run: python3 verification/verify_repo_integrity.py
