@@ -100,6 +100,7 @@ def job(args):
 def main():
     mp.dps = DPS
     workers = int(sys.argv[1]) if len(sys.argv) > 1 else 4
+    resume = "--resume" in sys.argv  # keep finished jobs in the .partial.jsonl and skip them
     cert = json.loads((HERE / "residue_certificate_general_N512.json").read_text())["certificates"]
     jobs = [(e["modulus"], e["residue"], (Fraction(e["lower"]) + Fraction(e["upper"])) / 2) for e in cert]
     ms = [8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024]
@@ -109,10 +110,15 @@ def main():
             jobs.append((m, r, float(g)))
     stem = HERE / "asymptotic_residues_check_20261123"
     part = stem.with_suffix(".partial.jsonl")
-    part.write_text("")
     done = {}
+    if resume and part.exists():
+        for line in part.read_text().splitlines():
+            rr = json.loads(line); done[(rr["m"], rr["r"])] = rr
+    else:
+        part.write_text("")
+    todo = [(m, r, float(g)) for m, r, g in jobs if (m, r) not in done]
     with Pool(workers) as p:  # v2: results streamed to disk as they finish
-        for rr in p.imap_unordered(job, [(m, r, float(g)) for m, r, g in jobs]):
+        for rr in p.imap_unordered(job, todo):
             done[(rr["m"], rr["r"])] = rr
             with open(part, "a") as fh:
                 fh.write(json.dumps(rr) + "\n")
