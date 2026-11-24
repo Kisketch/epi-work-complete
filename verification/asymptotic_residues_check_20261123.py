@@ -14,6 +14,7 @@ so there is no alphabet truncation.  dimH = the s with spectral radius 1 (Bowen 
 Validation: the 20 kernel-checked brackets of tab:residues-general (m=2..6) must contain the
 estimates, and estimates at two collocation sizes n must agree.
 
+v2 (2026-11-24): bracketed Illinois root finding on s>1/2, n=16/24, dps=30, streamed per-job output.
 Usage: python asymptotic_residues_check_20261123.py [workers]   -> writes .json and .log next to it.
 """
 import json
@@ -24,7 +25,7 @@ from pathlib import Path
 
 from mpmath import mp, mpf, zeta, log, matrix, lu_solve, eig, findroot, chebyt  # noqa: F401
 
-DPS = 40
+DPS = 30
 HERE = Path(__file__).resolve().parent
 
 
@@ -47,10 +48,25 @@ def rho(m, r, s, n):
     return max(abs(e) for e in ev)
 
 
-def dim_estimate(m, r, n, guess):
+def dim_estimate(m, r, n, guess, width="0.05", iters=60):
+    """Bisection root of rho(s) = 1 on s > 1/2 (v2: guaranteed convergence).
+
+    rho is decreasing in s and rho -> infinity as s -> 1/2+ (zeta pole), so a sign change
+    exists; the bracket is checked explicitly and widened to (1/2, 0.999) if needed.
+    """
     f = lambda s: rho(m, r, s, n) - 1
-    return findroot(f, (mpf(guess) - mpf("0.003"), mpf(guess) + mpf("0.003")), solver="secant",
-                    tol=mpf(10) ** (-(DPS - 10)))
+    lo = max(mpf("0.5") + mpf(10) ** -12, mpf(guess) - mpf(width))
+    hi = min(mpf("0.999"), mpf(guess) + mpf(width))
+    if not (f(lo) > 0 > f(hi)):
+        lo, hi = mpf("0.5") + mpf(10) ** -12, mpf("0.999")
+        assert f(lo) > 0 > f(hi), ("no sign change", m, r, n)
+    for _ in range(iters):
+        mid = (lo + hi) / 2
+        if f(mid) > 0:
+            lo = mid
+        else:
+            hi = mid
+    return (lo + hi) / 2
 
 
 def C(r, terms=400):
@@ -71,10 +87,10 @@ def two_term(m, r):
 def job(args):
     m, r, guess = args
     mp.dps = DPS
-    d1 = dim_estimate(m, r, 18, guess)
-    d2 = dim_estimate(m, r, 26, d1)
+    d1 = dim_estimate(m, r, 16, guess)
+    d2 = dim_estimate(m, r, 24, d1, width="0.0005")
     tt = two_term(m, r) if (r == m or m > 2 * r) else None
-    out = dict(m=m, r=r, dim_n18=str(d1), dim_n26=str(d2), n_diff=float(abs(d1 - d2)))
+    out = dict(m=m, r=r, dim_n18=str(d1), dim_n26=str(d2), n_diff=float(abs(d1 - d2)))  # keys kept; n=16/24 in v2
     if tt is not None:
         out.update(two_term=str(tt), m2_residual=float((d2 - tt) * m * m),
                    m_excess=float((d2 - mpf(1) / 2) * m))
@@ -91,8 +107,16 @@ def main():
         for r in (1, 2, 3, m):
             g = two_term(m, r) if (r == m or m > 2 * r) else mpf("0.55")
             jobs.append((m, r, float(g)))
-    with Pool(workers) as p:
-        res = p.map(job, [(m, r, float(g)) for m, r, g in jobs])
+    stem = HERE / "asymptotic_residues_check_20261123"
+    part = stem.with_suffix(".partial.jsonl")
+    part.write_text("")
+    done = {}
+    with Pool(workers) as p:  # v2: results streamed to disk as they finish
+        for rr in p.imap_unordered(job, [(m, r, float(g)) for m, r, g in jobs]):
+            done[(rr["m"], rr["r"])] = rr
+            with open(part, "a") as fh:
+                fh.write(json.dumps(rr) + "\n")
+    res = [done[(m, r)] for m, r, _ in jobs]
     lines = ["# NON-RIGOROUS collocation estimates (mpmath dps=%d); classification: 有限计算 / numerical evidence" % DPS]
     ok = True
     for e, rr in zip(cert, res[:len(cert)]):
@@ -111,7 +135,6 @@ def main():
     for r in (1, 2, 3):
         lines.append(f"C_{r}/2 = {float(C(r) / 2):.10f}   (limit of m*(dim F_m,r - 1/2))")
     lines.append("limit of m*(dim F_m,m - 1/2) should be 1/2")
-    stem = HERE / "asymptotic_residues_check_20261123"
     stem.with_suffix(".json").write_text(json.dumps(res, indent=1))
     stem.with_suffix(".log").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
