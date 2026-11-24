@@ -123,7 +123,11 @@ its self-test recomputes the simplest rational with an independent exact impleme
 continued-fraction prefix with \texttt{mpmath} at higher precision. These are \emph{finite}
 exclusions: they say nothing about the irrationality of $x$, since rationals of larger
 denominator are not excluded, and they do not lower the difficulty of
-Problem~\ref{prob:main}. For comparison, the $20000$ partial quotients of $e+\pi$ tabulated in
+Problem~\ref{prob:main}. The observed sizes $k\approx10^{D/2}$ are what one expects for a
+typical real number: a convergent $p_n/q_n$ with $|x-p_n/q_n|\approx10^{-D}$ has
+$q_n\approx10^{D/2}$ unless a partial quotient is exceptionally large. The bound therefore
+reflects the length of the computation, not any special property of $x$; only a least
+denominator far below $10^{D/2}$ would have been informative. For comparison, the $20000$ partial quotients of $e+\pi$ tabulated in
 OEIS~A058651~\cite{OEISA058651} (all of which agree with the partial quotients certified by an
 enclosure with $D=25{,}000$) give a bound of the same kind, $q\ge q_{19998}\ge10^{""" + tex_int(oeis_digits() - 1) + r"""}$, and, according to the abstract
 of~\cite{Bailey1988}, $e+\pi$ satisfies no algebraic equation of degree at most $8$ with

@@ -4056,6 +4056,7 @@ first $40$ partial quotients).
 $x$ & digits $D$ & $q\ge$ & common CF terms & machines \\\hline
 $e+\pi$ & $1{,}000{,}000$ & $10^{500{,}018}$ & $970{,}298$ & 2 \\
 $e\pi$ & $1{,}000{,}000$ & $10^{500{,}018}$ & $970{,}424$ & 2 \\
+$e\pi$ & $3{,}000{,}000$ & $10^{1{,}500{,}018}$ & $2{,}910{,}756$ & 1 \\
 $\pi-e$ & $1{,}000{,}000$ & $10^{500{,}018}$ & $971{,}039$ & 2 \\
 $\pi/e$ & $1{,}000{,}000$ & $10^{500{,}018}$ & $970{,}306$ & 2 \\
 \end{tabular}
@@ -4066,13 +4067,17 @@ identical output.}
 \label{tab:denominator-bounds}
 \end{table}
 
-\noindent The computation is reproducible with
+\noindent Runs with larger $D$ on a single machine (last column $=1$) give $q\ge10^{1{,}500{,}018}$ for $e\pi$ ($D=3{,}000{,}000$); they use the same code but have not been reproduced independently. The computation is reproducible with
 \texttt{verification/\allowbreak rational\_\allowbreak exclusion\_\allowbreak bound\_\allowbreak 20261124.py};
 its self-test recomputes the simplest rational with an independent exact implementation and the
 continued-fraction prefix with \texttt{mpmath} at higher precision. These are \emph{finite}
 exclusions: they say nothing about the irrationality of $x$, since rationals of larger
 denominator are not excluded, and they do not lower the difficulty of
-Problem~\ref{prob:main}. For comparison, the $20000$ partial quotients of $e+\pi$ tabulated in
+Problem~\ref{prob:main}. The observed sizes $k\approx10^{D/2}$ are what one expects for a
+typical real number: a convergent $p_n/q_n$ with $|x-p_n/q_n|\approx10^{-D}$ has
+$q_n\approx10^{D/2}$ unless a partial quotient is exceptionally large. The bound therefore
+reflects the length of the computation, not any special property of $x$; only a least
+denominator far below $10^{D/2}$ would have been informative. For comparison, the $20000$ partial quotients of $e+\pi$ tabulated in
 OEIS~A058651~\cite{OEISA058651} (all of which agree with the partial quotients certified by an
 enclosure with $D=25{,}000$) give a bound of the same kind, $q\ge q_{19998}\ge10^{10{,}148}$, and, according to the abstract
 of~\cite{Bailey1988}, $e+\pi$ satisfies no algebraic equation of degree at most $8$ with
