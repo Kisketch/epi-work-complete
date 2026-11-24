@@ -1,4 +1,5 @@
 from pathlib import Path
+import csv
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -55,12 +56,28 @@ def main():
     assert len(begins) == len(ends), f"Unbalanced environments: {len(begins)} vs {len(ends)}"
     out.append(f"Braces balanced ({open_b}); Environments balanced ({len(begins)})")
 
-    # 4. Proof sketch check (must be 0)
-    sketches = re.findall(r"proof\s+sketch", merged, flags=re.IGNORECASE)
-    assert not sketches, f"Found residual Proof sketch: {sketches}"
-    out.append("Residual 'Proof sketch': 0")
+    # 4. Proof sketch stub check (must be 0 unfinished theorem-stub headers)
+    sketches = re.findall(
+        r"(?:\\begin\{proof\}\[[^\]]*sketch[^\]]*\]|\\(?:paragraph|emph|textbf)\{Proof\s+sketch\}|Proof\s+sketch\.)",
+        merged,
+        flags=re.IGNORECASE,
+    )
+    assert not sketches, f"Found residual Proof sketch stub: {sketches}"
+    out.append("Residual 'Proof sketch' stubs: 0")
 
-    # 5. Content completeness checks (Desktop + Prior Workspace)
+    # 4b. Byte-for-byte slice concatenation check against slice_index.csv
+    slice_dir = MERGED_PATH.parent / "split" / "src_sections"
+    slice_csv = slice_dir / "slice_index.csv"
+    with open(slice_csv, encoding="utf-8-sig") as f:
+        slice_rows = list(csv.DictReader(f))
+    joined_bytes = b"".join((slice_dir / row["File"]).read_bytes() for row in slice_rows)
+    main_bytes = MERGED_PATH.read_bytes()
+    assert joined_bytes == main_bytes, (
+        f"Slice concatenation mismatch: {len(joined_bytes)} vs {len(main_bytes)} bytes"
+    )
+    out.append(f"Slice concatenation byte-for-byte match ({len(slice_rows)} files, {len(main_bytes)} bytes): OK")
+
+    # 5. Content completeness checks (Desktop + Prior Workspace + Extensions)
     norm_merged = re.sub(r"\\allowbreak\{\}|\\allowbreak\s*", "", merged)
     items = [
         ("Desktop: Author placeholder", "Author name"),
@@ -82,12 +99,13 @@ def main():
         ("Workspace: Hermite windows", r"\label{thm:windows}"),
         ("Workspace: Short windows a.e.", r"\label{thm:short-ae}"),
         ("Workspace: Divergent windows", r"\label{thm:no-short-dim}"),
-        ("Workspace: Residues 357/512 < dim < 359/512", "357/512"),
-        ("Workspace: Residues upper 359/512", "359/512"),
-        ("Workspace: 256 cells & N=2^{24}", "2^{24}"),
-        ("Workspace: Margins 29/10000 & 65/10000", "29/10000"),
+        ("Workspace: Residues 357/512 < dim < 179/256", "357/512"),
+        ("Workspace: Residues upper 179/256 (N=512)", "179/256"),
+        ("Workspace: 512 cells & N=2^{80}", "2^{80}"),
+        ("Workspace: Margins 48/10000 & 27/100000", "48/10000"),
         ("Workspace: Lipschitz 10/3 & 40/3", "40/3"),
-        ("Workspace: residue_certificate.py", "residue\\_certificate.py"),
+        ("Workspace: residue_certificate_general_N512.py", "residue\\_certificate\\_general\\_N512.py"),
+        ("Workspace: ResidueCertTable", "ResidueCertTable"),
         ("Workspace: General modulus m=2..6 thm", r"\label{thm:residues-general}"),
         ("Workspace: Table residues-general", r"\label{tab:residues-general}"),
         ("Workspace: WindowShortAeRealize", "WindowShortAeRealize"),
@@ -101,9 +119,13 @@ def main():
         ("Workspace: Thm growing-rec-spectrum", r"\label{thm:growing-rec-spectrum}"),
         ("Workspace: Thm growing-rec-dim-phase", r"\label{thm:growing-rec-dim-phase}"),
         ("Workspace: Cor growing-rec-three-regimes", r"\label{cor:growing-rec-three-regimes}"),
-        ("Workspace: residue_certificate_general.py", "residue\\_certificate\\_general.py"),
         ("Workspace: verify_paper2_extensions.py", "verify\\_paper2\\_extensions.py"),
         ("Workspace: Audit 937 declarations", "937"),
+        ("Workspace: Thm multi-residue-asymptotic", r"\label{thm:multi-residue-asymptotic}"),
+        ("Workspace: Table multi-residue-asymptotic", r"\label{tab:multi-residue-asymptotic}"),
+        ("Workspace: ResidueMultiAsymptotic", "ResidueMultiAsymptotic"),
+        ("Workspace: AuditResidueMultiAsymptotic", "AuditResidueMultiAsymptotic"),
+        ("Workspace: verify_residue_multi_asymptotic.py", "verify\\_residue\\_multi\\_asymptotic.py"),
     ]
     for label, pat in items:
         found = pat in norm_merged

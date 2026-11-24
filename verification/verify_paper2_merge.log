@@ -1,10 +1,11 @@
 === Paper 2 Merge & Integrity Verification ===
-Paper 2 source: paper2_spectral_gap_dimension\paper2_spectral_gap_dimension.tex (4064 lines)
+Paper 2 source: paper2_spectral_gap_dimension\paper2_spectral_gap_dimension.tex (4403 lines)
 Historical B draft: paper1_e_plus_pi\02_companion_paper\Phase2_revised.tex (4905 lines)
-Labels: 75 (all unique); Undefined refs: 0
-Bibitems: 14/14 (100% cited in body, 0 missing)
-Braces balanced (4415); Environments balanced (149)
-Residual 'Proof sketch': 0
+Labels: 84 (all unique); Undefined refs: 0
+Bibitems: 15/15 (100% cited in body, 0 missing)
+Braces balanced (4826); Environments balanced (161)
+Residual 'Proof sketch' stubs: 0
+Slice concatenation byte-for-byte match (11 files, 279145 bytes): OK
   [OK] Desktop: Author placeholder
   [OK] Desktop: KL 2*Lambda(x) normalization
   [OK] Desktop: Lemma A
@@ -24,12 +25,13 @@ Residual 'Proof sketch': 0
   [OK] Workspace: Hermite windows
   [OK] Workspace: Short windows a.e.
   [OK] Workspace: Divergent windows
-  [OK] Workspace: Residues 357/512 < dim < 359/512
-  [OK] Workspace: Residues upper 359/512
-  [OK] Workspace: 256 cells & N=2^{24}
-  [OK] Workspace: Margins 29/10000 & 65/10000
+  [OK] Workspace: Residues 357/512 < dim < 179/256
+  [OK] Workspace: Residues upper 179/256 (N=512)
+  [OK] Workspace: 512 cells & N=2^{80}
+  [OK] Workspace: Margins 48/10000 & 27/100000
   [OK] Workspace: Lipschitz 10/3 & 40/3
-  [OK] Workspace: residue_certificate.py
+  [OK] Workspace: residue_certificate_general_N512.py
+  [OK] Workspace: ResidueCertTable
   [OK] Workspace: General modulus m=2..6 thm
   [OK] Workspace: Table residues-general
   [OK] Workspace: WindowShortAeRealize
@@ -43,7 +45,11 @@ Residual 'Proof sketch': 0
   [OK] Workspace: Thm growing-rec-spectrum
   [OK] Workspace: Thm growing-rec-dim-phase
   [OK] Workspace: Cor growing-rec-three-regimes
-  [OK] Workspace: residue_certificate_general.py
   [OK] Workspace: verify_paper2_extensions.py
   [OK] Workspace: Audit 937 declarations
+  [OK] Workspace: Thm multi-residue-asymptotic
+  [OK] Workspace: Table multi-residue-asymptotic
+  [OK] Workspace: ResidueMultiAsymptotic
+  [OK] Workspace: AuditResidueMultiAsymptotic
+  [OK] Workspace: verify_residue_multi_asymptotic.py
 ALL MERGE & INTEGRITY CHECKS PASSED.

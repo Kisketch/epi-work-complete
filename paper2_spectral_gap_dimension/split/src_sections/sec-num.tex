@@ -81,3 +81,21 @@ $\tau=1.5$ ($1.71\times10^{-19}$ at $j=7$), $\tau=2.0$ (stabilizing to
 $(\lim Q_j/A_j)^{-1}\approx 3.15973\in[1/6,4]$), and $\tau=2.5$
 ($5.83\times10^{19}$ at $j=7$).
 
+\paragraph{Multi-residue phase transition and Euler--Mascheroni three-term asymptotics.}
+The $32$-digit \texttt{mpmath} Chebyshev-collocation script
+\texttt{verification/\allowbreak verify\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic.py}
+(\texttt{ALL CHECKS PASSED}) independently corroborates Theorem~\ref{thm:multi-residue-asymptotic}:
+all ten $N=512$ kernel brackets of Table~\ref{tab:residues-general} are
+satisfied by $n=16$ vs.\ $n=22$ Chebyshev estimates; across ten subcritical
+single- and multi-residue alphabets evaluated up to $m=16384$
+(Table~\ref{tab:multi-residue-asymptotic}), the second-order residual
+$m^2\bigl(\dimH F_{m,S,B}-\frac12-\frac{dC_S}{2m}+\frac{(dC_S)^2\log m}{2m^2}\bigr)$
+converges monotonically toward the theoretical constant
+$c_2=\frac12 d^2 C_S(\gamma C_S-C_S')$ with bounded third-order ratio
+$m^3(\dimH-\text{3-term})/(\log m)^2$; the algebraic supercritical test on
+$S=\{1,2\}$, $s=51/100$, $v(x)=2/(2+x)$ achieves
+$\min_{[0,1]}(\mathcal L_{51/100,\{1,2\}}v/v)\approx1.01099707>1$; and the
+supercritical pairs $S=\{1,2\}$ ($s_0\approx0.531280506$) and $S=\{1,2,3\}$
+($s_0\approx0.705660908$) exhibit the predicted $\Theta(m^{-2s_0})$ excess
+scaling up to $m=4096$.
+

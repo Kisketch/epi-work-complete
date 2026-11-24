@@ -1,0 +1,46 @@
+'ResidueMultiAsymptotic.wordSum_add_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.wordSum_add_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.summable_wordSum_of_poincareAbscissa_lt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ResidueMultiAsymptotic.not_summable_wordSum_of_lt_poincareAbscissa' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ResidueMultiAsymptotic.one_le_wordSum_poincareAbscissa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.wordSum_poincareAbscissa_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.multiResolventV_branch_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.dimH_cfAlphabetSet_finset_eq_poincareAbscissa' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ResidueMultiAsymptotic.tendsto_dimH_multiResidueSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.subcritical_pair_two_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.supercritical_pair_one_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.abs_tsum_rpow_sub_inv_sub_eulerMascheroni_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ResidueMultiAsymptotic.multiC_one_add_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.dimH_multiResidueSet_asymp_three_term' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ResidueMultiAsymptotic.tendsto_m2_residual_multiResidue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.tendsto_dimH_multiResidue_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.dimH_residueConstSet_asymp_three_term' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ResidueMultiAsymptotic.dimH_residueConstSet_mm_asymp_three_term' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ResidueMultiAsymptotic.dimH_multiResidueSet_two_three_asymp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.multiC_supercritical_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidueMultiAsymptotic.dimH_multiResidueSet_supercritical_upper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ResidueMultiAsymptotic.dimH_multiResidueSet_supercritical_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ResidueMultiAsymptotic.dimH_multiResidueSet_supercritical_rate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ResidueMultiAsymptotic.dimH_multiResidueSet_one_two_supercritical_rate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

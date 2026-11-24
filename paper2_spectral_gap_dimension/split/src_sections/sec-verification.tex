@@ -172,7 +172,20 @@ exact dimension-excess ratios, and eventual strict monotonicity in~$r$) is
 kernel-checked at Layer~A in
 \texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} ($15$ audited
 declarations, base axioms only, zero \texttt{sorryAx}) and corroborated by
-\texttt{verify\_\allowbreak paper2\_\allowbreak extensions.py}.
+\texttt{verify\_\allowbreak paper2\_\allowbreak extensions.py}. Furthermore,
+all five parts~(i)--(v) of Theorem~\ref{thm:multi-residue-asymptotic}
+(Bowen-free Poincar\'e-abscissa dimension for finite alphabets, universal
+multi-residue phase transition at $1/2$ with two-digit witnesses $\{2,3\}$
+and $\{1,2\}$, elementary Euler--Mascheroni expansion of $\zeta(1+\varepsilon)$,
+subcritical three-term asymptotics to $O((\log m)^2/m^3)$ with coefficient
+$\frac12 d^2 C_S(\gamma C_S-C_S')$, and supercritical $\Theta(m^{-2s_0})$
+convergence rate) are kernel-checked at Layer~A in
+\texttt{EpiFormal/\allowbreak Residue\allowbreak Multi\allowbreak Asymptotic.lean}
+($24$ public theorems audited separately in
+\texttt{AuditResidueMultiAsymptotic.lean}, base axioms only, zero \texttt{sorryAx},
+log \texttt{verification/\allowbreak audit\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic\_\allowbreak 20261123.log})
+and numerically corroborated by
+\texttt{verify\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic.py}.
 \item This article does \emph{not} prove the irrationality of $e+\pi$ (which
 remains an open problem). It is a metric-theory spin-off; the connection is
 that the zero-level classification machinery arose from the $e+\pi$ escape
@@ -192,7 +205,7 @@ and~\ref{cor:liminf-gauges}), the kernel-checked marked-component gauge
 \texttt{Finite\allowbreak State\allowbreak Complete.lean}), the machine-checked
 dimension-zero and subcritical dimension theorems
 (Theorems~\ref{thm:finite}, \ref{thm:upper}, and~\ref{conj:weight}), and the
-window and residue theorems (Theorems~\ref{thm:windows}--\ref{thm:residues-asymptotic}).
+window and residue theorems (Theorems~\ref{thm:windows}--\ref{thm:multi-residue-asymptotic}).
 \end{itemize}
 
 \section*{Use of AI and formal verification}
@@ -210,20 +223,30 @@ depend only on the Lean base axioms \texttt{propext}, \texttt{Classical.choice},
 and \texttt{Quot.sound}---with zero
 project-added axioms and zero \texttt{sorryAx}); the $27$ declarations of the
 residue-certificate layer (Remark~\ref{rem:residue-kernel}) are audited separately in
-\texttt{AuditResidueCert.lean}, again with base axioms only. The build and this audit were independently reproduced on 2026-11-23 from a
+\texttt{AuditResidueCert.lean}, and the $24$ public theorems of the multi-residue
+phase-transition and Euler--Mascheroni three-term asymptotic layer
+(\texttt{EpiFormal/\allowbreak ResidueMultiAsymptotic.lean},
+Theorem~\ref{thm:multi-residue-asymptotic}) are audited separately in
+\texttt{AuditResidueMultiAsymptotic.lean} (logged in
+\texttt{verification/\allowbreak audit\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic\_\allowbreak 20261123.log}),
+again on the three Lean base axioms only with zero \texttt{sorryAx} (total
+$344$ Lean files across the repository with zero escape keywords). The build and main audit were independently reproduced on 2026-11-23 from a
 clean clone of the public repository on a separate machine (Lean~4.35.0,
 Mathlib v4.35.0): \texttt{lake build} succeeded, the $937$
 \texttt{\#print axioms} outputs coincide entry by entry with the recorded log, and the $27$ residue-certificate entries depend only on the base axioms
-(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}). The only portions not inside
+(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}), while \texttt{ResidueMultiAsymptotic.lean} and \texttt{AuditResidueMultiAsymptotic.lean} were built and audited locally on the same Lean~4.35.0 / Mathlib v4.35.0 toolchain. The portions not resolved here or lying outside
 the Lean kernel are the finite-dimensional linear-algebraic Perron--Frobenius
 eigenvector existence input on marked strongly connected components in
 Theorem~\ref{thm:finite-state-tail} (whose positive right eigenvector is passed
 explicitly to \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak complete}
 and \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak complete}
-in \texttt{FiniteStateComplete.lean}) and the strictness of the brackets in
-Theorem~\ref{thm:residues} and Table~\ref{tab:residues-general}, which uses the
+in \texttt{FiniteStateComplete.lean}), the strictness of the open intervals in
+Theorem~\ref{thm:residues} and Table~\ref{tab:residues-general} via the
 cited pressure formalism (the closed brackets themselves are kernel-checked,
-Remark~\ref{rem:residue-kernel}).
+Remark~\ref{rem:residue-kernel}), the asymptotic rate on the critical boundary
+$s_0(S)=1/2$ and the exact supercritical leading constant in
+Theorem~\ref{thm:multi-residue-asymptotic}, and the irrationality of $e+\pi$,
+which remains an open problem.
 % TODO before submission: state who checked the paper proofs, and how.
 
 \begin{thebibliography}{99}

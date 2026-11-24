@@ -82,11 +82,16 @@ the same Hausdorff dimension as the fixed alphabet $1\bmod 4$, bounded strictly
 between $357/512$ and $179/256$, Theorem~\ref{thm:residues-general} extends this
 to every modulus $m\ge2$ (via a uniform $24$-Lipschitz sandwich, an unconditional
 transfer-operator Hausdorff-dimension framework, and exact integer certificates
-for $m\in\{2,3,4,5,6\}$), and Theorem~\ref{thm:residues-asymptotic} proves the
+for $m\in\{2,3,4,5,6\}$), Theorem~\ref{thm:residues-asymptotic} proves the
 global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$
 together with the exact two-term large-$m$ asymptotic expansion governed by the
 reciprocal Fibonacci constant $\psi_{\mathrm{Fib}}=\sum_{k=1}^\infty 1/F_k$ and
-its metallic-continuant generalizations $C_r=\sum_{k=1}^\infty 1/q_k(r)$.
+its metallic-continuant generalizations $C_r=\sum_{k=1}^\infty 1/q_k(r)$, and
+Theorem~\ref{thm:multi-residue-asymptotic} establishes the multi-residue
+phase transition $\lim_{m\to\infty}\dimH F_{m,S,B}=\max(1/2,s_0(S))$, a
+Bowen-free Poincar\'e-abscissa dimension formula for finite alphabets $E_S$,
+three-term Euler--Mascheroni subcritical asymptotics to $O((\log m)^2/m^3)$,
+and the two-sided supercritical power-law rate $\Theta(m^{-2s_0(S)})$.
 
 These results build on the zero-level classification and initial spectral gap
 (Section~\ref{sec:class}), which arose as machinery in a separate formalization
@@ -185,9 +190,11 @@ for every $m\ge2$ and to extract the explicit two-term asymptotic expansion
 $\dimH F_{m,r}=\frac12+\frac{C_r}{2m}-\frac{C_r^2\log m}{2m^2}+O(m^{-2})$ governed
 by the reciprocal metallic-continuant series $C_r=\sum_{k=1}^\infty 1/q_k(r)$ and,
 at $r=1$, the reciprocal Fibonacci constant $\psi_{\mathrm{Fib}}=\sum_{k=1}^\infty 1/F_k$
-(a targeted negative search of arXiv and prior continued-fraction dimension
-literature found no prior appearance of $\psi_{\mathrm{Fib}}$ or $C_r$ as the
-asymptotic dimension constant of modular continued-fraction digit sets).
+(a targeted negative search of arXiv, prior continued-fraction dimension
+literature, and Mathlib v4.35 found no prior appearance of $\psi_{\mathrm{Fib}}$ or $C_r$ as the
+asymptotic dimension constant of modular continued-fraction digit sets, nor
+the multi-residue Euler--Mascheroni three-term expansion and $\Theta(m^{-2s_0})$
+rate of Theorem~\ref{thm:multi-residue-asymptotic}).
 Accordingly, we
 regard Theorems~\ref{thm:class} and~\ref{thm:gap} as a variant of known results.
 The main new contributions are the complete spectrum discretization and
@@ -197,7 +204,7 @@ and~\ref{thm:growing-rec-spectrum}--\ref{thm:growing-rec-dim-phase}), the critic
 (Theorem~\ref{thm:gauge} and Corollary~\ref{cor:exact-gauge}), the machine-checked
 dimension-zero and subcritical dimension theorems (Theorems~\ref{thm:finite},
 \ref{thm:upper}, and~\ref{conj:weight}), and the continued-fraction window and
-residue theorems (Theorems~\ref{thm:windows}--\ref{thm:residues-asymptotic}).
+residue theorems (Theorems~\ref{thm:windows}--\ref{thm:multi-residue-asymptotic}).
 
 Related metric questions for Cantor series expansions, where the approximation
 is measured by the tail $x-\omega_n(x)$ of the partial sums, were studied by

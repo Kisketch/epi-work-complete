@@ -122,7 +122,7 @@ implies $C_{r_2}<C_{r_1}$ and hence $\dimH F_{m,r_2}<\dimH F_{m,r_1}$ for all la
 \end{proof}
 
 \begin{table}[ht]
-\centering\small
+\centering\small\setlength{\tabcolsep}{4.5pt}
 \begin{tabular}{c|c|c|c|c}
 $r$ & Continuants $(q_n(r))_{n\ge0}$ & $C_r=\sum_{n=0}^\infty 1/q_n(r)$ & $s_{\mathrm{2term}}(1000,r)$ & Ratio ($m=5000$) \\\hline
 $1$ & $1,1,2,3,5,8,13,\dots$ ($F_{n+1}$) & $\psi_{\mathrm{Fib}}\approx 3.359885666243$ & $0.5016409526$ & $3.346356$ \\
@@ -135,7 +135,201 @@ $m$ & $F_{m,m}$ ($0\bmod m$ alphabet) & $C_\infty=1.000000000000$ & $0.500496546
 \caption{High-precision ($50$-digit \texttt{mpmath}, \texttt{verify\_\allowbreak paper2\_\allowbreak extensions.py}) values of the reciprocal metallic-continuant constants $C_r=\sum_{k=1}^\infty 1/q_k(r)$ ($C_1=\psi_{\mathrm{Fib}}$), the two-term asymptotic approximation $\frac12+\frac{C_r}{2m}-\frac{C_r^2\log m}{2m^2}$ at $m=1000$, and the two-term dimension-excess ratio $(\dimH F_{m,r}-1/2)/(\dimH F_{m,m}-1/2)$ at $m=5000$ converging to $C_r$.}\label{tab:residues-asymptotic}
 \end{table}
 
+\subsection{Multi-residue phase transition, Euler--Mascheroni three-term asymptotics, and supercritical power-law rate}\label{sec:multi-residue}
+
+Theorem~\ref{thm:residues-asymptotic} treats single congruence classes $r\pmod m$.
+More generally, fix two finite digit sets $S\subset\Z_{\ge1}$ and
+$B\subset\Z_{\ge0}$ with $d:=|S|+|B|\ge1$. For every integer modulus $m\ge1$,
+define the \emph{multi-residue digit alphabet}
+(\texttt{multiResidueAlphabet m S B}) and its continued-fraction Cantor set
+(\texttt{multiResidueSet m S B}) by
+\[
+\mathcal A_{m,S,B}:=\bigl\{a\in\Z_{\ge1} : (\exists r\in S,\ a\ge r\wedge a\equiv r\!\!\pmod m)\ \text{or}\ (\exists b\in B,\ \exists k\ge1,\ a+b=km)\bigr\},
+\]
+\[
+F_{m,S,B}:=\bigl\{[0;a_1,a_2,\dots]\in(0,1)\setminus\Q : a_n\in\mathcal A_{m,S,B}\ \forall n\ge1\bigr\}.
+\]
+In particular, $F_{m,\{r\},\emptyset}=F_{m,r}$ for $r\ge1$ and
+$F_{m,\emptyset,\{0\}}=F_{m,m}$.
+For finite $S\subset\Z_{\ge1}$, denote by $W_S(p,n):=\sum_{w\in S^n}q(w)^{-p}$
+the $n$-th continuant word sum (\texttt{wordSum S p n}, with $W_S(p,0)=1$, where
+$q(w)$ is the continuant denominator of the finite word $w$), by
+\[
+s_0(S):=\inf\Bigl\{s>0:\sum_{n=0}^\infty W_S(2s,n)<\infty\Bigr\}
+\]
+the Poincar\'e abscissa (\texttt{poincareAbscissa S}), and, whenever convergent,
+by $C_S(p):=\sum_{n=0}^\infty W_S(p,n)$ (\texttt{multiC S p}, with $C_S:=C_S(1)$),
+$C_S':=\sum_{n=0}^\infty\sum_{w\in S^n}\frac{\log q(w)}{q(w)}$ (\texttt{multiCLog S}),
+and $V_{S,s}(x):=\sum_{n=0}^\infty\sum_{w\in S^n}(q(w)+p(w)x)^{-2s}$
+(\texttt{multiResolventV S s x}, where $p(w)/q(w)=[0;w]$).
+
+\begin{theorem}[Multi-residue phase transition and three-term asymptotics]\label{thm:multi-residue-asymptotic}
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+\item \textbf{Bowen-free Poincar\'e-abscissa dimension for finite alphabets:}
+For every nonempty finite alphabet $S\subset\Z_{\ge1}$, writing
+$E_S:=\{[0;a_1,a_2,\dots]:a_n\in S\}$, one has $\dimH E_S=s_0(S)$, established
+directly from continuant multiplicativity and the multi-branch resolvent
+identity
+\begin{equation}\label{eq:multi-resolvent-branch}
+\sum_{a\in S}(a+x)^{-2s}\,V_{S,s}\!\left(\frac{1}{a+x}\right)=V_{S,s}(x)-1
+\qquad\bigl(s>s_0(S),\ x\in[0,1]\bigr)
+\end{equation}
+via the unconditional transfer-operator criterion of Theorem~\ref{thm:residues-general}\textup{(ii)},
+without invoking Bowen's pressure formula.
+\item \textbf{Universal multi-residue phase transition at $1/2$:}
+For all finite sets $S\subset\Z_{\ge1}$ and $B\subset\Z_{\ge0}$ with
+$d=|S|+|B|\ge1$,
+\[
+\lim_{m\to\infty}\dimH F_{m,S,B}=\max\!\Bigl(\frac12,\,s_0(S)\Bigr).
+\]
+Both regimes occur already for two-digit alphabets: $S=\{2,3\}$ is subcritical
+with $\sum_{n=0}^\infty W_{\{2,3\}}(1,n)<\infty$ and $s_0(\{2,3\})<1/2$, whereas
+$S=\{1,2\}$ is supercritical with $s_0(\{1,2\})\ge 51/100>1/2$.
+\item \textbf{Elementary Euler--Mascheroni expansion of $\zeta(1+\varepsilon)$:}
+With $C_\zeta:=4\zeta(3/2)>0$ and $\gamma=\lim_{N\to\infty}(H_N-\log N)$ the
+Euler--Mascheroni constant, every $\varepsilon\in(0,1]$ satisfies
+\[
+\left|\sum_{k=1}^\infty k^{-(1+\varepsilon)}-\frac{1}{\varepsilon}-\gamma\right|
+\le C_\zeta\,\varepsilon.
+\]
+\item \textbf{Master subcritical three-term asymptotics to $O((\log m)^2/m^3)$:}
+Whenever $d=|S|+|B|\ge1$ and $\sum_{n=0}^\infty W_S(1,n)<\infty$
+(so $S=\emptyset$ or $s_0(S)<1/2$), there exists a constant $K>0$ such that for
+all sufficiently large~$m$,
+\begin{equation}\label{eq:multi-dimH-three-term}
+\left|\dimH F_{m,S,B}-\left(\frac12+\frac{d\,C_S}{2m}-\frac{(d\,C_S)^2\log m}{2m^2}+\frac{d^2\,C_S(\gamma C_S-C_S')}{2m^2}\right)\right|
+\le K\,\frac{(\log m)^2}{m^3}.
+\end{equation}
+Consequently,
+\[
+\lim_{m\to\infty}m^2\!\left(\dimH F_{m,S,B}-\frac12-\frac{d\,C_S}{2m}+\frac{(d\,C_S)^2\log m}{2m^2}\right)
+=\frac{d^2\,C_S(\gamma C_S-C_S')}{2},
+\]
+\[
+\lim_{m\to\infty}\frac{\dimH F_{m,S,B}-1/2}{\dimH F_{m,m}-1/2}=d\,C_S.
+\]
+In particular:
+\begin{itemize}[leftmargin=1.5em]
+\item for every fixed $r\ge1$,
+$\dimH F_{m,r}=\frac12+\frac{C_r}{2m}-\frac{C_r^2\log m}{2m^2}+\frac{C_r(\gamma C_r-C_r')}{2m^2}+O\!\left(\frac{(\log m)^2}{m^3}\right)$,
+where $C_r':=\sum_{n=0}^\infty\frac{\log q_n(r)}{q_n(r)}$;
+\item for $F_{m,m}$ ($S=\emptyset, B=\{0\}$),
+$\dimH F_{m,m}=\frac12+\frac{1}{2m}-\frac{\log m}{2m^2}+\frac{\gamma}{2m^2}+O\!\left(\frac{(\log m)^2}{m^3}\right)$;
+\item for $S=\{2,3\}, B=\emptyset$, \eqref{eq:multi-dimH-three-term} holds with $d=2$.
+\end{itemize}
+\item \textbf{Supercritical two-sided power-law convergence rate $\Theta(m^{-2s_0})$:}
+Whenever $s_0(S)>1/2$, there exist constants $0<K_1\le K_2$ (depending on
+$S,B$) such that for all sufficiently large~$m$,
+\begin{equation}\label{eq:multi-supercritical-rate}
+K_1\,m^{-2s_0(S)}\le \dimH F_{m,S,B}-s_0(S)\le K_2\,m^{-2s_0(S)}.
+\end{equation}
+In particular, \eqref{eq:multi-supercritical-rate} holds for $S=\{1,2\}$ and
+every finite $B\subset\Z_{\ge0}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For~(i), continuant concatenation $q(uv)\in[q(u)q(v),\,2q(u)q(v)]$ yields
+the sub- and super-multiplicative word-sum bounds
+$2^{-p}\,W_S(p,k)W_S(p,n)\le W_S(p,k+n)\le W_S(p,k)W_S(p,n)$
+(\texttt{wordSum\_\allowbreak add\_\allowbreak le},
+\texttt{wordSum\_\allowbreak add\_\allowbreak ge}), which force
+$1\le W_S(2s_0(S),n)\le 2^{2s_0(S)}$ (\texttt{one\_\allowbreak le\_\allowbreak wordSum\_\allowbreak poincareAbscissa},
+\texttt{wordSum\_\allowbreak poincareAbscissa\_\allowbreak le}), absolute
+convergence of $W_S(2s,n)$ for $s>s_0(S)$
+(\texttt{summable\_\allowbreak wordSum\_\allowbreak of\_\allowbreak poincareAbscissa\_\allowbreak lt}),
+and divergence for $0<s<s_0(S)$
+(\texttt{not\_\allowbreak summable\_\allowbreak wordSum\_\allowbreak of\_\allowbreak lt\_\allowbreak poincareAbscissa}).
+Shifting words $w\in S^n$ to $aw$ gives \eqref{eq:multi-resolvent-branch}
+(\texttt{multiResolventV\_\allowbreak branch\_\allowbreak eq}); hence
+$\mathcal L_{s,S}V_{S,s}=V_{S,s}-1\le V_{S,s}$ for $s>s_0(S)$ gives
+$\dimH E_S\le s_0(S)$, while truncated partial sums
+$\sum_{j=0}^{N-1}\mathcal L_{s,S}^j 1$ for $0<s<s_0(S)$ exceed their own image
+for large~$N$, giving $\dimH E_S\ge s_0(S)$ via
+Theorem~\ref{thm:residues-general}(ii) without Bowen's formula
+(\texttt{dimH\_\allowbreak cfAlphabetSet\_\allowbreak finset\_\allowbreak eq\_\allowbreak poincareAbscissa}).
+
+For~(ii), once $m>\max S+\max B$, every tail digit
+$a\in\mathcal A_{m,S,B}\setminus S$ is at least $m-\max B\asymp m$, so
+$\mathcal L_{s,\mathcal A_{m,S,B}}V_{S,s}(x)-V_{S,s}(x)
+=\sum_{a\in\mathcal A_{m,S,B}\setminus S}(a+x)^{-2s}V_{S,s}(1/(a+x))-1
+\le O(m^{-2s}/(2s-1))-1$ forces $\limsup_{m\to\infty}\dimH F_{m,S,B}\le \max(1/2,s_0(S))$;
+conversely, $F_{m,S,B}\supseteq E_S$ gives $\dimH F_{m,S,B}\ge s_0(S)$ and the
+tail branch sum gives $\dimH F_{m,S,B}>1/2$, proving
+$\lim_{m\to\infty}\dimH F_{m,S,B}=\max(1/2,s_0(S))$
+(\texttt{tendsto\_\allowbreak dimH\_\allowbreak multiResidueSet}).
+For $S=\{2,3\}$, $W_{\{2,3\}}(1,1)=\frac12+\frac13=\frac56<1$ gives geometric
+summability at $s=1/2$ and, by continuity, below $1/2$
+(\texttt{subcritical\_\allowbreak pair\_\allowbreak two\_\allowbreak three}); for $S=\{1,2\}$, evaluating
+$\mathcal L_{51/100,\{1,2\}}v$ on $v(x)=2/(2+x)$ gives
+$\frac{2}{2x+3}(1+x)^{-1/50}+\frac{2}{2x+5}(2+x)^{-1/50}\ge\frac{35}{36}\bigl(\frac{2}{2+x}+\frac{2}{(2x+3)(2x+5)(2+x)}\bigr)\ge v(x)$
+on $[0,1]$ since $(2x+3)(2x+5)\le35$ and $(35/36)^{50}\le1/3$, whence
+$s_0(\{1,2\})\ge 51/100>1/2$
+(\texttt{supercritical\_\allowbreak pair\_\allowbreak one\_\allowbreak two}).
+
+For~(iii), writing $H_N-\log(N+1)=\sum_{k=0}^{N-1}(a_k^{\mathrm{hom}}-b_k)$
+and $\sum_{k=1}^N k^{-(1+\varepsilon)}-(1-(N+1)^{-\varepsilon})/\varepsilon$
+via telescoping differences of $(k+1)^{-\varepsilon}/\varepsilon$ and
+$\log(k+1)$, applying the mean value theorem twice yields $|a_k-b_k|\le 4\varepsilon(k+1)^{-3/2}$,
+and passing $N\to\infty$ proves~\textup{(iii)}
+(\texttt{abs\_\allowbreak tsum\_\allowbreak rpow\_\allowbreak sub\_\allowbreak inv\_\allowbreak sub\_\allowbreak eulerMascheroni\_\allowbreak le}).
+
+For~(iv), Taylor-bounding word powers on $[1,1+\varepsilon]$ gives
+$C_S(1+\varepsilon)=C_S-C_S'\varepsilon+O(\varepsilon^2)$
+(\texttt{multiC\_\allowbreak one\_\allowbreak add\_\allowbreak bounds}), and
+multiplying $V_{S,s}(1/(km+O(1)))=C_S(2s)+O((km)^{-1})$ against the Hurwitz
+tail expanded via~\textup{(iii)} turns both resolvent inequalities into
+\[
+d\,C_S(1+\varepsilon)\left(\frac{1}{\varepsilon}+\gamma+O(\varepsilon)+O(m^{-1})\right)m^{-\varepsilon}=1+O(m^{-1}),\qquad \varepsilon:=2s-1=\frac{\alpha}{m}.
+\]
+Expanding $m^{-\varepsilon}=1-\varepsilon\log m+\frac12(\varepsilon\log m)^2+O((\log m/m)^3)$
+yields $\alpha=dC_S-\frac{(dC_S)^2\log m}{m}+\frac{d^2C_S(\gamma C_S-C_S')}{m}+O\!\left(\frac{(\log m)^2}{m^2}\right)$,
+which gives~\eqref{eq:multi-dimH-three-term} and its limits and specializations
+(\texttt{dimH\_\allowbreak multiResidueSet\_\allowbreak asymp\_\allowbreak three\_\allowbreak term},
+\texttt{tendsto\_\allowbreak m2\_\allowbreak residual\_\allowbreak multiResidue},
+\texttt{tendsto\_\allowbreak dimH\_\allowbreak multiResidue\_\allowbreak ratio},
+\texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak three\_\allowbreak term},
+\texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak three\_\allowbreak term},
+\texttt{dimH\_\allowbreak multiResidueSet\_\allowbreak two\_\allowbreak three\_\allowbreak asymp}).
+
+For~(v), submultiplicativity together with $W_S(2s_0,n)\le 2^{2s_0}\le 4$ gives
+the quantitative pole bound $C_S(2(s_0+\delta))\le 32/\delta$ for
+$0<\delta\le1$ (\texttt{multiC\_\allowbreak supercritical\_\allowbreak le}).
+Taking $\delta=K_2 m^{-2s_0}$ in the upper resolvent criterion gives
+$C_S(2s)\cdot O(m^{-2s_0})\le 1$, proving
+$\dimH F_{m,S,B}-s_0(S)\le K_2 m^{-2s_0(S)}$
+(\texttt{dimH\_\allowbreak multiResidueSet\_\allowbreak supercritical\_\allowbreak upper}).
+Conversely, pick any $r_0\in S$, form the finite subalphabet $A_1:=S\cup\{m+r_0\}\subset\mathcal A_{m,S,B}$
+with $m+r_0\notin S$, set $\delta:=K_1 m^{-2s_0}$ ($K_1:=1/(4096\log(\max S+1))$)
+and $s:=s_0+\delta$, and define the finite-$n$ partial-sum test function
+$v(y):=\sum_{j=0}^{n-1}(\mathcal L_{s,S}^j 1)(y)$ with $n:=\lfloor 1/(2\delta\log(\max S+1))\rfloor$.
+On $[0,1]$, $1/48\le (\mathcal L_{s,S}^j 1)(y)\le 4$ holds for all $j<n$, while
+the extra branch $a_1=m+r_0$ contributes
+$(m+r_0+x)^{-2s}v(1/(m+r_0+x))\ge (2m)^{-2s}\cdot\frac{n}{48}\ge 1$, making
+$\mathcal L_{s,A_1}v=v-1+\mathcal L_{s,S}^n 1+(m+r_0+\cdot)^{-2s}v\circ f_{m+r_0}\ge v$
+and forcing $\dimH F_{m,S,B}\ge\dimH E_{A_1}\ge s_0(S)+K_1 m^{-2s_0(S)}$
+(\texttt{dimH\_\allowbreak multiResidueSet\_\allowbreak supercritical\_\allowbreak lower},
+\texttt{dimH\_\allowbreak multiResidueSet\_\allowbreak supercritical\_\allowbreak rate},
+\texttt{dimH\_\allowbreak multiResidueSet\_\allowbreak one\_\allowbreak two\_\allowbreak supercritical\_\allowbreak rate}).
+\end{proof}
+
+\begin{table}[ht]
+\centering\small\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{c|c|c|c|c|c}
+$(S,B)$ & $d$ & $C_S$ & $C_S'$ & $c_2=\frac12 d^2 C_S(\gamma C_S-C_S')$ & $m^2\cdot\mathrm{resid}$ ($16384$) \\\hline
+$S=\{1\},\,B=\emptyset$ ($r=1$) & $1$ & $3.359885666$ & $1.968398116$ & $-0.048751$ & $+0.113703$ \\
+$S=\{2\},\,B=\emptyset$ ($r=2$) & $1$ & $1.842203050$ & $1.110456868$ & $-0.043392$ & $-0.016699$ \\
+$S=\{3\},\,B=\emptyset$ ($r=3$) & $1$ & $1.476794726$ & $0.770974876$ & $+0.060146$ & $+0.073533$ \\
+$S=\emptyset,\,B=\{0\}$ ($r=m$) & $1$ & $1.000000000$ & $0.000000000$ & $+0.288608$ ($\gamma/2$) & $+0.292414$ \\\hline
+$S=\{2,3\},\,B=\emptyset$ & $2$ & $3.921382875$ & $10.062207836$ & $-61.163567$ & $-58.118127$ \\
+$S=\{1\},\,B=\{0\}$ & $2$ & $3.359885666$ & $1.968398116$ & $-0.195004$ & $+1.105827$ \\
+$S=\emptyset,\,B=\{0,1\}$ & $2$ & $1.000000000$ & $0.000000000$ & $+1.154431$ ($2\gamma$) & $+1.184953$ \\
+$S=\{2,4,5\},\,B=\emptyset$ & $3$ & $7.292391500$ & $49.948931200$ & $-1500.981411$ & $-1375.047467$
+\end{tabular}
+\caption{High-precision ($32$-digit \texttt{mpmath} Chebyshev collocation, \texttt{verify\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic.py}, non-rigorous numerical corroboration) values of $C_S$, $C_S'$, the theoretical third-order coefficient $c_2=\frac12 d^2 C_S(\gamma C_S-C_S')$, and the observed second-order residual $m^2\bigl(\dimH F_{m,S,B}-\frac12-\frac{dC_S}{2m}+\frac{(dC_S)^2\log m}{2m^2}\bigr)$ at $m=16384$. In the supercritical regime, the script also checks $S=\{1,2\}$ ($s_0\approx0.531280506$, $m^{2s_0}(\dimH F_{m,\{1,2\},\emptyset}-s_0)\approx 28.78$ at $m=4096$) and $S=\{1,2,3\}$ ($s_0\approx0.705660908$, $m^{2s_0}(\dimH-s_0)\approx 8.81$ at $m=4096$).}\label{tab:multi-residue-asymptotic}
+\end{table}
+
 \paragraph{Lean status of Section~\ref{sec:windows-residues}.}
 All of Theorems~\ref{thm:windows}, \ref{thm:short-ae}, and~\ref{thm:no-short-dim}---including the exact dimension-$1$ identity for \texttt{prescribed\allowbreak ParitySet}, the exact dimension-$1/2$ identities for \texttt{bounded\allowbreak IncSet}, \texttt{prescribed\allowbreak IncSet}, and \texttt{prescribed\allowbreak IncSetAt}, the almost-everywhere short-window lower bound $Z_J(x)\ge\frac{1-\ee^{-1}}{160}\log J$ (\texttt{thm\_\allowbreak short\_\allowbreak ae\_\allowbreak explicit}), and the full conjunction $\dimH(\texttt{div\allowbreak WindowSet}\,\epsilon)=1\wedge\operatorname{Leb}(\texttt{div\allowbreak WindowSet}\,\epsilon)=0$ (\texttt{thm\_\allowbreak no\_\allowbreak short\_\allowbreak dim\_\allowbreak complete})---are now kernel-checked end-to-end at Layer~A for mathlib's \texttt{GenContFract.of} across thirteen Lean~4 modules: the counting and Frostman-scale pipeline (\texttt{Window\allowbreak Mobius\allowbreak Count.lean}, \texttt{No\allowbreak Short\allowbreak Dim\allowbreak Count.lean}, \texttt{Window\allowbreak Tree\allowbreak Prune.lean}, \texttt{Window\allowbreak Asymp\allowbreak Thresh.lean}, \texttt{Window\allowbreak Frostman\allowbreak Discharge.lean}, and \texttt{Window\allowbreak Paper\allowbreak Scale.lean}), the CF realization and bounded-increment pipeline (\texttt{Window\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak CF\allowbreak Bridge.lean}, \texttt{Window\allowbreak No\allowbreak Short\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak Prescribed\allowbreak CF\allowbreak Realize.lean}, and \texttt{Window\allowbreak Bounded\allowbreak Upper.lean}), and the short-window measure pipeline (\texttt{Window\allowbreak Short\allowbreak Ae.lean} and \texttt{Window\allowbreak Short\allowbreak Ae\allowbreak Realize.lean}, $14$ declarations; base axioms only, zero \texttt{sorryAx}; see Remark~\ref{rem:windows-lean}).
-For Theorems~\ref{thm:residues}, \ref{thm:residues-general}, and~\ref{thm:residues-asymptotic}, the entire general-modulus $m\ge2$ Lipschitz shift equivalence, sandwich, and eventual-periodicity theorem is kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak ModGeneral.lean} ($7$ declarations: \texttt{lipschitz\allowbreak OnWith\_\allowbreak cfShift}, \texttt{dimH\_\allowbreak residueSeqSet\_\allowbreak sandwich}, \texttt{dimH\_\allowbreak eventually\allowbreak PeriodicResidueSet\_\allowbreak eq}), the unconditional transfer-operator Hausdorff-dimension framework, $\frac12<\dimH F_{m,r}$, $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness (\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound}, \texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}) are kernel-checked in \texttt{EpiFormal/\allowbreak Transfer\allowbreak Operator\allowbreak Dim.lean} ($11$ declarations, base axioms only), and the complete resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$, exact dimension-excess ratios, and eventual strict monotonicity in~$r$ of Theorem~\ref{thm:residues-asymptotic} are kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} (all $15$ declarations: \texttt{metalQ\_\allowbreak one\_\allowbreak eq\_\allowbreak fib}, \texttt{metalC\_\allowbreak one\_\allowbreak eq\_\allowbreak psiFib}, \texttt{resolventV\_\allowbreak branch\_\allowbreak eq}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak le\_\allowbreak of\_\allowbreak resolvent}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak of\_\allowbreak resolvent}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak le}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak mm}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak m1}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak eventuallyPeriodic}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{tendsto\_\allowbreak mul\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak sub\_\allowbreak half}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak residue\_\allowbreak ratio\_\allowbreak eq\_\allowbreak metalC}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak eventuallyPeriodic\_\allowbreak ratio\_\allowbreak eq\_\allowbreak psiFib}, and \texttt{eventually\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak strictAnti}; base axioms only, zero \texttt{sorryAx}), alongside the $14$ helper lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}; the integer grid certificates for the narrow brackets in Table~\ref{tab:residues-general} are run in exact Python arithmetic (\texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py}) and, as closed brackets, re-checked by the Lean kernel in \texttt{Residue\allowbreak Cert\allowbreak Table.lean} (Remark~\ref{rem:residue-kernel}).
+For Theorems~\ref{thm:residues}, \ref{thm:residues-general}, and~\ref{thm:residues-asymptotic}, the entire general-modulus $m\ge2$ Lipschitz shift equivalence, sandwich, and eventual-periodicity theorem is kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak ModGeneral.lean} ($7$ declarations: \texttt{lipschitz\allowbreak OnWith\_\allowbreak cfShift}, \texttt{dimH\_\allowbreak residueSeqSet\_\allowbreak sandwich}, \texttt{dimH\_\allowbreak eventually\allowbreak PeriodicResidueSet\_\allowbreak eq}), the unconditional transfer-operator Hausdorff-dimension framework, $\frac12<\dimH F_{m,r}$, $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness (\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound}, \texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}) are kernel-checked in \texttt{EpiFormal/\allowbreak Transfer\allowbreak Operator\allowbreak Dim.lean} ($11$ declarations, base axioms only), and the complete resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$, exact dimension-excess ratios, and eventual strict monotonicity in~$r$ of Theorem~\ref{thm:residues-asymptotic} are kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} (all $15$ declarations: \texttt{metalQ\_\allowbreak one\_\allowbreak eq\_\allowbreak fib}, \texttt{metalC\_\allowbreak one\_\allowbreak eq\_\allowbreak psiFib}, \texttt{resolventV\_\allowbreak branch\_\allowbreak eq}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak le\_\allowbreak of\_\allowbreak resolvent}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak of\_\allowbreak resolvent}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak le}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak mm}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak m1}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak eventuallyPeriodic}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{tendsto\_\allowbreak mul\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak sub\_\allowbreak half}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak residue\_\allowbreak ratio\_\allowbreak eq\_\allowbreak metalC}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak eventuallyPeriodic\_\allowbreak ratio\_\allowbreak eq\_\allowbreak psiFib}, and \texttt{eventually\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak strictAnti}; base axioms only, zero \texttt{sorryAx}), alongside the $14$ helper lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}; the integer grid certificates for the narrow brackets in Table~\ref{tab:residues-general} are run in exact Python arithmetic (\texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py}) and, as closed brackets, re-checked by the Lean kernel in \texttt{Residue\allowbreak Cert\allowbreak Table.lean} (Remark~\ref{rem:residue-kernel}). Moreover, all parts~(i)--(v) of Theorem~\ref{thm:multi-residue-asymptotic} (Bowen-free Poincar\'e-abscissa dimension, multi-residue phase transition at $1/2$ with two-digit witnesses $\{2,3\}$ and $\{1,2\}$, elementary Euler--Mascheroni expansion of $\zeta(1+\varepsilon)$, three-term subcritical asymptotics to $O((\log m)^2/m^3)$, and supercritical $\Theta(m^{-2s_0})$ convergence rate) are kernel-checked at Layer~A in \texttt{EpiFormal/\allowbreak ResidueMultiAsymptotic.lean} ($24$ public theorems audited separately in \texttt{AuditResidueMultiAsymptotic.lean}, strictly on the three Lean base axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, with zero \texttt{sorryAx}, recorded in \texttt{verification/\allowbreak audit\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic\_\allowbreak 20261123.log}).
 

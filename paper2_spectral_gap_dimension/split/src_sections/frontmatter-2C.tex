@@ -12,10 +12,17 @@ $1\bmod4$, strictly between $357/512$ and $179/256$; for every modulus
 $m\ge2$ a Lipschitz sandwich, an unconditional transfer-operator dimension
 criterion and exact integer certificates give the strict separation
 $\dim_H F_{m,m}<\dim_H F_{m,1}$ together with reciprocal-Fibonacci-type
-large-$m$ asymptotics. Finite-state constraints on defect tails replace the
+large-$m$ asymptotics; for general finite multi-residue alphabets $F_{m,S,B}$,
+the dimension undergoes a phase transition at $1/2$ with limit
+$\max(1/2,s_0(S))$, satisfies an explicit three-term Euler--Mascheroni
+expansion to $O((\log m)^2/m^3)$ in the subcritical regime, and converges at
+the power-law rate $\Theta(m^{-2s_0(S)})$ in the supercritical regime
+$s_0(S)>1/2$. Finite-state constraints on defect tails replace the
 critical base by the maximal Perron root over active marked components. The
-proofs are machine-checked in Lean~4 on the base axioms only, except for the
-finite matrix-arithmetic evaluations, which are certified by reproducible
-exact integer scripts. This work does not address the irrationality of
+proofs---including the closed intervals of Table~\ref{tab:residues-general} and
+the multi-residue asymptotic theory---are machine-checked in Lean~4 on the base
+axioms only, while open-interval strictness in Table~\ref{tab:residues-general}
+combines exact Python integer certificates with the cited pressure formalism.
+This work does not address the irrationality of
 $e+\pi$, which remains open.
 \end{abstract}

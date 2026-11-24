@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  23 NOV 2026 02:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  23 NOV 2026 22:51
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **./paper2A_draft.tex
 (paper2A_draft.tex
@@ -307,8 +306,8 @@ dftex.def
 File: l3backend-pdftex.def 2026-09-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count314
 )
-(C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
-ctral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper2A_draft.aux)
+(C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\paper2_spec
+tral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper2A_draft.aux)
 \openout1 = `paper2A_draft.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 1.
@@ -366,10 +365,10 @@ LaTeX Font Info:    ... okay on input line 1.
 
 Package hyperref Info: Link coloring OFF on input line 1.
 
-(C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
-ctral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper2A_draft.out)
-(C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
-ctral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper2A_draft.out)
+(C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\paper2_spec
+tral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper2A_draft.out)
+(C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\paper2_spec
+tral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper2A_draft.out)
 \@outlinefile=\write3
 \openout3 = `paper2A_draft.out'.
 
@@ -527,24 +526,20 @@ actLimitSet[]empty[]of[]not[]
 
 ) (../src_sections/sec-num-2A.tex [22]) (../src_sections/refs.tex [23])
 [24]
-(C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
-ctral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper2A_draft.aux)
+(C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\paper2_spec
+tral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper2A_draft.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-09-09>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `paper2A_draft.out' has not changed.
 (rerunfilecheck)             Checksum: D0B742FFF20CD4036AC8045623375B62;3011.
  ) 
 Here is how much of TeX's memory you used:
- 10149 strings out of 467392
- 160372 string characters out of 5404180
- 595036 words of memory out of 5000000
- 39264 multiletter control sequences out of 15000+600000
+ 10151 strings out of 467392
+ 160359 string characters out of 5404180
+ 595061 words of memory out of 5000000
+ 39265 multiletter control sequences out of 15000+600000
  644097 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  79i,12n,82p,641b,761s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -577,11 +572,11 @@ cm/cmsy8.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/cm/cmti10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/
 MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud
--panda\paper2_spectral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper
-2A_draft.pdf (24 pages, 503315 bytes).
+Output written on C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi
+_work\paper2_spectral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper2
+A_draft.pdf (24 pages, 504196 bytes).
 PDF statistics:
- 507 PDF objects out of 1000 (max. 8388607)
- 101 named destinations out of 1000 (max. 500000)
+ 509 PDF objects out of 1000 (max. 8388607)
+ 102 named destinations out of 1000 (max. 500000)
  89 words of extra memory for PDF output out of 10000 (max. 10000000)
 

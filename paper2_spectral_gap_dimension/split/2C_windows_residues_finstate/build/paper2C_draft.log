@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  23 NOV 2026 00:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  23 NOV 2026 22:49
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **./paper2C_draft.tex
 (paper2C_draft.tex
@@ -307,8 +306,8 @@ dftex.def
 File: l3backend-pdftex.def 2026-09-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count314
 )
-(C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
-ctral_gap_dimension\split\2C_windows_residues_finstate\build\paper2C_draft.aux)
+(C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\paper2_spec
+tral_gap_dimension\split\2C_windows_residues_finstate\build\paper2C_draft.aux)
 \openout1 = `paper2C_draft.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 1.
@@ -329,6 +328,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 1.
 LaTeX Font Info:    ... okay on input line 1.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 1.
 LaTeX Font Info:    ... okay on input line 1.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -365,15 +365,15 @@ LaTeX Font Info:    ... okay on input line 1.
 
 Package hyperref Info: Link coloring OFF on input line 1.
 
-(C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
-ctral_gap_dimension\split\2C_windows_residues_finstate\build\paper2C_draft.out)
-
-(C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
-ctral_gap_dimension\split\2C_windows_residues_finstate\build\paper2C_draft.out)
+(C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\paper2_spec
+tral_gap_dimension\split\2C_windows_residues_finstate\build\paper2C_draft.out)
+(C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\paper2_spec
+tral_gap_dimension\split\2C_windows_residues_finstate\build\paper2C_draft.out)
 \@outlinefile=\write3
 \openout3 = `paper2C_draft.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
+
 (C:\Users\Lgnatius\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -462,99 +462,162 @@ edIncSet[]zero\OT1/cmr/m/n/10.95 ), and the ex-act iden-ti-ties \OT1/cmtt/m/n/1
 0.95 dimH[]
  []
 
-[11] [12] [13] [14] [15]) (../src_sections/sec-resasymp.tex [16]
+[11] [12] [13] [14] [15] [16]) (../src_sections/sec-resasymp.tex [17]
 Underfull \hbox (badness 2042) in paragraph at lines 32--36
 [][]\OT1/cmr/bx/it/10.95 Exact metallic-
  []
 
-[17]
-Underfull \hbox (badness 1286) in paragraph at lines 139--141
+[18] [19]
+Underfull \hbox (badness 3009) in paragraph at lines 159--165
+\OT1/cmr/m/n/10.95 the Poincar^^Se ab-scissa (\OT1/cmtt/m/n/10.95 poincareAbsci
+ssa S\OT1/cmr/m/n/10.95 ), and, when-ever con-ver-gent, by $\OML/cmm/m/it/10.95
+ C[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 p\OT1/cmr/m/n/10.95 ) :=
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 168--173
+[][]\OT1/cmr/bx/it/10.95 Bowen-free
+ []
+
+
+Underfull \hbox (badness 1694) in paragraph at lines 184--188
+\OT1/cmr/m/it/10.95 Both regimes oc-cur al-ready for two-digit al-pha-bets: $\O
+ML/cmm/m/it/10.95 S \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.9
+5 2\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 3\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/
+it/10.95 is sub-crit-i-cal with
+ []
+
+[20]
+Underfull \hbox (badness 1320) in paragraph at lines 232--251
+\OT1/cmtt/m/n/10.95 poincareAbscissa\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 wo
+rdSum[]poincareAbscissa[]le\OT1/cmr/m/n/10.95 ), ab-so-lute con-ver-gence of $\
+OML/cmm/m/it/10.95 W[]\OT1/cmr/m/n/10.95 (2\OML/cmm/m/it/10.95 s; n\OT1/cmr/m/n
+/10.95 )$ for
+ []
+
+
+Underfull \hbox (badness 1360) in paragraph at lines 232--251
+\OT1/cmr/m/n/10.95 (\OT1/cmtt/m/n/10.95 not[]summable[]wordSum[]of[]lt[]poincar
+eAbscissa\OT1/cmr/m/n/10.95 ). Shift-ing words $\OML/cmm/m/it/10.95 w \OMS/cmsy
+/m/n/10.95 2 \OML/cmm/m/it/10.95 S[]$ \OT1/cmr/m/n/10.95 to $\OML/cmm/m/it/10.9
+5 aw$ \OT1/cmr/m/n/10.95 gives
+ []
+
+[21]
+Underfull \hbox (badness 3601) in paragraph at lines 284--294
+[] \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 O  []$\OT1/cmr/m/n/10.95 , which gi
+ves [] and its lim-its and spe-cial-iza-tions (\OT1/cmtt/m/n/10.95 dimH[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--294
+\OT1/cmtt/m/n/10.95 multiResidueSet[]asymp[]three[]term\OT1/cmr/m/n/10.95 , \OT
+1/cmtt/m/n/10.95 tendsto[]m2[]residual[]multiResidue\OT1/cmr/m/n/10.95 , \OT1/c
+mtt/m/n/10.95 tendsto[]dimH[]
+ []
+
+
+Underfull \hbox (badness 3623) in paragraph at lines 284--294
+\OT1/cmtt/m/n/10.95 multiResidue[]ratio\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95
+ dimH[]residueConstSet[]asymp[]three[]term\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10
+.95 dimH[]residueConstSet[]mm[]
+ []
+
+
+Underfull \hbox (badness 1137) in paragraph at lines 295--314
+\OT1/cmr/m/n/10.95 (\OT1/cmtt/m/n/10.95 dimH[]multiResidueSet[]supercritical[]u
+pper\OT1/cmr/m/n/10.95 ). Con-versely, pick any $\OML/cmm/m/it/10.95 r[] \OMS/c
+msy/m/n/10.95 2 \OML/cmm/m/it/10.95 S$\OT1/cmr/m/n/10.95 , form the
+ []
+
+
+Underfull \hbox (badness 2229) in paragraph at lines 329--329
+[]\OT1/cmr/m/n/10.95 Table 3: []High-precision ($32$-digit \OT1/cmtt/m/n/10.95 
+mpmath \OT1/cmr/m/n/10.95 Cheby-shev col-lo-ca-tion, \OT1/cmtt/m/n/10.95 verify
+[]residue[]multi[]
+ []
+
+
+Underfull \hbox (badness 1286) in paragraph at lines 333--335
 \OT1/cmr/m/n/10.95 iden-tity for \OT1/cmtt/m/n/10.95 prescribedParitySet\OT1/cm
 r/m/n/10.95 , the ex-act dimension-$1\OML/cmm/m/it/10.95 =\OT1/cmr/m/n/10.95 2$
  iden-ti-ties for \OT1/cmtt/m/n/10.95 boundedIncSet\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 139--141
+Underfull \hbox (badness 1270) in paragraph at lines 333--335
 \OT1/cmtt/m/n/10.95 Prune.lean\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 WindowAs
 ympThresh.lean\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 WindowFrostmanDischarge.
 lean\OT1/cmr/m/n/10.95 , and \OT1/cmtt/m/n/10.95 WindowPaper
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 139--141
+Underfull \hbox (badness 1168) in paragraph at lines 333--335
 \OT1/cmtt/m/n/10.95 Scale.lean\OT1/cmr/m/n/10.95 ), the CF re-al-iza-tion and b
 ounded-increment pipeline (\OT1/cmtt/m/n/10.95 WindowCFRealize.lean\OT1/cmr/m/n
 /10.95 ,
  []
 
 
-Underfull \hbox (badness 4660) in paragraph at lines 139--141
+Underfull \hbox (badness 4660) in paragraph at lines 333--335
 \OT1/cmtt/m/n/10.95 WindowCFBridge.lean\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95
  WindowNoShortCFRealize.lean\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 WindowPres
 cribedCFRealize.lean\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 1635) in paragraph at lines 139--141
+Underfull \hbox (badness 1635) in paragraph at lines 333--335
 \OT1/cmtt/m/n/10.95 metalQ[]one[]eq[]fib\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.9
 5 metalC[]one[]eq[]psiFib\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 resolventV[]b
 ranch[]eq\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 dimH[]residueConstSet[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--141
+Underfull \hbox (badness 10000) in paragraph at lines 333--335
 \OT1/cmtt/m/n/10.95 le[]of[]resolvent\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 l
 e[]dimH[]residueConstSet[]of[]resolvent\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95
  dimH[]residueConstSet[]mm[]le\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 6461) in paragraph at lines 139--141
+Underfull \hbox (badness 6461) in paragraph at lines 333--335
 \OT1/cmtt/m/n/10.95 le[]dimH[]residueConstSet[]mm\OT1/cmr/m/n/10.95 , \OT1/cmtt
 /m/n/10.95 dimH[]residueConstSet[]mm[]lt[]m1\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/
 10.95 dimH[]residueConstSet[]mm[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--141
+Underfull \hbox (badness 10000) in paragraph at lines 333--335
 \OT1/cmtt/m/n/10.95 lt[]eventuallyPeriodic\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10
 .95 dimH[]residueConstSet[]asymp[]two[]term\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/1
 0.95 dimH[]residueConstSet[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--141
+Underfull \hbox (badness 10000) in paragraph at lines 333--335
 \OT1/cmtt/m/n/10.95 mm[]asymp[]two[]term\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.9
 5 tendsto[]mul[]dimH[]residueConstSet[]sub[]half\OT1/cmr/m/n/10.95 , \OT1/cmtt/
 m/n/10.95 tendsto[]dimH[]residue[]
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 139--141
-\OT1/cmtt/m/n/10.95 ratio[]eq[]metalC\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 t
-endsto[]dimH[]eventuallyPeriodic[]ratio[]eq[]psiFib\OT1/cmr/m/n/10.95 , and \OT
-1/cmtt/m/n/10.95 eventually[]
- []
-
-[18]) (../src_sections/refs.tex [19]) [20]
-(C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud-panda\paper2_spe
-ctral_gap_dimension\split\2C_windows_residues_finstate\build\paper2C_draft.aux)
+[22]) (../src_sections/refs.tex [23]) [24]
+(C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi_work\paper2_spec
+tral_gap_dimension\split\2C_windows_residues_finstate\build\paper2C_draft.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-09-09>
  ***********
 Package rerunfilecheck Info: File `paper2C_draft.out' has not changed.
-(rerunfilecheck)             Checksum: 641F547ED7E3369E49BD3AA62DBBEF53;2772.
+(rerunfilecheck)             Checksum: 5F5D918AF79244DCF4DF809C1ECF3067;3385.
  ) 
 Here is how much of TeX's memory you used:
- 10095 strings out of 467392
- 159407 string characters out of 5404180
- 608136 words of memory out of 5000000
- 39241 multiletter control sequences out of 15000+600000
+ 10121 strings out of 467392
+ 159725 string characters out of 5404180
+ 610355 words of memory out of 5000000
+ 39250 multiletter control sequences out of 15000+600000
  643021 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,12n,82p,3266b,729s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,12n,82p,4229b,737s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\t
 crm1095.pk><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/t
@@ -573,22 +636,23 @@ us/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/U
 sers/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr1
 2.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmr17.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmr6.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Lgnatius/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Lgnatius/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Lgnatius/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users
-/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pf
-b><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmsy8.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmti10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on C:\Users\Lgnatius\.local\share\opencode\worktree\9811dd\proud
--panda\paper2_spectral_gap_dimension\split\2C_windows_residues_finstate\build\p
-aper2C_draft.pdf (20 pages, 466682 bytes).
+ublic/amsfonts/cm/cmr5.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Lgnatius/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Lgnatius/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Lgnatius/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/
+Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb
+><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmsy7.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmsy8.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmti10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Lgnatius/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on C:\Users\Lgnatius\Documents\qwen-agent\QOTCWZPRRA\default\epi
+_work\paper2_spectral_gap_dimension\split\2C_windows_residues_finstate\build\pa
+per2C_draft.pdf (24 pages, 517384 bytes).
 PDF statistics:
- 388 PDF objects out of 1000 (max. 8388607)
- 75 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 449 PDF objects out of 1000 (max. 8388607)
+ 92 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
