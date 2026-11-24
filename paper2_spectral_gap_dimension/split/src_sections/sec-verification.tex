@@ -234,7 +234,7 @@ $344$ Lean files across the repository with zero escape keywords). The build and
 clean clone of the public repository on a separate machine (Lean~4.35.0,
 Mathlib v4.35.0): \texttt{lake build} succeeded, the $937$
 \texttt{\#print axioms} outputs coincide entry by entry with the recorded log, and the $27$ residue-certificate entries depend only on the base axioms
-(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}), while \texttt{ResidueMultiAsymptotic.lean} and \texttt{AuditResidueMultiAsymptotic.lean} were built and audited locally on the same Lean~4.35.0 / Mathlib v4.35.0 toolchain. The portions not resolved here or lying outside
+(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}), and on 2026-11-24 a second clean-clone rebuild on a separate machine (commit \texttt{d920a81}, which contains \texttt{ResidueMultiAsymptotic.lean}) reproduced the $937$ main entries, the $27$ residue-certificate entries and the $24$ entries of \texttt{AuditResidueMultiAsymptotic.lean} entry by entry, all $27+24$ on the three base axioms only (\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261124.md}). The portions not resolved here or lying outside
 the Lean kernel are the finite-dimensional linear-algebraic Perron--Frobenius
 eigenvector existence input on marked strongly connected components in
 Theorem~\ref{thm:finite-state-tail} (whose positive right eigenvector is passed

@@ -3986,6 +3986,66 @@ $S=\{2,4,5\},\,B=\emptyset$ & $3$ & $7.292391500$ & $49.948931200$ & $-1500.9814
 \caption{High-precision ($32$-digit \texttt{mpmath} Chebyshev collocation, \texttt{verify\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic.py}, non-rigorous numerical corroboration) values of $C_S$, $C_S'$, the theoretical third-order coefficient $c_2=\frac12 d^2 C_S(\gamma C_S-C_S')$, and the observed second-order residual $m^2\bigl(\dimH F_{m,S,B}-\frac12-\frac{dC_S}{2m}+\frac{(dC_S)^2\log m}{2m^2}\bigr)$ at $m=16384$. In the supercritical regime, the script also checks $S=\{1,2\}$ ($s_0\approx0.531280506$, $m^{2s_0}(\dimH F_{m,\{1,2\},\emptyset}-s_0)\approx 28.78$ at $m=4096$) and $S=\{1,2,3\}$ ($s_0\approx0.705660908$, $m^{2s_0}(\dimH-s_0)\approx 8.81$ at $m=4096$).}\label{tab:multi-residue-asymptotic}
 \end{table}
 
+\begin{remark}[A heuristic fourth-order term; not proved]\label{rem:fourth-term}
+Put $\Gamma:=d\,C_S$, $\Gamma':=d\,C_S'$ and $\varepsilon:=2\dimH F_{m,S,B}-1$. Replacing the
+leading eigenvalue of the transfer operator by its scalar part and $\zeta(1+\varepsilon)$ by
+$\varepsilon^{-1}+\gamma$ (part~(iii)) leads to the scalar model
+\[
+\varepsilon\,m=(\Gamma-\varepsilon\Gamma')(1+\gamma\varepsilon)\,m^{-\varepsilon},
+\]
+whose small root we denote by $\varepsilon_m^{\mathrm{mod}}$. Expanding it (symbolically, with
+\texttt{sympy}) gives
+\[
+\frac{1+\varepsilon_m^{\mathrm{mod}}}{2}=\frac12+\frac{\Gamma}{2m}-\frac{\Gamma^2\log m}{2m^2}
++\frac{\Gamma(\gamma\Gamma-\Gamma')}{2m^2}+\frac{3\Gamma^3(\log m)^2}{4m^3}
++O\Bigl(\frac{\log m}{m^3}\Bigr),
+\]
+whose first four terms are exactly those proved in~\eqref{eq:multi-dimH-three-term}. This
+suggests, \emph{as a conjecture}, that in the subcritical regime
+\[
+\dimH F_{m,S,B}=\frac12+\frac{\Gamma}{2m}-\frac{\Gamma^2\log m}{2m^2}
++\frac{\Gamma(\gamma\Gamma-\Gamma')}{2m^2}+\frac{3\Gamma^3(\log m)^2}{4m^3}
++O\Bigl(\frac{\log m}{m^3}\Bigr).
+\]
+Table~\ref{tab:fourth-term} compares the model directly with collocation values of the
+dimension; this comparison does not depend on fitting the $\log m/m^3$ and $1/m^3$ terms, which a
+free least-squares fit cannot separate from the $(\log m)^2/m^3$ term for $\log m\le 10$. If the
+conjecture holds, the tabulated quantity tends to $0$, whereas if the coefficient
+$\frac34\Gamma^3$ were wrong it would tend to a nonzero constant. In 7 of the ten
+cases its absolute value decreases over $m=1024,4096,16384$; in 2 more it
+decreases from $m=4096$ to $m=16384$; for $S=\{1,3\}$ ($\Gamma\approx40.9$) it still increases,
+i.e.\ $m\le16384$ is not yet in the asymptotic range for this case. The values for $m=1024$
+and $r\in\{1,2,3,m\}$ come from \texttt{verification/\allowbreak asymptotic\_\allowbreak residues\_\allowbreak check\_\allowbreak 20261123.py}
+(collocation sizes $16$ and $24$, which differ there by less than $10^{-15}$); the others from
+\texttt{verify\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic.py}. For $m\in\{4096,16384\}$ and
+$r\in\{1,2,3,m\}$ the first script reproduces the second to within $10^{-15}$
+(changing the tabulated quantity by less than $10^{-5}$), with
+collocation sizes differing by less than $10^{-15}$. All of this is non-rigorous numerical
+evidence (\texttt{verification/\allowbreak fourth\_\allowbreak term\_\allowbreak fit\_\allowbreak 20261124.py}); neither the
+fourth term nor the size of the remainder is proved.
+\end{remark}
+
+\begin{table}[ht]
+\centering\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{c|c|c|ccc|c}
+$S$ & $B$ & $\Gamma=dC_S$ & $m=1024$ & $m=4096$ & $m=16384$ & $\frac34\Gamma^3$ \\\hline
+$\{1\}$ & $\emptyset$ & $3.36$ & $-0.124$ & $-0.088$ & $-0.065$ & $+28.4$ \\
+$\{2\}$ & $\emptyset$ & $1.842$ & $-0.093$ & $-0.066$ & $-0.049$ & $+4.689$ \\
+$\{3\}$ & $\emptyset$ & $1.477$ & $-0.095$ & $-0.068$ & $-0.050$ & $+2.416$ \\
+$\emptyset$ & $\{0\}$ & $1$ & $+0.001$ & $+0.001$ & $+0.000$ & $+0.750$ \\
+$\emptyset$ & $\{0,1\}$ & $2$ & $+0.039$ & $+0.028$ & $+0.020$ & $+6.000$ \\
+$\{1\}$ & $\{0\}$ & $6.72$ & $+0.766$ & $+0.626$ & $+0.484$ & $+228$ \\
+$\{2,3\}$ & $\emptyset$ & $7.843$ & $+28.4$ & $+23.7$ & $+18.4$ & $+362$ \\
+$\{1,4\}$ & $\emptyset$ & $20.33$ & $+1163$ & $+1332$ & $+1160$ & $+6301$ \\
+$\{2,4,5\}$ & $\emptyset$ & $21.88$ & $+2304$ & $+2897$ & $+2616$ & $+7853$ \\
+$\{1,3\}$ & $\emptyset$ & $40.91$ & $+15538$ & $+30653$ & $+34429$ & $+51350$ \\
+\end{tabular}
+\caption{The quantity $m^3\bigl(\dimH F_{m,S,B}-\frac{1+\varepsilon_m^{\mathrm{mod}}}{2}\bigr)/(\log m)^2$
+of Remark~\ref{rem:fourth-term} (non-rigorous collocation values). The last column is the
+coefficient of $(\log m)^2/m^3$ in the model, for scale: the tabulated quantity would tend to a
+nonzero constant if this coefficient were wrong.}\label{tab:fourth-term}
+\end{table}
+
 \paragraph{Lean status of Section~\ref{sec:windows-residues}.}
 All of Theorems~\ref{thm:windows}, \ref{thm:short-ae}, and~\ref{thm:no-short-dim}---including the exact dimension-$1$ identity for \texttt{prescribed\allowbreak ParitySet}, the exact dimension-$1/2$ identities for \texttt{bounded\allowbreak IncSet}, \texttt{prescribed\allowbreak IncSet}, and \texttt{prescribed\allowbreak IncSetAt}, the almost-everywhere short-window lower bound $Z_J(x)\ge\frac{1-\ee^{-1}}{160}\log J$ (\texttt{thm\_\allowbreak short\_\allowbreak ae\_\allowbreak explicit}), and the full conjunction $\dimH(\texttt{div\allowbreak WindowSet}\,\epsilon)=1\wedge\operatorname{Leb}(\texttt{div\allowbreak WindowSet}\,\epsilon)=0$ (\texttt{thm\_\allowbreak no\_\allowbreak short\_\allowbreak dim\_\allowbreak complete})---are now kernel-checked end-to-end at Layer~A for mathlib's \texttt{GenContFract.of} across thirteen Lean~4 modules: the counting and Frostman-scale pipeline (\texttt{Window\allowbreak Mobius\allowbreak Count.lean}, \texttt{No\allowbreak Short\allowbreak Dim\allowbreak Count.lean}, \texttt{Window\allowbreak Tree\allowbreak Prune.lean}, \texttt{Window\allowbreak Asymp\allowbreak Thresh.lean}, \texttt{Window\allowbreak Frostman\allowbreak Discharge.lean}, and \texttt{Window\allowbreak Paper\allowbreak Scale.lean}), the CF realization and bounded-increment pipeline (\texttt{Window\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak CF\allowbreak Bridge.lean}, \texttt{Window\allowbreak No\allowbreak Short\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak Prescribed\allowbreak CF\allowbreak Realize.lean}, and \texttt{Window\allowbreak Bounded\allowbreak Upper.lean}), and the short-window measure pipeline (\texttt{Window\allowbreak Short\allowbreak Ae.lean} and \texttt{Window\allowbreak Short\allowbreak Ae\allowbreak Realize.lean}, $14$ declarations; base axioms only, zero \texttt{sorryAx}; see Remark~\ref{rem:windows-lean}).
 For Theorems~\ref{thm:residues}, \ref{thm:residues-general}, and~\ref{thm:residues-asymptotic}, the entire general-modulus $m\ge2$ Lipschitz shift equivalence, sandwich, and eventual-periodicity theorem is kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak ModGeneral.lean} ($7$ declarations: \texttt{lipschitz\allowbreak OnWith\_\allowbreak cfShift}, \texttt{dimH\_\allowbreak residueSeqSet\_\allowbreak sandwich}, \texttt{dimH\_\allowbreak eventually\allowbreak PeriodicResidueSet\_\allowbreak eq}), the unconditional transfer-operator Hausdorff-dimension framework, $\frac12<\dimH F_{m,r}$, $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness (\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound}, \texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}) are kernel-checked in \texttt{EpiFormal/\allowbreak Transfer\allowbreak Operator\allowbreak Dim.lean} ($11$ declarations, base axioms only), and the complete resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$, exact dimension-excess ratios, and eventual strict monotonicity in~$r$ of Theorem~\ref{thm:residues-asymptotic} are kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} (all $15$ declarations: \texttt{metalQ\_\allowbreak one\_\allowbreak eq\_\allowbreak fib}, \texttt{metalC\_\allowbreak one\_\allowbreak eq\_\allowbreak psiFib}, \texttt{resolventV\_\allowbreak branch\_\allowbreak eq}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak le\_\allowbreak of\_\allowbreak resolvent}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak of\_\allowbreak resolvent}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak le}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak mm}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak m1}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak eventuallyPeriodic}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{tendsto\_\allowbreak mul\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak sub\_\allowbreak half}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak residue\_\allowbreak ratio\_\allowbreak eq\_\allowbreak metalC}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak eventuallyPeriodic\_\allowbreak ratio\_\allowbreak eq\_\allowbreak psiFib}, and \texttt{eventually\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak strictAnti}; base axioms only, zero \texttt{sorryAx}), alongside the $14$ helper lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}; the integer grid certificates for the narrow brackets in Table~\ref{tab:residues-general} are run in exact Python arithmetic (\texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py}) and, as closed brackets, re-checked by the Lean kernel in \texttt{Residue\allowbreak Cert\allowbreak Table.lean} (Remark~\ref{rem:residue-kernel}). Moreover, all parts~(i)--(v) of Theorem~\ref{thm:multi-residue-asymptotic} (Bowen-free Poincar\'e-abscissa dimension, multi-residue phase transition at $1/2$ with two-digit witnesses $\{2,3\}$ and $\{1,2\}$, elementary Euler--Mascheroni expansion of $\zeta(1+\varepsilon)$, three-term subcritical asymptotics to $O((\log m)^2/m^3)$, and supercritical $\Theta(m^{-2s_0})$ convergence rate) are kernel-checked at Layer~A in \texttt{EpiFormal/\allowbreak ResidueMultiAsymptotic.lean} ($24$ public theorems audited separately in \texttt{AuditResidueMultiAsymptotic.lean}, strictly on the three Lean base axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, with zero \texttt{sorryAx}, recorded in \texttt{verification/\allowbreak audit\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic\_\allowbreak 20261123.log}).
@@ -4327,7 +4387,7 @@ $344$ Lean files across the repository with zero escape keywords). The build and
 clean clone of the public repository on a separate machine (Lean~4.35.0,
 Mathlib v4.35.0): \texttt{lake build} succeeded, the $937$
 \texttt{\#print axioms} outputs coincide entry by entry with the recorded log, and the $27$ residue-certificate entries depend only on the base axioms
-(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}), while \texttt{ResidueMultiAsymptotic.lean} and \texttt{AuditResidueMultiAsymptotic.lean} were built and audited locally on the same Lean~4.35.0 / Mathlib v4.35.0 toolchain. The portions not resolved here or lying outside
+(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}), and on 2026-11-24 a second clean-clone rebuild on a separate machine (commit \texttt{d920a81}, which contains \texttt{ResidueMultiAsymptotic.lean}) reproduced the $937$ main entries, the $27$ residue-certificate entries and the $24$ entries of \texttt{AuditResidueMultiAsymptotic.lean} entry by entry, all $27+24$ on the three base axioms only (\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261124.md}). The portions not resolved here or lying outside
 the Lean kernel are the finite-dimensional linear-algebraic Perron--Frobenius
 eigenvector existence input on marked strongly connected components in
 Theorem~\ref{thm:finite-state-tail} (whose positive right eigenvector is passed
