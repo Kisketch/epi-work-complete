@@ -20,6 +20,9 @@ opencode.json.*
 # Split-track regenerable PDFs (logs kept, PDFs rebuilt on demand)
 paper2_spectral_gap_dimension/split/*/build/*.pdf
 
+# Local Claude worktree backups
+.claude/worktrees/
+
 # OS clutter
 .DS_Store
 Thumbs.db

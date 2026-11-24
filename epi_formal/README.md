@@ -1,4 +1,7 @@
 > [!NOTE]
+> **2026-11-23 增量状态提示**：除下文 2026-11-14 初版快照与 2026-11-22 `Audit.lean`（**937/937** 条核心声明，已于 2026-11-23 在 Colab 洁净克隆完成全量 `lake build` 与逐条复核）外，本目录现已扩展至 **344 个 `.lean` 文件**（0 逃逸关键字、0 `sorryAx`），并新增两条独立 Layer A 审计入口：[`AuditResidueCert.lean`](AuditResidueCert.lean)（**27 条**，$N=512$ 残差证书闭区间与严格分离，仅基础三公理）与 [`AuditResidueMultiAsymptotic.lean`](AuditResidueMultiAsymptotic.lean)（**24 条**，多残差相变、无 Bowen 庞加莱横坐标、$\gamma$ 三阶渐近与超临界 $\Theta(m^{-2s_0})$ 速率，仅基础三公理），共 **988 条**审计声明（另含 3 个仅作拆轨核对、不入 `Audit.lean` 的草案入口 `EpiFormal2{A,B,C}_Draft.lean`）。核心结论基线不变：$e+\pi$ 无理性仍未解决。详见 [../README.md](../README.md) 与 [../REPOSITORY_STRUCTURE.md](../REPOSITORY_STRUCTURE.md)。
+
+> [!NOTE]
 > **2026-11-22 最新状态提示**：下方原文保留为 **2026-11-14 Phase-1 初版基线快照**（31 条声明 / 9056 jobs）。当前完整工程的 2026-11-22 实测验证状态为：**`lake build EpiFormal` 9179 jobs EXIT 0，共 134 个 `.lean` 文件（132 个 `EpiFormal/` 子模块 + `EpiFormal.lean` + `Audit.lean`），937/937 条 `#print axioms` 严格双射（914 条 Lean 基础公理 [含 5 条零公理] + 23 条论文一经典白名单公理 + 0 条项目自加公理，`sorryAx = 0`，0 逃逸关键字）**。完整最新总览与复现指南请见 [../README.md](../README.md)、[Audit.lean](Audit.lean) 及 [../verification/audit_final_20261122.log](../verification/audit_final_20261122.log)。
 
 # epi_formal — e+π 研究的 Lean 4 形式化

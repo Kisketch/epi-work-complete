@@ -1,0 +1,9 @@
+=== Master Repository Integrity Verification ===
+  [OK] Zero-loss check vs 1e91028: 890/890 files present on disk
+  [OK] Zero-loss check vs 7ece3b9: 1230/1230 files present on disk
+  [OK] Core Markdown docs: 6/6 BOM-free, 387 local links resolved (0 broken)
+  [OK] Audit.lean reconciliation: 937/937 matched, sorryAx=0, 344 Lean files / 0 escape hits
+  [OK] Standalone Layer A audits: AuditResidueCert (27) + AuditResidueMultiAsymptotic (24/24 base axioms only, sorryAx=0)
+  [OK] Paper 2 merge, 11-slice byte-for-byte parity, and 46 content anchors passed
+  [OK] Split tracks 2A / 2B / 2C undefined-ref & citation audit: 0 / 0 across all 3 tracks
+ALL REPOSITORY INTEGRITY CHECKS PASSED.

@@ -77,3 +77,11 @@
 1. ~~三轨未定义引用清单~~、`~~2B/2C 引言改写~~`、`~~2A 归属句~~`已完成（引用全零）；S 补充轨已组装。
 2. 等待：证书数据单 decide 核查（后台运行中）→ 全量 `lake build` → Audit 审计复跑（届时 937 由作者自报转已复跑）。
 3. Draft 入口存在性已验证（21/6/61）；审计口径双重记账定稿时各自表述；组装 358/512 定理待数据核查通过后开工。
+
+## 九、2026-11-23 同步进展（`7ece3b9` → 最新版，只增不减）
+
+* **7ece3b9 冻结快照**：主稿 [`paper2_integrated_v20261123_7ece3b9.tex`](../historical_versions/paper2_integrated_v20261123_7ece3b9.tex)（256,402 字节 LF，对应工作区 CRLF 260,549 字节）已冻结归档至 `historical_versions/`，与 `ed61a92`、`1e91028` 同目录留存。
+* **$N=512$ 证书、BLR 对比与 Colab 复现**：`ResidueCertGen/` 与 [`ResidueCertTable.lean`](../../epi_formal/EpiFormal/ResidueCertTable.lean) / [`AuditResidueCert.lean`](../../epi_formal/AuditResidueCert.lean)（27 条，仅基础公理）已在 Lean 内核闭环 `tab:residues-general` 的全部 20 条闭界与 5 条严格分离（开区间严格性仍由 `residue_certificate_general_N512.py` 与 Bowen 压力公式共同支撑）；`rem:poly-BLR` / `rem:growing-BLR` 与 Colab 独立全量复现说明（937/937 + 27/27）已并入主切片。
+* **多残差推广（`thm:multi-residue-asymptotic`）合入 2C 与主文**：`src_sections/sec-resasymp.tex` 新增 §7.5 `sec:multi-residue`（[定理 `thm:multi-residue-asymptotic`](src_sections/sec-resasymp.tex) 与 [数值佐证表 `tab:multi-residue-asymptotic`](src_sections/sec-resasymp.tex)），对应 `ResidueMultiAsymptotic.lean`（5,039 行，Part 1–6）与 `AuditResidueMultiAsymptotic.lean`（24/24 条仅基础公理）；同步更新 `sec-preface.tex`、`frontmatter.tex`、`intro-shared.tex`、`frontmatter-2C.tex`、`intro-2C.tex`、`preamble.tex`、`sec-num.tex`、`sec-verification.tex`。
+* **切片逐字节一致性与三轨编译结果**：11 片拼接与 [`paper2_spectral_gap_dimension.tex`](../paper2_spectral_gap_dimension.tex) 逐字节一致（`279,145` 字节）；`pdflatex` 洁净重编主论文 **63 页**、2A **24 页**、2B **15 页**、2C **24 页**，0 错误 / 0 `Overfull \hbox`；[`undef_ref_audit.py`](undef_ref_audit.py) 与 [`undef_ref_audit.log`](undef_ref_audit.log) 确认 2A / 2B / 2C 三轨 **0 未定义引用、0 未定义文献**（S 补充轨单独编译时的主文标签引用按定位保留于 `S_supplement/build/paperS_draft.log`）。
+* **诚实边界**：$e+\pi$ 无理性仍开放；临界线 $s_0(S)=1/2$ 速率与超临界阶段精确主导常数尚未解决。
