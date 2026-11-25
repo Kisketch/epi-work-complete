@@ -1,0 +1,322 @@
+\section{Subcritical weights and exact Hausdorff dimensions}\label{sec:weights}
+
+\begin{remark}\label{rem:unweighted}
+The inequality $\|Q_jx\|\le j\|Q_jx\|$ gives the inclusion from the
+weighted zero-set $\{x:j\|Q_jx\|\to0\}=L$ into the unweighted zero-set
+$\{x:\|Q_jx\|\to0\}$. To see strictness explicitly, the point $x_0$ obtained from the constant digits $d_j\equiv1$ (as in the
+proof of Theorem~\ref{thm:full-spectrum}) satisfies $j\|Q_jx_0\|\to1/4$.
+Its unweighted error $\|Q_jx_0\|$ tends to zero, while $x_0\notin L$ by the
+weighted classification (Theorem~\ref{thm:class}).
+\end{remark}
+
+Recall that for $0\le\alpha\le1$ we write
+$\Lam_\alpha(x)=\limsup_{j\to\infty}j^\alpha\|Q_jx\|$, so that $\Lam_1=\Lam$.
+
+\begin{theorem}[Weighted upper bound]\label{thm:upper}
+For $0\le\alpha\le1$ and every finite $c\in\R$,
+$\dimH\{x\in\R:\Lam_\alpha(x)\le c\}\le1-\alpha$.
+\end{theorem}
+
+\begin{proof}
+Fix $0\le\alpha\le1$ and $c\in\R$, and choose $t>\max(c,0)$. Put $E_{\alpha,c}:=\{x\in\R:\Lam_\alpha(x)\le c\}$. Since
+$Q_j\in\Z$, we have $\|Q_j(x+m)\|=\|Q_jx\|$ for every $m\in\Z$ and $j\ge1$,
+hence $\Lam_\alpha(x+m)=\Lam_\alpha(x)$. Thus
+\[
+E_{\alpha,c}=\bigcup_{m\in\Z}\bigl(m+(E_{\alpha,c}\cap[0,1])\bigr).
+\]
+By isometry invariance and countable stability of Hausdorff dimension, it
+suffices to show that $\dimH(E_{\alpha,c}\cap[0,1])\le1-\alpha$.
+
+For $j\ge1$, set $r_{j,\alpha}:=t/(j^\alpha Q_j)$ and
+$A_{j,\alpha}(t):=\{x\in\R:\|Q_jx\|\le t/j^\alpha\}$. Any $x\in E_{\alpha,c}\cap[0,1]$
+satisfies $\limsup_{j\to\infty}j^\alpha\|Q_jx\|\le c<t$, so $j^\alpha\|Q_jx\|\le t$
+eventually; hence
+\[
+E_{\alpha,c}\cap[0,1]\subseteq\bigcup_{J=1}^\infty C_{J,\alpha},\qquad
+C_{J,\alpha}:=[0,1]\cap\bigcap_{j=J}^\infty A_{j,\alpha}(t).
+\]
+Fix $J\ge1$. For each $j\ge J$ and $k\in\Z$, let
+$I_{j,\alpha}(k):=[k/Q_j-r_{j,\alpha},k/Q_j+r_{j,\alpha}]$ be the closed
+interval of center $k/Q_j$ and radius $r_{j,\alpha}$. For any $x\in C_{J,\alpha}$
+and $j\ge J$, the nearest integer $k_j(x):=\mathrm{round}(Q_jx)$ belongs to
+$\{0,1,\dots,Q_j\}$ and satisfies $|x-k_j(x)/Q_j|=\|Q_jx\|/Q_j\le r_{j,\alpha}$,
+so $x\in I_{j,\alpha}(k_j(x))$. At consecutive levels $j$ and $j+1$, the
+triangle inequality gives
+\begin{equation}\label{eq:weighted-parent-child}
+\left|\frac{k_j(x)}{Q_j}-\frac{k_{j+1}(x)}{Q_{j+1}}\right|
+\le\left|\frac{k_j(x)}{Q_j}-x\right|+\left|x-\frac{k_{j+1}(x)}{Q_{j+1}}\right|
+\le r_{j,\alpha}+r_{j+1,\alpha}=\frac{t}{j^\alpha Q_j}+\frac{t}{(j+1)^\alpha Q_{j+1}}.
+\end{equation}
+Since $0\le\alpha\le1$ and $j\ge1$, we have $1-\alpha\ge0$ and
+$j=j^\alpha j^{1-\alpha}\le j^\alpha(j+1)^{1-\alpha}$, so
+$1/j^\alpha\le(j+1)^{1-\alpha}/j$, while
+$1/(j+1)^\alpha=(j+1)^{1-\alpha}/(j+1)$. Putting $t'_j:=t(j+1)^{1-\alpha}\ge0$,
+we obtain the pointwise radius comparison
+\[
+r_{j,\alpha}+r_{j+1,\alpha}
+\le\frac{t'_j}{jQ_j}+\frac{t'_j}{(j+1)Q_{j+1}}.
+\]
+Applying Lemma~\ref{lem:branch} with threshold $t'_j$ shows that for each fixed
+parent center $k\in\{0,1,\dots,Q_j\}$, the number of child centers
+$k'\in\{0,1,\dots,Q_{j+1}\}$ satisfying \eqref{eq:weighted-parent-child} is at
+most
+\[
+\lfloor16t'_j\rfloor+1\le 16t(j+1)^{1-\alpha}+1\le K(j+1)^{1-\alpha},
+\qquad K:=16t+1,
+\]
+since $(j+1)^{1-\alpha}\ge1$.
+
+Define the surviving center sets $S_{n,\alpha}\subseteq\{0,1,\dots,Q_{J+n}\}$
+($n\ge0$) inductively by $S_{0,\alpha}:=\{0,1,\dots,Q_J\}$ and letting
+$S_{n+1,\alpha}$ consist of all $k'\in\{0,1,\dots,Q_{J+n+1}\}$ within
+$r_{J+n,\alpha}+r_{J+n+1,\alpha}$ of some $k/Q_{J+n}$ with $k\in S_{n,\alpha}$.
+By induction on $n\ge0$, $C_{J,\alpha}\subseteq\bigcup_{k\in S_{n,\alpha}}I_{J+n,\alpha}(k)$
+and the cardinality $|S_{n,\alpha}|$ satisfies
+\[
+|S_{n,\alpha}|
+\le(Q_J+1)\prod_{i=0}^{n-1}\bigl(K(J+i+1)^{1-\alpha}\bigr)
+\le(Q_J+1)K^n\bigl((J+n)!\bigr)^{1-\alpha},
+\]
+because $\prod_{i=0}^{n-1}(J+i+1)=(J+n)!/J!\le(J+n)!$. By
+Lemma~\ref{lem:factorial}, $Q_{J+n}\ge(J+n)!$, and $(J+n)^\alpha\ge1$, so each
+interval $I_{J+n,\alpha}(k)$ has diameter
+\[
+\operatorname{diam}I_{J+n,\alpha}(k)=2r_{J+n,\alpha}
+=\frac{2t}{(J+n)^\alpha Q_{J+n}}\le\frac{2t}{(J+n)!}\longrightarrow0
+\qquad(n\to\infty).
+\]
+Now fix any exponent $s>1-\alpha$, and put $\beta:=s-(1-\alpha)>0$. For every
+$\delta>0$ and all sufficiently large $n$, $\{I_{J+n,\alpha}(k):k\in S_{n,\alpha}\}$
+is a finite $\delta$-cover of $C_{J,\alpha}$ whose $s$-dimensional Hausdorff
+covering cost satisfies
+\[
+\sum_{k\in S_{n,\alpha}}\bigl(\operatorname{diam}I_{J+n,\alpha}(k)\bigr)^s
+\le |S_{n,\alpha}|\left(\frac{2t}{(J+n)!}\right)^s
+\le(Q_J+1)(2t)^s K^{-J}\cdot K^{J+n}\bigl((J+n)!\bigr)^{1-\alpha-s}.
+\]
+With $m=J+n$ and $K^{1/\beta}>0$, the factor $K^m(m!)^{1-\alpha-s}=K^m(m!)^{-\beta}=\bigl((K^{1/\beta})^m/m!\bigr)^\beta$
+satisfies, via the elementary factorial lower bound $m!\ge(m/\ee)^m$,
+\[
+0\le K^m(m!)^{-\beta}=\left(\frac{(K^{1/\beta})^m}{m!}\right)^\beta
+\le\left(\frac{\ee K^{1/\beta}}{m}\right)^{\beta m}\longrightarrow0
+\qquad(m=J+n\to\infty)
+\]
+(by continuity of $u\mapsto u^\beta$ at $0$). Hence $\mathcal H_\delta^s(C_{J,\alpha})=0$ for all
+$\delta>0$, so $\mathcal H^s(C_{J,\alpha})=0$ and $\dimH C_{J,\alpha}\le s$.
+Since $s>1-\alpha$ was arbitrary, letting $s\downarrow1-\alpha$ gives
+$\dimH C_{J,\alpha}\le1-\alpha$ for every $J\ge1$, and countable stability over
+$J\ge1$ and $m\in\Z$ yields $\dimH E_{\alpha,c}\le1-\alpha$.
+\end{proof}
+
+\begin{theorem}[Prescribed limits at subcritical weights]\label{conj:weight}
+Let $0\le\alpha<1$. For $\alpha>0$ take any $c\ge0$; for $\alpha=0$
+take $0\le c\le1/2$. Then
+\[
+ \dimH\{x\in[0,1]: j^\alpha\|Q_jx\|\longrightarrow c\}=1-\alpha .
+\]
+In particular $\dimH\{x\in\R:\Lam_\alpha(x)\le c\}=1-\alpha$ for every
+finite $c\ge0$, including $c=0$.
+\end{theorem}
+
+\begin{proof}
+Write $E_{\alpha}^{\mathrm{lim}}(c):=\{x\in[0,1]:j^\alpha\|Q_jx\|\to c\}$. Since
+$j^\alpha\|Q_jx\|\to c$ implies $\Lam_\alpha(x)=\limsup_{j\to\infty}j^\alpha\|Q_jx\|=c$,
+we have $E_{\alpha}^{\mathrm{lim}}(c)\subseteq\{x\in\R:\Lam_\alpha(x)\le c\}$, so
+Theorem~\ref{thm:upper} immediately gives the upper bound
+$\dimH E_{\alpha}^{\mathrm{lim}}(c)\le1-\alpha$.
+
+We now give the complete paper proof of the lower bound
+$\dimH E_{\alpha}^{\mathrm{lim}}(c)\ge1-\alpha$. For $j\ge1$, put
+\[
+w_j:=\frac{j^{-\alpha}}{\log(j+2)},\qquad r_j:=\frac{w_j}{Q_j}.
+\]
+Choose an integer $N\ge3$ large enough that $w_j<1/8$ for all $j\ge N$, and
+also $cj^{-\alpha}+w_j\le1/2$ for all $j\ge N$ whenever either ($\alpha>0$,
+$c\ge0$) or ($\alpha=0$, $0\le c<1/2$). Define the target fractional shift
+$\theta_j\in[w_j,1/2-w_j]$ for $j\ge N$ by clamping $cj^{-\alpha}$ away from the
+half-integer boundary:
+\[
+\theta_j:=\begin{cases}
+w_j,&\text{if }c=0,\\[2pt]
+cj^{-\alpha},&\text{if }c>0\text{ and }(\alpha>0\text{ or }\alpha=0,c<1/2),\\[2pt]
+\tfrac12-w_j,&\text{if }\alpha=0\text{ and }c=\tfrac12.
+\end{cases}
+\]
+(Note why the boundary adjustment $\theta_j=1/2-w_j$ is needed in the endpoint
+case $\alpha=0,c=1/2$, and $\theta_j=w_j$ when $c=0$: if one centered directly
+at $(k+1/2)/Q_j$, points on the right half of the interval would cross the
+half-integer $k+1/2$ where $y\mapsto\|y\|$ folds back, whereas with center
+$(k+\theta_j)/Q_j$ and radius $r_j=w_j/Q_j$, every point $x$ in the closed
+interval $I_j(k):=[(k+\theta_j-w_j)/Q_j,(k+\theta_j+w_j)/Q_j]$ satisfies
+$k\le k+\theta_j-w_j\le Q_jx\le k+\theta_j+w_j\le k+1/2$. On $[k,k+1/2]$ the
+distance to the nearest integer is given without folding by
+$\|Q_jx\|=Q_jx-k\in[\theta_j-w_j,\theta_j+w_j]$.) In particular, in the case
+$\alpha=0,c=1/2$, for $x\in I_j(k)$ we have
+$Q_jx\in[k+1/2-2w_j,k+1/2]$, so
+\[
+\|Q_jx\|=\frac12-\left(k+\frac12-Q_jx\right)\in\left[\frac12-2w_j,\frac12\right]
+\quad\Longrightarrow\quad
+\bigl|\|Q_jx\|-\tfrac12\bigr|\le2w_j=\frac{2}{\log(j+2)}\longrightarrow0,
+\]
+and in all three cases every $x\in I_j(k)$ satisfies
+\[
+\bigl|j^\alpha\|Q_jx\|-c\bigr|
+\le j^\alpha\bigl|\|Q_jx\|-\theta_j\bigr|+\bigl|j^\alpha\theta_j-c\bigr|
+\le j^\alpha w_j+j^\alpha w_j=\frac{2}{\log(j+2)}\longrightarrow0
+\qquad(j\to\infty).
+\]
+Moreover, for fixed $j\ge N$ and distinct integers $k_1\ne k_2$, the distance
+between the centers of $I_j(k_1)$ and $I_j(k_2)$ is
+$|k_1-k_2|/Q_j\ge1/Q_j>2w_j/Q_j=2r_j$ (since $w_j<1/8<1/2$), so the level-$j$
+intervals $\{I_j(k):k\in\Z\}$ are pairwise disjoint.
+
+Next we bound the number of strictly nested level-$(j+1)$ intervals inside a
+given parent interval $I_j(k)$ ($j\ge N$). A child interval
+$I_{j+1}(k')=[c_{j+1}(k')-r_{j+1},c_{j+1}(k')+r_{j+1}]$ with center
+$c_{j+1}(k')=(k'+\theta_{j+1})/Q_{j+1}$ is contained in
+$I_j(k)=[c_j(k)-r_j,c_j(k)+r_j]$ ($c_j(k)=(k+\theta_j)/Q_j$) if and only if
+$|c_{j+1}(k')-c_j(k)|\le r_j-r_{j+1}$, which is equivalent to requiring the
+integer $k'$ to lie in the closed interval $[A_j(k),B_j(k)]$ where
+\[
+A_j(k):=Q_{j+1}\bigl(c_j(k)-(r_j-r_{j+1})\bigr)-\theta_{j+1},\qquad
+B_j(k):=Q_{j+1}\bigl(c_j(k)+(r_j-r_{j+1})\bigr)-\theta_{j+1}.
+\]
+The length of $[A_j(k),B_j(k)]$ is independent of the parent index $k$ and of
+the shifts $\theta_j,\theta_{j+1}$:
+\[
+W_j:=B_j(k)-A_j(k)=2(r_j-r_{j+1})Q_{j+1}
+=2\left(w_j\frac{Q_{j+1}}{Q_j}-w_{j+1}\right).
+\]
+Since any closed real interval $[A,B]$ of length $W=B-A\ge1$ contains at least
+$\lfloor B\rfloor-\lceil A\rceil+1>W-1$ integers, the number of eligible child
+centers $k'\in\Z$ with $I_{j+1}(k')\subseteq I_j(k)$ is at least
+$2(r_j-r_{j+1})Q_{j+1}-1$. Using $Q_{j+1}=(4j+2)Q_j+Q_{j-1}>(4j+2)Q_j$ from
+\eqref{eq:rec} and $w_{j+1}\le w_j$, we have
+\[
+2(r_j-r_{j+1})Q_{j+1}-1
+=2w_j\frac{Q_{j+1}}{Q_j}-2w_{j+1}-1
+\ge 2w_j(4j+2)-2w_j-1
+=\frac{8j^{1-\alpha}+2j^{-\alpha}}{\log(j+2)}-1.
+\]
+Since $0\le\alpha<1$, $j^{1-\alpha}/\log(j+2)\to\infty$ as $j\to\infty$.
+Increasing $N$ if necessary so that $7j^{1-\alpha}/\log(j+2)\ge1$ and
+$b_j:=\lfloor j^{1-\alpha}/\log(j+2)\rfloor\ge2$ for all $j\ge N$, we obtain
+\[
+2(r_j-r_{j+1})Q_{j+1}-1\ge\frac{j^{1-\alpha}}{\log(j+2)}\ge b_j\ge2
+\qquad\text{for all }j\ge N,
+\]
+so every parent interval $I_j(k)$ ($j\ge N$) contains at least $b_j$ pairwise
+disjoint child intervals $I_{j+1}(k')$.
+
+Choose $N$ large enough that $I_N(1)\subseteq(0,1)$. Construct a homogeneous
+Cantor tree by starting at level $N$ with the single root interval $I_N(1)$
+($\mathcal E_N:=\{1\}$), and for each $j\ge N$ and each retained parent
+$k\in\mathcal E_j$, keeping exactly $b_j$ child indices $k'\in\mathcal E_{j+1}$
+with $I_{j+1}(k')\subseteq I_j(k)$ (for instance, the first $b_j$ integers
+$\lceil A_j(k)\rceil+m$, $0\le m<b_j$). Then at each level $n\ge N$ there are
+exactly
+\[
+M_n:=\prod_{j=N}^{n-1}b_j
+\]
+pairwise disjoint closed intervals $\{I_n(k):k\in\mathcal E_n\}$ of radius
+$r_n=w_n/Q_n$, and their compact intersection
+\[
+K:=\bigcap_{n=N}^\infty\bigcup_{k\in\mathcal E_n}I_n(k)\subseteq[0,1]
+\]
+is nonempty and satisfies $K\subseteq E_{\alpha}^{\mathrm{lim}}(c)$. Let $\mu$
+be the unique Borel probability measure on $K$ assigning equal mass
+$\mu(I_n(k))=M_n^{-1}$ to each of the $M_n$ retained level-$n$ intervals ($n\ge N$).
+
+To estimate the asymptotic growth of $\log M_n$ and $\log Q_{n+1}$, observe
+that for $j\ge N$,
+\[
+\frac{j^{1-\alpha}}{2\log(j+2)}\le\frac{j^{1-\alpha}}{\log(j+2)}-1
+<b_j\le\frac{j^{1-\alpha}}{\log(j+2)},
+\]
+so $\log b_j=(1-\alpha)\log j-\log\log(j+2)+O(1)$. By integral comparison for
+the monotone function $t\mapsto\log t$,
+$\sum_{j=N}^{n-1}\log j=\int_1^n\log t\,dt+O(\log n)=n\log n-n+O(\log n)$, and
+$\sum_{j=N}^{n-1}\log\log(j+2)\le n\log\log(n+2)$, which gives
+\begin{equation}\label{eq:log-Mn-asymp}
+\log M_n=\sum_{j=N}^{n-1}\log b_j
+=(1-\alpha)n\log n+O(n+n\log\log n)=(1-\alpha)n\log n+o(n\log n).
+\end{equation}
+Similarly, from $4jQ_j<(4j+2)Q_j<Q_{j+1}\le(4j+3)Q_j$ for all $j\ge1$, taking
+logarithms and summing from $j=1$ to $n$ gives
+\[
+\log Q_{n+1}=\sum_{j=1}^n\log\frac{Q_{j+1}}{Q_j}
+=\sum_{j=1}^n\bigl(\log j+\log 4+O(1/j)\bigr)=n\log n+O(n).
+\]
+
+Now fix any $0<s<1-\alpha$. By \eqref{eq:log-Mn-asymp} and
+$\log Q_{n+1}=n\log n+O(n)$, we have
+\begin{align*}
+\log\left(\frac{3}{M_n Q_{n+1}^{-s}}\right)
+&=s\log Q_{n+1}-\log M_n+\log 3\\
+&=-\bigl((1-\alpha)-s\bigr)n\log n+o(n\log n)\longrightarrow-\infty
+\qquad(n\to\infty).
+\end{align*}
+Hence we may choose an index $N_s\ge N$ such that
+\begin{equation}\label{eq:mass-scale-bound}
+\frac{3}{M_n}\le Q_{n+1}^{-s}\qquad\text{for all }n\ge N_s.
+\end{equation}
+Let $\{U_i\}_{i\ge1}$ be any countable cover of $K$ by nonempty sets of diameter
+$0<h_i:=\operatorname{diam}(U_i)<Q_{N_s}^{-1}$ (if $\operatorname{diam}(U_i)=0$,
+then $U_i$ is a singleton and $\mu(U_i)=0$ since $M_n^{-1}\to0$). For each $i$,
+since $Q_n$ is strictly increasing to $\infty$, there exists a unique integer
+$n_i\ge N_s$ such that
+\[
+Q_{n_i+1}^{-1}\le h_i<Q_{n_i}^{-1}.
+\]
+The set $U_i$ is contained in a closed interval $[x_0,x_0+h_i]$ of length
+$h_i<Q_{n_i}^{-1}$. If a level-$n_i$ interval $I_{n_i}(k)$ ($k\in\Z$) intersects
+$[x_0,x_0+h_i]$, then its center $c_{n_i}(k)=(k+\theta_{n_i})/Q_{n_i}$ must lie
+in $[x_0-r_{n_i},x_0+h_i+r_{n_i}]$, which has length
+$h_i+2r_{n_i}<Q_{n_i}^{-1}+2w_{n_i}Q_{n_i}^{-1}<(1+1/4)Q_{n_i}^{-1}<2Q_{n_i}^{-1}$.
+Since the centers $c_{n_i}(k)$ ($k\in\Z$) form a grid of spacing exactly
+$Q_{n_i}^{-1}$, an interval of length $<2Q_{n_i}^{-1}$ can contain at most $3$
+grid points $c_{n_i}(k)$ (if it contained $4$ points $k_1<k_2<k_3<k_4$, its
+length would be at least $(k_4-k_1)Q_{n_i}^{-1}\ge3Q_{n_i}^{-1}$). Thus $U_i$
+intersects at most $3$ retained level-$n_i$ intervals $I_{n_i}(k)$
+($k\in\mathcal E_{n_i}$). Because $\mu$ is supported on
+$\bigcup_{k\in\mathcal E_{n_i}}I_{n_i}(k)$ and each $I_{n_i}(k)$ has measure
+$M_{n_i}^{-1}$, it follows from \eqref{eq:mass-scale-bound} and
+$Q_{n_i+1}^{-1}\le h_i$ that
+\[
+\mu(U_i)\le\frac{3}{M_{n_i}}\le Q_{n_i+1}^{-s}\le h_i^s=\bigl(\operatorname{diam}(U_i)\bigr)^s.
+\]
+Summing over the cover $\{U_i\}$ yields
+\[
+\sum_{i}\bigl(\operatorname{diam}(U_i)\bigr)^s
+\ge\sum_{i}\frac{3}{M_{n_i}}\ge\sum_{i}\mu(U_i)\ge\mu(K)=1.
+\]
+Taking the infimum over all countable $\delta$-covers with
+$0<\delta<Q_{N_s}^{-1}$ and letting $\delta\downarrow0$ gives
+$\mathcal H^s(E_{\alpha}^{\mathrm{lim}}(c))\ge\mathcal H^s(K)\ge1>0$, and therefore
+$\dimH E_{\alpha}^{\mathrm{lim}}(c)\ge s$. Letting $s\uparrow1-\alpha$ proves
+$\dimH E_{\alpha}^{\mathrm{lim}}(c)\ge1-\alpha$, establishing the exact identity
+$\dimH E_{\alpha}^{\mathrm{lim}}(c)=1-\alpha$.
+
+Finally, for any finite $c\ge0$ (including $c=0$), we have the inclusions
+\[
+E_{\alpha}^{\mathrm{lim}}(0)
+\subseteq\{x\in\R:\Lam_\alpha(x)=0\}
+\subseteq\{x\in\R:\Lam_\alpha(x)\le c\}.
+\]
+The lower bound $\dimH E_{\alpha}^{\mathrm{lim}}(0)=1-\alpha$ just proved and
+the upper bound $\dimH\{x\in\R:\Lam_\alpha(x)\le c\}\le1-\alpha$ from
+Theorem~\ref{thm:upper} squeeze both sets to have exact Hausdorff dimension
+$1-\alpha$.
+
+\end{proof}
+
+For $\alpha=0$ the dimension assertion also follows from Corollary~8 of
+\cite{BLR} with constant target $c$, by the distance inequality used
+above. For $0<\alpha<1$, condition~(1.6) of their Theorem~7 fails because
+$\log Q_{j+1}/\log Q_j\to1$. The lower bound in the paper proof above can also
+be read from the homogeneous Moran bounds of Feng, Wen and Wu \cite{FWW}: the
+retained level has $\log M_n\sim(1-\alpha)n\log n$ and both bounding logarithmic
+length scales are asymptotic to $n\log n$. The independent covering upper bound
+(Theorem~\ref{thm:upper}) applies to the full prescribed-limit set and sublevel
+set.
+

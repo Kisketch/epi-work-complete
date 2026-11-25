@@ -239,7 +239,7 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 )
 \c@theorem=\count284
 )
-(../src_sections/frontmatter-2A.tex (l3backend-xetex.def
+(../src_sections/frontmatter-2Apub.tex (l3backend-xetex.def
 File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
 \c__kernel_sys_dvipdfmx_version_int=\count285
 \l__color_backend_stack_int=\count286
@@ -263,8 +263,7 @@ LaTeX Font Info:    ... okay on input line 1.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 1.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
 .
-
-(ts1cmr.fd
+ (ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 1.
@@ -344,200 +343,23 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 3.
  (ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ))
-(../src_sections/intro-2A.tex [1
+(../src_sections/intro-2Apub.tex [1
 
-] [2]) (../src_sections/sec-class.tex [3])
-(../src_sections/sec-spectrum-2A.tex [4] [5]) (../src_sections/sec-finite.tex
-[6] [7] [8]) (../src_sections/sec-weights.tex [9] [10] [11] [12] [13])
-(../src_sections/sec-gauge-core.tex [14] [15] [16]
+] [2] [3])
+(../src_sections/sec-class-2Apub.tex [4])
+(../src_sections/sec-spectrum-2Apub.tex [5])
+(../src_sections/sec-finite-2Apub.tex [6] [7] [8])
+(../src_sections/sec-weights-2Apub.tex [9] [10] [11] [12])
+(../src_sections/sec-gauge-core-2Apub.tex [13] [14] [15]
 Underfull \hbox (badness 1917) in paragraph at lines 227--235
 []\TU/lmr/m/n/10.95 For the power-gauge family $\OML/cmm/m/it/10.95 g[]\OT1/cmr
 /m/n/10.95 (1\OML/cmm/m/it/10.95 =Q[]\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.95
  ^^L[]$\TU/lmr/m/n/10.95 , on each linear interpolation interval
  []
 
-
-Underfull \hbox (badness 2027) in paragraph at lines 247--267
-\TU/lmr/m/n/10.95 kernel-checks Corollary []15[](ii) on $\U/msb/m/n/10.95 R$ \T
-U/lmr/m/n/10.95 as \TU/lmtt/m/n/10.95 GaugeNull.mkMetric_levelSet_null_of_subga
-uge\TU/lmr/m/n/10.95 .
- []
-
-
-Underfull \hbox (badness 1721) in paragraph at lines 247--267
-\TU/lmr/m/n/10.95 In \TU/lmtt/m/n/10.95 EpiFormal/GaugeExact.lean\TU/lmr/m/n/10
-.95 , $\OML/cmm/m/it/10.95 L$\TU/lmr/m/n/10.95 -translation invariance (\TU/lmt
-t/m/n/10.95 exactLevel_add_latticeL\TU/lmr/m/n/10.95 ), the
- []
-
-[17]
-Underfull \hbox (badness 1515) in paragraph at lines 268--320
-\TU/lmr/m/n/10.95 (\TU/lmtt/m/n/10.95 interpGauge $\OML/cmm/m/it/10.95 ^^L$\TU/
-lmr/m/n/10.95 ) are constructed explicitly with kernel-checked monotonicity (\T
-U/lmtt/m/n/10.95 critGauge_
- []
-
-
-Underfull \hbox (badness 3250) in paragraph at lines 268--320
-\TU/lmtt/m/n/10.95 mono\TU/lmr/m/n/10.95 ), continuity on $\U/msb/m/n/10.95 R[]
-$ \TU/lmr/m/n/10.95 including $\OT1/cmr/m/n/10.95 0[]$ \TU/lmr/m/n/10.95 and $\
-OMS/cmsy/m/n/10.95 1$ \TU/lmr/m/n/10.95 (\TU/lmtt/m/n/10.95 critGauge_continuou
-s\TU/lmr/m/n/10.95 ), and exact
- []
-
-
-Underfull \hbox (badness 4492) in paragraph at lines 268--320
-\TU/lmr/m/n/10.95 endpoint and segment values (\TU/lmtt/m/n/10.95 critGauge_at_
-inv_Qsel\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 critGauge_eq_segVal\TU/lmr/m/n/1
-0.95 ). This
- []
-
-
-Underfull \hbox (badness 2726) in paragraph at lines 268--320
-\TU/lmr/m/n/10.95 yields the assumption-free instantiations of Theorem []14[], 
-Corollary []15[](i)–(iii), and Re-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--320
-\TU/lmr/m/n/10.95 mark []18[] both on $\U/msb/m/n/10.95 R$ \TU/lmr/m/n/10.95 (\
-TU/lmtt/m/n/10.95 mkMetric_critGauge_strictLevel_null\TU/lmr/m/n/10.95 , \TU/lm
-tt/m/n/10.95 mkMetric_critGauge_
- []
-
-
-Underfull \hbox (badness 2726) in paragraph at lines 268--320
-\TU/lmtt/m/n/10.95 exactLevel_pos\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 mkMetri
-c_critGauge_exactLevel_eq_top\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 critGauge_e
-xactLevel_sigma_
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--320
-\TU/lmtt/m/n/10.95 exactLevel_null_of_gt\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 
-mkMetric_powerGauge_exactLevel_not_sigma_finite_of_lt\TU/lmr/m/n/10.95 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--320
-\TU/lmr/m/n/10.95 and \TU/lmtt/m/n/10.95 critGauge_adjacent_level_separation\TU
-/lmr/m/n/10.95 ) and natively on \TU/lmtt/m/n/10.95 UnitAddCircle \TU/lmr/m/n/1
-0.95 ($\U/msb/m/n/10.95 R\OML/cmm/m/it/10.95 =\U/msb/m/n/10.95 Z$\TU/lmr/m/n/10
-.95 )
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--320
-\TU/lmr/m/n/10.95 (\TU/lmtt/m/n/10.95 mkMetric_critGauge_circleStrictLevel_null
-\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 mkMetric_circleLevelSet_null_of_
- []
-
-
-Overfull \hbox (1.58107pt too wide) in paragraph at lines 268--320
-\TU/lmtt/m/n/10.95 subgauge\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 mkMetric_crit
-Gauge_circleExactLevel_inter_open_eq_top\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 
-mkMetric_critGauge_
- []
-
-
-Underfull \hbox (badness 2726) in paragraph at lines 268--320
-\TU/lmtt/m/n/10.95 circleExactLevel_eq_top\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.9
-5 critGauge_circleExactLevel_sigma_finite_cover\TU/lmr/m/n/10.95 , \TU/lmtt/m/n
-/10.95 mkMetric_
- []
-
-
-Overfull \hbox (47.60172pt too wide) in paragraph at lines 268--320
-\TU/lmtt/m/n/10.95 critGauge_circleExactLevel_not_sigma_finite_of_ratio\TU/lmr/
-m/n/10.95 , \TU/lmtt/m/n/10.95 mkMetric_powerGauge_circleExactLevel_
- []
-
-
-Underfull \hbox (badness 1502) in paragraph at lines 268--320
-\TU/lmr/m/n/10.95 disjoint $\OML/cmm/m/it/10.95 L$\TU/lmr/m/n/10.95 -translates
- using $\OML/cmm/m/it/10.95 ^^N[]=\OT1/cmr/m/n/10.95 2 \OMS/cmsy/m/n/10.95 2 \O
-ML/cmm/m/it/10.95 L$\TU/lmr/m/n/10.95 , and transferring across the local isome
-try $\U/msb/m/n/10.95 R \OMS/cmsy/m/n/10.95 !
- []
-
-
-Underfull \hbox (badness 2310) in paragraph at lines 268--320
-\TU/lmr/m/n/10.95 the binary Cantor-tree lower bound, global and open-set $\OMS
-/cmsy/m/n/10.95 H[]$\TU/lmr/m/n/10.95 -infinitude, $\OML/cmm/m/it/10.95 ^^[$\TU
-/lmr/m/n/10.95 -finite cover-
- []
-
-
-Underfull \hbox (badness 1132) in paragraph at lines 268--320
-\TU/lmr/m/n/10.95 ing, $\OMS/cmsy/m/n/10.95 H[]$\TU/lmr/m/n/10.95 -nullity, and
- the $\OML/cmm/m/it/10.95 g[]$ \TU/lmr/m/n/10.95 threshold dichotomy ($\OML/cmm
-/m/it/10.95 ^^L > \OT1/cmr/m/n/10.95 2$ \TU/lmr/m/n/10.95 vs. $\OT1/cmr/m/n/10.
-95 1 \OML/cmm/m/it/10.95 < ^^L < \OT1/cmr/m/n/10.95 2$\TU/lmr/m/n/10.95 ) are l
-ike-
- []
-
-
-Underfull \hbox (badness 6110) in paragraph at lines 268--320
-\TU/lmr/m/n/10.95 wise kernel-checked on both $\U/msb/m/n/10.95 R$ \TU/lmr/m/n/
-10.95 and \TU/lmtt/m/n/10.95 UnitAddCircle \TU/lmr/m/n/10.95 (\TU/lmtt/m/n/10.9
-5 mkMetric_binaryGauge_unsigned
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--320
-\TU/lmtt/m/n/10.95 binaryGauge_circleUnsignedExactLimit_inter_open_eq_top\TU/lm
-r/m/n/10.95 , \TU/lmtt/m/n/10.95 mkMetric_binaryGauge_
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--320
-\TU/lmtt/m/n/10.95 circleUnsignedExactLimit_eq_top\TU/lmr/m/n/10.95 , \TU/lmtt/
-m/n/10.95 binaryGauge_circleUnsignedExactLimit_sigma_
- []
-
-
-Underfull \hbox (badness 2726) in paragraph at lines 268--320
-\TU/lmtt/m/n/10.95 finite_cover\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 critGauge
-_circleUnsignedExactLimit_null\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 mkMetric_p
-owerGauge_circle
- []
-
-
-Underfull \hbox (badness 6332) in paragraph at lines 268--320
-\TU/lmtt/m/n/10.95 UnsignedExactLimit_null_of_gt\TU/lmr/m/n/10.95 , and \TU/lmt
-t/m/n/10.95 mkMetric_powerGauge_circleUnsignedExactLimit_
- []
-
-[18] [19] [20]
-Underfull \hbox (badness 2884) in paragraph at lines 507--521
-\TU/lmr/m/it/10.95 difference theorem \TU/lmtt/m/it/10.95 sub_mem_latticeL_of_s
-ame_signed_limit\TU/lmr/m/it/10.95 , countability \TU/lmtt/m/it/10.95 signed_ex
-act_
- []
-
-[21]
-Underfull \hbox (badness 1297) in paragraph at lines 615--640
-\TU/lmr/m/n/10.95 proved in \TU/lmtt/m/n/10.95 EpiFormal/TrichotomyAndPolyExten
-sion.lean \TU/lmr/m/n/10.95 across eight audited declarations
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 615--640
-\TU/lmr/m/n/10.95 (\TU/lmtt/m/n/10.95 xPlus_mem_signedExactLimitSet\TU/lmr/m/n/
-10.95 , \TU/lmtt/m/n/10.95 neg_xPlus_mem_signedExactLimitSet\TU/lmr/m/n/10.95 ,
- \TU/lmtt/m/n/10.95 add_latticeL_
- []
-
-
-Underfull \hbox (badness 3735) in paragraph at lines 615--640
-\TU/lmtt/m/n/10.95 eq_coset\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 signedExactLi
-mitSet_zero_eq_latticeL\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 signedExactLimitS
-et_empty_of_not_
- []
-
-) (../src_sections/sec-num-2A.tex [22]) (../src_sections/refs.tex [23])
-[24] (paper2A_draft.aux)
+[16] [17] [18] [19]) (../src_sections/refs-2Apub.tex [20]) [21]
+(paper2A_draft.aux)
 Package rerunfilecheck Info: File `paper2A_draft.out' has not changed.
-(rerunfilecheck)             Checksum: D0B742FFF20CD4036AC8045623375B62;3011.
+(rerunfilecheck)             Checksum: DB66F22B673FB84F5595C4ED2DA00FAF;3357.
  )
-Output written on paper2A_draft.xdv (24 pages, 625724 bytes).
+Output written on paper2A_draft.xdv (21 pages, 477184 bytes).

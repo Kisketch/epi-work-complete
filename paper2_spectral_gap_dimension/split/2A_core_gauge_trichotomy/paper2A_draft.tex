@@ -1,27 +1,26 @@
-% paper2A_draft.tex — 2A 核心规范/三分法轨道（wiring v2）
+% paper2A_draft.tex — 2A 核心规范/三分法轨道（投稿呈现版，2026-11-25）
+% 正文切片为 *-2Apub.tex：由 ../derive_2A_pub.py 从共享切片派生，只去掉 Lean 审计文字，数学内容不变；
+% 摘要与引言为 frontmatter-2Apub.tex / intro-2Apub.tex（手写重写）。
+% Lean 审计全文保留在主稿与补充材料（S 轨）；数值注记一节不进 2A 投稿版（主稿 sec:num 保留）。
+% 旧接线（frontmatter-2A / intro-2A / sec-class 等原切片 + sec-num-2A）原样保留在 src_sections，可回退。
 % 来源行号：前言 1-389（preamble L1-35 + frontmatter L36-389）；class 390-477；
 % spectrum 478-594；finite 595-826；weights 827-1176；gauge-core 1177-1816。
-% 排除：finstate 1817-1968（2C）、poly 1969-2500（2B）、growing 2501-2813（2B）。
 
 \input{../src_sections/preamble.tex}
 
-\title{Complete discretization, exact gauges and trichotomy\\along the convergent denominators of $e$\\(2A split draft)}
+\title{Complete discretization, exact gauges and a trichotomy\\along the convergent denominators of $e$}
 \author{[Author name]\\ \relax[Affiliation]}
+\date{}
 
-\input{../src_sections/frontmatter-2A.tex}
-% 2A 裁剪引言：intro-shared 去轨外三块（finite-state-tail/poly+growing/windows-residues），其余一字未动
-\input{../src_sections/intro-2A.tex}
+\input{../src_sections/frontmatter-2Apub.tex}
+\input{../src_sections/intro-2Apub.tex}
 
-\input{../src_sections/sec-class.tex}
-% spectrum 段用 2A 版（方案A归属改写；原切片冻结不动）
-\input{../src_sections/sec-spectrum-2A.tex}
-\input{../src_sections/sec-finite.tex}
-\input{../src_sections/sec-weights.tex}
-\input{../src_sections/sec-gauge-core.tex}
+\input{../src_sections/sec-class-2Apub.tex}
+\input{../src_sections/sec-spectrum-2Apub.tex}
+\input{../src_sections/sec-finite-2Apub.tex}
+\input{../src_sections/sec-weights-2Apub.tex}
+\input{../src_sections/sec-gauge-core-2Apub.tex}
 
-% 2A 数值注记：原 sec:num.tex L1–44 逐字节摘录（label sec:num 保留给 2A；poly/残差段落归 2B/2C）
-\input{../src_sections/sec-num-2A.tex}
-
-\input{../src_sections/refs.tex}
+\input{../src_sections/refs-2Apub.tex}
 
 \end{document}

@@ -1,0 +1,74 @@
+\section{Classification and initial spectral gap}\label{sec:class}
+
+The two results of this section were first obtained in \cite{Phase1}. For
+completeness we give short self-contained proofs. They use three facts about the
+selected convergents $P_j/Q_j$:
+\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\item $P_j$ and $Q_j$ are odd, and $P_j$ satisfies the same recurrence
+\eqref{eq:rec} as $Q_j$.
+\item $P_jQ_{j+1}-P_{j+1}Q_j=2(-1)^{j+1}$ for all $j\ge1$.
+\item The approximation error $\delta_j:=Q_j\ee-P_j$ satisfies $\delta_j\to0$
+and $|\delta_j|<1/(2jQ_j)$ for all $j\ge1$.
+\end{enumerate}
+The last estimate follows from the Hermite--Pad\'e integral
+representation
+\[
+(-1)^n n!\,\delta_n=\int_0^1 \ee^t t^n(1-t)^n\,dt>0.
+\]
+
+\paragraph{Digits.} For $x\in\R$ and $j\ge1$ let $M_j=\mathrm{round}(Q_jx)\in\Z$
+be a nearest integer to $Q_jx$, put $u_j=Q_jx-M_j\in[-1/2,1/2]$ (so
+$|u_j|=\|Q_jx\|\le1/2$), and for $j\ge2$ define the integer recurrence defect
+(digit)
+\begin{equation}\label{eq:defect-id}
+ d_j:=M_{j+1}-A_jM_j-M_{j-1}=A_ju_j+u_{j-1}-u_{j+1}\in\Z,\qquad A_j:=4j+2,
+\end{equation}
+where the second equality follows immediately from \eqref{eq:rec}.
+
+\begin{lemmaA}
+If $d_j=0$ for all $j\ge N$, then $x\in L$.
+\end{lemmaA}
+
+\begin{proof}
+Put $v_j=(P_j+Q_j)/2$, an integer since $P_j$ and $Q_j$ are odd. The
+vectors $(v_N,v_{N+1})$ and $(Q_N,Q_{N+1})$ have determinant
+$\tfrac12(P_NQ_{N+1}-P_{N+1}Q_N)=\pm1$, so they form a basis of $\Z^2$.
+Choose integers $a,b$ with $M_N=av_N+bQ_N$ and $M_{N+1}=av_{N+1}+bQ_{N+1}$.
+The sequences $(M_j)$, $(v_j)$ and $(Q_j)$ all satisfy \eqref{eq:rec}
+from index $N$ on, hence $M_j=av_j+bQ_j$ for all $j\ge N$. With
+$y:=x-b-a\frac{\ee+1}{2}$ this gives
+\[
+ u_j=Q_jx-M_j=Q_jy+\tfrac a2\,\delta_j .
+\]
+Since $|u_j|\le1/2$, $\delta_j\to0$ and $Q_j\to\infty$, we get $y=0$, that
+is, $x=b+a\frac{\ee+1}{2}\in L$.
+\end{proof}
+
+\begin{theorem}[Classification, {\cite[Thm.~2]{Phase1}}]\label{thm:class}
+For $x\in\R$, $\quad j\|Q_jx\|\to0\iff x\in L.$
+\end{theorem}
+
+\begin{proof}
+If $x=m+n\frac{\ee+1}{2}$ with $m,n\in\Z$, then
+$Q_jx=Q_jm+nv_j+\tfrac n2\delta_j$ with $v_j$ as above, so
+$\|Q_jx\|\le|n|\,|\delta_j|/2<|n|/(4jQ_j)$ and $j\|Q_jx\|\to0$.
+Conversely, if $j|u_j|\to0$, then
+$|d_j|\le A_j|u_j|+|u_{j-1}|+|u_{j+1}|\to0$. The $d_j$ are integers, so
+$d_j=0$ eventually, and $x\in L$ by Lemma~A.
+\end{proof}
+
+\begin{theorem}[Gap, {\cite[Cor.~3]{Phase1}}]\label{thm:gap}
+If $x\notin L$ and $c<1/4$, then it is \emph{not} the case that
+$j\|Q_jx\|\le c$ eventually. Equivalently $\Lam(x)\ge1/4$ for $x\notin L$.
+\end{theorem}
+
+\begin{proof}
+Suppose $j|u_j|\le c<1/4$ for all $j\ge J$. For $j\ge J+1$,
+\[
+ |d_j|\le\frac{(4j+2)c}{j}+\frac{c}{j-1}+\frac{c}{j+1}
+ \le4c+\frac{4c}{j-1},
+\]
+which is less than $1$ for all large $j$. Hence $d_j=0$ eventually, and
+$x\in L$ by Lemma~A.
+\end{proof}
+
