@@ -101,31 +101,40 @@ increments), together with all of Theorems~\ref{thm:short-ae} and~\ref{thm:no-sh
 (both the almost-everywhere logarithmic short-window frequency, the
 Hausdorff-dimension identity $\dimH=1$, and the Lebesgue-nullity deduction
 pointwise for mathlib's regular continued fractions), all parts~(1)--(3) of
-Theorem~\ref{thm:finite-state-tail} (under distinct outgoing edge labels at each
-vertex and given explicit positive right Perron--Frobenius eigenvectors on marked
-strongly connected components), as well as the general-modulus ($m\ge2$)
-uniform $24$-Lipschitz coordinate-shift sandwich, eventual-periodicity dimension
-equality, unconditional transfer-operator Hausdorff-dimension criterion
-(bypassing Bowen-pressure axioms), strict lower bound $\dimH F_{m,r}>1/2$, upper
-bound $\dimH F_{4,1}\le 4/5$, step-function certificate soundness for
-Theorems~\ref{thm:residues} and~\ref{thm:residues-general}, and the complete
-resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$
-for all $m\ge2$, and two-term reciprocal-Fibonacci/metallic asymptotic expansions of
-Theorem~\ref{thm:residues-asymptotic}, as well as the multi-residue phase
-transition, Euler--Mascheroni three-term asymptotics, and supercritical
-$\Theta(m^{-2s_0(S)})$ rate of Theorem~\ref{thm:multi-residue-asymptotic}
-(\texttt{ResidueMultiAsymptotic.lean}, $24$ declarations audited in
-\texttt{AuditResidueMultiAsymptotic.lean}) and the closed brackets of
-Table~\ref{tab:residues-general} (\texttt{ResidueCertTable.lean}, $27$ declarations
-audited in \texttt{AuditResidueCert.lean})---are machine-checked in
-Lean~4 using only the base axioms \texttt{propext}, \texttt{Classical.choice}
-and \texttt{Quot.sound}.
-Only the finite-dimensional linear-algebraic Perron--Frobenius eigenvector
-existence input in Theorem~\ref{thm:finite-state-tail} and the Python-executed
-open-interval strictness verification of the narrow $m\in\{2,3,4,5,6\}$ brackets
-via the pressure formalism remain outside the Lean kernel
-(Section~\ref{sec:verification}, $937$ main audited declarations across $134$
-Lean files in \texttt{Audit.lean} plus standalone audits across $344$ total Lean files).
+Theorem~\ref{thm:finite-state-tail} unconditionally (under distinct outgoing edge
+labels at each vertex, eliminating the Perron--Frobenius eigenvector hypothesis via
+a Brouwer-free Collatz--Wielandt minimax proof in \texttt{PerronFrobenius.lean}, $13$
+declarations audited in \texttt{AuditPerronFrobenius.lean}), as well as the
+general-modulus ($m\ge2$) uniform $24$-Lipschitz coordinate-shift sandwich,
+eventual-periodicity dimension equality, unconditional transfer-operator
+Hausdorff-dimension criterion (bypassing Bowen-pressure axioms), strict lower bound
+$\dimH F_{m,r}>1/2$, upper bound $\dimH F_{4,1}\le 4/5$, step-function certificate
+soundness for Theorems~\ref{thm:residues} and~\ref{thm:residues-general}, and the
+complete resolvent identity, global strict separation
+$\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, and two-term
+reciprocal-Fibonacci/metallic asymptotic expansions of Theorem~\ref{thm:residues-asymptotic},
+as well as the multi-residue phase transition, Euler--Mascheroni three-term
+asymptotics, and supercritical $\Theta(m^{-2s_0(S)})$ rate of
+Theorem~\ref{thm:multi-residue-asymptotic} (\texttt{ResidueMultiAsymptotic.lean}, $24$
+declarations audited in \texttt{AuditResidueMultiAsymptotic.lean}), the closed
+brackets of Table~\ref{tab:residues-general} (\texttt{ResidueCertTable.lean}, $27$
+declarations audited in \texttt{AuditResidueCert.lean}), and the strict open-interval
+inequalities of all $20$ bounds in Table~\ref{tab:residues-general}
+(\texttt{ResidueCertStrictOpen.lean}, $22$ declarations audited in
+\texttt{AuditResidueCertStrictOpen.lean})---are machine-checked in Lean~4 using only
+the base axioms \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}
+(Section~\ref{sec:verification}: $937$ main audited declarations across $134$ Lean
+files in \texttt{Audit.lean} plus $156$ additional declarations across eight
+standalone audit modules spanning $356$ total Lean files, including the companion
+modules \texttt{MuEEqTwo.lean} [$9$], \texttt{GeneralAlphabetFloor.lean} [$15$],
+\texttt{SupercriticalConstant.lean} [$6$ conditional declarations], and
+\texttt{FullConvergentSpectrum.lean} [$40$] of spin-off manuscripts~2D and~2E).
+None of Theorem~\ref{thm:finite-state-tail} or Table~\ref{tab:residues-general}
+requires external assumptions; only the analytic simple-pole residue verification in
+Theorem~\ref{thm:multi-residue-asymptotic}'s supercritical constant / critical
+boundary (treated in spin-off Paper~2D), the general even-period signed Hurwitz
+recurrence (spin-off Paper~2E), and the irrationality of $e+\pi$ remain outside the
+Lean kernel.
 The classification and the first gap are a subsequence analogue of a criterion
 of Kraaikamp and Liardet. The work is a spin-off of a project on the
 irrationality of $e+\pi$ and does \emph{not} resolve that open problem.

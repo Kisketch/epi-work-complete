@@ -234,24 +234,11 @@ phase-transition and Euler--Mascheroni three-term asymptotic layer
 Theorem~\ref{thm:multi-residue-asymptotic}) are audited separately in
 \texttt{AuditResidueMultiAsymptotic.lean} (logged in
 \texttt{verification/\allowbreak audit\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic\_\allowbreak 20261123.log}),
-again on the three Lean base axioms only with zero \texttt{sorryAx} (total
-$344$ Lean files across the repository with zero escape keywords). The build and main audit were independently reproduced on 2026-11-23 from a
+again on the three Lean base axioms only with zero \texttt{sorryAx} (total $344$ Lean files on 2026-11-24, expanded on 2026-11-25 to $356$ Lean files across the repository with zero escape keywords). The build and main audit were independently reproduced on 2026-11-23 from a
 clean clone of the public repository on a separate machine (Lean~4.35.0,
 Mathlib v4.35.0): \texttt{lake build} succeeded, the $937$
 \texttt{\#print axioms} outputs coincide entry by entry with the recorded log, and the $27$ residue-certificate entries depend only on the base axioms
-(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}), and on 2026-11-24 a second clean-clone rebuild on a separate machine (commit \texttt{d920a81}, which contains \texttt{ResidueMultiAsymptotic.lean}) reproduced the $937$ main entries, the $27$ residue-certificate entries and the $24$ entries of \texttt{AuditResidueMultiAsymptotic.lean} entry by entry, all $27+24$ on the three base axioms only (\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261124.md}). The portions not resolved here or lying outside
-the Lean kernel are the finite-dimensional linear-algebraic Perron--Frobenius
-eigenvector existence input on marked strongly connected components in
-Theorem~\ref{thm:finite-state-tail} (whose positive right eigenvector is passed
-explicitly to \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak complete}
-and \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak complete}
-in \texttt{FiniteStateComplete.lean}), the strictness of the open intervals in
-Theorem~\ref{thm:residues} and Table~\ref{tab:residues-general} via the
-cited pressure formalism (the closed brackets themselves are kernel-checked,
-Remark~\ref{rem:residue-kernel}), the asymptotic rate on the critical boundary
-$s_0(S)=1/2$ and the exact supercritical leading constant in
-Theorem~\ref{thm:multi-residue-asymptotic}, and the irrationality of $e+\pi$,
-which remains an open problem.
+(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}), and on 2026-11-24 a second clean-clone rebuild on a separate machine (commit \texttt{d920a81}, which contains \texttt{ResidueMultiAsymptotic.lean}) reproduced the $937$ main entries, the $27$ residue-certificate entries and the $24$ entries of \texttt{AuditResidueMultiAsymptotic.lean} entry by entry, all $27+24$ on the three base axioms only (\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261124.md}). Subsequently, on 2026-11-25, six additional standalone Lean~4 audit modules ($105$ declarations, bringing total standalone audited declarations to $156$ and combined audited declarations to $1093$ across all $356$ Lean files, all strictly on the three Lean base axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound} with zero \texttt{sorryAx}) eliminated both external hypotheses from the main text and formalized companion spin-off extensions: (i)~\texttt{AuditResidueCertStrictOpen.lean} ($22$ declarations) certifies all $20$ strict open inequalities of Table~\ref{tab:residues-general} via monotone operator comparison directly inside Lean~4 (discharging Bowen's pressure formalism, Remark~\ref{rem:residue-kernel}); (ii)~\texttt{AuditPerronFrobenius.lean} ($13$ declarations) proves finite-dimensional Perron--Frobenius via Brouwer-free Collatz--Wielandt minimax compactness and delivers fully unconditional forms of Theorem~\ref{thm:finite-state-tail}; (iii)~\texttt{AuditMuEEqTwo.lean} ($9$ declarations) proves $\mu(e)=2$ unconditionally at Layer~A independently of the frozen core audit; (iv)~\texttt{AuditGeneralAlphabetFloor.lean} ($15$ declarations) and \texttt{AuditSupercriticalConstant.lean} ($6$ conditional declarations modulo an explicit simple-pole residue input \texttt{hPole}) support spin-off Paper~2D; and (v)~\texttt{AuditFullConvergentSpectrum.lean} ($40$ declarations) proves the full regular convergent KL and raw spectra of $e$ for spin-off Paper~2E. The portions still lying outside the Lean kernel are the analytic simple-pole residue hypothesis \texttt{hPole} for the exact supercritical leading constant and critical-boundary rate ($s_0(S)=1/2$) of Theorem~\ref{thm:multi-residue-asymptotic} (proved analytically in spin-off Paper~2D), the general even-period signed Hurwitz recurrence and conditional nonlinear BLR remark (proved analytically in spin-off Paper~2E), and the irrationality of $e+\pi$, which remains an open problem.
 % TODO before submission: state who checked the paper proofs, and how.
 
 \begin{thebibliography}{99}

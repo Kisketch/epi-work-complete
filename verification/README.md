@@ -9,9 +9,9 @@
 | [`全工作区总索引与留痕台账.md`](全工作区总索引与留痕台账.md) | 从阶段一到 2026-11-23 第十四节的全程时间线台账 |
 | [`成果清单与边界.md`](成果清单与边界.md) | T1–T4 分层成果清单与敌意审查纠错汇总（含 2026-11-23 增量头注） |
 | [`复现指南.md`](复现指南.md) | 独立环境 Lean 4 / Python 复现步骤与 Windows 并发提示 |
-| [`verify_repo_integrity.py`](verify_repo_integrity.py) / [`.log`](verify_repo_integrity.log) | **一键全库体检脚本**：检查 `1e91028`/`7ece3b9` 零文件丢失、Lean 三入口审计、论文二合并与切片一致性、拆分引用及文档本地链接（含 Linux/Windows 路径兼容） |
-| [`compare_audit_logs.py`](compare_audit_logs.py) | `#print axioms` 输出逐条比对器（支持 `--count` 与 `--only-axioms` 校验 937/27/24 三入口，供根 CI 调用） |
-| [`check_audit_reconcile.py`](check_audit_reconcile.py) | 核对 [`audit_final_20261122.log`](audit_final_20261122.log)（937/937 严格双射、0 `sorryAx`、23 白名单、344 个 `.lean` 文件 0 逃逸关键字） |
+| [`verify_repo_integrity.py`](verify_repo_integrity.py) / [`.log`](verify_repo_integrity.log) | **一键全库体检脚本**：检查 `1e91028`/`7ece3b9` 零文件丢失、Lean 9 入口审计（1,093 条声明）、论文二与 2D/2E 编译与切片一致性、拆分引用及文档本地链接/技能同步（含 Linux/Windows 路径兼容） |
+| [`compare_audit_logs.py`](compare_audit_logs.py) | `#print axioms` 输出逐条比对器（支持 `--count` 与 `--only-axioms` 校验核心 937 + 8 路独立审计合计 156 条，供根 CI 调用） |
+| [`check_audit_reconcile.py`](check_audit_reconcile.py) | 核对 [`audit_final_20261122.log`](audit_final_20261122.log)（937/937 严格双射、0 `sorryAx`、23 白名单、全库 356 个 `.lean` 文件 0 逃逸关键字） |
 | [`verify_paper2_merge.py`](verify_paper2_merge.py) / [`.log`](verify_paper2_merge.log) | 检查论文二 `86` 唯一标签、`28/28` 全引用、`46` 项内容锚点及 `split/src_sections/` 11 片逐字节一致（`289,499` 字节） |
 | [`value_rating_and_top_journal_gap_20261125.md`](value_rating_and_top_journal_gap_20261125.md) | 2026-11-25 全内容价值评级（A–D）、期刊档位（T1–T4）差距分析与优化优先级 |
 
@@ -22,6 +22,8 @@
   * [`colab_rebuild_audit_20261123.md`](colab_rebuild_audit_20261123.md) 与 [`colab_rebuild_audit_20261124.md`](colab_rebuild_audit_20261124.md)（两次 Google Colab 洁净克隆全量复现审计，937/937 + 27/27 + 24/24 逐条一致）
   * [`residue_certgen_lean_20261123.md`](residue_certgen_lean_20261123.md)（$N=512$ 残差证书 Lean 内核化 `ResidueCertTable.lean` 全流程与 `cert_v3_redesign_20261123.md`）
   * [`audit_residue_multi_asymptotic_20261123.log`](audit_residue_multi_asymptotic_20261123.log) 与 [`推广1_多残差相变与欧拉常数三阶渐近Lean4记录_20261123.md`](推广1_多残差相变与欧拉常数三阶渐近Lean4记录_20261123.md)（`ResidueMultiAsymptotic.lean` Part 1–6 及 `AuditResidueMultiAsymptotic.lean` 24/24 纯基础公理证明记录）
+  * **Round 2 新增 6 路独立 Layer A 审计日志（105 条新声明，0 `sorryAx`）**：[`audit_residue_cert_strict_open_20261125.log`](audit_residue_cert_strict_open_20261125.log)（`22`，消除 R1）、[`audit_mu_e_eq_two_20261125.log`](audit_mu_e_eq_two_20261125.log)（`9`，证明 $\mu(e)=2$）、[`audit_general_alphabet_floor_20261125.log`](audit_general_alphabet_floor_20261125.log)（`15`，稀疏字母表下界与零极限）、[`audit_supercritical_constant_20261125.log`](audit_supercritical_constant_20261125.log)（`6`，条件于 `hPole` 超临界常数归约）、[`audit_perron_frobenius_20261125.log`](audit_perron_frobenius_20261125.log)（`13`，Brouwer-free Perron–Frobenius 消除 R3）与 [`audit_full_convergent_spectrum_20261125.log`](audit_full_convergent_spectrum_20261125.log)（`40`，$e$ 全正则收敛列谱论）
+  * **Round 2 衍生对抗审查档案**：[`kahane_and_blr_audit_20261125.md`](kahane_and_blr_audit_20261125.md)（猜想 D′/引理 R 否证、确定性定理 K-1/K-2 与非线性 BLR (1.6) 三漏洞核审报告）
 * **文献一次核查、双通道证据深调、新颖性重审与前沿记忆（2026-11-22 至 2026-11-25）**：
   * [`cmms_citation_check_20261122.md`](cmms_citation_check_20261122.md)（CMMS 官方 PJM 原文逐页核对 Theorem 5 → Theorem 3）
   * [`paper2_novelty_review_20261123.md`](paper2_novelty_review_20261123.md) 与 [`paper2_novelty_review_20261125.md`](paper2_novelty_review_20261125.md)（R1–R7 负搜索 + 投稿前 DFSU/HU02/Bowen/Good 先例重审）
@@ -44,7 +46,8 @@
   * [`critical_point_scan_20261124.py`](critical_point_scan_20261124.py)、[`critical_scaling_check_20261124.py`](critical_scaling_check_20261124.py)、[`paper2_numeric_check_20261124.py`](paper2_numeric_check_20261124.py)（334 点临界扫描、临界标度检查与常量交叉核对）
   * [`paper2_novelty_crosscheck_20261125.py`](paper2_novelty_crosscheck_20261125.py) / [`.log`](paper2_novelty_crosscheck_20261125.log)（Lambert-W 塔与 DFSU (1.4)、HU 上界常数核查）
   * [`verify_evidence_numbers_20261125.py`](verify_evidence_numbers_20261125.py) / [`.log`](verify_evidence_numbers_20261125.log)（2026-11-25 证据深调 50 位 `mpmath` 与精确分式核验）
-  * **Kahane Q6 数值探针（有限计算，非证明）**：[`powers_mod1_dimension_numerics_20261125.py`](powers_mod1_dimension_numerics_20261125.py)、[`kahane_martingale_sim_20261125.py`](kahane_martingale_sim_20261125.py)、[`kahane_quenched_bound_table_20261125.py`](kahane_quenched_bound_table_20261125.py)、[`kahane_lemmaD_fourier_20261125.py`](kahane_lemmaD_fourier_20261125.py)、[`kahane_lemmaD_rate_fit_20261125.py`](kahane_lemmaD_rate_fit_20261125.py)（均附 `.log`，前两/四项另附 `.json`）
+  * **Kahane Q6 数值探针与 Round 2 对抗验证（有限计算，非证明）**：[`powers_mod1_dimension_numerics_20261125.py`](powers_mod1_dimension_numerics_20261125.py)、[`kahane_martingale_sim_20261125.py`](kahane_martingale_sim_20261125.py)、[`kahane_quenched_bound_table_20261125.py`](kahane_quenched_bound_table_20261125.py)、[`kahane_lemmaD_fourier_20261125.py`](kahane_lemmaD_fourier_20261125.py)、[`kahane_lemmaD_rate_fit_20261125.py`](kahane_lemmaD_rate_fit_20261125.py)，以及 Round 2 新增 [`verify_kahane_q6_refutation_and_det_20261125.py`](verify_kahane_q6_refutation_and_det_20261125.py)（D′/R 反例 + 32000 位真实 $x^n$ 定理 K-2 核验）与 [`verify_nonlinear_blr_20261125.py`](verify_nonlinear_blr_20261125.py)（BLR 超缺项 $19.94\times$ 反例 + 偶数 Hurwitz 120 位检验）
+  * **Paper 2D / Paper 1 M1–M2 精密核验脚本**：[`verify_supercritical_exact_constant_20261125.py`](verify_supercritical_exact_constant_20261125.py)（至 $m=10^{12}$ 验证 $K_{\mathrm{exact}}$ 与 50 位稀疏字母表）、[`verify_mixed_eg_hermite_pade_obstruction_20261125.py`](verify_mixed_eg_hermite_pade_obstruction_20261125.py)（SymPy 整性 + LLL + CDT 超度量检验）与 [`verify_mobius_e_full_conv_20261125.py`](verify_mobius_e_full_conv_20261125.py)（40 组 Möbius 矩阵、1240 本原 HNF 与全收敛谱核验）
   * [`residue_certificate_general_N512.py`](residue_certificate_general_N512.py)（最新 $N=512$ 精确整数转移算子证书，对应 Lean 内核闭区间 `ResidueCertGen/`）
   * [`verify_residue_multi_asymptotic.py`](verify_residue_multi_asymptotic.py) / [`.log`](verify_residue_multi_asymptotic.log) / [`.json`](verify_residue_multi_asymptotic.json)（32 位 Chebyshev 配置法全面核验 `thm:multi-residue-asymptotic`）
   * [`verify_paper2_extensions.py`](verify_paper2_extensions.py) / [`.log`](verify_paper2_extensions.log)（50 位验证 $C_r$ / $\psi_{\mathrm{Fib}}$ 与任意增长商三类递推）

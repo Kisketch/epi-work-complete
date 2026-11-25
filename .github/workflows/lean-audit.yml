@@ -117,9 +117,11 @@ jobs:
           command -v /usr/bin/time >/dev/null || sudo apt-get install -y -qq time
           /usr/bin/time -v -o "$GITHUB_WORKSPACE/audit-output/build_time.txt" \
             lake build 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/lake_build.log"
-          # The two standalone audit entry points import these; build them explicitly as
-          # the README does (no-op if the default target already covered them).
-          lake build EpiFormal.ResidueCertTable EpiFormal.ResidueMultiAsymptotic 2>&1 \
+          # Explicit build check for all standalone audit modules.
+          lake build EpiFormal.ResidueCertTable EpiFormal.ResidueMultiAsymptotic \
+            EpiFormal.ResidueCertStrictOpen EpiFormal.MuEEqTwo \
+            EpiFormal.GeneralAlphabetFloor EpiFormal.SupercriticalConstant \
+            EpiFormal.PerronFrobenius EpiFormal.FullConvergentSpectrum 2>&1 \
             | tee -a "$GITHUB_WORKSPACE/audit-output/lake_build.log"
           grep -E 'Elapsed|Maximum resident' "$GITHUB_WORKSPACE/audit-output/build_time.txt"
           free -h
@@ -131,38 +133,46 @@ jobs:
           path: epi_formal/.lake/build
           key: epi-build-${{ runner.os }}-${{ steps.keys.outputs.deps }}-${{ steps.keys.outputs.src }}
 
-      - name: "lake env lean Audit.lean (937 entries)"
+      - name: "lake env lean Audit.lean (937 entries) & all 8 standalone audits (156 entries)"
         working-directory: epi_formal
         run: |
           set -o pipefail
           lake env lean Audit.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit.log"
-
-      - name: "lake env lean AuditResidueCert.lean (27 entries)"
-        working-directory: epi_formal
-        run: |
-          set -o pipefail
-          lake env lean AuditResidueCert.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit_residue_cert.log"
-
-      - name: "lake env lean AuditResidueMultiAsymptotic.lean (24 entries)"
-        working-directory: epi_formal
-        run: |
-          set -o pipefail
-          lake env lean AuditResidueMultiAsymptotic.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit_residue_multi_asymptotic.log"
+          declare -A COUNTS=(
+            [AuditResidueCert.lean]=27
+            [AuditResidueMultiAsymptotic.lean]=24
+            [AuditResidueCertStrictOpen.lean]=22
+            [AuditMuEEqTwo.lean]=9
+            [AuditGeneralAlphabetFloor.lean]=15
+            [AuditSupercriticalConstant.lean]=6
+            [AuditPerronFrobenius.lean]=13
+            [AuditFullConvergentSpectrum.lean]=40
+          )
+          declare -A REFS=(
+            [AuditResidueCert.lean]=audit_residue_cert_20261123.log
+            [AuditResidueMultiAsymptotic.lean]=audit_residue_multi_asymptotic_20261123.log
+            [AuditResidueCertStrictOpen.lean]=audit_residue_cert_strict_open_20261125.log
+            [AuditMuEEqTwo.lean]=audit_mu_e_eq_two_20261125.log
+            [AuditGeneralAlphabetFloor.lean]=audit_general_alphabet_floor_20261125.log
+            [AuditSupercriticalConstant.lean]=audit_supercritical_constant_20261125.log
+            [AuditPerronFrobenius.lean]=audit_perron_frobenius_20261125.log
+            [AuditFullConvergentSpectrum.lean]=audit_full_convergent_spectrum_20261125.log
+          )
+          for lean_file in AuditResidueCert.lean AuditResidueMultiAsymptotic.lean \
+                           AuditResidueCertStrictOpen.lean AuditMuEEqTwo.lean \
+                           AuditGeneralAlphabetFloor.lean AuditSupercriticalConstant.lean \
+                           AuditPerronFrobenius.lean AuditFullConvergentSpectrum.lean; do
+            out_log="$GITHUB_WORKSPACE/audit-output/${REFS[$lean_file]}"
+            echo "=== Running $lean_file (${COUNTS[$lean_file]} entries) ==="
+            lake env lean "$lean_file" 2>&1 | tee "$out_log"
+            python3 ../verification/compare_audit_logs.py "$out_log" \
+              "../verification/${REFS[$lean_file]}" --count "${COUNTS[$lean_file]}" --only-axioms "$BASE_AXIOMS"
+          done
 
       - name: Compare Audit.lean output with verification/audit_final_20261122.log
         run: |
           python3 verification/compare_audit_logs.py audit-output/audit.log \
             verification/audit_final_20261122.log --count 937
-
-      - name: Compare AuditResidueCert output with verification/audit_residue_cert_20261123.log
-        run: |
-          python3 verification/compare_audit_logs.py audit-output/audit_residue_cert.log \
-            verification/audit_residue_cert_20261123.log --count 27 --only-axioms "$BASE_AXIOMS"
-
-      - name: Compare AuditResidueMultiAsymptotic output with verification/audit_residue_multi_asymptotic_20261123.log
-        run: |
-          python3 verification/compare_audit_logs.py audit-output/audit_residue_multi_asymptotic.log \
-            verification/audit_residue_multi_asymptotic_20261123.log --count 24 --only-axioms "$BASE_AXIOMS"
 
       - name: check_audit_reconcile.py on the fresh Audit.lean output
         run: |

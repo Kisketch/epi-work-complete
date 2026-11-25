@@ -15,6 +15,8 @@ paper1_e_plus_pi/
 │                            + Parallel_Research_Plan.md, merge_lean_audit.txt
 ├── 06_historical_versions/  main_backups · rounds_04_08 · archive_snapshots (zips + papers_old + submission
 │                            snapshots + pre_revision_snapshots) · reference_docs
+├── 07_research_log_and_guide/ separated scholarly trial logs & inventory (MASTER_INVENTORY_LIST.md,
+│                              PAPER1_ATTACK_AND_TRIAL_LOG.md, trial_notes_M1_M2_20261125.md, MASTER_GUIDE_SKILL.md)
 └── 00_PROJECT_INDEX.md / 00_research_status.md / 00_merge_review.md
 ```
 
@@ -22,7 +24,8 @@ paper1_e_plus_pi/
 
 | Entry | Content |
 | --- | --- |
-| [Main paper PDF](01_main_paper/paper1_e_plus_pi.pdf) · [TeX](01_main_paper/paper1_e_plus_pi.tex) | Nov-21 restructure per e.html review: §8 split into §3–§7, new title *Continued-Fraction Windows…*, de-logged, 72 pp. |
+| [Main paper PDF](01_main_paper/paper1_e_plus_pi.pdf) · [TeX](01_main_paper/paper1_e_plus_pi.tex) | Nov-21 restructure per e.html review: §8 split into §3–§7, new title *Continued-Fraction Windows…*, de-logged, 72 pp (subsequently expanded to 75 pp with Arb exclusion). |
+| [Research Log & Master Inventory](07_research_log_and_guide/PAPER1_ATTACK_AND_TRIAL_LOG.md) | Separated trial log, [20-row Master Inventory](07_research_log_and_guide/MASTER_INVENTORY_LIST.md), [M1/M2 notes](07_research_log_and_guide/trial_notes_M1_M2_20261125.md), and [Commander Guide](07_research_log_and_guide/MASTER_GUIDE_SKILL.md). |
 | [Companion PDF](02_companion_paper/Phase2_revised.pdf) · [TeX](02_companion_paper/Phase2_revised.tex) | Nov-21: §6 split into three top-level sections, five proof gaps completed, SharpWindow boundary stated, references cleaned, 65 pp. |
 | [Research status](00_research_status.md) | theorem placement, route progress, missing lemmas, re-check records. |
 | [Merge review](00_merge_review.md) | write-in markers, axiom audits, recomputation, literature cross-checks. |

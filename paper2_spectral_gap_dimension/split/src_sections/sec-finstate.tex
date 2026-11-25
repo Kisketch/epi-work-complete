@@ -148,5 +148,5 @@ compactness and subset embedding of the deterministic path tree (\texttt{graphTr
 direct finite-sum Frostman positivity (\texttt{mkMetric\_\allowbreak graphTree\_\allowbreak pos}),
 unmarked-tail nullity via backward-reachability stabilization at $L=|V|$ (\texttt{mkMetric\_\allowbreak unmarkedTail\_\allowbreak null}),
 $L$-translation invariance of exact graph tails, and the arbitrary-gauge $\liminf$ comparison;
-the positive right Perron--Frobenius eigenvector $(w_v,\lambda_C)$ on each marked strongly connected component is taken as an explicit hypothesis rather than derived via Lean matrix-eigenvalue machinery.
+moreover, \texttt{EpiFormal/\allowbreak PerronFrobenius.lean} ($13$ declarations audited in \texttt{AuditPerronFrobenius.lean}, base axioms only, zero \texttt{sorryAx}) proves the finite-dimensional Perron--Frobenius theorem from scratch via Brouwer-free Collatz--Wielandt minimax compactness and deduces the fully unconditional theorems \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak unconditional} on $\R$ and \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak unconditional} on \texttt{UnitAddCircle}, eliminating the external eigenvector hypothesis completely.
 

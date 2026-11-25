@@ -6,7 +6,8 @@
 
 | 文件 | 主题 | 当前核心结论与边界 |
 | :--- | :--- | :--- |
-| [`kahane_q6_note_20261125.md`](kahane_q6_note_20261125.md) | **Kahane 公开问题 Q6**（幂次模 $1$ 覆盖集局部维数） | 证明了**几乎每个**随机目标序列的上界（定理 2）与淬火弱下界（定理 3），并将精确几乎处处下界归约为开放的**引理 R ⇒ 猜想 D′ ⇒ 引理 D** 充分链（经子代理对抗审阅，**尚未经外部同行评审**；只覆盖几乎每个目标序列，不覆盖 Kahane 确定性原问题）；伴随 Fourier / 鞅数值探针见 [`../verification/kahane_lemmaD_fourier_20261125.py`](../verification/kahane_lemmaD_fourier_20261125.py) 等 5 组脚本 |
+| [`kahane_q6_note_20261125.md`](kahane_q6_note_20261125.md) | **Kahane 公开问题 Q6**（幂次模 $1$ 覆盖集局部维数） | 证明了**几乎每个**随机目标序列的上界（定理 2）与淬火弱下界（定理 3），并将 §3c′–§3c‴ 归约为引理 R ⇒ 猜想 D′ ⇒ 引理 D（注：**原笔记冻结保留，猜想 D′ 与引理 R 的反例否证见下述 Addendum**）；伴随 Fourier / 鞅数值探针见 [`../verification/kahane_lemmaD_fourier_20261125.py`](../verification/kahane_lemmaD_fourier_20261125.py) 等 5 组脚本 |
+| [`kahane_q6_addendum_20261125.md`](kahane_q6_addendum_20261125.md) | **Kahane Q6 增补与确定性局部下界（Round 2 新突破）** | ① **彻底否证**原笔记猜想 D′ 与引理 R（含 $2\varepsilon\in\Q$ / $v\mid h$ 构造），同时证明最优 $m\asymp n^{1/3}$ 包络为 $\exp(-c n^{2/3})$，故**引理 D 仍开放**；② 无条件证明对**一切**确定序列 $(b_n)$ 成立的局部维数下界 **定理 K-1 / K-2**：$\underline{\dim}_{\mathrm H}(E(\varepsilon),M)\ge\frac{\log(\lceil 2\varepsilon M\rceil-1)}{\log M}$（严格 $2\varepsilon M>K\ge 3$），经 [`../verification/verify_kahane_q6_refutation_and_det_20261125.py`](../verification/verify_kahane_q6_refutation_and_det_20261125.py)（最高 `dps=32000`, $n=45000$）全部核验通过 |
 
 ## 二、2026-11-24 阶段规划与总览归档（[`planning_20261124/`](planning_20261124/)）
 

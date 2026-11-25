@@ -1,0 +1,1342 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\setlength{\emergencystretch}{3em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\dimH}{\dim_{\mathrm{H}}}
+
+\title{Critical Scaling, Exact Supercritical Leading Constants,\\
+and Tail-Abscissa Phase Transitions for Perturbed\\
+Continued-Fraction Alphabets}
+% TODO before submission: replace with the real author name(s) and affiliation(s).
+\author{[Author name]\\ \relax[Affiliation]}
+\date{Standalone Paper~2D spin-off draft, November 25, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For finite digit sets $S\subset\Z_{\ge1}$ and $B\subset\Z_{\ge0}$ with
+$d:=|S|+|B|\ge1$, consider the multi-residue continued-fraction Cantor set
+$F_{m,S,B}$ of irrationals in $(0,1)$ whose partial quotients lie in
+$\mathcal A_{m,S,B}=\{r+km:r\in S,\,k\ge0\}\cup\{km-b:b\in B,\,k\ge1\}$.
+Earlier work established the universal phase transition
+$\lim_{m\to\infty}\dimH F_{m,S,B}=\max(1/2,s_0(S))$, exact three-term
+subcritical asymptotics to $O((\log m)^2/m^3)$, and the two-sided
+supercritical rate $\dimH F_{m,S,B}-s_0(S)=\Theta(m^{-2s_0(S)})$ when
+$s_0(S):=\dimH E_S>1/2$, while leaving open both the exact supercritical
+leading constant and a rigorous treatment of the phase boundary
+$s_0(S)=1/2$.
+
+In this paper we resolve these questions unconditionally modulo the
+elementary, Bowen-free transfer-operator criteria of the companion project.
+First, we give a self-contained proof of the simple-pole decomposition
+$C_S(p)=\kappa(S)/(p-2s_0(S))+O_S(1)$ for the continuant resolvent series on
+the holomorphic disk space $A(\{|z-1|<5/4\})$, avoiding any real-cone fallacy
+on complex holomorphic spaces. Second, we prove a uniform master equation
+$\bigl|d\,C_S(2s^*)\,m^{-2s^*}\zeta(2s^*)-1\bigr|\le 172\,\Sigma/m$ valid
+simultaneously in the subcritical, critical, and supercritical regimes for all
+$m\ge 340\,\Sigma$. Third, we deduce the exact supercritical leading constant
+\[
+\dimH F_{m,S,B}-s_0(S)
+=\frac{d\,\kappa(S)\,\zeta(2s_0(S))}{2}\,m^{-2s_0(S)}\bigl(1+O_{S,B}(m^{-1})\bigr)
+\qquad\bigl(s_0(S)>\tfrac12\bigr),
+\]
+disproving an earlier heuristic prediction $\frac{d\kappa(S)}{2(2s_0(S)-1)}$
+that replaced $\zeta(2s_0(S))$ by its pole part. Fourth, we establish the
+joint critical scaling limit across $s_0(S_k)\to 1/2$ under explicit uniform
+regularity hypotheses, together with a sharpened fixed-$S$ critical expansion
+$\dimH F_{m,S,B}-\frac12=\frac{\sqrt{d\kappa(S)}}{2}m^{-1/2}
+-\frac{d\kappa(S)\log m}{4m}+O_{S,B}(m^{-1})$ whenever $s_0(S)=1/2$.
+Finally, we prove via the same Bowen-free transfer-operator method that for
+every infinite alphabet $T\subset\Z_{\ge1}$ with single-digit convergence
+abscissa $\theta(T)\in[0,1/2]$, one has $\dimH E_T\ge\theta(T)$,
+$\lim_{M\to\infty}\dimH E_{S\cup(T\cap[M,\infty))}=\max(\theta(T),s_0(S))$,
+and for the sparse dyadic family $A_{k_0}=\{2^{2^k}:k\ge k_0\}$,
+$0<\dimH E_{A_{k_0}}\le 2^{-(k_0+1)}<1/2$, refuting any naive infinite-alphabet
+$1/2$ floor while showing $\dimH E_{A_1}>0$. Non-rigorous $30$-digit Chebyshev
+collocation corroborates all asymptotic constants. This work studies
+continued-fraction dimension spectra and does not address the open
+irrationality of $e+\pi$.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+For any nonempty digit alphabet $A\subset\Z_{\ge1}$, let
+\[
+E_A:=\bigl\{[0;a_1,a_2,\dots]\in(0,1)\setminus\Q:\ a_n\in A\ \forall n\ge1\bigr\}
+\]
+denote the associated continued-fraction Cantor set. The metric dimension
+theory of $E_A$ has a rich history going back to Good~\cite{Good41},
+Hensley~\cite{Hensley92,Hensley1996}, Mauldin--Urba\'nski~\cite{MU96,MU99},
+Heinemann--Urba\'nski~\cite{HU02}, Jenkinson--Pollicott~\cite{JP2018},
+Chousionis--Leykekhman--Urba\'nski~\cite{CLU}, and
+Das--Fishman--Simmons--Urba\'nski~\cite{DFSU}, with recent advances on
+restricted dimension spectra and rigorous high-order dimension bounds by
+Chousionis--Leykekhman--Urba\'nski--Wendt~\cite{CLUW2024},
+Chitanga--Lemmens--Nussbaum~\cite{CLN2026}, and Brown~\cite{Brown2026}.
+
+Motivated by continued-fraction window constraints arising in a broader
+Diophantine program (which leaves the irrationality of $e+\pi$ completely
+open), the companion manuscript~\cite{Paper2} introduced the multi-residue
+alphabet family: for finite sets $S\subset\Z_{\ge1}$ and $B\subset\Z_{\ge0}$
+with $d:=|S|+|B|\ge1$ and integer modulus $m\ge1$,
+\begin{equation}\label{eq:multi-alphabet}
+\mathcal A_{m,S,B}:=\bigl\{a\in\Z_{\ge1}:\ (\exists r\in S,\ a\ge r\ \wedge\ a\equiv r\!\!\pmod m)\text{ or }(\exists b\in B,\ \exists k\ge1,\ a+b=km)\bigr\},
+\end{equation}
+and $F_{m,S,B}:=E_{\mathcal A_{m,S,B}}$. Writing $W_S(p,n):=\sum_{w\in S^n}q(w)^{-p}$
+for the $n$-th continuant word sum (with $W_S(p,0)=1$) and
+\[
+s_0(S):=\inf\Bigl\{s>0:\sum_{n=0}^\infty W_S(2s,n)<\infty\Bigr\}
+\]
+for the Poincar\'e abscissa of $S$, it was shown in~\cite{Paper2} (and
+formally verified in Lean~4 without Bowen's pressure formula) that:
+\begin{enumerate}[label=\textup{(\alph*)},leftmargin=2.2em]
+\item $\dimH E_S=s_0(S)$ for every nonempty finite $S\subset\Z_{\ge1}$;
+\item $\lim_{m\to\infty}\dimH F_{m,S,B}=\max\bigl(\tfrac12,s_0(S)\bigr)$;
+\item in the subcritical regime $s_0(S)<\tfrac12$ (or $S=\emptyset$),
+\[
+\dimH F_{m,S,B}=\frac12+\frac{d\,C_S}{2m}-\frac{(d\,C_S)^2\log m}{2m^2}
++\frac{d^2\,C_S(\gamma C_S-C_S')}{2m^2}+O_{S,B}\!\left(\frac{(\log m)^2}{m^3}\right),
+\]
+where $C_S:=C_S(1)$, $C_S(p):=\sum_{n=0}^\infty W_S(p,n)$, and $\gamma$ is the
+Euler--Mascheroni constant (see~\cite{DLMF});
+\item in the supercritical regime $s_0(S)>\tfrac12$, there exist constants
+$0<K_1\le K_2$ (depending on $S,B$) such that
+\begin{equation}\label{eq:old-theta}
+K_1\,m^{-2s_0(S)}\le \dimH F_{m,S,B}-s_0(S)\le K_2\,m^{-2s_0(S)}.
+\end{equation}
+\end{enumerate}
+
+As noted in the novelty review of~\cite{Paper2}, the large-$m$ subcritical
+expansion falls structurally within the general thermodynamic perturbation
+framework of Das--Fishman--Simmons--Urba\'nski~\cite[Theorem~4.1]{DFSU}
+(with $1/\bar c=C_S$), while the upper bound in~\eqref{eq:old-theta} also
+follows from the Heinemann--Urba\'nski estimate~\cite{HU02} (as formulated
+in~\cite[Theorem~2.4]{CLU}). Three natural questions, however, were left
+unresolved in~\cite{Paper2} and treated only heuristically or defectively in
+an earlier experimental draft:
+\begin{enumerate}[label=\textup{(Q\arabic*)},leftmargin=2.4em]
+\item What is the \emph{exact} leading constant in~\eqref{eq:old-theta} when
+$s_0(S)>\tfrac12$?
+\item What is the precise scaling law across the phase boundary
+$s_0(S)=\tfrac12$, and under what explicit uniformity hypotheses does a joint
+scaling limit hold for sequences $S_k$ approaching $s_0=\tfrac12$?
+\item For general infinite perturbation tails $T\subset\Z_{\ge1}$ beyond
+arithmetic progressions, what replaces the floor $\tfrac12$ in the phase
+transition $\max(\tfrac12,s_0(S))$?
+\end{enumerate}
+
+The present paper answers (Q1)--(Q3) unconditionally modulo the elementary,
+Bowen-free transfer-operator criteria already established in~\cite{Paper2}
+(and summarized in Lemma~\ref{lem:to-criteria} below). Our main results are:
+\begin{itemize}[leftmargin=1.6em]
+\item \textbf{Self-contained pole decomposition (Lemma~\ref{lem:pole}):}
+For every finite $S\subset\Z_{\ge1}$ with $|S|\ge2$, we prove the
+Perron--Frobenius spectral gap and meromorphic pole decomposition
+$C_S(p)=\frac{c(p)}{1-\rho(p)}+A(p)=\frac{\kappa(S)}{p-2s_0(S)}+O_S(1)$ on
+$A(\Omega)$ with $\Omega=\{z\in\C:|z-1|<5/4\}$, using Fekete
+power-boundedness, Ces\`aro compactness, a Markov maximum-modulus argument on
+$[0,1]$, and the identity theorem on $E_S\Subset\Omega$. This completely
+eliminates a real-cone fallacy present in an earlier draft on the complex
+disk space, and corrects the $n=0$ term and analyticity domain of $A(p)$.
+\item \textbf{Universal master equation across all regimes
+(Lemmas~\ref{lem:resolvent-uniform} and~\ref{lem:master}):}
+Putting $\Sigma:=1+\max S+\max(B\cup\{0\})$ and
+$h(s):=d\,C_S(2s)\,m^{-2s}\,\zeta(2s)$, we prove with explicit absolute
+constants that for every $m\ge 340\,\Sigma$,
+\[
+\bigl|\,d\,C_S(2s^*)\,m^{-2s^*}\,\zeta(2s^*)-1\,\bigr|
+\le 170\,\frac{\Sigma}{m}+2\,\ee^{-m^2/(2\ee)}
+\le 172\,\frac{\Sigma}{m},
+\qquad s^*:=\dimH F_{m,S,B},
+\]
+simultaneously in the subcritical, critical, and supercritical regimes.
+\item \textbf{Exact supercritical leading constant
+(Theorem~\ref{thm:supercritical-exact}):}
+For every finite $S\subset\Z_{\ge1}$ with $s_0(S)>\tfrac12$ and every finite
+$B\subset\Z_{\ge0}$,
+\[
+\dimH F_{m,S,B}-s_0(S)
+=\frac{d\,\kappa(S)\,\zeta(2s_0(S))}{2}\,m^{-2s_0(S)}
+\bigl(1+O_{S,B}(m^{-1})\bigr)
+\qquad(m\to\infty).
+\]
+This upgrades~\eqref{eq:old-theta} to an exact asymptotic law with sharp
+$O(m^{-1})$ relative error, and disproves the earlier heuristic prefactor
+$\frac{d\kappa(S)}{2(2s_0(S)-1)}$ (which underestimated the true limit by the
+factor $(2s_0-1)\zeta(2s_0)>1$, e.g.\ by $3.64\%$ for $\{1,2\}$, $24.94\%$
+for $\{1,2,3\}$, and $35.69\%$ for $\{1,2,3,4\}$).
+\item \textbf{Repaired critical scaling and second-order critical correction
+(Theorem~\ref{thm:critical-scaling} and Corollary~\ref{cor:critical-exp}):}
+Under explicit scale-separation and uniform pole-dominance hypotheses along
+a sequence $(m_k,S_k,B_k)$ with $\gamma_k:=\sqrt{d_k\kappa(S_k)/m_k}\to0$
+and $(1-2s_0(S_k))/\gamma_k\to\xi\in\R$,
+\[
+\frac{\dimH F_{m_k,S_k,B_k}-\frac12}{\frac12\,\gamma_k}
+\longrightarrow \Phi_0(\xi):=\frac{-\xi+\sqrt{\xi^2+4}}{2}.
+\]
+For a fixed finite $S$ with $s_0(S)=\tfrac12$ (whose existence among finite
+integer alphabets remains open), all uniformity hypotheses hold automatically
+and the master equation yields the two-term law
+\[
+\dimH F_{m,S,B}-\frac12
+=\frac{\sqrt{d\,\kappa(S)}}{2}\,m^{-1/2}
+-\frac{d\,\kappa(S)\,\log m}{4\,m}+O_{S,B}(m^{-1}).
+\]
+\item \textbf{Sparse-alphabet counterexample and general tail-abscissa phase
+transition (Proposition~\ref{prop:sparse-tail-phase}):}
+For any infinite alphabet $T\subset\Z_{\ge1}$ with convergence abscissa
+$\theta(T):=\inf\{s>0:\sum_{a\in T}a^{-2s}<\infty\}\in[0,1/2]$, we prove
+without Bowen's formula that $\dimH E_T\ge\theta(T)$,
+$\lim_{M\to\infty}\dimH E_{T\cap[M,\infty)}=\theta(T)$, and for every finite
+$S\subset\Z_{\ge1}$,
+\[
+\lim_{M\to\infty}\dimH E_{S\cup(T\cap[M,\infty))}
+=\max\bigl(\theta(T),\,s_0(S)\bigr).
+\]
+For the sparse family $A_{k_0}:=\{2^{2^k}:k\ge k_0\}$ ($k_0\ge1$), we prove
+$0<\dimH E_{\{2^{2^{k_0}},2^{2^{k_0+1}}\}}\le\dimH E_{A_{k_0}}\le 2^{-(k_0+1)}<\frac12$,
+refuting the naive conjecture $\dimH E_A\ge\frac12$ for all infinite $A$ while
+clarifying that $\dimH E_{A_1}>0$ (whereas $\lim_{k_0\to\infty}\dimH E_{A_{k_0}}=0$
+and $\dimH\{x\in E_{A_1}:a_n(x)\to\infty\}=0$).
+\end{itemize}
+
+\section{Preliminaries and Bowen-free transfer-operator criteria}\label{sec:prelim}
+
+For $a\in\Z_{\ge1}$, define the Gauss inverse branch $\varphi_a(z):=1/(a+z)$.
+For a finite word $w=(a_1,\dots,a_n)\in\Z_{\ge1}^n$, set
+$\varphi_w:=\varphi_{a_1}\circ\cdots\circ\varphi_{a_n}$ and denote the
+regular continued-fraction convergents of $w$ by $p_k(w)/q_k(w):=[0;a_1,\dots,a_k]$
+(with $p_0=0,q_0=1,p_1=1,q_1=a_1$), writing $p(w):=p_n(w)$ and $q(w):=q_n(w)$
+(with $p(\emptyset)=0$, $q(\emptyset)=1$). Then
+\begin{equation}\label{eq:mobius-word}
+\varphi_w(z)=\frac{p_n(w)+p_{n-1}(w)\,z}{q_n(w)+q_{n-1}(w)\,z},
+\qquad
+\varphi_w'(z)=\frac{(-1)^n}{(q_n(w)+q_{n-1}(w)\,z)^2},
+\end{equation}
+and the mirror-symmetry identity of continuants gives
+$q_n(w^{\mathrm{rev}})=q_n(w)$ and $p_n(w^{\mathrm{rev}})=q_{n-1}(w)$ for
+$w^{\mathrm{rev}}:=(a_n,\dots,a_1)$. Concatenation satisfies
+\begin{equation}\label{eq:continuant-mult}
+q(u)\,q(v)\le q(uv)\le 2\,q(u)\,q(v)\qquad\forall u,v\in\Z_{\ge1}^*.
+\end{equation}
+For any alphabet $A\subset\Z_{\ge1}$, $s>0$, and nonnegative function
+$v:[0,1]\to[0,\infty]$, the transfer operator is
+\[
+(\mathcal L_{s,A}v)(x):=\sum_{a\in A}(a+x)^{-2s}\,v\!\left(\frac{1}{a+x}\right),
+\qquad x\in[0,1].
+\]
+For finite $S\subset\Z_{\ge1}$ and $s>s_0(S)$, the multi-branch resolvent
+profile
+\[
+V_{S,s}(x):=\sum_{n=0}^\infty\sum_{w\in S^n}\bigl(q(w)+p(w)\,x\bigr)^{-2s}
+\qquad(x\in[0,1])
+\]
+satisfies $V_{S,s}(0)=C_S(2s)$, $1\le V_{S,s}(x)\le C_S(2s)$ on $[0,1]$, and
+the exact resolvent identity
+\begin{equation}\label{eq:multi-resolvent}
+(\mathcal L_{s,S}V_{S,s})(x)=V_{S,s}(x)-1\qquad\bigl(s>s_0(S),\ x\in[0,1]\bigr).
+\end{equation}
+We rely on the following elementary transfer-operator criteria, established
+directly from Hausdorff coverings and Frostman mass distributions
+in~\cite{Paper2} (where both directions are kernel-verified in Lean~4 as
+\texttt{dimH\_le\_of\_transferOp\_le} and
+\texttt{le\_dimH\_of\_transferOp\_ge} without invoking Bowen's pressure
+formula).
+
+\begin{lemma}[Bowen-free transfer-operator criteria~{\cite{Paper2}}]\label{lem:to-criteria}
+Let $A\subset\Z_{\ge1}$ be a nonempty digit alphabet and let $s>0$.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+\item \emph{Upper bound (arbitrary $A$).} If there exist constants
+$0<\mathrm{lo}\le\mathrm{hi}<\infty$ and a function
+$v:[0,1]\to[\mathrm{lo},\mathrm{hi}]$ such that
+$(\mathcal L_{s,A}v)(x)\le v(x)$ for all $x\in[0,1]$, then $\dimH E_A\le s$.
+\item \emph{Lower bound (finite $A$).} If $A$ is finite and there exist
+$0<\mathrm{lo}\le\mathrm{hi}<\infty$ and $v:[0,1]\to[\mathrm{lo},\mathrm{hi}]$
+such that $(\mathcal L_{s,A}v)(x)\ge v(x)$ for all $x\in[0,1]$, then
+$\dimH E_A\ge s$.
+\end{enumerate}
+\end{lemma}
+
+We also record an elementary two-line bound showing $s_0(S)<1$ and bounding
+$C_S(2)$ uniformly in $\max S$.
+
+\begin{lemma}[Elementary bound at $p=2$]\label{lem:CS2}
+For every nonempty finite $S\subset\Z_{\ge1}$ with $M:=\max S$,
+\[
+W_S(2,n)\le 2\left(1-\frac{1}{M+1}\right)^n\quad(\forall n\ge0),
+\qquad
+C_S(2)\le 2(M+1),
+\qquad
+s_0(S)<1.
+\]
+\end{lemma}
+
+\begin{proof}
+Set $v(x):=1/(1+x)\in[1/2,1]$ on $[0,1]$. For every $x\in[0,1]$,
+\begin{align*}
+(\mathcal L_{1,S}v)(x)
+&=\sum_{a\in S}\frac{1}{(a+x)(a+1+x)}
+\le\sum_{a=1}^M\left(\frac{1}{a+x}-\frac{1}{a+1+x}\right)\\
+&=\frac{1}{1+x}-\frac{1}{M+1+x}
+\le\left(1-\frac{1}{M+1}\right)v(x),
+\end{align*}
+since $(1+x)/(M+1+x)\ge 1/(M+1)$ on $[0,1]$. Iterating gives
+$W_S(2,n)=(\mathcal L_{1,S}^n 1)(0)\le 2(\mathcal L_{1,S}^n v)(0)
+\le 2(1-\frac{1}{M+1})^n$. Summing over $n\ge0$ gives $C_S(2)\le 2(M+1)$,
+and the exponential decay of $W_S(2,n)$ forces $s_0(S)<1$.
+\end{proof}
+
+\section{Self-contained Perron--Frobenius and pole decomposition on \texorpdfstring{$A(\Omega)$}{A(Omega)}}\label{sec:pole}
+
+Throughout Sections~\ref{sec:pole}--\ref{sec:critical}, let
+$S\subset\Z_{\ge1}$ be finite with $|S|\ge2$, $B\subset\Z_{\ge0}$ finite,
+$d:=|S|+|B|\ge2$, $s_0:=s_0(S)$, $p_0:=2s_0$, $\eta:=1-2s_0\in(-1,1)$, and
+\[
+\Sigma:=1+\max S+\max(B\cup\{0\}).
+\]
+Define the open complex disk
+\[
+\Omega:=\bigl\{z\in\C:\ |z-1|<\tfrac54\bigr\},
+\]
+so that $[0,1]\Subset\Omega$ is a compact subset of $\Omega$. Let
+$A(\Omega)$ denote the complex Banach space of functions holomorphic on
+$\Omega$ and continuous on $\overline\Omega$, equipped with the supremum norm
+$\|f\|_\infty:=\sup_{z\in\overline\Omega}|f(z)|$. For every $z\in\overline\Omega$
+and $a\ge1$, we have $\operatorname{Re}(a+z)\ge a-\frac14\ge\frac34>0$, so
+the principal branch $(a+z)^{-p}:=\exp(-p\operatorname{Log}(a+z))$ is
+holomorphic on a neighborhood of $\overline\Omega$ for all $p\in\C$. Define
+the complexified transfer operator $L_p:A(\Omega)\to A(\Omega)$ by
+\begin{equation}\label{eq:Lp-complex}
+(L_pf)(z):=\sum_{a\in S}(a+z)^{-p}\,f\bigl(\varphi_a(z)\bigr),
+\qquad z\in\overline\Omega.
+\end{equation}
+
+\begin{lemma}[Self-contained Perron--Frobenius and pole decomposition]\label{lem:pole}
+Let $S\subset\Z_{\ge1}$ be finite with $|S|\ge2$, and let $p>0$ be real.
+\begin{enumerate}[label=\textup{(\alph*)},leftmargin=2.2em]
+\item \emph{Compactness and spectral gap.} $L_p$ is a compact linear operator
+on $A(\Omega)$. Its spectral radius $\rho(p)=\lim_{n\to\infty}W_S(p,n)^{1/n}>0$
+is an algebraically simple eigenvalue with an eigenfunction $h_p\in A(\Omega)$
+that is real-valued and strictly positive on $[0,1]$ (satisfying
+$2^{-p}\le h_p(x)\le 2^p$ for $x\in[0,1]$), and there are no other eigenvalues
+on the peripheral circle $\{|\lambda|=\rho(p)\}$. Writing
+$L_p=\rho(p)P(p)+R(p)$ where $P(p)f=\nu_p(f)\,h_p$ is the rank-one Riesz
+spectral projection ($\nu_p(h_p)=1$) and $R(p):=L_p(I-P(p))$, the spectral
+radius $r(R(p))$ satisfies $r(R(p))<\rho(p)$. Moreover, $\nu_p(f)>0$ whenever
+$f\in A(\Omega)$ is real-valued and strictly positive on $[0,1]$.
+\item \emph{Analytic dependence and strict decrease.} The map
+$p\mapsto(\rho(p),P(p),h_p,\nu_p)$ is real-analytic on $(0,\infty)$ into
+$\R\times\mathcal L(A(\Omega))\times A(\Omega)\times A(\Omega)^*$ (with
+$\nu_p(h_p)=1$), and $\rho'(p)=\nu_p(L_p'h_p)<0$ for every $p>0$, where
+$(L_p'f)(z):=-\sum_{a\in S}\operatorname{Log}(a+z)(a+z)^{-p}f(\varphi_a(z))$.
+\item \emph{Uniform spectral asymptotics.} For every compact subset
+$K\subset(0,\infty)$, there exist $\theta_K\in(0,1)$ and $C_K>0$ such that
+for all $p\in K$ and all $n\ge0$,
+\begin{equation}\label{eq:W-asym-fixed}
+\bigl|\,W_S(p,n)-c(p)\,\rho(p)^n\,\bigr|\le C_K\,\bigl(\theta_K\,\rho(p)\bigr)^n,
+\qquad c(p):=h_p(0)\,\nu_p(1)\in[1,2^p].
+\end{equation}
+\item \emph{Exact resolvent decomposition across $p_0$.} We have $\rho(p_0)=1$,
+$\rho'(p_0)<0$, and there exists $\delta_S>0$ such that $r(R(p))<1$ for all
+$p\in(p_0-\delta_S,\infty)$. For every $p>p_0$,
+\begin{equation}\label{eq:C-decomp-fixed}
+C_S(p)=\frac{c(p)}{1-\rho(p)}+A(p),
+\qquad
+A(p):=\bigl((I-R(p))^{-1}(I-P(p))\mathbf 1\bigr)(0),
+\end{equation}
+where $A$ extends to a real-analytic function on $(p_0-\delta_S,\infty)$.
+\item \emph{Simple pole and universal residue bound.} As $p\downarrow p_0$,
+\begin{equation}\label{eq:pole-fixed}
+C_S(p)=\frac{\kappa(S)}{p-p_0}+O_S(1),
+\qquad
+\kappa(S):=\frac{c(p_0)}{-\rho'(p_0)}\in\left[\frac{1}{\log(\max S+1)},\,\frac{4}{\log\varphi}\right],
+\end{equation}
+where $\varphi=(1+\sqrt5)/2$ and $c(p_0)=\lim_{n\to\infty}W_S(p_0,n)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\emph{Step 1: Strict disk contraction and compactness.}
+For $a\ge1$, $a+\overline\Omega$ is the closed disk symmetric about $\R$ with
+real diameter $[a-\frac14,a+\frac94]\subset[\frac34,\infty)$. Inversion
+$w\mapsto 1/w$ maps this disk to the closed disk symmetric about $\R$ with
+real diameter $[v_-,v_+]:=\bigl[\frac{1}{a+9/4},\frac{1}{a-1/4}\bigr]$.
+Since $v_->0$ and $v_+\le\frac43<2$, every point $\zeta$ of this disk obeys
+\[
+|\zeta-1|\le\max(v_+-1,\,1-v_-)\le\max\!\left(\frac13,\,1-\frac{1}{a+9/4}\right)<1<\frac54.
+\]
+Hence $\varphi_a(\overline\Omega)\subset\overline{D(1,1)}\Subset\Omega$ for
+every $a\ge1$. If $(f_k)$ is bounded in $A(\Omega)$, Montel's theorem yields a
+subsequence converging uniformly on the compact disk $\overline{D(1,1)}\subset\Omega$,
+so $(f_{k_j}\circ\varphi_a)$ converges uniformly on $\overline\Omega$.
+Multiplication by the bounded holomorphic function $(a+z)^{-p}$ is bounded on
+$A(\Omega)$, and $S$ is finite; thus $L_p$ is compact on $A(\Omega)$ (in fact
+for all $p\in\C$).
+
+\emph{Step 2: Iterates, branch-cut safety, and Fekete power-boundedness.}
+For any $t\in[0,1]$ and $z\in\overline\Omega$, the disk
+$\{1+tz:|z-1|\le\frac54\}$ has center $1+t$ and radius $\frac54 t$, so
+$\operatorname{Re}(1+tz)\ge 1-\frac14 t\ge\frac34$ and
+$|\arg(1+tz)|\le\arcsin\!\bigl(\frac{5t/4}{1+t}\bigr)\le\arcsin(\frac58)<\frac{\pi}{4}$.
+In particular, for every $w\in S^n$, setting $t=q_{n-1}(w)/q_n(w)\in[0,1]$
+gives $|\arg(q_n(w)+q_{n-1}(w)z)|<\frac{\pi}{4}$, and since
+$\varphi_w(\overline\Omega)\subset\overline{D(1,1)}$, every $b\ge1$ satisfies
+$|\arg(b+\varphi_w(z))|\le\frac{\pi}{4}$. The sum of arguments has magnitude
+strictly below $\frac{\pi}{2}<\pi$, so principal-branch powers multiply
+without crossing the branch cut, and induction on $n$ with~\eqref{eq:mobius-word}
+yields
+\begin{equation}\label{eq:Lp-iter}
+(L_p^n f)(z)=\sum_{w\in S^n}\bigl(q_n(w)+q_{n-1}(w)\,z\bigr)^{-p}\,f\bigl(\varphi_w(z)\bigr)
+\qquad(z\in\overline\Omega,\ n\ge0,\ p\in\C).
+\end{equation}
+Now fix real $p>0$. Since $|u^{-p}|=|u|^{-p}$ for $\operatorname{Re}(u)>0$
+and $|q_n(w)+q_{n-1}(w)z|\ge\operatorname{Re}(q_n(w)+q_{n-1}(w)z)\ge\frac34 q_n(w)$
+on $\overline\Omega$,~\eqref{eq:Lp-iter} gives
+\begin{equation}\label{eq:Lp-norm-sandwich}
+W_S(p,n)=(L_p^n\mathbf 1)(0)\le \|L_p^n\|_{\mathcal L(A(\Omega))}
+\le\left(\frac43\right)^p W_S(p,n).
+\end{equation}
+By~\eqref{eq:continuant-mult}, $2^{-p}W_S(p,k)W_S(p,n)\le W_S(p,k+n)\le W_S(p,k)W_S(p,n)$.
+By Fekete's subadditive lemma, the limit $\rho(p):=\lim_{n\to\infty}W_S(p,n)^{1/n}$
+exists, equals the spectral radius of $L_p$ on $A(\Omega)$
+by~\eqref{eq:Lp-norm-sandwich} and Gelfand's formula, and satisfies
+\begin{equation}\label{eq:W-fekete}
+1\le \rho(p)^{-n}W_S(p,n)\le 2^p\qquad(\forall n\ge0).
+\end{equation}
+Combining~\eqref{eq:Lp-norm-sandwich} and~\eqref{eq:W-fekete} yields uniform
+power-boundedness:
+\begin{equation}\label{eq:power-bounded}
+\sup_{n\ge0}\bigl\|\rho(p)^{-n}L_p^n\bigr\|_{\mathcal L(A(\Omega))}
+\le\left(\frac83\right)^p<\infty.
+\end{equation}
+
+\emph{Step 3: Existence of a positive eigenfunction $h_p\in A(\Omega)$ via
+Ces\`aro compactness.}
+Since $\{\rho(p)^{-(n-1)}L_p^{n-1}\mathbf 1\}_{n\ge1}$ is bounded in $A(\Omega)$
+by~\eqref{eq:power-bounded} and $L_p$ is compact, the sequence
+$\{\rho(p)^{-n}L_p^n\mathbf 1\}_{n\ge1}$ is relatively compact in $A(\Omega)$,
+and so is its closed convex hull. In particular, the Ces\`aro averages
+$h_N:=\frac{1}{N}\sum_{n=1}^N \rho(p)^{-n}L_p^n\mathbf 1\in A(\Omega)$ have a
+convergent subsequence $h_{N_k}\to h_p$ in $A(\Omega)$. Then
+\[
+L_p h_{N_k}-\rho(p)h_{N_k}
+=\frac{\rho(p)}{N_k}\bigl(\rho(p)^{-N_k}L_p^{N_k}\mathbf 1-\mathbf 1\bigr)
+\longrightarrow 0
+\qquad\text{in }A(\Omega),
+\]
+so $L_p h_p=\rho(p)h_p$. For every $x\in[0,1]$, each term of~\eqref{eq:Lp-iter}
+with $f=\mathbf 1$ is real and lies between $2^{-p}q_n(w)^{-p}$ and
+$q_n(w)^{-p}$; hence~\eqref{eq:W-fekete} implies
+$2^{-p}\le \rho(p)^{-n}(L_p^n\mathbf 1)(x)\le 2^p$, and passing to the limit
+gives $h_p$ real-valued on $[0,1]$ with $2^{-p}\le h_p(x)\le 2^p$ for all
+$x\in[0,1]$.
+
+\emph{Step 4: Peripheral spectrum $\{\rho(p)\}$, algebraic simplicity, and
+positivity of $\nu_p$.}
+Let $f\in A(\Omega)\setminus\{0\}$ satisfy $L_p f=\lambda f$ with
+$|\lambda|=\rho(p)$, and put $\mu:=\lambda/\rho(p)$ ($|\mu|=1$) and
+$g(x):=f(x)/h_p(x)$ on $[0,1]$. Define the positive Markov weights
+$w_a(x):=(a+x)^{-p}h_p(\varphi_a(x))/(\rho(p)h_p(x))>0$ ($a\in S$,
+$x\in[0,1]$), which satisfy $\sum_{a\in S}w_a(x)=1$. Then
+$(P_p g)(x):=\sum_{a\in S}w_a(x)g(\varphi_a(x))=\mu g(x)$ on $[0,1]$.
+Let $M:=\max_{x\in[0,1]}|g(x)|$ be attained at $x_0\in[0,1]$. Iterating
+$P_p^n g=\mu^n g$ yields
+\[
+M=|\mu^n g(x_0)|=\left|\sum_{w\in S^n}w_w(x_0)\,g(\varphi_w(x_0))\right|
+\le\sum_{w\in S^n}w_w(x_0)\,|g(\varphi_w(x_0))|\le M,
+\]
+where every product weight $w_w(x_0)$ is strictly positive and sums to $1$.
+Equality in the triangle inequality forces $g(\varphi_w(x_0))=\mu^n g(x_0)$
+for every $n\ge1$ and every $w\in S^n$. Fix $a\in S$; then $\varphi_{a^n}(x_0)$
+converges to the fixed point $x_a=[0;\overline{a}]\in E_S\subset[0,1]$.
+If $M=0$, then $f$ vanishes on $[0,1]\Subset\Omega$, so $f\equiv0$ by the
+identity theorem, a contradiction. Thus $M>0$, so $|g(x_a)|=M>0$, and
+continuity of $g$ at $x_a$ gives
+$\mu=(\mu^{n+1}g(x_0))/(\mu^n g(x_0))\to g(x_a)/g(x_a)=1$, i.e.\
+$\lambda=\rho(p)$. Setting $\mu=1$ now gives $g(\varphi_w(x_0))=g(x_0)$ for
+all $w\in S^*$, hence $f(x)=g(x_0)h_p(x)$ for all $x\in E_S$. Because
+$|S|\ge2$, $E_S$ is an infinite subset of the compact set $[0,1]\Subset\Omega$,
+so it has an accumulation point in $\Omega$. By the identity theorem for
+holomorphic functions, $f\equiv g(x_0)h_p$ on $\Omega$.
+
+Thus $\rho(p)$ is geometrically simple and is the unique spectral point on
+$\{|\lambda|=\rho(p)\}$. Moreover, $\rho(p)$ is algebraically simple: if
+$(L_p-\rho(p)I)u=h_p$ had a solution $u\in A(\Omega)$, then
+$\rho(p)^{-n}L_p^n u = u + n\rho(p)^{-1}h_p$ would grow linearly in $n$,
+contradicting~\eqref{eq:power-bounded}. Because $L_p$ is compact, every
+nonzero spectral point is an isolated eigenvalue, so $r(R(p))<\rho(p)$ where
+$P(p)$ is the rank-one Riesz projection onto $\C h_p$ and $R(p)=L_p(I-P(p))$.
+Consequently $\rho(p)^{-n}L_p^n\to P(p)$ in operator norm. Evaluating at
+$z=0\in\Omega$ gives, for every $f\in A(\Omega)$,
+\[
+\nu_p(f)\,h_p(0)=(P(p)f)(0)
+=\lim_{n\to\infty}\rho(p)^{-n}\sum_{w\in S^n}q(w)^{-p}\,f(\varphi_w(0)).
+\]
+If $f\in A(\Omega)$ is real-valued with $f(x)\ge m_f>0$ on $[0,1]$, then
+$\varphi_w(0)\in[0,1]$ and~\eqref{eq:W-fekete} yield
+$\nu_p(f)\,h_p(0)\ge m_f>0$, hence $\nu_p(f)\ge m_f/h_p(0)>0$. This proves~(a).
+
+\emph{Step 5: Analyticity and $\rho'(p)<0$.}
+The operator family $p\mapsto L_p\in\mathcal L(A(\Omega))$ is holomorphic on
+$\C$, since $S$ is finite and $\operatorname{Log}(a+z)\in A(\Omega)$.
+At each $p_1>0$, $\rho(p_1)$ is an isolated simple eigenvalue of $L_{p_1}$;
+choosing a small positively oriented circle $\Gamma$ separating $\rho(p_1)$
+from $\sigma(L_{p_1})\setminus\{\rho(p_1)\}$, the Riesz projection
+$P(p)=\frac{1}{2\pi i}\oint_\Gamma(\zeta I-L_p)^{-1}\,d\zeta$ is holomorphic
+in a neighborhood of $p_1$ and retains rank~$1$ (see~\cite[Ch.~VII, \S1.3]{Kato1995};
+compare~\cite{Mayer1990,JP2018}). Setting
+$h_p:=P(p)h_{p_1}/\nu_{p_1}(P(p)h_{p_1})$ and
+$\nu_p(f):=\nu_{p_1}(P(p)f)/\nu_{p_1}(P(p)h_{p_1})$ yields real-analytic
+families on $(0,\infty)$ with $\nu_p(h_p)=1$ and $\rho(p)=\nu_p(L_p h_p)$.
+Differentiating $L_p h_p=\rho(p)h_p$ and applying $\nu_p$ (using
+$L_p^*\nu_p=\rho(p)\nu_p$) gives $\rho'(p)=\nu_p(L_p'h_p)$. Because
+$|S|\ge2$, there exists $b\in S$ with $b\ge2$, so on $[0,1]$ we have
+\[
+(-L_p'h_p)(x)=\sum_{a\in S}\log(a+x)(a+x)^{-p}h_p(\varphi_a(x))
+\ge(\log 2)(b+1)^{-p}2^{-p}>0.
+\]
+By positivity of $\nu_p$ from Step~4, $\rho'(p)=-\nu_p(-L_p'h_p)<0$. This
+proves~(b).
+
+\emph{Step 6: Proof of (c), (d), and (e).}
+For $n=0$, $\mathbf 1=P(p)\mathbf 1+(I-P(p))\mathbf 1$; for $n\ge1$,
+$L_p^n=\rho(p)^nP(p)+R(p)^n$. Evaluating at $z=0$ gives
+$W_S(p,0)=c(p)+((I-P(p))\mathbf 1)(0)$ and
+$W_S(p,n)=c(p)\rho(p)^n+(R(p)^n\mathbf 1)(0)$ ($n\ge1$), where
+$c(p)=h_p(0)\nu_p(1)$. Taking $n\to\infty$ in~\eqref{eq:W-fekete} yields
+$c(p)=\lim_{n\to\infty}\rho(p)^{-n}W_S(p,n)\in[1,2^p]$. Since
+$p\mapsto R(p)$ is continuous and $r(R(p))/\rho(p)<1$, upper semicontinuity
+of the spectral radius implies that on every compact $K\subset(0,\infty)$
+there exist $\theta_K\in(0,1)$ and $C_K>0$ with
+$\|R(p)^n\|\le C_K(\theta_K\rho(p))^n$ for all $p\in K$ and $n\ge1$ (and
+enlarging $C_K$ covers $n=0$ as well). This proves~(c).
+
+As $p\downarrow0$, $W_S(p,n)\ge |S|^n(\max S+1)^{-np}$ gives
+$\rho(p)\ge |S|(\max S+1)^{-p}\to|S|\ge2$; as $p\to\infty$, $q(w)\ge F_{n+1}$
+gives $W_S(p,n)\le |S|^n F_{n+1}^{-p}$, so $\rho(p)\le |S|\varphi^{-p}\to0$.
+By continuity and strict decrease, there is a unique $p_*>0$ with
+$\rho(p_*)=1$. By~\eqref{eq:W-asym-fixed}, $\sum_{n\ge0}W_S(2s,n)<\infty$ if
+and only if $\rho(2s)<1$, i.e.\ $2s>p_*$; hence $p_*=2s_0(S)=p_0$ and
+$\rho(p_0)=1$. Because $r(R(p_0))<\rho(p_0)=1$, upper semicontinuity gives
+$\delta_S>0$ such that $r(R(p))<1$ for all $p\in(p_0-\delta_S,\infty)$ (for
+$p>p_0$ we already have $r(R(p))<\rho(p)<1$). Thus $(I-R(p))^{-1}$ is
+real-analytic on $(p_0-\delta_S,\infty)$, and summing the $n=0$ and $n\ge1$
+expressions for $W_S(p,n)$ at $p>p_0$ gives
+\[
+C_S(p)=\sum_{n=0}^\infty c(p)\rho(p)^n
++\bigl((I-P(p))\mathbf 1\bigr)(0)+\sum_{n=1}^\infty(R(p)^n\mathbf 1)(0)
+=\frac{c(p)}{1-\rho(p)}+\bigl((I-R(p))^{-1}(I-P(p))\mathbf 1\bigr)(0),
+\]
+using $R(p)=R(p)(I-P(p))$. This proves~(d).
+
+Finally, $1-\rho(p)=(-\rho'(p_0))(p-p_0)(1+O_S(p-p_0))$ as $p\downarrow p_0$,
+and $A(p)$ is analytic at $p_0$, giving~\eqref{eq:pole-fixed} with
+$\kappa(S)=c(p_0)/(-\rho'(p_0))$. For the universal bounds on $\kappa(S)$,
+note $c(p_0)\in[1,2^{p_0}]\subset[1,4]$ (since $p_0=2s_0<2$ by
+Lemma~\ref{lem:CS2}). Moreover, for every $w\in S^n$,
+$F_{n+1}\le q(w)\le (\max S+1)^n$, so $W_S(p,n)\ge W_S(p_0,n)(\max S+1)^{-n(p-p_0)}$
+and $W_S(p,n)\le W_S(p_0,n)F_{n+1}^{-(p-p_0)}$ for $p>p_0$; taking $n$-th
+roots and differentiating at $p_0$ gives
+$\log\varphi\le-\rho'(p_0)\le\log(\max S+1)$, yielding the bounds
+in~\eqref{eq:pole-fixed}.
+\end{proof}
+
+\begin{remark}[Repairs over the earlier experimental draft]\label{rem:pole-repairs}
+Lemma~\ref{lem:pole} repairs three defects in the earlier archived draft
+\texttt{drafts\_v3\_critical\_scaling/sec-critical-scaling.tex}:
+\textup{(i)} that draft defined a cone $K=\{f\in A(\Omega):f(z)\ge0\ \forall z\in\overline\Omega\}$
+on the complex holomorphic space $A(\Omega)$, which by the open mapping theorem
+contains only nonnegative constants (and $z=0$ lay on $\partial\Omega$ rather
+than in $\Omega$);
+\textup{(ii)} its spectral remainder omitted the factor $\rho(p)^n$; and
+\textup{(iii)} its formula $A(p)=\sum_{n\ge0}(R(p)^n\mathbf 1)(0)$
+double-counted $c(p)$ at $n=0$ and did not prove analyticity of $A(p)$ across
+$p=p_0$.
+\end{remark}
+
+\section{Uniform resolvent expansion and the universal master equation}\label{sec:master}
+
+For $m\ge 2\Sigma$, the alphabet $\mathcal A_{m,S,B}$ of~\eqref{eq:multi-alphabet}
+decomposes as the pairwise disjoint union
+\begin{equation}\label{eq:disjoint-decomp}
+\mathcal A_{m,S,B}
+=S\ \sqcup\ \bigsqcup_{r\in S}\{km+r:k\ge1\}
+\ \sqcup\ \bigsqcup_{b\in B}\{km-b:k\ge1\},
+\end{equation}
+because $r+b\le\max S+\max B<m$ prevents any congruence collision modulo~$m$
+and ensures $km-b\ge m-\max B>\max S$ for all $k\ge1$. Set
+\[
+h(s):=d\,C_S(2s)\,m^{-2s}\,\zeta(2s),
+\qquad s\in\bigl(\max(s_0,\tfrac12),\,1\bigr].
+\]
+
+\begin{lemma}[Uniform two-sided resolvent expansion]\label{lem:resolvent-uniform}
+Let $m\ge 2\Sigma$ and let $C_0:=4+48\zeta(2)<83$. For every
+$s\in(\max(s_0,\frac12),1]$ and every $x\in[0,1]$,
+\begin{equation}\label{eq:resolvent-uniform-fixed}
+(\mathcal L_{s,\mathcal A_{m,S,B}}V_{S,s})(x)
+=V_{S,s}(x)-1+h(s)\bigl(1+\rho(s,x)\bigr),
+\qquad |\rho(s,x)|\le C_0\,\frac{\Sigma}{m}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By~\eqref{eq:disjoint-decomp} and~\eqref{eq:multi-resolvent}, the $S$-branches
+contribute $V_{S,s}(x)-1$, and it remains to sum the $d$ tail families
+$a=km+r$ ($r\in S$, $k\ge1$) and $a=km-b$ ($b\in B$, $k\ge1$). Fix one family
+and write $a+x=m(k+\theta)$ with $\theta=(r+x)/m$ or $(-b+x)/m$, so
+$|\theta|\le\Sigma/m\le\frac12$. For every $k\ge1$, both $k$ and $k+\theta$
+lie in $[k/2,\infty)$, so the mean value theorem gives
+\[
+\bigl|(k+\theta)^{-2s}-k^{-2s}\bigr|
+\le 2s\,|\theta|\,(k/2)^{-(2s+1)}
+=2s\,2^{2s+1}|\theta|\,k^{-(2s+1)}
+\le 16\,\frac{\Sigma}{m}\,k^{-(2s+1)},
+\]
+since $s\le 1$. Summing over $k\ge1$ and using $\zeta(2s+1)\le\zeta(2)$ and
+$\zeta(2s)>1$ gives
+\begin{equation}\label{eq:hurwitz-shift}
+\left|\sum_{k=1}^\infty(k+\theta)^{-2s}-\zeta(2s)\right|
+\le 16\zeta(2)\,\frac{\Sigma}{m}
+\le 16\zeta(2)\,\frac{\Sigma}{m}\,\zeta(2s).
+\end{equation}
+Next, for every $a$ in a tail family and $x\in[0,1]$, we have
+$y:=1/(a+x)\le 1/(m/2)=2/m$. For every $w\in S^n$, $0\le p(w)/q(w)\le 1$ and
+$1-(1+u)^{-2s}\le 2su$ ($u\ge0$) yield
+\[
+0\le q(w)^{-2s}-\bigl(q(w)+p(w)\,y\bigr)^{-2s}
+\le 2s\,y\,q(w)^{-2s}
+\le \frac{4}{m}\,q(w)^{-2s}.
+\]
+Summing over all $n\ge0$ and $w\in S^n$ factors out $C_S(2s)$ cleanly:
+\begin{equation}\label{eq:V-taylor}
+0\le C_S(2s)-V_{S,s}(y)\le \frac{4}{m}\,C_S(2s)
+\qquad\bigl(y\in[0,2/m]\bigr).
+\end{equation}
+Notice crucially that~\eqref{eq:V-taylor} holds with relative error at most
+$4/m$, \emph{uniformly} in $s\in(\max(s_0,\frac12),1]$ and independently of
+the size of $C_S(2s)$. Combining~\eqref{eq:hurwitz-shift} and~\eqref{eq:V-taylor},
+using $\Sigma/m\le\frac12$ and $1/m\le\Sigma/m$, each of the $d$ tail
+families equals $m^{-2s}C_S(2s)\zeta(2s)(1+\rho_{\mathrm{fam}})$ with
+\[
+|\rho_{\mathrm{fam}}|
+\le 16\zeta(2)\frac{\Sigma}{m}
++\frac{4}{m}\left(1+16\zeta(2)\frac{\Sigma}{m}\right)
+\le \bigl(4+48\zeta(2)\bigr)\frac{\Sigma}{m}=C_0\frac{\Sigma}{m}.
+\]
+Summing over all $d$ families proves~\eqref{eq:resolvent-uniform-fixed}.
+\end{proof}
+
+\begin{lemma}[Universal master equation across all regimes]\label{lem:master}
+Let $C_0=4+48\zeta(2)<83$ and assume $m\ge 340\,\Sigma$. Set
+$s^*:=\dimH F_{m,S,B}$. Then $s^*\in(\max(s_0,\frac12),1)$ and
+\begin{equation}\label{eq:master-fixed}
+\bigl|\,d\,C_S(2s^*)\,m^{-2s^*}\,\zeta(2s^*)-1\,\bigr|
+\le 170\,\frac{\Sigma}{m}+2\,\ee^{-m^2/(2\ee)}
+\le 172\,\frac{\Sigma}{m}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Because $S\subset\{1,\dots,\max S\}$ and $B\subset\{0,\dots,\max B\}$, we have
+$d=|S|+|B|\le\Sigma$. By Lemma~\ref{lem:CS2}, $C_S(2)\le 2(\max S+1)\le 2\Sigma$,
+so
+\[
+h(1)=d\,C_S(2)\,m^{-2}\,\zeta(2)
+\le \frac{2\zeta(2)\,\Sigma^2}{m^2}
+\le \frac{4}{340^2}<\frac12.
+\]
+Moreover, $h$ is continuous and strictly decreasing on $(\max(s_0,\frac12),1]$
+and tends to $+\infty$ as $s\downarrow\max(s_0,\frac12)$ (through the pole of
+$C_S$ at $2s_0$ or of $\zeta$ at $1$). Note also that $m\ge 340\,\Sigma\ge 1020$
+(since $|S|\ge2$ forces $\Sigma\ge 3$).
+
+\emph{Upper bound on $s^*$ (lower bound on $h(s^*)$).}
+Since $C_0\Sigma/m\le 83/340<\frac14$, we have
+$h(1)<\frac12<\frac{1}{1+C_0\Sigma/m}$, so there is a unique
+$s_+\in(\max(s_0,\frac12),1)$ with $h(s_+)=1/(1+C_0\Sigma/m)$. By
+Lemma~\ref{lem:resolvent-uniform},
+$(\mathcal L_{s_+,\mathcal A_{m,S,B}}V_{S,s_+})(x)\le V_{S,s_+}(x)$ for all
+$x\in[0,1]$. Since $1\le V_{S,s_+}(x)\le C_S(2s_+)<\infty$,
+Lemma~\ref{lem:to-criteria}(i) yields $s^*\le s_+$. By strict decrease of $h$,
+\begin{equation}\label{eq:h-lower}
+h(s^*)\ge h(s_+)=\frac{1}{1+C_0\Sigma/m}\ge 1-C_0\frac{\Sigma}{m}.
+\end{equation}
+
+\emph{Lower bound on $s^*$ (upper bound on $h(s^*)$).}
+Put $\delta_m:=(C_0+2)\Sigma/m\le 85/340=\frac14$ and
+$\tau_m:=\ee^{-m^2/(2\ee)}<\frac14$. Since $h(1)<\frac12<1<(1-\delta_m)^{-1}(1-\tau_m)^{-1}$,
+there is a unique $s_-\in(\max(s_0,\frac12),1)$ satisfying
+\[
+h(s_-)=\frac{1}{(1-\delta_m)(1-\tau_m)}\in\left(1,\,\frac{16}{9}\right].
+\]
+Set $\varepsilon_-:=2s_--1>0$. We claim that
+\begin{equation}\label{eq:eps-floor}
+\varepsilon_-\ge\frac{1}{2\ee m}.
+\end{equation}
+Indeed, if $\varepsilon_-<\frac{1}{2\ee m}$, then
+$\varepsilon_-\log m<\frac{\log m}{2\ee m}<\frac{1}{2\ee}<\frac12$, so
+$m^{-\varepsilon_-}>\ee^{-1/2}$; combined with $d\ge1$, $C_S(2s_-)\ge W_S(2s_-,0)=1$,
+and $\zeta(1+\varepsilon_-)>\int_1^\infty t^{-1-\varepsilon_-}\,dt=1/\varepsilon_-$,
+this would force
+\[
+h(s_-)=d\,C_S(1+\varepsilon_-)\,m^{-1-\varepsilon_-}\,\zeta(1+\varepsilon_-)
+>\frac{\ee^{-1/2}}{m\,\varepsilon_-}>2\ee^{1/2}>3.29>\frac{16}{9},
+\]
+a contradiction. Thus~\eqref{eq:eps-floor} holds in all regimes with no
+assumption on $\varepsilon_-\log m$.
+
+Now set $K:=\lceil\ee^{m^3}\rceil$, form the finite subalphabet
+\[
+D_K:=S\cup\{km+r:r\in S,\,1\le k\le K\}\cup\{km-b:b\in B,\,1\le k\le K\}
+\subset\mathcal A_{m,S,B},
+\]
+and put $h_K(s):=d\,C_S(2s)\,m^{-2s}\sum_{k=1}^K k^{-2s}$. Using the integral
+bounds $\sum_{k=K+1}^\infty k^{-1-\varepsilon}\le K^{-\varepsilon}/\varepsilon$
+and $\zeta(1+\varepsilon)\ge 1/\varepsilon$ together with~\eqref{eq:eps-floor},
+the truncation ratio obeys
+\[
+\mathrm{trunc}(s_-):=\frac{\sum_{k=K+1}^\infty k^{-2s_-}}{\zeta(2s_-)}
+\le K^{-\varepsilon_-}
+\le\exp\!\left(-\frac{m^3}{2\ee m}\right)=\tau_m,
+\]
+whence $h_K(s_-)=h(s_-)(1-\mathrm{trunc}(s_-))\ge (1-\delta_m)^{-1}$. Next,
+since $s_->s_0$, the series $C_S(2s_-)=\sum_{j=0}^\infty W_S(2s_-,j)$
+converges; choose an explicit integer $N=N(m,s_-)\ge1$ large enough that
+\begin{equation}\label{eq:N-choice}
+\sum_{j=N}^\infty W_S(2s_-,j)\le\frac{1}{m}\,C_S(2s_-).
+\end{equation}
+Define the finite partial-sum test function
+$v_N(x):=\sum_{j=0}^{N-1}(\mathcal L_{s_-,S}^j\mathbf 1)(x)$, which satisfies
+$1\le v_N(x)\le C_S(2s_-)$ on $[0,1]$,
+$\mathcal L_{s_-,S}v_N=v_N-1+\mathcal L_{s_-,S}^N\mathbf 1\ge v_N-1$, and by~\eqref{eq:V-taylor}
+and~\eqref{eq:N-choice},
+\[
+v_N(y)\ge V_{S,s_-}(y)-\frac{1}{m}C_S(2s_-)\ge\left(1-\frac{5}{m}\right)C_S(2s_-)
+\qquad\bigl(y\in[0,2/m]\bigr).
+\]
+Applying the same mean-value bound as in~\eqref{eq:hurwitz-shift} to the
+finite sum $1\le k\le K$ gives, for each of the $d$ tail families,
+\[
+\sum_{k=1}^K(k+\theta)^{-2s_-}v_N\!\left(\frac{1}{m(k+\theta)}\right)
+\ge C_S(2s_-)\left(1-\frac{5}{m}\right)\left(\sum_{k=1}^K k^{-2s_-}-16\zeta(2)\frac{\Sigma}{m}\right).
+\]
+Since $\sum_{k=1}^K k^{-2s_-}=(1-\mathrm{trunc}(s_-))\zeta(2s_-)\ge(1-\tau_m)\zeta(2s_-)\ge\frac34$
+and $\Sigma\ge 3$, we have
+$16\zeta(2)\frac{\Sigma}{m}\le\frac{64}{3}\zeta(2)\frac{\Sigma}{m}\sum_{k=1}^K k^{-2s_-}$.
+Multiplying by $(1-\frac{5}{m})$ yields a relative loss of at most
+$\bigl(\frac{64}{3}\zeta(2)+5\bigr)\frac{\Sigma}{m}<41\frac{\Sigma}{m}<(C_0+2)\frac{\Sigma}{m}=\delta_m$.
+Therefore, for all $x\in[0,1]$,
+\[
+(\mathcal L_{s_-,D_K}v_N)(x)\ge v_N(x)-1+h_K(s_-)(1-\delta_m)\ge v_N(x).
+\]
+Since $D_K$ is finite, Lemma~\ref{lem:to-criteria}(ii) yields
+$s^*=\dimH F_{m,S,B}\ge\dimH E_{D_K}\ge s_->\max(s_0,\frac12)$. By strict
+decrease of $h$,
+\begin{equation}\label{eq:h-upper}
+h(s^*)\le h(s_-)=\frac{1}{(1-\delta_m)(1-\tau_m)}
+=1+\frac{\delta_m+\tau_m-\delta_m\tau_m}{(1-\delta_m)(1-\tau_m)}
+\le 1+2\delta_m+2\tau_m,
+\end{equation}
+because $(1-\delta_m)(1-\tau_m)\ge\frac{9}{16}>\frac12$. Combining~\eqref{eq:h-lower}
+and~\eqref{eq:h-upper} yields~\eqref{eq:master-fixed} (noting $2\delta_m\le 170\Sigma/m$
+and $2\tau_m<\Sigma/m$ for $m\ge1020$).
+\end{proof}
+
+\section{Exact supercritical leading constant}\label{sec:supercritical}
+
+Because Lemma~\ref{lem:master} holds unconditionally in the supercritical
+regime $s_0(S)>\frac12$, the exact leading constant follows immediately.
+
+\begin{theorem}[Exact supercritical leading constant]\label{thm:supercritical-exact}
+Let $S\subset\Z_{\ge1}$ be finite with $s_0(S)>\frac12$ (so automatically
+$|S|\ge2$), let $B\subset\Z_{\ge0}$ be finite, and put $d:=|S|+|B|$. With
+$\kappa(S)=c(2s_0(S))/(-\rho'(2s_0(S)))>0$ from Lemma~\ref{lem:pole}\textup{(e)},
+we have as $m\to\infty$,
+\begin{equation}\label{eq:supercritical-exact}
+\dimH F_{m,S,B}-s_0(S)
+=\frac{d\,\kappa(S)\,\zeta(2s_0(S))}{2}\,m^{-2s_0(S)}
+\Bigl(1+O_{S,B}(m^{-1})\Bigr).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Set $s_0:=s_0(S)>\frac12$, $s_m^*:=\dimH F_{m,S,B}$, and
+$\Delta_m:=s_m^*-s_0>0$ (positive for $m\ge 340\,\Sigma$ by
+Lemma~\ref{lem:master}). For all $m\ge 340\,\Sigma$, Lemma~\ref{lem:master}
+gives
+\begin{equation}\label{eq:super-master}
+d\,C_S(2s_0+2\Delta_m)\,m^{-2s_0-2\Delta_m}\,\zeta(2s_0+2\Delta_m)
+=1+O\!\left(\frac{\Sigma}{m}\right).
+\end{equation}
+In particular, since $\zeta(2s_m^*)>1$ and $C_S(2s_0+2\Delta_m)\ge\frac{\kappa(S)}{2\Delta_m}-O_S(1)$
+by Lemma~\ref{lem:pole}(e), we immediately obtain $\Delta_m=O_{S,B}(m^{-2s_0})\to0$
+as $m\to\infty$ (also known from~\eqref{eq:old-theta}).
+
+Now expand all three factors of~\eqref{eq:super-master} as $m\to\infty$:
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.2em]
+\item By Lemma~\ref{lem:pole}(e),
+\[
+C_S(2s_0+2\Delta_m)=\frac{\kappa(S)}{2\Delta_m}+O_S(1)
+=\frac{\kappa(S)}{2\Delta_m}\bigl(1+O_S(\Delta_m)\bigr).
+\]
+\item Because $2s_0>1$, the Riemann zeta function is real-analytic and
+strictly positive at $2s_0$, so
+\[
+\zeta(2s_0+2\Delta_m)=\zeta(2s_0)\bigl(1+O_S(\Delta_m)\bigr).
+\]
+\item Since $\Delta_m=O_{S,B}(m^{-2s_0})$ and $2s_0>1$, we have
+$\Delta_m\log m=O_{S,B}(m^{-2s_0}\log m)=o_{S,B}(m^{-1})$, hence
+\[
+m^{-2\Delta_m}=\exp(-2\Delta_m\log m)
+=1+O_{S,B}\bigl(m^{-2s_0}\log m\bigr)
+=1+O_{S,B}(m^{-1}).
+\]
+\end{enumerate}
+Substituting (1)--(3) into~\eqref{eq:super-master} and noting
+$\Delta_m=O_{S,B}(m^{-2s_0})=o_{S,B}(m^{-1})$ gives
+\[
+\frac{d\,\kappa(S)\,\zeta(2s_0)}{2\Delta_m}\,m^{-2s_0}
+=\bigl(1+O_{S,B}(m^{-1})\bigr).
+\]
+Inverting yields~\eqref{eq:supercritical-exact}.
+\end{proof}
+
+\begin{remark}[Disproof of the earlier heuristic constant and diagnosis of the error]\label{rem:old-supercritical-disproved}
+The archived draft \texttt{sec-critical-scaling.tex} conjectured
+$\dimH F_{m,S,B}-s_0(S)\sim\frac{d\,\kappa(S)}{2(2s_0(S)-1)}\,m^{-2s_0(S)}$
+and asserted that Lemma~\ref{lem:master} fails in the supercritical regime
+because ``$C_S(1+\varepsilon)\asymp m^{2s_0}$ blows up and the relative error
+is $O(C_S/m)\to\infty$.'' Both claims are false:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+\item In Lemma~\ref{lem:resolvent-uniform}, $C_S(2s)$ factors out of the tail
+approximation~\eqref{eq:V-taylor}, so the relative error remains $O(\Sigma/m)$
+even when $C_S(2s)\asymp m^{2s_0}$.
+\item Since $2s_0(S)>1$ is fixed, $\zeta(2s_0(S))$ is strictly larger than
+its pole part $\frac{1}{2s_0(S)-1}$ (for $u>0$, $\zeta(1+u)-1/u>0$ by
+integral comparison). Thus the true constant exceeds the earlier heuristic by
+the exact factor
+\[
+\frac{K_{\mathrm{exact}}(S,B)}{K_{\mathrm{old}}(S,B)}
+=\bigl(2s_0(S)-1\bigr)\,\zeta\bigl(2s_0(S)\bigr)>1,
+\]
+which equals $1.036395\dots$ for $S=\{1,2\}$, $1.249395\dots$ for
+$S=\{1,2,3\}$, and $1.356918\dots$ for $S=\{1,2,3,4\}$ (see
+Section~\ref{sec:numerics}). The accidental $2\%$ proximity reported at
+$m=16384$ for $S=\{1,2\}$ occurred solely because $2s_0(\{1,2\})\approx 1.06256$
+is close to~$1$, so the transient pre-asymptotic damping factor
+$m^{-2\Delta_m}\approx 0.95$ happened to mask the $+3.64\%$ discrepancy until
+$m\ge 65536$.
+\end{enumerate}
+\end{remark}
+
+\section{Critical scaling at the phase boundary}\label{sec:critical}
+
+When $s_0(S)$ approaches $\frac12$, one must consider a sequence of alphabets
+$(S_k,B_k)$ with $m_k\to\infty$ and $\eta_k:=1-2s_0(S_k)\to0$. In that limit,
+both $d_k:=|S_k|+|B_k|$ and $\kappa_k:=\kappa(S_k)$ may vary with $k$, and
+uniformity of the pole remainder in Lemma~\ref{lem:pole}(e) must be stated
+explicitly.
+
+\begin{theorem}[Joint critical scaling limit]\label{thm:critical-scaling}
+Let $(m_k,S_k,B_k)_{k\ge1}$ be a sequence with $S_k\subset\Z_{\ge1}$ finite
+($|S_k|\ge2$), $B_k\subset\Z_{\ge0}$ finite, $d_k:=|S_k|+|B_k|$,
+$\Sigma_k:=1+\max S_k+\max(B_k\cup\{0\})$, $\eta_k:=1-2s_0(S_k)$,
+$\kappa_k:=\kappa(S_k)$, and scaling parameter
+$\gamma_k:=\sqrt{d_k\,\kappa_k/m_k}$. Assume:
+\begin{enumerate}[label=\textup{(H\arabic*)},leftmargin=2.4em]
+\item \emph{Scale separation:} $\Sigma_k/m_k\to0$ and $\gamma_k\log m_k\to0$
+as $k\to\infty$;
+\item \emph{Uniform pole dominance:} writing
+$C_{S_k}(p)=\frac{\kappa_k}{p-2s_0(S_k)}+R_{S_k}(p)$ for $p>2s_0(S_k)$, there
+exist constants $\delta_*\in(0,1]$ and $M_*<\infty$ (independent of $k$) such
+that $|R_{S_k}(p)|\le M_*\kappa_k$ for all $k\ge1$ and all
+$p\in(2s_0(S_k),\,2s_0(S_k)+\delta_*]$;
+\item \emph{Critical window:} $\xi_k:=\eta_k/\gamma_k\to\xi\in\R$ as
+$k\to\infty$.
+\end{enumerate}
+Then, as $k\to\infty$,
+\begin{equation}\label{eq:scaling-universal}
+\frac{\dimH F_{m_k,S_k,B_k}-\frac12}{\frac12\,\gamma_k}
+\longrightarrow \Phi_0(\xi):=\frac{-\xi+\sqrt{\xi^2+4}}{2},
+\end{equation}
+the unique positive root of $\Phi_0(\Phi_0+\xi)=1$. In particular, if in
+addition $d_k\kappa_k\to\alpha\in(0,\infty)$ and $\eta_k m_k^{1/2}\to x\in\R$,
+then
+\[
+m_k^{1/2}\Bigl(\dimH F_{m_k,S_k,B_k}-\tfrac12\Bigr)
+\longrightarrow\frac{-x+\sqrt{x^2+4\alpha}}{4}.
+\]
+\end{theorem}
+
+\begin{proof}
+Set $s_k^*:=\dimH F_{m_k,S_k,B_k}$ and $\varepsilon_k:=2s_k^*-1$. By~(H1),
+$m_k\ge 340\,\Sigma_k$ for all large~$k$, so Lemma~\ref{lem:master} gives
+$\varepsilon_k>0$, $\varepsilon_k+\eta_k=2(s_k^*-s_0(S_k))>0$, and
+\begin{equation}\label{eq:crit-master}
+d_k\,C_{S_k}(1+\varepsilon_k)\,m_k^{-1-\varepsilon_k}\,\zeta(1+\varepsilon_k)
+=1+O(\Sigma_k/m_k)=1+o(1).
+\end{equation}
+
+\emph{A priori upper bound.}
+Put $\tilde\varepsilon_k:=\max(-2\eta_k,\,4\gamma_k)$. By~(H1) and~(H3),
+$\eta_k=\xi_k\gamma_k=O(\gamma_k)\to0$, so $\tilde\varepsilon_k=O(\gamma_k)\to0$
+and $\tilde\varepsilon_k+\eta_k\ge\max(-\eta_k,\,2\gamma_k)\ge 2\gamma_k$. For
+all sufficiently large~$k$, we have $\tilde\varepsilon_k\le\frac12$,
+$\tilde\varepsilon_k+\eta_k\le\delta_*$, and
+$M_*(\tilde\varepsilon_k+\eta_k)\le\frac14$. By~(H2) and the elementary bound
+$\zeta(1+u)\le\frac1u+1\le\frac{3}{2u}$ ($0<u\le\frac12$),
+\[
+h_k\!\left(\frac{1+\tilde\varepsilon_k}{2}\right)
+\le d_k\cdot\frac54\,\frac{\kappa_k}{2\gamma_k}\cdot\frac{1}{m_k}\cdot\frac{3}{8\gamma_k}
+=\frac{15}{64}\,\frac{d_k\kappa_k}{m_k\gamma_k^2}=\frac{15}{64}<\frac45
+\le\frac{1}{1+C_0\Sigma_k/m_k}.
+\]
+Strict decrease of $h_k$ and~\eqref{eq:h-lower} force
+$0<\varepsilon_k<\tilde\varepsilon_k=O(\gamma_k)$.
+
+\emph{Passing to the scaling limit.}
+Since $\varepsilon_k=O(\gamma_k)$ and $|\eta_k|=O(\gamma_k)$, hypothesis~(H1)
+yields $\varepsilon_k\log m_k\to0$ (so $m_k^{-\varepsilon_k}\to1$) and
+$\varepsilon_k+\eta_k=O(\gamma_k)\to0$. By~(H2),
+$C_{S_k}(1+\varepsilon_k)=\frac{\kappa_k}{\varepsilon_k+\eta_k}(1+O(M_*\gamma_k))$;
+moreover $\zeta(1+\varepsilon_k)=\frac{1}{\varepsilon_k}(1+O(\varepsilon_k))$.
+Substituting into~\eqref{eq:crit-master} gives
+\[
+\frac{d_k\kappa_k}{\varepsilon_k(\varepsilon_k+\eta_k)\,m_k}=1+o(1).
+\]
+Setting $u_k:=\varepsilon_k/\gamma_k>0$ and recalling
+$\gamma_k^2=d_k\kappa_k/m_k$, this becomes $u_k(u_k+\xi_k)\to1$. Since
+$u_k>0$ and $\xi_k\to\xi$, every subsequential limit $u\ge0$ of $(u_k)$
+satisfies $u(u+\xi)=1$, whose unique nonnegative solution is $\Phi_0(\xi)$.
+Hence $u_k\to\Phi_0(\xi)$, which is~\eqref{eq:scaling-universal}. The
+specialization follows by setting $\xi=x/\sqrt{\alpha}$.
+\end{proof}
+
+\begin{corollary}[Fixed critical alphabet: leading and second-order expansion]\label{cor:critical-exp}
+Suppose $S\subset\Z_{\ge1}$ is a fixed finite alphabet with $s_0(S)=\frac12$
+(so $\eta=0$), and let $B\subset\Z_{\ge0}$ be finite with $d=|S|+|B|$. Then,
+as $m\to\infty$,
+\begin{equation}\label{eq:critical-two-term}
+\dimH F_{m,S,B}-\frac12
+=\frac{\sqrt{d\,\kappa(S)}}{2}\,m^{-1/2}
+-\frac{d\,\kappa(S)\,\log m}{4\,m}
++O_{S,B}(m^{-1}).
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+For fixed $(S,B)$, Lemma~\ref{lem:pole}(d)--(e) provides $\delta_*$ and $M_*$
+for~(H2), while~(H1) and~(H3) hold with $\xi=0$ and
+$\gamma_m=\sqrt{d\kappa(S)/m}$. Thus Theorem~\ref{thm:critical-scaling} gives
+$\varepsilon_m:=2\dimH F_{m,S,B}-1=\sqrt{d\kappa/m}\,(1+o(1))$, where
+$\kappa:=\kappa(S)$. Refining~\eqref{eq:crit-master} using
+$C_S(1+\varepsilon_m)=\frac{\kappa}{\varepsilon_m}(1+O_S(\varepsilon_m))$,
+$\zeta(1+\varepsilon_m)=\frac{1}{\varepsilon_m}(1+O(\varepsilon_m))$, and
+$\Sigma/m=O_{S,B}(m^{-1})=O_{S,B}(\varepsilon_m^2)$ yields
+\[
+\varepsilon_m^2\,m\,\ee^{\varepsilon_m\log m}
+=d\kappa\bigl(1+O_{S,B}(m^{-1/2})\bigr).
+\]
+Writing $a:=\sqrt{d\kappa}$ and $\varepsilon_m=a m^{-1/2}(1+\delta_m)$ with
+$\delta_m\to0$, we have
+$\ee^{\varepsilon_m\log m}=1+a m^{-1/2}\log m+O_{S,B}((\log m)^2/m+m^{-1/2}|\delta_m|\log m)$,
+so
+\[
+(1+\delta_m)^2\bigl(1+a m^{-1/2}\log m\bigr)=1+O_{S,B}\bigl(m^{-1/2}\bigr).
+\]
+Taking square roots yields
+$1+\delta_m=1-\frac12 a m^{-1/2}\log m+O_{S,B}(m^{-1/2})$, whence
+$\varepsilon_m=a m^{-1/2}-\frac12 a^2 m^{-1}\log m+O_{S,B}(m^{-1})$. Dividing
+by~$2$ gives~\eqref{eq:critical-two-term}.
+\end{proof}
+
+\begin{remark}[Status of critical alphabets and refutation of fixed-$\eta$ C2]\label{rem:naive-C2-false}
+\textup{(i)} Whether there exists a finite integer set $S\subset\Z_{\ge1}$
+with $s_0(S)=\frac12$ \emph{exactly}, and whether explicit sequences
+$(S_k)$ with $s_0(S_k)\to\frac12$ (which exist by density of finite-alphabet
+dimensions~\cite{MU99,CLU}) satisfy the uniform pole-dominance condition~(H2)
+simultaneously with $\Sigma_k/m_k\to0$ and $\eta_k/\gamma_k\to\xi$, remain
+open questions.
+\textup{(ii)} For a \emph{fixed} finite $S$ with $\eta=1-2s_0(S)>0$, the
+earlier fixed-$\eta$ conjecture
+$\varepsilon_m(\varepsilon_m+\eta)m^{1+\varepsilon_m}\to d\kappa(S)$ is false:
+the subcritical asymptotic $\varepsilon_m\sim d\,C_S(1)/m$ gives the limit
+$d\eta C_S(1)$, which equals $d\kappa(S)$ only if $C_S(1)=\kappa(S)/\eta$,
+failing whenever the regular part $A(1)$ is nonzero (for $S=\{2,3\}$,
+$C_S(1)/(\kappa/\eta)\approx 1.19$). Only the joint scaling limit of
+Theorem~\ref{thm:critical-scaling} survives.
+\end{remark}
+
+\section{Sparse-alphabet counterexample and tail-abscissa phase transition}\label{sec:sparse}
+
+In the multi-residue theorem of~\cite{Paper2}, the phase
+transition $\lim_{m\to\infty}\dimH F_{m,S,B}=\max(\frac12,s_0(S))$ reflects
+the fact that arithmetic-progression tails have single-digit convergence
+abscissa $\frac12$. For an arbitrary infinite alphabet $T\subset\Z_{\ge1}$,
+define the \emph{tail convergence abscissa}
+\[
+\theta(T):=\inf\left\{s>0:\sum_{a\in T}a^{-2s}<\infty\right\}\in\left[0,\frac12\right]
+\]
+(with the convention $\theta(T)=0$ if $T$ is finite). Note that
+$\theta(T)\le\frac12$ because $\sum_{a\ge1}a^{-2s}<\infty$ for all
+$s>\frac12$.
+
+\begin{proposition}[Tail-abscissa floor, sparse counterexample, and general phase transition]\label{prop:sparse-tail-phase}
+Let $T\subset\Z_{\ge1}$ be an infinite digit alphabet with tail abscissa
+$\theta(T)\in[0,1/2]$, and write $T_{\ge M}:=T\cap[M,\infty)$ for $M\ge1$.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+\item \emph{Universal tail-abscissa lower bound:}
+$\dimH E_T\ge\theta(T)$.
+\item \emph{Exact asymptotic tail limit and escaping digits:}
+\[
+\lim_{M\to\infty}\dimH E_{T_{\ge M}}=\theta(T),
+\qquad
+\dimH\bigl\{x=[0;a_1,a_2,\dots]\in E_T:\ a_n\to\infty\bigr\}\le\theta(T).
+\]
+\item \emph{General tail-abscissa phase transition:}
+For every finite alphabet $S\subset\Z_{\ge1}$ (including $S=\emptyset$, with
+$s_0(\emptyset):=0$),
+\begin{equation}\label{eq:general-tail-phase}
+\lim_{M\to\infty}\dimH E_{S\cup T_{\ge M}}=\max\bigl(\theta(T),\,s_0(S)\bigr).
+\end{equation}
+\item \emph{Sparse dyadic counterexample to a universal $1/2$ floor:}
+For each integer $k_0\ge1$, put $A_{k_0}:=\{2^{2^k}:k\ge k_0\}$. Then
+$\theta(A_{k_0})=0$ and
+\begin{equation}\label{eq:sparse-bounds}
+0<\dimH E_{\{2^{2^{k_0}},\,2^{2^{k_0+1}}\}}
+\le \dimH E_{A_{k_0}}
+\le 2^{-(k_0+1)}
+<\frac12.
+\end{equation}
+In particular, $\dimH E_{A_1}\in(0,1/4]$ is strictly positive yet lies
+strictly below~$1/2$, while $\lim_{k_0\to\infty}\dimH E_{A_{k_0}}=0$ and
+$\dimH\{x\in E_{A_1}:a_n(x)\to\infty\}=0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\emph{(i)} If $\theta(T)=0$ the bound is trivial. Suppose $0<s<\theta(T)$;
+then $\sum_{a\in T}a^{-2s}=\infty$, hence $\sum_{a\in T}(a+1)^{-2s}\ge
+2^{-2s}\sum_{a\in T}a^{-2s}=\infty$. Pick a finite subset $F\subset T$ with
+$\sum_{a\in F}(a+1)^{-2s}\ge1$. Taking the constant test function $v\equiv1$
+on $[0,1]$, we have $(\mathcal L_{s,F}1)(x)=\sum_{a\in F}(a+x)^{-2s}
+\ge\sum_{a\in F}(a+1)^{-2s}\ge1$, so Lemma~\ref{lem:to-criteria}(ii) gives
+$\dimH E_T\ge\dimH E_F\ge s$. Letting $s\uparrow\theta(T)$ proves~(i).
+
+\emph{(ii)} For every $M\ge1$, $T_{\ge M}$ differs from $T$ by finitely many
+elements, so $\theta(T_{\ge M})=\theta(T)$ and~(i) gives
+$\dimH E_{T_{\ge M}}\ge\theta(T)$. Conversely, for any $s>\theta(T)$,
+$\sum_{a\in T}a^{-2s}<\infty$, so $\sum_{a\in T_{\ge M}}a^{-2s}\to0$ as
+$M\to\infty$. Choosing $M$ large enough that $\sum_{a\in T_{\ge M}}a^{-2s}\le1$,
+we get $(\mathcal L_{s,T_{\ge M}}1)(x)\le\sum_{a\in T_{\ge M}}a^{-2s}\le1$
+on $[0,1]$, so Lemma~\ref{lem:to-criteria}(i) gives $\dimH E_{T_{\ge M}}\le s$.
+Hence $\lim_{M\to\infty}\dimH E_{T_{\ge M}}=\theta(T)$. For the escaping set,
+for every $M\ge1$ we have
+$\{x\in E_T:a_n(x)\to\infty\}\subset\bigcup_{N\ge0}G^{-N}(E_{T_{\ge M}})$,
+where $G(x)=\{1/x\}$ is the Gauss map; since each inverse branch of $G^N$ is
+bi-Lipschitz on its cylinder, countable stability of Hausdorff dimension
+gives $\dimH\{x\in E_T:a_n(x)\to\infty\}\le\dimH E_{T_{\ge M}}$ for all $M$,
+and letting $M\to\infty$ yields the second claim of~(ii).
+
+\emph{(iii)} Monotonicity in the alphabet, part~(i) applied to $T_{\ge M}$,
+and $\dimH E_S=s_0(S)$ give
+$\dimH E_{S\cup T_{\ge M}}\ge\max(\dimH E_{T_{\ge M}},\dimH E_S)\ge\max(\theta(T),s_0(S))$
+for every $M\ge1$. Conversely, fix any $s>\max(\theta(T),s_0(S))$. Since
+$s>s_0(S)$, the resolvent profile $V_{S,s}$ satisfies
+$1\le V_{S,s}(x)\le C_S(2s)<\infty$ and~\eqref{eq:multi-resolvent} (with
+$V_{\emptyset,s}\equiv1$, $C_\emptyset=1$ if $S=\emptyset$). Since
+$s>\theta(T)$, we may choose $M_0>\max(S\cup\{0\})$ such that
+$C_S(2s)\sum_{a\in T_{\ge M}}a^{-2s}\le1$ for all $M\ge M_0$. Then for all
+$M\ge M_0$ and $x\in[0,1]$,
+\begin{align*}
+(\mathcal L_{s,S\cup T_{\ge M}}V_{S,s})(x)
+&=V_{S,s}(x)-1+\sum_{a\in T_{\ge M}}(a+x)^{-2s}V_{S,s}\!\left(\frac{1}{a+x}\right)\\
+&\le V_{S,s}(x)-1+C_S(2s)\sum_{a\in T_{\ge M}}a^{-2s}
+\le V_{S,s}(x).
+\end{align*}
+Lemma~\ref{lem:to-criteria}(i) yields $\dimH E_{S\cup T_{\ge M}}\le s$ for
+all $M\ge M_0$. Letting $s\downarrow\max(\theta(T),s_0(S))$ proves~\eqref{eq:general-tail-phase}.
+
+\emph{(iv)} For any $s>0$, $(2^{2^k})^{-2s}=2^{-2s\cdot 2^k}$ decays doubly
+exponentially in~$k$, so $\theta(A_{k_0})=0$. Taking $s=2^{-(k_0+1)}$ gives
+$2s=2^{-k_0}$, whence for every $k_0\ge1$,
+\[
+\sum_{a\in A_{k_0}}a^{-2s}
+=\sum_{j=0}^\infty \bigl(2^{2^{k_0+j}}\bigr)^{-2^{-k_0}}
+=\sum_{j=0}^\infty 2^{-2^j}
+<\frac12+\frac14+\sum_{n=4}^\infty 2^{-n}
+=\frac78<1.
+\]
+Hence $(\mathcal L_{s,A_{k_0}}1)(x)\le\frac78<1$ on $[0,1]$, so
+Lemma~\ref{lem:to-criteria}(i) proves $\dimH E_{A_{k_0}}\le 2^{-(k_0+1)}$.
+For strict positivity, $A_{k_0}$ contains the two-element set
+$F_0:=\{a,b\}:=\{2^{2^{k_0}},2^{2^{k_0+1}}\}$; choosing
+$s_1:=\frac{\log 2}{2\log(b+1)}>0$ gives
+$(a+1)^{-2s_1}+(b+1)^{-2s_1}\ge 2(b+1)^{-2s_1}=1$, so
+Lemma~\ref{lem:to-criteria}(ii) with $v\equiv1$ yields
+$\dimH E_{A_{k_0}}\ge\dimH E_{F_0}\ge s_1>0$. Letting $k_0\to\infty$ gives
+$\lim_{k_0\to\infty}\dimH E_{A_{k_0}}=0$, and part~(ii) gives
+$\dimH\{x\in E_{A_1}:a_n(x)\to\infty\}=0$.
+\end{proof}
+
+\begin{remark}[Relation to prior literature and clarification of the counterexample]\label{rem:sparse-prior}
+The inequality $\dimH E_T\ge\theta(T)$ is standard in the infinite conformal
+IFS theory of Mauldin--Urba\'nski~\cite{MU96} (see also~\cite{CLU}), while
+the special case of~\eqref{eq:general-tail-phase} for polynomial tails
+$T=\{n^p\}$ (where $\theta(T)=1/(2p)$) is treated in~\cite[Proposition~9.3]{DFSU}
+and $T=\Z_{\ge1}$ goes back to Good~\cite{Good41}. Proposition~\ref{prop:sparse-tail-phase}
+recovers the general tail-abscissa phase transition by an elementary six-line
+Bowen-free transfer-operator proof, and clarifies two subtleties: neither
+$\dimH E_A\ge\frac12$ (refuted by $A_1$) nor the reversed bound
+$\dimH E_A\le\theta(A)$ (refuted by any finite $|A|\ge2$, and indeed by
+$A_1$ itself, which has $\theta(A_1)=0<\dimH E_{A_1}\approx 0.20311$) holds
+for arbitrary alphabets; rather, $\theta(T)$ is the exact \emph{asymptotic
+tail floor} $\lim_{M\to\infty}\dimH E_{T_{\ge M}}$.
+\end{remark}
+
+\section{High-precision numerical corroboration (non-rigorous)}\label{sec:numerics}
+
+\emph{Honesty notice:} All numerical values in this section are obtained by
+Chebyshev collocation (and binomial Riemann-zeta expansion of the Hurwitz
+tail) in $70$-digit \texttt{mpmath} arithmetic via the reproducible script
+\texttt{verification/\allowbreak verify\_\allowbreak supercritical\_\allowbreak exact\_\allowbreak constant\_\allowbreak 20261125.py}.
+They serve strictly as \textbf{non-rigorous numerical corroboration}
+(\texttt{AGENTS.md} Category~4) and do not enter any proof above.
+
+Table~\ref{tab:super-constants} displays $s_0(S)$, the residue $\kappa(S)$
+(cross-checked by both the eigenprojector formula $c(p_0)/(-\rho'(p_0))$ and
+direct Richardson extrapolation of $(p-p_0)C_S(p)$, agreeing to $<10^{-41}$),
+the exact theorem constant $K_{\mathrm{exact}}:=\frac{d\kappa(S)\zeta(2s_0(S))}{2}$,
+and the disproved heuristic $K_{\mathrm{old}}:=\frac{d\kappa(S)}{2(2s_0(S)-1)}$
+for four supercritical configurations (including $B=\{0\}$ to test the factor
+$d=|S|+|B|$). Collocation orders $n=44$ and $n=48$ agree to $<10^{-33}$ for
+all displayed constants and dimensions.
+
+\begin{table}[ht]
+\centering\small\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+$(S,B)$ & $d$ & $s_0(S)$ & $\kappa(S)$ & $K_{\mathrm{exact}}$ & $K_{\mathrm{old}}$ & $K_{\mathrm{exact}}/K_{\mathrm{old}}$ \\
+\midrule
+$(\{1,2\},\emptyset)$ & $2$ & $0.531280506277$ & $2.091904491630$ & $34.6547995583$ & $33.4378298275$ & $1.036395$ \\
+$(\{1,2\},\{0\})$ & $3$ & $0.531280506277$ & $2.091904491630$ & $51.9821993375$ & $50.1567447412$ & $1.036395$ \\
+$(\{1,2,3\},\emptyset)$ & $3$ & $0.705660908029$ & $1.936917417935$ & $8.82511466414$ & $7.06351088972$ & $1.249395$ \\
+$(\{1,2,3,4\},\emptyset)$ & $4$ & $0.788945557483$ & $1.819185651664$ & $8.54308248172$ & $6.29594608587$ & $1.356918$ \\
+\bottomrule
+\end{tabular}
+\caption{Non-rigorous numerical corroboration ($n=44$ vs.\ $n=48$ collocation
+at $70$-digit working precision, rounded to $12$ significant digits; full
+$30$-digit values in \texttt{verify\_\allowbreak supercritical\_\allowbreak exact\_\allowbreak constant\_\allowbreak 20261125.log}).
+Note $s_0(\{1,2\})$ matches Jenkinson--Pollicott~\cite{JP2018} and
+Brown~\cite{Brown2026} to all displayed digits.}\label{tab:super-constants}
+\end{table}
+
+Table~\ref{tab:super-conv} tracks the rescaled excess
+$Q_m:=m^{2s_0(S)}(\dimH F_{m,S,B}-s_0(S))$ as $m$ grows, together with the
+relative discrepancy $|Q_m-Q_m^{\mathrm{mast}}|/K_{\mathrm{exact}}$ against
+the exact root of the scalar master equation $h(s)=1$ from
+Lemma~\ref{lem:master}. In all four cases, $Q_m/K_{\mathrm{exact}}\to1$
+cleanly (reaching $0.999999997$--$0.9999999995$), while $Q_m/K_{\mathrm{old}}$
+strictly exceeds~$1$ and converges to $(2s_0-1)\zeta(2s_0)$. At $m=10^{12}$,
+the ratio $Q_m(\{1,2\},\{0\})/Q_m(\{1,2\},\emptyset)=1.49999999961$ confirms
+the exact linear dependence on $d=|S|+|B|$.
+
+\begin{table}[ht]
+\centering\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+$(S,B)$ & $m$ & $Q_m=m^{2s_0}(\dimH-s_0)$ & $Q_m/K_{\mathrm{exact}}$ & $Q_m/K_{\mathrm{old}}$ & $|Q_m-Q_m^{\mathrm{mast}}|/K_{\mathrm{exact}}$ \\
+\midrule
+$(\{1,2\},\emptyset)$ & $16384$ & $32.86032020$ & $0.94821845$ & $0.98272885$ & $1.516\times10^{-5}$ \\
+$(\{1,2\},\emptyset)$ & $65536$ & $34.18969883$ & $0.98657904$ & $1.02248558$ & $3.991\times10^{-6}$ \\
+$(\{1,2\},\emptyset)$ & $10^6$ & $34.62578453$ & $0.99916274$ & $1.03552727$ & $2.662\times10^{-7}$ \\
+$(\{1,2\},\emptyset)$ & $10^{12}$ & $34.65479954$ & $0.9999999995$ & $1.03639500$ & $2.665\times10^{-13}$ \\
+\midrule
+$(\{1,2\},\{0\})$ & $65536$ & $50.94744294$ & $0.98009402$ & $1.01576454$ & $3.199\times10^{-6}$ \\
+$(\{1,2\},\{0\})$ & $10^{12}$ & $51.98219930$ & $0.9999999992$ & $1.03639500$ & $2.155\times10^{-13}$ \\
+\midrule
+$(\{1,2,3\},\emptyset)$ & $4096$ & $8.80890587$ & $0.99816333$ & $1.24710020$ & $4.778\times10^{-4}$ \\
+$(\{1,2,3\},\emptyset)$ & $65536$ & $8.82454138$ & $0.99993504$ & $1.24931376$ & $2.996\times10^{-5}$ \\
+$(\{1,2,3\},\emptyset)$ & $10^9$ & $8.82511465$ & $0.999999998$ & $1.24939492$ & $1.964\times10^{-9}$ \\
+\midrule
+$(\{1,2,3,4\},\emptyset)$ & $4096$ & $8.53396485$ & $0.99893275$ & $1.35546981$ & $7.620\times10^{-4}$ \\
+$(\{1,2,3,4\},\emptyset)$ & $65536$ & $8.54263198$ & $0.99994727$ & $1.35684643$ & $4.770\times10^{-5}$ \\
+$(\{1,2,3,4\},\emptyset)$ & $10^9$ & $8.54308245$ & $0.999999997$ & $1.35691798$ & $3.126\times10^{-9}$ \\
+\bottomrule
+\end{tabular}
+\caption{Non-rigorous numerical corroboration of
+Theorem~\ref{thm:supercritical-exact} and disproof of $K_{\mathrm{old}}$.
+The final column verifies that the scalar master equation of
+Lemma~\ref{lem:master} tracks the true supercritical dimension to relative
+error $O(m^{-1})$.}\label{tab:super-conv}
+\end{table}
+
+For the sparse dyadic family $A_{k_0}=\{2^{2^k}:k\ge k_0\}$ of
+Proposition~\ref{prop:sparse-tail-phase}(iv), the universal dyadic tail sum
+at $s=2^{-(k_0+1)}$ equals
+$\sum_{j=0}^\infty 2^{-2^j}=0.81642150902189314371\dots<1$ (verified to $50$
+digits), and non-rigorous collocation gives
+$\dimH E_{A_1}\approx 0.20311079$ (bounded below by
+$\dimH E_{\{4,16\}}\approx 0.17091495>0$ and above by $0.25$),
+$\dimH E_{A_2}\approx 0.10257232\le 0.125$,
+$\dimH E_{A_3}\approx 0.05130063\le 0.0625$, and
+$\dimH E_{A_4}\approx 0.02565033\le 0.03125$.
+In addition, symbolic series expansion in \texttt{sympy} confirms the
+second-order coefficient $-\frac{d\kappa}{4}$ in~\eqref{eq:critical-two-term}.
+
+\section{Scope, formalization status, and use of AI}\label{sec:scope}
+
+\paragraph{What is proved and what remains open.}
+All main statements in Sections~\ref{sec:prelim}--\ref{sec:sparse}
+(Lemmas~\ref{lem:CS2}, \ref{lem:pole}, \ref{lem:resolvent-uniform},
+\ref{lem:master}, Theorems~\ref{thm:supercritical-exact}
+and~\ref{thm:critical-scaling}, Corollary~\ref{cor:critical-exp}, and
+Proposition~\ref{prop:sparse-tail-phase}) are proved by traditional
+human-readable mathematical arguments modulo the Bowen-free transfer-operator
+criteria of Lemma~\ref{lem:to-criteria} (which are proved and kernel-verified
+in Lean~4 in~\cite{Paper2}). What remains open:
+\begin{itemize}[leftmargin=1.6em]
+\item The irrationality of $e+\pi$ (and of $e\pi,e-\pi,\pi/e,\pi^e$) remains
+completely open and is not addressed by this paper.
+\item The existence of a finite integer alphabet $S\subset\Z_{\ge1}$ with
+$s_0(S)=\frac12$ exactly, and the construction of an explicit varying
+sequence $(S_k)$ satisfying~(H1)--(H3) simultaneously, remain open.
+\item The fourth-order subcritical conjecture
+$+\frac34(dC_S)^3(\log m)^2/m^3$ discussed in~\cite{Paper2} (cf.~\cite{DFSU})
+remains unproved.
+\end{itemize}
+
+\paragraph{Lean~4 formalization status.}
+While Lemma~\ref{lem:to-criteria} and the earlier results of~\cite{Paper2}
+are machine-checked in Lean~4 (\texttt{epi\_formal/}, base axioms only,
+$0$~\texttt{sorryAx}), the new analytic results of the present standalone
+manuscript (Lemma~\ref{lem:pole}, Lemma~\ref{lem:master},
+Theorem~\ref{thm:supercritical-exact}, Theorem~\ref{thm:critical-scaling},
+and Proposition~\ref{prop:sparse-tail-phase}) are \emph{not yet formally
+verified in Lean~4}; their Lean~4 formalization is scheduled for integration
+once parallel kernel-verification streams in \texttt{epi\_formal/} complete,
+without introducing any custom project axioms.
+
+\paragraph{Use of AI and human verification.}
+% TODO before submission: insert journal-required AI-tool contribution statement
+% complying with the target venue's policy.
+Substantial assistance from generative AI systems was used in auditing the
+earlier critical-scaling draft, identifying and repairing its mathematical
+defects, drafting proofs and exposition, and writing the non-rigorous
+numerical corroboration script.
+% TODO before submission: replace with the human author's line-by-line
+% proof-verification attestation and reviewer statement prior to submission.
+Prior to journal submission, every proof and citation in this manuscript must
+undergo independent line-by-line human verification by the author(s).
+
+\begin{thebibliography}{99}
+\bibitem{Brown2026} J.~Brown, \emph{Rigorous High-Order Hausdorff Dimension
+Estimation of Limit Sets of Continued Fraction Iterated Function Systems via
+B-Splines}, arXiv:2604.20812v2 (2026).
+
+\bibitem{CLN2026} P.~Chitanga, B.~Lemmens, R.~Nussbaum, \emph{On the structure
+of the dimension spectrum for continued fraction expansions}, Indag.\ Math.\
+37 (2026), no.~6, 1960--1989, doi:10.1016/j.indag.2026.03.008;
+arXiv:2504.20878v2.
+
+\bibitem{CLU} V.~Chousionis, D.~Leykekhman, M.~Urba\'nski, \emph{On the
+dimension spectrum of infinite subsystems of continued fractions},
+Trans.\ Amer.\ Math.\ Soc.\ 373 (2020), no.~2, 1009--1042,
+doi:10.1090/tran/7984; arXiv:1805.11904.
+
+\bibitem{CLUW2024} V.~Chousionis, D.~Leykekhman, M.~Urba\'nski, E.~Wendt,
+\emph{Rigorous Hausdorff dimension estimates for conformal fractals},
+arXiv:2408.06330v2 (2025).
+
+{\sloppy
+\bibitem{DFSU} T.~Das, L.~Fishman, D.~Simmons, M.~Urba\'nski, \emph{Hausdorff
+dimensions of perturbations of a conformal iterated function system via
+thermodynamic formalism}, Selecta Math.\ (N.S.) 29 (2023), no.~2, Paper No.~19,
+doi:10.1007/s00029-022-00820-z; arXiv:2007.10554.
+}
+
+\bibitem{DLMF} \emph{NIST Digital Library of Mathematical Functions}, \S25.2,
+Release~1.2.8 of 2026-09-15, \url{https://dlmf.nist.gov/25.2}.
+
+{\sloppy
+\bibitem{Good41} I.~J.~Good, \emph{The fractional dimensional theory of
+continued fractions}, Proc.\ Cambridge Philos.\ Soc.\ 37 (1941), 199--228,
+doi:10.1017/S030500410002171X.
+}
+
+{\sloppy
+\bibitem{HU02} S.~Heinemann and M.~Urba\'nski, \emph{Hausdorff dimension
+estimates for infinite conformal IFSs}, Nonlinearity 15 (2002), 727--734,
+doi:10.1088/0951-7715/15/3/312.
+}
+
+{\sloppy
+\bibitem{Hensley92} D.~Hensley, \emph{Continued fraction Cantor sets,
+Hausdorff dimension, and functional analysis}, J.\ Number Theory 40 (1992),
+336--358, doi:10.1016/0022-314X(92)90006-B.
+}
+
+\bibitem{Hensley1996} D.~Hensley, \emph{A Polynomial Time Algorithm for the
+Hausdorff Dimension of Continued Fraction Cantor Sets}, J.\ Number Theory 58
+(1996), no.~1, 9--45, doi:10.1006/jnth.1996.0058; Erratum, J.\ Number Theory
+59 (1996), no.~2, 419, doi:10.1006/jnth.1996.0107.
+
+\bibitem{JP2018} O.~Jenkinson and M.~Pollicott, \emph{Rigorous effective bounds
+on the Hausdorff dimension of continued fraction Cantor sets: A hundred decimal
+digits for the dimension of $E_2$}, Adv.\ Math.\ 325 (2018), 87--115,
+doi:10.1016/j.aim.2017.11.028.
+
+{\sloppy
+\bibitem{Kato1995} T.~Kato, \emph{Perturbation Theory for Linear Operators},
+Classics in Mathematics (reprint of the 1980 corrected 2nd ed.),
+Springer-Verlag, Berlin--Heidelberg, 1995, doi:10.1007/978-3-642-66282-9.
+}
+
+{\sloppy
+\bibitem{MU96} R.~D.~Mauldin and M.~Urba\'nski, \emph{Dimensions and measures
+in infinite iterated function systems}, Proc.\ London Math.\ Soc.\ (3) 73
+(1996), 105--154, doi:10.1112/plms/s3-73.1.105.
+}
+
+{\sloppy
+\bibitem{MU99} R.~D.~Mauldin and M.~Urba\'nski, \emph{Conformal iterated
+function systems with applications to the geometry of continued fractions},
+Trans.\ Amer.\ Math.\ Soc.\ 351 (1999), no.~12, 4995--5025,
+doi:10.1090/S0002-9947-99-02268-0.
+}
+
+{\sloppy
+\bibitem{Mayer1990} D.~H.~Mayer, \emph{On the thermodynamic formalism for the
+Gauss map}, Comm.\ Math.\ Phys.\ 130 (1990), no.~2, 311--333,
+doi:10.1007/BF02473355.
+}
+
+\bibitem{Paper2} Companion manuscript, \emph{Complete spectrum discretization,
+exact Hausdorff gauges, and dimension phase transitions for Diophantine
+approximation along the convergent denominators of $e$} (and Lean~4 archive
+\texttt{epi\_formal/}), integrated draft, 2026-11-25.
+\end{thebibliography}
+
+\end{document}

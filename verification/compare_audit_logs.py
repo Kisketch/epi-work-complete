@@ -74,10 +74,15 @@ def main() -> int:
     ap.add_argument("reference", type=Path, nargs="?", help="committed reference log")
     ap.add_argument("--count", type=int, help="expected number of entries")
     ap.add_argument("--only-axioms", help="comma-separated set every entry's axioms must lie within")
+    ap.add_argument(
+        "--allow-comments",
+        action="store_true",
+        help="allow `#` provenance header comments in OUTPUT when self-checking a committed log",
+    )
     args = ap.parse_args()
 
     errors: list[str] = []
-    out_entries, out_stray = parse(args.output, allow_comments=False)
+    out_entries, out_stray = parse(args.output, allow_comments=args.allow_comments)
     print(f"Output    {args.output}: {len(out_entries)} entries")
     for line in out_stray:
         errors.append(f"unexpected line in output: {line}")

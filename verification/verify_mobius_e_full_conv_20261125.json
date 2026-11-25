@@ -1,0 +1,2310 @@
+{
+  "timestamp": "2026-11-25",
+  "dps": 350,
+  "mobius_window_suite": {
+    "total_matrices": 40,
+    "adversarial_V3_eq_0": true,
+    "records": [
+      {
+        "matrix": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "Delta": 1,
+        "T_window": 2,
+        "min_win_T": 1,
+        "J0": 2,
+        "checked_windows": 40,
+        "R_digits_per_T": 6,
+        "min_hurwitz_digit_period": 3,
+        "r_period_slice": [
+          3,
+          3
+        ],
+        "cf_prefix": [
+          2,
+          1,
+          2,
+          1,
+          1,
+          4,
+          1,
+          1,
+          6,
+          1,
+          1,
+          8,
+          1,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "e"
+      },
+      {
+        "matrix": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "Delta": 2,
+        "T_window": 4,
+        "min_win_T": 2,
+        "J0": 3,
+        "checked_windows": 37,
+        "R_digits_per_T": 12,
+        "min_hurwitz_digit_period": 6,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          5,
+          2,
+          3,
+          2,
+          3,
+          1,
+          2,
+          1,
+          3,
+          4,
+          3,
+          1,
+          4,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "2e"
+      },
+      {
+        "matrix": [
+          [
+            3,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "Delta": 3,
+        "T_window": 6,
+        "min_win_T": 3,
+        "J0": 5,
+        "checked_windows": 33,
+        "R_digits_per_T": 18,
+        "min_hurwitz_digit_period": 9,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          8,
+          6,
+          2,
+          5,
+          2,
+          5,
+          1,
+          2,
+          5,
+          1,
+          2,
+          1,
+          5,
+          4
+        ],
+        "all_checks_passed": true,
+        "label": "3e"
+      },
+      {
+        "matrix": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "Delta": 2,
+        "T_window": 4,
+        "min_win_T": 2,
+        "J0": 3,
+        "checked_windows": 37,
+        "R_digits_per_T": 12,
+        "min_hurwitz_digit_period": 6,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          1,
+          2,
+          1,
+          3,
+          1,
+          1,
+          1,
+          3,
+          3,
+          3,
+          1,
+          3,
+          1,
+          3
+        ],
+        "all_checks_passed": true,
+        "label": "e/2"
+      },
+      {
+        "matrix": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "Delta": -1,
+        "T_window": 2,
+        "min_win_T": 1,
+        "J0": 2,
+        "checked_windows": 40,
+        "R_digits_per_T": 6,
+        "min_hurwitz_digit_period": 3,
+        "r_period_slice": [
+          3,
+          3
+        ],
+        "cf_prefix": [
+          0,
+          2,
+          1,
+          2,
+          1,
+          1,
+          4,
+          1,
+          1,
+          6,
+          1,
+          1,
+          8,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "1/e"
+      },
+      {
+        "matrix": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ]
+        ],
+        "Delta": -2,
+        "T_window": 4,
+        "min_win_T": 1,
+        "J0": 3,
+        "checked_windows": 37,
+        "R_digits_per_T": 4,
+        "min_hurwitz_digit_period": 1,
+        "r_period_slice": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "cf_prefix": [
+          2,
+          6,
+          10,
+          14,
+          18,
+          22,
+          26,
+          30,
+          34,
+          38,
+          42,
+          46,
+          50,
+          54
+        ],
+        "all_checks_passed": true,
+        "label": "(e+1)/(e-1)"
+      },
+      {
+        "matrix": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "Delta": 2,
+        "T_window": 4,
+        "min_win_T": 1,
+        "J0": 3,
+        "checked_windows": 37,
+        "R_digits_per_T": 4,
+        "min_hurwitz_digit_period": 1,
+        "r_period_slice": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "cf_prefix": [
+          0,
+          2,
+          6,
+          10,
+          14,
+          18,
+          22,
+          26,
+          30,
+          34,
+          38,
+          42,
+          46,
+          50
+        ],
+        "all_checks_passed": true,
+        "label": "(e-1)/(e+1)"
+      },
+      {
+        "matrix": [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "Delta": 2,
+        "T_window": 4,
+        "min_win_T": 1,
+        "J0": 3,
+        "checked_windows": 37,
+        "R_digits_per_T": 4,
+        "min_hurwitz_digit_period": 1,
+        "r_period_slice": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "cf_prefix": [
+          1,
+          1,
+          6,
+          10,
+          14,
+          18,
+          22,
+          26,
+          30,
+          34,
+          38,
+          42,
+          46,
+          50
+        ],
+        "all_checks_passed": true,
+        "label": "(e+1)/2"
+      },
+      {
+        "matrix": [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "Delta": 4,
+        "T_window": 8,
+        "min_win_T": 2,
+        "J0": 6,
+        "checked_windows": 30,
+        "R_digits_per_T": 8,
+        "min_hurwitz_digit_period": 2,
+        "r_period_slice": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "cf_prefix": [
+          0,
+          1,
+          13,
+          5,
+          28,
+          9,
+          44,
+          13,
+          60,
+          17,
+          76,
+          21,
+          92,
+          25
+        ],
+        "all_checks_passed": true,
+        "label": "(e+1)/4"
+      },
+      {
+        "matrix": [
+          [
+            1,
+            3
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "Delta": 4,
+        "T_window": 8,
+        "min_win_T": 2,
+        "J0": 6,
+        "checked_windows": 30,
+        "R_digits_per_T": 8,
+        "min_hurwitz_digit_period": 2,
+        "r_period_slice": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "cf_prefix": [
+          1,
+          2,
+          3,
+          20,
+          7,
+          36,
+          11,
+          52,
+          15,
+          68,
+          19,
+          84,
+          23,
+          100
+        ],
+        "all_checks_passed": true,
+        "label": "(e+3)/4"
+      },
+      {
+        "matrix": [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "Delta": 3,
+        "T_window": 6,
+        "min_win_T": 6,
+        "J0": 5,
+        "checked_windows": 33,
+        "R_digits_per_T": 18,
+        "min_hurwitz_digit_period": 18,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          1,
+          4,
+          5,
+          1,
+          1,
+          1,
+          20,
+          1,
+          1,
+          2,
+          1,
+          1,
+          32,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "(e+1)/3"
+      },
+      {
+        "matrix": [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "Delta": 6,
+        "T_window": 12,
+        "min_win_T": 6,
+        "J0": 9,
+        "checked_windows": 29,
+        "R_digits_per_T": 20,
+        "min_hurwitz_digit_period": 10,
+        "r_period_slice": [
+          1,
+          1,
+          3,
+          3,
+          1,
+          1,
+          1,
+          1,
+          3,
+          3,
+          1,
+          1
+        ],
+        "cf_prefix": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          3,
+          42,
+          6,
+          66,
+          8,
+          1,
+          2
+        ],
+        "all_checks_passed": true,
+        "label": "(e+1)/6"
+      },
+      {
+        "matrix": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "Delta": 1,
+        "T_window": 2,
+        "min_win_T": 1,
+        "J0": 2,
+        "checked_windows": 40,
+        "R_digits_per_T": 6,
+        "min_hurwitz_digit_period": 3,
+        "r_period_slice": [
+          3,
+          3
+        ],
+        "cf_prefix": [
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          4,
+          1,
+          1,
+          6,
+          1,
+          1,
+          8
+        ],
+        "all_checks_passed": true,
+        "label": "(2e+1)/(e+1)"
+      },
+      {
+        "matrix": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        "Delta": -5,
+        "T_window": 10,
+        "min_win_T": 10,
+        "J0": 8,
+        "checked_windows": 26,
+        "R_digits_per_T": 32,
+        "min_hurwitz_digit_period": 32,
+        "r_period_slice": [
+          5,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          0,
+          1,
+          1,
+          15,
+          1,
+          2,
+          1,
+          34,
+          1,
+          1,
+          1,
+          3,
+          3,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "(e+2)/(3e+1)"
+      },
+      {
+        "matrix": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            5
+          ]
+        ],
+        "Delta": 4,
+        "T_window": 8,
+        "min_win_T": 2,
+        "J0": 6,
+        "checked_windows": 30,
+        "R_digits_per_T": 8,
+        "min_hurwitz_digit_period": 2,
+        "r_period_slice": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "cf_prefix": [
+          0,
+          2,
+          13,
+          5,
+          28,
+          9,
+          44,
+          13,
+          60,
+          17,
+          76,
+          21,
+          92,
+          25
+        ],
+        "all_checks_passed": true,
+        "label": "(e+1)/(e+5)"
+      },
+      {
+        "matrix": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            3
+          ]
+        ],
+        "Delta": 5,
+        "T_window": 10,
+        "min_win_T": 10,
+        "J0": 8,
+        "checked_windows": 26,
+        "R_digits_per_T": 32,
+        "min_hurwitz_digit_period": 32,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          5,
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          1,
+          7,
+          1,
+          24,
+          1,
+          2,
+          9,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "(2e+1)/(e+3)"
+      },
+      {
+        "matrix": [
+          [
+            5,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "Delta": 14,
+        "T_window": 28,
+        "min_win_T": 14,
+        "J0": 21,
+        "checked_windows": 61,
+        "R_digits_per_T": 112,
+        "min_hurwitz_digit_period": 56,
+        "r_period_slice": [
+          3,
+          3,
+          5,
+          5,
+          5,
+          3,
+          3,
+          5,
+          7,
+          5,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          5,
+          5,
+          5,
+          3,
+          3,
+          5,
+          7,
+          5,
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          1,
+          3,
+          1,
+          1,
+          6,
+          3,
+          1,
+          2,
+          7,
+          1,
+          1,
+          27,
+          3,
+          45
+        ],
+        "all_checks_passed": true,
+        "label": "(5e+2)/(3e+4)"
+      },
+      {
+        "matrix": [
+          [
+            -39,
+            106
+          ],
+          [
+            -71,
+            193
+          ]
+        ],
+        "Delta": -1,
+        "T_window": 2,
+        "min_win_T": 1,
+        "J0": 5,
+        "checked_windows": 37,
+        "R_digits_per_T": 6,
+        "min_hurwitz_digit_period": 3,
+        "r_period_slice": [
+          3,
+          3
+        ],
+        "cf_prefix": [
+          -7,
+          2,
+          8,
+          1,
+          1,
+          10,
+          1,
+          1,
+          12,
+          1,
+          1,
+          14,
+          1,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "(39e-106)/(71e-193)_adversarial"
+      },
+      {
+        "matrix": [
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            8
+          ]
+        ],
+        "Delta": 16,
+        "T_window": 32,
+        "min_win_T": 2,
+        "J0": 24,
+        "checked_windows": 69,
+        "R_digits_per_T": 32,
+        "min_hurwitz_digit_period": 2,
+        "r_period_slice": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "cf_prefix": [
+          0,
+          1,
+          13,
+          5,
+          28,
+          9,
+          44,
+          13,
+          60,
+          17,
+          76,
+          21,
+          92,
+          25
+        ],
+        "all_checks_passed": true,
+        "label": "2*(e+1)/4_nonprim"
+      },
+      {
+        "matrix": [
+          [
+            3,
+            -5
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "Delta": 3,
+        "T_window": 6,
+        "min_win_T": 3,
+        "J0": 5,
+        "checked_windows": 33,
+        "R_digits_per_T": 18,
+        "min_hurwitz_digit_period": 9,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          3,
+          6,
+          2,
+          5,
+          2,
+          5,
+          1,
+          2,
+          5,
+          1,
+          2,
+          1,
+          5,
+          4
+        ],
+        "all_checks_passed": true,
+        "label": "(3e-5)/1_negative"
+      },
+      {
+        "matrix": [
+          [
+            1,
+            3
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "Delta": 1,
+        "T_window": 2,
+        "min_win_T": 1,
+        "J0": 2,
+        "checked_windows": 40,
+        "R_digits_per_T": 6,
+        "min_hurwitz_digit_period": 3,
+        "r_period_slice": [
+          3,
+          3
+        ],
+        "cf_prefix": [
+          5,
+          1,
+          2,
+          1,
+          1,
+          4,
+          1,
+          1,
+          6,
+          1,
+          1,
+          8,
+          1,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det1"
+      },
+      {
+        "matrix": [
+          [
+            4,
+            5
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "Delta": -1,
+        "T_window": 2,
+        "min_win_T": 1,
+        "J0": 2,
+        "checked_windows": 40,
+        "R_digits_per_T": 6,
+        "min_hurwitz_digit_period": 3,
+        "r_period_slice": [
+          3,
+          3
+        ],
+        "cf_prefix": [
+          4,
+          3,
+          1,
+          2,
+          1,
+          1,
+          4,
+          1,
+          1,
+          6,
+          1,
+          1,
+          8,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det-1"
+      },
+      {
+        "matrix": [
+          [
+            2,
+            5
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "Delta": 2,
+        "T_window": 4,
+        "min_win_T": 2,
+        "J0": 3,
+        "checked_windows": 37,
+        "R_digits_per_T": 12,
+        "min_hurwitz_digit_period": 6,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          10,
+          2,
+          3,
+          2,
+          3,
+          1,
+          2,
+          1,
+          3,
+          4,
+          3,
+          1,
+          4,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det2"
+      },
+      {
+        "matrix": [
+          [
+            6,
+            22
+          ],
+          [
+            2,
+            7
+          ]
+        ],
+        "Delta": -2,
+        "T_window": 4,
+        "min_win_T": 2,
+        "J0": 3,
+        "checked_windows": 37,
+        "R_digits_per_T": 12,
+        "min_hurwitz_digit_period": 6,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          3,
+          12,
+          2,
+          3,
+          2,
+          3,
+          1,
+          2,
+          1,
+          3,
+          4,
+          3,
+          1,
+          4
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det-2"
+      },
+      {
+        "matrix": [
+          [
+            3,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "Delta": 3,
+        "T_window": 6,
+        "min_win_T": 3,
+        "J0": 5,
+        "checked_windows": 33,
+        "R_digits_per_T": 18,
+        "min_hurwitz_digit_period": 9,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          9,
+          6,
+          2,
+          5,
+          2,
+          5,
+          1,
+          2,
+          5,
+          1,
+          2,
+          1,
+          5,
+          4
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det3"
+      },
+      {
+        "matrix": [
+          [
+            -1,
+            0
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "Delta": -3,
+        "T_window": 6,
+        "min_win_T": 3,
+        "J0": 5,
+        "checked_windows": 33,
+        "R_digits_per_T": 18,
+        "min_hurwitz_digit_period": 9,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          -1,
+          1,
+          5,
+          9,
+          1,
+          1,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          26,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det-3"
+      },
+      {
+        "matrix": [
+          [
+            0,
+            -2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "Delta": 4,
+        "T_window": 8,
+        "min_win_T": 2,
+        "J0": 6,
+        "checked_windows": 30,
+        "R_digits_per_T": 40,
+        "min_hurwitz_digit_period": 10,
+        "r_period_slice": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "cf_prefix": [
+          -1,
+          1,
+          3,
+          4,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det4"
+      },
+      {
+        "matrix": [
+          [
+            -4,
+            5
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "Delta": -4,
+        "T_window": 8,
+        "min_win_T": 2,
+        "J0": 6,
+        "checked_windows": 30,
+        "R_digits_per_T": 24,
+        "min_hurwitz_digit_period": 6,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          -6,
+          7,
+          1,
+          7,
+          2,
+          7,
+          2,
+          7,
+          1,
+          1,
+          1,
+          7,
+          3,
+          7
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det-4"
+      },
+      {
+        "matrix": [
+          [
+            3,
+            7
+          ],
+          [
+            1,
+            4
+          ]
+        ],
+        "Delta": 5,
+        "T_window": 10,
+        "min_win_T": 10,
+        "J0": 8,
+        "checked_windows": 26,
+        "R_digits_per_T": 32,
+        "min_hurwitz_digit_period": 32,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          5,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          2,
+          3,
+          1,
+          10,
+          10,
+          2,
+          1,
+          44,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det5"
+      },
+      {
+        "matrix": [
+          [
+            3,
+            20
+          ],
+          [
+            1,
+            5
+          ]
+        ],
+        "Delta": -5,
+        "T_window": 10,
+        "min_win_T": 5,
+        "J0": 8,
+        "checked_windows": 26,
+        "R_digits_per_T": 38,
+        "min_hurwitz_digit_period": 19,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          5,
+          5,
+          3,
+          3,
+          3,
+          5,
+          5
+        ],
+        "cf_prefix": [
+          3,
+          1,
+          1,
+          1,
+          5,
+          4,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          9
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det-5"
+      },
+      {
+        "matrix": [
+          [
+            6,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "Delta": 6,
+        "T_window": 12,
+        "min_win_T": 6,
+        "J0": 9,
+        "checked_windows": 29,
+        "R_digits_per_T": 48,
+        "min_hurwitz_digit_period": 24,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          5,
+          5,
+          5,
+          3,
+          3,
+          3,
+          5,
+          5,
+          5
+        ],
+        "cf_prefix": [
+          14,
+          3,
+          4,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          11,
+          2,
+          11,
+          2
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det6"
+      },
+      {
+        "matrix": [
+          [
+            -3,
+            -3
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        "Delta": -6,
+        "T_window": 12,
+        "min_win_T": 6,
+        "J0": 9,
+        "checked_windows": 29,
+        "R_digits_per_T": 20,
+        "min_hurwitz_digit_period": 10,
+        "r_period_slice": [
+          3,
+          1,
+          1,
+          1,
+          1,
+          3,
+          3,
+          1,
+          1,
+          1,
+          1,
+          3
+        ],
+        "cf_prefix": [
+          -2,
+          1,
+          4,
+          2,
+          30,
+          4,
+          1,
+          2,
+          5,
+          1,
+          2,
+          7,
+          78,
+          10
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det-6"
+      },
+      {
+        "matrix": [
+          [
+            7,
+            5
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "Delta": 7,
+        "T_window": 14,
+        "min_win_T": 7,
+        "J0": 11,
+        "checked_windows": 33,
+        "R_digits_per_T": 42,
+        "min_hurwitz_digit_period": 21,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "cf_prefix": [
+          24,
+          35,
+          1,
+          2,
+          1,
+          62,
+          1,
+          1,
+          1,
+          13,
+          2,
+          13,
+          2,
+          13
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det7"
+      },
+      {
+        "matrix": [
+          [
+            1,
+            -3
+          ],
+          [
+            1,
+            5
+          ]
+        ],
+        "Delta": 8,
+        "T_window": 16,
+        "min_win_T": 4,
+        "J0": 12,
+        "checked_windows": 37,
+        "R_digits_per_T": 32,
+        "min_hurwitz_digit_period": 8,
+        "r_period_slice": [
+          1,
+          3,
+          3,
+          1,
+          1,
+          3,
+          3,
+          1,
+          1,
+          3,
+          3,
+          1,
+          1,
+          3,
+          3,
+          1
+        ],
+        "cf_prefix": [
+          -1,
+          1,
+          26,
+          2,
+          1,
+          1,
+          13,
+          1,
+          1,
+          4,
+          88,
+          6,
+          1,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det8"
+      },
+      {
+        "matrix": [
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "Delta": -9,
+        "T_window": 18,
+        "min_win_T": 18,
+        "J0": 14,
+        "checked_windows": 41,
+        "R_digits_per_T": 90,
+        "min_hurwitz_digit_period": 90,
+        "r_period_slice": [
+          3,
+          7,
+          5,
+          7,
+          7,
+          3,
+          7,
+          5,
+          3,
+          5,
+          5,
+          7,
+          5,
+          3,
+          7,
+          3,
+          3,
+          5
+        ],
+        "cf_prefix": [
+          1,
+          3,
+          2,
+          1,
+          1,
+          2,
+          17,
+          2,
+          1,
+          1,
+          1,
+          3,
+          1,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det-9"
+      },
+      {
+        "matrix": [
+          [
+            10,
+            -1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "Delta": 10,
+        "T_window": 20,
+        "min_win_T": 10,
+        "J0": 15,
+        "checked_windows": 45,
+        "R_digits_per_T": 88,
+        "min_hurwitz_digit_period": 44,
+        "r_period_slice": [
+          5,
+          5,
+          3,
+          3,
+          3,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          3,
+          3,
+          3,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "cf_prefix": [
+          26,
+          5,
+          2,
+          7,
+          1,
+          4,
+          4,
+          4,
+          1,
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det10"
+      },
+      {
+        "matrix": [
+          [
+            0,
+            -3
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "Delta": 12,
+        "T_window": 24,
+        "min_win_T": 6,
+        "J0": 18,
+        "checked_windows": 53,
+        "R_digits_per_T": 112,
+        "min_hurwitz_digit_period": 28,
+        "r_period_slice": [
+          5,
+          3,
+          5,
+          5,
+          5,
+          5,
+          5,
+          3,
+          5,
+          5,
+          5,
+          5,
+          5,
+          3,
+          5,
+          5,
+          5,
+          5,
+          5,
+          3,
+          5,
+          5,
+          5,
+          5
+        ],
+        "cf_prefix": [
+          -1,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          24,
+          2,
+          2,
+          6,
+          2,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det12"
+      },
+      {
+        "matrix": [
+          [
+            -3,
+            0
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "Delta": -12,
+        "T_window": 24,
+        "min_win_T": 6,
+        "J0": 18,
+        "checked_windows": 53,
+        "R_digits_per_T": 104,
+        "min_hurwitz_digit_period": 26,
+        "r_period_slice": [
+          3,
+          5,
+          3,
+          5,
+          5,
+          5,
+          3,
+          5,
+          3,
+          5,
+          5,
+          5,
+          3,
+          5,
+          3,
+          5,
+          5,
+          5,
+          3,
+          5,
+          3,
+          5,
+          5,
+          5
+        ],
+        "cf_prefix": [
+          -1,
+          3,
+          25,
+          1,
+          4,
+          1,
+          23,
+          1,
+          2,
+          1,
+          5,
+          2,
+          2,
+          4
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det-12"
+      },
+      {
+        "matrix": [
+          [
+            -1,
+            -21
+          ],
+          [
+            1,
+            6
+          ]
+        ],
+        "Delta": 15,
+        "T_window": 30,
+        "min_win_T": 30,
+        "J0": 23,
+        "checked_windows": 65,
+        "R_digits_per_T": 110,
+        "min_hurwitz_digit_period": 110,
+        "r_period_slice": [
+          3,
+          3,
+          3,
+          5,
+          3,
+          3,
+          3,
+          5,
+          7,
+          3,
+          3,
+          3,
+          5,
+          3,
+          3,
+          3,
+          3,
+          7,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          5,
+          3,
+          5,
+          5
+        ],
+        "cf_prefix": [
+          -3,
+          3,
+          1,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          11,
+          1,
+          4,
+          1,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det15"
+      },
+      {
+        "matrix": [
+          [
+            3,
+            -2
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        "Delta": 16,
+        "T_window": 32,
+        "min_win_T": 8,
+        "J0": 24,
+        "checked_windows": 69,
+        "R_digits_per_T": 160,
+        "min_hurwitz_digit_period": 40,
+        "r_period_slice": [
+          5,
+          3,
+          5,
+          7,
+          5,
+          5,
+          5,
+          5,
+          5,
+          3,
+          5,
+          7,
+          5,
+          5,
+          5,
+          5,
+          5,
+          3,
+          5,
+          7,
+          5,
+          5,
+          5,
+          5,
+          5,
+          3,
+          5,
+          7,
+          5,
+          5,
+          5,
+          5
+        ],
+        "cf_prefix": [
+          0,
+          1,
+          1,
+          1,
+          7,
+          31,
+          2,
+          4,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "all_checks_passed": true,
+        "label": "rand_det16"
+      }
+    ]
+  },
+  "gl2_orders": {
+    "e (4j+2)": {
+      "2": 1,
+      "3": 2,
+      "4": 1,
+      "5": 2,
+      "6": 1,
+      "8": 1,
+      "10": 1,
+      "12": 1
+    },
+    "tanh(1) (2j+1)": {
+      "2": 3,
+      "3": 2,
+      "4": 3,
+      "5": 2,
+      "6": 1,
+      "8": 3,
+      "10": 3,
+      "12": 1
+    },
+    "I1/I0 (j+1)": {
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2,
+      "8": 2,
+      "10": 2,
+      "12": 2
+    },
+    "3j+1": {
+      "2": 2,
+      "3": 8,
+      "4": 2,
+      "5": 2,
+      "6": 4,
+      "8": 2,
+      "10": 2,
+      "12": 2
+    }
+  },
+  "three_orbit_classification": {
+    "total_primitive_hnfs_tested": 1240,
+    "max_det_gcd_sweep": 40,
+    "max_det_cf_sweep": 16,
+    "exact_3_orbits_HNF": [
+      [
+        1,
+        1,
+        2
+      ],
+      [
+        1,
+        1,
+        4
+      ],
+      [
+        1,
+        3,
+        4
+      ]
+    ],
+    "orbit_cf_prefixes": {
+      "(e+1)/2": [
+        1,
+        1,
+        6,
+        10,
+        14,
+        18,
+        22,
+        26,
+        30,
+        34,
+        38,
+        42,
+        46,
+        50,
+        54,
+        58
+      ],
+      "(e+1)/4": [
+        0,
+        1,
+        13,
+        5,
+        28,
+        9,
+        44,
+        13,
+        60,
+        17,
+        76,
+        21,
+        92,
+        25,
+        108,
+        29
+      ],
+      "(e+3)/4": [
+        1,
+        2,
+        3,
+        20,
+        7,
+        36,
+        11,
+        52,
+        15,
+        68,
+        19,
+        84,
+        23,
+        100,
+        27,
+        116
+      ]
+    }
+  },
+  "full_convergent_spectrum": {
+    "q_identities_verified_j_0_to": 44,
+    "weight_samples": [
+      {
+        "j": 1,
+        "w_(3j-2)/(2j)": 1.77482339,
+        "w_(3j-1)": 2.15268358,
+        "w_(3j)": 1.97047929
+      },
+      {
+        "j": 2,
+        "w_(3j-2)/(2j)": 1.27675051,
+        "w_(3j-1)": 2.08590744,
+        "w_(3j)": 1.97370595
+      },
+      {
+        "j": 5,
+        "w_(3j-2)/(2j)": 1.10468749,
+        "w_(3j-1)": 2.02100496,
+        "w_(3j)": 1.99314577
+      },
+      {
+        "j": 10,
+        "w_(3j-2)/(2j)": 1.05120063,
+        "w_(3j-1)": 2.00621412,
+        "w_(3j)": 1.99794151
+      },
+      {
+        "j": 20,
+        "w_(3j-2)/(2j)": 1.02530556,
+        "w_(3j-1)": 2.00170188,
+        "w_(3j)": 1.99943367
+      },
+      {
+        "j": 35,
+        "w_(3j-2)/(2j)": 1.01438639,
+        "w_(3j-1)": 2.00057884,
+        "w_(3j)": 1.99980716
+      }
+    ],
+    "witness_results": [
+      {
+        "sel_max_tail": 0.0,
+        "kl_class0_last": 0.0,
+        "kl_class1_last": 0.0,
+        "kl_class2_last": 0.0,
+        "kl_overall_max_tail": 0.0,
+        "raw_overall_max_tail": 0.0,
+        "M_mod2_tail": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "label": "x = 3*e - 5 (in Z + Ze)"
+      },
+      {
+        "sel_max_tail": 0.0,
+        "kl_class0_last": 0.0,
+        "kl_class1_last": 1.000247,
+        "kl_class2_last": 0.999918,
+        "kl_overall_max_tail": 1.000366,
+        "raw_overall_max_tail": 0.5,
+        "M_mod2_tail": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "label": "x = (1 + e)/2 (coset)"
+      },
+      {
+        "sel_max_tail": 0.0,
+        "kl_class0_last": 0.0,
+        "kl_class1_last": 1.000247,
+        "kl_class2_last": 0.999918,
+        "kl_overall_max_tail": 1.000366,
+        "raw_overall_max_tail": 0.5,
+        "M_mod2_tail": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "label": "x = (3 - e)/2 (coset)"
+      },
+      {
+        "sel_max_tail": 0.24667,
+        "kl_class0_last": 0.499874,
+        "kl_class1_last": 0.000164,
+        "kl_class2_last": 0.012817,
+        "kl_overall_max_tail": 1.000122,
+        "raw_overall_max_tail": 0.499914,
+        "M_mod2_tail": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "label": "d_r = 1 (Lambda_sel=1/4 -> KL=1, raw=1/2)"
+      },
+      {
+        "sel_max_tail": 0.49334,
+        "kl_class0_last": 0.999747,
+        "kl_class1_last": 0.000329,
+        "kl_class2_last": 0.025635,
+        "kl_overall_max_tail": 0.999747,
+        "raw_overall_max_tail": 0.98668,
+        "M_mod2_tail": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "label": "d_r = 2 (Lambda_sel=1/2 -> KL=1, raw=1)"
+      },
+      {
+        "sel_max_tail": 0.74001,
+        "kl_class0_last": 1.499621,
+        "kl_class1_last": 0.000493,
+        "kl_class2_last": 0.038452,
+        "kl_overall_max_tail": 1.499621,
+        "raw_overall_max_tail": 1.48002,
+        "M_mod2_tail": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "label": "d_r = 3 (Lambda_sel=3/4 -> KL=3/2, raw=3/2)"
+      },
+      {
+        "sel_max_tail": 0.98668,
+        "kl_class0_last": 1.999494,
+        "kl_class1_last": 0.000657,
+        "kl_class2_last": 0.051269,
+        "kl_overall_max_tail": 1.999494,
+        "raw_overall_max_tail": 1.97336,
+        "M_mod2_tail": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "label": "d_r = 4 (Lambda_sel=1 -> KL=2, raw=2)"
+      },
+      {
+        "sel_max_tail": 1.23335,
+        "kl_class0_last": 2.499368,
+        "kl_class1_last": 0.000821,
+        "kl_class2_last": 0.064087,
+        "kl_overall_max_tail": 2.499368,
+        "raw_overall_max_tail": 2.4667,
+        "M_mod2_tail": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "label": "d_r = 5 (Lambda_sel=5/4 -> KL=5/2, raw=5/2)"
+      }
+    ]
+  },
+  "elapsed_seconds": 1.295
+}

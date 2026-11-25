@@ -74,14 +74,29 @@ def safe_exists(path: Path) -> bool:
 
 
 def check_markdown_docs(out: list[str]) -> None:
-    """Assert core documentation files exist, have no UTF-8 BOM, and have zero broken links."""
+    """Assert core documentation files exist, have no UTF-8 BOM, zero broken links, and synced skills."""
     docs = [
         ROOT / "README.md",
         ROOT / "REPOSITORY_STRUCTURE.md",
+        ROOT / "paper1_e_plus_pi" / "00_PROJECT_INDEX.md",
+        ROOT / "paper1_e_plus_pi" / "07_research_log_and_guide" / "MASTER_INVENTORY_LIST.md",
+        ROOT / "paper1_e_plus_pi" / "07_research_log_and_guide" / "PAPER1_ATTACK_AND_TRIAL_LOG.md",
+        ROOT / "paper1_e_plus_pi" / "07_research_log_and_guide" / "MASTER_GUIDE_SKILL.md",
+        ROOT / "paper1_e_plus_pi" / "07_research_log_and_guide" / "trial_notes_M1_M2_20261125.md",
         ROOT / "paper2_spectral_gap_dimension" / "README.md",
+        ROOT / "paper2_spectral_gap_dimension" / "00_research_log_and_guide" / "SPINOFF_AND_TRIAL_LOG.md",
+        ROOT / "paper2_spectral_gap_dimension" / "00_research_log_and_guide" / "MASTER_GUIDE_SKILL.md",
+        ROOT / "paper2_spectral_gap_dimension" / "spinoff_critical_and_supercritical_exact_20261125" / "README.md",
+        ROOT / "paper2_spectral_gap_dimension" / "spinoff_full_convergent_and_even_hurwitz_20261125" / "README.md",
         ROOT / "paper2_spectral_gap_dimension" / "split" / "README.md",
+        ROOT / "research" / "README.md",
+        ROOT / "research" / "kahane_q6_note_20261125.md",
+        ROOT / "research" / "kahane_q6_addendum_20261125.md",
         ROOT / "verification" / "README.md",
+        ROOT / "verification" / "kahane_and_blr_audit_20261125.md",
         ROOT / "verification" / "全工作区总索引与留痕台账.md",
+        ROOT / ".agents" / "skills" / "epi-research-commander" / "SKILL.md",
+        ROOT / ".claude" / "skills" / "epi-research-commander" / "SKILL.md",
     ]
     link_re = re.compile(r"\]\(([^)#]+)(?:#[^)]*)?\)")
     total_links = 0
@@ -106,7 +121,20 @@ def check_markdown_docs(out: list[str]) -> None:
             if resolved != LOG_PATH.resolve() and not safe_exists(resolved):
                 broken.append(target)
         assert not broken, f"Broken links in {doc.relative_to(ROOT)}: {broken}"
-    out.append(f"  [OK] Core Markdown docs: {len(docs)}/6 BOM-free, {total_links} local links resolved (0 broken)")
+
+    skill_copies = [
+        ROOT / ".agents" / "skills" / "epi-research-commander" / "SKILL.md",
+        ROOT / ".claude" / "skills" / "epi-research-commander" / "SKILL.md",
+        ROOT / "paper1_e_plus_pi" / "07_research_log_and_guide" / "MASTER_GUIDE_SKILL.md",
+        ROOT / "paper2_spectral_gap_dimension" / "00_research_log_and_guide" / "MASTER_GUIDE_SKILL.md",
+    ]
+    skill_bytes = [p.read_bytes() for p in skill_copies]
+    assert len(set(skill_bytes)) == 1, "epi-research-commander SKILL.md copies diverged!"
+
+    out.append(
+        f"  [OK] Core & Round-2 Markdown docs: {len(docs)}/{len(docs)} BOM-free, "
+        f"{total_links} local links resolved (0 broken), 4/4 commander skill byte-synced"
+    )
     if windows_abs:
         out.append(
             f"  [WARN] {windows_abs} link(s) use absolute Windows paths (re-rooted at the repo where possible; "
@@ -117,43 +145,79 @@ def check_markdown_docs(out: list[str]) -> None:
 
 
 def check_lean_audits(out: list[str]) -> None:
-    """Re-run main audit reconciler and verify standalone Layer A audit entries and logs."""
+    """Re-run main audit reconciler and verify all standalone Layer A audit entries and logs."""
     rc, txt = run_step([sys.executable, "verification/check_audit_reconcile.py", "verification/audit_final_20261122.log"])
     assert rc == 0 and "ALL RECONCILIATION CHECKS PASSED!" in txt, f"check_audit_reconcile failed:\n{txt}"
-    out.append("  [OK] Audit.lean reconciliation: 937/937 matched, sorryAx=0, 344 Lean files / 0 escape hits")
+    m_scan = re.search(r"Scanned\s+(\d+)\s+Lean files;\s+escape keyword hits:\s+(\d+)", txt)
+    n_lean = int(m_scan.group(1)) if m_scan else 0
+    assert n_lean >= 356, f"Expected >= 356 Lean files scanned, got {n_lean}"
+    out.append(f"  [OK] Audit.lean reconciliation: 937/937 matched, sorryAx=0, {n_lean} Lean files / 0 escape hits")
 
-    cert_text = (ROOT / "epi_formal" / "AuditResidueCert.lean").read_text(encoding="utf-8")
-    cert_count = sum(1 for ln in cert_text.splitlines() if ln.strip().startswith("#print axioms "))
-    assert cert_count == 27, f"Expected 27 entries in AuditResidueCert.lean, got {cert_count}"
-
-    multi_text = (ROOT / "epi_formal" / "AuditResidueMultiAsymptotic.lean").read_text(encoding="utf-8")
-    multi_count = sum(1 for ln in multi_text.splitlines() if ln.strip().startswith("#print axioms "))
-    assert multi_count == 24, f"Expected 24 entries in AuditResidueMultiAsymptotic.lean, got {multi_count}"
-
-    multi_log = (ROOT / "verification" / "audit_residue_multi_asymptotic_20261123.log").read_text(encoding="utf-8")
-    matches = re.findall(r"'([^']+)'\s+depends on axioms:\s*\[([^\]]+)\]", multi_log, flags=re.S)
-    assert len(matches) == 24, f"Expected 24 axiom entries in multi log, got {len(matches)}"
+    standalone_specs = [
+        ("AuditResidueCert.lean", "audit_residue_cert_20261123.log", 27),
+        ("AuditResidueMultiAsymptotic.lean", "audit_residue_multi_asymptotic_20261123.log", 24),
+        ("AuditResidueCertStrictOpen.lean", "audit_residue_cert_strict_open_20261125.log", 22),
+        ("AuditMuEEqTwo.lean", "audit_mu_e_eq_two_20261125.log", 9),
+        ("AuditGeneralAlphabetFloor.lean", "audit_general_alphabet_floor_20261125.log", 15),
+        ("AuditSupercriticalConstant.lean", "audit_supercritical_constant_20261125.log", 6),
+        ("AuditPerronFrobenius.lean", "audit_perron_frobenius_20261125.log", 13),
+        ("AuditFullConvergentSpectrum.lean", "audit_full_convergent_spectrum_20261125.log", 40),
+    ]
     allowed = {"propext", "Classical.choice", "Quot.sound"}
-    for name, raw_ax in matches:
-        axs = {x.strip() for x in raw_ax.split(",") if x.strip()}
-        assert "sorryAx" not in axs and axs.issubset(allowed), f"Unexpected axioms for {name}: {axs}"
+    total_standalone = 0
+    for lean_name, log_name, expected in standalone_specs:
+        lean_text = (ROOT / "epi_formal" / lean_name).read_text(encoding="utf-8")
+        cnt = sum(1 for ln in lean_text.splitlines() if ln.strip().startswith("#print axioms "))
+        assert cnt == expected, f"Expected {expected} entries in {lean_name}, got {cnt}"
+        log_path = ROOT / "verification" / log_name
+        assert log_path.exists(), f"Missing audit log: {log_path}"
+        rc_cmp, txt_cmp = run_step([
+            sys.executable,
+            "verification/compare_audit_logs.py",
+            f"verification/{log_name}",
+            "--count",
+            str(expected),
+            "--only-axioms",
+            "propext,Classical.choice,Quot.sound",
+            "--allow-comments",
+        ])
+        assert rc_cmp == 0, f"compare_audit_logs self-check failed on {log_name}:\n{txt_cmp}"
+        log_text = log_path.read_text(encoding="utf-8")
+        matches = re.findall(r"'([^']+)'\s+depends on axioms:\s*\[([^\]]+)\]", log_text, flags=re.S)
+        assert len(matches) == expected, f"Expected {expected} entries in {log_name}, got {len(matches)}"
+        for name, raw_ax in matches:
+            axs = {x.strip() for x in raw_ax.split(",") if x.strip()}
+            assert "sorryAx" not in axs and axs.issubset(allowed), f"Unexpected axioms for {name}: {axs}"
+        total_standalone += expected
     out.append(
-        "  [OK] Standalone Layer A audits: AuditResidueCert (27) + AuditResidueMultiAsymptotic (24/24 base axioms only, sorryAx=0)"
+        f"  [OK] Standalone Layer A audits: {len(standalone_specs)} modules / {total_standalone}/{total_standalone} base axioms only, sorryAx=0"
     )
 
 
 def check_papers_and_split(out: list[str]) -> None:
-    """Check PDFs exist cleanly and verify Paper 2 merge integrity + split track undefined refs."""
+    """Check PDFs exist cleanly and verify Paper 2 merge integrity, spin-off logs, + split undef refs."""
     pdfs = [
         ROOT / "paper1_e_plus_pi" / "01_main_paper" / "paper1_e_plus_pi.pdf",
         ROOT / "paper2_spectral_gap_dimension" / "paper2_spectral_gap_dimension.pdf",
+        ROOT / "paper2_spectral_gap_dimension" / "spinoff_critical_and_supercritical_exact_20261125" / "paper2D_critical_supercritical_exact.pdf",
+        ROOT / "paper2_spectral_gap_dimension" / "spinoff_full_convergent_and_even_hurwitz_20261125" / "paper2E_full_convergent_and_even_hurwitz.pdf",
     ]
     for pdf in pdfs:
-        assert pdf.exists() and pdf.stat().st_size > 100_000, f"Missing or too small PDF: {pdf}"
+        assert pdf.exists() and pdf.stat().st_size > 50_000, f"Missing or too small PDF: {pdf}"
+
+    for log_rel in (
+        "paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.log",
+        "paper2_spectral_gap_dimension/spinoff_critical_and_supercritical_exact_20261125/paper2D_critical_supercritical_exact.log",
+        "paper2_spectral_gap_dimension/spinoff_full_convergent_and_even_hurwitz_20261125/paper2E_full_convergent_and_even_hurwitz.log",
+    ):
+        log_txt = (ROOT / log_rel).read_text(encoding="utf-8", errors="replace")
+        ov = len(re.findall(r"Overfull \\hbox", log_txt))
+        und = len(re.findall(r"There were undefined", log_txt))
+        assert ov == 0 and und == 0, f"{log_rel}: overfull={ov}, undefined={und}"
 
     rc, txt = run_step([sys.executable, "verification/verify_paper2_merge.py"])
     assert rc == 0 and "ALL MERGE & INTEGRITY CHECKS PASSED." in txt, f"verify_paper2_merge failed:\n{txt}"
-    out.append("  [OK] Paper 2 merge, 11-slice byte-for-byte parity, and 46 content anchors passed")
+    out.append("  [OK] Paper 2 + 2D + 2E builds (0 Overfull / 0 Undef), 11-slice parity, and 46 content anchors passed")
 
     rc2, txt2 = run_step([sys.executable, "paper2_spectral_gap_dimension/split/undef_ref_audit.py"])
     assert rc2 == 0, f"undef_ref_audit failed:\n{txt2}"

@@ -18,11 +18,12 @@ $\max(1/2,s_0(S))$, satisfies an explicit three-term Euler--Mascheroni
 expansion to $O((\log m)^2/m^3)$ in the subcritical regime, and converges at
 the power-law rate $\Theta(m^{-2s_0(S)})$ in the supercritical regime
 $s_0(S)>1/2$. Finite-state constraints on defect tails replace the
-critical base by the maximal Perron root over active marked components. The
-proofs---including the closed intervals of Table~\ref{tab:residues-general} and
-the multi-residue asymptotic theory---are machine-checked in Lean~4 on the base
-axioms only, while open-interval strictness in Table~\ref{tab:residues-general}
-combines exact Python integer certificates with the cited pressure formalism.
+critical base by the maximal Perron root over active marked components. All theorems---including finite-dimensional Perron--Frobenius eigenvector existence for
+Theorem~\ref{thm:finite-state-tail}, the multi-residue asymptotic theory, and both the
+closed brackets and all $20$ strict open inequalities of Table~\ref{tab:residues-general}---
+are machine-checked in Lean~4 on the base axioms only (bypassing Bowen's pressure
+formalism); exact supercritical leading constants and critical-line scaling are
+developed in companion Paper~2D.
 This work does not address the irrationality of
 $e+\pi$, which remains open.
 \end{abstract}

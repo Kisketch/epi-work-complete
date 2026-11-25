@@ -136,31 +136,40 @@ increments), together with all of Theorems~\ref{thm:short-ae} and~\ref{thm:no-sh
 (both the almost-everywhere logarithmic short-window frequency, the
 Hausdorff-dimension identity $\dimH=1$, and the Lebesgue-nullity deduction
 pointwise for mathlib's regular continued fractions), all parts~(1)--(3) of
-Theorem~\ref{thm:finite-state-tail} (under distinct outgoing edge labels at each
-vertex and given explicit positive right Perron--Frobenius eigenvectors on marked
-strongly connected components), as well as the general-modulus ($m\ge2$)
-uniform $24$-Lipschitz coordinate-shift sandwich, eventual-periodicity dimension
-equality, unconditional transfer-operator Hausdorff-dimension criterion
-(bypassing Bowen-pressure axioms), strict lower bound $\dimH F_{m,r}>1/2$, upper
-bound $\dimH F_{4,1}\le 4/5$, step-function certificate soundness for
-Theorems~\ref{thm:residues} and~\ref{thm:residues-general}, and the complete
-resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$
-for all $m\ge2$, and two-term reciprocal-Fibonacci/metallic asymptotic expansions of
-Theorem~\ref{thm:residues-asymptotic}, as well as the multi-residue phase
-transition, Euler--Mascheroni three-term asymptotics, and supercritical
-$\Theta(m^{-2s_0(S)})$ rate of Theorem~\ref{thm:multi-residue-asymptotic}
-(\texttt{ResidueMultiAsymptotic.lean}, $24$ declarations audited in
-\texttt{AuditResidueMultiAsymptotic.lean}) and the closed brackets of
-Table~\ref{tab:residues-general} (\texttt{ResidueCertTable.lean}, $27$ declarations
-audited in \texttt{AuditResidueCert.lean})---are machine-checked in
-Lean~4 using only the base axioms \texttt{propext}, \texttt{Classical.choice}
-and \texttt{Quot.sound}.
-Only the finite-dimensional linear-algebraic Perron--Frobenius eigenvector
-existence input in Theorem~\ref{thm:finite-state-tail} and the Python-executed
-open-interval strictness verification of the narrow $m\in\{2,3,4,5,6\}$ brackets
-via the pressure formalism remain outside the Lean kernel
-(Section~\ref{sec:verification}, $937$ main audited declarations across $134$
-Lean files in \texttt{Audit.lean} plus standalone audits across $344$ total Lean files).
+Theorem~\ref{thm:finite-state-tail} unconditionally (under distinct outgoing edge
+labels at each vertex, eliminating the Perron--Frobenius eigenvector hypothesis via
+a Brouwer-free Collatz--Wielandt minimax proof in \texttt{PerronFrobenius.lean}, $13$
+declarations audited in \texttt{AuditPerronFrobenius.lean}), as well as the
+general-modulus ($m\ge2$) uniform $24$-Lipschitz coordinate-shift sandwich,
+eventual-periodicity dimension equality, unconditional transfer-operator
+Hausdorff-dimension criterion (bypassing Bowen-pressure axioms), strict lower bound
+$\dimH F_{m,r}>1/2$, upper bound $\dimH F_{4,1}\le 4/5$, step-function certificate
+soundness for Theorems~\ref{thm:residues} and~\ref{thm:residues-general}, and the
+complete resolvent identity, global strict separation
+$\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, and two-term
+reciprocal-Fibonacci/metallic asymptotic expansions of Theorem~\ref{thm:residues-asymptotic},
+as well as the multi-residue phase transition, Euler--Mascheroni three-term
+asymptotics, and supercritical $\Theta(m^{-2s_0(S)})$ rate of
+Theorem~\ref{thm:multi-residue-asymptotic} (\texttt{ResidueMultiAsymptotic.lean}, $24$
+declarations audited in \texttt{AuditResidueMultiAsymptotic.lean}), the closed
+brackets of Table~\ref{tab:residues-general} (\texttt{ResidueCertTable.lean}, $27$
+declarations audited in \texttt{AuditResidueCert.lean}), and the strict open-interval
+inequalities of all $20$ bounds in Table~\ref{tab:residues-general}
+(\texttt{ResidueCertStrictOpen.lean}, $22$ declarations audited in
+\texttt{AuditResidueCertStrictOpen.lean})---are machine-checked in Lean~4 using only
+the base axioms \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}
+(Section~\ref{sec:verification}: $937$ main audited declarations across $134$ Lean
+files in \texttt{Audit.lean} plus $156$ additional declarations across eight
+standalone audit modules spanning $356$ total Lean files, including the companion
+modules \texttt{MuEEqTwo.lean} [$9$], \texttt{GeneralAlphabetFloor.lean} [$15$],
+\texttt{SupercriticalConstant.lean} [$6$ conditional declarations], and
+\texttt{FullConvergentSpectrum.lean} [$40$] of spin-off manuscripts~2D and~2E).
+None of Theorem~\ref{thm:finite-state-tail} or Table~\ref{tab:residues-general}
+requires external assumptions; only the analytic simple-pole residue verification in
+Theorem~\ref{thm:multi-residue-asymptotic}'s supercritical constant / critical
+boundary (treated in spin-off Paper~2D), the general even-period signed Hurwitz
+recurrence (spin-off Paper~2E), and the irrationality of $e+\pi$ remain outside the
+Lean kernel.
 The classification and the first gap are a subsequence analogue of a criterion
 of Kraaikamp and Liardet. The work is a spin-off of a project on the
 irrationality of $e+\pi$ and does \emph{not} resolve that open problem.
@@ -2026,7 +2035,7 @@ compactness and subset embedding of the deterministic path tree (\texttt{graphTr
 direct finite-sum Frostman positivity (\texttt{mkMetric\_\allowbreak graphTree\_\allowbreak pos}),
 unmarked-tail nullity via backward-reachability stabilization at $L=|V|$ (\texttt{mkMetric\_\allowbreak unmarkedTail\_\allowbreak null}),
 $L$-translation invariance of exact graph tails, and the arbitrary-gauge $\liminf$ comparison;
-the positive right Perron--Frobenius eigenvector $(w_v,\lambda_C)$ on each marked strongly connected component is taken as an explicit hypothesis rather than derived via Lean matrix-eigenvalue machinery.
+moreover, \texttt{EpiFormal/\allowbreak PerronFrobenius.lean} ($13$ declarations audited in \texttt{AuditPerronFrobenius.lean}, base axioms only, zero \texttt{sorryAx}) proves the finite-dimensional Perron--Frobenius theorem from scratch via Brouwer-free Collatz--Wielandt minimax compactness and deduces the fully unconditional theorems \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak unconditional} on $\R$ and \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak unconditional} on \texttt{UnitAddCircle}, eliminating the external eigenvector hypothesis completely.
 
 \subsection{General polynomial-growth denominator recurrences}\label{sec:poly-rec}
 
@@ -3641,7 +3650,7 @@ checks every cell inequality for each $(m,r)$ in Table~\ref{tab:residues-general
 All algebraic and measure-theoretic deductions in~(i)--(ii), together with the
 step-function soundness theorems for~(ii)--(iii), are machine-checked in Lean~4;
 the concrete grid arithmetic for $m\in\{2,3,4,5,6\}$ is performed both in exact
-Python integer arithmetic and, for the closed brackets, by the Lean kernel
+Python integer arithmetic and, for both closed brackets and strict open inequalities, by the Lean kernel
 (Remark~\ref{rem:residue-kernel}).
 \end{proof}
 
@@ -3660,7 +3669,7 @@ $5$ & $5$ & $120$ & $149/256\,(0.582031)$ & $299/512\,(0.583984)$ & $1/512$ \\\h
 $6$ & $1$ & $120$ & $331/512\,(0.646484)$ & $83/128\,(0.648438)$ & $1/512$ \\
 $6$ & $6$ & $120$ & $291/512\,(0.568359)$ & $73/128\,(0.570312)$ & $1/512$
 \end{tabular}
-\caption{Certified open intervals $(\mathrm{lower},\mathrm{upper})$ for $\dimH F_{m,r}$ ($m\in\{2,3,4,5,6\}$, $r\in\{1,m\}$) from \texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py} ($N=512$, $S=10^{13}$, $2^{80}$-precision enclosures), all of width $1/512$; for every $m$, $\mathrm{upper}(F_{m,m})<\mathrm{lower}(F_{m,1})$. The closed brackets are kernel-checked in Lean~4 (Remark~\ref{rem:residue-kernel}).}\label{tab:residues-general}
+\caption{Certified open intervals $(\mathrm{lower},\mathrm{upper})$ for $\dimH F_{m,r}$ ($m\in\{2,3,4,5,6\}$, $r\in\{1,m\}$) from \texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py} ($N=512$, $S=10^{13}$, $2^{80}$-precision enclosures), all of width $1/512$; for every $m$, $\mathrm{upper}(F_{m,m})<\mathrm{lower}(F_{m,1})$. All $20$ strict open bounds in Table~\ref{tab:residues-general} are kernel-checked in Lean~4 on base axioms only (Remark~\ref{rem:residue-kernel}).}\label{tab:residues-general}
 \end{table}
 
 \begin{remark}[Kernel-checked brackets]\label{rem:residue-kernel}
@@ -3682,9 +3691,7 @@ kernel (\texttt{decide +kernel}, GMP-accelerated natural-number arithmetic; no
 \texttt{native\_decide}) on data emitted by \texttt{verification/\allowbreak
 emit\_cert\_gen.py} in $64$-row chunks; the resulting bounds and the strict separations
 $\dimH F_{m,m}<\dimH F_{m,1}$ ($2\le m\le6$) are collected in
-\texttt{EpiFormal/\allowbreak ResidueCertTable.lean}. Strictness of the brackets
-(open intervals) uses the positive margins and the pressure argument of
-Theorem~\ref{thm:residues}, which is not formalised.
+\texttt{EpiFormal/\allowbreak ResidueCertTable.lean} ($27$ declarations audited in \texttt{AuditResidueCert.lean}). Moreover, \texttt{EpiFormal/\allowbreak ResidueCertStrictOpen.lean} ($22$ declarations audited in \texttt{AuditResidueCertStrictOpen.lean}, base axioms only, zero \texttt{sorryAx}, and zero Python recomputation) upgrades every entry of Table~\ref{tab:residues-general} directly inside Lean~4 from the positive certificate step margins via monotone operator comparison (\texttt{dimH\_lt\_of\_certU} and \texttt{lt\_dimH\_of\_certL}), establishing all $20$ strict open inequalities $\mathrm{lower}<\dimH F_{m,r}<\mathrm{upper}$ ($m\in\{2,3,4,5,6\}$, $r\in\{1,m\}$) inside the Lean kernel without invoking Bowen's pressure formalism.
 \end{remark}
 
 
@@ -4085,7 +4092,7 @@ finite-alphabet continued-fraction limit sets such as $E_{\{1,2\}}$
 
 \paragraph{Lean status of Section~\ref{sec:windows-residues}.}
 All of Theorems~\ref{thm:windows}, \ref{thm:short-ae}, and~\ref{thm:no-short-dim}---including the exact dimension-$1$ identity for \texttt{prescribed\allowbreak ParitySet}, the exact dimension-$1/2$ identities for \texttt{bounded\allowbreak IncSet}, \texttt{prescribed\allowbreak IncSet}, and \texttt{prescribed\allowbreak IncSetAt}, the almost-everywhere short-window lower bound $Z_J(x)\ge\frac{1-\ee^{-1}}{160}\log J$ (\texttt{thm\_\allowbreak short\_\allowbreak ae\_\allowbreak explicit}), and the full conjunction $\dimH(\texttt{div\allowbreak WindowSet}\,\epsilon)=1\wedge\operatorname{Leb}(\texttt{div\allowbreak WindowSet}\,\epsilon)=0$ (\texttt{thm\_\allowbreak no\_\allowbreak short\_\allowbreak dim\_\allowbreak complete})---are now kernel-checked end-to-end at Layer~A for mathlib's \texttt{GenContFract.of} across thirteen Lean~4 modules: the counting and Frostman-scale pipeline (\texttt{Window\allowbreak Mobius\allowbreak Count.lean}, \texttt{No\allowbreak Short\allowbreak Dim\allowbreak Count.lean}, \texttt{Window\allowbreak Tree\allowbreak Prune.lean}, \texttt{Window\allowbreak Asymp\allowbreak Thresh.lean}, \texttt{Window\allowbreak Frostman\allowbreak Discharge.lean}, and \texttt{Window\allowbreak Paper\allowbreak Scale.lean}), the CF realization and bounded-increment pipeline (\texttt{Window\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak CF\allowbreak Bridge.lean}, \texttt{Window\allowbreak No\allowbreak Short\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak Prescribed\allowbreak CF\allowbreak Realize.lean}, and \texttt{Window\allowbreak Bounded\allowbreak Upper.lean}), and the short-window measure pipeline (\texttt{Window\allowbreak Short\allowbreak Ae.lean} and \texttt{Window\allowbreak Short\allowbreak Ae\allowbreak Realize.lean}, $14$ declarations; base axioms only, zero \texttt{sorryAx}; see Remark~\ref{rem:windows-lean}).
-For Theorems~\ref{thm:residues}, \ref{thm:residues-general}, and~\ref{thm:residues-asymptotic}, the entire general-modulus $m\ge2$ Lipschitz shift equivalence, sandwich, and eventual-periodicity theorem is kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak ModGeneral.lean} ($7$ declarations: \texttt{lipschitz\allowbreak OnWith\_\allowbreak cfShift}, \texttt{dimH\_\allowbreak residueSeqSet\_\allowbreak sandwich}, \texttt{dimH\_\allowbreak eventually\allowbreak PeriodicResidueSet\_\allowbreak eq}), the unconditional transfer-operator Hausdorff-dimension framework, $\frac12<\dimH F_{m,r}$, $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness (\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound}, \texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}) are kernel-checked in \texttt{EpiFormal/\allowbreak Transfer\allowbreak Operator\allowbreak Dim.lean} ($11$ declarations, base axioms only), and the complete resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$, exact dimension-excess ratios, and eventual strict monotonicity in~$r$ of Theorem~\ref{thm:residues-asymptotic} are kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} (all $15$ declarations: \texttt{metalQ\_\allowbreak one\_\allowbreak eq\_\allowbreak fib}, \texttt{metalC\_\allowbreak one\_\allowbreak eq\_\allowbreak psiFib}, \texttt{resolventV\_\allowbreak branch\_\allowbreak eq}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak le\_\allowbreak of\_\allowbreak resolvent}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak of\_\allowbreak resolvent}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak le}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak mm}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak m1}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak eventuallyPeriodic}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{tendsto\_\allowbreak mul\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak sub\_\allowbreak half}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak residue\_\allowbreak ratio\_\allowbreak eq\_\allowbreak metalC}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak eventuallyPeriodic\_\allowbreak ratio\_\allowbreak eq\_\allowbreak psiFib}, and \texttt{eventually\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak strictAnti}; base axioms only, zero \texttt{sorryAx}), alongside the $14$ helper lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}; the integer grid certificates for the narrow brackets in Table~\ref{tab:residues-general} are run in exact Python arithmetic (\texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py}) and, as closed brackets, re-checked by the Lean kernel in \texttt{Residue\allowbreak Cert\allowbreak Table.lean} (Remark~\ref{rem:residue-kernel}). Moreover, all parts~(i)--(v) of Theorem~\ref{thm:multi-residue-asymptotic} (Bowen-free proof of the Poincar\'e-abscissa dimension formula, multi-residue phase transition at $1/2$ with two-digit witnesses $\{2,3\}$ and $\{1,2\}$, elementary Euler--Mascheroni expansion of $\zeta(1+\varepsilon)$, three-term subcritical asymptotics to $O((\log m)^2/m^3)$, and supercritical $\Theta(m^{-2s_0})$ convergence rate) are kernel-checked at Layer~A in \texttt{EpiFormal/\allowbreak ResidueMultiAsymptotic.lean} ($24$ public theorems audited separately in \texttt{AuditResidueMultiAsymptotic.lean}, strictly on the three Lean base axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, with zero \texttt{sorryAx}, recorded in \texttt{verification/\allowbreak audit\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic\_\allowbreak 20261123.log}).
+For Theorems~\ref{thm:residues}, \ref{thm:residues-general}, and~\ref{thm:residues-asymptotic}, the entire general-modulus $m\ge2$ Lipschitz shift equivalence, sandwich, and eventual-periodicity theorem is kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak ModGeneral.lean} ($7$ declarations: \texttt{lipschitz\allowbreak OnWith\_\allowbreak cfShift}, \texttt{dimH\_\allowbreak residueSeqSet\_\allowbreak sandwich}, \texttt{dimH\_\allowbreak eventually\allowbreak PeriodicResidueSet\_\allowbreak eq}), the unconditional transfer-operator Hausdorff-dimension framework, $\frac12<\dimH F_{m,r}$, $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness (\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound}, \texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}) are kernel-checked in \texttt{EpiFormal/\allowbreak Transfer\allowbreak Operator\allowbreak Dim.lean} ($11$ declarations, base axioms only), and the complete resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$, exact dimension-excess ratios, and eventual strict monotonicity in~$r$ of Theorem~\ref{thm:residues-asymptotic} are kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} (all $15$ declarations: \texttt{metalQ\_\allowbreak one\_\allowbreak eq\_\allowbreak fib}, \texttt{metalC\_\allowbreak one\_\allowbreak eq\_\allowbreak psiFib}, \texttt{resolventV\_\allowbreak branch\_\allowbreak eq}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak le\_\allowbreak of\_\allowbreak resolvent}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak of\_\allowbreak resolvent}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak le}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak mm}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak m1}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak eventuallyPeriodic}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{tendsto\_\allowbreak mul\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak sub\_\allowbreak half}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak residue\_\allowbreak ratio\_\allowbreak eq\_\allowbreak metalC}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak eventuallyPeriodic\_\allowbreak ratio\_\allowbreak eq\_\allowbreak psiFib}, and \texttt{eventually\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak strictAnti}; base axioms only, zero \texttt{sorryAx}), alongside the $14$ helper lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}; the integer grid certificates for the narrow brackets in Table~\ref{tab:residues-general} are run in exact Python arithmetic (\texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py}), re-checked as closed brackets in \texttt{Residue\allowbreak Cert\allowbreak Table.lean} ($27$ declarations), and upgraded to strict open inequalities completely inside the Lean kernel via monotone operator comparison in \texttt{Residue\allowbreak Cert\allowbreak StrictOpen.lean} ($22$ declarations audited in \texttt{AuditResidueCertStrictOpen.lean}; Remark~\ref{rem:residue-kernel}). Moreover, all parts~(i)--(v) of Theorem~\ref{thm:multi-residue-asymptotic} (Bowen-free proof of the Poincar\'e-abscissa dimension formula, multi-residue phase transition at $1/2$ with two-digit witnesses $\{2,3\}$ and $\{1,2\}$, elementary Euler--Mascheroni expansion of $\zeta(1+\varepsilon)$, three-term subcritical asymptotics to $O((\log m)^2/m^3)$, and supercritical $\Theta(m^{-2s_0})$ convergence rate) are kernel-checked at Layer~A in \texttt{EpiFormal/\allowbreak ResidueMultiAsymptotic.lean} ($24$ public theorems audited separately in \texttt{AuditResidueMultiAsymptotic.lean}, strictly on the three Lean base axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, with zero \texttt{sorryAx}, recorded in \texttt{verification/\allowbreak audit\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic\_\allowbreak 20261123.log}). Companion spin-off manuscripts~2D (\texttt{spinoff\_\allowbreak critical\_\allowbreak and\_\allowbreak supercritical\_\allowbreak exact\_\allowbreak 20261125/}) and~2E (\texttt{spinoff\_\allowbreak full\_\allowbreak convergent\_\allowbreak and\_\allowbreak even\_\allowbreak hurwitz\_\allowbreak 20261125/}) further formalize critical scaling and infinite-alphabet abscissa floors (\texttt{GeneralAlphabetFloor.lean}, $15$ declarations; \texttt{SupercriticalConstant.lean}, $6$ conditional declarations modulo explicit simple-pole residue \texttt{hPole}), unconditional $\mu(e)=2$ (\texttt{MuEEqTwo.lean}, $9$ declarations), and the full regular convergent spectra of $e$ (\texttt{FullConvergentSpectrum.lean}, $40$ declarations), all verified at Layer~A.
 
 \section{Numerical evidence}\label{sec:num}
 
@@ -4431,24 +4438,11 @@ phase-transition and Euler--Mascheroni three-term asymptotic layer
 Theorem~\ref{thm:multi-residue-asymptotic}) are audited separately in
 \texttt{AuditResidueMultiAsymptotic.lean} (logged in
 \texttt{verification/\allowbreak audit\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic\_\allowbreak 20261123.log}),
-again on the three Lean base axioms only with zero \texttt{sorryAx} (total
-$344$ Lean files across the repository with zero escape keywords). The build and main audit were independently reproduced on 2026-11-23 from a
+again on the three Lean base axioms only with zero \texttt{sorryAx} (total $344$ Lean files on 2026-11-24, expanded on 2026-11-25 to $356$ Lean files across the repository with zero escape keywords). The build and main audit were independently reproduced on 2026-11-23 from a
 clean clone of the public repository on a separate machine (Lean~4.35.0,
 Mathlib v4.35.0): \texttt{lake build} succeeded, the $937$
 \texttt{\#print axioms} outputs coincide entry by entry with the recorded log, and the $27$ residue-certificate entries depend only on the base axioms
-(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}), and on 2026-11-24 a second clean-clone rebuild on a separate machine (commit \texttt{d920a81}, which contains \texttt{ResidueMultiAsymptotic.lean}) reproduced the $937$ main entries, the $27$ residue-certificate entries and the $24$ entries of \texttt{AuditResidueMultiAsymptotic.lean} entry by entry, all $27+24$ on the three base axioms only (\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261124.md}). The portions not resolved here or lying outside
-the Lean kernel are the finite-dimensional linear-algebraic Perron--Frobenius
-eigenvector existence input on marked strongly connected components in
-Theorem~\ref{thm:finite-state-tail} (whose positive right eigenvector is passed
-explicitly to \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak complete}
-and \texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak complete}
-in \texttt{FiniteStateComplete.lean}), the strictness of the open intervals in
-Theorem~\ref{thm:residues} and Table~\ref{tab:residues-general} via the
-cited pressure formalism (the closed brackets themselves are kernel-checked,
-Remark~\ref{rem:residue-kernel}), the asymptotic rate on the critical boundary
-$s_0(S)=1/2$ and the exact supercritical leading constant in
-Theorem~\ref{thm:multi-residue-asymptotic}, and the irrationality of $e+\pi$,
-which remains an open problem.
+(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}), and on 2026-11-24 a second clean-clone rebuild on a separate machine (commit \texttt{d920a81}, which contains \texttt{ResidueMultiAsymptotic.lean}) reproduced the $937$ main entries, the $27$ residue-certificate entries and the $24$ entries of \texttt{AuditResidueMultiAsymptotic.lean} entry by entry, all $27+24$ on the three base axioms only (\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261124.md}). Subsequently, on 2026-11-25, six additional standalone Lean~4 audit modules ($105$ declarations, bringing total standalone audited declarations to $156$ and combined audited declarations to $1093$ across all $356$ Lean files, all strictly on the three Lean base axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound} with zero \texttt{sorryAx}) eliminated both external hypotheses from the main text and formalized companion spin-off extensions: (i)~\texttt{AuditResidueCertStrictOpen.lean} ($22$ declarations) certifies all $20$ strict open inequalities of Table~\ref{tab:residues-general} via monotone operator comparison directly inside Lean~4 (discharging Bowen's pressure formalism, Remark~\ref{rem:residue-kernel}); (ii)~\texttt{AuditPerronFrobenius.lean} ($13$ declarations) proves finite-dimensional Perron--Frobenius via Brouwer-free Collatz--Wielandt minimax compactness and delivers fully unconditional forms of Theorem~\ref{thm:finite-state-tail}; (iii)~\texttt{AuditMuEEqTwo.lean} ($9$ declarations) proves $\mu(e)=2$ unconditionally at Layer~A independently of the frozen core audit; (iv)~\texttt{AuditGeneralAlphabetFloor.lean} ($15$ declarations) and \texttt{AuditSupercriticalConstant.lean} ($6$ conditional declarations modulo an explicit simple-pole residue input \texttt{hPole}) support spin-off Paper~2D; and (v)~\texttt{AuditFullConvergentSpectrum.lean} ($40$ declarations) proves the full regular convergent KL and raw spectra of $e$ for spin-off Paper~2E. The portions still lying outside the Lean kernel are the analytic simple-pole residue hypothesis \texttt{hPole} for the exact supercritical leading constant and critical-boundary rate ($s_0(S)=1/2$) of Theorem~\ref{thm:multi-residue-asymptotic} (proved analytically in spin-off Paper~2D), the general even-period signed Hurwitz recurrence and conditional nonlinear BLR remark (proved analytically in spin-off Paper~2E), and the irrationality of $e+\pi$, which remains an open problem.
 % TODO before submission: state who checked the paper proofs, and how.
 
 \begin{thebibliography}{99}

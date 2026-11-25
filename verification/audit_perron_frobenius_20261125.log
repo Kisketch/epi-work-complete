@@ -1,0 +1,21 @@
+'PerronFrobenius.matPow_succ_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PerronFrobenius.matPow_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PerronFrobenius.linOp_matPow_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PerronFrobenius.perron_eigenvalue_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PerronFrobenius.perron_frobenius_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PerronFrobenius.perron_frobenius_ge_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateUnconditional.markedComponent_perron_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateUnconditional.componentPerronRoot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateUnconditional.thm_finite_state_tail_joint_unconditional' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FiniteStateUnconditional.thm_finite_state_tail_unconditional' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FiniteStateUnconditional.thm_finite_state_tail_circle_unconditional' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FiniteStateUnconditional.thm_finite_state_tail_trichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteStateUnconditional.thm_finite_state_tail_circle_trichotomy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

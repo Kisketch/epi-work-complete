@@ -1,0 +1,570 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\setlength{\emergencystretch}{3em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\dist}{\mathrm{dist}}
+\newcommand{\dimH}{\dim_{\mathrm{H}}}
+\newcommand{\Lam}{\Lambda}
+
+\title{Full Regular Convergent Spectra of $e$, Signed Hurwitz Recurrences,\\
+and Brouwer-Free Perron--Frobenius Elimination}
+% TODO before submission: replace with the real author name(s) and affiliation(s).
+\author{[Author name]\\ \relax[Affiliation]}
+\date{Standalone Paper~2E spin-off draft, November 25, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The companion manuscript~\cite{Paper2} established complete discretization,
+exact Hausdorff gauges, and a three-way metric splitting for the weighted
+approximation functional $\Lam(x)=\limsup_{j\to\infty}j\|Q_j x\|$ along the
+selected convergent denominators $(Q_j)$ of $\ee$ immediately preceding the
+linearly growing partial quotients $2j$. Here we complete two foundational
+extensions of that framework, both machine-checked in Lean~4 using only the
+standard base axioms (\texttt{propext}, \texttt{Classical.choice}, and
+\texttt{Quot.sound}, with zero \texttt{sorryAx} and zero custom axioms).
+
+First (\texttt{EpiFormal/\allowbreak FullConvergentSpectrum.lean}, $40$
+audited declarations), passing to the \emph{full} sequence of regular
+convergents $(p_n/q_n)_{n\ge0}$ of
+$\ee=[2;1,2,1,1,4,1,1,6,\dots]$, we express every non-selected convergent in
+terms of $(P_j,Q_j)$ via $q_{3j}=(Q_{j+1}+Q_j)/2$ and
+$q_{3j+2}=(Q_{j+2}-Q_{j+1})/2$, determine the exact limits of the
+Kraaikamp--Liardet weights $w_n:=(q_n|q_n\ee-p_n|)^{-1}$, and evaluate the
+full-convergent spectra
+$\Lam_{\mathrm{full}}^{\mathrm{KL}}(x)=\max\bigl(2\Lam(x),\mathbf{1}_{\mathrm{pf}(x)}\bigr)$
+and
+$\Lam_{\mathrm{full}}^{\mathrm{raw}}(x)=\max\bigl(2\Lam(x),\tfrac12\mathbf{1}_{\mathrm{pf}(x)}\bigr)$.
+Under $\Lam_{\mathrm{full}}^{\mathrm{KL}}$, parity-flip expulsion removes the
+half-coset $\frac{\ee+1}{2}+\Z+\Z\ee$, opening a giant initial spectral gap
+$(0,1)$, collapsing the zero-level set from $L=\Z+\Z\frac{\ee+1}{2}$ down to
+$\Z+\Z\ee$ (giving a concrete refinement of Kraaikamp--Liardet~\cite{KL}),
+yielding a level-$1$ critical gauge of base~$5$, matching base $2k+1$ at all
+levels $k/2$ ($k\ge3$), and forcing all unsigned exact-limit sets
+$\{\lim_{n\to\infty}w_n\|q_n x\|=k/2\}$ with $k\ge3$ to be empty.
+
+Second (\texttt{EpiFormal/\allowbreak PerronFrobenius.lean}, $13$ audited
+declarations), we give a self-contained Brouwer-free Collatz--Wielandt minimax
+proof of the finite-dimensional Perron--Frobenius theorem on any finite
+strongly connected nonnegative matrix and use it to discharge the external
+eigenvector existence hypothesis from the finite-state tail theorem of~\cite{Paper2},
+making Theorem~\ref{thm:finite-state-unconditional} fully unconditional inside
+Lean~4 on both $\R$ and $\R/\Z$. Alongside this, we prove the general signed
+three-term block recurrence $Q_{j+1}=(\alpha a_j+\beta+\gamma)Q_j+(-1)^{p-1}Q_{j-1}$
+for arbitrary Hurwitz quasi-periods $p\ge1$ (resolving the even-$p$ minus sign
+omitted in~\cite{Paper2}), and clarify via an explicit counterexample where a
+naive attempt to remove Bugeaud--Liao--Rams condition~(1.6) fails without
+single-step distortion control. This work does not address the open
+irrationality of $\ee+\pi$.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+In~\cite{Paper2} and~\cite{Phase1}, the arithmetic and metric spectrum theory
+for $\ee$ was developed along the subsequence of selected convergents
+$P_j/Q_j$ immediately preceding the partial quotients $2j$ in
+$\ee=[2;1,2,1,1,4,1,1,6,\dots]$, satisfying
+\begin{equation}\label{eq:sel-rec}
+Q_{j+1}=(4j+2)Q_j+Q_{j-1}\quad(j\ge1),\qquad Q_0=1,\quad Q_1=1,\quad Q_2=7,
+\end{equation}
+and similarly $P_0=1, P_1=3, P_2=19$. Along this subsequence,
+$\Lam(\R):=\{\limsup_{j\to\infty}j\|Q_j x\|:x\in\R\}=\frac14\Z_{\ge0}\cup\{\infty\}$
+and $\{\Lam=0\}=L:=\Z+\Z\frac{\ee+1}{2}$.
+
+Two natural structural questions arise immediately from~\cite{Paper2}:
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.2em]
+\item \emph{What happens if one replaces $(Q_j)$ by all regular convergents $(q_n)_{n\ge0}$ of $\ee$?}
+In classical Diophantine approximation, Kraaikamp and Liardet~\cite{KL} study
+$\limsup_{n\to\infty}\frac{\|q_n x\|}{q_n|q_n\alpha-p_n|}$ across all regular
+convergents of an irrational $\alpha$, showing that this functional vanishes on
+$\Z+\Z\alpha$ and stays above $1/4$ outside a thin set. For $\alpha=\ee$, the
+arithmetic parity of the intermediate convergents splits $L$ into $\Z+\Z\ee$ and
+its half-coset $\frac{\ee+1}{2}+\Z+\Z\ee$, creating an asymmetric shift between
+the selected functional $\Lam$ and the full-convergent functionals
+$\Lam_{\mathrm{full}}^{\mathrm{KL}}$ and $\Lam_{\mathrm{full}}^{\mathrm{raw}}$.
+\item \emph{Can the remaining external hypotheses in the growing-recurrence and
+finite-state theories of~\cite{Paper2} be eliminated internally?}
+In~\cite{Paper2}, the Lean~4 formalization of Theorem~\ref{thm:finite-state-unconditional}
+(\texttt{FiniteStateComplete.lean}) left finite-dimensional Perron--Frobenius
+eigenvector existence on marked strongly connected components as an external
+hypothesis (R3), while \texttt{GeneralGrowingRec.lean} hardcoded a plus sign
+$+Q_{j-1}$ that applies only to odd Hurwitz quasi-periods.
+\end{enumerate}
+
+The present paper resolves both questions. Sections~\ref{sec:full-conv}
+and~\ref{sec:full-spectra} establish the complete full-convergent theory of
+$\ee$, fully verified at Layer~A in \texttt{EpiFormal/\allowbreak FullConvergentSpectrum.lean}.
+Section~\ref{sec:even-hurwitz} derives the exact $(-1)^{p-1}$ sign law for
+general Hurwitz quasi-periods $p\ge1$. Section~\ref{sec:perron} proves
+finite-dimensional Perron--Frobenius via Brouwer-free Collatz--Wielandt
+compactness (\texttt{EpiFormal/\allowbreak PerronFrobenius.lean}) and records the
+exact conditional scope of nonlinear power-map gap removal under Bugeaud--Liao--Rams~\cite{BLR}.
+
+\paragraph{Honest scope and novelty posture.}
+Following Section~\ref{sec:verification}, every theorem in Sections~\ref{sec:full-conv}--\ref{sec:full-spectra}
+and Theorem~\ref{thm:finite-state-unconditional} is unconditionally proved and
+Lean~4 kernel-checked on the base axioms only; the zero-level characterization
+$\{\Lam_{\mathrm{full}}^{\mathrm{KL}}=0\}=\Z+\Z\ee$ specializes Kraaikamp--Liardet~\cite{KL}
+to $\alpha=\ee$, while the $(0,1)$ spectral gap, positive-level classification,
+base-$5$ level-$1$ gauge, and empty exact-limit theorem for $k\ge3$ appear new
+in a targeted negative search (arXiv/OpenAlex; MathSciNet and zbMATH were not
+searched systematically). Nothing in this work bears on the irrationality of $\ee+\pi$.
+
+\section{Full Regular Convergents of $\ee$ and Kraaikamp--Liardet Weights}\label{sec:full-conv}
+
+Index the regular continued fraction partial quotients of
+$\ee=[2;1,2,1,1,4,1,1,6,\dots]$ from $n=0$ by
+\[
+a_0=2,\qquad a_{3j+1}=1,\qquad a_{3j+2}=2j+2,\qquad a_{3j+3}=1\qquad(j\ge0),
+\]
+with regular convergents $p_n/q_n$ initialized by $(p_0,q_0)=(2,1)$,
+$(p_1,q_1)=(3,1)$, and $X_{n+2}=a_{n+2}X_{n+1}+X_n$ for $X\in\{p,q\}$.
+With the indexing~\eqref{eq:sel-rec} ($P_0/Q_0=1/1$, $P_1/Q_1=3/1$,
+$P_2/Q_2=19/7$), the first convergents match Table~\ref{tab:full-sel}.
+
+\begin{table}[ht]
+\centering\footnotesize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{c|cccccccc}
+\toprule
+$n$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$\\
+\midrule
+$a_n$ & $2$ & $1$ & $2$ & $1$ & $1$ & $4$ & $1$ & $1$\\
+$p_n/q_n$ & $2/1$ & $3/1$ & $8/3$ & $11/4$ & $19/7$ & $87/32$ & $106/39$ & $193/71$\\
+Denom & $\frac{Q_1+Q_0}{2}$ & $Q_1$ & $\frac{Q_2-Q_1}{2}$ & $\frac{Q_2+Q_1}{2}$ & $Q_2$ & $\frac{Q_3-Q_2}{2}$ & $\frac{Q_3+Q_2}{2}$ & $Q_3$\\
+\bottomrule
+\end{tabular}
+\caption{Exact correspondence between full regular convergents $p_n/q_n$ and selected convergents $P_j/Q_j$ of $\ee$.}\label{tab:full-sel}
+\end{table}
+
+\begin{theorem}[Full-to-selected convergent identities and errors]\label{thm:full-identities}
+For every integer $j\ge0$,
+\begin{equation}\label{eq:full-conv-rel}
+p_{3j}=\frac{P_{j+1}+P_j}{2},\qquad p_{3j+1}=P_{j+1},\qquad p_{3j+2}=\frac{P_{j+2}-P_{j+1}}{2},
+\end{equation}
+and the exact same relations hold with $(q,Q)$ in place of $(p,P)$ (equivalently,
+for $j\ge1$, $q_{3j-2}=Q_j$, $q_{3j-1}=(Q_{j+1}-Q_j)/2$, $q_{3j}=(Q_{j+1}+Q_j)/2$).
+Consequently, for all $n\ge0$,
+\[
+p_n q_{n+1}-p_{n+1}q_n=(-1)^{n+1},\qquad \gcd(p_n,q_n)=1,\qquad \lim_{n\to\infty}\frac{p_n}{q_n}=\ee.
+\]
+Writing $\Delta_n:=q_n\ee-p_n$ and $\delta_j:=Q_j\ee-P_j$, we have
+$\Delta_{3j+1}=\delta_{j+1}$, $\Delta_{3j}=\frac{\delta_{j+1}+\delta_j}{2}$, and
+$\Delta_{3j+2}=\frac{\delta_{j+2}-\delta_{j+1}}{2}$, whence the Kraaikamp--Liardet
+weights $w_n:=\bigl(q_n|\Delta_n|\bigr)^{-1}$ satisfy
+\begin{equation}\label{eq:kl-weights}
+\lim_{j\to\infty}\frac{w_{3j+1}}{2(j+1)}=1,\qquad
+\lim_{j\to\infty}w_{3j+2}=2,\qquad
+\lim_{j\to\infty}w_{3j+3}=2,
+\end{equation}
+with strict bound $2j+1<w_{3j-2}$ for all $j\ge1$.
+\end{theorem}
+
+\begin{proof}
+We check~\eqref{eq:full-conv-rel} simultaneously for $X\in\{(p,P),(q,Q)\}$ by
+induction on $j\ge0$. For $j=0$: $(P_1+P_0)/2=(3+1)/2=2=p_0$, $P_1=3=p_1$, and
+$(P_2-P_1)/2=(19-3)/2=8=p_2$; similarly $(Q_1+Q_0)/2=1=q_0$, $Q_1=1=q_1$, and
+$(Q_2-Q_1)/2=(7-1)/2=3=q_2$.
+Suppose the three identities hold at $j$. Since $a_{3j+3}=a_{3j+4}=1$ and
+$a_{3j+5}=2j+4$:
+\begin{align*}
+X_{3j+3}&=X_{3j+2}+X_{3j+1}=\frac{Y_{j+2}-Y_{j+1}}{2}+Y_{j+1}=\frac{Y_{j+2}+Y_{j+1}}{2},\\
+X_{3j+4}&=X_{3j+3}+X_{3j+2}=\frac{Y_{j+2}+Y_{j+1}}{2}+\frac{Y_{j+2}-Y_{j+1}}{2}=Y_{j+2}.
+\end{align*}
+Moreover, since $Y_{j+3}=(4j+10)Y_{j+2}+Y_{j+1}$ and $a_{3j+5}=2j+4$, subtracting
+$Y_{j+2}$ yields
+\[
+Y_{j+3}-Y_{j+2}=(4j+9)Y_{j+2}+Y_{j+1}=2(2j+4)Y_{j+2}+(Y_{j+2}+Y_{j+1})=2\bigl(a_{3j+5}X_{3j+4}+X_{3j+3}\bigr)=2X_{3j+5},
+\]
+completing the induction. The error formulas $\Delta_n$ are immediate by linearity.
+
+For~\eqref{eq:kl-weights}, recall from~\cite{Phase1} (verified in
+\texttt{Classification.lean} and \texttt{SpectralGap.lean}) that
+$|\delta_j|<1/(2jQ_j)$ for $j\ge1$, $Q_j|\delta_{j+1}|+Q_{j+1}|\delta_j|=2$,
+and $Q_{j+2}=(4j+6)Q_{j+1}+Q_j$. Since $|\delta_{j+1}|\le 2/Q_{j+2}$ gives
+$Q_j|\delta_{j+1}|\le 2/(4j+6)\to0$, we obtain $Q_{j+1}|\delta_j|\to2$.
+Because $\Delta_n$ alternates in sign at every regular step and selected
+indices satisfy $3(j+1)+1-(3j+1)=3$, consecutive selected errors $\delta_j$ and
+$\delta_{j+1}$ always have opposite signs (including $j=0$, where $\delta_0=\ee-1>0$
+and $\delta_1=\ee-3<0$), with strictly decreasing magnitudes $|\delta_{j+1}|<|\delta_j|$.
+Therefore $|\Delta_{3j}|=(|\delta_j|-|\delta_{j+1}|)/2$, and from $q_{3j}=(Q_{j+1}+Q_j)/2$
+we obtain
+\[
+q_{3j}|\Delta_{3j}|=\frac{Q_{j+1}|\delta_j|-Q_j|\delta_{j+1}|+Q_j|\delta_j|-Q_{j+1}|\delta_{j+1}|}{4}
+\longrightarrow\frac{2-0+0-0}{4}=\frac12,
+\]
+so $w_{3j}\to2$. Similarly, opposite signs between $\delta_{j+1}$ and $\delta_{j+2}$
+give $|\Delta_{3j+2}|=(|\delta_{j+1}|+|\delta_{j+2}|)/2$, and with $q_{3j+2}=(Q_{j+2}-Q_{j+1})/2$
+(noting $Q_{j+2}|\delta_{j+1}|+Q_{j+1}|\delta_{j+2}|=2$ and $Q_{j+1}|\delta_{j+2}|\to0$)
+we obtain
+\[
+q_{3j+2}|\Delta_{3j+2}|=\frac{Q_{j+2}|\delta_{j+1}|-Q_{j+1}|\delta_{j+2}|+Q_{j+2}|\delta_{j+2}|-Q_{j+1}|\delta_{j+1}|}{4}
+\longrightarrow\frac{2-0+0-0}{4}=\frac12,
+\]
+so $w_{3j+2}\to2$. Finally, along $n=3j+1$ ($j\ge0$), the standard continued-fraction
+weight formula $w_n=a_{n+1}+[0;a_{n+2},\dots]+[0;a_n,\dots,a_1]$ gives $a_{3j+2}=2j+2$
+and $0<[0;1,1,2j+4,\dots]+[0;1,1,2j,\dots]<2$, yielding $w_{3j+1}/(2j+2)\to1$
+and $2j+1<w_{3j-2}$ for all $j\ge1$.
+\end{proof}
+
+\section{Full-Convergent Spectra, Zero-Level Collapse, and Empty Exact Limits}\label{sec:full-spectra}
+
+For $x\in\R$, set $M_j(x):=\mathrm{round}(Q_j x)\in\Z$, $u_j(x):=Q_j x-M_j(x)\in[-1/2,1/2]$,
+and $d_j(x):=M_{j+1}(x)-(4j+2)M_j(x)-M_{j-1}(x)$. Define the
+\emph{parity-flip predicate}
+\[
+\mathrm{pf}(x):\iff \bigl(M_{j+1}(x)\not\equiv M_j(x)\pmod 2\ \text{for infinitely many }j\bigr),
+\]
+and the two full-convergent spectral functionals
+\[
+\Lam_{\mathrm{full}}^{\mathrm{KL}}(x):=\limsup_{n\to\infty} w_n\|q_n x\|,\qquad
+\Lam_{\mathrm{full}}^{\mathrm{raw}}(x):=\limsup_{n\to\infty} a_{n+1}\|q_n x\|.
+\]
+Put $L:=\Z+\Z\frac{\ee+1}{2}$, $L_0:=\Z+\Z\ee$, and $L_1:=\frac{\ee+1}{2}+\Z+\Z\ee$,
+so that $L=L_0\sqcup L_1$ (the disjointness uses $\ee\notin\Q$).
+
+\begin{theorem}[Master formulas, gaps, zero-level collapse, and gauges]\label{thm:full-spectra}
+\leavevmode
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+\item \textbf{Exact master formulas.} For every $x\in\R$: if $\Lam(x)=\infty$ then
+$\Lam_{\mathrm{full}}^{\mathrm{KL}}(x)=\Lam_{\mathrm{full}}^{\mathrm{raw}}(x)=\infty$;
+if $\Lam(x)<\infty$ then
+\begin{equation}\label{eq:master-kl-raw}
+\Lam_{\mathrm{full}}^{\mathrm{KL}}(x)=\max\bigl(2\Lam(x),\,\mathbf{1}_{\mathrm{pf}(x)}\bigr),\qquad
+\Lam_{\mathrm{full}}^{\mathrm{raw}}(x)=\max\bigl(2\Lam(x),\,\tfrac12\mathbf{1}_{\mathrm{pf}(x)}\bigr).
+\end{equation}
+\item \textbf{Ranges and spectral gaps.} We have
+\[
+\Lam_{\mathrm{full}}^{\mathrm{KL}}(\R)=\{0\}\cup\bigl\{k/2:k\in\Z_{\ge2}\bigr\}\cup\{\infty\},\qquad
+\Lam_{\mathrm{full}}^{\mathrm{raw}}(\R)=\tfrac12\Z_{\ge0}\cup\{\infty\}.
+\]
+In particular, $\Lam_{\mathrm{full}}^{\mathrm{KL}}$ exhibits a giant initial open
+gap $(0,1)$ (no $x\in\R$ has $0<\Lam_{\mathrm{full}}^{\mathrm{KL}}(x)<1$), together
+with open gaps $(k/2,(k+1)/2)$ for all $k\ge2$.
+\item \textbf{Parity-flip expulsion and zero-level collapse.} The following five
+conditions are equivalent for $x\in\R$:
+\[
+\Lam_{\mathrm{full}}^{\mathrm{KL}}(x)=0 \;\Longleftrightarrow\;
+\Lam_{\mathrm{full}}^{\mathrm{KL}}(x)<1 \;\Longleftrightarrow\;
+\Lam_{\mathrm{full}}^{\mathrm{raw}}(x)=0 \;\Longleftrightarrow\;
+\Lam_{\mathrm{full}}^{\mathrm{raw}}(x)<\tfrac12 \;\Longleftrightarrow\;
+x\in L_0=\Z+\Z\ee.
+\]
+Meanwhile, $\mathrm{pf}(x)$ fails on $L_0$ and holds for every $x\in L_1$ and
+every $x$ with $\Lam(x)=1/4$.
+\item \textbf{Exact level sets and critical gauges.} Writing $h_k$ for the critical
+gauge $h_k(1/Q_n)=(2k+1)^{-n}$ of~\cite{Paper2}:
+\begin{align*}
+\{\Lam_{\mathrm{full}}^{\mathrm{KL}}=1\}&=L_1\cup\{\Lam=1/4\}\cup\{\Lam=1/2\}&&(\text{critical gauge }h_2,\text{ base }5),\\
+\{\Lam_{\mathrm{full}}^{\mathrm{KL}}=k/2\}&=\{\Lam=k/4\}\qquad(\forall\,k\ge3)&&(\text{critical gauge }h_k,\text{ base }2k+1),\\
+\{\Lam_{\mathrm{full}}^{\mathrm{raw}}=1/2\}&=L_1\cup\{\Lam=1/4\}&&(\text{critical gauge }h_1,\text{ base }3),\\
+\{\Lam_{\mathrm{full}}^{\mathrm{raw}}=k/2\}&=\{\Lam=k/4\}\qquad(\forall\,k\ge2)&&(\text{critical gauge }h_k,\text{ base }2k+1).
+\end{align*}
+Moreover, $\dimH\{\Lam_{\mathrm{full}}^{\mathrm{KL}}<\infty\}=0$ and
+$\Lam_{\mathrm{full}}^{\mathrm{KL}}=\Lam_{\mathrm{full}}^{\mathrm{raw}}=\infty$
+Lebesgue-almost everywhere.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Along $n=3j+1$, $q_{3j+1}=Q_{j+1}$, $a_{3j+2}=2j+2$, and $w_{3j+1}\sim 2(j+1)$,
+so both $w_{3j+1}\|q_{3j+1}x\|$ and $a_{3j+2}\|q_{3j+1}x\|$ have $\limsup$
+equal to $2\Lam(x)$ (which gives $\infty$ whenever $\Lam(x)=\infty$).
+Assume $\Lam(x)<\infty$. Then $u_j(x)=\|Q_j x\|\cdot\mathrm{sgn}(u_j)\to0$.
+From $q_{3j}=(Q_{j+1}+Q_j)/2$ and $q_{3j+2}=(Q_{j+2}-Q_{j+1})/2$,
+\begin{align*}
+q_{3j}x&=\frac{M_{j+1}(x)+M_j(x)}{2}+\frac{u_{j+1}(x)+u_j(x)}{2},\\
+q_{3j+2}x&=\frac{M_{j+2}(x)-M_{j+1}(x)}{2}+\frac{u_{j+2}(x)-u_{j+1}(x)}{2}.
+\end{align*}
+Because $(u_{j+1}\pm u_j)/2\to0$, we have $\|q_{3j}x\|\to0$ along indices with
+$M_{j+1}\equiv M_j\pmod 2$, and $\|q_{3j}x\|\to1/2$ along indices with
+$M_{j+1}\not\equiv M_j\pmod 2$ (and analogously for $q_{3j+2}$). Using
+$w_{3j}, w_{3j+2}\to 2$ and $a_{3j+1}=a_{3j+3}=1$, taking $\limsup$ over all
+three residue classes $\bmod 3$ yields~\eqref{eq:master-kl-raw}.
+
+If $x=m+n\ee\in L_0$, then eventually $M_j(x)=m Q_j+n P_j$; since every $P_j,Q_j$
+is odd (an easy induction from $P_0,Q_0,P_1,Q_1$ odd and even step multipliers $4j+2$),
+$M_{j+1}(x)\equiv m+n\equiv M_j(x)\pmod 2$, so $\mathrm{pf}(x)$ is false and
+$\Lam_{\mathrm{full}}^{\mathrm{KL}}(x)=0$. Conversely, if
+$x=\frac{\ee+1}{2}+m+n\ee\in L_1$, then eventually
+$M_j(x)=\frac{P_j+Q_j}{2}+m Q_j+n P_j$; here $R_j:=\frac{P_j+Q_j}{2}$ satisfies
+$R_0=1, R_1=2$, $R_{j+1}=(4j+2)R_j+R_{j-1}\equiv R_{j-1}\pmod 2$, so
+$R_{j+1}-R_j$ is odd for all $j\ge0$, forcing $\mathrm{pf}(x)$ to be true!
+Finally, if $\Lam(x)=1/4$, then $|d_j(x)|=1$ (odd) infinitely often; since
+$M_{j+1}-M_{j-1}\equiv d_j\pmod 2$, $M_{j+1}$ and $M_j$ cannot have constant
+parity eventually, so $\mathrm{pf}(x)$ holds automatically. This excludes
+value $1/2$ from $\Lam_{\mathrm{full}}^{\mathrm{KL}}(\R)$ (since $2\Lam(x)=1/2$
+forces $\Lam(x)=1/4$, hence $\mathrm{pf}(x)$ holds and the maximum jumps to $1$)
+and establishes parts~(ii)--(iv) by direct combination with~\cite{Paper2}.
+\end{proof}
+
+\begin{theorem}[Unsigned exact-limit dichotomy along all convergents]\label{thm:full-exact-lim}
+Consider the full-convergent unsigned exact-limit sets
+$E_{\mathrm{full}}(c):=\{x\in\R:\lim_{n\to\infty} w_n\|q_n x\|=c\}$ for $c\ge0$.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+\item $E_{\mathrm{full}}(0)=L_0=\Z+\Z\ee$ (countable).
+\item $E_{\mathrm{full}}(1)$ consists of all $x\in\R$ with $\Lam(x)<\infty$ for which
+both $M_{j+1}(x)\not\equiv M_j(x)\pmod 2$ eventually and $2j\|Q_j x\|\to 1$
+(equivalently, $|d_j(x)|=2$ eventually and $M_{j+1}(x)\not\equiv M_j(x)\pmod 2$
+eventually). Moreover, $E_{\mathrm{full}}(1)$ has exact binary critical gauge
+base~$2$ ($\mathcal H^{h_{\mathrm{bin}}}(E_{\mathrm{full}}(1))=\infty$ and
+$\dimH E_{\mathrm{full}}(1)=0$).
+\item For every $c\notin\{0,1\}$ (in particular every $c=k/2$ with $k\ge3$),
+\[
+E_{\mathrm{full}}(c)=\varnothing.
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Suppose $\lim_{n\to\infty} w_n\|q_n x\|=c<\infty$. Then
+$2\Lam(x)=\lim_{j\to\infty}w_{3j+1}\|q_{3j+1}x\|=c<\infty$, so $u_j(x)\to0$.
+Along $n=3j$ and $n=3j+2$, $\|q_n x\|-\frac12\mathbf{1}_{\{M_{j+1}\not\equiv M_j\bmod 2\}}\to0$
+and $w_n\to 2$. Therefore the sequence $(w_{3j}\|q_{3j}x\|)$ can only have limit
+points in $\{0,1\}$. Convergence of the full sequence forces $c\in\{0,1\}$,
+proving~(iii). Part~(i) follows directly from Theorem~\ref{thm:full-spectra}(iii).
+For $c=1$, simultaneous convergence along $n=3j,3j+2$ to $1$ is equivalent to
+$M_{j+1}\not\equiv M_j\pmod 2$ eventually, while convergence along $n=3j+1$ to $1$
+is equivalent to $2j\|Q_j x\|\to 1$, i.e.\ $|d_j(x)|=2$ eventually. Whenever the
+initial pair satisfies $M_{N+1}\not\equiv M_N\pmod 2$, choosing any infinite
+binary sign sequence $d_j\in\{\pm 2\}$ ($j\ge N+1$) yields
+$M_{j+1}=M_{j-1}+(4j+2)M_j+d_j\equiv M_{j-1}\pmod 2$, preserving opposite parities
+of consecutive nearest integers forever. Thus the parity-alternating $\{\pm 2\}$
+binary Cantor subtree embeds into $E_{\mathrm{full}}(1)$ and supplies exact
+binary critical gauge base~$2$, while $E_{\mathrm{full}}(1)\subset\{\Lam=1/2\}$
+gives $\dimH E_{\mathrm{full}}(1)=0$.
+\end{proof}
+
+\section{General Quasi-Period Signed Hurwitz Recurrences}\label{sec:even-hurwitz}
+
+In~\cite{Paper2}, the general-recurrence formalization \texttt{EpiFormal/\allowbreak GeneralGrowingRec.lean}
+assumed $+Q_{j-1}$ on the subdiagonal term of the second-order recurrence, which
+covers $\ee$ ($p=3$) and odd Hurwitz quasi-periods but excludes even quasi-periods
+such as $\tan(1/m)=[0;m-1,1,3m-2,1,5m-2,\dots]$ ($p=2$) or $J_1(2)/J_0(2)$ ($p=2$).
+The following elementary theorem gives the exact universal sign law.
+
+\begin{theorem}[General signed three-term block recurrence]\label{thm:even-hurwitz}
+Let $\alpha_n\in\Z_{\ge1}$ be a Hurwitz continued fraction of quasi-period $p\ge1$,
+whose $j$-th block ($j\ge0$) consists of one affine quotient $a_j=cj+d\in\Z_{\ge1}$
+followed by $p-1$ constant quotients $c_1,\dots,c_{p-1}\in\Z_{\ge1}$. Put
+\[
+C:=\prod_{i=1}^{p-1}\begin{pmatrix}c_i&1\\1&0\end{pmatrix}
+=\begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix}\in\mathrm{GL}_2(\Z),
+\]
+so $\alpha\delta-\beta\gamma=\det C=(-1)^{p-1}$ and $\alpha\ge 1$. Write $(P_j,Q_j)$
+for the block-boundary convergent numerators and denominators immediately preceding
+the quotient $a_j$ ($P_j,Q_j$ denote the first column of the cumulative transfer
+product up to block $j$). Then for every $j\ge 1$,
+\begin{equation}\label{eq:signed-hurwitz-rec}
+Q_{j+1}=(\alpha a_j+\beta+\gamma)Q_j+(-1)^{p-1}Q_{j-1},
+\end{equation}
+and the exact same recurrence holds for $(P_j)$. In particular, the trailing term
+is $+Q_{j-1}$ when $p$ is odd and strictly $-Q_{j-1}$ when $p$ is even.
+\end{theorem}
+
+\begin{proof}
+Right-multiplication across block $j$, $(a_j,c_1,\dots,c_{p-1})$, updates the
+denominator pair $(Q_j,Q_j')$ immediately before $a_j$ (where $Q_j'$ is the
+convergent denominator immediately preceding $Q_j$ in the full regular
+continued fraction) by post-multiplying by the block transfer matrix
+\[
+B_j:=\begin{pmatrix}a_j&1\\1&0\end{pmatrix}
+\begin{pmatrix}c_1&1\\1&0\end{pmatrix}\cdots\begin{pmatrix}c_{p-1}&1\\1&0\end{pmatrix}
+=\begin{pmatrix}a_j&1\\1&0\end{pmatrix}\begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix}
+=\begin{pmatrix}\alpha a_j+\gamma&\beta a_j+\delta\\ \alpha&\beta\end{pmatrix}.
+\]
+Reading off $(Q_{j+1},Q_{j+1}')=(Q_j,Q_j')B_j$ gives
+\begin{equation}\label{eq:block-step-2x2}
+Q_{j+1}=(\alpha a_j+\gamma)Q_j+\alpha Q_j',\qquad
+Q_{j+1}'=(\beta a_j+\delta)Q_j+\beta Q_j'.
+\end{equation}
+Evaluating~\eqref{eq:block-step-2x2} at step $j-1$ ($j\ge 1$) and eliminating
+$Q_{j-1}'$ yields
+\[
+\alpha Q_j'-\beta Q_j
+=\bigl(\alpha(\beta a_{j-1}+\delta)-\beta(\alpha a_{j-1}+\gamma)\bigr)Q_{j-1}
+=(\alpha\delta-\beta\gamma)Q_{j-1}=(-1)^{p-1}Q_{j-1}.
+\]
+Substituting $\alpha Q_j'=\beta Q_j+(-1)^{p-1}Q_{j-1}$ into the first identity
+of~\eqref{eq:block-step-2x2} immediately gives~\eqref{eq:signed-hurwitz-rec}. The
+identical matrix recursion produces the same identity for $(P_j)$.
+\end{proof}
+
+As an immediate check (verified to $120$ decimal places in
+\texttt{verification/\allowbreak verify\_\allowbreak nonlinear\_\allowbreak blr\_\allowbreak 20261125.py}),
+for $p=2$ and $c_1=1$ ($\tan 1$ shifted, or $\tan(1/m)$ where $C=\bigl(\begin{smallmatrix}1&1\\1&0\end{smallmatrix}\bigr)$,
+$\alpha=1,\beta=1,\gamma=1,\delta=0$), formula~\eqref{eq:signed-hurwitz-rec} gives
+$Q_{j+1}=(a_j+2)Q_j-Q_{j-1}$, matching all classical convergents with strict
+$-Q_{j-1}$; for $\ee$ ($p=3$, $c_1=c_2=1$, $a_j=2j+2$), $C=\bigl(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\bigr)$,
+$\alpha=2,\beta=\gamma=1$, recovering $Q_{j+1}=(4j+6)Q_j+Q_{j-1}$.
+
+\section{Brouwer-Free Perron--Frobenius and Unconditional Finite-State Tails}\label{sec:perron}
+
+In~\cite{Paper2}, Theorem~\texttt{thm:finite-state-tail} required the external
+existence of a positive right eigenvector $(w_v,\lambda_C)$ on every marked
+strongly connected component of a deterministic finite-state defect graph $G$
+(labeled in $\{-k,\dots,k\}$). We remove that external dependency inside Lean~4
+without Brouwer's fixed-point theorem.
+
+\begin{theorem}[Brouwer-free Perron--Frobenius and unconditional tail theorem]\label{thm:finite-state-unconditional}
+\leavevmode
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+\item Let $A=(A_{uv})_{u,v\in\alpha}$ be a nonnegative matrix on a finite
+nonempty index set $\alpha$ that is strongly connected with respect to positive
+entries and has at least one positive entry. Set $N=|\alpha|$ and
+$P:=(I+A)^{N-1}$. Then $P_{uv}>0$ for all $u,v\in\alpha$, and the
+Collatz--Wielandt ratio
+\[
+\rho(y):=\min_{u\in\alpha}\frac{(Ay)_u}{y_u}
+\]
+attains its maximum $r=\rho(w)>0$ on the compact set $P(\Delta)$ (where $\Delta$
+is the standard probability simplex), satisfying $Aw=rw$ with strictly positive
+$w$. Moreover, any two strictly positive eigenvectors have the same eigenvalue,
+and if $A_{uv}\in\{0\}\cup[1,\infty)$ for all $u,v$, then $r\ge 1$.
+\item Consequently, for any deterministic finite graph $G$ with edge labels in
+$\{-k,\dots,k\}$ ($k\ge1$), the full three-way dichotomy/trichotomy of
+\cite[Theorem~\texttt{thm:finite-state-tail}]{Paper2} holds on both $\R$ and
+$\R/\Z$ unconditionally with no external linear-algebraic hypothesis.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof outline (formalized in \texttt{PerronFrobenius.lean})]
+Every entry $P_{uv}$ of $P=(I+A)^{N-1}$ is strictly positive because strong
+connectivity joins $u$ to $v$ in at most $N-1$ positive steps, and the identity
+diagonal supplies self-loops. Consequently, every vector $y\in K:=P(\Delta)$
+satisfies $y_u\ge\min_{u,v} P_{uv}>0$ uniformly on $K$, making $\rho$ continuous
+on the nonempty compact set $K$ so it attains its maximum $r=\rho(w)>0$ at some
+$w\in K$. If $Aw\neq rw$, then $Aw-rw\ge0$ has at least one strictly positive
+coordinate $u_0$. Since $P$ commutes with $A$ and has strictly positive entries
+everywhere, $A(Pw)-rPw=P(Aw-rw)>0$ in every coordinate. Normalizing $w$ by
+$s:=\sum_u w_u>0$ places $z:=s^{-1}w\in\Delta$, so $y_1:=P(z)=s^{-1}Pw\in K$
+satisfies $\rho(y_1)=\rho(Pw)>r$, contradicting the maximality of $w$ on $K$.
+Uniqueness of positive eigenvalues follows by comparing $\min_u w_{1,u}/w_{2,u}$
+and $\max_u w_{1,u}/w_{2,u}$. When $A_{uv}\in\{0\}\cup[1,\infty)$ and
+$A_{u_1u_2}\ge1$, irreducibility furnishes a return walk from $u_2$ to $u_1$ of
+length $L\ge0$, yielding $(A^{L+1})_{u_1u_1}\ge1$ and hence
+$r^{L+1}w_{u_1}=(A^{L+1}w)_{u_1}\ge w_{u_1}>0$, forcing $r\ge1$. Applying this
+componentwise to every marked SCC of $G$ gives $r_C\ge1$ and defines
+$\lambda_*=\max_C r_C$, discharging the eigenvector inputs of
+\texttt{FiniteStateComplete.lean}.
+\end{proof}
+
+\begin{remark}[Conditional removal of Bugeaud--Liao--Rams~\cite{BLR} condition~(1.6)]\label{rem:blr-audit}
+In metric power-map problems $\{x:\|x^{r_n}-y_n\|\le\delta_n\text{ for all }n\ge N\}$,
+one might ask whether the growth ratio hypothesis~(1.6) of~\cite{BLR} ($r_{n+1}/r_n\to\infty$
+vs Baker~\cite{Baker2015} $q_{n+1}/q_n\not\to1$ interpolation) can always be
+omitted whenever $r_{n+1}-r_n\to\infty$ and $2\delta_n v^{r_{n+1}-r_n}\to\infty$.
+An adversarial audit (\texttt{verification/\allowbreak verify\_\allowbreak nonlinear\_\allowbreak blr\_\allowbreak 20261125.py})
+establishes three obstructions: (a) taking ``$\forall n\ge 1$'' instead of a
+\emph{tail} set can produce the empty set at fixed $v$ (e.g.\ $r_1=1,y_1=1/2,\delta_1=0.1,v=3$);
+(b) without uniform single-step distortion control $\sup_n \delta_n r_{n+1}/(r_n v^{r_n})<\infty$,
+naive equal-mass Frostman measures fail even on power maps (for $v=1.5,\delta_n=1/8,r_n=24,r_{n+1}=2^{32}$,
+$99.873\%$ of child intervals cluster within $10/r_{n+1}$ of the right endpoint,
+violating the $s=1/2$ Frostman bound by $19.94\times$); (c) for general $C^2$ maps,
+Adler distortion on $J_n$ alone does not bound cross-step derivative drift.
+Under the three explicit hypotheses (tail set, right-sided localization $[v,v+\eta]$,
+and $\sup_n \delta_n r_{n+1}/(r_n v^{r_n})<\infty$, which covers polynomial/exponential
+gaps such as $r_n=n^2$ and $r_n=2^n$), the conditional local lower bound holds
+without Baker interpolation.
+\end{remark}
+
+\section{Lean~4 Formalization, Verification, and Use of AI}\label{sec:verification}
+
+Both new theorems of this companion note are formally verified in Lean~4 (v4.35
+Mathlib) at Layer~A using only \texttt{propext}, \texttt{Classical.choice}, and
+\texttt{Quot.sound} (zero \texttt{sorryAx}, zero custom axioms, zero
+\texttt{native\_decide}):
+\begin{sloppypar}
+\begin{itemize}[leftmargin=2em]
+\item Module \texttt{EpiFormal/\allowbreak FullConvergentSpectrum.lean}
+(\texttt{AuditFullConvergentSpectrum.lean}, $40$ declarations ending in
+\texttt{fullConv\_\allowbreak det}, \texttt{fullKLSpectrum\_\allowbreak eq},
+\texttt{fullRawSpectrum\_\allowbreak eq}, \texttt{fullKLSpectrum\_\allowbreak zero\_\allowbreak tfae},
+\texttt{fullKLSpectrum\_\allowbreak first\_\allowbreak gap},
+\texttt{fullKLSpectrum\_\allowbreak open\_\allowbreak gap},
+\texttt{fullRawSpectrum\_\allowbreak open\_\allowbreak gap},
+\texttt{fullKLSpectrum\_\allowbreak range}, \texttt{fullRawSpectrum\_\allowbreak range},
+\texttt{fullKLSpectrum\_\allowbreak zero\_\allowbreak set},
+\texttt{fullKLSpectrum\_\allowbreak one\_\allowbreak set},
+\texttt{fullKLSpectrum\_\allowbreak eq\_\allowbreak exactLevel\_\allowbreak of\_\allowbreak three\_\allowbreak le},
+\texttt{fullRawSpectrum\_\allowbreak level\_\allowbreak sets},
+\texttt{fullSpectrum\_\allowbreak critical\_\allowbreak gauges}, and
+\texttt{fullSpectrum\_\allowbreak coarse\_\allowbreak collapse}; recorded in
+\texttt{verification/\allowbreak audit\_\allowbreak full\_\allowbreak convergent\_\allowbreak spectrum\_\allowbreak 20261125.log}).
+\item Module \texttt{EpiFormal/\allowbreak PerronFrobenius.lean}
+(\texttt{AuditPerronFrobenius.lean}, $13$ declarations ending in
+\texttt{perron\_\allowbreak eigenvalue\_\allowbreak unique},
+\texttt{perron\_\allowbreak frobenius\_\allowbreak pos},
+\texttt{perron\_\allowbreak frobenius\_\allowbreak ge\_\allowbreak one},
+\texttt{markedComponent\_\allowbreak perron\_\allowbreak eigenvector},
+\texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak unconditional},
+\texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak unconditional},
+\texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak trichotomy}, and
+\texttt{thm\_\allowbreak finite\_\allowbreak state\_\allowbreak tail\_\allowbreak circle\_\allowbreak trichotomy}; recorded in
+\texttt{verification/\allowbreak audit\_\allowbreak perron\_\allowbreak frobenius\_\allowbreak 20261125.log}).
+\end{itemize}
+\end{sloppypar}
+All Lean statements match the mathematical claims above without hidden extra
+hypotheses; Theorem~\ref{thm:full-exact-lim}, Theorem~\ref{thm:even-hurwitz},
+and Remark~\ref{rem:blr-audit} are proved analytically in Sections~\ref{sec:full-spectra}--\ref{sec:perron}
+and corroborated numerically (Category~4, non-rigorous high-precision checks in
+\texttt{verification/\allowbreak verify\_\allowbreak mobius\_\allowbreak e\_\allowbreak full\_\allowbreak conv\_\allowbreak 20261125.py}
+and \texttt{verification/\allowbreak verify\_\allowbreak nonlinear\_\allowbreak blr\_\allowbreak 20261125.py}).
+
+\paragraph{Use of AI and formal verification.}
+Generative AI assisted with Lean~4 proof engineering, adversarial audit of the
+BLR~(1.6) claim and Hurwitz recurrence signs, and drafting the Python verification
+scripts.
+% TODO before submission: replace with the human author's line-by-line
+% proof-verification attestation and reviewer statement prior to submission.
+Prior to journal submission, every proof and citation in this manuscript must
+undergo independent line-by-line human verification by the author(s).
+
+\begin{thebibliography}{99}
+\bibitem{Baker2015} S.~Baker, \emph{On small subsets of the reals satisfying an
+inhomogeneous Diophantine inequality}, Unif.\ Distrib.\ Theory 10 (2015), no.~2,
+1--16; preprint version used for checking: arXiv:1411.4817v1.
+
+{\sloppy
+\bibitem{BLR} Y.~Bugeaud, L.~Liao, M.~Rams, \emph{Metrical results on the
+distribution of fractional parts of powers of real numbers}, Proc.\ Edinb.\ Math.\
+Soc.\ (2) 62 (2019), 505--521, doi:10.1017/S0013091518000585.
+}
+
+{\sloppy
+\bibitem{KL} C.~Kraaikamp and P.~Liardet, \emph{Good approximations and
+continued fractions}, Proc.\ Amer.\ Math.\ Soc.\ 112 (1991), 303--309,
+doi:10.1090/s0002-9939-1991-1062392-7.
+}
+
+\bibitem{Paper2} Companion manuscript, \emph{Complete spectrum discretization,
+exact Hausdorff gauges, and dimension phase transitions for Diophantine
+approximation along the convergent denominators of $e$} (and Lean~4 archive
+\texttt{epi\_formal/}), integrated draft, 2026-11-25.
+
+\bibitem{Phase1} Phase-1 archive, \emph{On the irrationality of $e+\pi$}
+(formalization project), Lean~4 modules \texttt{EpiFormal/\allowbreak Classification.lean}
+and \texttt{EpiFormal/\allowbreak Spectral\allowbreak Gap.lean}, 2026-11-15.
+\end{thebibliography}
+
+\end{document}

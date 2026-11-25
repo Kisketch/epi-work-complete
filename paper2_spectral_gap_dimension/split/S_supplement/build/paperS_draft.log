@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  25 NOV 2026 07:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  25 NOV 2026 09:40
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **./paperS_draft.tex
 (paperS_draft.tex
@@ -791,55 +792,78 @@ LaTeX Warning: Reference `thm:multi-residue-asymptotic' on page 5 undefined on
 input line 234.
 
 
-LaTeX Warning: Reference `thm:finite-state-tail' on page 5 undefined on input l
-ine 245.
-
-
-LaTeX Warning: Reference `thm:residues' on page 5 undefined on input line 249.
-
-
 LaTeX Warning: Reference `tab:residues-general' on page 5 undefined on input li
-ne 249.
+ne 241.
 
 
 LaTeX Warning: Reference `rem:residue-kernel' on page 5 undefined on input line
- 251.
+ 241.
+
+
+LaTeX Warning: Reference `thm:finite-state-tail' on page 5 undefined on input l
+ine 241.
 
 
 LaTeX Warning: Reference `thm:multi-residue-asymptotic' on page 5 undefined on 
-input line 253.
+input line 241.
+
+
+Underfull \hbox (badness 1584) in paragraph at lines 218--243
+\OT1/cmtt/m/n/10.95 propext\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 Classical.c
+hoice\OT1/cmr/m/n/10.95 , and \OT1/cmtt/m/n/10.95 Quot.sound\OT1/cmr/m/n/10.95 
+---with zero project-added ax-ioms and zero
+ []
+
+
+Underfull \hbox (badness 3108) in paragraph at lines 218--243
+\OT1/cmr/m/n/10.95 The-o-rem []) are au-dited sep-a-rately in \OT1/cmtt/m/n/10.
+95 AuditResidueMultiAsymptotic.lean \OT1/cmr/m/n/10.95 (logged in
+ []
+
+
+Underfull \hbox (badness 1132) in paragraph at lines 218--243
+\OT1/cmr/m/n/10.95 and \OT1/cmtt/m/n/10.95 Quot.sound \OT1/cmr/m/n/10.95 with z
+ero \OT1/cmtt/m/n/10.95 sorryAx\OT1/cmr/m/n/10.95 ) elim-i-nated both ex-ter-na
+l hy-pothe-ses from the main
+ []
+
+
+Underfull \hbox (badness 1248) in paragraph at lines 218--243
+\OT1/cmr/m/n/10.95 com-par-i-son di-rectly in-side Lean 4 (dis-charg-ing Bowen'
+s pres-sure for-mal-ism, Re-mark []);
+ []
 
 [5]
-Underfull \hbox (badness 2359) in paragraph at lines 271--273
+Underfull \hbox (badness 2359) in paragraph at lines 258--260
 []\OT1/cmr/m/n/10.95 Y. Bugeaud, L. Liao, M. Rams, \OT1/cmr/m/it/10.95 Met-ri-c
 al re-sults on the dis-tri-bu-tion of frac-tional
  []
 
 
-Underfull \hbox (badness 1596) in paragraph at lines 271--273
+Underfull \hbox (badness 1596) in paragraph at lines 258--260
 \OT1/cmr/m/it/10.95 parts of pow-ers of real num-bers\OT1/cmr/m/n/10.95 , Proc.
  Ed-inb. Math. Soc. (2) 62 (2019), 505--521,
  []
 
-
-Underfull \hbox (badness 1609) in paragraph at lines 277--280
+[6]
+Underfull \hbox (badness 1609) in paragraph at lines 264--267
 []\OT1/cmr/m/n/10.95 P. Chi-tanga, B. Lem-mens, R. Nuss-baum, \OT1/cmr/m/it/10.
 95 On the struc-ture of the di-men-sion spec-
  []
 
 
-Underfull \hbox (badness 1769) in paragraph at lines 277--280
+Underfull \hbox (badness 1769) in paragraph at lines 264--267
 \OT1/cmr/m/it/10.95 trum for con-tin-ued frac-tion ex-pan-sions\OT1/cmr/m/n/10.
 95 , Indag. Math. 37 (2026), no. 6, 1960--1989,
  []
 
-[6]
-Underfull \hbox (badness 2302) in paragraph at lines 344--348
+[7]
+Underfull \hbox (badness 2302) in paragraph at lines 331--335
 []\OT1/cmr/m/n/10.95 D. Lima and C. G. Mor-eira, \OT1/cmr/m/it/10.95 Phase tran
 -si-tions on the Markov and La-grange dy-
  []
 
-[7] [8]
+[8]
 (C:\Users\Lgnatius\.gemini\antigravity\worktrees\epi_work\read_paper_repo\paper
 2_spectral_gap_dimension\split\S_supplement\build\paperS_draft.aux)
  ***********
@@ -860,7 +884,7 @@ Here is how much of TeX's memory you used:
  39190 multiletter control sequences out of 15000+600000
  636304 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,6n,82p,701b,631s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,6n,82p,2642b,631s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
 \tcrm1095.pk><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/cm/cmbx10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts
@@ -883,7 +907,7 @@ c/amsfonts/cm/cmtt10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on C:\Users\Lgnatius\.gemini\antigravity\worktrees\epi_work\read
 _paper_repo\paper2_spectral_gap_dimension\split\S_supplement\build\paperS_draft
-.pdf (8 pages, 268557 bytes).
+.pdf (8 pages, 269495 bytes).
 PDF statistics:
  190 PDF objects out of 1000 (max. 8388607)
  47 named destinations out of 1000 (max. 500000)

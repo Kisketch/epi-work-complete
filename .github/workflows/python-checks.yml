@@ -51,5 +51,12 @@ jobs:
           python verification/verify_round3.py
           python verification/verify_round4.py
 
+      - name: Run Round-2 M1/M2, Kahane, and BLR verification scripts
+        run: |
+          python verification/verify_mixed_eg_hermite_pade_obstruction_20261125.py
+          python verification/verify_mobius_e_full_conv_20261125.py
+          python verification/verify_nonlinear_blr_20261125.py
+          python verification/verify_kahane_q6_refutation_and_det_20261125.py
+
       - name: Run offline verify_refs unit tests (40 tests)
         run: python -m unittest discover -s .agents/skills/mathodology-evidence-search/scripts -v

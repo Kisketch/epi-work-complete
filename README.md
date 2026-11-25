@@ -1,10 +1,15 @@
 # $e+\pi$ 无理性研究与连分数谱/维数理论完整私有归档（2026-11-25 最新版）
 
-> **一句总判断**：本仓库完成截至 **2026-11-25** 的全面整合与本地/GitHub 统一归档，涵盖两篇修订重编主论文（**Paper 1** 75 页 + **Paper 2** 66 页，洁净 `pdflatex` 0 错误 / 0 未定义引用 / 0 Overfull `\hbox`，且主稿与 `split/` 三轨拆分源码保持 `289,499` 字节逐字节同步、**28/28** 文献全引用、2A/2B/2C `0/0` 未定义引用）、全量 Lean 4 `v4.35.0` 形式化工程（全库 **344** 个 `.lean` 文件，0 逃逸关键字、`sorryAx = 0`；核心 `Audit.lean` **937/937** + `AuditResidueCert.lean` **27/27** + `AuditResidueMultiAsymptotic.lean` **24/24** 合计 **988** 条 Layer A 审计声明，及在 `main@833845f` 跑通的 GitHub Actions 双 CI 绿灯）、新课题 [`research/`](research/README.md)（Kahane 问题 Q6 与阶段规划）、T6 临界标度实验归档 [`drafts_v3_critical_scaling/`](paper2_spectral_gap_dimension/drafts_v3_critical_scaling/README.md) 以及全套符号/`python-flint==0.9.0` Arb 球算术/配置/证据核查脚本（全局导航见 [`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md)）；同时严格遵循 [`AGENTS.md`](AGENTS.md) 诚实基线——**$e+\pi$ 的无理性（及 $e\pi, e-\pi, \pi/e, \pi^e$ 单个的无理性）仍是公开问题，本仓库未证明 $e+\pi$ 无理、有理或超越。**
+> **一句总判断**：本仓库完成截至 **2026-11-25（Round 2 收口）**的全面整合与本地/GitHub 统一归档，涵盖两篇修订重编主论文（**Paper 1** 75 页 + **Paper 2** 66 页，且主稿与 `split/` 拆分真源保持 `293,395` 字节逐字节同步、**28/28** 文献全引用、2A/2B/2C `0/0` 未定义引用）与两篇独立衍生定理论文（**Paper 2D** 18 页 + **Paper 2E** 8 页，均 0 错 / 0 Undefined / 0 Overfull `\hbox`）、全量 Lean 4 `v4.35.0` 形式化工程（全库 **356** 个 `.lean` 文件，0 逃逸关键字、`sorryAx = 0`；核心 `Audit.lean` **937/937** + **8 个**独立 Layer A 入口 **156** 条合计 **1,093** 条声明，已彻底消去 Paper 2 **R1** 与 **R3** 并无条件证明 $\mu(e)=2$ 与 $e$ 全收敛谱）、新课题 [`research/`](research/README.md)（含 Kahane Q6 增补否证 D′/R 并证出确定性定理 K-1/K-2）、分离式日志与 20 项 11 维总清单 [`MASTER_INVENTORY_LIST.md`](paper1_e_plus_pi/07_research_log_and_guide/MASTER_INVENTORY_LIST.md) 以及全套符号/`python-flint==0.9.0` Arb/高精度验证包（全局导航见 [`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md)）；同时严格遵循 [`AGENTS.md`](AGENTS.md) 诚实基线——**$e+\pi$ 的无理性（及 $e\pi, e-\pi, \pi/e, \pi^e$ 单个的无理性）仍是公开问题，本仓库未证明 $e+\pi$ 无理、有理或超越。**
 
 ---
 
 ## 0. 最新更改情况（2026-11-24 / 2026-11-25）
+
+- **2026-11-25 Round 2 增量闭环与衍生裂变**：
+  - **独立衍生论文 Paper 2D & Paper 2E（各 0 错误 / 0 Undefined / 0 Overfull）**：**Paper 2D**（[`spinoff_critical_and_supercritical_exact_20261125/`](paper2_spectral_gap_dimension/spinoff_critical_and_supercritical_exact_20261125/README.md)，18 页）彻底修复 T6 全部 7 处缺陷并无条件证明超临界精确主导常数定理 $\frac{d\kappa\zeta(2s_0)}{2}m^{-2s_0}(1+O(m^{-1}))$（30 位配点核验至 $m=10^{12}$）与稀疏字母表尾相变；**Paper 2E**（[`spinoff_full_convergent_and_even_hurwitz_20261125/`](paper2_spectral_gap_dimension/spinoff_full_convergent_and_even_hurwitz_20261125/README.md)，8 页）给出 $e$ 全正则收敛列完整离散谱（$(0,1)$ 首隙、零水平缩回 $\Z+\Z e$、基 $5$/基 $2k+1$ 规范、$k\ge 3$ 精确极限 $\varnothing$）、一般 Hurwitz 拟周期 $(-1)^{p-1}$ 符号律、Brouwer-free Perron–Frobenius 消去与条件 BLR (1.6) 审计（附超缺项 $19.94\times$ 反例）。
+  - **Lean 4 新增 6 路独立 Layer A 模块（105 条新声明，全库 356 `.lean` / 1,093 声明，`sorryAx = 0`）**：新增 `ResidueCertStrictOpen`（22 条，**彻底消去 Paper 2 R1**）、`MuEEqTwo`（9 条，证明 Bundschuh $\mu(e)=2$）、`GeneralAlphabetFloor`（15 条）+ `SupercriticalConstant`（6 条，条件于显式 `hPole`）、`PerronFrobenius`（13 条，Collatz–Wielandt 无 Brouwer 证明**彻底消去 Paper 2 R3**）与 `FullConvergentSpectrum`（40 条），并通过 [`patch_round2_20261125.py`](paper2_spectral_gap_dimension/patch_round2_20261125.py) 同步至 Paper 2 主文与拆分四轨（`293,395` 字节、`4,568` 行、`0/0` 未定义引用）。
+  - **Kahane Q6 与 Paper 1 M1/M2 对抗试错留痕**：[`kahane_q6_addendum_20261125.md`](research/kahane_q6_addendum_20261125.md) 构造反例彻底否证原猜想 D′ 与引理 R（引理 D 因 $\exp(-cn^{2/3})$ 包络仍开放），并证明无条件确定性局部维数下界 K-1 / K-2（`dps=32000`, $n=45000$ 核验）；[`trial_notes_M1_M2_20261125.md`](paper1_e_plus_pi/07_research_log_and_guide/trial_notes_M1_M2_20261125.md) 完成混合 $E/G$ CDT 障碍与一般 Möbius 3-轨道诊断；同步扩展 [`verify_repo_integrity.py`](verification/verify_repo_integrity.py)、双 CI、双日志体系与四方同步的总指南技能。
 
 1. **论文一与论文二文献核查补全与重编**：
    - **Paper 1**（`75` 页，0 错误 / 0 Overfull）：将 `Dan2026`（`arXiv:2609.12338v1`）、`Yu2026`（`arXiv:2606.17303v1`，145 候选/133 本原 Apéry 审计）更新为全文已核口径；区分 `openai/math` 中含 `sorry` 的挑战题面 `ComparatorChallenges/PiExponent.lean` 与主证明 `OAI/NumberTheory/PiExponent/Main.lean`；补充 `CDT2026`（Calegari–Dimitrov–Tang ICM 2026 `doi:10.1137/25m1806776`）、`Chudnovsky2026`（`arXiv:2610.31112v1`、`2610.26539v1`）、`Fauzan2026`（`10.5281/zenodo.22826419`）与 `Zapata2026`（`arXiv:2603.09719v5`）边界定位。
@@ -41,9 +46,7 @@
 | 论文一：$e+\pi$ 无理性归约、Flint Hills 条件桥接、Alekseyev 方向（$\text{收敛}\Rightarrow\mu(\pi)\le 5/2$）、逃逸约化（P1）与四路障碍分析 | 等价改写/换靶 + 条件结果 + 障碍分析 + Lean 4 机器验证 | **已核实**（23 条经典定理推导显式依赖 3 条经典白名单公理；Meiburg Flint Hills 情况与 Alekseyev 方向已机器形式化，无项目自加公理） | 仅做条件桥接、等价换靶（如 P1 晶格逃逸）或排除特定构造；明确不宣称解决原问题或“更接近证明” | [`FlintHills.lean`](epi_formal/EpiFormal/FlintHills.lean)、[`MeiburgConvergence.lean`](epi_formal/EpiFormal/MeiburgConvergence.lean)、[`Alekseyev.lean`](epi_formal/EpiFormal/Alekseyev.lean)、[`Escape.lean`](epi_formal/EpiFormal/Escape.lean) |
 | 符号、区间与精确整数/Chebyshev 数值核验脚本（`verify_round3.py`、`verify_round4.py`、`residue_certificate_general_N512.py`、`verify_residue_multi_asymptotic.py` 等） | 有限计算或有限排除（Python 数值核验） | **已核实**（SymPy `12/12` PASS；450 位 `mpmath.iv`；`residue_certificate_general_N512.py` 以 $N=512$, $S=10^{13}$, $K\in\{120,\dots,258\}$ 精确整数算术认证 10 组 $N=512$ 区间与严格隙 [其闭区间已在 `ResidueCertTable.lean` 复跑]，`verify_residue_multi_asymptotic.py` 32 位 Chebyshev 配置法全面复核 10 组次临界三阶渐近与 `{1,2}`/`{1,2,3}` 超临界速率并 `ALL CHECKS PASSED`） | 对有限分母、有限窗口与有限格点算子给数值佐证或有限精确整数计算；多残差 32 位 Chebyshev 数值结果明确标为佐证而非证明 | [`verify_round3.py`](verification/verify_round3.py)、[`verify_round4.py`](verification/verify_round4.py)、[`residue_certificate_general_N512.py`](verification/residue_certificate_general_N512.py)、[`verify_residue_multi_asymptotic.py`](verification/verify_residue_multi_asymptotic.py) |
 | CMMS 一次文献核查与论文二全篇纠偏 | 文献核查与复现 | **已核实**（下载并逐页核对 *Pacific J. Math.* 217(1) (2004), pp. 45–59 官方刊出全文，确认 §5 主定理为 **Theorem 3** 而非误写的 Theorem 5；论文二三处引文已全部更正重编） | Cabrelli–Mendivil–Molter–Shonkwiler, *Pacific J. Math.* 217(1) (2004), 45–59, `doi:10.2140/pjm.2004.217.45`（pp. 57–58, §5 Theorem 3） | [`cmms_citation_check_20261122.md`](verification/cmms_citation_check_20261122.md)、[`CMMS_PJM_2004_217_45.pdf`](verification/reference_pdfs/CMMS_PJM_2004_217_45.pdf) |
-| 新课题（2026-11-25，与论文一、论文二无关）：**Kahane 问题 Q6**（C. R. Acad. Sci. Paris 352 (2014)，原文逐字核对）。定理 2：对几乎每个目标序列 $(b_n)$，$\dim_H(E(\varepsilon)\cap[1,X])\le\log(2\varepsilon X)/\log X$，与 Kahane 的下界合起来两侧相差约 $2/(X\log X)$；定理 3：几乎处处的淬火下界，在 7 组样本中优于 Kahane 的界，但非处处更优 | 无条件新结果（窄；标准第一矩方法与沿路径大数定律） | 本人推导，定理 2、定理 3 各经一次子代理独立对抗审阅并按意见修改；**未经同行审阅** | 负搜索未见先例（arXiv、Crossref、网页，引用 Kahane 2014 的 4 篇；**未**查 MathSciNet、zbMATH） | [`kahane_q6_note_20261125.md`](research/kahane_q6_note_20261125.md) §2、§3d |
-| Kahane Q6 精确下界（几乎处处）：二阶矩恒等式与正表示（命题 P1）、两种导数检验的部分证明（命题 P2），归约为"引理 R ⇒ D′ ⇒ 引理 D" | 等价改写与部分结果；**精确下界未证** | P1、P2 经一次独立对抗审阅；引理 R 开放 | 负搜索未见可直接套用的工具（Shmerkin–Suomala 的空间独立性不满足；Aistleitner–Baker 的方法需推广） | [`kahane_q6_note_20261125.md`](research/kahane_q6_note_20261125.md) §3b、§3c‴ |
-| Kahane Q6 数值证据：确定目标（$b_n\equiv0$、$\frac12$）下增长率与 $2\varepsilon v$ 吻合到 0.8% 内；超临界时鞅二阶矩有界、次临界时趋于灭绝；Fourier 能量按约 $1/(2\varepsilon v)$ 衰减 | 有限计算（佐证，非证明） | 脚本、日志与 JSON 可复查 | — | [`powers_mod1_dimension_numerics_20261125.py`](verification/powers_mod1_dimension_numerics_20261125.py)、[`kahane_martingale_sim_20261125.py`](verification/kahane_martingale_sim_20261125.py)、[`kahane_lemmaD_fourier_20261125.py`](verification/kahane_lemmaD_fourier_20261125.py)、[`kahane_lemmaD_rate_fit_20261125.py`](verification/kahane_lemmaD_rate_fit_20261125.py)、[`kahane_quenched_bound_table_20261125.py`](verification/kahane_quenched_bound_table_20261125.py) |
+| 新课题与对抗增补（2026-11-25，与 $e+\pi$ 无关）：**Kahane 问题 Q6**。原笔记 [`kahane_q6_note_20261125.md`](research/kahane_q6_note_20261125.md) 定理 2/3 给出几乎每个 $(b_n)$ 的上下界；**Round 2 增补 [`kahane_q6_addendum_20261125.md`](research/kahane_q6_addendum_20261125.md) 彻底否证原 §3c′–§3c‴ 猜想 D′ 与引理 R（引理 D 因最优 $m\asymp n^{1/3}$ 包络 $\exp(-c n^{2/3})$ 仍开放），同时无条件证出对一切确定序列成立的局部维数下界定理 K-1 / K-2**：$\underline{\dim}_{\mathrm{loc}}(E(\varepsilon),M)\ge\frac{\log(\lceil 2\varepsilon M\rceil-1)}{\log M}$（严格 $2\varepsilon M>3$） | 几乎处处定理 2/3 与确定性 K-1/K-2 为无条件新结果（窄）；D′/R 为反例否证 | 定理 2/3、D′/R 反例与 K-1/K-2 均经子代理逐行对抗审查及最高 32000 位真实 $x^n$ 计算核验；**未经外部同行审阅** | 负搜索（arXiv/OpenAlex/Crossref；**未**系统检索 MathSciNet/zbMATH）未见完全同式确定性下界先例；K-2 在 $M=4,\varepsilon=0.376$ 得 $0.7925$（对比 Kahane 2014 式 (3) 之 $0.2944$） | [`kahane_q6_note_20261125.md`](research/kahane_q6_note_20261125.md)、[`kahane_q6_addendum_20261125.md`](research/kahane_q6_addendum_20261125.md)、[`verify_kahane_q6_refutation_and_det_20261125.py`](verification/verify_kahane_q6_refutation_and_det_20261125.py) |
 
 ---
 
@@ -57,10 +60,17 @@
 
 - **审计声明总计**：**937 条**（`Audit.lean` 与原始日志 **937/937** 严格双射，重复 0）
 - **`sorryAx` 计数**：**0**
-- **逃逸关键字全库扫描**（扫描全库 **344** 个 `.lean` 文件中的 `sorry` / `admit` / `native_decide` / `implemented_by` / `extern` / `unsafe` / `partial` / `opaque`）：**0 命中**
-- **两项独立 Layer A 扩展审计入口（不修改 `Audit.lean` 937 条双射）**：
-  - `AuditResidueCert.lean`（[`verification/residue_certgen_lean_20261123.md`](verification/residue_certgen_lean_20261123.md)）：**27 条**（$m\in\{2,\dots,6\}$ 共 20 条闭界 + 5 条严格分离 + 2 条通用可靠性），**27/27** 仅用 Lean 基础三公理，0 `sorryAx`；
-  - `AuditResidueMultiAsymptotic.lean`（[`verification/audit_residue_multi_asymptotic_20261123.log`](verification/audit_residue_multi_asymptotic_20261123.log)）：**24 条**（覆盖 Part 1–6 全核心定理，`lake build EpiFormal.ResidueMultiAsymptotic` **9098 jobs** EXIT 0），**24/24** 仅用 Lean 基础三公理，0 `sorryAx`。
+- **逃逸关键字全库扫描**（扫描全库 **356** 个 `.lean` 文件中的 `sorry` / `admit` / `native_decide` / `implemented_by` / `extern` / `unsafe` / `partial` / `opaque`）：**0 命中**
+- **八项独立 Layer A 扩展审计入口（共 **156 条**，与 `Audit.lean` 937 条合共 **1,093 条**，`sorryAx = 0`，不破坏 937 双射）**：
+  - `AuditResidueCert.lean`（[`audit_residue_cert_20261123.log`](verification/audit_residue_cert_20261123.log)）：**27 条**（$m\in\{2,\dots,6\}$ 共 20 条闭界 + 5 条严格分离 + 2 条通用可靠性），仅用基础三公理；
+  - `AuditResidueMultiAsymptotic.lean`（[`audit_residue_multi_asymptotic_20261123.log`](verification/audit_residue_multi_asymptotic_20261123.log)）：**24 条**（Part 1–6 全核心定理，2026-11-24 已在 Colab 复建逐条一致），仅用基础三公理；
+  - **2026-11-25 Round 2 新增六路（共 105 条，均已完成本机 `lake build` 与 `compare_audit_logs.py` 0 差异核验）**：
+    - `AuditResidueCertStrictOpen.lean`（[`audit_residue_cert_strict_open_20261125.log`](verification/audit_residue_cert_strict_open_20261125.log)）：**22 条**（`tab:residues-general` 全 20 条严格开界 + 2 条严格单调引理，**彻底消去 R1**），仅用基础三公理；
+    - `AuditMuEEqTwo.lean`（[`audit_mu_e_eq_two_20261125.log`](verification/audit_mu_e_eq_two_20261125.log)）：**9 条**（无条件证明 $\mu(e)=2$），仅用基础三公理；
+    - `AuditGeneralAlphabetFloor.lean`（[`audit_general_alphabet_floor_20261125.log`](verification/audit_general_alphabet_floor_20261125.log)）：**15 条**（Paper 2D 稀疏字母表下界与双指数零极限），仅用基础三公理；
+    - `AuditSupercriticalConstant.lean`（[`audit_supercritical_constant_20261125.log`](verification/audit_supercritical_constant_20261125.log)）：**6 条**（条件于显式 `hPole` 之 Paper 2D 超临界常数精确归约），仅用基础三公理；
+    - `AuditPerronFrobenius.lean`（[`audit_perron_frobenius_20261125.log`](verification/audit_perron_frobenius_20261125.log)）：**13 条**（Collatz–Wielandt Brouwer-free PF 与无条件 `thm:finite-state-tail`，**彻底消去 R3**），仅用基础三公理；
+    - `AuditFullConvergentSpectrum.lean`（[`audit_full_convergent_spectrum_20261125.log`](verification/audit_full_convergent_spectrum_20261125.log)）：**40 条**（Paper 2E $e$ 全正则收敛列 KL/原始完整谱论、零能级 $\Z+\Z e$ 坍缩与规范），仅用基础三公理。
 - **第 1 层（仅 Lean 基础公理：`propext`, `Classical.choice`, `Quot.sound`）**：**914 条**
   - 含 5 条零公理（空公理列表 `[]`）声明；
   - 含 2026-11-22 新增/并入全部 **291 条** 审计声明（含新闭合与拓展 7 模块 `WindowShortAeRealize` [14]、`ResidueModGeneral` [7]、`TransferOperatorDim` [11]、`FiniteStateComplete` [12]、`ResidueAsymptotic` [15]、`GeneralGrowingRec` [21]、`GeneralGrowingDim` [29]，`WindowBoundedUpper` [21] 与并入的 8 个论文一辅助模块 [29] 等），非基础公理数为 **0**。
@@ -79,12 +89,18 @@
 - **论文一（75 页，0 错误 / 0 未定义引用 / 0 Overfull `\hbox`）**：
   - 源码：[`paper1_e_plus_pi/01_main_paper/paper1_e_plus_pi.tex`](paper1_e_plus_pi/01_main_paper/paper1_e_plus_pi.tex)
   - 成稿 PDF 与日志：[`paper1_e_plus_pi/01_main_paper/paper1_e_plus_pi.pdf`](paper1_e_plus_pi/01_main_paper/paper1_e_plus_pi.pdf)、[`paper1_e_plus_pi.log`](paper1_e_plus_pi/01_main_paper/paper1_e_plus_pi.log)
-- **论文二（66 页，0 错误 / 0 未定义引用 / 0 Overfull `\hbox`；含 §7.5 `thm:multi-residue-asymptotic`、`rem:fourth-term`、28/28 全文献与新颖性修正）**：
-  - 源码与补丁脚本：[`paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex`](paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex)、[`patch_evidence_citations_20261125.py`](paper2_spectral_gap_dimension/patch_evidence_citations_20261125.py)、[`patch_novelty_wording_20261125.py`](paper2_spectral_gap_dimension/patch_novelty_wording_20261125.py)、[`patch_unify_20261125.py`](paper2_spectral_gap_dimension/patch_unify_20261125.py)
+- **论文二（66 页，0 错误 / 0 未定义引用 / 0 Overfull `\hbox`；含 §7.5 `thm:multi-residue-asymptotic`、`rem:fourth-term`、28/28 全文献、Round 2 Perron–Frobenius 无条件化与全收敛子扩展及新颖性修正）**：
+  - 源码与补丁脚本：[`paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex`](paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex)、[`patch_evidence_citations_20261125.py`](paper2_spectral_gap_dimension/patch_evidence_citations_20261125.py)、[`patch_novelty_wording_20261125.py`](paper2_spectral_gap_dimension/patch_novelty_wording_20261125.py)、[`patch_unify_20261125.py`](paper2_spectral_gap_dimension/patch_unify_20261125.py)、[`patch_round2_20261125.py`](paper2_spectral_gap_dimension/patch_round2_20261125.py)
   - 成稿 PDF 与日志：[`paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.pdf`](paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.pdf)、[`paper2_spectral_gap_dimension.log`](paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.log)
-  - 拆分三轨及补充工程（总览 [`split/README.md`](paper2_spectral_gap_dimension/split/README.md)；与主稿 11 个切片拼接 **289,499 字节逐字节一致**；2A `*-2Apub` 21 页 / 2B 16 页 / 2C 26 页均 0 未定义引用、0 Overfull；S 8 页）：[`paper2_spectral_gap_dimension/split/`](paper2_spectral_gap_dimension/split/)
+  - 独立拆出定理论文（论文二系列）：
+    - **论文 2D（18 页，0 错误 / 0 Overfull / 0 未定义引用）**：[`spinoff_critical_and_supercritical_exact_20261125/`](paper2_spectral_gap_dimension/spinoff_critical_and_supercritical_exact_20261125/README.md)（[`paper2D_critical_supercritical_exact.tex`](paper2_spectral_gap_dimension/spinoff_critical_and_supercritical_exact_20261125/paper2D_critical_supercritical_exact.tex) / [`.pdf`](paper2_spectral_gap_dimension/spinoff_critical_and_supercritical_exact_20261125/paper2D_critical_supercritical_exact.pdf) / [`.log`](paper2_spectral_gap_dimension/spinoff_critical_and_supercritical_exact_20261125/paper2D_critical_supercritical_exact.log)）
+    - **论文 2E（8 页，0 错误 / 0 Overfull / 0 未定义引用）**：[`spinoff_full_convergent_and_even_hurwitz_20261125/`](paper2_spectral_gap_dimension/spinoff_full_convergent_and_even_hurwitz_20261125/README.md)（[`paper2E_full_convergent_and_even_hurwitz.tex`](paper2_spectral_gap_dimension/spinoff_full_convergent_and_even_hurwitz_20261125/paper2E_full_convergent_and_even_hurwitz.tex) / [`.pdf`](paper2_spectral_gap_dimension/spinoff_full_convergent_and_even_hurwitz_20261125/paper2E_full_convergent_and_even_hurwitz.pdf) / [`.log`](paper2_spectral_gap_dimension/spinoff_full_convergent_and_even_hurwitz_20261125/paper2E_full_convergent_and_even_hurwitz.log)）
+  - 拆分三轨及补充工程（总览 [`split/README.md`](paper2_spectral_gap_dimension/split/README.md)；与主稿 11 个切片拼接 **293,395 字节逐字节一致**；2A `*-2Apub` 21 页 / 2B 16 页 / 2C 26 页均 0 未定义引用、0 Overfull；S 8 页）：[`paper2_spectral_gap_dimension/split/`](paper2_spectral_gap_dimension/split/)
   - `T6` 临界标度 `v3` 与两主稿实验存档：[`paper2_spectral_gap_dimension/drafts_v3_critical_scaling/`](paper2_spectral_gap_dimension/drafts_v3_critical_scaling/README.md)（独立归档 `sec-critical-scaling.tex`、`v3` 70 页、主稿 A 31 页、主稿 B 35 页）
-- **新课题与阶段规划档案（[`research/`](research/README.md)）**：[`kahane_q6_note_20261125.md`](research/kahane_q6_note_20261125.md)（Kahane 问题 Q6）与 2026-11-24 阶段规划 [`planning_20261124/`](research/planning_20261124/master_overview_20261124.md)
+- **分离式研究日志、总表与总指挥指南（与核心 `.tex`/`.lean` 严格隔离）**：
+  - 论文一攻关与试错总日志 + 全仓总成果 Inventory：[`paper1_e_plus_pi/07_research_log_and_guide/`](paper1_e_plus_pi/07_research_log_and_guide/README.md)（[`MASTER_INVENTORY_LIST.md`](paper1_e_plus_pi/07_research_log_and_guide/MASTER_INVENTORY_LIST.md)、[`PAPER1_ATTACK_AND_TRIAL_LOG.md`](paper1_e_plus_pi/07_research_log_and_guide/PAPER1_ATTACK_AND_TRIAL_LOG.md)、[`trial_notes_M1_M2_20261125.md`](paper1_e_plus_pi/07_research_log_and_guide/trial_notes_M1_M2_20261125.md)）
+  - 论文二拆篇、退化/扩张日志与总指挥技能副本：[`paper2_spectral_gap_dimension/00_research_log_and_guide/`](paper2_spectral_gap_dimension/00_research_log_and_guide/README.md)（[`SPINOFF_AND_TRIAL_LOG.md`](paper2_spectral_gap_dimension/00_research_log_and_guide/SPINOFF_AND_TRIAL_LOG.md)、[`MASTER_GUIDE_SKILL.md`](paper2_spectral_gap_dimension/00_research_log_and_guide/MASTER_GUIDE_SKILL.md)）
+- **新课题与阶段规划档案（[`research/`](research/README.md)）**：[`kahane_q6_note_20261125.md`](research/kahane_q6_note_20261125.md)、[`kahane_q6_addendum_20261125.md`](research/kahane_q6_addendum_20261125.md)（Kahane Q6 反例批驳、确定性 `dim_loc` 定理 K-1/K-2 与未证引理 D）及 2026-11-24 阶段规划 [`planning_20261124/`](research/planning_20261124/master_overview_20261124.md)
 - **历史 B 稿完整备份（65 页，已明确标为历史归档）**：
   - [`paper1_e_plus_pi/02_companion_paper/Phase2_revised.tex`](paper1_e_plus_pi/02_companion_paper/Phase2_revised.tex) / [`.pdf`](paper1_e_plus_pi/02_companion_paper/Phase2_revised.pdf) / [`.log`](paper1_e_plus_pi/02_companion_paper/Phase2_revised.log)
 - **论文一投稿准备与论文二历史稿**：
@@ -94,9 +110,9 @@
 
 ### 2. Lean 4 完整形式化工程（[`epi_formal/`](epi_formal/)）
 - 工具链与清单：[`lean-toolchain`](epi_formal/lean-toolchain)（`leanprover/lean4:v4.35.0`）、[`lakefile.toml`](epi_formal/lakefile.toml)、[`lake-manifest.json`](epi_formal/lake-manifest.json)
-- 总入口与独立审计脚本：[`EpiFormal.lean`](epi_formal/EpiFormal.lean)、[`Audit.lean`](epi_formal/Audit.lean)（937 条核心双射）、[`AuditResidueCert.lean`](epi_formal/AuditResidueCert.lean)（27 条残差证书表审计）、[`AuditResidueMultiAsymptotic.lean`](epi_formal/AuditResidueMultiAsymptotic.lean)（24 条多残差推广审计）
+- 总入口与独立审计脚本：[`EpiFormal.lean`](epi_formal/EpiFormal.lean)、[`Audit.lean`](epi_formal/Audit.lean)（937 条核心双射）与 8 路独立 Layer A 入口：[`AuditResidueCert.lean`](epi_formal/AuditResidueCert.lean) (27)、[`AuditResidueMultiAsymptotic.lean`](epi_formal/AuditResidueMultiAsymptotic.lean) (24)、[`AuditResidueCertStrictOpen.lean`](epi_formal/AuditResidueCertStrictOpen.lean) (22)、[`AuditMuEEqTwo.lean`](epi_formal/AuditMuEEqTwo.lean) (9)、[`AuditGeneralAlphabetFloor.lean`](epi_formal/AuditGeneralAlphabetFloor.lean) (15)、[`AuditSupercriticalConstant.lean`](epi_formal/AuditSupercriticalConstant.lean) (6)、[`AuditPerronFrobenius.lean`](epi_formal/AuditPerronFrobenius.lean) (13) 与 [`AuditFullConvergentSpectrum.lean`](epi_formal/AuditFullConvergentSpectrum.lean) (40)
 - 分轨评审与分篇接口隔离草案：[`EpiFormal2A_Draft.lean`](epi_formal/EpiFormal2A_Draft.lean)、[`EpiFormal2B_Draft.lean`](epi_formal/EpiFormal2B_Draft.lean)、[`EpiFormal2C_Draft.lean`](epi_formal/EpiFormal2C_Draft.lean)；分篇接口 [`Paper2{A,B,C}.lean`](verification/lean_drafts/README.md) 隔离存于 `verification/lean_drafts/paper_interfaces_20261124/`（其中 `Paper2C.lean` 含 `axiom C_S_pole_decomposition`）。
-- 全量 337 个 `EpiFormal/` 子模块源码：[`epi_formal/EpiFormal/`](epi_formal/EpiFormal/)（含 2026-11-22 新增的 [`WindowShortAeRealize.lean`](epi_formal/EpiFormal/WindowShortAeRealize.lean)、[`ResidueModGeneral.lean`](epi_formal/EpiFormal/ResidueModGeneral.lean)、[`TransferOperatorDim.lean`](epi_formal/EpiFormal/TransferOperatorDim.lean)、[`FiniteStateComplete.lean`](epi_formal/EpiFormal/FiniteStateComplete.lean)、[`ResidueAsymptotic.lean`](epi_formal/EpiFormal/ResidueAsymptotic.lean)、[`GeneralGrowingRec.lean`](epi_formal/EpiFormal/GeneralGrowingRec.lean)、[`GeneralGrowingDim.lean`](epi_formal/EpiFormal/GeneralGrowingDim.lean)、[`WindowBoundedUpper.lean`](epi_formal/EpiFormal/WindowBoundedUpper.lean) 与并入的 8 个论文一模块，以及 2026-11-23 新增的 [`ResidueCertTable.lean`](epi_formal/EpiFormal/ResidueCertTable.lean) / `ResidueCertGen/` 与 [`ResidueMultiAsymptotic.lean`](epi_formal/EpiFormal/ResidueMultiAsymptotic.lean)）
+- 全量 **343** 个 `EpiFormal/` 子模块源码（全库 **356** `.lean` 文件）：[`epi_formal/EpiFormal/`](epi_formal/EpiFormal/)（包含全部 Round 2 模块 [`ResidueCertStrictOpen.lean`](epi_formal/EpiFormal/ResidueCertStrictOpen.lean)、[`MuEEqTwo.lean`](epi_formal/EpiFormal/MuEEqTwo.lean)、[`GeneralAlphabetFloor.lean`](epi_formal/EpiFormal/GeneralAlphabetFloor.lean)、[`SupercriticalConstant.lean`](epi_formal/EpiFormal/SupercriticalConstant.lean)、[`PerronFrobenius.lean`](epi_formal/EpiFormal/PerronFrobenius.lean) 与 [`FullConvergentSpectrum.lean`](epi_formal/EpiFormal/FullConvergentSpectrum.lean)）
 - 阶段性基线与历史文档（含 2026-11-23 更新头注）：[`epi_formal/README.md`](epi_formal/README.md)、[`LEMMA_AUDIT.md`](epi_formal/LEMMA_AUDIT.md)、[`PROOF_GAPS.md`](epi_formal/PROOF_GAPS.md)、[`FINAL_REVIEW.md`](epi_formal/FINAL_REVIEW.md)
 
 ### 3. 核验脚本、审计日志、数学记录与一次文献（[`verification/`](verification/)）
@@ -116,8 +132,9 @@
 - **全工作区台账、数学论证留痕与一次文献 PDF**：
   - [`全工作区总索引与留痕台账.md`](verification/全工作区总索引与留痕台账.md)、[`成果清单与边界.md`](verification/成果清单与边界.md)、[`复现指南.md`](verification/复现指南.md)、[`cmms_citation_check_20261122.md`](verification/cmms_citation_check_20261122.md)
   - 2026-11-23 / 24 核心复现与扫点档案：[`colab_rebuild_audit_20261123.md`](verification/colab_rebuild_audit_20261123.md)、[`colab_rebuild_audit_20261124.md`](verification/colab_rebuild_audit_20261124.md)、[`residue_certgen_lean_20261123.md`](verification/residue_certgen_lean_20261123.md)、[`cert_v3_redesign_20261123.md`](verification/cert_v3_redesign_20261123.md)、[`paper2_novelty_review_20261123.md`](verification/paper2_novelty_review_20261123.md)、[`论文二拆分分类与Lean精准映射_20261123.md`](verification/论文二拆分分类与Lean精准映射_20261123.md)、[`推广1_多残差相变与欧拉常数三阶渐近Lean4记录_20261123.md`](verification/推广1_多残差相变与欧拉常数三阶渐近Lean4记录_20261123.md)、[`critical_point_scan_record_20261124.md`](verification/critical_point_scan_record_20261124.md)、[`verify_c2_discrepancy_20261124.py`](verification/verify_c2_discrepancy_20261124.py)、[`journal_landscape_20261124.md`](verification/journal_landscape_20261124.md)、[`kms_comparison_materials_20261124.md`](verification/kms_comparison_materials_20261124.md)
-  - 2026-11-25 证据深调、新颖性重审、顶刊差距与价值评级：[`方法论证据支撑深调报告_20261125.md`](verification/方法论证据支撑深调报告_20261125.md)、[`工具库整理与六方向前沿调研记忆_20261125.md`](verification/工具库整理与六方向前沿调研记忆_20261125.md)、[`verify_evidence_numbers_20261125.py`](verification/verify_evidence_numbers_20261125.py) / [`.log`](verification/verify_evidence_numbers_20261125.log)、[`paper2_novelty_review_20261125.md`](verification/paper2_novelty_review_20261125.md)、[`paper2_novelty_crosscheck_20261125.py`](verification/paper2_novelty_crosscheck_20261125.py) / [`.log`](verification/paper2_novelty_crosscheck_20261125.log)、[`candidateA_precedent_search_20261125.md`](verification/candidateA_precedent_search_20261125.md)、[`paper2_venue_gap_assessment_20261125.md`](verification/paper2_venue_gap_assessment_20261125.md)、[`value_rating_and_top_journal_gap_20261125.md`](verification/value_rating_and_top_journal_gap_20261125.md)
-  - 2026-11-25 新课题与规划归档（[`research/README.md`](research/README.md)）：[`kahane_q6_note_20261125.md`](research/kahane_q6_note_20261125.md)（含上表 5 组 Kahane 数值脚本与日志/JSON）及 2026-11-24 阶段规划 [`planning_20261124/`](research/planning_20261124/master_overview_20261124.md)
+  - 2026-11-25 Round 1 证据深调、新颖性重审、顶刊差距与价值评级：[`方法论证据支撑深调报告_20261125.md`](verification/方法论证据支撑深调报告_20261125.md)、[`工具库整理与六方向前沿调研记忆_20261125.md`](verification/工具库整理与六方向前沿调研记忆_20261125.md)、[`verify_evidence_numbers_20261125.py`](verification/verify_evidence_numbers_20261125.py) / [`.log`](verification/verify_evidence_numbers_20261125.log)、[`paper2_novelty_review_20261125.md`](verification/paper2_novelty_review_20261125.md)、[`paper2_novelty_crosscheck_20261125.py`](verification/paper2_novelty_crosscheck_20261125.py) / [`.log`](verification/paper2_novelty_crosscheck_20261125.log)、[`candidateA_precedent_search_20261125.md`](verification/candidateA_precedent_search_20261125.md)、[`paper2_venue_gap_assessment_20261125.md`](verification/paper2_venue_gap_assessment_20261125.md)、[`value_rating_and_top_journal_gap_20261125.md`](verification/value_rating_and_top_journal_gap_20261125.md)
+  - 2026-11-25 Round 2 攻关、拆篇与对抗审计记录：[`kahane_and_blr_audit_20261125.md`](verification/kahane_and_blr_audit_20261125.md)、[`verify_kahane_q6_refutation_and_det_20261125.py`](verification/verify_kahane_q6_refutation_and_det_20261125.py) / [`.log`](verification/verify_kahane_q6_refutation_and_det_20261125.log)、[`verify_nonlinear_blr_20261125.py`](verification/verify_nonlinear_blr_20261125.py) / [`.log`](verification/verify_nonlinear_blr_20261125.log)、[`verify_mixed_eg_hermite_pade_obstruction_20261125.py`](verification/verify_mixed_eg_hermite_pade_obstruction_20261125.py) / [`.log`](verification/verify_mixed_eg_hermite_pade_obstruction_20261125.log)、[`verify_mobius_e_full_conv_20261125.py`](verification/verify_mobius_e_full_conv_20261125.py) / [`.log`](verification/verify_mobius_e_full_conv_20261125.log)、[`verify_supercritical_exact_constant_20261125.py`](verification/verify_supercritical_exact_constant_20261125.py) / [`.log`](verification/verify_supercritical_exact_constant_20261125.log) 及 6 路新 Lean 审计日志（[`audit_residue_cert_strict_open_20261125.log`](verification/audit_residue_cert_strict_open_20261125.log)、[`audit_mu_e_eq_two_20261125.log`](verification/audit_mu_e_eq_two_20261125.log)、[`audit_general_alphabet_floor_20261125.log`](verification/audit_general_alphabet_floor_20261125.log)、[`audit_supercritical_constant_20261125.log`](verification/audit_supercritical_constant_20261125.log)、[`audit_perron_frobenius_20261125.log`](verification/audit_perron_frobenius_20261125.log)、[`audit_full_convergent_spectrum_20261125.log`](verification/audit_full_convergent_spectrum_20261125.log)）
+  - 2026-11-25 新课题与规划归档（[`research/README.md`](research/README.md)）：[`kahane_q6_note_20261125.md`](research/kahane_q6_note_20261125.md)、[`kahane_q6_addendum_20261125.md`](research/kahane_q6_addendum_20261125.md)（含 Kahane / BLR 数值脚本与日志/JSON）及 2026-11-24 阶段规划 [`planning_20261124/`](research/planning_20261124/master_overview_20261124.md)
   - [`verification/reference_pdfs/`](verification/reference_pdfs/)（含官方 [`CMMS_PJM_2004_217_45.pdf`](verification/reference_pdfs/CMMS_PJM_2004_217_45.pdf)、`h-sets.pdf`、`BLR_1710_03596.pdf`、`CLU_1805_11904.pdf`、`MEA_2511_10328v3.pdf`）
   - [`build_desktop_package_20261122.py`](verification/build_desktop_package_20261122.py)（桌面完整交付包组装与端到端复验脚本）
 
@@ -153,7 +170,7 @@ python3 verification/verify_evidence_numbers_20261125.py
 # 0. 一键全仓库零遗漏/审计/论文/链接统一体检
 python verification\verify_repo_integrity.py
 
-# 1. 核对主审计 937/937 双射、0 sorryAx、23 白名单、0 项目自加公理、0 逃逸关键字（扫描全库 344 个 Lean 文件）
+# 1. 核对主审计 937/937 双射、0 sorryAx、23 白名单、0 项目自加公理、0 逃逸关键字（扫描全库 356 个 Lean 文件）
 python verification\check_audit_reconcile.py verification\audit_final_20261122.log
 
 # 2. 复跑核心符号、450 位区间、Arb 有限排除、N=256/512 整数转移算子、50/32 位渐近及文献核验与论文切片检查
@@ -179,17 +196,23 @@ python -m unittest discover -s .agents\skills\mathodology-evidence-search\script
 python paper1_e_plus_pi\05_research_process\golden_finite_spectrum\golden_finite_spectrum.py
 ```
 
-### 4.2 洁净环境从源码重编译 Lean 4 与重跑三大内核审计（需联网下载 Mathlib 预编译 cache）
+### 4.2 洁净环境从源码重编译 Lean 4 与重跑全部审计（需联网下载 Mathlib 预编译 cache）
 
 ```powershell
 cd epi_formal
 lake exe cache get
-lake build EpiFormal
-lake build EpiFormal.ResidueCertTable
-lake build EpiFormal.ResidueMultiAsymptotic
+lake build EpiFormal EpiFormal.ResidueCertTable EpiFormal.ResidueMultiAsymptotic `
+  EpiFormal.ResidueCertStrictOpen EpiFormal.MuEEqTwo EpiFormal.GeneralAlphabetFloor `
+  EpiFormal.SupercriticalConstant EpiFormal.PerronFrobenius EpiFormal.FullConvergentSpectrum
 lake env lean Audit.lean | Out-File -Encoding utf8 ..\verification\audit_rerun.log
 lake env lean AuditResidueCert.lean
 lake env lean AuditResidueMultiAsymptotic.lean
+lake env lean AuditResidueCertStrictOpen.lean
+lake env lean AuditMuEEqTwo.lean
+lake env lean AuditGeneralAlphabetFloor.lean
+lake env lean AuditSupercriticalConstant.lean
+lake env lean AuditPerronFrobenius.lean
+lake env lean AuditFullConvergentSpectrum.lean
 cd ..
 python verification\check_audit_reconcile.py verification\audit_rerun.log
 ```
@@ -214,31 +237,30 @@ pdflatex -interaction=nonstopmode paper2_spectral_gap_dimension.tex
 
 ### 4.4 CI：Lean 重建、Python 验证与公理审计（GitHub Actions）
 
-- [`.github/workflows/lean-audit.yml`](.github/workflows/lean-audit.yml)：在每次 push / pull request 到 `main` 以及手动触发（`workflow_dispatch`）时，于 `ubuntu-latest` 上安装 `elan`、执行 `lake exe cache get` → `lake build`（并显式检查 `EpiFormal.ResidueCertTable` 与 `EpiFormal.ResidueMultiAsymptotic`），再用 [`verification/compare_audit_logs.py`](verification/compare_audit_logs.py) 将 `Audit.lean`（937 条）、`AuditResidueCert.lean`（27 条）及 `AuditResidueMultiAsymptotic.lean`（24 条）输出与仓库参考日志逐条比对并运行 `check_audit_reconcile.py`；另一并行 job 执行 `verify_repo_integrity.py`。
-- [`.github/workflows/python-checks.yml`](.github/workflows/python-checks.yml)：通过 [`requirements.txt`](requirements.txt) 在 `ubuntu-latest`（Python 3.12）快速运行 `verify_repo_integrity.py`、`rational_exclusion_bound_20261124.py --selftest`、`verify_evidence_numbers_20261125.py`、`verify_round3.py`、`verify_round4.py` 与 40 项 `verify_refs` 离线单元测试。
-- 按 `AGENTS.md` §5：workflow 定义本身不构成核实，仅在 GitHub Actions 云端实际跑出绿灯后方计作云端独立复现。截至目前，`main@833845f` 已于 GitHub Actions `ubuntu-latest` 实测完成两项 workflow 并均获 `success`（`Python verification & repository checks` #1 与 `Lean build and axiom audit` #2，及 `b6e7e48` 上的运行 #1）；此后新提交的云端状态仍待相应 Actions 运行完毕后确认。
+- [`.github/workflows/lean-audit.yml`](.github/workflows/lean-audit.yml)：在每次 push / pull request 到 `main` 以及手动触发（`workflow_dispatch`）时，于 `ubuntu-latest` 上安装 `elan`、执行 `lake exe cache get` → 全量 `lake build`（含全部 8 路独立审计模块），再用 [`verification/compare_audit_logs.py`](verification/compare_audit_logs.py) 将 `Audit.lean`（937 条）及全部 8 路独立审计（27 + 24 + 22 + 9 + 15 + 6 + 13 + 40 = 156 条）输出与仓库参考日志逐条比对并运行 `check_audit_reconcile.py`；另一并行 job 执行 `verify_repo_integrity.py`。
+- [`.github/workflows/python-checks.yml`](.github/workflows/python-checks.yml)：通过 [`requirements.txt`](requirements.txt) 在 `ubuntu-latest`（Python 3.12）快速运行 `verify_repo_integrity.py`、`rational_exclusion_bound_20261124.py --selftest`、`verify_evidence_numbers_20261125.py`、`verify_round3.py`、`verify_round4.py`、Round-2 新增 `verify_mixed_eg_hermite_pade_obstruction_20261125.py` / `verify_mobius_e_full_conv_20261125.py` / `verify_nonlinear_blr_20261125.py` / `verify_kahane_q6_refutation_and_det_20261125.py` 与 40 项 `verify_refs` 离线单元测试。
+- 按 `AGENTS.md` §5：workflow 定义本身不构成核实，仅在 GitHub Actions 云端实际跑出绿灯后方计作云端独立复现。历史上 `main@833845f` 已于 GitHub Actions `ubuntu-latest` 实测完成旧版两项 workflow 并获 `success`；Round 2 新增提交在推送后仍待云端 Actions 完成复测确认。
 
 ---
 
 ## 五、它没做到什么（诚实边界与留存待办）
 
-1. **核心数学问题未解决**：本仓库中的所有工作**没有证明** $e+\pi$（以及单个 $e\pi, e-\pi, \pi/e, \pi^e$）的无理性或超越性；逃逸约化（P1）属于同难度族等价换靶，障碍分析不构成一般方法的不可能性证明。
-2. **数值认证、Lean 内核分工与尚未覆盖的数学边界**：`thm:windows`、`thm:short-ae`、`thm:no-short-dim`（含 $\dim_{\mathrm{H}}=1$ 与 $\operatorname{Leb}=0$）、`thm:finite-state-tail`（$\mathbb{R}$ 与 $\mathbb{T}$）、`thm:residues`/`thm:residues-general`/`thm:residues-asymptotic` 以及 `thm:multi-residue-asymptotic` 均已入 Lean 4 内核闭环；`tab:residues-general` 的 20 个 $N=512$ 单侧**闭区间**与 5 条严格分离亦已在 `ResidueCertTable.lean`（`AuditResidueCert.lean` 27 条）由 Lean 内核直接复跑通过（未用 `native_decide`）。仍留存在 Lean 内核或当前理论之外的部分包括：（a）`thm:residues` 与 `tab:residues-general` **开区间严格性**仍依赖引用的 Bowen 压力公式与精确整数脚本 [`residue_certificate_general_N512.py`](verification/residue_certificate_general_N512.py)；（b）`thm:finite-state-tail` 中的有限维 Perron–Frobenius 右特征向量需显式传入；（c）`thm:multi-residue-asymptotic` 中临界线 $s_0(S)=1/2$ 处的收敛速率与超临界阶段精确主导前因子常数尚未解决；（d）`verify_residue_multi_asymptotic.py` 为 32 位 Chebyshev 配置法数值佐证，不作严格证明引用。
+1. **核心数学问题未解决**：本仓库中的所有工作**没有证明** $e+\pi$（以及单个 $e\pi, e-\pi, \pi/e, \pi^e$）的无理性或超越性；逃逸约化（P1）属于同难度族等价换靶，Route M1 等障碍分析不构成一般方法的不可能性证明。
+2. **数值认证、Lean 内核分工与尚未覆盖的数学边界**：`thm:windows`、`thm:short-ae`、`thm:no-short-dim`、`thm:finite-state-tail`（现已通过 `PerronFrobenius.lean` 13 条彻底消去 R3 外置特征向量假设！）、`thm:residues`/`thm:residues-general`/`thm:residues-asymptotic`、`thm:multi-residue-asymptotic`、`tab:residues-general` 全部 20 条闭界与严格开界（现已通过 `ResidueCertStrictOpen.lean` 22 条彻底消去 R1 Bowen 压力依赖！）、Bundschuh $\mu(e)=2$（`MuEEqTwo.lean` 9 条）、稀疏字母表地板（`GeneralAlphabetFloor.lean` 15 条）以及 $e$ 全正则收敛列谱论（`FullConvergentSpectrum.lean` 40 条）**均已入 Lean 4 Layer A 内核闭环**。当前仍留存在 Lean 内核之外的部分包括：（a）Paper 2D 中 `lem:pole` 的复全纯盘 $A(\Omega)$ 紧算子谱隙与特征值简单极点残差（`SupercriticalConstant.lean` 仅在显式假设 `hPole` 条件下完成精确常数归约）；（b）Paper 2E 中的一般偶数拟周期有符号 Hurwitz 递推与条件非线性 BLR 边界（后者在超缺项情形已证不可无条件成立）；（c）`verify_residue_multi_asymptotic.py` 与 `verify_supercritical_exact_constant_20261125.py` 等为高精度数值佐证，不作严格证明引用。
 3. **重耗时高精度脚本与独立重构边界**：
    - 4 个 2500 位高精度长耗时脚本（[`verify_golden_b3_b4_exact.py`](verification/verify_golden_b3_b4_exact.py)、[`verify_golden_b5_b6_multiscale.py`](verification/verify_golden_b5_b6_multiscale.py)、[`verify_golden_general_b.py`](verification/verify_golden_general_b.py)、[`verify_weighted_lower.py`](verification/verify_weighted_lower.py)）保留源码与历史 `.log` 供按需完整重跑；
-   - `Audit.lean`（937 条）与 `AuditResidueCert.lean`（27 条）已于 2026-11-23 在 Google Colab 洁净克隆环境中完成独立全量复现（[`colab_rebuild_audit_20261123.md`](verification/colab_rebuild_audit_20261123.md)）；`ResidueMultiAsymptotic.lean` 与 `AuditResidueMultiAsymptotic.lean`（24 条）已在本地 Lean `v4.35.0` / Mathlib `v4.35.0` 完成全量构建与独立 `#print axioms` 审计（[`audit_residue_multi_asymptotic_20261123.log`](verification/audit_residue_multi_asymptotic_20261123.log)）；2026-11-24 已在 Colab 全新克隆环境完成第二次独立复建，24 条逐条一致（[`colab_rebuild_audit_20261124.md`](verification/colab_rebuild_audit_20261124.md)）。
+   - `Audit.lean`（937 条）与 `AuditResidueCert.lean`（27 条）已于 2026-11-23 在 Colab 洁净克隆完成复现，`AuditResidueMultiAsymptotic.lean`（24 条）于 2026-11-24 在 Colab 复现；Round 2 新增的 6 路审计（105 条）已在本机 `v4.35.0` 通过 `lake build` 与 `compare_audit_logs.py`，尚待推送后由 GitHub Actions 云端复测确认。
 4. **投稿前人工完善项**：
-   - [`paper2_spectral_gap_dimension.tex`](paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex) 仍保留作者/单位占位符（`[Author name]`, `[Affiliation]`）与 `% TODO before submission:` 注释待正式投稿前由作者补充；
-   - [`epi_formal/README.md`](epi_formal/README.md)、[`LEMMA_AUDIT.md`](epi_formal/LEMMA_AUDIT.md)、[`PROOF_GAPS.md`](epi_formal/PROOF_GAPS.md)、[`FINAL_REVIEW.md`](epi_formal/FINAL_REVIEW.md) 保留了 2026-11-14 初版 31 条基线记录作为历史档案，当前最新全量审计口径以本 `README.md`、[`Audit.lean`](epi_formal/Audit.lean) 及 [`verification/audit_final_20261122.log`](verification/audit_final_20261122.log) 为准。
+   - [`paper2_spectral_gap_dimension.tex`](paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex)、Paper 2D 及 Paper 2E 仍保留作者/单位占位符（`[Author name]`, `[Affiliation]`）与 `% TODO before submission:` 注释（及 Paper 2 中 6 处未公开 `Phase1` 引用），须在正式投稿前由人类作者亲核放行。
 
 ---
 
-## 六、未来展望与路径预测（2026-11-25 统一版）
+## 六、未来展望与路径预测（2026-11-25 Round 2 定稿版）
 
 > **一句总判断**：
-> - **$e+\pi$**：本项目在可预见的将来**不会**证明 $e+\pi$ 的无理性。计算只能扩大有限排除范围（类别 4），不能给出证明。
-> - **论文二**：`2A+2B` 合并稿与 `2C`（包括归档于实验线的 `T6` 临界标度节）投度量数论 / 动力系统专业期刊是现实的（价值评估详见 [`value_rating_and_top_journal_gap_20261125.md`](verification/value_rating_and_top_journal_gap_20261125.md)）；在现有数学深度下直接冲顶刊（T1）不现实。
-> - **Kahane 问题 Q6**：最有潜力产生独立新数学的方向——几乎处处上界（定理 2）与淬火弱下界（定理 3）已推进并经内部对抗审阅，能否达到完整期刊论文水准取决于开放的**引理 R**；所有新方向目前均未经外部同行评审。
+> - **$e+\pi$**：本项目在可预见的将来**不会**证明 $e+\pi$ 的无理性。计算只能扩大有限排除范围（类别 4）；Route M1 已显式排除直接混合 $E/G$ CDT 方案可行性。
+> - **论文二系列（主稿 + Paper 2D + Paper 2E）**：随着 R1 与 R3 两大核心外部假设在 Lean 4 内核被彻底消除、T6 缺陷全修复并证出**无条件超临界精确常数**（Paper 2D）及 **$e$ 全收敛子谱/偶数 Hurwitz 符号**（Paper 2E），组合后的 `2A+2B(+2E)` 与 `2C+2D` 具备投优秀专业期刊（T4，部分评估 T3）的完整条件，但未到顶刊（T1）深度。
+> - **Kahane 问题 Q6**：Round 2 已通过多重点多项式反例**否证猜想 D′ 与引理 R**（最优阶 $\exp(-c n^{2/3})$ 下**引理 D 仍开放**），同时**无条件证出对一切确定序列 $(b_n)$ 成立的局部维数下界 K-1 / K-2**，使之结合几乎处处定理 2/3 成为独立短文的最强方向；目前仅经过子代理对抗审阅与 32000 位核验，**尚未经外部同行评审**。
 >
 > 下表中的“可能性”与期刊档位判断是作者与助手基于仓内既有核查的**主观定性判断**，不是计算出的概率，也不代表任何期刊的审稿意见。
 
@@ -246,30 +268,28 @@ pdflatex -interaction=nonstopmode paper2_spectral_gap_dimension.tex
 
 | 方向 | 下一步 | 预期产出 | 可能性（主观） | 不会做到什么 |
 | :--- | :--- | :--- | :--- | :--- |
-| **Kahane Q6（几乎处处版本）** | 优先把定理 2 与定理 3 整理成短文，补查 MathSciNet/zbMATH 引用链后送同行审阅 | *C. R. Math.* 类短文（T4，内部评价接近 B−） | **中**（需同行确认，目前仅经过子代理对抗审阅） | 只覆盖几乎每个目标序列，不覆盖 Kahane 确定性原问题 |
-| **Kahane Q6（精确下界与推广）** | 攻关证明**引理 R**（双重共振项 / 共振级联估计），补能量形式与 0–1 律；在 Colab 上将 $D'$ 数值推向更深层数；视进展推广至一般 $f_n, \delta_n\to0$ | 对几乎每个目标序列完整回答 Q6 的期刊论文（T3），及后续一般化 | **中低**（需要新的共振级联估计；数值支持 $D'$，但数值不是证明） | 即使解决几乎处处 Q6，仍不解决对**每一个**目标序列的原问题（原问题解决可能性低） |
-| **Lean 4 形式化工程** | 将 988 条 Layer A 证明中可复用的 Hausdorff 测度/规范工具提炼并尝试上游化至 Mathlib，独立撰写形式化论文并附完整可复现制品（CI 已就绪） | ITP / CPP 等形式化会议或期刊论文 | **中**（本领域内最接近顶会水准的一条线） | 形式化规模不提升数学结果本身的数学新颖性或期刊档位 |
-| **论文二 `2A+2B` 合并稿** | 用公开同伴/仓库引用替换内部 `Phase1` 归档，以“任意增长商递推”为主定理、$e$ 收敛分母作旗舰推论，基于 `*-2Apub` 风格消去工程叙事并补齐作者占位 | *J. Number Theory* / *Acta Arith.* / *ETDS* 等专业刊主论文（T4，偶有 T3 可能） | 专业刊：**中**；顶刊：**低** | 线性情形去掉 BLR 条件 (1.6) 属已知方法（[`candidateA_precedent_search_20261125.md`](verification/candidateA_precedent_search_20261125.md)）；写作包装不会改变核心数学深度 |
-| **论文二 `2C` 与 `T6` 临界标度** | 主线 `2C` 按新颖性核查措辞投专业短文；实验线 `T6`（[`sec-critical-scaling.tex`](paper2_spectral_gap_dimension/drafts_v3_critical_scaling/sec-critical-scaling.tex)）优先将 $D_K$ 机制形式化、推进超临界常数 $\frac{d\kappa}{2(2s_0-1)}$ 解析突破并将近临界验证推至 $m=2^{18}\text{--}2^{20}$；待独立核验后再决定是否并入标准 11 切片 | `2C` 专业期刊论文（T4）；若超临界常数与 `T6` 彻底闭合且经外部审验，可提升 `2C+T6` 统一稿档位 | `2C` 单独：**中**；超临界常数完全解析突破：**低至中低** | 大 $m$ 渐近是 DFSU 框架的显式实例；`T6` 超临界主导常数仍是启发式猜想，$s_0(S)=1/2$ 精确构造性与 $\kappa(S)$ 连续性未解 |
-| **论文一：$e+\pi$ 无理性** | 维持归档守势（条件靶点季检、Arb 有限排除按需扩展），按 `AGENTS.md` 纪律**禁止**把有限排除与等价换靶宣称为逼近证明 | 只扩大有限分母/代数范数排除范围（类别 4）或作形式化案例 | 证明无理性：**极低**；扩大有限排除：高 | 不证明无理性或超越性；不主张“更接近证明” |
+| **Kahane Q6（几乎处处定理 2/3 + 确定性 K-1/K-2）** | 将定理 2/3、确定性定理 K-1/K-2 及 D′/R 否证整理为独立短文，补查 MathSciNet/zbMATH 引用链后送同行审阅 | *C. R. Math.* / *Nonlinearity* / *Acta Arith.* 短文（T4，评估 B−/B） | **中**（需同行确认） | K-2 限于 $M\ge 4, 2\varepsilon M>3$ 整数处且大 $X$ 阶仍为 $1-O(1/\log X)$；**引理 D 仍开放**；不覆盖一般无理点与等式 |
+| **Lean 4 形式化工程（356 文件 / 1,093 声明）** | 提炼 Brouwer-free Perron–Frobenius、无 Bowen 转移算子、$N=512$ 严格开界整数证书与全收敛谱工具上游化至 Mathlib，完成 ITP/CPP 投稿制品 | ITP / CPP / JAR 论文 | **中高**（仓内最完整、零公理泄漏的形式化成果） | 形式化工程不改变数学结论本身的数学难度等级 |
+| **Paper `2A + 2B (+ 2E)` 主稿** | 替换 6 处 `Phase1` 内部存档引用，以“任意增长商（含正负号）递推”为主定理、$e$ 选定与全收敛谱作双旗舰推论，套用 `*-2Apub` 风格投递 | *J. Number Theory* / *Acta Arith.* / *ETDS* 主论文（T4，偶有 T3 可能） | **中** | 非线性 BLR (1.6) 去除仅在单步有界失真条件下成立，超缺项情形已有 `19.94x` 反例 |
+| **Paper `2C + 2D`（R1/R3 已 Lean 闭合）** | 按已有结构将 Paper 2D 独立发表或与 2C 合并；推进 L4b（`lem:pole` 全纯盘谱隙 Lean 形式化） | `2D` 单独或 `2C+2D` 联合专业刊（T4，或评估 T3） | **中** | `lem:pole` 与 `hPole` 尚未入 Lean 内核；有限集 $s_0(S)=1/2$ 存在性与 `rem:fourth-term` 仍开放 |
+| **论文一：$e+\pi$ 无理性** | 核对 Elsner–Havens (2025) 专著以定夺 M2a/M2b 外部发表边界；维持归档守势，**禁止**扩大有限排除冒充推进 | 公开技术报告 / 归档与有限模型扩展 | 证明无理性：**极低** | 不证明无理性；不主张“更接近证明” |
 
 ### 6.2 预计推进顺序
 
-1. **近期（整理、核对、CI 与同行预审，投入低）**：
-   - 完成 Kahane Q6 定理 2、定理 3 短文初稿，并补查 MathSciNet / zbMATH 引用链后送熟悉幂次模 $1$ 的同行；
-   - 核对新推提交在 GitHub Actions（`lean-audit.yml` 与 `python-checks.yml`）的云端跑测结果；
-   - 为论文二完成投稿前 3 项人工放行门禁（替换 `Phase1`、补填作者/单位、`Use of AI` 与人工逐行审阅声明），整合 `2A+2B` 投递稿源与配套 Cover Letter。
-2. **中期（新数学攻关与上游化，需要实质创新或工程投入）**：
-   - 攻关 Kahane **引理 R** 与 $0\text{--}1$ 律，在大尺度下交叉检验猜想 $D'$；
-   - 提炼 Paper 2 Lean 4 的 `hausdorffMeasure` / 规范与金属连分数证明工具，整理可独立发表的形式化成果；
-   - 在 `T6` 临界标度线上推进 $D_K$ 有限子字母表机制的 Lean 内核替代（以消除 `Paper2C.lean` 中的 `C_S_pole_decomposition` 公理）并探索超临界前因子的无 Hurwitz 近似分析。
+1. **近期（确认云端 CI、同行预审与投稿前放行）**：
+   - 验证本轮提交在 GitHub Actions（扩展后的 `lean-audit.yml` 与 `python-checks.yml`）云端跑出全绿；
+   - 将 Kahane Q6（定理 2/3 + K-1/K-2 + D′/R 否证）整理成文并补查 MathSciNet/zbMATH；
+   - 由人类作者完成 3 项投稿前放行门禁及替换 Paper 2 中 6 处 `Phase1` 引用后投出 `2A+2B`、`2C+2D` 及 `2E`。
+2. **中期（形式化深化与开放问题攻关）**：
+   - 推进 **L4b**（`A(\Omega)` 全纯盘 `lem:pole` Lean 4 形式化以消解 `SupercriticalConstant.lean` 中的 `hPole`）；
+   - 攻关 Kahane **引理 D**（次指数/宏观抵消路线）与有限集 $s_0(S)=1/2$ 存在性、获取并对照 Elsner–Havens (2025)。
 3. **长期 / 开放基线**：
-   - Kahane Q6 对**每一个**具体目标序列的精确局部维数；
+   - Kahane Q6 等式 $\dim_H(E(\varepsilon)\cap[1,X])=\log(2\varepsilon X)/\log X$；
    - $e+\pi$、$e\pi$、$e-\pi$、$\pi/e$、$\pi^e$ 的无理性或超越性仍是世界公开问题，本项目不对此作进展预测。
 
 ### 6.3 会改变上述判断的信号
 
-- **引理 R 被证明（且能量/0–1 律闭合）**：Kahane 方向评价上调为“可期待一篇扎实的独立期刊论文”。
-- **外部同行审阅发现新定理存在缺口（Kahane 定理 2/3 或 T6 `lem:master` 等）**：相应结论立即降级或撤回重证，并在本表中如实修订。
-- **MathSciNet / zbMATH 引用链检索发现先例**：本仓库迄今未系统检索该二库；一旦检出先例，“负搜索未见先例”一栏须全部改写，对应结果降为“文献核查与复现”。
+- **外部同行核实 K-1/K-2 或发现缺口**：若核实无误可提升 Kahane 短文投递预期；若发现缺口须立即如实修订或撤回。
+- **L4b (`lem:pole`) 入 Lean 4 内核或引理 D 获实质进展**：Paper 2D 与 Kahane Q6 评价随之同步上调。
+- **MathSciNet / zbMATH 或 Elsner–Havens (2025) 发现精确先例**：一旦检出，“负搜索未见先例”一栏须全部改写，对应结果降为“文献核查与复现”。
 - **外部数学界对 $e+\pi$ 取得公认突破**：及时文献跟进，不改变本仓库现有工作“未证明 $e+\pi$”的历史事实。

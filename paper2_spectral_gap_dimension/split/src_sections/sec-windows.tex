@@ -727,7 +727,7 @@ checks every cell inequality for each $(m,r)$ in Table~\ref{tab:residues-general
 All algebraic and measure-theoretic deductions in~(i)--(ii), together with the
 step-function soundness theorems for~(ii)--(iii), are machine-checked in Lean~4;
 the concrete grid arithmetic for $m\in\{2,3,4,5,6\}$ is performed both in exact
-Python integer arithmetic and, for the closed brackets, by the Lean kernel
+Python integer arithmetic and, for both closed brackets and strict open inequalities, by the Lean kernel
 (Remark~\ref{rem:residue-kernel}).
 \end{proof}
 
@@ -746,7 +746,7 @@ $5$ & $5$ & $120$ & $149/256\,(0.582031)$ & $299/512\,(0.583984)$ & $1/512$ \\\h
 $6$ & $1$ & $120$ & $331/512\,(0.646484)$ & $83/128\,(0.648438)$ & $1/512$ \\
 $6$ & $6$ & $120$ & $291/512\,(0.568359)$ & $73/128\,(0.570312)$ & $1/512$
 \end{tabular}
-\caption{Certified open intervals $(\mathrm{lower},\mathrm{upper})$ for $\dimH F_{m,r}$ ($m\in\{2,3,4,5,6\}$, $r\in\{1,m\}$) from \texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py} ($N=512$, $S=10^{13}$, $2^{80}$-precision enclosures), all of width $1/512$; for every $m$, $\mathrm{upper}(F_{m,m})<\mathrm{lower}(F_{m,1})$. The closed brackets are kernel-checked in Lean~4 (Remark~\ref{rem:residue-kernel}).}\label{tab:residues-general}
+\caption{Certified open intervals $(\mathrm{lower},\mathrm{upper})$ for $\dimH F_{m,r}$ ($m\in\{2,3,4,5,6\}$, $r\in\{1,m\}$) from \texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py} ($N=512$, $S=10^{13}$, $2^{80}$-precision enclosures), all of width $1/512$; for every $m$, $\mathrm{upper}(F_{m,m})<\mathrm{lower}(F_{m,1})$. All $20$ strict open bounds in Table~\ref{tab:residues-general} are kernel-checked in Lean~4 on base axioms only (Remark~\ref{rem:residue-kernel}).}\label{tab:residues-general}
 \end{table}
 
 \begin{remark}[Kernel-checked brackets]\label{rem:residue-kernel}
@@ -768,9 +768,7 @@ kernel (\texttt{decide +kernel}, GMP-accelerated natural-number arithmetic; no
 \texttt{native\_decide}) on data emitted by \texttt{verification/\allowbreak
 emit\_cert\_gen.py} in $64$-row chunks; the resulting bounds and the strict separations
 $\dimH F_{m,m}<\dimH F_{m,1}$ ($2\le m\le6$) are collected in
-\texttt{EpiFormal/\allowbreak ResidueCertTable.lean}. Strictness of the brackets
-(open intervals) uses the positive margins and the pressure argument of
-Theorem~\ref{thm:residues}, which is not formalised.
+\texttt{EpiFormal/\allowbreak ResidueCertTable.lean} ($27$ declarations audited in \texttt{AuditResidueCert.lean}). Moreover, \texttt{EpiFormal/\allowbreak ResidueCertStrictOpen.lean} ($22$ declarations audited in \texttt{AuditResidueCertStrictOpen.lean}, base axioms only, zero \texttt{sorryAx}, and zero Python recomputation) upgrades every entry of Table~\ref{tab:residues-general} directly inside Lean~4 from the positive certificate step margins via monotone operator comparison (\texttt{dimH\_lt\_of\_certU} and \texttt{lt\_dimH\_of\_certL}), establishing all $20$ strict open inequalities $\mathrm{lower}<\dimH F_{m,r}<\mathrm{upper}$ ($m\in\{2,3,4,5,6\}$, $r\in\{1,m\}$) inside the Lean kernel without invoking Bowen's pressure formalism.
 \end{remark}
 
 

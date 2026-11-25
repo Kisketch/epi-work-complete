@@ -1,0 +1,19 @@
+-- Independent audit entry for GeneralAlphabetFloor (2026-11-25).
+-- Not part of Audit.lean (937-entry bijection untouched). Run: lake env lean AuditGeneralAlphabetFloor.lean
+import EpiFormal.GeneralAlphabetFloor
+
+#print axioms GeneralAlphabetFloor.dimH_cfAlphabetSet_le_of_tsum_ennreal_le_one
+#print axioms GeneralAlphabetFloor.dimH_cfAlphabetSet_le_of_tsum_le_one
+#print axioms GeneralAlphabetFloor.pos_dimH_cfAlphabetSet_of_two_mem
+#print axioms GeneralAlphabetFloor.pos_dimH_cfAlphabetSet_of_infinite
+#print axioms GeneralAlphabetFloor.lt_dimH_of_not_summable
+#print axioms GeneralAlphabetFloor.alphabetAbscissa_le_dimH
+#print axioms GeneralAlphabetFloor.dimH_tail_le_of_summable
+#print axioms GeneralAlphabetFloor.tendsto_dimH_alphabet_tail
+#print axioms GeneralAlphabetFloor.dimH_doublyExpAlphabet_le
+#print axioms GeneralAlphabetFloor.dimH_doublyExpAlphabet_one_le_quarter
+#print axioms GeneralAlphabetFloor.dimH_doublyExpAlphabet_one_lt_half
+#print axioms GeneralAlphabetFloor.zero_lt_dimH_doublyExpAlphabet
+#print axioms GeneralAlphabetFloor.alphabetAbscissa_doublyExpAlphabet
+#print axioms GeneralAlphabetFloor.tendsto_dimH_doublyExpAlphabet_zero
+#print axioms GeneralAlphabetFloor.exists_infinite_alphabet_dimH_le

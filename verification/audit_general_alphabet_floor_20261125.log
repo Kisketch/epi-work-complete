@@ -1,0 +1,17 @@
+'GeneralAlphabetFloor.dimH_cfAlphabetSet_le_of_tsum_ennreal_le_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GeneralAlphabetFloor.dimH_cfAlphabetSet_le_of_tsum_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.pos_dimH_cfAlphabetSet_of_two_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.pos_dimH_cfAlphabetSet_of_infinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.lt_dimH_of_not_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.alphabetAbscissa_le_dimH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.dimH_tail_le_of_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.tendsto_dimH_alphabet_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.dimH_doublyExpAlphabet_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.dimH_doublyExpAlphabet_one_le_quarter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.dimH_doublyExpAlphabet_one_lt_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.zero_lt_dimH_doublyExpAlphabet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.alphabetAbscissa_doublyExpAlphabet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.tendsto_dimH_doublyExpAlphabet_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralAlphabetFloor.exists_infinite_alphabet_dimH_le' depends on axioms: [propext, Classical.choice, Quot.sound]

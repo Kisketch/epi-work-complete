@@ -1,0 +1,44 @@
+import EpiFormal.FullConvergentSpectrum
+
+-- Audit all FullConvergentSpectrum theorems (full convergents of e, KL weights,
+-- full-convergent KL/raw master formulas, spectral gaps, level sets, gauges, collapse)
+#print axioms FullConvergentSpectrum.eulerCFDigit_pos
+#print axioms FullConvergentSpectrum.two_mul_qFull_three_mul
+#print axioms FullConvergentSpectrum.qFull_three_mul_add_one
+#print axioms FullConvergentSpectrum.two_mul_qFull_three_mul_add_two
+#print axioms FullConvergentSpectrum.qFull_three_mul
+#print axioms FullConvergentSpectrum.qFull_three_mul_sub_two
+#print axioms FullConvergentSpectrum.qFull_three_mul_sub_one
+#print axioms FullConvergentSpectrum.pFull_three_mul
+#print axioms FullConvergentSpectrum.pFull_three_mul_sub_two
+#print axioms FullConvergentSpectrum.pFull_three_mul_sub_one
+#print axioms FullConvergentSpectrum.fullConv_det
+#print axioms FullConvergentSpectrum.fullConv_coprime
+#print axioms FullConvergentSpectrum.fullDelta_three_mul
+#print axioms FullConvergentSpectrum.fullDelta_three_mul_add_one
+#print axioms FullConvergentSpectrum.fullDelta_three_mul_add_two
+#print axioms FullConvergentSpectrum.abs_fullDelta_three_mul_add_two
+#print axioms FullConvergentSpectrum.abs_fullDelta_three_mul_add_three
+#print axioms FullConvergentSpectrum.pFull_div_qFull_tendsto_exp
+#print axioms FullConvergentSpectrum.two_mul_add_one_lt_fullKLWeight_sub
+#print axioms FullConvergentSpectrum.tendsto_fullKLWeight_mod1_div
+#print axioms FullConvergentSpectrum.tendsto_fullKLWeight_mod2
+#print axioms FullConvergentSpectrum.tendsto_fullKLWeight_mod0
+#print axioms FullConvergentSpectrum.not_parityFlip_of_mem_latticeE
+#print axioms FullConvergentSpectrum.parityFlip_of_mem_oddCosetE
+#print axioms FullConvergentSpectrum.disjoint_latticeE_oddCosetE
+#print axioms FullConvergentSpectrum.parityFlip_of_apprExponent_eq_quarter
+#print axioms FullConvergentSpectrum.fullKLSpectrum_eq
+#print axioms FullConvergentSpectrum.fullRawSpectrum_eq
+#print axioms FullConvergentSpectrum.fullKLSpectrum_zero_tfae
+#print axioms FullConvergentSpectrum.fullKLSpectrum_first_gap
+#print axioms FullConvergentSpectrum.fullKLSpectrum_open_gap
+#print axioms FullConvergentSpectrum.fullRawSpectrum_open_gap
+#print axioms FullConvergentSpectrum.fullKLSpectrum_range
+#print axioms FullConvergentSpectrum.fullRawSpectrum_range
+#print axioms FullConvergentSpectrum.fullKLSpectrum_zero_set
+#print axioms FullConvergentSpectrum.fullKLSpectrum_one_set
+#print axioms FullConvergentSpectrum.fullKLSpectrum_eq_exactLevel_of_three_le
+#print axioms FullConvergentSpectrum.fullRawSpectrum_level_sets
+#print axioms FullConvergentSpectrum.fullSpectrum_critical_gauges
+#print axioms FullConvergentSpectrum.fullSpectrum_coarse_collapse
