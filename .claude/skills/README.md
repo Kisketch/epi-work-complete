@@ -12,9 +12,11 @@ Claude Code 只自动发现 `.claude/skills/<name>/SKILL.md`；`.agents/skills/`
 | `lean-mwe` | 同上 | 构造最小复现例（本项目大证书 elaboration/kernel 问题的定位） |
 | `mathlib-build` | 同上 | mathlib 构建、缓存、`lake` 用法 |
 | `lean-setup` | 同上 | elan / 工具链 / 项目初始化 |
+| `mathodology-evidence-search` | [sweetcornna/mathodology](https://github.com/sweetcornna/mathodology) @ `49c639648c61`（MIT），见该技能目录 `LICENSE` | 双通道证据核查 + `scripts/verify_refs.py` DOI/arXiv/Retraction 检查 |
+| `verified-research` | [sweetcornna/free-search-mcp](https://github.com/sweetcornna/free-search-mcp) @ `9a59cfc3df5b`（MIT），见该技能目录 `LICENSE` | 配合 `free-search-mcp` 核实官网/一手页面与时效性 |
 
 维护约定：
-- `.agents/skills/` 与 `.claude/skills/` 的四个项目技能内容须保持一致；修改其一时同步另一处。
+- `.agents/skills/` 与 `.claude/skills/` 须保持完全同步（含 4 个项目核心技能、4 个 Lean 官方快照技能及 2 个研究核查技能）；修改其一时同步另一处。
 - 上游技能为原样快照，不做本地修改；更新时重新从上游复制并更新上表的提交号。
 - 未纳入、建议按需在用户级安装的：`cameronfreer/lean4-skills`（MIT，含 hooks 与脚本，属完整插件，不宜作为纯文档技能拷入仓库）。安装命令见 README 末尾或：
   `claude plugin marketplace add cameronfreer/lean4-skills` → `claude plugin install lean4@lean4-skills`（安装前请自行确认插件名与 hooks 行为）。

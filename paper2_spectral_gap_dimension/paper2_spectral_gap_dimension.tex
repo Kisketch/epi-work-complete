@@ -347,8 +347,12 @@ governs both the subcritical Hausdorff-dimension distortion
 $(1-\tau)/(1+\tau\gamma_{\sup})$ ($0\le\tau<1$) and the supercritical secondary
 collapse from $L_G$ to $\frac{1}{g}\Z$ across $\tau_{\mathrm{crit}}=1+1/\gamma_{\sup}$.
 For the modular continued-fraction alphabets $F_{m,r}=\{[0;a_1,a_2,\dots]:a_n\equiv r\pmod m\}$,
-infinite-alphabet thermodynamic-formalism dimension theory goes back to Hensley,
-Jenkinson--Pollicott, and Chousionis--Leykekhman--Urba\'nski \cite{CLU}; here
+infinite-alphabet thermodynamic-formalism dimension theory goes back to Hensley \cite{Hensley1996}
+(whose polynomial-time paper carries a published erratum), Jenkinson--Pollicott \cite{JP2018},
+and Chousionis--Leykekhman--Urba\'nski \cite{CLU}, while Chitanga--Lemmens--Nussbaum \cite{CLN2026}
+recently proved full dimension spectra $[0,\dimH F_{m,r}]$ for single arithmetic progressions
+$F_{m,r}$ (not addressing our uniform Lipschitz invariance across $E_m$, global strict separation
+$\dimH F_{m,m}<\dimH F_{m,1}$, constants $C_r$, or multi-residue asymptotics); here
 Theorem~\ref{thm:residues-asymptotic} combines an exact closed-form resolvent
 identity for the truncated metallic-continuant transfer operator with our
 unconditional transfer-operator sandwich to prove $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$
@@ -375,7 +379,12 @@ residue theorems (Theorems~\ref{thm:windows}--\ref{thm:multi-residue-asymptotic}
 Related metric questions for Cantor series expansions, where the approximation
 is measured by the tail $x-\omega_n(x)$ of the partial sums, were studied by
 Cheng and Zhang~\cite{CZ}, who determine Hausdorff dimensions of the
-corresponding limsup sets; spectra and exact gauges are not considered there.
+corresponding limsup sets, and recent exact-approximation frameworks by Baker
+and Ward~\cite{BW2025} and Tan, Tian, Wang and Wu~\cite{TTWW2026} establish
+quantitative criteria and infinite Hausdorff $f$-measures for exact
+approximation sets in regular spaces; discrete spectral gaps, signed-coset
+collapse, and exact recurrence gauges for non-autonomous super-exponential
+denominators $(Q_j)$ are not considered there.
 For the selected sequence $(Q_j)$, Corollary~8 of Bugeaud, Liao and Rams
 \cite{BLR} applies directly since $Q_{j+1}/Q_j\to\infty$. Theorems~\ref{thm:poly-phase-transition} and
 \ref{thm:growing-rec-dim-phase} are compared with \cite{BLR} in
@@ -4046,6 +4055,10 @@ coefficient of $(\log m)^2/m^3$ in the model, for scale: the tabulated quantity 
 nonzero constant if this coefficient were wrong.}\label{tab:fourth-term}
 \end{table}
 
+For comparison with external rigorous finite-element and high-order B-spline bounds on
+finite-alphabet continued-fraction limit sets such as $E_{\{1,2\}}$
+($s_0(\{1,2\})\approx0.531280506$), see \cite{CLUW2024,CLN2026,Brown2026}.
+
 \paragraph{Lean status of Section~\ref{sec:windows-residues}.}
 All of Theorems~\ref{thm:windows}, \ref{thm:short-ae}, and~\ref{thm:no-short-dim}---including the exact dimension-$1$ identity for \texttt{prescribed\allowbreak ParitySet}, the exact dimension-$1/2$ identities for \texttt{bounded\allowbreak IncSet}, \texttt{prescribed\allowbreak IncSet}, and \texttt{prescribed\allowbreak IncSetAt}, the almost-everywhere short-window lower bound $Z_J(x)\ge\frac{1-\ee^{-1}}{160}\log J$ (\texttt{thm\_\allowbreak short\_\allowbreak ae\_\allowbreak explicit}), and the full conjunction $\dimH(\texttt{div\allowbreak WindowSet}\,\epsilon)=1\wedge\operatorname{Leb}(\texttt{div\allowbreak WindowSet}\,\epsilon)=0$ (\texttt{thm\_\allowbreak no\_\allowbreak short\_\allowbreak dim\_\allowbreak complete})---are now kernel-checked end-to-end at Layer~A for mathlib's \texttt{GenContFract.of} across thirteen Lean~4 modules: the counting and Frostman-scale pipeline (\texttt{Window\allowbreak Mobius\allowbreak Count.lean}, \texttt{No\allowbreak Short\allowbreak Dim\allowbreak Count.lean}, \texttt{Window\allowbreak Tree\allowbreak Prune.lean}, \texttt{Window\allowbreak Asymp\allowbreak Thresh.lean}, \texttt{Window\allowbreak Frostman\allowbreak Discharge.lean}, and \texttt{Window\allowbreak Paper\allowbreak Scale.lean}), the CF realization and bounded-increment pipeline (\texttt{Window\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak CF\allowbreak Bridge.lean}, \texttt{Window\allowbreak No\allowbreak Short\allowbreak CF\allowbreak Realize.lean}, \texttt{Window\allowbreak Prescribed\allowbreak CF\allowbreak Realize.lean}, and \texttt{Window\allowbreak Bounded\allowbreak Upper.lean}), and the short-window measure pipeline (\texttt{Window\allowbreak Short\allowbreak Ae.lean} and \texttt{Window\allowbreak Short\allowbreak Ae\allowbreak Realize.lean}, $14$ declarations; base axioms only, zero \texttt{sorryAx}; see Remark~\ref{rem:windows-lean}).
 For Theorems~\ref{thm:residues}, \ref{thm:residues-general}, and~\ref{thm:residues-asymptotic}, the entire general-modulus $m\ge2$ Lipschitz shift equivalence, sandwich, and eventual-periodicity theorem is kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak ModGeneral.lean} ($7$ declarations: \texttt{lipschitz\allowbreak OnWith\_\allowbreak cfShift}, \texttt{dimH\_\allowbreak residueSeqSet\_\allowbreak sandwich}, \texttt{dimH\_\allowbreak eventually\allowbreak PeriodicResidueSet\_\allowbreak eq}), the unconditional transfer-operator Hausdorff-dimension framework, $\frac12<\dimH F_{m,r}$, $\dimH F_{4,1}\le 4/5$, and step-function certificate soundness (\texttt{step\_\allowbreak cert\_\allowbreak upper\_\allowbreak sound}, \texttt{step\_\allowbreak cert\_\allowbreak lower\_\allowbreak sound}) are kernel-checked in \texttt{EpiFormal/\allowbreak Transfer\allowbreak Operator\allowbreak Dim.lean} ($11$ declarations, base axioms only), and the complete resolvent identity, global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all $m\ge2$, two-term asymptotic expansions with $C_r$ and $C_1=\psi_{\mathrm{Fib}}$, exact dimension-excess ratios, and eventual strict monotonicity in~$r$ of Theorem~\ref{thm:residues-asymptotic} are kernel-checked in \texttt{EpiFormal/\allowbreak Residue\allowbreak Asymptotic.lean} (all $15$ declarations: \texttt{metalQ\_\allowbreak one\_\allowbreak eq\_\allowbreak fib}, \texttt{metalC\_\allowbreak one\_\allowbreak eq\_\allowbreak psiFib}, \texttt{resolventV\_\allowbreak branch\_\allowbreak eq}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak le\_\allowbreak of\_\allowbreak resolvent}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak of\_\allowbreak resolvent}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak le}, \texttt{le\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak mm}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak m1}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak lt\_\allowbreak eventuallyPeriodic}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{dimH\_\allowbreak residueConstSet\_\allowbreak mm\_\allowbreak asymp\_\allowbreak two\_\allowbreak term}, \texttt{tendsto\_\allowbreak mul\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak sub\_\allowbreak half}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak residue\_\allowbreak ratio\_\allowbreak eq\_\allowbreak metalC}, \texttt{tendsto\_\allowbreak dimH\_\allowbreak eventuallyPeriodic\_\allowbreak ratio\_\allowbreak eq\_\allowbreak psiFib}, and \texttt{eventually\_\allowbreak dimH\_\allowbreak residueConstSet\_\allowbreak strictAnti}; base axioms only, zero \texttt{sorryAx}), alongside the $14$ helper lemmas in \texttt{Window\allowbreak And\allowbreak Residue\allowbreak Core.lean}; the integer grid certificates for the narrow brackets in Table~\ref{tab:residues-general} are run in exact Python arithmetic (\texttt{residue\_\allowbreak certificate\_\allowbreak general\_\allowbreak N512.py}) and, as closed brackets, re-checked by the Lean kernel in \texttt{Residue\allowbreak Cert\allowbreak Table.lean} (Remark~\ref{rem:residue-kernel}). Moreover, all parts~(i)--(v) of Theorem~\ref{thm:multi-residue-asymptotic} (Bowen-free Poincar\'e-abscissa dimension, multi-residue phase transition at $1/2$ with two-digit witnesses $\{2,3\}$ and $\{1,2\}$, elementary Euler--Mascheroni expansion of $\zeta(1+\varepsilon)$, three-term subcritical asymptotics to $O((\log m)^2/m^3)$, and supercritical $\Theta(m^{-2s_0})$ convergence rate) are kernel-checked at Layer~A in \texttt{EpiFormal/\allowbreak ResidueMultiAsymptotic.lean} ($24$ public theorems audited separately in \texttt{AuditResidueMultiAsymptotic.lean}, strictly on the three Lean base axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, with zero \texttt{sorryAx}, recorded in \texttt{verification/\allowbreak audit\_\allowbreak residue\_\allowbreak multi\_\allowbreak asymptotic\_\allowbreak 20261123.log}).
@@ -4150,6 +4163,13 @@ $\min_{[0,1]}(\mathcal L_{51/100,\{1,2\}}v/v)\approx1.01099707>1$; and the
 supercritical pairs $S=\{1,2\}$ ($s_0\approx0.531280506$) and $S=\{1,2,3\}$
 ($s_0\approx0.705660908$) exhibit the predicted $\Theta(m^{-2s_0})$ excess
 scaling up to $m=4096$.
+As external rigorous benchmarks on the finite-alphabet endpoint $E_{\{1,2\}}$,
+piecewise-linear finite-element bounds for conformal fractals were developed by
+Chousionis, Leykekhman, Urba\'nski and Wendt~\cite{CLUW2024}, and the degree-$4$
+B-spline hidden-positivity enclosure of Brown~\cite{Brown2026} certifies
+$\dimH E_{\{1,2\}}\in[0.531280506277203, 0.531280506277205]$ (also bracketed in
+\cite[Table~1]{CLN2026}), agreeing with our non-rigorous $32$-digit Chebyshev
+collocation estimate $s_0(\{1,2\})\approx0.531280506$ to all nine displayed decimal places.
 
 \section{Honesty statement, scope, and formal verification}\label{sec:verification}
 
@@ -4403,47 +4423,72 @@ which remains an open problem.
 % TODO before submission: state who checked the paper proofs, and how.
 
 \begin{thebibliography}{99}
+\bibitem{BW2025} S.~Baker and B.~Ward, \emph{A quantitative framework for sets of
+exact approximation order by rational numbers}, arXiv:2510.18451v1 (2025).
+
 \bibitem{BDS} A.~B\'ir\'o, J.-M.~Deshouillers, V.~T.~S\'os, \emph{Good
-approximation and characterization of subgroups of $\R/\Z$}, Studia Sci.\ Math.\ Hungar.\ 38 (2001), 97--113, doi:10.1556/\allowbreak sscmath.38.2001.1-4.7.
+approximation and characterization of subgroups of $\R/\Z$}, Studia Sci.\ Math.\ Hungar.\ 38 (2001), 97--113, doi:10.1556/sscmath.38.2001.1-4.7.
 
 \bibitem{BV} V.~Beresnevich and S.~Velani, \emph{A mass transference principle
-and the Duffin--Schaeffer conjecture}, Ann.\ of Math.\ (2) 164 (2006), 971--992.
+and the Duffin--Schaeffer conjecture}, Ann.\ of Math.\ (2) 164 (2006), no.~3, 971--992, doi:10.4007/annals.2006.164.971.
+
+\bibitem{Brown2026} J.~Brown, \emph{Rigorous High-Order Hausdorff Dimension
+Estimation of Limit Sets of Continued Fraction Iterated Function Systems via B-Splines},
+arXiv:2604.20812v2 (2026).
 
 \bibitem{BLR} Y.~Bugeaud, L.~Liao, M.~Rams, \emph{Metrical results on the
-distribution of fractional parts of powers of real numbers}, Proc.\ Edinb.\ Math.\ Soc.\ (2) 62 (2019), 505--521, doi:10.1017/\allowbreak S0013091518000585; arXiv:1710.03596. (Cor.~8, the hypothesis is $Q_{j+1}/Q_j\to\infty$.)
+distribution of fractional parts of powers of real numbers}, Proc.\ Edinb.\ Math.\ Soc.\ (2) 62 (2019), 505--521, doi:10.1017/S0013091518000585; arXiv:1710.03596. (Cor.~8, the hypothesis is $Q_{j+1}/Q_j\to\infty$.)
 
 \bibitem{CZ} W.~Cheng and X.~Zhang, \emph{Exact approximation order of real numbers in
 Cantor series expansions}, arXiv:2606.30435v2 (2026).
 
+\bibitem{CLN2026} P.~Chitanga, B.~Lemmens, R.~Nussbaum, \emph{On the structure of
+the dimension spectrum for continued fraction expansions}, Indag.\ Math.\ 37 (2026),
+no.~6, 1960--1989, doi:10.1016/j.indag.2026.03.008; arXiv:2504.20878v2.
+
 \bibitem{CMMS} C.~Cabrelli, F.~Mendivil, U.~M.~Molter, R.~Shonkwiler,
 \emph{On the Hausdorff $h$-measure of Cantor sets}, Pacific J.\ Math.\ 217
-(2004), 45--59, doi:10.2140/\allowbreak pjm.2004.217.45.
+(2004), 45--59, doi:10.2140/pjm.2004.217.45.
 
 \bibitem{CLU} V.~Chousionis, D.~Leykekhman, M.~Urba\'nski, \emph{On the
-dimension spectrum of infinite subsystems of continued fractions}, Trans.\ Amer.\ Math.\ Soc.\ 373 (2020), 1009--1042, arXiv:1805.11904.
+dimension spectrum of infinite subsystems of continued fractions}, Trans.\ Amer.\ Math.\ Soc.\ 373 (2020), no.~2, 1009--1042, doi:10.1090/tran/7984; arXiv:1805.11904.
+
+\bibitem{CLUW2024} V.~Chousionis, D.~Leykekhman, M.~Urba\'nski, E.~Wendt,
+\emph{Rigorous Hausdorff dimension estimates for conformal fractals},
+arXiv:2408.06330v2 (2025).
 
 \bibitem{Falconer} K.~Falconer, \emph{Fractal Geometry: Mathematical
 Foundations and Applications}, 2nd ed., Wiley, 2003. (Countable sets have
 Hausdorff dimension~$0$.)
 
 \bibitem{FLLW} A.-H.~Fan, L.-M.~Liao, B.-W.~Wang, J.~Wu, \emph{On Khintchine
-exponents and Lyapunov exponents of continued fractions}, Ergodic Theory Dynam.\ Systems 29 (2009), 73--109.
+exponents and Lyapunov exponents of continued fractions}, Ergodic Theory Dynam.\ Systems 29 (2009), no.~1, 73--109, doi:10.1017/s0143385708000138.
 
 \bibitem{FWW} D.-J.~Feng, Z.-Y.~Wen, J.~Wu, \emph{Some dimensional results
 for homogeneous Moran sets}, Sci.\ China Ser.\ A 40 (1997), 475--482,
-doi:10.1007/\allowbreak BF02896955.
+doi:10.1007/BF02896955.
+
+\bibitem{Hensley1996} D.~Hensley, \emph{A Polynomial Time Algorithm for the
+Hausdorff Dimension of Continued Fraction Cantor Sets}, J.\ Number Theory 58 (1996),
+no.~1, 9--45, doi:10.1006/jnth.1996.0058; Erratum, J.\ Number Theory 59 (1996),
+no.~2, 419, doi:10.1006/jnth.1996.0107.
+
+\bibitem{JP2018} O.~Jenkinson and M.~Pollicott, \emph{Rigorous effective bounds
+on the Hausdorff dimension of continued fraction Cantor sets: A hundred decimal digits
+for the dimension of $E_2$}, Adv.\ Math.\ 325 (2018), 87--115,
+doi:10.1016/j.aim.2017.11.028.
 
 \bibitem{KL} C.~Kraaikamp and P.~Liardet, \emph{Good approximations and
-continued fractions}, Proc.\ Amer.\ Math.\ Soc.\ 112 (1991), 303--309, doi:10.1090/\allowbreak s0002-9939-1991-1062392-7.
+continued fractions}, Proc.\ Amer.\ Math.\ Soc.\ 112 (1991), 303--309, doi:10.1090/s0002-9939-1991-1062392-7.
 
 \bibitem{LimaMoreira} D.~Lima and C.~G.~Moreira, \emph{Phase transitions on
 the Markov and Lagrange dynamical spectra}, Ann.\ Inst.\ H.~Poincar\'e
 C Anal.\ Non Lin\'eaire 38 (2021), 1429--1459,
-doi:10.1016/\allowbreak j.anihpc.2020.11.007; arXiv:1801.04636.
+doi:10.1016/j.anihpc.2020.11.007; arXiv:1801.04636.
 
 \bibitem{Moreira} C.~G.~Moreira, \emph{Geometric properties of the Markov and
 Lagrange spectra}, Ann.\ of Math.\ (2) 188 (2018), 145--170,
-doi:10.4007/\allowbreak annals.2018.188.1.3.
+doi:10.4007/annals.2018.188.1.3.
 
 \bibitem{MEA} C.~G.~Moreira, H.~Erazo, N.~Angelini,
 \emph{Generalized Hausdorff measure of irrationals with Lagrange value exactly 3},
@@ -4452,12 +4497,15 @@ arXiv:2511.10328v3.
 {\sloppy
 \bibitem{MW} R.~D.~Mauldin and S.~C.~Williams,
 \emph{Hausdorff dimension in graph directed constructions},
-Trans.~Amer.~Math.~Soc.~309 (1988), no.~2, 811--829.
+Trans.~Amer.~Math.~Soc.~309 (1988), no.~2, 811--829, doi:10.1090/s0002-9947-1988-0961615-4.
 }
 
 \bibitem{Phase1} Phase-1 archive, \emph{On the irrationality of $e+\pi$}
 (formalization project), Lean~4 modules \texttt{EpiFormal/\allowbreak Classification.lean}
 (Theorem~2 and Corollary~3) and \texttt{EpiFormal/\allowbreak Spectral\allowbreak Gap.lean}, 2026-11-15.
+
+\bibitem{TTWW2026} B.~Tan, C.~Tian, B.-W.~Wang, J.~Wu, \emph{Hausdorff measures of
+sets in Exact Diophantine approximation}, arXiv:2511.02492v2 (2026).
 \end{thebibliography}
 
 \end{document}

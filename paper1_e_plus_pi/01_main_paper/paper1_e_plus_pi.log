@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  22 NOV 2026 22:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  25 NOV 2026 01:27
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **./paper1_e_plus_pi.tex
 (paper1_e_plus_pi.tex
@@ -583,11 +584,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3721--3721
 []|\OT1/cmr/m/n/10 unproven con-jec-
  []
 
-
-Underfull \vbox (badness 2318) has occurred while \output is active []
-
- [50]
-[51]
+[50] [51]
 Underfull \hbox (badness 2538) in paragraph at lines 3766--3771
 \OT1/cmr/m/it/10.95 Under the same ra-tio-nal-ity as-sump-tion there is no con-
 ver-gent de-nom-i-na-tor $\OML/cmm/m/it/10.95 d$ \OT1/cmr/m/it/10.95 of $\OML/c
@@ -595,113 +592,140 @@ mm/m/it/10.95 x$ \OT1/cmr/m/it/10.95 in
  []
 
 [52] [53] [54]
-Underfull \hbox (badness 3407) in paragraph at lines 3964--3965
+Underfull \hbox (badness 1231) in paragraph at lines 3965--3966
+[]\OT1/cmr/m/n/9 D. Bertrand, \OT1/cmr/m/it/9 Schanuel's con-jec-ture for non-i
+soconstant el-lip-tic curves over func-tion fields\OT1/cmr/m/n/9 , in: \OT1/cmr
+/m/it/9 Model
+ []
+
+
+Underfull \hbox (badness 7451) in paragraph at lines 3965--3966
+\OT1/cmr/m/it/9 The-ory with Ap-pli-ca-tions to Al-ge-bra and Anal-y-sis\OT1/cm
+r/m/n/9 , Cam-bridge Univ. Press, 2008, pp. 41--62,
+ []
+
+
+Underfull \hbox (badness 3407) in paragraph at lines 3972--3973
 []\OT1/cmr/m/n/9 C. S. Davis, \OT1/cmr/m/it/9 Ra-tio-nal ap-prox-i-ma-tions to 
 $\OML/cmm/m/it/9 e$\OT1/cmr/m/n/9 , J. Aus-tral. Math. Soc. 25 (1978), no. 4, 4
 97--502,
  []
 
 
-Underfull \hbox (badness 1946) in paragraph at lines 3967--3968
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [55]
+Underfull \hbox (badness 1946) in paragraph at lines 3975--3976
 []\OT1/cmr/m/n/9 T. Ko-matsu, \OT1/cmr/m/it/9 On in-ho-mo-ge-neous Dio-phan-tin
 e ap-prox-i-ma-tion with some quasi-periodic ex-pres-sions, II\OT1/cmr/m/n/9 ,
  []
 
 
-Underfull \hbox (badness 3601) in paragraph at lines 3968--3969
+Underfull \hbox (badness 3601) in paragraph at lines 3976--3977
 []\OT1/cmr/m/n/9 T. Ko-matsu, \OT1/cmr/m/it/9 On Hur-witzian and Tasoev's con-t
 in-ued frac-tions\OT1/cmr/m/n/9 , Acta Arith. 107 (2003), 161--177,
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [55]
-Underfull \hbox (badness 2671) in paragraph at lines 3974--3975
+Underfull \hbox (badness 2671) in paragraph at lines 3982--3983
 []\OT1/cmr/m/n/9 N. Kalinin and T. Ko-matsu, \OT1/cmr/m/it/9 Er-ror terms for c
 on-tin-ued frac-tions of $\OML/cmm/m/it/9 e[]$ \OT1/cmr/m/it/9 and $[] []\OT1/c
 mr/m/n/9 (1\OML/cmm/m/it/9 =[]\OT1/cmr/m/n/9 )$,
  []
 
-[56] [57
 
-] [58]
-Underfull \hbox (badness 1755) in paragraph at lines 4118--4145
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [56]
+Underfull \hbox (badness 4120) in paragraph at lines 4004--4005
+[]\OT1/cmr/m/n/9 A. Fauzan, $\OML/cmm/m/it/9 ^^P\OT1/cmr/m/n/9 (5)$ \OT1/cmr/m/
+it/9 is ir-ra-tional\OT1/cmr/m/n/9 , Zen-odo preprint (2026-09-17), doi:10.5281
+/zenodo.22826419 (con-cept
+ []
+
+[57] [58
+
+] [59] [60]
+Underfull \hbox (badness 1755) in paragraph at lines 4185--4212
 \OT1/cmtt/m/n/10.95 Rigidity.lean \OT1/cmr/m/n/10.95 (30 base-only dec-la-ra-ti
 ons), \OT1/cmtt/m/n/10.95 EpiFormal/TrichotomyAndPolyExtension.lean
  []
 
 
-Underfull \hbox (badness 1789) in paragraph at lines 4118--4145
+Underfull \hbox (badness 1789) in paragraph at lines 4185--4212
 \OT1/cmr/m/n/10.95 (45 base-only dec-la-ra-tions), \OT1/cmtt/m/n/10.95 EpiForma
 l/AffineWindowAssembly.lean \OT1/cmr/m/n/10.95 (7 base-only dec-la-ra-
  []
 
 
-Underfull \hbox (badness 2828) in paragraph at lines 4118--4145
+Underfull \hbox (badness 2828) in paragraph at lines 4185--4212
 \OT1/cmr/m/n/10.95 mod-ules \OT1/cmtt/m/n/10.95 GoldenHeadCutoff.lean\OT1/cmr/m
 /n/10.95 , \OT1/cmtt/m/n/10.95 GoldenAffineEndpoint.lean\OT1/cmr/m/n/10.95 , \O
 T1/cmtt/m/n/10.95 AffineWindowAudit.lean\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 1675) in paragraph at lines 4146--4149
+Underfull \hbox (badness 1675) in paragraph at lines 4213--4216
 \OT1/cmr/m/n/10.95 The Meiburg cri-te-rion, for-merly an ax-iom, is now a the-o
 -rem (Sec-tion [][]B.4[][]). In par-
  []
 
 
-Underfull \hbox (badness 1057) in paragraph at lines 4146--4149
+Underfull \hbox (badness 1057) in paragraph at lines 4213--4216
 \OT1/cmr/m/n/10.95 tic-u-lar the Flint Hills bridge (The-o-rem [][]6.25[][]) is
  kernel-checked with de-pen-den-cies ex-actly
  []
 
-[59] [60] [61] [62] [63]
+[61] [62] [63] [64] [65]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 4376.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 4443.
 
- [64] [65] [66] [67] [68]
-Underfull \hbox (badness 1931) in paragraph at lines 4494--4495
+ [66] [67] [68] [69] [70]
+Underfull \hbox (badness 1931) in paragraph at lines 4561--4562
  []\OT1/cmr/m/n/10.95 Collision with the clas-si-fi-ca-tion gap.[] The kernel-c
 hecked Corol-lary 3 of the clas-si-fi-ca-tion
  []
 
-[69] [70]
-Underfull \hbox (badness 10000) in paragraph at lines 4629--4629
+[71] [72]
+Underfull \hbox (badness 10000) in paragraph at lines 4696--4696
 []|\OT1/cmr/m/n/9 Hermite--Lindemann
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4629--4629
+Underfull \hbox (badness 10000) in paragraph at lines 4696--4696
 []|\OT1/cmr/m/n/9 Schanuel state-
  []
 
 
-Underfull \hbox (badness 2932) in paragraph at lines 4629--4629
+Underfull \hbox (badness 2932) in paragraph at lines 4696--4696
 []|\OT1/cmr/m/n/9 Nesterenko / Ti-jde-
  []
 
 
-Underfull \hbox (badness 1448) in paragraph at lines 4629--4629
+Underfull \hbox (badness 1448) in paragraph at lines 4696--4696
 []|\OT1/cmr/m/n/9 framework ver-i-fied, con-stants
  []
 
-[71] [72] (paper1_e_plus_pi.aux)
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [73]
+[74] [75] (paper1_e_plus_pi.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-09-09>
  ***********
 Package rerunfilecheck Info: File `paper1_e_plus_pi.out' has not changed.
-(rerunfilecheck)             Checksum: BB9025C3D599583534586BE1FE4FD003;21396.
+(rerunfilecheck)             Checksum: E30DD61814476B8FFA4306A2DD4164D6;21674.
  ) 
 Here is how much of TeX's memory you used:
- 12422 strings out of 467392
- 190881 string characters out of 5404180
- 649395 words of memory out of 5000000
- 41021 multiletter control sequences out of 15000+600000
+ 12454 strings out of 467392
+ 191432 string characters out of 5404180
+ 650241 words of memory out of 5000000
+ 41039 multiletter control sequences out of 15000+600000
  645745 words of font info for 105 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 74i,11n,79p,1552b,719s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,11n,79p,2401b,719s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\t
 crm0900.pk> <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
 /dpi600\tcrm1000.pk> <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jk
@@ -739,9 +763,9 @@ cmtt9.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/euler/eufm10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/amsfonts/symbols/msam10.pfb><C:/Users/Lgnatius/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on paper1_e_plus_pi.pdf (72 pages, 1036438 bytes).
+Output written on paper1_e_plus_pi.pdf (75 pages, 1057798 bytes).
 PDF statistics:
- 1780 PDF objects out of 2073 (max. 8388607)
- 437 named destinations out of 1000 (max. 500000)
- 569 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1829 PDF objects out of 2073 (max. 8388607)
+ 451 named destinations out of 1000 (max. 500000)
+ 577 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -85,3 +85,9 @@
 * **多残差推广（`thm:multi-residue-asymptotic`）合入 2C 与主文**：`src_sections/sec-resasymp.tex` 新增 §7.5 `sec:multi-residue`（[定理 `thm:multi-residue-asymptotic`](src_sections/sec-resasymp.tex) 与 [数值佐证表 `tab:multi-residue-asymptotic`](src_sections/sec-resasymp.tex)），对应 `ResidueMultiAsymptotic.lean`（5,039 行，Part 1–6）与 `AuditResidueMultiAsymptotic.lean`（24/24 条仅基础公理）；同步更新 `sec-preface.tex`、`frontmatter.tex`、`intro-shared.tex`、`frontmatter-2C.tex`、`intro-2C.tex`、`preamble.tex`、`sec-num.tex`、`sec-verification.tex`。
 * **切片逐字节一致性与三轨编译结果**：11 片拼接与 [`paper2_spectral_gap_dimension.tex`](../paper2_spectral_gap_dimension.tex) 逐字节一致（`279,145` 字节）；`pdflatex` 洁净重编主论文 **63 页**、2A **24 页**、2B **15 页**、2C **24 页**，0 错误 / 0 `Overfull \hbox`；[`undef_ref_audit.py`](undef_ref_audit.py) 与 [`undef_ref_audit.log`](undef_ref_audit.log) 确认 2A / 2B / 2C 三轨 **0 未定义引用、0 未定义文献**（S 补充轨单独编译时的主文标签引用按定位保留于 `S_supplement/build/paperS_draft.log`）。
 * **诚实边界**：$e+\pi$ 无理性仍开放；临界线 $s_0(S)=1/2$ 速率与超临界阶段精确主导常数尚未解决。
+
+## 十、2026-11-24 / 2026-11-25 同步进展（`rem:fourth-term` 与文献基准补全）
+
+* **启发式四阶项与二次复建（2026-11-24）**：[`sec-resasymp.tex`](src_sections/sec-resasymp.tex) 与 [`sec-verification.tex`](src_sections/sec-verification.tex) 同步加入 Remark `rem:fourth-term`（非严格数值佐证，明确标明非定理）及第二次独立克隆审计说明。
+* **外部基准引文与 DOI 规范化（2026-11-25）**：经 [`patch_evidence_citations_20261125.py`](../patch_evidence_citations_20261125.py) 同步更新 `sec-preface.tex`、`sec-resasymp.tex`、`sec-num.tex`、`sec-verification.tex` 与派生切片 `intro-2A.tex`、`intro-2B.tex`、`intro-2C.tex`、`refs.tex`，增补 `Hensley1996`（含勘误 `10.1006/jnth.1996.0107`）、`JP2018`、`CLN2026`、`CLUW2024`、`Brown2026`、`TTWW2026`、`BW2025` 并更新 [`slice_index.csv`](src_sections/slice_index.csv)（总计 `286,520` 字节、`4,511` 行）。
+* **重编实测**：主稿 **65 页**、2A **25 页**、2B **16 页**、2C **26 页**（0 错误 / 0 `Overfull \hbox` / `undef_ref_audit.py` 0/0）、S **7 页**（0 未定义文献引文）。

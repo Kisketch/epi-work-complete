@@ -1,11 +1,11 @@
 === Paper 2 Merge & Integrity Verification ===
-Paper 2 source: paper2_spectral_gap_dimension\paper2_spectral_gap_dimension.tex (4403 lines)
+Paper 2 source: paper2_spectral_gap_dimension\paper2_spectral_gap_dimension.tex (4511 lines)
 Historical B draft: paper1_e_plus_pi\02_companion_paper\Phase2_revised.tex (4905 lines)
-Labels: 84 (all unique); Undefined refs: 0
-Bibitems: 15/15 (100% cited in body, 0 missing)
-Braces balanced (4826); Environments balanced (161)
+Labels: 86 (all unique); Undefined refs: 0
+Bibitems: 22/22 (100% cited in body, 0 missing)
+Braces balanced (4917); Environments balanced (164)
 Residual 'Proof sketch' stubs: 0
-Slice concatenation byte-for-byte match (11 files, 279145 bytes): OK
+Slice concatenation byte-for-byte match (11 files, 286520 bytes): OK
   [OK] Desktop: Author placeholder
   [OK] Desktop: KL 2*Lambda(x) normalization
   [OK] Desktop: Lemma A

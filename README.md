@@ -1,6 +1,20 @@
-# $e+\pi$ 无理性研究与连分数谱/维数理论完整私有归档（2026-11-23 最新版）
+# $e+\pi$ 无理性研究与连分数谱/维数理论完整私有归档（2026-11-25 最新版）
 
-> **一句总判断**：本仓库完整归档截至 **2026-11-23** 的最新研究全貌，涵盖两篇修订重编主论文（**Paper 1** 72 页 + **Paper 2** 63 页，洁净 `pdflatex` 0 错误 / 0 未定义引用 / 0 Overfull `\hbox`，且主稿与 `split/` 三轨拆分源码保持逐字节/0 未定义引用同步）、全量 Lean 4 `v4.35.0` 形式化工程（`lake build EpiFormal` **9179 jobs** EXIT 0，全库 **344** 个 `.lean` 文件，0 逃逸关键字、`sorryAx = 0`；核心 `Audit.lean` **937/937** 条 `#print axioms` 严格双射 [= **914** 基础公理（含 **5** 条零公理）+ **23** 论文一经典白名单 + **0** 项目自加公理]，独立残差证书审计 `AuditResidueCert.lean` **27/27** 条仅用基础公理，独立多残差推广审计 `AuditResidueMultiAsymptotic.lean` **24/24** 条仅用基础公理，合计 **988** 条 Layer A 审计声明）、全部符号/高精度区间/精确整数转移算子与 32 位 Chebyshev 配置核验脚本与日志、CMMS 一次文献核查，以及全部研究过程记录与历史版本快照（全局架构导航见 [`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md)）；同时严格遵循 [`AGENTS.md`](AGENTS.md) 诚实基线——**$e+\pi$ 的无理性（及 $e\pi, e-\pi, \pi/e, \pi^e$ 单个的无理性）仍是公开问题，本仓库未证明 $e+\pi$ 无理、有理或超越。**
+> **一句总判断**：本仓库完整归档截至 **2026-11-25** 的最新研究全貌，涵盖两篇修订重编主论文（**Paper 1** 75 页 + **Paper 2** 65 页，洁净 `pdflatex` 0 错误 / 0 未定义引用 / 0 Overfull `\hbox`，且主稿与 `split/` 三轨拆分源码保持 `286,520` 字节逐字节同步、22/22 文献全引用、2A/2B/2C `0/0` 未定义引用）、全量 Lean 4 `v4.35.0` 形式化工程（全库 **344** 个 `.lean` 文件，0 逃逸关键字、`sorryAx = 0`；本工作树亦已恢复 `.lake` 缓存并实测 `lake build` **9384 jobs** 退出码 0，核心 `Audit.lean` **937/937** 条 `#print axioms` 严格双射 [= **914** 基础公理（含 **5** 条零公理）+ **23** 论文一经典白名单 + **0** 项目自加公理]，独立残差证书审计 `AuditResidueCert.lean` **27/27** 条仅用基础公理，独立多残差推广审计 `AuditResidueMultiAsymptotic.lean` **24/24** 条仅用基础公理，合计 **988** 条 Layer A 审计声明）、全部符号 / `python-flint==0.9.0` Arb 球算术 / 高精度区间 / 精确整数转移算子 / 32 位 Chebyshev 配置与双通道文献证据深调脚本（全局架构导航见 [`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md)）；同时严格遵循 [`AGENTS.md`](AGENTS.md) 诚实基线——**$e+\pi$ 的无理性（及 $e\pi, e-\pi, \pi/e, \pi^e$ 单个的无理性）仍是公开问题，本仓库未证明 $e+\pi$ 无理、有理或超越。**
+
+---
+
+## 0. 最新更改情况（2026-11-24 / 2026-11-25）
+
+1. **论文一与论文二文献核查补全与重编**：
+   - **Paper 1**（`75` 页，0 错误 / 0 Overfull）：将 `Dan2026`（`arXiv:2609.12338v1`）、`Yu2026`（`arXiv:2606.17303v1`，145 候选/133 本原 Apéry 审计）更新为全文已核口径；区分 `openai/math` 中含 `sorry` 的挑战题面 `ComparatorChallenges/PiExponent.lean` 与主证明 `OAI/NumberTheory/PiExponent/Main.lean`；补充 `CDT2026`（Calegari–Dimitrov–Tang ICM 2026 `doi:10.1137/25m1806776`）、`Chudnovsky2026`（`arXiv:2610.31112v1`、`2610.26539v1`）、`Fauzan2026`（`10.5281/zenodo.22826419`）与 `Zapata2026`（`arXiv:2603.09719v5`）边界定位。
+   - **Paper 2**（`65` 页，`286,520` 字节 / `4,511` 行，0 错误 / 0 Overfull）：通过 [`patch_evidence_citations_20261125.py`](paper2_spectral_gap_dimension/patch_evidence_citations_20261125.py) 同步主稿、[`slice_index.csv`](paper2_spectral_gap_dimension/split/src_sections/slice_index.csv) 与 `split/` 四轨切片，补引 `Hensley1996`（附 *J. Number Theory* 59 勘误 `doi:10.1006/jnth.1996.0107`）、`JP2018`（`doi:10.1016/j.aim.2017.11.028`）、`CLN2026`（`doi:10.1016/j.indag.2026.03.008` / `arXiv:2504.20878v2`）、`CLUW2024`（`arXiv:2408.06330v2`）、`Brown2026`（`arXiv:2604.20812v2`，$E_{\{1,2\}}$ 9 位吻合外部对照）、`TTWW2026`（`arXiv:2511.02492v2`，实核第二作者 `Chen Tian`）与 `BW2025`（`arXiv:2510.18451v1`）；补齐 `BV`/`CLU`/`FLLW`/`MW` DOI 并去除 DOI 内 `\allowbreak`，使 22/22 文献 100% 被引用且分轨 `2A`（25 页）/ `2B`（16 页）/ `2C`（26 页）保持 `0/0` 未定义引用。
+2. **双通道证据深调与前沿调研档案**：
+   - 新增 [`方法论证据支撑深调报告_20261125.md`](verification/方法论证据支撑深调报告_20261125.md)（覆盖 100 个去重 arXiv 基础号、89 篇 OpenAlex 文献、52 个 Crossref DOI 与 11 篇抽提 PDF，记录 8 项跨通道冲突与 6 项 Load-Bearing 勘误/撤稿审计）、[`工具库整理与六方向前沿调研记忆_20261125.md`](verification/工具库整理与六方向前沿调研记忆_20261125.md) 与 50 位高精度验证脚本 [`verify_evidence_numbers_20261125.py`](verification/verify_evidence_numbers_20261125.py) / [`.log`](verification/verify_evidence_numbers_20261125.log)。
+3. **缺失工具补装、技能镜像与后续阶段规则硬化**：
+   - 本地 Python `3.14.7` 已补装 `python-flint==0.9.0`，实测通过 [`rational_exclusion_bound_20261124.py`](verification/rational_exclusion_bound_20261124.py) `--selftest`（12/12 PASS）；本工作树补建 `.lake` 并实测 `lake build`（9384 jobs, EXIT 0）及三份 `Audit*.lean` 脚本全通过。
+   - `.agents/skills/` 与 `.claude/skills/` 完成双根镜像同步，新增 `mathodology-evidence-search`（MIT）、`verified-research`（MIT）及 4 项 `leanprover/skills`（Apache-2.0），并附 API 授权声明 [`.licenses/`](.licenses/)；`verify_refs.py` 自检 `40/40` 单元测试通过且对 Paper 1（52 项）与 Paper 2（25 项）均 `0 fail`。
+   - 新增后续工作流与质量门禁规则 [`.agents/rules/next-step-workflow.md`](.agents/rules/next-step-workflow.md) 并在 [`AGENTS.md`](AGENTS.md) §8 建立索引。
 
 ---
 
@@ -52,13 +66,13 @@
 
 ### 1. 最新主论文、历史 B 稿与编译日志
 - **全局目录索引与文档入口**：[`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md)（全仓结构总览）、[`paper1_e_plus_pi/00_PROJECT_INDEX.md`](paper1_e_plus_pi/00_PROJECT_INDEX.md)（论文一索引）、[`paper2_spectral_gap_dimension/README.md`](paper2_spectral_gap_dimension/README.md)（论文二索引）、[`verification/README.md`](verification/README.md)（核验脚本与记录总索引）
-- **论文一（72 页，0 错误 / 0 警告 / 0 Overfull `\hbox`）**：
+- **论文一（75 页，0 错误 / 0 未定义引用 / 0 Overfull `\hbox`）**：
   - 源码：[`paper1_e_plus_pi/01_main_paper/paper1_e_plus_pi.tex`](paper1_e_plus_pi/01_main_paper/paper1_e_plus_pi.tex)
   - 成稿 PDF 与日志：[`paper1_e_plus_pi/01_main_paper/paper1_e_plus_pi.pdf`](paper1_e_plus_pi/01_main_paper/paper1_e_plus_pi.pdf)、[`paper1_e_plus_pi.log`](paper1_e_plus_pi/01_main_paper/paper1_e_plus_pi.log)
-- **论文二（63 页，0 错误 / 0 未定义引用 / 0 Overfull `\hbox`；含 §7.5 `thm:multi-residue-asymptotic`）**：
-  - 源码：[`paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex`](paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex)
+- **论文二（65 页，0 错误 / 0 未定义引用 / 0 Overfull `\hbox`；含 §7.5 `thm:multi-residue-asymptotic`、`rem:fourth-term` 与 2026-11-25 基准对照）**：
+  - 源码与补丁脚本：[`paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex`](paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.tex)、[`patch_evidence_citations_20261125.py`](paper2_spectral_gap_dimension/patch_evidence_citations_20261125.py)
   - 成稿 PDF 与日志：[`paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.pdf`](paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.pdf)、[`paper2_spectral_gap_dimension.log`](paper2_spectral_gap_dimension/paper2_spectral_gap_dimension.log)
-  - 拆分三轨及补充工程（总览 [`split/README.md`](paper2_spectral_gap_dimension/split/README.md)；与主稿 11 个切片拼接 **279,145 字节逐字节一致**；2A 24 页 / 2B 15 页 / 2C 24 页均 0 未定义引用）：[`paper2_spectral_gap_dimension/split/`](paper2_spectral_gap_dimension/split/)
+  - 拆分三轨及补充工程（总览 [`split/README.md`](paper2_spectral_gap_dimension/split/README.md)；与主稿 11 个切片拼接 **286,520 字节逐字节一致**；2A 25 页 / 2B 16 页 / 2C 26 页均 0 未定义引用、0 Overfull；S 7 页）：[`paper2_spectral_gap_dimension/split/`](paper2_spectral_gap_dimension/split/)
 - **历史 B 稿完整备份（65 页，已明确标为历史归档）**：
   - [`paper1_e_plus_pi/02_companion_paper/Phase2_revised.tex`](paper1_e_plus_pi/02_companion_paper/Phase2_revised.tex) / [`.pdf`](paper1_e_plus_pi/02_companion_paper/Phase2_revised.pdf) / [`.log`](paper1_e_plus_pi/02_companion_paper/Phase2_revised.log)
 - **论文一投稿准备与论文二历史稿**：
@@ -89,14 +103,15 @@
   - 其余黄金比轨道与谱理论数值验证脚本：[`verify_golden_orbit_model.py`](verification/verify_golden_orbit_model.py)、[`verify_golden_b2_exact.py`](verification/verify_golden_b2_exact.py)、[`verify_golden_b3_b4_exact.py`](verification/verify_golden_b3_b4_exact.py)、[`verify_golden_b5_b6_multiscale.py`](verification/verify_golden_b5_b6_multiscale.py)、[`verify_golden_general_b.py`](verification/verify_golden_general_b.py)、[`verify_full_spectrum_discrete.py`](verification/verify_full_spectrum_discrete.py)、[`verify_poly_recurrence_2b.py`](verification/verify_poly_recurrence_2b.py)、[`verify_weighted_lower.py`](verification/verify_weighted_lower.py)
 - **全工作区台账、数学论证留痕与一次文献 PDF**：
   - [`全工作区总索引与留痕台账.md`](verification/全工作区总索引与留痕台账.md)、[`成果清单与边界.md`](verification/成果清单与边界.md)、[`复现指南.md`](verification/复现指南.md)、[`cmms_citation_check_20261122.md`](verification/cmms_citation_check_20261122.md)
-  - 2026-11-23 新增记录：[`colab_rebuild_audit_20261123.md`](verification/colab_rebuild_audit_20261123.md)、[`residue_certgen_lean_20261123.md`](verification/residue_certgen_lean_20261123.md)、[`cert_v3_redesign_20261123.md`](verification/cert_v3_redesign_20261123.md)、[`paper2_novelty_review_20261123.md`](verification/paper2_novelty_review_20261123.md)、[`论文二拆分分类与Lean精准映射_20261123.md`](verification/论文二拆分分类与Lean精准映射_20261123.md)、[`推广1_多残差相变与欧拉常数三阶渐近Lean4记录_20261123.md`](verification/推广1_多残差相变与欧拉常数三阶渐近Lean4记录_20261123.md)
+  - 2026-11-23 / 24 新增记录：[`colab_rebuild_audit_20261123.md`](verification/colab_rebuild_audit_20261123.md)、[`colab_rebuild_audit_20261124.md`](verification/colab_rebuild_audit_20261124.md)、[`residue_certgen_lean_20261123.md`](verification/residue_certgen_lean_20261123.md)、[`cert_v3_redesign_20261123.md`](verification/cert_v3_redesign_20261123.md)、[`paper2_novelty_review_20261123.md`](verification/paper2_novelty_review_20261123.md)、[`论文二拆分分类与Lean精准映射_20261123.md`](verification/论文二拆分分类与Lean精准映射_20261123.md)、[`推广1_多残差相变与欧拉常数三阶渐近Lean4记录_20261123.md`](verification/推广1_多残差相变与欧拉常数三阶渐近Lean4记录_20261123.md)
+  - 2026-11-25 证据深调与前沿档案：[`方法论证据支撑深调报告_20261125.md`](verification/方法论证据支撑深调报告_20261125.md)、[`工具库整理与六方向前沿调研记忆_20261125.md`](verification/工具库整理与六方向前沿调研记忆_20261125.md)、[`verify_evidence_numbers_20261125.py`](verification/verify_evidence_numbers_20261125.py) / [`.log`](verification/verify_evidence_numbers_20261125.log)
   - [`verification/reference_pdfs/`](verification/reference_pdfs/)（含官方 [`CMMS_PJM_2004_217_45.pdf`](verification/reference_pdfs/CMMS_PJM_2004_217_45.pdf)、`h-sets.pdf`、`BLR_1710_03596.pdf`、`CLU_1805_11904.pdf`、`MEA_2511_10328v3.pdf`）
   - [`build_desktop_package_20261122.py`](verification/build_desktop_package_20261122.py)（桌面完整交付包组装与端到端复验脚本）
 
 ### 4. 研究过程与历史全量归档
 - [`paper1_e_plus_pi/05_research_process/`](paper1_e_plus_pi/05_research_process/)（分轮研究目录 `A`–`E`、`golden_finite_spectrum/` 及 `golden_finite_spectrum.py` 等 9 个论文一伴随证书脚本与实验日志）
 - [`paper1_e_plus_pi/06_historical_versions/`](paper1_e_plus_pi/06_historical_versions/)（1–8 轮演化备份及 `archive_snapshots/` 快照包）
-- [`downloads/`](downloads/)（文献下载缓存 PDF：`1211.2494.pdf`、`1805.11904v1.pdf`）、[`papers/README.md`](papers/README.md)（arxiv MCP 落盘说明）、[`scripts/`](scripts/)、[`progress_and_path_analysis.md`](progress_and_path_analysis.md)、[`AGENTS.md`](AGENTS.md)、[`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md)、[`.agents/skills/`](.agents/skills/)、[`.claude/skills/README.md`](.claude/skills/README.md)
+- [`downloads/`](downloads/)（文献下载缓存 PDF：`1211.2494.pdf`、`1805.11904v1.pdf`）、[`papers/README.md`](papers/README.md)（arxiv MCP 落盘说明）、[`scripts/`](scripts/)、[`progress_and_path_analysis.md`](progress_and_path_analysis.md)、[`AGENTS.md`](AGENTS.md)、[`.agents/rules/next-step-workflow.md`](.agents/rules/next-step-workflow.md)、[`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md)、[`.agents/skills/`](.agents/skills/)、[`.claude/skills/README.md`](.claude/skills/README.md)、[`.licenses/`](.licenses/)
 - 工作区根目录下配合重组的 PowerShell 脚本：[`rename_english_20261121.ps1`](rename_english_20261121.ps1)、[`reorganize_step1_20261121.ps1`](reorganize_step1_20261121.ps1)、[`reorganize_step2_20261121.ps1`](reorganize_step2_20261121.ps1)
 
 > **关于未上传的大体积缓存与本地工具文件**（已在 [`.gitignore`](.gitignore) 中排除）：
@@ -111,7 +126,7 @@
 
 ### 4.1 离线核对审计日志与核心 Python 证书（无需联网）
 
-需安装 Python `sympy >= 1.14` 与 `mpmath >= 1.3`：
+需安装 Python `sympy >= 1.14`、`mpmath >= 1.3` 及 `python-flint >= 0.9`（Arb 有限排除脚本用）：
 
 ```powershell
 # 0. 一键全仓库零遗漏/审计/论文/链接统一体检
@@ -120,9 +135,11 @@ python verification\verify_repo_integrity.py
 # 1. 核对主审计 937/937 双射、0 sorryAx、23 白名单、0 项目自加公理、0 逃逸关键字（扫描全库 344 个 Lean 文件）
 python verification\check_audit_reconcile.py verification\audit_final_20261122.log
 
-# 2. 复跑核心符号、450 位区间、N=256 与 N=512 整数转移算子、新拓展 50/32 位验证及论文完整性（含切片逐字节）与拆分引用检查
+# 2. 复跑核心符号、450 位区间、Arb 有限排除、N=256/512 整数转移算子、50/32 位渐近及文献核验与论文切片检查
 python verification\verify_round3.py
 python verification\verify_round4.py
+python verification\rational_exclusion_bound_20261124.py --selftest
+python verification\verify_evidence_numbers_20261125.py
 python verification\residue_certificate.py
 python verification\residue_certificate_general.py
 python verification\residue_certificate_general_N512.py
@@ -130,6 +147,9 @@ python verification\verify_paper2_extensions.py
 python verification\verify_residue_multi_asymptotic.py
 python verification\verify_paper2_merge.py
 python paper2_spectral_gap_dimension\split\undef_ref_audit.py
+python .agents\skills\mathodology-evidence-search\scripts\verify_refs.py paper1_e_plus_pi\01_main_paper\paper1_e_plus_pi.tex
+python .agents\skills\mathodology-evidence-search\scripts\verify_refs.py paper2_spectral_gap_dimension\paper2_spectral_gap_dimension.tex
+python -m unittest discover -s .agents\skills\mathodology-evidence-search\scripts -v
 ```
 
 论文一涉及的多尺度黄金比伴随脚本也可直接从原路径运行（例如）：

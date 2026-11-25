@@ -11,18 +11,20 @@
 | [`复现指南.md`](复现指南.md) | 独立环境 Lean 4 / Python 复现步骤与 Windows 并发提示 |
 | [`verify_repo_integrity.py`](verify_repo_integrity.py) / [`.log`](verify_repo_integrity.log) | **一键全库体检脚本**：检查 `1e91028`/`7ece3b9` 零文件丢失、Lean 三入口审计、论文二合并与切片一致性、拆分引用及文档本地链接 |
 | [`check_audit_reconcile.py`](check_audit_reconcile.py) | 核对 [`audit_final_20261122.log`](audit_final_20261122.log)（937/937 严格双射、0 `sorryAx`、23 白名单、344 个 `.lean` 文件 0 逃逸关键字） |
-| [`verify_paper2_merge.py`](verify_paper2_merge.py) / [`.log`](verify_paper2_merge.log) | 检查论文二 `84` 唯一标签、`15/15` 全引用、`46` 项内容锚点及 `split/src_sections/` 11 片逐字节一致 |
+| [`verify_paper2_merge.py`](verify_paper2_merge.py) / [`.log`](verify_paper2_merge.log) | 检查论文二 `84` 唯一标签、`22/22` 全引用、`46` 项内容锚点及 `split/src_sections/` 11 片逐字节一致（`286,520` 字节） |
 
-## 二、2026-11-22 / 2026-11-23 核心审计日志与专题核查记录
+## 二、2026-11-22 至 2026-11-25 核心审计日志与专题核查记录
 
 * **Lean 4 审计日志与独立复现**：
   * [`audit_final_20261122.log`](audit_final_20261122.log)（`Audit.lean` 937 条核心声明）
-  * [`colab_rebuild_audit_20261123.md`](colab_rebuild_audit_20261123.md)（Google Colab 洁净克隆 `lake build` + 937/937 逐条一致 + `AuditResidueCert.lean` 27 条）
+  * [`colab_rebuild_audit_20261123.md`](colab_rebuild_audit_20261123.md) 与 [`colab_rebuild_audit_20261124.md`](colab_rebuild_audit_20261124.md)（两次 Google Colab 洁净克隆全量复现审计，937/937 + 27/27 + 24/24 逐条一致）
   * [`residue_certgen_lean_20261123.md`](residue_certgen_lean_20261123.md)（$N=512$ 残差证书 Lean 内核化 `ResidueCertTable.lean` 全流程与 `cert_v3_redesign_20261123.md`）
   * [`audit_residue_multi_asymptotic_20261123.log`](audit_residue_multi_asymptotic_20261123.log) 与 [`推广1_多残差相变与欧拉常数三阶渐近Lean4记录_20261123.md`](推广1_多残差相变与欧拉常数三阶渐近Lean4记录_20261123.md)（`ResidueMultiAsymptotic.lean` Part 1–6 及 `AuditResidueMultiAsymptotic.lean` 24/24 纯基础公理证明记录）
-* **文献一次核查、新颖性检索与论文二拆分映射**：
+* **文献一次核查、双通道证据深调与前沿记忆（2026-11-22 至 2026-11-25）**：
   * [`cmms_citation_check_20261122.md`](cmms_citation_check_20261122.md)（CMMS 官方 PJM 原文逐页核对 Theorem 5 → Theorem 3）
   * [`paper2_novelty_review_20261123.md`](paper2_novelty_review_20261123.md)（R1–R7 负搜索与 BLR 定理 7 条件/公式边界比对）
+  * [`方法论证据支撑深调报告_20261125.md`](方法论证据支撑深调报告_20261125.md)（六方向双通道深调、8 项冲突对照、6 项 Load-Bearing 勘误/撤稿审计）
+  * [`工具库整理与六方向前沿调研记忆_20261125.md`](工具库整理与六方向前沿调研记忆_20261125.md)（本地工具库与 2024–2026 六方向文献记忆）
   * [`论文二拆分分类与Lean精准映射_20261123.md`](论文二拆分分类与Lean精准映射_20261123.md)、[`cert_v3_redesign_20261123.md`](cert_v3_redesign_20261123.md)
 * **论文一 / 论文二专项证明与审计记录（2026-11-15 至 2026-11-22）**：
   * 论文一与黄金比轨道：`P1_洁净环境Lean复现记录.md`、`P3_黄金比轨道精确值与第二极限点证明记录.md`、`P4_与二次Lagrange谱先例全文核查记录.md`、`Path2A_一般B3_B4仿射轨道谱理论记录.md`、`Path2A_B5_B6与多尺度完全闭合记录.md`、`Path2A_Lean4有理端点刚性审计记录.md`、`Path2A_任意分母B一般谱理论记录.md`、`Path2C_Davis_Komatsu_Perron文献边界核查记录.md`、`方向1_黄金比轨道Lean4形式化审计记录.md`、`深挖2_黄金比轨道B2精确值与有理端点刚性证明记录.md`、`paper1_audit_20261121.md`。
@@ -31,6 +33,9 @@
 ## 三、数值计算与证书生成脚本（明确区分有限计算与 Lean 定理）
 
 * **最新活跃证书与高精佐证脚本**：
+  * [`rational_exclusion_bound_20261124.py`](rational_exclusion_bound_20261124.py) / [`oeis_a058651_crosscheck_20261124.py`](oeis_a058651_crosscheck_20261124.py)（Arb 球算术 `python-flint` 大分母有限排除与 OEIS A058651 复核）
+  * [`fourth_term_fit_20261124.py`](fourth_term_fit_20261124.py) / [`.log`](fourth_term_fit_20261124.log)（`rem:fourth-term` 标量模型非严格数值检验）
+  * [`verify_evidence_numbers_20261125.py`](verify_evidence_numbers_20261125.py) / [`.log`](verify_evidence_numbers_20261125.log)（2026-11-25 证据深调 50 位 `mpmath` 与精确分式核验）
   * [`residue_certificate_general_N512.py`](residue_certificate_general_N512.py)（最新 $N=512$ 精确整数转移算子证书，对应 Lean 内核闭区间 `ResidueCertGen/`）
   * [`verify_residue_multi_asymptotic.py`](verify_residue_multi_asymptotic.py) / [`.log`](verify_residue_multi_asymptotic.log) / [`.json`](verify_residue_multi_asymptotic.json)（32 位 Chebyshev 配置法全面核验 `thm:multi-residue-asymptotic`）
   * [`verify_paper2_extensions.py`](verify_paper2_extensions.py) / [`.log`](verify_paper2_extensions.log)（50 位验证 $C_r$ / $\psi_{\mathrm{Fib}}$ 与任意增长商三类递推）

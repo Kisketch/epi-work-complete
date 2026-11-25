@@ -1,0 +1,3 @@
+Notice: This workspace uses the literature-search-arxiv skill, which accesses the arXiv API.
+Please review the arXiv API Terms of Use at https://info.arxiv.org/help/api/index.html and always verify the license of each retrieved paper for any usage restrictions.
+Recorded at: 2026-11-24T23:39:00-07:00
