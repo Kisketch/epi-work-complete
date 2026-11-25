@@ -15,6 +15,10 @@
    - 本地 Python `3.14.7` 已补装 `python-flint==0.9.0`，实测通过 [`rational_exclusion_bound_20261124.py`](verification/rational_exclusion_bound_20261124.py) `--selftest`（12/12 PASS）；本工作树补建 `.lake` 并实测 `lake build`（9384 jobs, EXIT 0）及三份 `Audit*.lean` 脚本全通过。
    - `.agents/skills/` 与 `.claude/skills/` 完成双根镜像同步，新增 `mathodology-evidence-search`（MIT）、`verified-research`（MIT）及 4 项 `leanprover/skills`（Apache-2.0），并附 API 授权声明 [`.licenses/`](.licenses/)；`verify_refs.py` 自检 `40/40` 单元测试通过且对 Paper 1（52 项）与 Paper 2（25 项）均 `0 fail`。
    - 新增后续工作流与质量门禁规则 [`.agents/rules/next-step-workflow.md`](.agents/rules/next-step-workflow.md) 并在 [`AGENTS.md`](AGENTS.md) §8 建立索引。
+4. **CI 工作流整合、跨平台依赖清单与投稿 Cover Letter 草稿（2026-11-25 续）**：
+   - 合入仓库根目录 [`.github/workflows/lean-audit.yml`](.github/workflows/lean-audit.yml)、[`compare_audit_logs.py`](verification/compare_audit_logs.py) 与 [`verify_repo_integrity.py`](verification/verify_repo_integrity.py) 跨平台路径/Linux 兼容补丁（亦同步更新台账与 `OBL3b` 记录中 100 处相对链接），并在本机以实跑输出验证 `compare_audit_logs.py` 对 `937` / `27` / `24` 三份审计日志均 0 差异匹配；另增轻量快速门禁 [`.github/workflows/python-checks.yml`](.github/workflows/python-checks.yml)。
+   - 新增跨平台 Python 依赖文件 [`requirements.txt`](requirements.txt) 与 [`pyproject.toml`](pyproject.toml)（支持 Linux/macOS/Windows `pip install -r requirements.txt`）。
+   - 新增诚实边界对齐的英文投稿信草稿 [`cover_letters_2AB_and_2C_draft_20261125.md`](paper2_spectral_gap_dimension/split/cover_letters_2AB_and_2C_draft_20261125.md)（按 `2A+2B` 合并主文与 `2C` 独立分拆，准确区分 `thm:finite-state-tail` 归属、`tab:residues-general` 闭界/开界边界与 `CLN 2026` / `Brown 2026` 对比）。
 
 ---
 
@@ -88,8 +92,8 @@
 - 阶段性基线与历史文档（含 2026-11-23 更新头注）：[`epi_formal/README.md`](epi_formal/README.md)、[`LEMMA_AUDIT.md`](epi_formal/LEMMA_AUDIT.md)、[`PROOF_GAPS.md`](epi_formal/PROOF_GAPS.md)、[`FINAL_REVIEW.md`](epi_formal/FINAL_REVIEW.md)
 
 ### 3. 核验脚本、审计日志、数学记录与一次文献（[`verification/`](verification/)）
-- **分类总导航与一体体检**：[`verification/README.md`](verification/README.md)、[`verify_repo_integrity.py`](verification/verify_repo_integrity.py) / [`.log`](verification/verify_repo_integrity.log)（全库零遗漏/审计/论文/链接一站式核查）
-- **核心审计与对账**：[`audit_final_20261122.log`](verification/audit_final_20261122.log)、[`audit_residue_multi_asymptotic_20261123.log`](verification/audit_residue_multi_asymptotic_20261123.log)、[`check_audit_reconcile.py`](verification/check_audit_reconcile.py)
+- **分类总导航与一体体检**：[`verification/README.md`](verification/README.md)、[`verify_repo_integrity.py`](verification/verify_repo_integrity.py) / [`.log`](verification/verify_repo_integrity.log)（全库零遗漏/审计/论文/链接一站式核查）、[`compare_audit_logs.py`](verification/compare_audit_logs.py)（937/27/24 公理审计逐条比对器）
+- **核心审计与对账**：[`audit_final_20261122.log`](verification/audit_final_20261122.log)、[`audit_residue_cert_20261123.log`](verification/audit_residue_cert_20261123.log)、[`audit_residue_multi_asymptotic_20261123.log`](verification/audit_residue_multi_asymptotic_20261123.log)、[`check_audit_reconcile.py`](verification/check_audit_reconcile.py)
 - **符号 / 区间 / 转移算子 / 论文完整性验证**：
   - [`verify_round3.py`](verification/verify_round3.py) / [`.log`](verification/verify_round3.log)（12/12 SymPy 1.14.0 符号验证）
   - [`verify_round4.py`](verification/verify_round4.py) / [`.log`](verification/verify_round4.log) / [`certificate_round4.json`](verification/certificate_round4.json)（余弦积分 + 450 位 `mpmath.iv` 区间证书）
@@ -126,7 +130,15 @@
 
 ### 4.1 离线核对审计日志与核心 Python 证书（无需联网）
 
-需安装 Python `sympy >= 1.14`、`mpmath >= 1.3` 及 `python-flint >= 0.9`（Arb 有限排除脚本用）：
+需安装 Python 依赖（Linux / macOS / Windows 通用：`pip install -r requirements.txt`，含 `sympy >= 1.14`、`mpmath >= 1.3`、`python-flint >= 0.9` 等，详见 [`requirements.txt`](requirements.txt) 与 [`pyproject.toml`](pyproject.toml)）：
+
+```bash
+# Linux / macOS / Windows（PowerShell 或 bash 均可，Windows 可用 python 或 py）
+python3 verification/verify_repo_integrity.py
+python3 verification/check_audit_reconcile.py verification/audit_final_20261122.log
+python3 verification/rational_exclusion_bound_20261124.py --selftest
+python3 verification/verify_evidence_numbers_20261125.py
+```
 
 ```powershell
 # 0. 一键全仓库零遗漏/审计/论文/链接统一体检
@@ -190,6 +202,12 @@ pdflatex -interaction=nonstopmode paper2_spectral_gap_dimension.tex
 pdflatex -interaction=nonstopmode paper2_spectral_gap_dimension.tex
 pdflatex -interaction=nonstopmode paper2_spectral_gap_dimension.tex
 ```
+
+### 4.4 CI：Lean 重建、Python 验证与公理审计（GitHub Actions）
+
+- [`.github/workflows/lean-audit.yml`](.github/workflows/lean-audit.yml)：在每次 push / pull request 到 `main` 以及手动触发（`workflow_dispatch`）时，于 `ubuntu-latest` 上安装 `elan`、执行 `lake exe cache get` → `lake build`（并显式检查 `EpiFormal.ResidueCertTable` 与 `EpiFormal.ResidueMultiAsymptotic`），再用 [`verification/compare_audit_logs.py`](verification/compare_audit_logs.py) 将 `Audit.lean`（937 条）、`AuditResidueCert.lean`（27 条）及 `AuditResidueMultiAsymptotic.lean`（24 条）输出与仓库参考日志逐条比对并运行 `check_audit_reconcile.py`；另一并行 job 执行 `verify_repo_integrity.py`。
+- [`.github/workflows/python-checks.yml`](.github/workflows/python-checks.yml)：通过 [`requirements.txt`](requirements.txt) 在 `ubuntu-latest`（Python 3.12）快速运行 `verify_repo_integrity.py`、`rational_exclusion_bound_20261124.py --selftest`、`verify_evidence_numbers_20261125.py`、`verify_round3.py`、`verify_round4.py` 与 40 项 `verify_refs` 离线单元测试。
+- 按 `AGENTS.md` §5：workflow 定义本身不构成核实，仅在 GitHub Actions 云端实际跑出绿灯后方计作云端独立复现（本地已于 `read_paper_repo` 对三份 `Audit*.lean` 实测验证 `compare_audit_logs.py` 0 差异匹配）。
 
 ---
 

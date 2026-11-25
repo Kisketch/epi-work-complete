@@ -40,6 +40,39 @@ def check_git_conservation(out: list[str]) -> None:
         out.append(f"  [OK] Zero-loss check vs {rev}: {len(tracked)}/{len(tracked)} files present on disk")
 
 
+WINDOWS_ABS_RE = re.compile(r"^(?:file:///)?[A-Za-z]:[/\\]")
+REPO_DIR_MARKER = "/epi_work/"
+
+
+def resolve_link_target(doc: Path, target: str) -> tuple[Path | None, bool]:
+    """Resolve a Markdown link target to a local path.
+
+    Returns ``(path, is_windows_abs)``.  Absolute Windows paths (``c:/Users/...``,
+    ``file:///c:/...``) are never passed to ``stat`` directly: on Linux/macOS they
+    would be read as a relative path and can crash ``Path.exists``.  Instead, a
+    path that contains the author's checkout directory ``.../epi_work/`` is
+    re-rooted at this repository, so the link is still checked; anything else is
+    returned as ``None`` and reported as non-portable.
+    """
+    if WINDOWS_ABS_RE.match(target):
+        win = unquote(target[len("file:///"):] if target.startswith("file:///") else target)
+        win = win.replace("\\", "/")
+        idx = win.find(REPO_DIR_MARKER)
+        if idx < 0:
+            return None, True
+        return (ROOT / win[idx + len(REPO_DIR_MARKER):]).resolve(), True
+    if target.startswith("file:///"):
+        return Path(unquote(target[len("file:///"):])).resolve(), False
+    return (doc.parent / unquote(target)).resolve(), False
+
+
+def safe_exists(path: Path) -> bool:
+    try:
+        return path.exists()
+    except OSError:
+        return False
+
+
 def check_markdown_docs(out: list[str]) -> None:
     """Assert core documentation files exist, have no UTF-8 BOM, and have zero broken links."""
     docs = [
@@ -52,6 +85,8 @@ def check_markdown_docs(out: list[str]) -> None:
     ]
     link_re = re.compile(r"\]\(([^)#]+)(?:#[^)]*)?\)")
     total_links = 0
+    windows_abs = 0
+    unportable: list[str] = []
     for doc in docs:
         assert doc.exists(), f"Missing doc: {doc}"
         raw = doc.read_bytes()
@@ -62,15 +97,23 @@ def check_markdown_docs(out: list[str]) -> None:
             target = match.strip()
             if not target or target.startswith(("http://", "https://", "mailto:")):
                 continue
-            if target.startswith("file:///"):
-                resolved = Path(unquote(target[len("file:///"):])).resolve()
-            else:
-                resolved = (doc.parent / target).resolve()
-            if resolved != LOG_PATH.resolve() and not resolved.exists():
-                broken.append(target)
+            resolved, is_windows_abs = resolve_link_target(doc, target)
+            windows_abs += is_windows_abs
             total_links += 1
+            if resolved is None:
+                unportable.append(f"{doc.relative_to(ROOT)}: {target}")
+                continue
+            if resolved != LOG_PATH.resolve() and not safe_exists(resolved):
+                broken.append(target)
         assert not broken, f"Broken links in {doc.relative_to(ROOT)}: {broken}"
     out.append(f"  [OK] Core Markdown docs: {len(docs)}/6 BOM-free, {total_links} local links resolved (0 broken)")
+    if windows_abs:
+        out.append(
+            f"  [WARN] {windows_abs} link(s) use absolute Windows paths (re-rooted at the repo where possible; "
+            "prefer relative links)"
+        )
+    for item in unportable:
+        out.append(f"  [WARN] Not checked (absolute Windows path outside the repo): {item}")
 
 
 def check_lean_audits(out: list[str]) -> None:

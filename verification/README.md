@@ -9,7 +9,8 @@
 | [`全工作区总索引与留痕台账.md`](全工作区总索引与留痕台账.md) | 从阶段一到 2026-11-23 第十四节的全程时间线台账 |
 | [`成果清单与边界.md`](成果清单与边界.md) | T1–T4 分层成果清单与敌意审查纠错汇总（含 2026-11-23 增量头注） |
 | [`复现指南.md`](复现指南.md) | 独立环境 Lean 4 / Python 复现步骤与 Windows 并发提示 |
-| [`verify_repo_integrity.py`](verify_repo_integrity.py) / [`.log`](verify_repo_integrity.log) | **一键全库体检脚本**：检查 `1e91028`/`7ece3b9` 零文件丢失、Lean 三入口审计、论文二合并与切片一致性、拆分引用及文档本地链接 |
+| [`verify_repo_integrity.py`](verify_repo_integrity.py) / [`.log`](verify_repo_integrity.log) | **一键全库体检脚本**：检查 `1e91028`/`7ece3b9` 零文件丢失、Lean 三入口审计、论文二合并与切片一致性、拆分引用及文档本地链接（含 Linux/Windows 路径兼容） |
+| [`compare_audit_logs.py`](compare_audit_logs.py) | `#print axioms` 输出逐条比对器（支持 `--count` 与 `--only-axioms` 校验 937/27/24 三入口，供根 CI 调用） |
 | [`check_audit_reconcile.py`](check_audit_reconcile.py) | 核对 [`audit_final_20261122.log`](audit_final_20261122.log)（937/937 严格双射、0 `sorryAx`、23 白名单、344 个 `.lean` 文件 0 逃逸关键字） |
 | [`verify_paper2_merge.py`](verify_paper2_merge.py) / [`.log`](verify_paper2_merge.log) | 检查论文二 `84` 唯一标签、`22/22` 全引用、`46` 项内容锚点及 `split/src_sections/` 11 片逐字节一致（`286,520` 字节） |
 
