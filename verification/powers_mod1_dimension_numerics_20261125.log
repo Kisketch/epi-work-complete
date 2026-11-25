@@ -1,0 +1,40 @@
+v=3.0 delta=0.3 y=zero: levels 4..24, N_last=673824, 2*delta*v=1.800
+   C1 prediction log(2dv)/log v = 0.5350   rigorous bounds [0.0000, 1.1139]
+   estimates s_n: n=19:0.5607, n=20:0.5609, n=21:0.5601, n=22:0.5596, n=23:0.5591, n=24:0.5586
+   normalized growth g_n (last 4): n=20:1.8046, n=21:1.8012, n=22:1.8041, n=23:1.8011 | geometric mean over second half = 1.8094  vs 2*delta*v = 1.8000
+   time 86.4s
+v=3.0 delta=0.3 y=random: levels 4..25, N_last=427232, 2*delta*v=1.800
+   C1 prediction log(2dv)/log v = 0.5350   rigorous bounds [0.0000, 1.1139]
+   estimates s_n: n=20:0.5605, n=21:0.5597, n=22:0.5594, n=23:0.5589, n=24:0.5585, n=25:0.5581
+   normalized growth g_n (last 4): n=21:1.8014, n=22:1.8024, n=23:1.8062, n=24:1.8018 | geometric mean over second half = 1.8010  vs 2*delta*v = 1.8000
+   time 35.6s
+v=3.0 delta=0.3 y=half: levels 4..26, N_last=532516, 2*delta*v=1.800
+   C1 prediction log(2dv)/log v = 0.5350   rigorous bounds [0.0000, 1.1139]
+   estimates s_n: n=21:0.5568, n=22:0.5566, n=23:0.5563, n=24:0.5561, n=25:0.5557, n=26:0.5554
+   normalized growth g_n (last 4): n=22:1.7986, n=23:1.8063, n=24:1.8014, n=25:1.8011 | geometric mean over second half = 1.7997  vs 2*delta*v = 1.8000
+   time 45.2s
+v=5.0 delta=0.15 y=zero: levels 3..30, N_last=517128, 2*delta*v=1.500
+   C1 prediction log(2dv)/log v = 0.2519   rigorous bounds [0.0000, 0.6397]
+   estimates s_n: n=25:0.2755, n=26:0.2752, n=27:0.2749, n=28:0.2745, n=29:0.2741, n=30:0.2738
+   normalized growth g_n (last 4): n=26:1.5042, n=27:1.5011, n=28:1.5016, n=29:1.5008 | geometric mean over second half = 1.5005  vs 2*delta*v = 1.5000
+   time 60.9s
+v=5.0 delta=0.15 y=random: levels 3..26, N_last=400045, 2*delta*v=1.500
+   C1 prediction log(2dv)/log v = 0.2519   rigorous bounds [0.0000, 0.6397]
+   estimates s_n: n=21:0.2811, n=22:0.2804, n=23:0.2798, n=24:0.2792, n=25:0.2786, n=26:0.2780
+   normalized growth g_n (last 4): n=22:1.5031, n=23:1.5038, n=24:1.4994, n=25:1.4994 | geometric mean over second half = 1.5021  vs 2*delta*v = 1.5000
+   time 45.2s
+v=2.5 delta=0.4 y=random: levels 5..22, N_last=806223, 2*delta*v=2.000
+   C1 prediction log(2dv)/log v = 0.7565   rigorous bounds [0.0000, 1.4570]
+   estimates s_n: n=17:0.7720, n=18:0.7713, n=19:0.7715, n=20:0.7713, n=21:0.7709, n=22:0.7707
+   normalized growth g_n (last 4): n=18:2.0019, n=19:2.0034, n=20:2.0048, n=21:2.0040 | geometric mean over second half = 2.0057  vs 2*delta*v = 2.0000
+   time 61.8s
+v=4.0 delta=0.2 y=random: levels 4..27, N_last=530450, 2*delta*v=1.600
+   C1 prediction log(2dv)/log v = 0.3390   rigorous bounds [0.0000, 0.7925]
+   estimates s_n: n=22:0.3669, n=23:0.3662, n=24:0.3656, n=25:0.3650, n=26:0.3645, n=27:0.3640
+   normalized growth g_n (last 4): n=23:1.5989, n=24:1.6044, n=25:1.5993, n=26:1.6021 | geometric mean over second half = 1.5990  vs 2*delta*v = 1.6000
+   time 54.4s
+v=3.0 delta=0.45 y=random: levels 4..17, N_last=965523, 2*delta*v=2.700
+   C1 prediction log(2dv)/log v = 0.9041   rigorous bounds [0.0000, 1.3891]
+   estimates s_n: n=12:0.9127, n=13:0.9127, n=14:0.9115, n=15:0.9112, n=16:0.9109, n=17:0.9106
+   normalized growth g_n (last 4): n=13:2.7108, n=14:2.7082, n=15:2.7066, n=16:2.7056 | geometric mean over second half = 2.7212  vs 2*delta*v = 2.7000
+   time 48.2s
