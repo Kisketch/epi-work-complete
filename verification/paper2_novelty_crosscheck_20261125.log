@@ -1,0 +1,35 @@
+sympy 1.14.0 mpmath 1.3.0
+=== (A) Lambert-W leading-log tower of eps*m = Gamma*m^(-eps) ===
+residual of model equation up to x^6: 0
+  n=1: coefficient of x^1 in dimH-1/2 = Gamma/2
+  n=2: coefficient of x^2 in dimH-1/2 = -Gamma**2*L/2
+  n=3: coefficient of x^3 in dimH-1/2 = 3*Gamma**3*L**2/4
+  n=4: coefficient of x^4 in dimH-1/2 = -4*Gamma**4*L**3/3
+  n=5: coefficient of x^5 in dimH-1/2 = 125*Gamma**5*L**4/48
+  n=3 coefficient / L^2 = 3*Gamma**3/4 ; equals 3*Gamma^3/4 ? True
+
+=== (B) DFSU eq. (1.4) is the same tree-function pattern ===
+  i=1: DFSU c_(i,i-1) = -c;  -(1/2) i^(i-1)/i! (2c)^i = -c;  equal: True
+  i=2: DFSU c_(i,i-1) = -2*c**2;  -(1/2) i^(i-1)/i! (2c)^i = -2*c**2;  equal: True
+  i=3: DFSU c_(i,i-1) = -6*c**3;  -(1/2) i^(i-1)/i! (2c)^i = -6*c**3;  equal: True
+  i=4: DFSU c_(i,i-1) = -64*c**4/3;  -(1/2) i^(i-1)/i! (2c)^i = -64*c**4/3;  equal: True
+  i=5: DFSU c_(i,i-1) = -250*c**5/3;  -(1/2) i^(i-1)/i! (2c)^i = -250*c**5/3;  equal: True
+  i=6: DFSU c_(i,i-1) = -1728*c**6/5;  -(1/2) i^(i-1)/i! (2c)^i = -1728*c**6/5;  equal: True
+  i=7: DFSU c_(i,i-1) = -67228*c**7/45;  -(1/2) i^(i-1)/i! (2c)^i = -67228*c**7/45;  equal: True
+  72/pi^4 - 2*(6/pi^2)^2 = 0
+  residue-family tower = DFSU pattern with 2c replaced by -Gamma (checked n=1..5)
+
+=== (C) Full scalar model of rem:fourth-term ===
+  dimH-1/2 coefficients (x=1/m):
+    1/m          : Gamma/2
+    log m/m^2    : -Gamma**2/2
+    1/m^2        : Gamma*(Gamma*gamma_E - Gammap)/2
+    (log m)^2/m^3: 3*Gamma**3/4
+    log m/m^3    : -3*Gamma**2*(Gamma*gamma_E - Gammap)/2   (not claimed by the paper)
+  1/m^2 term equals Gamma(gamma*Gamma-Gamma')/2 ? True
+  (log m)^2/m^3 term equals 3 Gamma^3/4 ? True
+
+=== (D) Heinemann-Urbanski upper bound for S={1,2}, B=empty ===
+  K^s0 / chi_lb * 2 zeta(2 s0) = 71.9031618657
+  paper's collocation value of m^(2 s0)(dimH - s0) at m=4096: 28.78
+  bound >= reported value ? True

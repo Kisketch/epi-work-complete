@@ -1,0 +1,57 @@
+% frontmatter-2A-v2.tex — E7 草案（2026-11-24，新文件；不碰既有 frontmatter-2A.tex）
+% 结构：\title（On the …，≤16 词）+ 摘要（≤200 词）+ 诚实声明段（审计子集声明 + companion 句）。
+% 素材：主稿 paper2_spectral_gap_dimension.tex L107–166 句式；P2A 区块 = L417–1843。
+% 宏 \R,\Z,\ee,\Lam,\dimH 依赖共享 preamble.tex（与既有 frontmatter-2X.tex 同一入轨约定）。
+% 入轨（供主会话审校后经补丁脚本）：替换各轨 wrapper 的 \title 行并改 input 本文件。
+\title{On the complete spectrum discretization and exact Hausdorff gauges
+for the convergent denominators of $e$}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $(Q_j)_{j\ge1}$ be the selected convergent denominators of $\ee$ preceding
+the partial quotients $2j$, with $Q_{j+1}=(4j+2)Q_j+Q_{j-1}$, and let
+$\Lam(x)=\limsup_{j\to\infty}j\|Q_jx\|$. We prove that $\{\Lam=0\}$ is exactly
+the countable group $L=\Z+\Z\frac{\ee+1}{2}$ and that the spectrum is
+completely discrete, $\Lam(\R)=\frac14\Z_{\ge0}\cup\{\infty\}$: every open
+interval $(k/4,(k+1)/4)$ is an unconditional empty spectral gap with sublevel
+sets constant across each gap. Every finite level set has Hausdorff dimension
+$0$, while $\Lam=\infty$ Lebesgue-almost everywhere (dimension $1$), and the
+subcritical dimension at weight $\alpha$ is exactly $1-\alpha$. At each
+positive level $k/4$ the gauge $h_k(1/Q_n)=(2k+1)^{-n}$ is exact: the level
+has infinite, $\sigma$-finite $\mathcal H^{h_k}$-measure in every nonempty
+open arc of $\R/\Z$, the strict sublevel is null, arbitrary gauges are
+classified by their lower limit along the recurrence scales, and each positive
+level splits three ways (limsup level, unsigned exact-limit set with universal
+binary alphabet, signed exact-limit sets collapsing to countable $L$-cosets).
+All statements of this paper are machine-checked in Lean~4 using only the base
+axioms \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}; no
+input of this paper lies outside the Lean kernel (audit subset below).
+This work does not resolve the open problem of the irrationality of $e+\pi$.
+\end{abstract}
+
+\section*{Honesty statement and formal verification}
+
+The Lean~4 audit subset of this paper --- the modules covering every theorem
+stated above, with names transcribed verbatim from the corresponding sections
+of the full manuscript --- is: \texttt{DeltaSign.lean},
+\texttt{EpiFormal/Classification.lean}, \texttt{EpiFormal/SpectralGap.lean},
+\texttt{EpiFormal/FullSpectrumDiscrete.lean}, \texttt{EpiFormal/DimHCore.lean},
+\texttt{EpiFormal/DimHFinite.lean}, \texttt{EpiFormal/GaugeExact.lean},
+\texttt{QuarterPointFinal.lean}, \texttt{EpiFormal/UnweightedCorrection.lean},
+\texttt{WeightedFiber.lean}, \texttt{WeightedDimHCore.lean},
+\texttt{WeightedUpper.lean}, \texttt{WeightedFinal.lean},
+\texttt{EpiFormal/WeightedExactDim.lean}, \texttt{EpiFormal/GaugeNull.lean},
+\texttt{EpiFormal/GaugeCircle.lean}, \texttt{GaugeLiminfComplete.lean}, and
+\texttt{EpiFormal/TrichotomyAndPolyExtension.lean} (its eight part-(iii)
+declarations of the signed-coset collapse
+$E_{\mathrm{lim}}^\pm(k/4)=x_k^\pm+L$). The full manuscript reports these
+modules as kernel-checked at Layer~A with only the three base axioms and zero
+\texttt{sorryAx}; they are audited jointly with the companion papers' modules
+in \texttt{Audit.lean}, whose declaration counts are project-wide, not
+per-paper. This paper is a metric-theory spin-off of a project on the
+irrationality of $e+\pi$. No input used by this paper lies outside the Lean
+kernel.
+
+\emph{The full 63-page version containing all proofs is available as a companion manuscript.}

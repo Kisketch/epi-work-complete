@@ -72,8 +72,9 @@ reciprocal metallic-continuant series and $C_1=\psi_{\mathrm{Fib}}=\sum_{k=1}^\i
 $\dimH F_{m,m}=\frac12+\frac{1}{2m}-\frac{\log m}{2m^2}+O(m^{-2})$. More generally,
 for finite multi-residue alphabets $F_{m,S,B}$ ($S\subset\Z_{\ge1}$,
 $B\subset\Z_{\ge0}$, $d=|S|+|B|\ge1$), Theorem~\ref{thm:multi-residue-asymptotic}
-establishes the Bowen-free Poincar\'e-abscissa dimension $\dimH E_S=s_0(S)$, the
-universal phase transition $\dimH F_{m,S,B}\to\max(1/2,s_0(S))$, a three-term
+gives a self-contained, Bowen-free proof of the classical identity
+$\dimH E_S=s_0(S)$ and establishes the universal phase transition
+$\dimH F_{m,S,B}\to\max(1/2,s_0(S))$, a three-term
 Euler--Mascheroni subcritical expansion to $O((\log m)^2/m^3)$ with coefficient
 $\frac12 d^2 C_S(\gamma C_S-C_S')$, and the supercritical power-law convergence
 rate $\Theta(m^{-2s_0(S)})$ for $s_0(S)>1/2$.
@@ -220,7 +221,8 @@ reciprocal Fibonacci constant $\psi_{\mathrm{Fib}}=\sum_{k=1}^\infty 1/F_k$ and
 its metallic-continuant generalizations $C_r=\sum_{k=1}^\infty 1/q_k(r)$, and
 Theorem~\ref{thm:multi-residue-asymptotic} establishes the multi-residue
 phase transition $\lim_{m\to\infty}\dimH F_{m,S,B}=\max(1/2,s_0(S))$, a
-Bowen-free Poincar\'e-abscissa dimension formula for finite alphabets $E_S$,
+self-contained Bowen-free proof of the classical Poincar\'e-abscissa dimension
+formula for finite alphabets $E_S$,
 three-term Euler--Mascheroni subcritical asymptotics to $O((\log m)^2/m^3)$,
 and the two-sided supercritical power-law rate $\Theta(m^{-2s_0(S)})$.
 
@@ -312,20 +314,44 @@ governs both the subcritical Hausdorff-dimension distortion
 $(1-\tau)/(1+\tau\gamma_{\sup})$ ($0\le\tau<1$) and the supercritical secondary
 collapse from $L_G$ to $\frac{1}{g}\Z$ across $\tau_{\mathrm{crit}}=1+1/\gamma_{\sup}$.
 For the modular continued-fraction alphabets $F_{m,r}=\{[0;a_1,a_2,\dots]:a_n\equiv r\pmod m\}$,
-infinite-alphabet thermodynamic-formalism dimension theory goes back to Hensley,
-Jenkinson--Pollicott, and Chousionis--Leykekhman--Urba\'nski \cite{CLU}; here
-Theorem~\ref{thm:residues-asymptotic} combines an exact closed-form resolvent
-identity for the truncated metallic-continuant transfer operator with our
-unconditional transfer-operator sandwich to prove $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$
-for every $m\ge2$ and to extract the explicit two-term asymptotic expansion
-$\dimH F_{m,r}=\frac12+\frac{C_r}{2m}-\frac{C_r^2\log m}{2m^2}+O(m^{-2})$ governed
-by the reciprocal metallic-continuant series $C_r=\sum_{k=1}^\infty 1/q_k(r)$ and,
-at $r=1$, the reciprocal Fibonacci constant $\psi_{\mathrm{Fib}}=\sum_{k=1}^\infty 1/F_k$
-(a targeted negative search of arXiv, prior continued-fraction dimension
-literature, and Mathlib v4.35 found no prior appearance of $\psi_{\mathrm{Fib}}$ or $C_r$ as the
-asymptotic dimension constant of modular continued-fraction digit sets, nor
-the multi-residue Euler--Mascheroni three-term expansion and $\Theta(m^{-2s_0})$
-rate of Theorem~\ref{thm:multi-residue-asymptotic}).
+the underlying infinite-alphabet dimension theory is that of Mauldin and
+Urba\'nski \cite{MU96} (see \cite[Theorem~2.3]{CLU}), Hensley \cite{Hensley1996}
+(whose polynomial-time paper carries a published erratum), Jenkinson and
+Pollicott \cite{JP2018}, and Chousionis, Leykekhman and Urba\'nski \cite{CLU},
+who proved that every arithmetic-progression alphabet has full dimension
+spectrum, while Chitanga, Lemmens and Nussbaum \cite{CLN2026} recently settled
+full dimension spectra $[0,\dimH F_{m,r}]$ for single arithmetic progressions
+(not addressing our uniform Lipschitz invariance across $E_m$, global strict
+separation $\dimH F_{m,m}<\dimH F_{m,1}$, constants $C_r$, or multi-residue
+asymptotics). Asymptotic expansions of the Hausdorff dimension when generators
+with small derivative are added to or removed from a conformal IFS were
+developed by Das, Fishman, Simmons and Urba\'nski \cite{DFSU}, who
+strengthened Hensley's expansion \cite{Hensley92} for partial quotients $\le N$
+and Good's estimates \cite{Good41} for partial quotients $\ge N$. The families
+$F_{m,S,B}$ fall within the scope of their perturbation theorem
+\cite[Theorem~4.1]{DFSU} (fixed finite $S$, added generators $\ge m-\max B$);
+in their notation the leading constant is $1/\bar c=\sum_{n\ge0}\sum_{w\in S^n}q(w)^{-1}=C_S$
+when $s_0(S)<1/2$. Arithmetic-progression alphabets are not treated in
+\cite{DFSU}, and Theorems~\ref{thm:residues-asymptotic}
+and~\ref{thm:multi-residue-asymptotic} make the first terms explicit for them;
+the $\log m/m^2$ coefficient has the same structure as Hensley's
+$72/\pi^4=2(6/\pi^2)^2$ (cf.\ \cite[(1.4)]{DFSU}). Part~(i) of
+Theorem~\ref{thm:multi-residue-asymptotic} is the classical Bowen formula
+written as the abscissa of a Poincar\'e series; our contribution there is a
+proof that avoids the pressure formalism, together with its formalization.
+The upper bound in part~(v), and hence the supercritical case of part~(ii),
+follow from the Heinemann--Urba\'nski estimate \cite{HU02} (in the form of
+\cite[Theorem~2.4]{CLU}) combined with the Lyapunov bound
+\cite[Proposition~2.6]{CLU}, and the case $S=\emptyset$ of part~(ii) follows
+from Good's theorem by monotonicity. Part~(iii) is a quantitative form of the
+Laurent expansion of $\zeta$ at $1$ \cite[(25.2.4)]{DLMF}. A targeted negative
+search (arXiv, Crossref and web search; coverage recorded in the verification
+archive) found no prior appearance of $C_r$, of $\psi_{\mathrm{Fib}}$, or of the
+coefficient $\frac12 d^2C_S(\gamma C_S-C_S')$ as asymptotic dimension constants
+of residue-class digit sets; this does not exclude such an appearance.
+% Theorem/equation numbers cited for CLU and DFSU above are those of arXiv:1805.11904v1 and
+% arXiv:2007.10554v2; the numbering of the published versions has not been verified
+% (verification/paper2_novelty_review_20261125.md).
 Accordingly, we
 regard Theorems~\ref{thm:class} and~\ref{thm:gap} as a variant of known results.
 The main new contributions are the complete spectrum discretization and
@@ -334,13 +360,22 @@ three-way positive-level splitting (Theorems~\ref{thm:full-spectrum},
 and~\ref{thm:growing-rec-spectrum}--\ref{thm:growing-rec-dim-phase}), the critical gauge theorems
 (Theorem~\ref{thm:gauge} and Corollary~\ref{cor:exact-gauge}), the machine-checked
 dimension-zero and subcritical dimension theorems (Theorems~\ref{thm:finite},
-\ref{thm:upper}, and~\ref{conj:weight}), and the continued-fraction window and
-residue theorems (Theorems~\ref{thm:windows}--\ref{thm:multi-residue-asymptotic}).
+\ref{thm:upper}, and~\ref{conj:weight}), the continued-fraction window and
+residue theorems (Theorems~\ref{thm:windows}--\ref{thm:residues-general} and the
+strict separation in Theorem~\ref{thm:residues-asymptotic}(ii)), and explicit
+residue-class instances of known asymptotic methods
+(Theorems~\ref{thm:residues-asymptotic}(iii)--(iv)
+and~\ref{thm:multi-residue-asymptotic}).
 
 Related metric questions for Cantor series expansions, where the approximation
 is measured by the tail $x-\omega_n(x)$ of the partial sums, were studied by
 Cheng and Zhang~\cite{CZ}, who determine Hausdorff dimensions of the
-corresponding limsup sets; spectra and exact gauges are not considered there.
+corresponding limsup sets, and recent exact-approximation frameworks by Baker
+and Ward~\cite{BW2025} and Tan, Tian, Wang and Wu~\cite{TTWW2026} establish
+quantitative criteria and infinite Hausdorff $f$-measures for exact
+approximation sets in regular spaces; discrete spectral gaps, signed-coset
+collapse, and exact recurrence gauges for non-autonomous super-exponential
+denominators $(Q_j)$ are not considered there.
 For the selected sequence $(Q_j)$, Corollary~8 of Bugeaud, Liao and Rams
 \cite{BLR} applies directly since $Q_{j+1}/Q_j\to\infty$. Theorems~\ref{thm:poly-phase-transition} and
 \ref{thm:growing-rec-dim-phase} are compared with \cite{BLR} in

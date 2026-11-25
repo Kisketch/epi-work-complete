@@ -1,0 +1,64 @@
+% frontmatter-2B-v2.tex — E7 草案（2026-11-24，新文件；不碰既有 frontmatter-2B.tex）
+% 结构：\title（On the …，≤16 词）+ 摘要（≤200 词，含统一理论占位句）+ 诚实声明段（审计子集 + companion 句）。
+% 素材：主稿 paper2_spectral_gap_dimension.tex L107–166 句式；P2B 区块 = L1844–2881。
+% 占位句（按任务书原文）：[Unified structural-alphabet theorem: to be inserted]
+% 宏 \R,\Z,\ee,\Lam,\dimH 依赖共享 preamble.tex（与既有 frontmatter-2X.tex 同一入轨约定）。
+\title{On the general recurrence theory of weighted Diophantine approximation:
+spectra, gauges, and dimension phase transitions}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For every polynomial-growth recurrence $Q_{j+1}=(cj^r+d)Q_j+Q_{j-1}$
+($r,c\in\Z_{\ge1}$, $d\in\Z$), the critical exponent
+$\Lam^{(r,c,d)}(x)=\limsup_{j\to\infty}j^r\|Q_jx\|$ has full spectrum
+$\frac1c\Z_{\ge0}\cup\{\infty\}$, intrinsic rank-$2$ zero-level lattice
+$L^{(r,c,d)}$, exact critical gauges with $1/r$-scaled logarithmic order,
+positive-level three-way splitting on $\R$ and $\R/\Z$, and the dimension
+phase transition $1-\alpha/r$ with supercritical collapse. For arbitrary
+growing-quotient recurrences $Q_{j+1}=A_jQ_j+Q_{j-1}$ ($A_j\in\Z_{\ge2}$,
+$A_j\to\infty$), including the convergent denominators of $\ee$
+($A_j=4j+2$), the functional $\Lam_G$ agrees identically with the
+Kraaikamp--Liardet error ratio, has full spectrum $\Z_{\ge0}\cup\{\infty\}$
+with zero-level lattice $L_G=\frac1g(\Z+\Z\theta)$, universal critical and
+binary gauges, subcritical dimension $(1-\tau)/(1+\tau\gamma_{\sup})$, and a
+secondary supercritical transition at $\tau_{\mathrm{crit}}=1+1/\gamma_{\sup}$
+collapsing finite sublevel sets from $L_G$ to $\frac1g\Z$, with three
+canonical regimes including the critical boundary $\tau=2$. Under
+finite-state constraints on defect tails, the critical gauge base becomes the
+largest Perron root among marked components supporting infinitely many extreme
+defects. Beyond these two families:
+[Unified structural-alphabet theorem: to be inserted]
+All results are machine-checked in Lean~4 using only the base axioms
+\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, except
+the finite-dimensional linear-algebraic Perron--Frobenius eigenvector
+existence input of the finite-state tail theorem, passed explicitly as a
+hypothesis.
+This work does not resolve the open problem of the irrationality of $e+\pi$.
+\end{abstract}
+
+\section*{Honesty statement and formal verification}
+
+The Lean~4 audit subset of this paper --- the modules covering every theorem
+stated above, with names transcribed verbatim from the corresponding sections
+of the full manuscript --- is: \texttt{EpiFormal/FiniteStateComplete.lean}
+(building on \texttt{FiniteStateGauge.lean}, \texttt{FiniteStateTail.lean},
+and \texttt{FiniteStatePositive.lean}), \texttt{EpiFormal/TrichotomyAndPolyExtension.lean},
+\texttt{EpiFormal/PolyGaugeAndPhaseTransition.lean},
+\texttt{EpiFormal/PolyWeightedUpper.lean}, and
+\texttt{EpiFormal/PolyWeightedLower.lean} (the four modules of the general
+polynomial-growth theory), \texttt{EpiFormal/GeneralGrowingRec.lean} and
+\texttt{EpiFormal/GeneralGrowingDim.lean} (the two modules of the
+growing-quotient theory), and, for the $r=1$ specialization,
+\texttt{EpiFormal/FullSpectrumDiscrete.lean}. The full manuscript reports
+these modules as kernel-checked at Layer~A with only the three base axioms and
+zero \texttt{sorryAx}; they are audited jointly with the companion papers'
+modules in \texttt{Audit.lean}, whose declaration counts are project-wide, not
+per-paper. The finite-dimensional linear-algebraic Perron--Frobenius
+eigenvector existence input on marked strongly connected components, used by
+the finite-state tail theorem, is passed explicitly as a hypothesis and is not
+derived inside the Lean kernel; the unified structural-alphabet theorem is not
+yet proved and appears above only as a placeholder.
+
+\emph{The full 63-page version containing all proofs is available as a companion manuscript.}

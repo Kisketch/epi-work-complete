@@ -1,0 +1,200 @@
+\section{All finite level sets have dimension zero, and the complementary infinite level}\label{sec:finite-levels}
+
+The sub-threshold result ($c<1/4$) uses the sharp classification. For
+$c\ge1/4$ the level set $E_c$ is uncountable (Theorem~\ref{thm:gauge}), but we
+show it still has Hausdorff dimension $0$. The argument is an elementary covering: factorial growth of $Q_j$, a uniform
+branching bound, a recursion for the surviving centres, reduction to $[0,1]$ by
+periodicity, a Hausdorff-content estimate, and countable stability.
+
+\begin{lemma}[Factorial growth]\label{lem:factorial}
+For $j\ge1$, $Q_j\ge j!$.
+\end{lemma}
+
+\begin{proof}
+We proceed by induction on $j\ge1$. For $j=1$, $Q_1=1=1!$. For $j=2$,
+$Q_2=7\ge2=2!$. For $j\ge2$, every term $Q_i$ is positive, so the recurrence
+\eqref{eq:rec} gives
+\[
+Q_{j+1}=(4j+2)Q_j+Q_{j-1}>(j+1)Q_j\ge(j+1)j!=(j+1)!,
+\]
+completing the induction.
+\end{proof}
+
+\begin{lemma}[Uniform branching bound]\label{lem:branch}
+Fix $t\ge0$, $j\ge1$ and a parent center $c\in\Z$. The number of child centers
+$k'\in\{0,1,\dots,Q_{j+1}\}$ with
+\[
+\left|\frac{c}{Q_j}-\frac{k'}{Q_{j+1}}\right|\le \frac{t}{jQ_j}+\frac{t}{(j+1)Q_{j+1}}
+\]
+is at most $B:=\lfloor16t\rfloor+1$, \emph{uniformly in $j$ and $c$}.
+\end{lemma}
+
+\begin{proof}
+Put $R_j:=t/(jQ_j)+t/((j+1)Q_{j+1})$. Multiplying the distance inequality
+$|c/Q_j-k'/Q_{j+1}|\le R_j$ by $Q_{j+1}>0$ shows that every qualifying integer
+$k'$ lies in the closed real interval $[A,A+W]$ with left endpoint
+$A:=Q_{j+1}(c/Q_j-R_j)$ and width
+\[
+W:=2R_jQ_{j+1}=2t\left(\frac{Q_{j+1}}{jQ_j}+\frac{1}{j+1}\right).
+\]
+Since $Q_0=Q_1=1$ and $Q_{i-1}\le Q_i$ for all $i\ge1$, the recurrence
+\eqref{eq:rec} implies $Q_{j+1}=(4j+2)Q_j+Q_{j-1}\le(4j+3)Q_j\le7jQ_j$ for all
+$j\ge1$, while $1/(j+1)\le1$. Hence
+\[
+W\le 2t(7+1)=16t.
+\]
+For any qualifying $k'$, we have $0\le k'-A\le W\le16t$, so the map
+$k'\mapsto\lfloor k'-A\rfloor$ takes values in $\{0,1,\dots,\lfloor16t\rfloor\}$
+and is injective on integers (if $k'_1<k'_2$, then $k'_2-A\ge(k'_1-A)+1$, so
+$\lfloor k'_2-A\rfloor\ge\lfloor k'_1-A\rfloor+1$). Therefore the number of
+qualifying integers $k'$ is at most $\lfloor16t\rfloor+1=B$.
+\end{proof}
+
+\begin{theorem}[Finite level sets]\label{thm:finite}
+For every $c\in\R$, $\dimH E_c=0$. Consequently
+$F:=\{x\in\R:\Lam(x)<\infty\}=\bigcup_{n\ge1}E_n$ has $\dimH F=0$.
+\end{theorem}
+
+\begin{proof}
+Fix $c\in\R$ and choose a rational or real threshold $t>\max(c,0)$. First note that for every $m\in\Z$ and $j\ge1$, since
+$Q_j\in\Z$, we have $\|Q_j(x+m)\|=\|Q_jx+Q_jm\|=\|Q_jx\|$, and hence
+$\Lam(x+m)=\Lam(x)$. Thus $E_c$ is invariant under integer translations and
+decomposes as the countable union
+\[
+E_c=\bigcup_{m\in\Z}\bigl(m+(E_c\cap[0,1])\bigr).
+\]
+Because integer translations are isometries and Hausdorff dimension is stable
+under countable unions ($\dimH(\bigcup_m X_m)=\sup_m\dimH X_m$), it suffices to
+prove $\dimH(E_c\cap[0,1])=0$.
+
+For each $j\ge1$, define $r_j:=t/(jQ_j)$ and
+$A_j(t):=\{x\in\R:\|Q_jx\|\le t/j\}$. If $x\in E_c\cap[0,1]$, then
+$\limsup_{j\to\infty}j\|Q_jx\|=\Lam(x)\le c<t$, which by definition of the limit
+superior means that $j\|Q_jx\|\le t$ \emph{eventually} (a liminf-type tail
+condition, \emph{not} a limsup set). Therefore there exists an integer $J\ge1$
+such that $x\in A_j(t)$ for all $j\ge J$. Consequently,
+\[
+E_c\cap[0,1]\subseteq\bigcup_{J=1}^\infty C_J,\qquad
+C_J:=[0,1]\cap\bigcap_{j=J}^\infty A_j(t).
+\]
+By countable stability again, it suffices to fix $J\ge1$ and prove that
+$\dimH C_J=0$, i.e.\ $\mathcal H^s(C_J)=0$ for every $s>0$.
+
+For $j\ge J$ and $k\in\Z$, let $I_j(k):=[k/Q_j-r_j,k/Q_j+r_j]$ be the closed
+interval of center $k/Q_j$ and radius $r_j$ (so $\operatorname{diam}I_j(k)=2r_j$).
+For any $x\in C_J$ and $j\ge J$, let $k_j(x):=\mathrm{round}(Q_jx)\in\Z$ be a
+nearest integer to $Q_jx$. Since $x\in[0,1]$ and $Q_j\ge1$, we have
+$0\le Q_jx\le Q_j$, so $k_j(x)\in\{0,1,\dots,Q_j\}$; moreover, $x\in A_j(t)$
+gives $|Q_jx-k_j(x)|=\|Q_jx\|\le t/j$, and dividing by $Q_j$ yields
+$|x-k_j(x)/Q_j|\le r_j$, that is, $x\in I_j(k_j(x))$. Furthermore, at two
+consecutive levels $j$ and $j+1$, the same point $x\in C_J$ belongs to both
+$I_j(k_j(x))$ and $I_{j+1}(k_{j+1}(x))$, so the triangle inequality gives the
+parent--child center compatibility condition
+\begin{equation}\label{eq:parent-child-tri}
+\left|\frac{k_j(x)}{Q_j}-\frac{k_{j+1}(x)}{Q_{j+1}}\right|
+\le\left|\frac{k_j(x)}{Q_j}-x\right|+\left|x-\frac{k_{j+1}(x)}{Q_{j+1}}\right|
+\le r_j+r_{j+1}=\frac{t}{jQ_j}+\frac{t}{(j+1)Q_{j+1}}.
+\end{equation}
+
+Define the surviving center sets $S_n\subseteq\{0,1,\dots,Q_{J+n}\}$ for
+$n\ge0$ inductively by setting $S_0:=\{0,1,\dots,Q_J\}$ and, for $n\ge0$,
+letting $S_{n+1}$ be the set of all $k'\in\{0,1,\dots,Q_{J+n+1}\}$ for which
+there exists $k\in S_n$ satisfying
+$|k/Q_{J+n}-k'/Q_{J+n+1}|\le r_{J+n}+r_{J+n+1}$. By induction on $n\ge0$ using
+\eqref{eq:parent-child-tri}, every $x\in C_J$ satisfies $k_{J+n}(x)\in S_n$ for
+all $n\ge0$, and hence
+\[
+C_J\subseteq\bigcup_{k\in S_n} I_{J+n}(k)\qquad\text{for all }n\ge0.
+\]
+By Lemma~\ref{lem:branch}, for each parent $k\in S_n$ the number of children
+$k'\in S_{n+1}$ is at most $B=\lfloor16t\rfloor+1$. Since $|S_0|=Q_J+1$,
+induction gives $|S_n|\le(Q_J+1)B^n$ for all $n\ge0$. Each interval
+$I_{J+n}(k)$ has diameter
+\[
+\operatorname{diam}I_{J+n}(k)=2r_{J+n}=\frac{2t}{(J+n)Q_{J+n}}
+\le\frac{2t}{(J+n)!}\longrightarrow0\qquad(n\to\infty),
+\]
+where we used $Q_{J+n}\ge(J+n)!$ from Lemma~\ref{lem:factorial} and $J+n\ge1$.
+
+Now fix any $s>0$ and any gauge scale $\delta>0$. For all sufficiently large
+$n$, the intervals $\{I_{J+n}(k):k\in S_n\}$ form a finite $\delta$-cover of
+$C_J$, and by Lemma~\ref{lem:factorial} ($Q_{J+n}\ge(J+n)!$) their $s$-dimensional
+Hausdorff covering cost satisfies
+\[
+\sum_{k\in S_n}\bigl(\operatorname{diam}I_{J+n}(k)\bigr)^s
+\le |S_n|\left(\frac{2t}{(J+n)Q_{J+n}}\right)^s
+\le(Q_J+1)(2t)^s B^{-J}\left(\frac{(B^{1/s})^{J+n}}{(J+n)!}\right)^s.
+\]
+Using the elementary factorial lower bound $m!\ge(m/\ee)^m$ for $m=J+n\ge1$
+(or the convergent ratio $(B^{1/s})^{m+1}/(m+1)!\div((B^{1/s})^m/m!)=B^{1/s}/(m+1)<1/2$
+for $m+1>2B^{1/s}$), we have
+\[
+0\le\frac{(B^{1/s})^m}{m!}\le\left(\frac{\ee B^{1/s}}{m}\right)^m\longrightarrow0
+\qquad(m=J+n\to\infty),
+\]
+and raising to the positive power $s>0$ shows that the covering cost tends to
+$0$ as $n\to\infty$. Thus $\mathcal H_\delta^s(C_J)=0$ for every $\delta>0$,
+so $\mathcal H^s(C_J)=\lim_{\delta\downarrow0}\mathcal H_\delta^s(C_J)=0$ for
+every $s>0$, which gives $\dimH C_J=0$. Taking the countable union over
+$J\ge1$ and $m\in\Z$ yields $\dimH E_c=0$. Finally,
+$F=\{x\in\R:\Lam(x)<\infty\}=\bigcup_{n=1}^\infty E_n$ is a countable union of
+sets of Hausdorff dimension $0$, so $\dimH F=0$.
+\end{proof}
+
+\begin{corollary}[The complementary infinite level]\label{cor:infinite-level}
+The set $F=\{x\in\R:\Lam(x)<\infty\}$ has Lebesgue measure zero, and its
+complement $F_\infty:=\{x\in\R:\Lam(x)=\infty\}=\R\setminus F$ has full
+Lebesgue measure on $\R$. Moreover, for every nondegenerate interval
+$[a,b]\subset\R$ ($a<b$), one has
+$\operatorname{Leb}(F_\infty\cap[a,b])=b-a>0$ and
+\[
+\dimH(F_\infty\cap[a,b])=\dimH F_\infty=1.
+\]
+\end{corollary}
+
+\begin{proof}
+That $\operatorname{Leb}(F)=0$ follows in two independent ways. First, by
+Theorem~\ref{thm:finite}, $\dimH F=0<1$, which implies $\mathcal H^1(F)=0$;
+since one-dimensional Hausdorff measure $\mathcal H^1$ on $\R$ coincides with
+outer Lebesgue measure $\operatorname{Leb}$, we obtain $\operatorname{Leb}(F)=0$.
+
+Second, one can see $\operatorname{Leb}(F)=0$ directly by an elementary
+measure-preserving calculation without invoking Hausdorff dimension. For an
+integer $m\ge1$ and $j>2m$, the circle endomorphism $T_{Q_j}:\R/\Z\to\R/\Z$,
+$x\mapsto Q_jx\bmod1$, preserves normalized Lebesgue measure on $\R/\Z$ (each
+arc of length $\ell$ has $Q_j$ disjoint preimage arcs of length $\ell/Q_j$).
+The set $\bar A_j(m):=\{x\in\R/\Z:\|Q_jx\|\le m/j\}=T_{Q_j}^{-1}([-m/j,m/j]\bmod1)$
+therefore has circle Lebesgue measure $2m/j$. For any fixed starting index
+$J\ge1$ and every $j\ge\max(J,2m+1)$, monotonic inclusion gives
+\[
+\operatorname{Leb}_{\R/\Z}\left(\bigcap_{i=J}^\infty \bar A_i(m)\right)
+\le\operatorname{Leb}_{\R/\Z}\bigl(\bar A_j(m)\bigr)=\frac{2m}{j}\longrightarrow0
+\qquad(j\to\infty),
+\]
+so $\operatorname{Leb}_{\R/\Z}(\bigcap_{i\ge J}\bar A_i(m))=0$. Every point
+$x\in\R/\Z$ with $\Lam(x)<\infty$ belongs to $\bigcap_{i\ge J}\bar A_i(m)$ for
+some integers $m>\Lam(x)$ and $J\ge1$. Countable subadditivity over $m\ge1$ and
+$J\ge1$ yields $\operatorname{Leb}_{\R/\Z}(\{\Lam<\infty\})=0$ on the circle,
+and countable union over integer translates $[k,k+1]$ ($k\in\Z$) yields
+$\operatorname{Leb}(F)=0$ on $\R$.
+
+Now let $[a,b]\subset\R$ be any nondegenerate closed interval ($a<b$). Since
+$[a,b]=(F_\infty\cap[a,b])\cup(F\cap[a,b])$ and $\operatorname{Leb}(F\cap[a,b])\le\operatorname{Leb}(F)=0$,
+additivity of Lebesgue measure gives
+\[
+\mathcal H^1(F_\infty\cap[a,b])=\operatorname{Leb}(F_\infty\cap[a,b])
+=\operatorname{Leb}([a,b])-\operatorname{Leb}(F\cap[a,b])=b-a>0.
+\]
+By the definition of Hausdorff dimension, $\mathcal H^1(F_\infty\cap[a,b])>0$
+implies $\dimH(F_\infty\cap[a,b])\ge1$. On the other hand, any subset of $\R$
+has Hausdorff dimension at most $\dimH\R=1$, so
+\[
+1\le\dimH(F_\infty\cap[a,b])\le\dimH F_\infty\le\dimH\R=1.
+\]
+Hence $\dimH(F_\infty\cap[a,b])=\dimH F_\infty=1$. Together with
+Theorem~\ref{thm:finite}, this establishes the sharp metric dichotomy: $\Lam$
+is infinite Lebesgue-almost everywhere (with local Hausdorff dimension~$1$ on
+every interval), while the set where $\Lam$ is finite has Hausdorff
+dimension~$0$.
+\end{proof}
+

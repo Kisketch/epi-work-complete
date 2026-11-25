@@ -1,0 +1,61 @@
+% frontmatter-2B-v3-20261124.tex --- main paper B (2A + 2B merged) frontmatter.
+% NEW FILE, 2026-11-24. Supersedes frontmatter-2B-v2.tex for the assembled draft;
+% v2 is left untouched (only-add discipline).
+% Changes vs v2: title drops "$e$"; abstract merges the 2A and 2B claims and
+% demotes the convergent denominators of $e$ to a flagship corollary; the
+% unified structural-alphabet placeholder is retained as an explicit open item.
+\title{Structural alphabets, exact Hausdorff gauges, and dimension phase transitions}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For polynomial-growth recurrences $Q_{j+1}=(cj^r+d)Q_j+Q_{j-1}$ and for
+arbitrary growing-quotient recurrences $Q_{j+1}=A_jQ_j+Q_{j-1}$ with
+$A_j\to\infty$, we determine the full spectrum of the critical exponent
+$\Lam(x)=\limsup_j j^r\|Q_jx\|$, the zero-level lattice, the exact critical
+gauges, the positive-level three-way splitting, and the dimension phase
+transition. For $A_j=4j+2$, the convergent denominators of $\ee$, the spectrum
+is $\frac14\Z_{\ge0}\cup\{\infty\}$ with zero level $L=\Z+\Z\frac{\ee+1}{2}$,
+every finite level has Hausdorff dimension $0$, and the gauge
+$h_k(1/Q_n)=(2k+1)^{-n}$ is exact. For finite-state defect constraints the
+critical gauge is governed by the largest Perron root among marked components
+supporting infinitely many extreme defects. All results are machine-checked in
+Lean~4 using only the base axioms \texttt{propext}, \texttt{Classical.choice}
+and \texttt{Quot.sound}, except the finite-dimensional Perron--Frobenius
+eigenvector existence input, passed explicitly as a hypothesis. This work does
+not resolve the open problem of the irrationality of $e+\pi$.
+\end{abstract}
+
+\section*{Honesty statement and formal verification}
+
+The Lean~4 audit subset of this paper --- the modules covering every theorem
+stated above, with names transcribed verbatim from the corresponding sections
+of the full manuscript --- is: \texttt{DeltaSign.lean},
+\texttt{EpiFormal/Classification.lean}, \texttt{EpiFormal/SpectralGap.lean},
+\texttt{EpiFormal/FullSpectrumDiscrete.lean}, \texttt{EpiFormal/DimHCore.lean},
+\texttt{EpiFormal/DimHFinite.lean}, \texttt{EpiFormal/GaugeExact.lean},
+\texttt{QuarterPointFinal.lean}, \texttt{EpiFormal/UnweightedCorrection.lean},
+\texttt{WeightedFiber.lean}, \texttt{WeightedDimHCore.lean},
+\texttt{WeightedUpper.lean}, \texttt{WeightedFinal.lean},
+\texttt{EpiFormal/WeightedExactDim.lean}, \texttt{EpiFormal/GaugeNull.lean},
+\texttt{EpiFormal/GaugeCircle.lean}, \texttt{GaugeLiminfComplete.lean},
+\texttt{EpiFormal/TrichotomyAndPolyExtension.lean},
+\texttt{EpiFormal/FiniteStateComplete.lean} (building on
+\texttt{FiniteStateGauge.lean}, \texttt{FiniteStateTail.lean}, and
+\texttt{FiniteStatePositive.lean}),
+\texttt{EpiFormal/PolyGaugeAndPhaseTransition.lean},
+\texttt{EpiFormal/PolyWeightedUpper.lean},
+\texttt{EpiFormal/PolyWeightedLower.lean},
+\texttt{EpiFormal/GeneralGrowingRec.lean}, and
+\texttt{EpiFormal/GeneralGrowingDim.lean}. The full manuscript reports these
+modules as kernel-checked at Layer~A with only the three base axioms and zero
+\texttt{sorryAx}; they are audited jointly with the companion papers' modules
+in \texttt{Audit.lean}, whose declaration counts are project-wide, not
+per-paper. The finite-dimensional linear-algebraic Perron--Frobenius
+eigenvector existence input on marked strongly connected components, used by
+the finite-state tail theorem, is passed explicitly as a hypothesis and is not
+derived inside the Lean kernel. The unified structural-alphabet theorem is not
+yet proved; it appears in this paper only as an explicitly marked open item.
+
+\emph{The full version containing all proofs is available as a companion manuscript.}

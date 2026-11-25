@@ -6,10 +6,10 @@
 
 | 文件 | 说明 | 实测规格 |
 | :--- | :--- | :--- |
-| [`paper2_spectral_gap_dimension.tex`](paper2_spectral_gap_dimension.tex) | 论文二完整主稿 TeX，与 [`split/src_sections/slice_index.csv`](split/src_sections/slice_index.csv) 的 11 个切片拼接**逐字节一致** | `286,520` 字节、`4,511` 行、`84` 个唯一 `\label`、`22/22` `\bibitem` 全引用 |
-| [`paper2_spectral_gap_dimension.pdf`](paper2_spectral_gap_dimension.pdf) | 洁净 `pdflatex` 重编最新 PDF（含 §7.5 `thm:multi-residue-asymptotic`、`rem:fourth-term` 与 2026-11-25 基准引文） | **65 页**、`908,558` 字节 |
+| [`paper2_spectral_gap_dimension.tex`](paper2_spectral_gap_dimension.tex) | 论文二完整主稿 TeX，与 [`split/src_sections/slice_index.csv`](split/src_sections/slice_index.csv) 的 11 个切片拼接**逐字节一致** | `289,499` 字节、`4,574` 行、`86` 个唯一 `\label`、`28/28` `\bibitem` 全引用 |
+| [`paper2_spectral_gap_dimension.pdf`](paper2_spectral_gap_dimension.pdf) | 洁净 `pdflatex` 重编最新 PDF（含 `DFSU`/`MU96`/`Hensley92`/`Good41`/`HU02`/`DLMF` 新颖性定位、`CLN2026`/`Brown2026`/`Hensley1996` 基准及 L283 `m^{-1-\varepsilon}` 修正） | **66 页** |
 | [`paper2_spectral_gap_dimension.log`](paper2_spectral_gap_dimension.log) | 最新 `pdflatex` 完整编译日志 | EXIT 0、0 `Undefined`、0 `Overfull \hbox` |
-| [`paper2_build_tectonic_20261123.log`](paper2_build_tectonic_20261123.log) | `7ece3b9` 阶段 `tectonic` 编译历史留痕（保留备查） | 对应 59 页历史节点 |
+| [`paper2_build_tectonic_20261123.log`](paper2_build_tectonic_20261123.log) / [`paper2_build_tectonic_20261125.log`](paper2_build_tectonic_20261125.log) | `tectonic` 编译历史留痕（保留备查） | 对应 59 页与 64 页节点 |
 
 ## 二、2026-11-23 至 2026-11-25 补丁脚本（按时间演化留存）
 
@@ -17,17 +17,19 @@
 * [`patch_stale_N512_20261123.py`](patch_stale_N512_20261123.py)：清理 $N=256$ 改稿遗留表述并同步拆分源切片。
 * [`patch_blr_remarks_20261123.py`](patch_blr_remarks_20261123.py) / [`patch_blr_remarks_fix_20261123.py`](patch_blr_remarks_fix_20261123.py)：新增与校准 Bugeaud–Liao–Rams (BLR) 对比注记 `rem:poly-BLR` / `rem:growing-BLR`。
 * [`patch_fourth_term_remark_20261124.py`](patch_fourth_term_remark_20261124.py)：新增启发式四阶项注记 `rem:fourth-term` 与 `tab:fourth-term`（明确标为猜想与非严格数值佐证），并记录第二次 Colab 独立复建审计。
-* [`patch_evidence_citations_20261125.py`](patch_evidence_citations_20261125.py)：增补 `Hensley1996`（含勘误）、`JP2018`、`CLN2026`、`CLUW2024`、`Brown2026`、`TTWW2026`、`BW2025` 并规范 `BV`/`CLU`/`FLLW`/`MW` DOI，同步全切片并按 `slice_index.csv` 重建主稿。
+* [`patch_evidence_citations_20261125.py`](patch_evidence_citations_20261125.py)：增补 `Hensley1996`（含勘误）、`JP2018`、`CLN2026`、`CLUW2024`、`Brown2026`、`TTWW2026`、`BW2025` 并规范 DOI。
+* [`patch_novelty_wording_20261125.py`](patch_novelty_wording_20261125.py) / [`patch_blr_baker_fix_20261125.py`](patch_blr_baker_fix_20261125.py) / [`patch_unify_20261125.py`](patch_unify_20261125.py)：按投稿前新颖性核查改写 `sec:prior` 与诚实边界并增补 `DFSU`/`MU96`/`Good41`/`HU02`/`Hensley92`/`DLMF`，修正 `rem:poly-BLR`/`rem:growing-BLR` Baker 措辞，并完成 **28/28 文献全并集**、DOI 无 `\allowbreak` 清洗与 L283 `m^{-1-\varepsilon}` 笔误修正。
 
-## 三、拆分三轨一补工程（[`split/`](split/README.md)）
+## 三、拆分三轨一补工程（[`split/`](split/README.md)）与 `v3` 临界标度实验归档（[`drafts_v3_critical_scaling/`](drafts_v3_critical_scaling/README.md)）
 
-* **权威总览与记录**：[`split/README.md`](split/README.md)、[`split/BUILD_TRIAL_LOG.md`](split/BUILD_TRIAL_LOG.md)、[`split/src_sections/SLICE_LOG.md`](split/src_sections/SLICE_LOG.md)。
-* **源文件共享切片**：[`split/src_sections/`](split/src_sections/)（核心 11 片登记于 [`slice_index.csv`](split/src_sections/slice_index.csv)，另有 `preamble.tex`、`frontmatter.tex`、`intro-shared.tex`、`refs.tex` 及三轨派生引言/前提切片）。
+* **权威总览与记录**：[`split/README.md`](split/README.md)、[`split/BUILD_TRIAL_LOG.md`](split/BUILD_TRIAL_LOG.md)、[`split/src_sections/SLICE_LOG.md`](split/src_sections/SLICE_LOG.md)、[`split/derive_2A_pub.py`](split/derive_2A_pub.py)。
+* **源文件共享切片**：[`split/src_sections/`](split/src_sections/)（核心 11 片登记于 [`slice_index.csv`](split/src_sections/slice_index.csv)，另有 `preamble.tex`、`frontmatter.tex`、`intro-shared.tex`、`refs.tex`、2A 投稿呈现版 `*-2Apub.tex` 与 `refs-2Apub.tex` 及三轨派生引言/前提切片）。
 * **四个独立编译目录**（再生 PDF 由 `.gitignore` 忽略，编译日志入库留痕）：
-  * **2A 核心规范与三分法**：[`split/2A_core_gauge_trichotomy/paper2A_draft.tex`](split/2A_core_gauge_trichotomy/paper2A_draft.tex)（25 页，0 未定义引用，0 Overfull）
+  * **2A 核心规范与三分法（期刊呈现版 `*-2Apub`）**：[`split/2A_core_gauge_trichotomy/paper2A_draft.tex`](split/2A_core_gauge_trichotomy/paper2A_draft.tex)（21 页，0 未定义引用，0 Overfull）
   * **2B 一般递推理论**：[`split/2B_general_theory/paper2B_draft.tex`](split/2B_general_theory/paper2B_draft.tex)（16 页，0 未定义引用，0 Overfull）
   * **2C 窗口、残差与有限状态**：[`split/2C_windows_residues_finstate/paper2C_draft.tex`](split/2C_windows_residues_finstate/paper2C_draft.tex)（26 页，含 §7.5 `thm:multi-residue-asymptotic`，0 未定义引用，0 Overfull）
-  * **S 补充材料（Supplement）**：[`split/S_supplement/paperS_draft.tex`](split/S_supplement/paperS_draft.tex)（7 页，0 未定义文献引文；说明见 [`split/S_supplement/MANIFEST.md`](split/S_supplement/MANIFEST.md)）
+  * **S 补充材料（Supplement）**：[`split/S_supplement/paperS_draft.tex`](split/S_supplement/paperS_draft.tex)（8 页，0 未定义文献引文；说明见 [`split/S_supplement/MANIFEST.md`](split/S_supplement/MANIFEST.md)）
+* **T6 临界标度 `v3` 与两主稿实验存档**：[`drafts_v3_critical_scaling/README.md`](drafts_v3_critical_scaling/README.md)（独立归档 `sec-critical-scaling.tex`、`paper2_spectral_gap_dimension_v3_20261124.pdf` 70 页、`paper2A_critical_scaling_draft_20261124.pdf` 31 页与 `paper2B_unified_draft_20261124.pdf` 35 页，不替代主稿 11 切片）。
 
 ## 四、历史冻结版本（[`historical_versions/`](historical_versions/)）
 

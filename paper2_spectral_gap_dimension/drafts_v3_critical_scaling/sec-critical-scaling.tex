@@ -1,0 +1,449 @@
+% sec-critical-scaling.tex --- Critical scaling at the phase boundary (T6).
+% NEW FILE, 2026-11-24. Only additions; no existing file modified.
+% Intended insertion point: after sec-resasymp.tex (main paper A, section
+% "Critical scaling at the phase boundary"), or as a standalone appendix.
+% Uses the main preamble macros: \dimH, \Z, \Q, \R, \ee.
+%
+% STATUS TAGS (AGENTS.md):
+%   Lemma~\ref{lem:pole}            [THEOREM]   fully proved here.
+%   Lemma~\ref{lem:resolvent-uniform} [THEOREM] proved here (elementary estimates).
+%   Lemma~\ref{lem:master}       [THEOREM] proved here modulo the repo criterion.
+%   Theorem~\ref{thm:critical-scaling} [THEOREM] proved here modulo the repo criterion.
+%   Corollary~\ref{cor:critical-exp} [THEOREM] consequence of the Theorem.
+%   Proposition~\ref{prop:supercritical-constant} [HEURISTIC] numerically
+%       supported; NOT proved (the tail equation is not uniform there).
+%   Remark~\ref{rem:naive-C2-false}  [PROVED] the fixed-eta form of the old
+%       conjecture C2 is false; only the joint scaling limit survives.
+
+\section{Critical scaling at the phase boundary}\label{sec:critical-scaling}
+
+Throughout this section $S\subset\Z_{\ge1}$ is finite with $|S|\ge2$,
+$B\subset\Z_{\ge0}$ is finite, $d:=|S|+|B|\ge1$, and we write
+\[
+s_0:=s_0(S),\qquad \eta:=1-2s_0\in(-1,1),\qquad p_0:=2s_0 .
+\]
+Recall $W_S(p,n)=\sum_{w\in S^n}q(w)^{-p}$, $C_S(p)=\sum_{n\ge0}W_S(p,n)$,
+and $\dimH F_{m,S,B}$ is the Hausdorff dimension of the multi-residue
+continued-fraction set of Theorem~\ref{thm:multi-residue-asymptotic}.
+
+\subsection{The transfer operator and the pole decomposition}
+
+Let $\Omega:=\{z\in\mathbb{C}:\ |z-1|<1\}$ and let $A(\Omega)$ denote the Banach space
+of complex-valued functions continuous on $\overline\Omega$ and holomorphic on
+$\Omega$, equipped with the supremum norm. For $a\ge1$ put
+$\varphi_a(z):=1/(a+z)$, and for $p>0$ define the transfer operator
+\begin{equation}\label{eq:Lp}
+L_pf(z):=\sum_{a\in S}(a+z)^{-p}f\bigl(\varphi_a(z)\bigr),\qquad z\in\Omega .
+\end{equation}
+Since $\Re(a+z)\ge a>0$ on $\overline\Omega$, the weight $(a+z)^{-p}$ is
+holomorphic and bounded there, and $L_p$ maps $A(\Omega)$ into itself.
+
+\begin{lemma}[Perron--Frobenius and the pole decomposition]\label{lem:pole}
+Let $S$ be as above and $p>0$.
+\begin{enumerate}[label=\textup{(\alph*)},leftmargin=2.2em]
+\item $L_p$ is a compact operator on $A(\Omega)$. Its spectral radius $\rho(p)$
+is a simple eigenvalue with a strictly positive eigenfunction $h_p\in A(\Omega)$,
+and there is $\theta(p)\in(0,1)$ with
+$\sigma(L_p)\setminus\{\rho(p)\}\subset\{|\lambda|\le\theta(p)\rho(p)\}$.
+\item $p\mapsto\rho(p)$ is real-analytic and strictly decreasing on $(0,\infty)$;
+after the normalization $\nu_p(h_p)=1$, the maps $p\mapsto h_p$ and
+$p\mapsto\nu_p$ (the dual eigenfunctional) are real-analytic into $A(\Omega)$
+and $A(\Omega)^*$.
+\item Uniformly for $p$ in compact subsets of $(0,\infty)$,
+\begin{equation}\label{eq:W-asym}
+W_S(p,n)=c(p)\rho(p)^n+O\bigl(\theta(p)^n\bigr),\qquad
+c(p):=\frac{h_p(0)\,\nu_p(1)}{\nu_p(h_p)}>0 .
+\end{equation}
+\item For $p>p_0$,
+\begin{equation}\label{eq:C-decomp}
+C_S(p)=\frac{c(p)}{1-\rho(p)}+A(p),
+\end{equation}
+where $A$ is real-analytic and bounded on compact subsets of $(p_0,\infty)$.
+\item $\rho(p_0)=1$ and $\rho'(p_0)<0$. Consequently
+\begin{equation}\label{eq:pole}
+C_S(p)=\frac{\kappa(S)}{p-p_0}+O(1)\qquad(p\downarrow p_0),
+\qquad
+\kappa(S):=\frac{c(p_0)}{-\rho'(p_0)}=\frac{c(S)}{-\rho'(p_0)}>0,
+\end{equation}
+where $c(S):=\lim_{n\to\infty}W_S(p_0,n)=c(p_0)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\emph{(a) Compactness and positivity.}
+A direct computation of the image of the circle $|z-1|=1$ under the M\"obius map
+$\varphi_a$ gives
+\[
+\varphi_a(\Omega)=\Bigl\{z:\ \bigl|z-\tfrac{a+1}{a^2+2a}\bigr|<\tfrac{1}{a^2+2a}\Bigr\},
+\qquad
+\Bigl|\tfrac{a+1}{a^2+2a}-1\Bigr|+\tfrac{1}{a^2+2a}=\frac{a+1}{a+2}<1 ,
+\]
+so $\varphi_a(\overline\Omega)$ is a compact subset of $\Omega$. Hence the
+composition operator $f\mapsto f\circ\varphi_a$ is compact on $A(\Omega)$: for
+$\|f\|_\infty\le1$ the family $\{f\circ\varphi_a\}$ is uniformly bounded and,
+by the Cauchy estimates, equicontinuous on $\overline\Omega$, so Montel's theorem
+and the Cauchy estimates give relative compactness in $A(\Omega)$. Multiplication
+by the bounded holomorphic weight $(a+z)^{-p}$ is a bounded operator, and $L_p$ is
+a finite sum of such terms; hence $L_p$ is compact.
+
+Let $K:=\{f\in A(\Omega): f(z)\ge0\ \forall z\in\overline\Omega\}$. Then
+$L_p(K)\subset K$, and $K$ is total: for real $f\in A(\Omega)$ one has
+$f+(\|f\|_\infty+1)\in\operatorname{int}K$. The incidence structure of the
+alphabet $S$ is the full shift on $S$ (all words are allowed), so the IFS is
+topologically mixing; by the standard Perron--Frobenius theorem for the transfer
+operator of a finite conformal iterated function system with positive
+holomorphic weights \cite{Mayer1991,JenkinsonPollicott2018}, the spectral radius
+$\rho(p)$ is a simple eigenvalue with a strictly positive eigenfunction and the
+peripheral spectrum is $\{\rho(p)\}$. (Equivalently, one may apply
+Krein--Rutman to the primitive part of $L_p$; the complementary ``ghost'' part
+of $A(\Omega)$ is annihilated by finitely many iterations and contributes no
+nonzero spectrum.) This proves (a).
+
+\emph{(b) Analytic dependence and strict decrease.}
+For $a\ge1$ the principal branch $\operatorname{Log}(a+z)$ is holomorphic and bounded on a
+neighbourhood of $\overline\Omega$, because $\Re(a+z)\ge a>0$. Hence
+$p\mapsto(a+z)^{-p}=\exp(-p\operatorname{Log}(a+z))$ is analytic in $p$, uniformly on
+$\overline\Omega$, and $p\mapsto L_p$ is analytic as a map into
+$\mathcal L(A(\Omega))$ (the series defining $L_p$ converges in operator norm
+locally uniformly in $p$). Since $\rho(p)$ is an isolated simple eigenvalue of
+the compact operator $L_p$, Kato's analytic perturbation theory
+\cite[Chapter~VII]{Kato1976} gives that $\rho(p)$, the spectral projection
+$P(p)$, and consequently $h_p=P(p)h_{p_1}/\nu_p(P(p)h_{p_1})$ and $\nu_p$ (after
+normalization) are real-analytic in $p$.
+
+For strict decrease, let $0<p<q$ and $f\in K\setminus\{0\}$. Since
+$(a+z)^{-p}>(a+z)^{-q}$ on $\Omega$ for every $a$, we have $L_pf\ge L_qf$ with
+strict inequality on a nonempty open subset of $\Omega$. The eigenfunction
+$h_p$ is strictly positive, and the dual eigenfunctional $\nu_p$ is strictly
+positive; the standard comparison argument for positive compact operators
+(compare $L_p^nh_p$ with $\rho(p)^nh_p$ and use $L_p^nh_p\ge L_q^nh_p$) gives
+$\rho(p)>\rho(q)$. Hence $\rho$ is strictly decreasing; together with (a) it is
+real-analytic, so (b) holds.
+
+\emph{(c) Spectral asymptotics.}
+By (a), $L_p=\rho(p)P(p)+R(p)$ with $P(p)$ a rank-one projection and
+$\|R(p)^n\|\le C(p)\theta(p)^n$ for some $C(p)>0$ and $\theta(p)\in(0,1)$.
+Evaluating at $z=0$,
+\[
+(L_p^n1)(0)=\rho(p)^n(P(p)1)(0)+(R(p)^n1)(0)
+=\rho(p)^n\frac{h_p(0)\nu_p(1)}{\nu_p(h_p)}+O(\theta(p)^n).
+\]
+On the other hand, the continuant identity
+$\varphi_w(z)=(zp_{n-1}+p_n)/(zq_{n-1}+q_n)$ gives
+$|\varphi_w'(0)|=q(w)^{-2}$, whence
+$(L_p^n1)(0)=\sum_{w\in S^n}|\varphi_w'(0)|^{p/2}=W_S(p,n)$. This proves
+\eqref{eq:W-asym}; the uniformity on compact $p$-sets follows from the
+continuity of $P(p)$ and of $\theta(p)$.
+
+\emph{(d) Summation.}
+Summing \eqref{eq:W-asym} over $n\ge0$ and using $\rho(p)<1$ for $p>p_0$ gives
+\eqref{eq:C-decomp} with $A(p):=\sum_{n\ge0}(R(p)^n1)(0)$; the series converges
+normally and $A$ inherits real-analyticity from $p\mapsto R(p)$.
+
+\emph{(e) The pole.}
+By \eqref{eq:W-asym} the convergence set of $\sum_nW_S(2s,n)$ is
+$\{s:\rho(2s)<1\}$. Since $\rho$ is continuous and strictly decreasing,
+$\rho(0)=|S|\ge2$ (because $L_0^n1=|S|^n$) and
+$\rho(p)\le |S|\,\varphi^{-p}\to0$ as $p\to\infty$ (because
+$W_S(p,n)\le |S|^nF_{n+1}^{-p}$ with $F_{n+1}\sim\varphi^n$), there is a unique
+$p_*>0$ with $\rho(p_*)=1$, and $s_0=p_*/2$. Hence $\rho(p_0)=1$.
+
+For the derivative, first-order perturbation theory gives
+\[
+\rho'(p)=\frac{\nu_p\bigl(L_p'h_p\bigr)}{\nu_p(h_p)},\qquad
+L_p'f:=-\sum_{a\in S}\operatorname{Log}(a+z)(a+z)^{-p}f\bigl(\varphi_a(z)\bigr).
+\]
+On $\Omega$ we have $|a+z|\ge1$ with strict inequality on the interior, so
+$\operatorname{Log}|a+z|>0$ there; hence $L_p'$ is a strictly negative operator on
+$K\setminus\{0\}$, and $\rho'(p)<0$ for every $p$. In particular
+$\rho'(p_0)<0$.
+
+Finally $1-\rho(p)=-\rho'(p_0)(p-p_0)\bigl(1+O(p-p_0)\bigr)$ as $p\downarrow p_0$,
+so \eqref{eq:C-decomp} yields
+\[
+C_S(p)=\frac{c(p_0)}{-\rho'(p_0)}\cdot\frac{1}{p-p_0}+O(1),
+\]
+which is \eqref{eq:pole}. The identity $c(S)=c(p_0)$ follows from
+\eqref{eq:W-asym} at $p=p_0$, where $\rho(p_0)=1$.
+\end{proof}
+
+\begin{remark}[What is and is not new in Lemma~\ref{lem:pole}]\label{rem:pole-status}
+Lemma~\ref{lem:pole} closes the three gaps left open in the earlier draft of
+this section: (a) the spectral gap is stated on the explicit space $A(\Omega)$
+with the explicit domain $\Omega=\{|z-1|<1\}$, and the hypotheses of the
+standard Perron--Frobenius theorem are verified; (b) analytic dependence on $p$
+is Kato's theorem, applied to an isolated simple eigenvalue of a compact
+analytic family; (c) the identity $\rho(p_0)=1$ follows directly from the
+definition of $s_0(S)$ as the abscissa of convergence together with
+\eqref{eq:W-asym}, so no Bowen/CLU input is needed for the pole decomposition.
+The Bowen-type theorem of Chousionis--Leykekhman--Urba\'nski
+\cite[Theorem~2.3]{CLU} is needed only for the separate identification
+$s_0(S)=\dimH E_S$, which is already available in the Lean kernel as
+\texttt{dimH\_cfAlphabetSet\_finset\_eq\_poincareAbscissa}.
+\end{remark}
+
+\subsection{The critical window and the scaling limit}
+
+The starting point is the tail equation obtained in the proof of
+Theorem~\ref{thm:multi-residue-asymptotic}(iv). We prove the form needed
+here (Lemma~\ref{lem:resolvent-uniform} and Lemma~\ref{lem:master}),
+correcting a typographical factor in the displayed formula of that proof
+(see Remark~\ref{rem:typo}).
+
+\begin{lemma}[Uniform two-sided resolvent expansion]\label{lem:resolvent-uniform}
+Let $m\ge 2(\max S+\max B+1)$, put $\Sigma:=1+\max S+\max B$, and write
+$h(s):=d\,C_S(2s)\,m^{-2s}\,\zeta(2s)$ for $s\in(\max(s_0,\tfrac12),1]$.
+Then for every such $s$ and every $x\in[0,1]$,
+\begin{equation}\label{eq:resolvent-uniform}
+\mathcal L_{s,\mathcal A_{m,S,B}}V_{S,s}(x)
+=V_{S,s}(x)-1+h(s)\,(1+\rho(s,x)),\qquad |\rho(s,x)|\le C_0\,\Sigma/m,
+\end{equation}
+where $C_0$ is an absolute constant.
+\end{lemma}
+
+\begin{proof}
+The $S$-branches contribute $V_{S,s}(x)-1$ by the multi-branch resolvent
+identity \eqref{eq:multi-resolvent-branch} (valid for $s>s_0(S)$).  Each of the
+$d$ large-branch families ($a=r+km$, $r\in S$, $k\ge1$; and $a=km-b$, $b\in B$,
+$k\ge1$) is handled identically.  Write $a+x=m(k+\theta)$ with
+$|\theta|\le\Sigma/m\le\tfrac12$; the Hurwitz shift obeys
+$\sum_{k\ge1}\bigl[(k+\theta)^{-2s}-k^{-2s}\bigr]
+\le 2s\,2^{2s+1}\,|\theta|\,\zeta(2s+1)\le C\,\Sigma/m$, the constant being
+absolute because $u\,\zeta(1+u)$ is bounded on $(0,2]$; and the test-function
+expansion $|V_{S,s}(y)-C_S(2s)|\le 2s\,y\,C_S(2s)$ (mean value theorem over
+each word, using $p(w)/q(w)=[0;w]\le1$) contributes a relative error
+$O\bigl(m^{-1}\zeta(2s+1)/\zeta(2s)\bigr)=O(\Sigma/m)$, since
+$\zeta(2s)\ge1$ on $2s>1$.  Summing the $d$ families gives
+\eqref{eq:resolvent-uniform}.
+\end{proof}
+
+\begin{lemma}[Master equation at the critical dimension]\label{lem:master}
+Under the assumptions of Lemma~\ref{lem:resolvent-uniform}, let
+$s^*:=\dimH F_{m,S,B}$ and $\varepsilon_m:=2s^*-1$.  Then
+\begin{equation}\label{eq:master}
+\bigl|\,d\,C_S(1+\varepsilon_m)\,m^{-1-\varepsilon_m}\,\zeta(1+\varepsilon_m)-1\,\bigr|
+\le \bar\delta_m:=C_1\,\Sigma/m+2\,\ee^{-c_0m^2},
+\end{equation}
+where $c_0:=d\,C_S(2)/3>0$ and $C_1$ is absolute.
+\end{lemma}
+
+\begin{proof}
+The function $h$ is finite, continuous and strictly decreasing on
+$(\max(s_0,\tfrac12),1]$, tends to $+\infty$ at the left endpoint (through the
+pole of $C_S$ at $2s_0$ or of $\zeta$ at $1$), and $h(1)<1$ for all large $m$
+(the quantitative pole bound $C_S(2(s_0+\delta))\le 32/\delta$ used in
+Theorem~\ref{thm:multi-residue-asymptotic}(v) gives $h(1)\le 64\,d\,\zeta(2)/m^2$).
+
+\emph{Upper side.}  If $h(s)(1+C_0\Sigma/m)\le1$, then
+\eqref{eq:resolvent-uniform} makes $V_{S,s}$ a subsolution,
+$\mathcal L_{s,\mathcal A}V\le V$, whence $\dimH F_{m,S,B}\le s$ by the upper
+direction of the transfer-operator criterion of
+Theorem~\ref{thm:residues-general}(ii) (kernel-checked as
+\texttt{step\_cert\_upper\_sound}; the paper's own proof of part~(i) applies
+this direction to $V_{S,s}$ itself).  Consequently
+$h(s^*)\ge1/(1+C_0\Sigma/m)$.
+
+\emph{Lower side.}  Put $K:=\lceil\ee^{m^3}\rceil$,
+$D_K:=S\cup\{r+km:\ r\in S,\ 1\le k\le K\}\cup\{km-b:\ b\in B,\ 1\le k\le K\}
+\subseteq\mathcal A_{m,S,B}$ (a finite subalphabet) and
+$h_K(s):=d\,C_S(2s)\,m^{-2s}\sum_{k\le K}k^{-2s}$.  The truncated test function
+$v_N:=\sum_{j<N}\mathcal L_{s,S}^{\,j}1$ satisfies
+$\mathcal L_{s,S}v_N=v_N-1+\mathcal L_{s,S}^{\,N}1\ge v_N-1$, and the $D_K$-tail
+contributes $h_K(s)(1+O(\Sigma/m))$ by the estimates of
+Lemma~\ref{lem:resolvent-uniform}; hence $\mathcal L_{s,D_K}v_N\ge v_N$
+whenever $h_K(s)(1-C_2\Sigma/m)\ge1$, and the finite-subalphabet lower
+direction of Theorem~\ref{thm:residues-general}(ii) (kernel-checked as
+\texttt{step\_cert\_lower\_sound}) yields $\dimH F_{m,S,B}\ge s$.
+
+It remains to compare $h_K$ with $h$.  Let $\varepsilon_0$ be the unique
+solution of $h(\varepsilon_0)=1$.  Since
+$f(\varepsilon):=d\,C_S(2)\,m^{-1-\varepsilon}/\varepsilon$ is a decreasing
+lower bound for $h$ and $f(\varepsilon_0)\le h(\varepsilon_0)=1$, we get
+$\varepsilon_0\ge c_0/m$ with $c_0=d\,C_S(2)/3$ for all large $m$ (the factor
+$m^{-\varepsilon_0}\ge\tfrac12$ holds because $\varepsilon_0\log m\to0$).
+Hence for all $\varepsilon\ge\varepsilon_0/2$ the truncation ratio obeys
+$\mathrm{trunc}(\varepsilon):=\sum_{k>K}k^{-1-\varepsilon}/\zeta(1+\varepsilon)
+\le C\,K^{-\varepsilon}\le C\,\ee^{-c_0m^2}$.  Moreover $h_K(\varepsilon_0)
+=1-\mathrm{trunc}(\varepsilon_0)\le1$ together with $|h_K'|/h_K\ge2\log m$ (the
+$m^{-2s}$ factor dominates) gives $|\varepsilon_K-\varepsilon_0|\le
+C\ee^{-c_0m^2}/\log m$ for the $h_K$-root $\varepsilon_K$, so
+$\mathrm{trunc}(\varepsilon_K)\le2C\ee^{-c_0m^2}$ as well.  The sandwich
+$s_K\le s^*\le s_-$ between the two criteria and the monotonicity of $h$ now
+give $h(s^*)\le h(s_K)\le(1-C_2\Sigma/m)^{-1}(1-\mathrm{trunc}(\varepsilon_K))^{-1}$,
+which is \eqref{eq:master}.
+\end{proof}
+
+\begin{remark}[Why the tail equation has $m^{-1-\varepsilon}$]\label{rem:typo}
+In the proof of Theorem~\ref{thm:multi-residue-asymptotic}(iv) the displayed
+scalar equation reads $d\,C_S(1+\varepsilon)(1/\varepsilon+\gamma+\cdots)m^{-\varepsilon}=1+O(m^{-1})$
+with $\varepsilon=\alpha/m$. That display is missing a factor $m^{-1}$: the
+Hurwitz tail contributes $\sum_{k\ge1}(km)^{-2s}=m^{-2s}\zeta(2s)
+=m^{-1-\varepsilon}\zeta(1+\varepsilon)$, so the correct balance is
+$m^{-1-\varepsilon}$, not $m^{-\varepsilon}$. The corrected form is forced by
+the special case $S=\emptyset$, $B=\{0\}$, $d=1$, $C_S=1$: there
+$\dimH F_{m,m}=\frac12+\frac1{2m}+O(m^{-2})$, i.e.\ $\alpha=1$, and
+the corrected balance gives $1\cdot1\cdot(m/\alpha)m^{-1}=1$, i.e.\ $\alpha=1$,
+as it must; the uncorrected display would give $\alpha=m$. The error is
+typographical and does not affect the statement of
+Theorem~\ref{thm:multi-residue-asymptotic}(iv), whose proof uses the correct
+balance.
+\end{remark}
+
+\begin{theorem}[Critical scaling: joint limit]\label{thm:critical-scaling}
+Let $\eta:=1-2s_0(S)$ and
+$\kappa:=\kappa(S)$ from \eqref{eq:pole}. Then, as $m\to\infty$ and
+$\eta\to0$ with $\eta m^{1/2}\to x\in\R$,
+\begin{equation}\label{eq:scaling-limit}
+m^{1/2}\Bigl(\dimH F_{m,S,B}-\tfrac12\Bigr)\longrightarrow
+\frac12\,\Phi(x),
+\qquad
+\Phi(x):=\frac{-x+\sqrt{x^2+4d\kappa}}{2},
+\end{equation}
+i.e.\ $\Phi$ is the unique positive solution of $\Phi(\Phi+x)=d\kappa$.
+\end{theorem}
+
+\begin{proof}
+\emph{A priori bounds.}  $\varepsilon_m>0$ since $\dimH F_{m,S,B}>\tfrac12$
+(Theorem~\ref{thm:multi-residue-asymptotic}(ii)), and
+$\varepsilon_m\le 2\max\bigl(-\eta,\,C\sqrt{d/m}\bigr)$ with $C$ absolute: at
+$\bar\varepsilon:=2\max(-\eta,\,24\sqrt{d/m})$ the pole bound
+$C_S(1+\varepsilon)\le64/(\varepsilon+\eta)$ and
+$\zeta(1+\varepsilon)\le3/\varepsilon$ give $h(\bar\varepsilon)\le\tfrac16
+<1/(1+\bar\delta_m)$, so $s^*$ lies below the $h$-threshold.  In particular
+$\varepsilon_m\to0$ and $\varepsilon_m+\eta\to0$ along any sequence with
+$m\to\infty$ and $\eta m^{1/2}\to x\in\R$.
+
+\emph{The implicit equation.}  Lemma~\ref{lem:master} gives
+$d\,C_S(1+\varepsilon_m)\,m^{-1-\varepsilon_m}\zeta(1+\varepsilon_m)
+=1+O(\bar\delta_m)$.  Lemma~\ref{lem:pole}(e) rewrites
+$C_S(1+\varepsilon_m)=\kappa/(\varepsilon_m+\eta)+O(1)$ (legitimate because
+$\varepsilon_m+\eta\to0$), part~(iii) of
+Theorem~\ref{thm:multi-residue-asymptotic} rewrites
+$\zeta(1+\varepsilon_m)=\varepsilon_m^{-1}+\gamma+O(\varepsilon_m)$, and the
+relative errors so introduced are
+$O(\varepsilon_m+\eta)+O(\varepsilon_m)+O(\bar\delta_m)=o(1)$.  Hence
+\begin{equation}\label{eq:implicit}
+\varepsilon_m\,(\varepsilon_m+\eta)\,m^{1+\varepsilon_m}=d\,\kappa\,(1+o(1)).
+\end{equation}
+
+\emph{The scaling limit.}  Put $\varepsilon_m=m^{-1/2}u_m$ and
+$\eta=m^{-1/2}x_m$, so that $x_m\to x$.  By \eqref{eq:implicit},
+\[
+m^{-1}u_m\,(u_m+x_m)\,m^{1+\varepsilon_m}
+=u_m\,(u_m+x_m)\,m^{\varepsilon_m}
+=d\,\kappa\,(1+o(1)),
+\]
+and since $\varepsilon_m\log m\to0$ (a priori bound above; in the scaling
+window $\eta m^{1/2}\to x$), we have $m^{\varepsilon_m}\to1$, hence
+\[
+u_m\,(u_m+x_m)\longrightarrow d\,\kappa .
+\]
+Hence every limit point $u$ of $(u_m)$ satisfies $u(u+x)=d\kappa$; the positive
+root is $\Phi(x)$, and the negative root is excluded because
+$\dimH F_{m,S,B}\ge\frac12$ (Theorem~\ref{thm:multi-residue-asymptotic}(ii)).
+Thus $u_m\to\Phi(x)$, which is \eqref{eq:scaling-limit}.
+\end{proof}
+
+\begin{corollary}[Critical exponent and amplitude]\label{cor:critical-exp}
+Let $s_0(S)=\frac12$, i.e.\ $\eta=0$. Then
+\[
+\dimH F_{m,S,B}-\frac12\sim\frac{\sqrt{d\,\kappa(S)}}{2}\,m^{-1/2},
+\qquad m\to\infty .
+\]
+In particular the critical exponent is $1/2$, there is no logarithmic
+correction, and the dimension is continuous at the phase boundary.
+\end{corollary}
+
+\begin{proof}
+Take $x=0$ in Theorem~\ref{thm:critical-scaling}: $\Phi(0)=\sqrt{d\kappa}$, so
+$m^{1/2}(\dimH F_{m,S,B}-\frac12)\to\frac12\sqrt{d\kappa}$.
+\end{proof}
+
+\begin{remark}[The old fixed-$\eta$ form of conjecture C2 is false]\label{rem:naive-C2-false}
+An earlier draft stated, for every fixed finite $S,B$,
+\[
+\varepsilon_m(\varepsilon_m+\eta)m^{1+\varepsilon_m}\longrightarrow d\kappa(S),
+\qquad \varepsilon_m:=2\dimH F_{m,S,B}-1 .
+\]
+This is \emph{false} for fixed $\eta\ne0$. Indeed, in the subcritical regime
+Theorem~\ref{thm:multi-residue-asymptotic}(iv) gives
+$\varepsilon_m\sim d\,C_S(1)/m$, so the left-hand side tends to
+$d\kappa\,C_S(1)/\eta$, which equals $d\kappa$ only if
+$\kappa/\eta=C_S(1)$. The pole decomposition \eqref{eq:pole} gives
+$C_S(1)=\kappa/\eta+O(1)$, and the $O(1)$ term is not zero in general; the
+numerical record confirms a constant ratio
+$C_S(1)/(\kappa/\eta)=1.19$ for $S=\{2,3\}$, exactly the discrepancy predicted
+here. What survives is the \emph{joint} scaling limit
+Theorem~\ref{thm:critical-scaling}: the fixed-$\eta$ asymptotics are recovered
+only after the double limit $x\to\pm\infty$, and the crossover scale is
+\[
+m^*(S,B):=\frac{d\,\kappa(S)}{\eta^2}.
+\]
+\end{remark}
+
+\subsection{The supercritical prefactor}
+
+\begin{proposition}[Supercritical leading constant; heuristic]\label{prop:supercritical-constant}
+Assume $s_0(S)>\frac12$, i.e.\ $\eta<0$, and assume that
+\eqref{eq:master} extends to $\varepsilon$ in a neighbourhood of
+$\varepsilon=-\eta=2s_0-1>0$ with the same $O(\bar\delta_m)$ error. Then
+\[
+\dimH F_{m,S,B}-s_0(S)\sim
+\frac{d\,\kappa(S)}{2(2s_0(S)-1)}\,m^{-2s_0(S)} .
+\]
+\end{proposition}
+
+\begin{proof}[Proof modulo the stated extension]
+Here $\varepsilon\to-\eta=2s_0-1>0$, so $\varepsilon+\eta\to0$ and
+Lemma~\ref{lem:pole}(e) gives
+$C_S(1+\varepsilon)=\kappa/(\varepsilon+\eta)+O(1)$. Substituting into
+\eqref{eq:master} and using $1/\varepsilon\to1/(2s_0-1)$ and
+$m^{-1-\varepsilon}\sim m^{-2s_0}$ yields
+\[
+\frac{d\kappa}{(\varepsilon+\eta)(2s_0-1)}\,m^{-2s_0}\sim1,
+\qquad\text{i.e.}\qquad
+\varepsilon+\eta\sim\frac{d\kappa}{2s_0-1}\,m^{-2s_0}.
+\]
+Since $\dimH F_{m,S,B}-s_0=(\varepsilon+\eta)/2$, the claim follows.
+\end{proof}
+
+\begin{remark}[Status of Proposition~\ref{prop:supercritical-constant}]\label{rem:supercritical-status}
+Proposition~\ref{prop:supercritical-constant} is \emph{not} a theorem: the
+hypothesis that \eqref{eq:master} extends to
+$\varepsilon\approx2s_0-1$ is not established, and is expected to fail in that
+regime, because there $C_S(1+\varepsilon)\asymp m^{2s_0}$ blows up and the
+relative error of the Hurwitz-tail approximation is of order
+$C_S/m\asymp m^{2s_0-1}\to\infty$ rather than $O(m^{-1/2})$. This is consistent
+with Theorem~\ref{thm:multi-residue-asymptotic}(v), which proves only the
+two-sided rate $\Theta(m^{-2s_0})$ and not the constant. Numerically the
+prediction is accurate to about $2\%$ at $m=16384$ for $S=\{1,2\}$
+(predicted $33.43$, measured $32.86$), but numerical agreement is not a proof.
+The constant in Proposition~\ref{prop:supercritical-constant} should therefore
+be regarded as a conjecture supported by the scaling picture, not as a result.
+\end{remark}
+
+\subsection{What this section proves and what it does not}
+
+\begin{itemize}[leftmargin=1.6em]
+\item \textbf{Proved.} Lemma~\ref{lem:pole}: the pole decomposition
+$C_S(p)=\kappa(S)/(p-2s_0(S))+O(1)$, with $\kappa(S)=c(S)/(-\rho'(2s_0(S)))$,
+on the explicit Banach space $A(\{|z-1|<1\})$.
+\item \textbf{Proved.} Lemma~\ref{lem:resolvent-uniform} and Lemma~\ref{lem:master}
+(the uniform resolvent expansion and the master equation, with
+$K=\lceil e^{m^3}\rceil$ on the lower side); hence the joint scaling limit
+Theorem~\ref{thm:critical-scaling} and the critical exponent
+Corollary~\ref{cor:critical-exp}, both modulo the repo's transfer-operator
+criterion (Theorem~\ref{thm:residues-general}(ii), whose step-certificate
+soundness is kernel-checked as \texttt{step\_cert\_upper\_sound} and
+\texttt{step\_cert\_lower\_sound}).
+\item \textbf{Not proved.} The supercritical leading constant
+(Proposition~\ref{prop:supercritical-constant}); the continuity of $\kappa(S)$ in
+$S$; the existence of an integer set $S$ with $s_0(S)=\frac12$ exactly; any
+Lean formalization of the critical-scaling layer beyond the pole axiom and the
+scaling-function identity.
+\item \textbf{Corrected.} The old fixed-$\eta$ form of conjecture C2 is false
+(Remark~\ref{rem:naive-C2-false}); only the joint scaling limit survives. The
+displayed tail equation in the proof of
+Theorem~\ref{thm:multi-residue-asymptotic}(iv) is missing a factor $m^{-1}$
+(Remark~\ref{rem:typo}).
+\end{itemize}

@@ -1,0 +1,47 @@
+% paper2B_unified_draft_20261124.tex --- main paper B (2A + 2B merged).
+% NEW FILE, 2026-11-24. Assembled draft; does not modify any existing file.
+% Sources: 2A body (class, spectrum-2A, finite, weights, gauge-core, num-2A)
+% + 2B body (poly, growing) + frontmatter-2B-v3 (merged; e demoted).
+% prereq-2B.tex is intentionally omitted: the 2A body is included in full, so
+% its restated facts would be duplicated. This decision is recorded in the
+% assembly report and is subject to main-session confirmation.
+
+\input{../src_sections/preamble.tex}
+
+% frontmatter-2B-v3 contains \begin{document} and \maketitle.
+\input{../frontmatter-2B-v3-20261124.tex}
+
+\input{../src_sections/intro-2B.tex}
+
+% --- 2A body ---------------------------------------------------------------
+\input{../src_sections/sec-class.tex}
+\input{../src_sections/sec-spectrum-2A.tex}
+\input{../src_sections/sec-finite.tex}
+\input{../src_sections/sec-weights.tex}
+\input{../src_sections/sec-gauge-core.tex}
+% Numerical notes for the 2A block are consolidated; full tables remain in the
+% companion manuscript and in sec-num-2A.tex.
+\section{Numerical evidence}\label{sec:num}
+\begin{remark}[Numerical evidence for the $\ee$-recurrence]\label{rem:num-2A}
+The two-term and three-term expansions of this paper are corroborated, for the
+selected denominators of $\ee$, by the $32$-digit \texttt{mpmath} Chebyshev
+collocation pipeline of the companion manuscript
+(\texttt{verify\_paper2\_extensions.py},
+\texttt{verify\_residue\_multi\_asymptotic.py}), including the closed
+$N=512$ kernel brackets and the $m\le16384$ residual tables.
+\end{remark}
+
+% --- 2B body ---------------------------------------------------------------
+\input{../src_sections/sec-poly.tex}
+\input{../src_sections/sec-growing.tex}
+
+% --- flagship corollary placeholder ---------------------------------------
+\begin{remark}[Flagship corollary: $\ee$]\label{rem:e-flagship}
+The case $A_j=4j+2$, i.e.\ the selected convergent denominators of $\ee$, is
+retained as the flagship corollary of the general theory. Its detailed
+statement is deferred to the final version of this paper.
+\end{remark}
+
+\input{../src_sections/refs-2C-v3-20261124.tex}
+
+\end{document}

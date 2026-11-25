@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  25 NOV 2026 00:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.13)  25 NOV 2026 07:39
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **./paper2A_draft.tex
 (paper2A_draft.tex
@@ -301,7 +300,7 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enitdp@description=\count312
 )
 \c@theorem=\count313
-) (../src_sections/frontmatter-2A.tex
+) (../src_sections/frontmatter-2Apub.tex
 (C:\Users\Lgnatius\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\l3backend-p
 dftex.def
 File: l3backend-pdftex.def 2026-09-09 L3 backend support: PDF output (pdfTeX)
@@ -391,173 +390,39 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 3.
 (C:\Users\Lgnatius\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ))
-(../src_sections/intro-2A.tex [1
+(../src_sections/intro-2Apub.tex [1
 
-{C:/Users/Lgnatius/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]) (../
-src_sections/sec-class.tex [3])
-(../src_sections/sec-spectrum-2A.tex [4] [5]) (../src_sections/sec-finite.tex
-[6] [7] [8]) (../src_sections/sec-weights.tex [9] [10]
-Underfull \hbox (badness 1496) in paragraph at lines 111--119
-\OT1/cmr/m/n/10.95 (formalized in \OT1/cmtt/m/n/10.95 WeightedPhase.content[]co
-re[]tendsto \OT1/cmr/m/n/10.95 via \OT1/cmtt/m/n/10.95 FloorSemiring.tendsto[]p
-ow[]div[]
- []
-
-[11] [12] [13]) (../src_sections/sec-gauge-core.tex [14] [15] [16]
+{C:/Users/Lgnatius/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3]) 
+(../src_sections/sec-class-2Apub.tex
+[4]) (../src_sections/sec-spectrum-2Apub.tex [5])
+(../src_sections/sec-finite-2Apub.tex [6] [7] [8])
+(../src_sections/sec-weights-2Apub.tex [9] [10] [11] [12])
+(../src_sections/sec-gauge-core-2Apub.tex [13] [14] [15]
 Underfull \hbox (badness 1910) in paragraph at lines 227--235
 []\OT1/cmr/m/n/10.95 For the power-gauge fam-ily $\OML/cmm/m/it/10.95 g[]\OT1/c
 mr/m/n/10.95 (1\OML/cmm/m/it/10.95 =Q[]\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.
 95 ^^L[]$\OT1/cmr/m/n/10.95 , on each lin-ear in-ter-po-la-tion in-ter-val
  []
 
-
-Underfull \hbox (badness 2478) in paragraph at lines 247--267
-\OT1/cmr/m/n/10.95 In \OT1/cmtt/m/n/10.95 EpiFormal/GaugeExact.lean\OT1/cmr/m/n
-/10.95 , $\OML/cmm/m/it/10.95 L$\OT1/cmr/m/n/10.95 -translation in-vari-ance (\
-OT1/cmtt/m/n/10.95 exactLevel[]add[]latticeL\OT1/cmr/m/n/10.95 ), the
- []
-
-[17]
-Underfull \hbox (badness 2582) in paragraph at lines 268--320
-\OT1/cmtt/m/n/10.95 strictLevel[]null\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 m
-kMetric[]critGauge[]exactLevel[]pos\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 mkM
-etric[]critGauge[]exactLevel[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--320
-\OT1/cmtt/m/n/10.95 eq[]top\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 critGauge[]
-exactLevel[]sigma[]finite[]cover\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 mkMetr
-ic[]critGauge[]exactLevel[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--320
-\OT1/cmtt/m/n/10.95 inter[]Ioo[]eq[]top\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95
- mkMetric[]powerGauge[]exactLevel[]null[]of[]gt\OT1/cmr/m/n/10.95 , \OT1/cmtt/m
-/n/10.95 mkMetric[]powerGauge[]
- []
-
-
-Underfull \hbox (badness 1546) in paragraph at lines 268--320
-\OT1/cmtt/m/n/10.95 exactLevel[]not[]sigma[]finite[]of[]lt\OT1/cmr/m/n/10.95 , 
-and \OT1/cmtt/m/n/10.95 critGauge[]adjacent[]level[]separation\OT1/cmr/m/n/10.9
-5 ) and na-
- []
-
-
-Underfull \hbox (badness 1087) in paragraph at lines 268--320
-\OT1/cmr/m/n/10.95 tively on \OT1/cmtt/m/n/10.95 UnitAddCircle \OT1/cmr/m/n/10.
-95 ($\U/msb/m/n/10.95 R\OML/cmm/m/it/10.95 =\U/msb/m/n/10.95 Z$\OT1/cmr/m/n/10.
-95 ) (\OT1/cmtt/m/n/10.95 mkMetric[]critGauge[]circleStrictLevel[]null\OT1/cmr/
-m/n/10.95 , \OT1/cmtt/m/n/10.95 mkMetric[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--320
-\OT1/cmtt/m/n/10.95 circleLevelSet[]null[]of[]subgauge\OT1/cmr/m/n/10.95 , \OT1
-/cmtt/m/n/10.95 mkMetric[]critGauge[]circleExactLevel[]inter[]open[]eq[]
- []
-
-
-Underfull \hbox (badness 7486) in paragraph at lines 268--320
-\OT1/cmtt/m/n/10.95 top\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 mkMetric[]critG
-auge[]circleExactLevel[]eq[]top\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 critGau
-ge[]circleExactLevel[]sigma[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--320
-\OT1/cmtt/m/n/10.95 ExactLimit[]inter[]open[]eq[]top\OT1/cmr/m/n/10.95 , \OT1/c
-mtt/m/n/10.95 mkMetric[]binaryGauge[]circleUnsignedExactLimit[]eq[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--320
-\OT1/cmtt/m/n/10.95 top\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 binaryGauge[]ci
-rcleUnsignedExactLimit[]sigma[]finite[]cover\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/
-10.95 critGauge[]circle
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--320
-\OT1/cmtt/m/n/10.95 UnsignedExactLimit[]null\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/
-10.95 mkMetric[]powerGauge[]circleUnsignedExactLimit[]null[]of[]gt\OT1/cmr/m/n/
-10.95 ,
- []
-
-
-Underfull \hbox (badness 4940) in paragraph at lines 268--320
-\OT1/cmr/m/n/10.95 and \OT1/cmtt/m/n/10.95 mkMetric[]powerGauge[]circleUnsigned
-ExactLimit[]not[]sigma[]finite[]of[]lt\OT1/cmr/m/n/10.95 ). All 53
- []
-
-
-Underfull \hbox (badness 1742) in paragraph at lines 268--320
-\OT1/cmr/m/n/10.95 au-dited dec-la-ra-tions in \OT1/cmtt/m/n/10.95 GaugeCircle.
-lean \OT1/cmr/m/n/10.95 re-port only \OT1/cmtt/m/n/10.95 propext\OT1/cmr/m/n/10
-.95 , \OT1/cmtt/m/n/10.95 Classical.choice\OT1/cmr/m/n/10.95 , and
- []
-
-[18] [19] [20]
-Underfull \hbox (badness 1448) in paragraph at lines 507--521
-\OT1/cmtt/m/it/10.95 PolyExtension.lean\OT1/cmr/m/it/10.95 : the bi-nary digit 
-char-ac-ter-i-za-tion \OT1/cmtt/m/it/10.95 unsigned[]exact[]limit[]iff[]defect[
-]
- []
-
-
-Underfull \hbox (badness 1478) in paragraph at lines 507--521
-\OT1/cmtt/m/it/10.95 binary\OT1/cmr/m/it/10.95 , the con-stant digit char-ac-te
-r-i-za-tion \OT1/cmtt/m/it/10.95 signed[]exact[]limit[]iff[]defect[]const\OT1/c
-mr/m/it/10.95 , the $\OML/cmm/m/it/10.95 L$\OT1/cmr/m/it/10.95 -
- []
-
-[21]
-Underfull \hbox (badness 1762) in paragraph at lines 615--640
-\OT1/cmtt/m/n/10.95 mem[]signedExactLimitSet\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/
-10.95 signedExactLimitSet[]pos[]eq[]coset\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.
-95 signedExactLimitSet[]neg[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 615--640
-\OT1/cmtt/m/n/10.95 eq[]coset\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 signedExa
-ctLimitSet[]zero[]eq[]latticeL\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 signedEx
-actLimitSet[]empty[]of[]not[]
- []
-
-) (../src_sections/sec-num-2A.tex [22]) (../src_sections/refs.tex
-Underfull \hbox (badness 2359) in paragraph at lines 15--17
+[16] [17] [18] [19]) (../src_sections/refs-2Apub.tex
+Underfull \hbox (badness 2359) in paragraph at lines 8--10
 []\OT1/cmr/m/n/10.95 Y. Bugeaud, L. Liao, M. Rams, \OT1/cmr/m/it/10.95 Met-ri-c
 al re-sults on the dis-tri-bu-tion of frac-tional
  []
 
 
-Underfull \hbox (badness 1596) in paragraph at lines 15--17
+Underfull \hbox (badness 1596) in paragraph at lines 8--10
 \OT1/cmr/m/it/10.95 parts of pow-ers of real num-bers\OT1/cmr/m/n/10.95 , Proc.
  Ed-inb. Math. Soc. (2) 62 (2019), 505--521,
  []
 
 
-Underfull \hbox (badness 1609) in paragraph at lines 21--24
-[]\OT1/cmr/m/n/10.95 P. Chi-tanga, B. Lem-mens, R. Nuss-baum, \OT1/cmr/m/it/10.
-95 On the struc-ture of the di-men-sion spec-
- []
-
-
-Underfull \hbox (badness 1769) in paragraph at lines 21--24
-\OT1/cmr/m/it/10.95 trum for con-tin-ued frac-tion ex-pan-sions\OT1/cmr/m/n/10.
-95 , Indag. Math. 37 (2026), no. 6, 1960--1989,
- []
-
-[23]
-Underfull \hbox (badness 2302) in paragraph at lines 60--64
+Underfull \hbox (badness 2302) in paragraph at lines 29--33
 []\OT1/cmr/m/n/10.95 D. Lima and C. G. Mor-eira, \OT1/cmr/m/it/10.95 Phase tran
 -si-tions on the Markov and La-grange dy-
  []
 
-[24]) [25]
+[20]) [21]
 (C:\Users\Lgnatius\.gemini\antigravity\worktrees\epi_work\read_paper_repo\paper
 2_spectral_gap_dimension\split\2A_core_gauge_trichotomy\build\paper2A_draft.aux
 )
@@ -565,55 +430,50 @@ Underfull \hbox (badness 2302) in paragraph at lines 60--64
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-09-09>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `paper2A_draft.out' has not changed.
-(rerunfilecheck)             Checksum: D0B742FFF20CD4036AC8045623375B62;3011.
+(rerunfilecheck)             Checksum: DB66F22B673FB84F5595C4ED2DA00FAF;3357.
  ) 
 Here is how much of TeX's memory you used:
- 10166 strings out of 467392
- 160669 string characters out of 5404180
- 595277 words of memory out of 5000000
- 39272 multiletter control sequences out of 15000+600000
- 644097 words of font info for 102 fonts, out of 8000000 for 9000
+ 10126 strings out of 467392
+ 160307 string characters out of 5404180
+ 595781 words of memory out of 5000000
+ 39254 multiletter control sequences out of 15000+600000
+ 642689 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,12n,82p,641b,761s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,12n,82p,645b,763s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lgnatius\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\t
 crm1095.pk><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Lgnatius/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/Lgnatius/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Lgnatius
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/U
-sers/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi
-10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmmi12.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmmi5.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Lgnatius/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Lgnatius/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Lgnati
-us/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/U
-sers/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr1
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Us
+ers/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi1
 2.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmr17.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmr6.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Lgnatius/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Lgnatius/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Lgnatius/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users
-/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pf
-b><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmsy8.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmti10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+nts/cm/cmmi5.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmmi6.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Lgnatius/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Lgnatius/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Lgnatius
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Use
+rs/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.
+pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmr6.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmr7.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Lgnatius/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Lgnatius/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/L
+gnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+<C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmti10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmtt10.pfb><C:/Users/Lgnatius/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on C:\Users\Lgnatius\.gemini\antigravity\worktrees\epi_work\read
 _paper_repo\paper2_spectral_gap_dimension\split\2A_core_gauge_trichotomy\build\
-paper2A_draft.pdf (25 pages, 507973 bytes).
+paper2A_draft.pdf (21 pages, 455457 bytes).
 PDF statistics:
- 526 PDF objects out of 1000 (max. 8388607)
- 110 named destinations out of 1000 (max. 500000)
- 89 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 487 PDF objects out of 1000 (max. 8388607)
+ 96 named destinations out of 1000 (max. 500000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 

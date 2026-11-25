@@ -3,9 +3,12 @@
 **/.lake/
 **/__pycache__/
 *.py[cod]
+Python/
 
 # Local editor / agent runtime tooling & configs
 .opencode/
+.zcode/
+.zwork/
 opencode.json
 opencode.json.*
 
@@ -19,6 +22,8 @@ opencode.json.*
 
 # Split-track regenerable PDFs (logs kept, PDFs rebuilt on demand)
 paper2_spectral_gap_dimension/split/*/build/*.pdf
+paper2_spectral_gap_dimension/split/2*/paper2*_draft.pdf
+paper2_spectral_gap_dimension/split/2*/paper2*_draft.log
 
 # Local Claude worktree backups
 .claude/worktrees/

@@ -1,0 +1,181 @@
+\section{Introduction}
+
+Metric Diophantine approximation along a fixed integer sequence $(q_n)$ asks
+how the distances $\|q_nx\|$ to the nearest integer behave for typical and for
+exceptional real numbers $x$. When $(q_n)$ is the sequence of convergent
+denominators of an irrational $\alpha$, a criterion of Kraaikamp and
+Liardet~\cite{KL} identifies the group $\Z+\Z\alpha$ through the size of
+$\|q_nx\|$ relative to the approximation error of $\alpha$. Beyond such
+zero-level statements, sets defined by a condition that is required for
+\emph{all large} $n$ (rather than for infinitely many $n$) are much less
+understood than their limsup counterparts; see for instance
+Bugeaud, Liao and Rams~\cite{BLR} and the discussion in
+Section~\ref{sec:prior}. In this paper we treat one sequence for which the
+whole picture can be determined: a sparse, super-exponentially growing
+subsequence of the convergent denominators of $\ee$. For this sequence we
+compute the full weighted approximation spectrum, the Hausdorff dimension of
+every level set, and the exact Hausdorff gauge of every level.
+
+\subsection{Setup}
+
+The continued fraction of $\ee$ is $[2;1,2,1,1,4,1,1,6,\dots]$. Let $P_j/Q_j$
+be the convergent immediately preceding the partial quotient $2j$; the first
+few are $3/1,19/7,193/71,2721/1001$. The denominators satisfy
+\begin{equation}\label{eq:rec}
+Q_{j+1}=(4j+2)Q_j+Q_{j-1}\quad(j\ge2),\qquad Q_1=1,\ Q_2=7,
+\end{equation}
+so $Q_{j+1}/Q_j\sim 4j$ and $\log Q_j\sim j\log j$ (super-exponential growth).
+Write $\|y\|=\dist(y,\Z)$ and define
+\[
+\Lam(x):=\limsup_{j\to\infty} j\,\|Q_j x\|\in[0,\infty].
+\]
+More generally, for $\alpha\ge0$ put
+$\Lam_\alpha(x):=\limsup_{j\to\infty} j^\alpha\|Q_j x\|\in[0,\infty]$,
+so that $\Lam=\Lam_1$, and write $E_c:=\{x:\Lam(x)\le c\}$.
+Let $L:=\Z+\Z\frac{\ee+1}{2}$, a countable dense subgroup of $\R$.
+
+\subsection{Main results}
+
+\paragraph{The spectrum.} The function $\Lam$ vanishes exactly on $L$, and
+$\Lam\ge1/4$ off $L$ (Theorems~\ref{thm:class} and~\ref{thm:gap}). The
+whole spectrum is quantized (Theorem~\ref{thm:full-spectrum}):
+\[
+\Lam(\R)=\frac14\Z_{\ge0}\cup\{\infty\}.
+\]
+Thus every interval $(k/4,(k+1)/4)$ is a gap of the spectrum, and the sublevel
+sets are constant across each gap: $E_c=E_{k/4}$ for $c\in[k/4,(k+1)/4)$
+(Corollary~\ref{thm:sub}).
+
+\paragraph{Dimension.} Every finite sublevel set $E_c$ has Hausdorff dimension
+$0$ (Theorem~\ref{thm:finite}), while $\{\Lam=\infty\}$ has full Lebesgue
+measure (Corollary~\ref{cor:infinite-level}). For the subcritical weights
+$0\le\alpha<1$, both $\{x:\Lam_\alpha(x)\le c\}$ and the prescribed-limit sets
+$\{x\in[0,1]:j^\alpha\|Q_jx\|\to c\}$ have Hausdorff dimension exactly
+$1-\alpha$ (Theorems~\ref{thm:upper} and~\ref{conj:weight}). The weight $j$ is
+therefore critical: it is the threshold at which finite levels collapse to
+dimension $0$.
+
+\paragraph{Exact gauges.} Dimension does not distinguish the levels $k/4$, but
+Hausdorff gauges do. For $k\ge1$ let $h_k$ be the gauge with
+$h_k(1/Q_n)=(2k+1)^{-n}$, interpolated linearly between these scales. On the
+circle $\R/\Z$, the level $\{\Lam=k/4\}$ has infinite but $\sigma$-finite
+$\mathcal H^{h_k}$-measure, and the strict sublevel $\{\Lam<k/4\}$ is
+$\mathcal H^{h_k}$-null (Theorem~\ref{thm:gauge}). The gauge $h_k$ is exact:
+the $\mathcal H^{h_k}$-measure of the level is infinite in every nonempty open
+arc, smaller gauges annihilate $\{\Lam\le k/4\}$, and larger gauges destroy
+$\sigma$-finiteness (Corollary~\ref{cor:exact-gauge}). More generally, every
+nondecreasing gauge is classified by the lower limit of its normalized values
+along the scales $1/Q_n$, also when these values oscillate
+(Corollary~\ref{cor:liminf-gauges}).
+
+\paragraph{A trichotomy at each level.} Fix $k\ge1$ (Theorem~\ref{thm:trichotomy}).
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item The limsup level $\{\Lam=k/4\}$ has critical gauge base $2k+1$, as above.
+\item The exact-limit set $\{x:j\|Q_jx\|\to k/4\}$ has critical gauge base $2$,
+independently of $k$.
+\item Each signed exact-limit set
+$\{x:j\,(Q_jx-\mathrm{round}(Q_jx))\to\pm k/4\}$ is a single coset of $L$, hence
+countable.
+\end{enumerate}
+
+\subsection{Method}
+
+Everything rests on an exact symbolic coding of the level sets. For $x\in\R$
+let $M_j$ be a nearest integer to $Q_jx$ and $u_j=Q_jx-M_j$. Because
+$(Q_j)$ satisfies the integer recurrence~\eqref{eq:rec}, the numbers
+\[
+d_j:=M_{j+1}-(4j+2)M_j-M_{j-1}=(4j+2)u_j+u_{j-1}-u_{j+1}
+\]
+are integers, and $d_j-4ju_j\to0$ whenever $\Lam(x)<\infty$. Hence
+$4\Lam(x)=\limsup_j|d_j|$, which gives the quantization of the spectrum, and the
+level $\{\Lam\le k/4\}$ is described by digit sequences that eventually take
+values in $\{-k,\dots,k\}$. Conversely, every such digit sequence is realized by
+a point $x=\lim_jM_j/Q_j$ defined through a telescoping series
+(Section~\ref{sec:gauge}). The level sets are thus Moran-type sets with
+$2k+1$ branches per step at scale $1/Q_n$. The covering and
+mass-distribution arguments that turn such a coding into gauge statements are
+standard for homogeneous Moran sets (cf.\ Feng, Wen and Wu~\cite{FWW} and
+Cabrelli, Mendivil, Molter and Shonkwiler~\cite{CMMS}). The specific inputs
+here are the coding itself, the uniform branching bound that the critical
+weight $j$ provides (which gives dimension $0$ for all finite levels,
+Theorem~\ref{thm:finite}), and translation invariance under the dense group
+$L$, which upgrades positive measure to infinite measure in every arc.
+
+\subsection{Relation to prior work}\label{sec:prior}
+
+The closest prior result is the criterion of Kraaikamp and Liardet \cite{KL},
+quoted as Lemma~4.1 in \cite{BDS}. Let $\alpha$ be irrational with convergents
+$p_n/q_n$. Then $\beta\notin\Z+\Z\alpha$ if and only if
+$\|q_n\beta\|>\tfrac14\,q_n|q_n\alpha-p_n|$ for infinitely many $n$. This is a
+classification together with a gap, with constant $1/4$, for the normalized
+quantity $\|q_n\beta\|/(q_n|q_n\alpha-p_n|)$ along \emph{all} convergent
+denominators. Theorems~\ref{thm:class} and~\ref{thm:gap} compare with it in two
+ways.
+\begin{itemize}[leftmargin=1.8em]
+\item \emph{As a subsequence of the convergents of $\ee$.} Passing to every
+third convergent denominator of $\ee$ enlarges the zero group from $\Z+\Z\ee$
+to $L$: for $x=(\ee+1)/2$ the quantity $j\|Q_jx\|$ tends to $0$. It also
+changes the normalization. Since $2j+1<1/(Q_j|Q_j\ee-P_j|)<2j+2$, one has
+$\limsup_{j\to\infty}\|Q_jx\|/(Q_j|Q_j\ee-P_j|)=2\Lam(x)$, so the gap
+$\Lam\ge1/4$ reads $\limsup\ge1/2$ in their normalization; the value
+$\Lam(x_0)=1/4$ is attained by the point $x_0$ of Remark~\ref{rem:unweighted}.
+\item \emph{As the full convergent sequence of $\beta=(\ee+1)/2$.} With
+$R_j=(P_j+Q_j)/2\in\Z$, the fractions $R_j/Q_j$ are the convergents of
+$\beta=[1;1,6,10,14,\dots]$. Applying the criterion of \cite{KL} (in the form
+on p.~106 of \cite{BDS}) to $\beta$ gives $\|Q_jx\|>\tfrac14Q_j|Q_j\beta-R_j|$
+infinitely often for $x\notin L$. Since $jQ_j|Q_j\beta-R_j|\to1/4$, this
+yields $\Lam(x)\ge1/16$ off $L$. It already recovers $\{\Lam=0\}=L$; the direct
+recurrence analysis gives the sharp gap $1/4$ and the complete quantization.
+\end{itemize}
+We therefore regard Theorems~\ref{thm:class} and~\ref{thm:gap} as a variant of
+known results. The new results are the complete quantization of the spectrum
+(Theorem~\ref{thm:full-spectrum}), the dimension theorems
+(Theorems~\ref{thm:finite}, \ref{thm:upper} and~\ref{conj:weight}), the exact
+gauges (Theorem~\ref{thm:gauge} and Corollaries~\ref{cor:exact-gauge}
+and~\ref{cor:liminf-gauges}) and the trichotomy
+(Theorem~\ref{thm:trichotomy}).
+
+For the weight $\alpha=0$, the dimension statement of Theorem~\ref{conj:weight}
+also follows from Corollary~8 of Bugeaud, Liao and Rams \cite{BLR}, which applies
+because $Q_{j+1}/Q_j\to\infty$ (in particular $\dimH\{x:\|Q_jx\|\to0\}=1$). For
+$0<\alpha<1$ the logarithmic growth condition~(1.6) of their Theorem~7 fails,
+since $\log Q_{j+1}/\log Q_j\to1$. As the maps $x\mapsto Q_jx$ are linear,
+the lower bound can instead be read from the homogeneous Moran bounds
+of~\cite{FWW}; we give a direct covering upper bound and a shifted-grid Moran
+construction. Mass transference methods for limsup sets \cite{BV} do not apply
+to the eventual (liminf-type) conditions considered here.
+
+Regarding gauges, Cabrelli, Mendivil, Molter and Shonkwiler
+\cite[\S5, Theorem~3]{CMMS} construct for a Cantor set a gauge giving it
+positive \emph{finite} measure, whereas Moreira, Erazo and Angelini \cite{MEA}
+show that the classical Lagrange level at value $3$ has zero or
+non-$\sigma$-finite measure for every dimension function. Here the recurrence
+supplies the gauge $h_k$, and the level $\{\Lam=k/4\}$ has \emph{infinite but
+$\sigma$-finite} $\mathcal H^{h_k}$-measure.
+
+The phenomenon of a spectral gap with zero-dimensional sub-threshold levels is
+classical for the Lagrange spectrum, whose part below $3$ is countable while
+Hall's ray gives a half-line; Moreira \cite{Moreira} studies the dimension of
+the Lagrange and Markov spectra below a threshold, and Lima and
+Moreira~\cite{LimaMoreira} prove phase transitions for dynamical Markov and
+Lagrange spectra of horseshoes. Our level sets live in the space of inputs
+$x\in\R$, not in the spectrum. For Cantor series expansions, Cheng and
+Zhang~\cite{CZ} determine Hausdorff dimensions of related limsup sets; spectra
+and exact gauges are not considered there.
+
+\subsection{Formal verification}
+
+The results of this paper have also been formalized in the Lean~4 proof
+assistant with the Mathlib library, using only Lean's standard axioms. The
+formal development and its axiom audit are described in the supplementary
+material. The proofs below are complete and do not depend on the
+formalization.
+
+\subsection{Organization}
+
+Section~\ref{sec:class} introduces the digit coding and proves the zero-level
+classification and the initial gap. Section~\ref{sec:spectrum} proves the
+quantization of the spectrum. Section~\ref{sec:finite-levels} shows that all
+finite levels have dimension $0$, and Section~\ref{sec:weights} treats the
+subcritical weights. Section~\ref{sec:gauge} contains the exact gauges and the
+trichotomy.

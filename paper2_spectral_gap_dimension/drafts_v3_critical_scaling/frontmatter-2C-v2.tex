@@ -1,0 +1,72 @@
+% frontmatter-2C-v2.tex — E7 草案（2026-11-24，新文件；不碰既有 frontmatter-2C.tex）
+% 结构：\title（On the …，≤16 词）+ 摘要（≤200 词，含临界情形占位句）+ 诚实声明段（审计子集 + 内核外项 + companion 句）。
+% 素材：主稿 paper2_spectral_gap_dimension.tex L107–166 句式；P2C 区块 = L2884–4052。
+% 占位句（按任务书原文）：[Critical scaling theorem: to be inserted]
+% 宏 \R,\Z,\ee,\Lam,\dimH 依赖共享 preamble.tex（与既有 frontmatter-2X.tex 同一入轨约定）。
+\title{On window constraints, digit residues, and critical phase transitions
+for modular continued fractions}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For ordinary continued fractions we determine the Hausdorff dimensions of
+Hermite window-count constraints: prescribed parity has exact dimension $1$,
+and bounded or prescribed increments have exact dimension $1/2$; short windows
+occur with explicit logarithmic frequency almost everywhere (constant
+$(1-\ee^{-1})/160$), while divergent window counts force Hausdorff dimension
+$1$ and Lebesgue nullity. For digit residues modulo $m\ge2$, eventual
+periodicity has the same Hausdorff dimension as the fixed alphabet; a
+uniform Lipschitz sandwich, an unconditional transfer-operator
+dimension criterion bypassing Bowen-pressure axioms, and exact
+integer certificates yield the certified $m\in\{2,3,4,5,6\}$ brackets, the
+global strict separation $\dimH F_{m,m}<\dimH F_{m,1}=\dimH E_m$ for all
+$m\ge2$, and the two-term expansion
+$\dimH F_{m,r}=\frac12+\frac{C_r}{2m}-\frac{C_r^2\log m}{2m^2}+O(m^{-2})$
+with $C_r$ the reciprocal metallic-continuant constants
+($C_1=\psi_{\mathrm{Fib}}$). For finite multi-residue alphabets $F_{m,S,B}$
+the Bowen-free Poincar\'e-abscissa dimension is $\dimH E_S=s_0(S)$,
+$\dimH F_{m,S,B}\to\max(1/2,s_0(S))$ with three-term Euler--Mascheroni
+subcritical expansion to $O((\log m)^2/m^3)$ and supercritical rate
+$\Theta(m^{-2s_0(S)})$; at the critical boundary $s_0(S)=1/2$, [Critical scaling theorem: to be inserted]
+All results are machine-checked in Lean~4 using only the base axioms
+\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, except
+the open-interval strictness of the certified brackets and the
+critical-boundary rate and exact supercritical leading constant, which remain
+outside the Lean kernel.
+This work does not resolve the open problem of the irrationality of $e+\pi$.
+\end{abstract}
+
+\section*{Honesty statement and formal verification}
+
+The Lean~4 audit subset of this paper --- the modules covering every theorem
+stated above, with names transcribed verbatim from the corresponding sections
+of the full manuscript --- is: the thirteen window modules
+\texttt{WindowMobiusCount.lean}, \texttt{NoShortDimCount.lean},
+\texttt{WindowTreePrune.lean}, \texttt{WindowAsympThresh.lean},
+\texttt{WindowFrostmanDischarge.lean}, \texttt{WindowPaperScale.lean},
+\texttt{WindowCFRealize.lean}, \texttt{WindowCFBridge.lean},
+\texttt{WindowNoShortCFRealize.lean}, \texttt{WindowPrescribedCFRealize.lean},
+\texttt{WindowBoundedUpper.lean}, \texttt{WindowShortAe.lean}, and
+\texttt{WindowShortAeRealize.lean}; the residue modules
+\texttt{EpiFormal/ResidueModGeneral.lean},
+\texttt{EpiFormal/TransferOperatorDim.lean},
+\texttt{EpiFormal/ResidueAsymptotic.lean}, and
+\texttt{WindowAndResidueCore.lean}; the certificate modules
+\texttt{EpiFormal/ResidueCertGenSound.lean},
+\texttt{EpiFormal/ResidueCertGenBase.lean}, and
+\texttt{EpiFormal/ResidueCertTable.lean}; and
+\texttt{EpiFormal/ResidueMultiAsymptotic.lean}, audited separately in
+\texttt{AuditResidueMultiAsymptotic.lean}. The full manuscript reports these
+modules as kernel-checked at Layer~A with only the three base axioms and zero
+\texttt{sorryAx}; they are audited jointly with the companion papers' modules
+in \texttt{Audit.lean}, whose declaration counts are project-wide, not
+per-paper. Outside the Lean kernel remain the strictness of the open intervals
+of the narrow $m\in\{2,3,4,5,6\}$ brackets (certified by the exact-integer
+Python script \texttt{residue\_certificate\_general\_N512.py} together with
+the cited pressure formalism; the closed brackets themselves are
+kernel-checked) and the asymptotic rate on the critical boundary
+$s_0(S)=1/2$ and the exact supercritical leading constant. The collocation
+values for a possible fourth-order term are heuristic and are not proved.
+
+\emph{The full 63-page version containing all proofs is available as a companion manuscript.}
