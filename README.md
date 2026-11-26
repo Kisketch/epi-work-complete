@@ -1,5 +1,7 @@
 # $e+\pi$ 无理性研究与连分数谱/维数理论完整私有归档（2026-11-25 最新版）
 
+> **快速导览**：第一次来看这里 → [`FOLDER_GUIDE.md`](FOLDER_GUIDE.md)（两分钟读懂目录结构与内容；各子目录都有 README）。
+
 > **一句总判断**：本仓库完成截至 **2026-11-25（Round 2 收口）**的全面整合与本地/GitHub 统一归档，涵盖两篇修订重编主论文（**Paper 1** 75 页 + **Paper 2** 66 页，且主稿与 `split/` 拆分真源保持 `293,395` 字节逐字节同步、**28/28** 文献全引用、2A/2B/2C `0/0` 未定义引用）与两篇独立衍生定理论文（**Paper 2D** 18 页 + **Paper 2E** 8 页，均 0 错 / 0 Undefined / 0 Overfull `\hbox`）、全量 Lean 4 `v4.35.0` 形式化工程（全库 **356** 个 `.lean` 文件，0 逃逸关键字、`sorryAx = 0`；核心 `Audit.lean` **937/937** + **8 个**独立 Layer A 入口 **156** 条合计 **1,093** 条声明，已彻底消去 Paper 2 **R1** 与 **R3** 并无条件证明 $\mu(e)=2$ 与 $e$ 全收敛谱）、新课题 [`research/`](research/README.md)（含 Kahane Q6 增补否证 D′/R 并证出确定性定理 K-1/K-2）、分离式日志与 20 项 11 维总清单 [`MASTER_INVENTORY_LIST.md`](paper1_e_plus_pi/07_research_log_and_guide/MASTER_INVENTORY_LIST.md) 以及全套符号/`python-flint==0.9.0` Arb/高精度验证包（全局导航见 [`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md)）；同时严格遵循 [`AGENTS.md`](AGENTS.md) 诚实基线——**$e+\pi$ 的无理性（及 $e\pi, e-\pi, \pi/e, \pi^e$ 单个的无理性）仍是公开问题，本仓库未证明 $e+\pi$ 无理、有理或超越。**
 
 ---
