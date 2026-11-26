@@ -14,3 +14,8 @@ axiom tiers: Lean foundational {propext, Quot.sound}; classical whitelist {Class
 statement map: kappa_eq_quarter = κ := inf_{z∉L} limsup j‖Q_j z‖ = 1/4, attained (fresh-evaluator R3 statement-fidelity PASS)
 not covered by Lean: the finer even/odd subsequence limits in statement.md (paper only)
 local note: native local compile not completed (memory pressure); CI is the build of record.
+
+# Addendum (Round 4): further lines from the same CI run 45759959535 (gh run view --log), used by the THM-0005 note
+'Psel_div_Qsel_tendsto_exp' depends on axioms: [propext, Classical.choice, Quot.sound]   (EulerConvergents.lean:598; δ-theory section l.284 header: "Hermite 积分表示；原两条公理已在此证明为定理")
+'Classification.theorem2_sufficiency' depends on axioms: [propext, Classical.choice, Quot.sound]   (printed by AuditCorollary3Gap.lean; not an exact-match gate entry)
+statement forms (source: artifacts/THM-0005/statement.md "Lean coverage" + EpiFormal/KappaSharp.lean): kappa_eq_quarter = (i) ∀ z∉L ∀ c<1/4 ¬eventually ≤ c ∧ (ii) ∃ z∉L ∀ c>1/4 eventually ≤ c; kappa_sharp adds "frequently ≥ 1/5" for the witness; definition fidelity (Qsel shifted index, distToNearestInt = |x − round x|, latticeL) reviewed by the R3 fresh-evaluator (logs/evaluations/R3-fresh-evaluator.md).

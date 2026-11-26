@@ -1,0 +1,382 @@
+% NON-CANONICAL DRAFT / DO NOT CITE / Lean-verified core: EpiFormal/KappaSharp.lean
+% Internal source map (not for submission): Prop 2 = THM-0006; Cor 3 = THM-0003(B);
+% Thm 4 = THM-0005.  Citation data only from logs/evidence/Q-R2-05_* and Q-R3-01_*.
+\documentclass[11pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=1.1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\dist}[1]{\lVert #1\rVert}
+\newcommand{\LL}{\mathcal{L}}
+
+\begin{document}
+
+\title{A sharp constant for inhomogeneous approximation along a sequence of denominators associated with $e$}
+
+% TODO before submission: author, affiliation, e-mail, acknowledgements, MSC codes, keywords.
+\author{[Author name]}
+% TODO before submission
+\date{Draft of \today. Non-canonical; not for citation.}
+
+\begin{abstract}
+Let $Q_j$ be defined by $Q_0=Q_1=1$ and $Q_{j+1}=(4j+2)Q_j+Q_{j-1}$, and let
+$\LL=\Z+\Z\,\frac{e+1}{2}$. For every real $z\notin\LL$ we show
+$\limsup_j j\,\dist{Q_j z}\ge 1/4$, while for $z\in\LL$ one has
+$j\,\dist{Q_jz}\to0$. We exhibit an explicit $z^*\notin\LL$ with
+$j\,\dist{Q_jz^*}\to 1/4$ along even $j$ and $\to0$ along odd $j$, so for this sequence the constant
+$1/4$ is optimal and attained. The qualitative dichotomy already follows from a theorem of
+Kraaikamp and Liardet; the sharp constant is, to our knowledge, not in the literature we consulted
+(a negative search only). The lower bound is deduced from a general dichotomy for
+integer sequences satisfying a three-term recurrence with partial quotients tending to
+infinity. Numerically (not proved here) the $Q_j$ are the continued-fraction denominators
+of $(e-1)/2$. The lower-bound and the optimality statements are machine-checked in Lean~4 (full CI build, run 45759959535);
+the even/odd sub-limits are not. We state explicitly what is not claimed.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+For $x\in\R$ write $\dist{x}$ for the distance from $x$ to the nearest integer. Let $\alpha$
+be irrational with continued-fraction denominators $q_n$, and set
+$\theta_n=q_n\dist{q_n\alpha}$. Kraaikamp and Liardet \cite{KL} proved a rigidity
+statement for the approximation of an arbitrary real $\beta$ along the sequence $(q_n)$:
+$\beta\in\alpha\Z+\Z$ if and only if $\dist{q_n\beta}\le\theta_n/4$ for all large $n$
+(their Theorem~1), and $\beta\in\alpha\Z+\Z$ if and only if $\dist{q_n\beta}=o(\theta_n)$
+(their Theorem~1$'$). Earlier, Larcher \cite{Larcher} treated the bounded-type case
+($\dist{q_n\beta}\to0$ iff $\beta\in\Z\alpha+\Z$) and gave a counterexample when the partial
+quotients are unbounded. The result of \cite{KL} is quoted in a related form in \cite{BDS}
+(Lemma~4.1 there, attributed to \cite{KL}). KL also attribute a related statement for bounded type to
+Stewart \cite{Stewart}; we know that statement only through the remark in \cite{KL}, and
+\emph{the full text of \cite{Stewart} was not consulted}.
+As far as the full texts we read go, \cite{KL} contains no sharpness example and no claim
+that the constant $1/4$ is optimal.
+
+\medskip
+\noindent\textbf{The sequence.} Define integers by
+\[
+Q_0=Q_1=1,\quad Q_{j+1}=(4j+2)Q_j+Q_{j-1}\ (j\ge1),\qquad
+P_0=1,\ P_1=3,\quad P_{j+1}=(4j+2)P_j+P_{j-1}\ (j\ge1).
+\]
+Here the recurrence \emph{is the definition}. As input to the proof of
+Corollary~\ref{cor:lower} we use that $P_j/Q_j\to e$ (see Remark~\ref{rem:input}).
+Numerically (400-digit arithmetic, 14 partial quotients, 12 denominators) the $Q_j$ agree with the
+regular continued-fraction denominators of $\alpha=(e-1)/2=[0;1,6,10,14,\dots]$.
+\emph{This identification was checked numerically only; it is not proved in this note, and we
+did not locate a source for the continued fraction expansion of $(e-1)/2$.}
+If it holds, then $\LL=\Z+\Z\frac{e+1}{2}=\alpha\Z+\Z$ and our results are statements about the
+setting of \cite{KL}; none of the proofs below use the identification.
+
+\begin{theorem}[Main theorem]\label{thm:main}
+Let $\LL=\Z+\Z\frac{e+1}{2}$ and let $Q_j$ be as above.
+\begin{enumerate}
+\item[(a)] If $z\in\LL$ then $j\,\dist{Q_jz}\to0$.
+\item[(b)] If $z\notin\LL$ then $\limsup_{j\to\infty} j\,\dist{Q_jz}\ge 1/4$.
+\item[(c)] There is an explicit $z^*\notin\LL$ (Section~\ref{sec:sharp}) with
+$j\,\dist{Q_jz^*}\to 1/4$ along even $j$ and $j\,\dist{Q_jz^*}\to0$ along odd $j$.
+\end{enumerate}
+Consequently $\kappa:=\inf_{z\notin\LL}\limsup_j j\,\dist{Q_jz}=1/4$, and the infimum is attained.
+\end{theorem}
+
+\begin{remark}[Comparison with \cite{KL}]
+If the numerical identification above holds, then asymptotically $\theta_j\approx 1/(4j)$, so the
+bound $\theta_j/4$ in KL's Theorem~1 corresponds, in the normalisation $j\,\dist{Q_jz}$, to a
+threshold of about $1/16$. Theorem~\ref{thm:main}(b) raises this to $1/4$, and (c)
+shows that $1/4$ cannot be improved along this sequence. Qualitatively, (a) and (b) are
+consequences of \cite{KL} (Theorem~1$'$) under that identification;
+the new content, if any, is the numerical value of the optimal constant and its attainment. Numerically, $\theta_j(4j+2)\to1$ and $j\theta_j/4$ increases to $1/16$ ($0.0594558$ at $j=10$,
+$0.0623050$ at $j=160$; mpmath, 900 digits, script \texttt{logs/verification/R4/note\_chk.py});
+this is a finite computation, not a proof.
+\end{remark}
+
+\medskip
+\noindent\textbf{What is not claimed.} See Section~\ref{sec:scope}: nothing here concerns $\pi$,
+$e+\pi$ or any specific constant other than $e$ via the lattice $\LL$; sharpness is shown
+for this single sequence only; novelty rests on a negative literature search.
+
+\section{A general dichotomy}\label{sec:dichotomy}
+
+Let $\|\cdot\|$ be as above. We use the following hypotheses.
+
+\medskip
+\noindent\textbf{(H)} $a_j\in\Z_{>0}$ for $j\ge1$ with $a_j\to\infty$; integers $Q_0\ge0$, $Q_1\ge1$,
+$P_0,P_1$; $D:=P_0Q_1-P_1Q_0\ne0$; and for $j\ge1$,
+\[
+Q_{j+1}=a_jQ_j+Q_{j-1},\qquad P_{j+1}=a_jP_j+P_{j-1}.
+\]
+
+\begin{proposition}\label{prop:dich}
+Assume (H). Then $\theta:=\lim_j P_j/Q_j$ exists and is irrational, and
+$\delta_j:=Q_j\theta-P_j$ satisfies $|\delta_j|\le|D|/Q_{j+1}$. Put
+$\LL_D:=(\Z\delta_0+\Z\delta_1)/D$; it contains $\Z+\Z\theta$ (with index $|D|$ in the sense that
+$\LL_D$ is the image of $M^{-1}\Z^2\supseteq\Z^2$, $|\det M|=|D|$, see below). For every real $z$:
+\begin{enumerate}
+\item[(A)] if $z\in\LL_D$ then $a_j\dist{Q_jz}\to0$;
+\item[(B)] if $z\notin\LL_D$ then $\limsup_j a_j\dist{Q_jz}\ge1$;
+\item[(C)] if $w_j>0$ and $w_j/a_j\to\kappa\in(0,\infty)$, then (A) and (B) hold with $a_j$
+replaced by $w_j$ and the threshold $1$ replaced by $\kappa$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\emph{Preliminaries.}
+(a) Put $C_j:=P_jQ_{j+1}-P_{j+1}Q_j$. By the recurrences,
+$C_j=P_j(a_jQ_j+Q_{j-1})-(a_jP_j+P_{j-1})Q_j=P_jQ_{j-1}-P_{j-1}Q_j=-C_{j-1}$,
+so $C_j=(-1)^jD$.
+
+(b) Since $a_j\ge1$, $Q_1\ge1$ and $Q_0\ge0$, we have $Q_j\ge1$ for $j\ge1$ and
+$Q_{j+1}\ge a_jQ_j$; as $a_j\to\infty$, $Q_j\to\infty$. Also $Q_{k+2}>Q_k$ for $k\ge0$,
+so $Q_kQ_{k+1}$ is strictly increasing for $k\ge1$.
+
+(c) From (a), $\frac{P_{k+1}}{Q_{k+1}}-\frac{P_k}{Q_k}=-\frac{(-1)^kD}{Q_kQ_{k+1}}$. For $k\ge1$ these
+terms alternate in sign and decrease in absolute value to $0$ by (b). Hence $\theta$ exists, and
+$|\theta-P_j/Q_j|\le|D|/(Q_jQ_{j+1})$ for $j\ge1$, so $|\delta_j|\le|D|/Q_{j+1}$.
+For $j=0$: if $Q_0=0$ then $|\delta_0|=|P_0|=|D|/Q_1$; if $Q_0\ge1$ the same alternating-series
+argument applies from $k=0$ because $Q_2>Q_0$.
+
+(d) \emph{$\theta$ is irrational.} If $\theta=p/q$, then $q\delta_j=pQ_j-qP_j\in\Z$ and $q\delta_j\to0$, so
+$\delta_j=0$ for $j\ge N$. The recurrence $\delta_{j-1}=\delta_{j+1}-a_j\delta_j$ (note $\delta$
+satisfies the same recurrence as $Q,P$) run backwards gives $\delta_0=\delta_1=0$, hence
+$P_i=\theta Q_i$ for $i=0,1$, so $D=P_0Q_1-P_1Q_0=\theta(Q_0Q_1-Q_1Q_0)=0$, a contradiction.
+
+(e) A direct computation gives $Q_j\delta_{j+1}-Q_{j+1}\delta_j=C_j=(-1)^jD\ne0$. Hence any real
+sequence satisfying the recurrence (for $j\ge j_0$) is a unique real combination
+$\alpha Q_j+\beta\delta_j$ of the two solutions $(Q_j)$ and $(\delta_j)$.
+
+\emph{Lemma 1.} Let $\gamma,\varepsilon\in\R$. If $\gamma Q_j+\varepsilon P_j\in\Z$ for two
+consecutive indices $j_0,j_0+1$, then it is an integer for all $j\ge0$. Indeed, the sequence
+$u_j=\gamma Q_j+\varepsilon P_j$ satisfies $u_{j+1}=a_ju_j+u_{j-1}$ with integer $a_j$, which
+propagates integrality forwards and (via $u_{j-1}=u_{j+1}-a_ju_j$) backwards.
+Consequently
+$\Lambda:=\{(\gamma,\varepsilon)\in\R^2:\gamma Q_j+\varepsilon P_j\in\Z\ \forall j\}=M^{-1}\Z^2$
+with $M=\begin{pmatrix}Q_0&P_0\\Q_1&P_1\end{pmatrix}$, $\det M=-D$. Writing
+$(\gamma,\varepsilon)=M^{-1}(a,b)^{T}$ with $(a,b)\in\Z^2$ and using Cramer's rule,
+\[
+\gamma+\varepsilon\theta=\frac{aP_1-bP_0+\theta(bQ_0-aQ_1)}{-D}=\frac{a\delta_1-b\delta_0}{D},
+\]
+so $\{\gamma+\varepsilon\theta:(\gamma,\varepsilon)\in\Lambda\}=\LL_D$.
+
+\emph{(A).} Let $z=\gamma+\varepsilon\theta$ with $(\gamma,\varepsilon)\in\Lambda$. Then
+$n_j:=\gamma Q_j+\varepsilon P_j\in\Z$ and $Q_jz-n_j=\varepsilon\delta_j$, hence
+$a_j\dist{Q_jz}\le|\varepsilon||D|\,a_j/Q_{j+1}\le|\varepsilon D|/Q_j\to0$, using $Q_{j+1}\ge a_jQ_j$.
+
+\emph{(B).} We prove the contrapositive: suppose $\limsup_j a_j\dist{Q_jz}<c<1$; we show $z\in\LL_D$.
+Let $n_j$ be the nearest integer to $Q_jz$ and $y_j=Q_jz-n_j$, so $|y_j|<c/a_j$ for $j\ge J_1$.
+Put $m_j:=n_{j+1}-a_jn_j-n_{j-1}\in\Z$. Since $Q_j z$ satisfies the recurrence,
+$y_{j+1}-a_jy_j-y_{j-1}=-m_j$, so
+\[
+|m_j|\le|y_{j+1}|+a_j|y_j|+|y_{j-1}|<c\Bigl(1+\tfrac1{a_{j+1}}+\tfrac1{a_{j-1}}\Bigr)<1
+\]
+for large $j$ (because $a_j\to\infty$ and $c<1$). Hence $m_j=0$ for $j\ge J$. So $(y_j)_{j\ge J-1}$
+satisfies the recurrence, and by (e) $y_j=\alpha Q_j+\beta\delta_j$ for $j\ge J-1$ with real
+$\alpha,\beta$. Since $y_j\to0$, $\delta_j\to0$ and $Q_j\to\infty$, we get $\alpha=0$. Therefore
+$n_j=Q_jz-\beta\delta_j=(z-\beta\theta)Q_j+\beta P_j$ for $j\ge J-1$. These are integers at
+consecutive indices, so by Lemma 1 $(z-\beta\theta,\beta)\in\Lambda$, and $z=(z-\beta\theta)+\beta\theta\in\LL_D$.
+
+\emph{(C).} $w_j\dist{Q_jz}=(w_j/a_j)\cdot a_j\dist{Q_jz}$. A $\limsup$ of the second factor that
+is $\ge1$ (possibly $\infty$) is multiplied by $w_j/a_j\to\kappa>0$ to give a $\limsup\ge\kappa$,
+and a null sequence stays null. \qedhere
+\end{proof}
+
+\begin{remark}
+Not proved here: the behaviour when $a_j\not\to\infty$; that a single index (rather than the
+$\limsup$) suffices; and that the threshold $1$ is optimal for general $(a_j)$.
+Its sharpness in one case is Theorem~\ref{thm:sharp}.
+\end{remark}
+
+\section{The lower bound $1/4$}\label{sec:lower}
+
+\begin{remark}[Input]\label{rem:input}
+We use that $\lim_jP_j/Q_j=e$ for the sequences of the Introduction. This is not
+re-derived in this note. It is machine-checked in the accompanying Lean development
+(\texttt{Psel\_div\_Qsel\_tendsto\_exp}, in a section of the development that uses a Hermite-type
+integral representation of $Q_je-P_j$; axioms $[\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound}]$
+only, as printed in CI run 45759959535; see the verification log). \emph{TODO before submission:} add a classical reference whose full text has been checked.
+\end{remark}
+
+\begin{corollary}[Parts (a) and (b) of Theorem~\ref{thm:main}]\label{cor:lower}
+Take $a_j=4j+2$, $(Q_0,Q_1,P_0,P_1)=(1,1,1,3)$ and $w_j=j$. Then (H) holds with $D=1\cdot1-3\cdot1=-2$,
+$\theta=e$, $\kappa=\lim j/(4j+2)=1/4$, and $\LL_D=\LL$.
+Hence $z\in\LL\Rightarrow j\dist{Q_jz}\to0$ and $z\notin\LL\Rightarrow\limsup_jj\dist{Q_jz}\ge1/4$.
+\end{corollary}
+
+\begin{proof}
+Here $\delta_0=e-1$, $\delta_1=e-3$, so $\LL_D=\bigl(\Z(e-1)+\Z(e-3)\bigr)/(-2)$. This group contains
+$\frac{e-1}2-\frac{e-3}2=1$ and $\frac{e-1}2$, and is generated by $\frac{e-1}2$ and $\frac{e-3}2=\frac{e-1}2-1$,
+so $\LL_D=\Z+\Z\frac{e-1}{2}=\Z+\Z\frac{e+1}{2}=\LL$. Apply Proposition~\ref{prop:dich}(A)--(C). \qedhere
+\end{proof}
+
+\section{Sharpness: the explicit $z^*$}\label{sec:sharp}
+
+Define integers $n_0=n_1=0$ and for $j\ge1$
+\[
+n_{j+1}=(4j+2)n_j+n_{j-1}+m_j,\qquad m_j=\begin{cases}1&j\ge2\text{ even},\\0&\text{otherwise,}\end{cases}
+\]
+and put $z^*:=\lim_{j\to\infty}n_j/Q_j$ (the limit exists by the proof below).
+
+\begin{theorem}[Part (c) of Theorem~\ref{thm:main}]\label{thm:sharp}
+$z^*\notin\LL$, $\;j\dist{Q_jz^*}\to1/4$ along even $j$, and $j\dist{Q_jz^*}\to0$ along odd $j$.
+In particular $\limsup_jj\dist{Q_jz^*}=1/4$, so $\kappa=1/4$ and the infimum is attained.
+\end{theorem}
+
+\begin{proof}
+\emph{Growth facts.} (G1) For $j\ge1$, $(4j+2)Q_j\le Q_{j+1}\le(4j+3)Q_j$ (the upper bound since
+$Q_{j-1}\le Q_j$). In particular $Q_{j+1}\ge6Q_j$ for $j\ge1$. (G2) $Q_{j+1}\ge(4j+2)(4j-2)Q_{j-1}$ for
+$j\ge2$. (G3) For $i_0\ge1$, $\sum_{i\ge i_0}1/Q_{i+1}\le\frac65/Q_{i_0+1}$ (ratio at least $6$).
+
+\emph{Step 1.} Let $E_j:=n_{j+1}Q_j-n_jQ_{j+1}$. Substituting the recurrences,
+$E_j=-E_{j-1}+m_jQ_j$, with $E_0=0$. Hence $E_j=(-1)^jS_j$ where
+$S_j=\sum_{i\text{ even},\,2\le i\le j}Q_i$ (and $S_0=S_1=0$): indeed $S_j=S_{j-1}+(-1)^jm_jQ_j$.
+
+\emph{Step 2.} For even $i\ge4$, $Q_i/Q_{i-2}\ge6\cdot6=36$ by (G1). Hence if $j'$ is the largest even index
+$\le j$ (and $j\ge2$), $Q_{j'}\le S_j\le\frac{36}{35}Q_{j'}$.
+
+\emph{Step 3.} $\dfrac{n_{j+1}}{Q_{j+1}}-\dfrac{n_j}{Q_j}=\dfrac{E_j}{Q_jQ_{j+1}}$ and
+$|E_j|/(Q_jQ_{j+1})\le\frac{36}{35}/Q_{j+1}$, which is summable, so $z^*$ exists. With
+$t_i:=S_i/(Q_iQ_{i+1})$,
+\[
+y_j:=Q_jz^*-n_j=Q_j\sum_{i\ge j}(-1)^it_i .
+\]
+
+\emph{Step 4 (tail).} By Step 2, $t_i\le\frac{36}{35}/Q_{i+1}$, so by (G3)
+$\sum_{i>j}t_i\le\frac{36}{35}\cdot\frac65\cdot\frac1{Q_{j+2}}\le\frac{1.24}{Q_{j+2}}$.
+
+\emph{Step 5 (even $J\ge4$).} Here $t_J=(Q_J+S_{J-2})/(Q_JQ_{J+1})$ and $S_{J-2}\le1.03Q_{J-2}$.
+The alternating tail is bounded by $\sum_{i>J}t_i$, so
+\[
+y_J=\frac{Q_J}{Q_{J+1}}(1+\eta_J),\qquad
+|\eta_J|\le\frac{1.03\,Q_{J-2}}{Q_J}+\frac{1.24\,Q_{J+1}}{Q_{J+2}}
+\le\frac{1.03}{(4J-2)(4J-6)}+\frac{1.24}{4J+2}\longrightarrow0,
+\]
+using (G1), (G2). Since $Q_J/Q_{J+1}\in[\frac1{4J+3},\frac1{4J+2}]$, $y_J\in(0,\tfrac12)$ for large even $J$,
+so $\dist{Q_Jz^*}=y_J$ and $J\dist{Q_Jz^*}\to1/4$.
+
+\emph{Step 6 (odd $j$).} Now $S_j=S_{j-1}\le1.03Q_{j-1}$, so
+\[
+|y_j|\le Q_jt_j+Q_j\sum_{i>j}t_i\le\frac{1.03\,Q_{j-1}}{Q_{j+1}}+\frac{1.24\,Q_j}{Q_{j+2}}=O(j^{-2}),
+\]
+whence $j\dist{Q_jz^*}\le j|y_j|\to0$.
+
+\emph{Step 7.} By Steps 5 and 6 the $\limsup$ is $1/4>0$. If $z^*\in\LL$, Theorem~\ref{thm:main}(a)
+would give $j\dist{Q_jz^*}\to0$; so $z^*\notin\LL$. Together with Corollary~\ref{cor:lower}, $\kappa=1/4$ and
+it is attained at $z^*$. \qedhere
+\end{proof}
+
+\begin{remark}[Numerics, not part of the proof]
+The project log records $z^*\approx0.014041639566949028405640892454$, and
+$J\dist{Q_Jz^*}=0.2439$ at $J=20$, $0.24793$ at $J=60$, with odd-index values of
+order $j^{-2}$. These were computed by project scripts and were \emph{not} recomputed for this draft;
+they are finite computations and prove nothing about the limit.
+\end{remark}
+
+\section{Formal verification}\label{sec:lean}
+
+The core of the argument has been formalized in Lean~4 (toolchain \texttt{leanprover/lean4:v4.35.0}, with
+Mathlib at the matching release \texttt{v4.35.0}). We list exactly what has been checked.
+
+\medskip\noindent\textbf{Sharpness.} File \texttt{EpiFormal/KappaSharp.lean}. The theorem
+\texttt{kappa\_eq\_quarter} states: (i) for every $z\notin\LL$ and every $c<1/4$,
+it is \emph{not} the case that $j\dist{Q_jz}\le c$ eventually; and (ii) there exists $z\notin\LL$ such that
+for every $c>1/4$, $j\dist{Q_jz}\le c$ eventually. Supporting results are
+\texttt{KappaSharp.upper\_ev}, \texttt{KappaSharp.lower\_freq} and \texttt{kappa\_sharp}; the last
+yields the witness (built from the same defect sequence as $z^*$) with $j\dist{Q_jz}\ge1/5$ frequently.
+Together they give $\kappa=1/4$, attained. Evidence: GitHub Actions workflow
+\texttt{lean-audit.yml}, run id \texttt{45759959535}, head commit
+\texttt{1e9b94cf6fb8a6df5f618505f8888d45e6a611ff} (PR \#4), conclusion success; full \texttt{lake build}
+(``Build completed successfully (9392 jobs)''); no \texttt{sorry}/\texttt{admit} in the file. A native local
+compile was not completed, so CI is the build of record. \texttt{\#print axioms} for
+\texttt{upper\_ev}, \texttt{lower\_freq}, \texttt{kappa\_sharp}, \texttt{kappa\_eq\_quarter}:
+\[
+[\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound}]
+\]
+i.e.\ Lean foundational axioms (\texttt{propext}, \texttt{Quot.sound}) plus the classical-whitelist
+axiom \texttt{Classical.choice}; no project-added axioms. A statement-fidelity review of
+\texttt{kappa\_eq\_quarter} against the informal statement was recorded as passed (an internal review,
+not an external one).
+
+\medskip\noindent\textbf{Lower bound and part (a).} The declarations
+\texttt{Classification.corollary3\_gap} (the lower bound for $z\notin\LL$, with every $c<1/4$),
+\texttt{Classification.theorem2\_classification}
+($j\dist{Q_jx}\to0\iff x\in\LL$) and \texttt{Classification.theorem2\_sufficiency} were re-run
+natively (\texttt{lake env lean} on the audit file, exit code $0$) with the same axiom list
+$[\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound}]$ and no project axioms.
+All three were rebuilt in the full CI \texttt{lake build} (run 45759959535, 9392 jobs, success), and their axiom lists printed there are the same. The CI exact-match axiom gate covers \texttt{corollary3\_gap} and \texttt{theorem2\_classification}; for \texttt{theorem2\_sufficiency} the list is printed but not gated.
+
+\medskip\noindent\textbf{Not machine-checked.}
+\begin{itemize}
+\item The finer statement that $j\dist{Q_jz^*}\to1/4$ along even $j$ and $\to0$ along odd $j$
+(Theorem~\ref{thm:sharp}) is established on paper only; Lean covers the $\limsup/\liminf$-type
+consequences listed above.
+\item The general Proposition~\ref{prop:dich} (arbitrary $a_j$) is not formalized; Lean treats the
+sequence $a_j=4j+2$ only.
+\item The identification of $Q_j$ with the continued-fraction denominators of $(e-1)/2$ is a
+recurrence definition in Lean, not a theorem.
+\item The fact that $P_j/Q_j\to e$ is machine-checked in Lean (Remark~\ref{rem:input}); in this
+note's paper proof it is used as an input.
+\end{itemize}
+The Lean definitions \texttt{Qsel} ($Q_0=Q_1=1$, $Q_{j+1}=(4j+2)Q_j+Q_{j-1}$, written with a
+shifted index), \texttt{distToNearestInt} ($x\mapsto|x-\operatorname{round}x|$) and \texttt{latticeL}
+($\mathbb Z+\mathbb Z(e+1)/2$) were checked against this note by an independent internal review,
+which also confirmed that the Lean witness equals $z^*$. An external reader should re-check this
+before submission (TODO before submission).
+
+\section{Scope and limitations}\label{sec:scope}
+
+\begin{itemize}
+\item \textbf{Nothing about $\pi$ or $e+\pi$.} Theorem~\ref{thm:main} holds for every real $z$ and gives no
+information about any particular number unless its membership in $\LL$ is known. No statement about
+the irrationality or transcendence of $e+\pi$ (or $\pi$, $e\pi$, etc.) follows or is claimed.
+\item \textbf{Sharpness is for one sequence.} Optimality of $1/4$ is proved for $a_j=4j+2$ and
+$(Q_0,Q_1)=(1,1)$ only. The threshold $1$ in Proposition~\ref{prop:dich}(B) is not shown to be sharp in general.
+\item \textbf{Qualitative content is not new.} Given the (numerical) identification with continued-fraction
+denominators of $(e-1)/2$, parts (a) and (b) in qualitative form follow from \cite{KL}. At most the explicit
+constant $1/4$, the lower bound for general weights in Proposition~\ref{prop:dich}(C), and the attainment
+example are candidates for new content.
+\item \textbf{Novelty rests on a negative search.} We found no precedent for the value
+$\kappa=1/4$ with a sharpness example, but this is a \emph{negative search}, not a proof that none exists.
+Coverage: full texts of \cite{KL}, \cite{Larcher} and the open-access copy of \cite{BDS}; KL's paraphrase
+of \cite{Stewart}; a further metric paper of Philipp (not used here). Not reached: full text of
+\cite{Stewart} (paywalled or access-blocked); Eggleston and Erd\H{o}s--Taylor (not opened);
+Cusick--Flahive and Rockett--Sz\"usz (not reached). Hence an earlier appearance in these sources
+cannot be excluded.
+\item \textbf{Unverified numerics and identification.} The continued-fraction identification and the
+numerical values in Section~\ref{sec:sharp} are finite computations; they are not used in any proof.
+\item \textbf{Formalization.} See Section~\ref{sec:lean} for the exact boundary of what is machine-checked.
+\end{itemize}
+
+% TODO before submission: human novelty review (obtain Stewart full text), author check of all proofs,
+% fix the P_j/Q_j -> e input, decide on journal, add acknowledgements/funding statement.
+
+\begin{thebibliography}{9}
+
+\bibitem{KL} Kraaikamp, Liardet, \emph{Good approximations and continued fractions},
+Proc.\ Amer.\ Math.\ Soc.\ \textbf{112} (1991), no.~2, 303--309.
+DOI 10.1090/S0002-9939-1991-1062392-7 (DOI from Crossref; not printed on the PDF read).
+
+\bibitem{Larcher} Larcher, \emph{A convergence problem connected with continued fractions},
+Proc.\ Amer.\ Math.\ Soc.\ \textbf{103} (1988), no.~3, 718--722.
+
+\bibitem{BDS} B\'ir\'o, Deshouillers, S\'os,
+Studia Sci.\ Math.\ Hungar.\ \textbf{38} (2001), 97--113.
+DOI 10.1556/sscmath.38.2001.1-4.7. (Open-access copy read at \texttt{http://real.mtak.hu/110616/}.)
+
+\bibitem{Stewart} M. Stewart, \emph{Irregularities of uniform distribution},
+Acta Math.\ Acad.\ Sci.\ Hungar.\ \textbf{37} (1981), 185--221.
+DOI 10.1007/bf01904883 (Crossref). Cited only via the reference list and Remark~3 of \cite{KL};
+\emph{full text not consulted}. (Another source cites different page numbers; unresolved.)
+
+\end{thebibliography}
+
+\end{document}

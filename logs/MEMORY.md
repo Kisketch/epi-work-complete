@@ -11,3 +11,4 @@
 - R3: GitHub CI (16 GB, full `lake build` + siege axiom gate) is the reliable Lean build of record; the local machine (~2.5 GB free with the browser open) cannot import Mathlib within 590 s.
 - R3: Always grep existing declarations before formalizing: THM-0003(A) already existed as theorem2_classification.
 - R3: Never mass-sed across logs/: ledgers and handoffs are append-only.
+- R4: Standalone Lean modules with narrow Mathlib imports check locally in ~90 s; use them for new formalization, with CI as the build of record.

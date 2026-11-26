@@ -1,0 +1,14 @@
+# LOG-ONLY / NON-CANONICAL — Lean gate evidence for THM-0006 (2026-11-26)
+environment: GitHub Actions lean-audit.yml, run 45763704930, head f651e40fb6059e11fc8f8c8e893d690578538ae7 (PR #5), conclusion success
+build: full `lake build` -> "Build completed successfully (9393 jobs)."
+module: epi_formal/EpiFormal/GeneralDichotomy.lean (standalone; narrow Mathlib imports; no EpiFormal imports)
+command: lake env lean AuditGeneralDichotomy.lean
+'GeneralDichotomy.casoratian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralDichotomy.T2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralDichotomy.T3A' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralDichotomy.T3B' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralDichotomy.general_dichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralDichotomy.sanity_dichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralDichotomy.sanity_D' depends on axioms: [propext]
+gate: SIEGE AXIOM GATE PASSED (sanity_D not gated: strict subset of base list)
+fidelity: fresh-evaluator R4 PASS (logs/evaluations/R4-fresh-evaluator.md); not formalized: θ irrational, δ bound at j=0, structure of L, part (C), link to e.
