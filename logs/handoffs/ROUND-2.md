@@ -9,7 +9,7 @@
 | THM-0001 P1 ⇔ ℚ-independence of {1,e,π} | 3 | **已核实** (module-level; key theorem base+whitelist axioms only) | restatement of Paper 1 prop:rational-span | logs/verification/LEAN-THM-0001.log |
 | THM-0003(B) gap ≥ 1/4 | 5 | **已核实** (native re-run of corollary3_gap) | same family as Kraaikamp–Liardet 1991 | logs/verification/LEAN-THM-0003B.log |
 | THM-0003(A) z∈L ⇒ → 0 | 5 | paper, double-checked; no Lean declaration | — | artifacts/THM-0003 |
-| THM-0005 κ = 1/4 sharp and attained | **category 1 candidate**, novelty unchecked (negative search) | paper; PASS×2; evaluator PASS on paper; NEEDS-LEAN | no precedent found; KL/Larcher full texts not read | artifacts/THM-0005 |
+| THM-0005 κ = 1/4 sharp and attained | **category 1 candidate** (negative search; KL/Larcher/Philipp full texts contain no sharpness) | paper; PASS×2; evaluator PASS on paper; NEEDS-LEAN | no precedent found; KL/Larcher full texts not read | artifacts/THM-0005 |
 | THM-0006 general dichotomy (a_j → ∞, any D ≠ 0) | 5 (strengthening is a candidate 1 on negative search) | paper; PASS×2; evaluator PASS; NEEDS-LEAN | KL 1991 lemma (threshold 1/4, CF case) is the same family | artifacts/THM-0006 |
 | THM-0002 / THM-0004 | 5 | unchanged (NEEDS-LEAN) | negative search; Philipp 1967 / PVZZ 2019 possible precedents for THM-0004 | logs/evidence/Q-R2-02_literature.md |
 
@@ -49,3 +49,6 @@ What none of these achieves: any statement about π, P1, or e+π. THM-0005 is a 
 2. Fix the stale EscapeReduction docstring (it claims axioms; the native audit shows none).
 3. A full-project `lake build` in the background, chunked.
 4. Novelty: KL/Larcher full text once obtained.
+
+## Addendum (full texts supplied by the user)
+KL 1991 Thm 1′ already implies THM-0003's dichotomy (Q_j = CF denominators of (e−1)/2). Our constant is 4× stronger. THM-0005's sharpness has no precedent in KL, Larcher or Philipp (negative search only). Philipp 1967 does not cover THM-0004. Details: logs/evidence/Q-R2-05_fulltext_KL_Larcher_Philipp.md.
