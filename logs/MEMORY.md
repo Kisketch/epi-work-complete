@@ -4,3 +4,7 @@
 - R1: Workers' scratchpad scripts collide (shared a.py / c.py). Require unique filenames per worker and copy scripts into logs/verification immediately (missing certificate × 1).
 - R1: The Lean gate is blocked by the filesystem (mmap/permission on the Windows mount). Fix the environment before scheduling formalizer work.
 - R1: Paper 1 proofs are sound but terse; checkers find only expository gaps. Repair queues are cheap wins.
+- R2: Session restarts kill background agents and long builds. Resume agents with SendMessage; run lake builds in ≤ 590 s foreground chunks (lake resumes incrementally).
+- R2: The native-filesystem copy (~/epi_native) plus `lake exe cache get` fixes the Windows-mount olean failure. Each module takes ~5 min, so use module-targeted builds.
+- R2: Literature workers hit AMS 403. The classical rigidity lemma (Kraaikamp–Liardet 1991) is reachable only via secondary statements in Conze et al.; human PDF retrieval is needed.
+- R2: Workers can produce genuine small new results when the query is a sharp finite question (κ exact value). Prefer such queries over blind attacks on N6.

@@ -1,0 +1,17 @@
+# LOG-ONLY / NON-CANONICAL — Lean gate evidence for THM-0001 (2026-11-25)
+toolchain: leanprover/lean4:v4.35.0 (epi_formal/lean-toolchain); mathlib rev v4.35.0 (56a005855ea17e0b0958f73ec801ae140b0a1679)
+environment: native copy ~/epi_native/epi_formal (Linux ext4); mathlib oleans via 'lake exe cache get' (CACHE_EXIT 0)
+build: 'lake build EpiFormal.RationalSpan' -> success (9063 jobs) [formalizer run]; dependencies 'lake build EpiFormal.EscapeReduction' -> "Build completed successfully (9062 jobs)" [commander run]
+file: epi_formal/EpiFormal/RationalSpan.lean  sha256 f00e7adadb0073b5a2337cedecb4c7c6d9eb9aa1cc3108ea842161d6885ee1b7
+sorry/admit: grep -nE "\bsorry\b|\badmit\b" EpiFormal/RationalSpan.lean -> no matches (exit 1)
+command: lake env lean AuditRationalSpan.lean  (exit 0)
+output:
+'RationalSpan.rat_mul_den' depends on axioms: [propext, Classical.choice, Quot.sound]
+'mem_latticeL_iff_rat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'P1_iff_not_mem_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+'P1_iff_linearIndependent_of_irrational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'P1_iff_linearIndependent' depends on axioms: [e_transcendental, propext, Classical.choice, Quot.sound]
+axiom tiers: Lean foundational {propext, Quot.sound}; classical whitelist {Classical.choice}; project-added {e_transcendental} (EpiFormal/Axioms.lean:13; used ONLY by the hypothesis-free wrapper)
+key theorem for gate: P1_iff_linearIndependent_of_irrational (he : Irrational (exp 1)) — matches statement.md "Allowed input: e is irrational" 1:1
+statement map: (a) mem_latticeL_iff_rat ; (b1) P1_iff_not_mem_span ; (b2) P1_iff_linearIndependent_of_irrational
+caveat: whole-project 'lake build' (all 9390 jobs) not completed this session; module-targeted build only.
