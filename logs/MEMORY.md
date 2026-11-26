@@ -8,3 +8,6 @@
 - R2: The native-filesystem copy (~/epi_native) plus `lake exe cache get` fixes the Windows-mount olean failure. Each module takes ~5 min, so use module-targeted builds.
 - R2: Literature workers hit AMS 403. The classical rigidity lemma (Kraaikamp–Liardet 1991) is reachable only via secondary statements in Conze et al.; human PDF retrieval is needed.
 - R2: Workers can produce genuine small new results when the query is a sharp finite question (κ exact value). Prefer such queries over blind attacks on N6.
+- R3: GitHub CI (16 GB, full `lake build` + siege axiom gate) is the reliable Lean build of record; the local machine (~2.5 GB free with the browser open) cannot import Mathlib within 590 s.
+- R3: Always grep existing declarations before formalizing: THM-0003(A) already existed as theorem2_classification.
+- R3: Never mass-sed across logs/: ledgers and handoffs are append-only.
