@@ -169,6 +169,25 @@ jobs:
               "../verification/${REFS[$lean_file]}" --count "${COUNTS[$lean_file]}" --only-axioms "$BASE_AXIOMS"
           done
 
+      - name: "Siege-campaign audits (THM-0001, THM-0003): base axioms only for gate theorems"
+        working-directory: epi_formal
+        run: |
+          set -o pipefail
+          BASE='[propext, Classical.choice, Quot.sound]'
+          for f in EpiFormal/RationalSpan.lean; do
+            if grep -nE '\bsorry\b|\badmit\b' "$f"; then echo "sorry/admit in $f"; exit 1; fi
+          done
+          lake env lean AuditRationalSpan.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit_siege_rational_span.log"
+          lake env lean AuditCorollary3Gap.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit_siege_corollary3_gap.log"
+          cat "$GITHUB_WORKSPACE"/audit-output/audit_siege_*.log > /tmp/siege_all.log
+          for thm in mem_latticeL_iff_rat P1_iff_not_mem_span P1_iff_linearIndependent_of_irrational \
+                     Classification.corollary3_gap; do
+            line=$(grep -F "'$thm' depends on axioms:" /tmp/siege_all.log || true)
+            echo "$line"
+            [ "$line" = "'$thm' depends on axioms: $BASE" ] || { echo "AXIOM GATE FAILED for $thm"; exit 1; }
+          done
+          echo "SIEGE AXIOM GATE PASSED"
+
       - name: Compare Audit.lean output with verification/audit_final_20261122.log
         run: |
           python3 verification/compare_audit_logs.py audit-output/audit.log \
