@@ -11,7 +11,7 @@ import Mathlib.Tactic.NormNum
 /-!
 # THM-0006 (general dichotomy), standalone formalization
 
-No project axioms, no `sorry`.  Indexing: `Q (j+2) = a (j+1) * Q (j+1) + Q j`, i.e.
+No project axioms and no proof holes.  Indexing: `Q (j+2) = a (j+1) * Q (j+1) + Q j`, i.e.
 `Q_{j+1} = a_j Q_j + Q_{j-1}` for `j ≥ 1`; the partial quotient `a j` is paired with `Q j`.
 -/
 
@@ -560,18 +560,3 @@ theorem sanity_dichotomy :
 end
 
 end GeneralDichotomy
-
-open GeneralDichotomy in
-#print axioms casoratian
-open GeneralDichotomy in
-#print axioms T2
-open GeneralDichotomy in
-#print axioms T3A
-open GeneralDichotomy in
-#print axioms T3B
-open GeneralDichotomy in
-#print axioms general_dichotomy
-open GeneralDichotomy in
-#print axioms sanity_D
-open GeneralDichotomy in
-#print axioms sanity_dichotomy
