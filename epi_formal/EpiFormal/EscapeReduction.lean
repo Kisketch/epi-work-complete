@@ -27,7 +27,7 @@ import EpiFormal.Classification
   （2026-11-25 勘正：原文写作「公理化依赖」，易误读为项目公理；二者均为
   `EulerConvergents.lean` 中已证定理（l.516、l.540）。本机复跑
   `#print axioms Classification.corollary3_gap` 仅含 propext / Classical.choice /
-  Quot.sound，见 logs/verification/LEAN-THM-0003B.log。）
+  Quot.sound，见 logs/verification/LEAN-THM-0003.log。）
 
 ## 边界测试（D1-5）
 本归约链的每一步对 π' = A/B - e 同样成立（通用递推 + 取整），故归约本身

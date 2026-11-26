@@ -7,7 +7,7 @@
 | Result | Category | Verification status | Relation to existing literature | Basis |
 |---|---|---|---|---|
 | THM-0001 P1 ⇔ ℚ-independence of {1,e,π} | 3 | **已核实** (module-level; key theorem base+whitelist axioms only) | restatement of Paper 1 prop:rational-span | logs/verification/LEAN-THM-0001.log |
-| THM-0003(B) gap ≥ 1/4 | 5 | **已核实** (native re-run of corollary3_gap) | same family as Kraaikamp–Liardet 1991 | logs/verification/LEAN-THM-0003B.log |
+| THM-0003(B) gap ≥ 1/4 | 5 | **已核实** (native re-run of corollary3_gap) | same family as Kraaikamp–Liardet 1991 | logs/verification/LEAN-THM-0003.log |
 | THM-0003(A) z∈L ⇒ → 0 | 5 | paper, double-checked; no Lean declaration | — | artifacts/THM-0003 |
 | THM-0005 κ = 1/4 sharp and attained | **category 1 candidate** (negative search; KL/Larcher/Philipp full texts contain no sharpness) | paper; PASS×2; evaluator PASS on paper; NEEDS-LEAN | no precedent found; KL/Larcher full texts not read | artifacts/THM-0005 |
 | THM-0006 general dichotomy (a_j → ∞, any D ≠ 0) | 5 (strengthening is a candidate 1 on negative search) | paper; PASS×2; evaluator PASS; NEEDS-LEAN | KL 1991 lemma (threshold 1/4, CF case) is the same family | artifacts/THM-0006 |

@@ -169,7 +169,7 @@ jobs:
               "../verification/${REFS[$lean_file]}" --count "${COUNTS[$lean_file]}" --only-axioms "$BASE_AXIOMS"
           done
 
-      - name: "Siege-campaign audits (THM-0001, THM-0003): base axioms only for gate theorems"
+      - name: "Siege-campaign audits (THM-0001, THM-0003 A+B): base axioms only for gate theorems"
         working-directory: epi_formal
         run: |
           set -o pipefail
@@ -181,7 +181,7 @@ jobs:
           lake env lean AuditCorollary3Gap.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit_siege_corollary3_gap.log"
           cat "$GITHUB_WORKSPACE"/audit-output/audit_siege_*.log > /tmp/siege_all.log
           for thm in mem_latticeL_iff_rat P1_iff_not_mem_span P1_iff_linearIndependent_of_irrational \
-                     Classification.corollary3_gap; do
+                     Classification.corollary3_gap Classification.theorem2_classification; do
             line=$(grep -F "'$thm' depends on axioms:" /tmp/siege_all.log || true)
             echo "$line"
             [ "$line" = "'$thm' depends on axioms: $BASE" ] || { echo "AXIOM GATE FAILED for $thm"; exit 1; }

@@ -1,0 +1,16 @@
+# LOG-ONLY / NON-CANONICAL — Lean re-run evidence for THM-0003 part (B) (2026-11-25)
+toolchain v4.35.0; native env as in LEAN-THM-0001.log
+command: lake env lean AuditCorollary3Gap.lean (exit 0)
+output:
+'Classification.corollary3_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+Classification.corollary3_gap : ∀ x ∉ Classification.latticeL, ∀ c < 1 / 4, ¬∀ᶠ (j : ℕ) in Filter.atTop, ↑j * distToNearestInt (↑(Qsel j) * x) ≤ c
+mapping: equivalent to THM-0003(B) "z ∉ L ⇒ limsup_j j‖Q_j z‖ ≥ 1/4" (limsup in extended sense). Part (A) (z ∈ L ⇒ → 0) has NO Lean declaration here.
+status upgrade: corollary3_gap: 作者自报 → 本机复跑（Lean 基础公理 + Classical.choice，零项目公理）
+
+# Round 3 addendum (2026-11-25): part (A) IS formalized (correcting the R2 note "no Lean declaration")
+command: lake env lean AuditCorollary3Gap.lean (native; exit 0)
+'Classification.corollary3_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Classification.theorem2_classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Classification.theorem2_sufficiency' depends on axioms: [propext, Classical.choice, Quot.sound]
+Classification.theorem2_classification : ∀ (x : ℝ), Tendsto (fun j => ↑j * distToNearestInt (↑(Qsel j) * x)) atTop (nhds 0) ↔ x ∈ Classification.latticeL
+mapping: THM-0003(A)+(converse) = theorem2_classification; THM-0003(B) = corollary3_gap. Full THM-0003 now 已核实 (本机复跑; Lean 基础公理 + Classical.choice; 零项目公理).
