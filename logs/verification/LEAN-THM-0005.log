@@ -1,0 +1,16 @@
+# LOG-ONLY / NON-CANONICAL — Lean gate evidence for THM-0005 (2026-11-26)
+environment: GitHub Actions, workflow lean-audit.yml, run 45759959535, head 1e9b94cf6fb8a6df5f618505f8888d45e6a611ff (PR #4), conclusion: success
+toolchain: leanprover/lean4:v4.35.0; mathlib v4.35.0 (lake exe cache get)
+build: `lake build` (full default target, incl. EpiFormal.KappaSharp) -> "Build completed successfully (9392 jobs)."
+sorry/admit: CI grep on EpiFormal/KappaSharp.lean -> none (gate step would exit 1 otherwise)
+command: lake env lean AuditKappaSharp.lean
+output:
+'KappaSharp.upper_ev' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaSharp.lower_freq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'kappa_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'kappa_eq_quarter' depends on axioms: [propext, Classical.choice, Quot.sound]
+gate: "SIEGE AXIOM GATE PASSED" (exact-match check against BASE axiom list)
+axiom tiers: Lean foundational {propext, Quot.sound}; classical whitelist {Classical.choice}; project-added: none
+statement map: kappa_eq_quarter = κ := inf_{z∉L} limsup j‖Q_j z‖ = 1/4, attained (fresh-evaluator R3 statement-fidelity PASS)
+not covered by Lean: the finer even/odd subsequence limits in statement.md (paper only)
+local note: native local compile not completed (memory pressure); CI is the build of record.

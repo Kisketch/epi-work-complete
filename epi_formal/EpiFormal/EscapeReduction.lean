@@ -22,8 +22,12 @@ import EpiFormal.Classification
 ## 可信度分层
 - 机器验证：D2-1（匹配超逼近界）、D2-3（尖锐界 1/8）、D2-4（最终 1/5）、
   D2-6（归约定理）。
-- 公理化依赖：仅 `deltaSel_tendsto_zero`、`abs_deltaSel_lt`（经 corollary3_gap）
+- 依赖定理：仅 `deltaSel_tendsto_zero`、`abs_deltaSel_lt`（经 corollary3_gap）
   + Lean 基础公理。不新增公理，无 sorry。
+  （2026-11-25 勘正：原文写作「公理化依赖」，易误读为项目公理；二者均为
+  `EulerConvergents.lean` 中已证定理（l.516、l.540）。本机复跑
+  `#print axioms Classification.corollary3_gap` 仅含 propext / Classical.choice /
+  Quot.sound，见 logs/verification/LEAN-THM-0003.log。）
 
 ## 边界测试（D1-5）
 本归约链的每一步对 π' = A/B - e 同样成立（通用递推 + 取整），故归约本身
