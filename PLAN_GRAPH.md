@@ -20,7 +20,7 @@
 | R6-N2 | LW 校准推论：$x\in\{e^{\sqrt2},\cos1\}$ 满足 $\forall B$：$Bx\notin\mathcal L$、$\limsup_j j\lVert BQ_jx\rVert\ge1/4$、阶乘数字不最终为常数 | Toy T1 | `L0_CONJECTURE` | 5（经典定理加项目结果的推论） | 本文件 §R6 节点 |
 | R6-N3 | Nesterenko 对照：$e^\pi+\pi$ 超越（由 $\pi,e^\pi$ 代数无关推出） | Toy T2 | `L0_CONJECTURE`（文献结果，原文未核） | 5 | Paper 1 引 Nesterenko1996 |
 | R6-N4 | $e$ 尺度通用性检验：π 的 $Q_j$ 尺度统计与已知答案对照、随机对照不可区分，并与 $r-e$ 对照可区分（有限范围；**以 Step 2 修正规格为准**） | Toy T1 / I（证据） | `L1_TESTED`（R6 Step 2 skeptic：MINOR_FIX，修正规格下 PASS） | 4 | 本文件 §R6 节点；原证伪测试见“当前主攻”中的历史记录 |
-| R6-S1 | 块 Hurwitz 数的局部化引理：$\mathcal K_\alpha(\beta)<\infty$ 时，误差在大指标处趋于 0，块内误差由标签 $r_k\in\mathbb Z/K(W)$ 决定，KL 权重有显式极限 | 旁支（S） | `L0_CONJECTURE` | 5（预期） | 本文件 §R6 旁支轨 |
+| R6-S1 | 块 Hurwitz 数的局部化引理：$\mathcal K_\alpha(\beta)<\infty$ 时，误差在大指标处趋于 0，块内误差由规范标签 $r_k\in\mathbb Z/K(W)$ 决定，KL 权重有显式极限 | 旁支（S） | `L0_CONJECTURE` | 5（预期） | 本文件 §R6 旁支轨 |
 | R6-S2 | 块 Hurwitz 数的 KL 尖锐常数：$c^*(\alpha)=\nu(W)$（有限图上的极小极大值），且可达 | 旁支（S） | `L1_TESTED`（旁支 Step 2 skeptic：MINOR_FIX，修正规格下通过） | 1 的候选（仅本地负搜索） | 本文件 §R6 旁支轨；当前主攻 |
 | R6-S3 | 非普适性：存在块词 $W$ 使 $\nu(W)<1$ | 旁支（S） | `L0_CONJECTURE` | 依赖 S2；具体 $\nu(W)$ 值为有限精确计算 | 本文件 §R6 旁支轨 |
 | R6-S4 | $\inf_W\nu(W)=1/4$？（KL 常数 1/4 在块 Hurwitz 类中是否尖锐） | 旁支（S），开放 | `L0_CONJECTURE` | 若证出为 1 的候选 | 本文件 §R6 旁支轨 |
@@ -120,11 +120,11 @@
 
 ### S.2 节点的精确陈述（全部 `L0_CONJECTURE`；方向记为 S，表示旁支）
 
-- **R6-S1（局部化引理；预期类别 5）**。设 α 是块 Hurwitz 数（块词 $W$），$\beta\in\mathbb R$，$\mathcal K_\alpha(\beta)<\infty$。记 $y_n:=q_n\beta-\operatorname{round}(q_n\beta)$，$t_k:=A_ky_{n_k}$。则：
+- **R6-S1（局部化引理；预期类别 5）**。设 α 是块 Hurwitz 数（块词 $W$），$\beta\in\mathbb R$，$\mathcal K_\alpha(\beta)<\infty$。记 $y_n:=q_n\beta-\operatorname{round}(q_n\beta)$，$t_k:=A_ky_{n_k}$。定义 β 的**规范标签** $r_k=r_k(\beta):=\operatorname{round}(K\,y_{n_k+1})\bmod K\in\mathbb Z/K$（$k\ge1$；round 平局时任取一个最近整数，与 $y_n$ 的约定相同；下列结论对任何平局取法都成立）。(b)(c)(d) 中的 $r_k$ 与“标签”一律指规范标签。则：
   - (a) $y_{n_k}\to0$；$A_k\theta_{n_k}\to1$；对 $1\le i\le\ell$，$1/\theta_{n_k+i}\to K/(c_ic_i')$。
-  - (b) 存在 $r_k\in\mathbb Z/K$（$k$ 充分大），使得对 $1\le i\le\ell$，$\lvert y_{n_k+i}\rvert-d_K(c_ir_k)/K\to0$；$(t_k)$ 有界，并且 $\operatorname{dist}\bigl(t_{k+1}-(r_{k+1}-\sigma r_k)/K,\ \mathbb Z\bigr)\to0$。
-  - (c) $\beta\in\mathbb Z\alpha+\mathbb Z\iff$ 最终 $r_k=0$ 且 $t_k\to0$。
-  - (d)（实现）对任意序列 $r_k\in\mathbb Z/K$ 和任意有界实数序列 $\tau_k\in(r_k-\sigma r_{k-1})/K+\mathbb Z$，存在 β，使其标签最终等于 $r_k$，且 $t_k-\tau_k\to0$。
+  - (b) 规范标签 $r_k$ 满足：对 $1\le i\le\ell$，$\lvert y_{n_k+i}\rvert-d_K(c_ir_k)/K\to0$；$(t_k)$ 有界，并且 $\operatorname{dist}\bigl(t_{k+1}-(r_{k+1}-\sigma r_k)/K,\ \mathbb Z\bigr)\to0$。
+  - (c) $\beta\in\mathbb Z\alpha+\mathbb Z\iff$ 最终规范标签 $r_k=0$ 且 $t_k\to0$。
+  - (d)（实现）对任意序列 $r_k\in\mathbb Z/K$ 和任意有界实数序列 $\tau_k\in(r_k-\sigma r_{k-1})/K+\mathbb Z$，存在 β，使其规范标签最终等于 $r_k$（即 $r_k(\beta)=r_k$ 对充分大的 $k$ 成立），且 $t_k-\tau_k\to0$。
   - 推导要点（strategist 推导，不是证明）：$\mathcal K<\infty$ 推出大指标处 $\lvert y\rvert\ll1/A_k\to0$。块内部分商有界，$y$ 满足带整数缺陷的正则连分数递推，于是 $y_{n_k+\ell+1}=K(W)\,y_{n_k+1}+O(y_{n_k})-(\text{整数})$，由此 $y_{n_k+1}\approx r_k/K$，并且 $y_{n_k+i}\equiv c_ir_k/K\pmod1$。KL 权重的极限由完全商与逆序连续子计算，再用连续子分裂恒等式 $K(W)=c_iK(w_i,\dots,w_\ell)+K(w_1,\dots,w_{i-2})c_i'$ 化简。技术上类似 THM-0006 (B) 与 2E thm:full-spectra 的证明。
 - **R6-S2（KL 尖锐常数的极小极大公式；1 的候选；当前瓶颈，见“当前主攻”）**。对一切块 Hurwitz 数 α（单个块词 $W$，$A_k\to\infty$），$c^*(\alpha)=\nu(W)$，并且下确界可达：存在 $\beta\notin\mathbb Z\alpha+\mathbb Z$，使 $\mathcal K_\alpha(\beta)=\nu(W)$。特别地，$c^*(\alpha)$ 只依赖 $W$，与 $(A_k)$ 以及首段 $a_0,\dots,a_N$ 无关；并且 $1/4\le\nu(W)\le1$。
   - 校准（必须成立，否则 S1/S2 有错）：$\nu(\varnothing)=\nu((1))=\nu((1,1))=1$。$W=\varnothing$ 的情形对应 Paper 2 thm:growing-rec-spectrum（KL 比值与 $A_j\lVert Q_jx\rVert$ 等价），$W=(1,1)$ 的情形对应 2E thm:full-spectra(iii)（$\alpha=e$ 时初始谱隙为 $(0,1)$），两者都是作者自报 Lean，未复跑。
@@ -286,3 +286,4 @@ graph TD
 - 2026-11-27（R6 Step 2 总控落盘）：R6-N4 升为 `L1_TESTED`（修正规格下 PASS，类别 4），记录 6 项规格修正；瓶颈标记不变。
 - 2026-11-27 R6 旁支 Step 1 strategist：依 PROBLEM.md §4b 开旁支轨。新增 §“R6 旁支轨”（候选去重表、记号、精确陈述、Toy T3/T4、路线 C 及其 PASS/NOT-REPEAT 声明），节点 R6-S1…S6 全部为 `L0_CONJECTURE`；节点表与 mermaid 加入旁支子图（不连 ROOT）。瓶颈标记由 R6-N4 移交 R6-S2，N4 保留 `L1_TESTED`，原理由与原证伪测试移入“历史记录”小节；全图仍只有一个瓶颈标记。去重结论：候选 (a)(b) 已被 Paper 2 / FullSpectrumDiscrete 等覆盖（作者自报 Lean，未复跑），记为 D18，只保留对账节点 S6。R6-N1、N2 降为低优先级。新颖性只做本地负搜索，未做外部检索。
 - 2026-11-27（R6 旁支 Step 2 总控落盘）：R6-S2 升为 `L1_TESTED`；记录 M1–M4 与 $m^*\ge1/2$ 的结构性发现。
+- 2026-11-27 R6 旁支 Step 4：按审计 M2 定义规范标签；仅定义精确化，不改其余内容。R6-S1 陈述新增定义 $r_k=r_k(\beta):=\operatorname{round}(K\,y_{n_k+1})\bmod K$（平局任取最近整数，结论对任何取法成立；与 proofs/R6-S2.md §0.4 I1、§5.2 一致），(b)(c)(d) 改为引用规范标签，节点表 R6-S1 摘要同步改为“规范标签”。R6-S2 陈述不含“标签”，未改。假设、量词、常数与其余结论均未动；S1 仍为 `L0_CONJECTURE`。proofs/R6-S2.md §0.2 的逐字抄录需由 prover 同步。
