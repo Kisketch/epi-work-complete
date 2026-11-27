@@ -6,9 +6,11 @@
 \documentclass[11pt]{amsart}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{amsmath,amssymb}
 \usepackage{geometry}
 \geometry{margin=1.1in}
+\emergencystretch=3em
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -25,7 +27,7 @@
 
 \begin{document}
 
-\title{A sharp constant for inhomogeneous approximation along a sequence of denominators associated with $e$}
+\title[A sharp constant along denominators associated with $e$]{A sharp constant for inhomogeneous approximation along a sequence of denominators associated with $e$}
 
 % TODO before submission: author, affiliation, e-mail, acknowledgements, MSC codes, keywords.
 \author{[Author name]}
@@ -69,10 +71,10 @@ that the constant $1/4$ is optimal.
 
 \medskip
 \noindent\textbf{The sequence.} Define integers by
-\[
-Q_0=Q_1=1,\quad Q_{j+1}=(4j+2)Q_j+Q_{j-1}\ (j\ge1),\qquad
-P_0=1,\ P_1=3,\quad P_{j+1}=(4j+2)P_j+P_{j-1}\ (j\ge1).
-\]
+\begin{gather*}
+Q_0=Q_1=1,\qquad Q_{j+1}=(4j+2)Q_j+Q_{j-1}\quad(j\ge1),\\
+P_0=1,\ P_1=3,\qquad P_{j+1}=(4j+2)P_j+P_{j-1}\quad(j\ge1).
+\end{gather*}
 Here the recurrence \emph{is the definition}. The proof of Corollary~\ref{cor:lower} uses that
 $P_j/Q_j\to e$; this is proved in Proposition~\ref{prop:input}(i) (Section~\ref{sec:input}) via a
 Hermite-type integral. Proposition~\ref{prop:input}(ii) shows moreover that the $Q_j$ are exactly the
@@ -281,7 +283,7 @@ it is attained at $z^*$. \qedhere
 \end{proof}
 
 \begin{remark}[Numerics, not part of the proof]
-The project log records $z^*\approx0.014041639566949028405640892454$, and
+The project log records $z^*\approx0.0140416395\allowbreak 6694902840\allowbreak 5640892454$, and
 $J\dist{Q_Jz^*}=0.2439$ at $J=20$, $0.24793$ at $J=60$, with odd-index values of
 order $j^{-2}$. These were computed by project scripts and were \emph{not} recomputed for this draft;
 they are finite computations and prove nothing about the limit.
