@@ -1,0 +1,5 @@
+(A2)/(A2b): 61896 identities, failures 0
+(A1): 7108 instances, failures 0
+D4: 408 checks, failures 0; max ratio (i) 2.618034 (<=4), max ratio (ii) partial 2.719771 (<=4)
+D2 + Lemma 0 (0.1-0.2): 11515 checks, failures 0; max |m_n| when hypothesis holds locally: 0
+ALL CHECKS PASSED total failures 0

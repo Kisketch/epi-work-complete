@@ -1,0 +1,74 @@
+[A] words=2094 cases=367667368 violations=0 equality_cases=624866
+[A] words with K>=2: 2092; of these, bound attained (so cannot be lowered by 1): 2092
+[A] gcd(sigma,K)!=1 count: 0
+
+[B] W=() K=1 sigma=1 nu=1 witness vertices=[0, 0] t=['1']
+[C]   late blocks (k, max_block R_n, max per-vertex deviation, label correct):
+         (10, '0.9999328984', '6.71e-5', True)
+         (11, '0.9999446391', '5.54e-5', True)
+         (12, '0.999953542', '4.65e-5', True)
+[C]   max over last full period = 0.9999535420  vs nu = 1.0000000000  diff = -4.646e-05
+[B] W=(1,) K=1 sigma=1 nu=1 witness vertices=[0, 0] t=['1']
+[C]   late blocks (k, max_block R_n, max per-vertex deviation, label correct):
+         (10, '1.000673181', '0.000673', True)
+         (11, '1.000610929', '0.000611', True)
+         (12, '1.000559288', '0.000559', True)
+[C]   max over last full period = 1.0006731810  vs nu = 1.0000000000  diff = 6.732e-04
+[B] W=(1, 1) K=2 sigma=1 nu=1 witness vertices=[0, 1, 0] t=['1/2', '1/2']
+[C]   late blocks (k, max_block R_n, max per-vertex deviation, label correct):
+         (9, '1.000000064', '0.00037', True)
+         (10, '0.4999832061', '0.000318', True)
+         (11, '1.000000043', '0.000303', True)
+         (12, '0.4999883718', '0.000267', True)
+[C]   max over last full period = 1.0000000640  vs nu = 1.0000000000  diff = 6.400e-08
+[B] W=(2,) K=2 sigma=1 nu=1 witness vertices=[0, 1, 0] t=['1/2', '1/2']
+[C]   late blocks (k, max_block R_n, max per-vertex deviation, label correct):
+         (9, '1.000333264', '0.000333', True)
+         (10, '0.5001683227', '0.000168', True)
+         (11, '1.000277732', '0.000278', True)
+         (12, '0.500139841', '0.00014', True)
+[C]   max over last full period = 1.0003332640  vs nu = 1.0000000000  diff = 3.333e-04
+[B] W=(5, 1, 5) K=35 sigma=6 nu=5/6 witness vertices=[0, 5, 0] t=['1/7', '1/7']
+[C]   late blocks (k, max_block R_n, max per-vertex deviation, label correct):
+         (9, '0.8333436198', '2.81e-5', True)
+         (10, '0.1428598911', '4.04e-5', True)
+         (11, '0.8333417498', '2.32e-5', True)
+         (12, '0.1428594261', '3.36e-5', True)
+[C]   max over last full period = 0.8333436198  vs nu = 0.8333333333  diff = 1.029e-05
+[B] W=(1, 9, 9) K=91 sigma=10 nu=1 witness vertices=[0, 1, 0] t=['1/91', '-10/91']
+[C]   late blocks (k, max_block R_n, max per-vertex deviation, label correct):
+         (9, '1.0', '4.11e-6', True)
+         (10, '0.1098900286', '3.67e-5', True)
+         (11, '1.0', '3.43e-6', True)
+         (12, '0.1098900424', '3.06e-5', True)
+[C]   max over last full period = 1.0000000000  vs nu = 1.0000000000  diff = 0.000e+00
+[B] W=(2, 1, 1, 2) K=13 sigma=5 nu=1 witness vertices=[0, 1, 0] t=['1/13', '-5/13']
+[C]   late blocks (k, max_block R_n, max per-vertex deviation, label correct):
+         (9, '1.000000002', '8.33e-5', True)
+         (10, '0.3846157834', '0.000133', True)
+         (11, '1.000000001', '6.94e-5', True)
+         (12, '0.3846156607', '0.000111', True)
+[C]   max over last full period = 1.0000000020  vs nu = 1.0000000000  diff = 2.000e-09
+[B] W=(3, 1, 4) K=19 sigma=4 nu=4/5 witness vertices=[0, 4, 0] t=['4/19', '3/19']
+[C]   late blocks (k, max_block R_n, max per-vertex deviation, label correct):
+         (9, '0.8000133302', '6.2e-5', True)
+         (10, '0.1579021972', '5.06e-5', True)
+         (11, '0.800011109', '5.1e-5', True)
+         (12, '0.1579009349', '4.3e-5', True)
+[C]   max over last full period = 0.8000133302  vs nu = 0.8000000000  diff = 1.333e-05
+[B] W=(1, 1, 1, 1, 1) K=8 sigma=5 nu=1 witness vertices=[0, 1, 0] t=['1/8', '3/8']
+[C]   late blocks (k, max_block R_n, max per-vertex deviation, label correct):
+         (9, '1.000000004', '8.33e-5', True)
+         (10, '0.3750105188', '0.000138', True)
+         (11, '1.000000003', '6.94e-5', True)
+         (12, '0.3750087391', '0.000115', True)
+[C]   max over last full period = 1.0000000040  vs nu = 1.0000000000  diff = 4.000e-09
+[B] W=(4, 4, 4) K=72 sigma=17 nu=16/17 witness vertices=[0, 16, 0] t=['2/9', '2/9']
+[C]   late blocks (k, max_block R_n, max per-vertex deviation, label correct):
+         (9, '0.9411815956', '4.4e-5', True)
+         (10, '0.2222243003', '7.01e-5', True)
+         (11, '0.941180664', '3.63e-5', True)
+         (12, '0.2222239487', '5.84e-5', True)
+[C]   max over last full period = 0.9411815956  vs nu = 0.9411764706  diff = 5.125e-06
+
+PART A PASSED
