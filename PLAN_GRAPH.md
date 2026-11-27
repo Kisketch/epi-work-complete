@@ -22,7 +22,7 @@
 | R6-N4 | $e$ 尺度通用性检验：π 的 $Q_j$ 尺度统计与已知答案对照、随机对照不可区分，并与 $r-e$ 对照可区分（有限范围；**以 Step 2 修正规格为准**） | Toy T1 / I（证据） | `L1_TESTED`（R6 Step 2 skeptic：MINOR_FIX，修正规格下 PASS） | 4 | 本文件 §R6 节点；原证伪测试见“当前主攻”中的历史记录 |
 | R6-S1 | 块 Hurwitz 数的局部化引理：$\mathcal K_\alpha(\beta)<\infty$ 时，误差在大指标处趋于 0，块内误差由规范标签 $r_k\in\mathbb Z/K(W)$ 决定，KL 权重有显式极限 | 旁支（S） | `L0_CONJECTURE` | 5（预期） | 本文件 §R6 旁支轨 |
 | R6-S2 | 块 Hurwitz 数的 KL 尖锐常数：$c^*(\alpha)=\nu(W)$（有限图上的极小极大值），且可达 | 旁支（S） | `L1_TESTED`（旁支 Step 2 skeptic：MINOR_FIX，修正规格下通过） | 1 的候选（仅本地负搜索） | 本文件 §R6 旁支轨；当前主攻 |
-| R6-S7 | 连续子组合引理：对一切块词 $W$（$K(W)\ge2$），$m^*:=\min_{r\ne0}v(r)\ge1/2$；从而 $K\ge2$ 时 $\nu(W)=\min(1,m^*)$，$K=1$ 时 $\nu=1$，对一切 $W$ 有 $\nu(W)\ge1/2$ | 旁支（S） | `L2_AUDITED`（2026-11-27：首审 MINOR_FIX，修补 1 轮后由全新隔离 skeptic 复审 PASSED_L2） | 无条件；属类别 1 还是 5 待新颖性核查（可能是连续子经典事实的改写） | proofs/R6-S7-mstar.md；experiments/R6-S2/reaudit_S7_* |
+| R6-S7 | 连续子组合引理：对一切块词 $W$（$K(W)\ge2$），$m^*:=\min_{r\ne0}v(r)\ge1/2$；从而 $K\ge2$ 时 $\nu(W)=\min(1,m^*)$，$K=1$ 时 $\nu=1$，对一切 $W$ 有 $\nu(W)\ge1/2$ | 旁支（S） | `L3_FORMALIZED`（2026-11-27：经两轮隔离审计后达到 L2；随后完成 Lean 形式化：`EpiFormal/R6S7Mstar.lean`，命题 1 与推论 2 的组合部分；语句对齐逐项等价；本地 `lake build` 与 `#print axioms` 由总控复跑，结果为 [propext, Classical.choice, Quot.sound]，没有项目自加公理；已接入 CI siege 门禁，等待 CI 运行号） | 无条件；属类别 1 还是 5 待新颖性核查（可能是连续子经典事实的改写） | proofs/R6-S7-mstar.md；experiments/R6-S2/reaudit_S7_* |
 | R6-S3 | 非普适性：存在块词 $W$ 使 $\nu(W)<1$ | 旁支（S） | `L0_CONJECTURE` | 依赖 S2；具体 $\nu(W)$ 值为有限精确计算 | 本文件 §R6 旁支轨 |
 | R6-S4 | $\inf_W\nu(W)=1/4$？（KL 常数 1/4 在块 Hurwitz 类中是否尖锐） | 旁支（S），开放 | `L0_CONJECTURE` | 若证出为 1 的候选 | 本文件 §R6 旁支轨 |
 | R6-S5 | 经典 Hurwitz 常数推论：$c^*(e^{1/m})=c^*(\tanh(1/m))=c^*(\tan(1/m))=1$ | 旁支（S） | `L0_CONJECTURE` | 5 | 本文件 §R6 旁支轨 |
@@ -289,3 +289,4 @@ graph TD
 - 2026-11-27（R6 旁支 Step 2 总控落盘）：R6-S2 升为 `L1_TESTED`；记录 M1–M4 与 $m^*\ge1/2$ 的结构性发现。
 - 2026-11-27 R6 旁支 Step 4：按审计 M2 定义规范标签；仅定义精确化，不改其余内容。R6-S1 陈述新增定义 $r_k=r_k(\beta):=\operatorname{round}(K\,y_{n_k+1})\bmod K$（平局任取最近整数，结论对任何取法成立；与 proofs/R6-S2.md §0.4 I1、§5.2 一致），(b)(c)(d) 改为引用规范标签，节点表 R6-S1 摘要同步改为“规范标签”。R6-S2 陈述不含“标签”，未改。假设、量词、常数与其余结论均未动；S1 仍为 `L0_CONJECTURE`。proofs/R6-S2.md §0.2 的逐字抄录需由 prover 同步。
 - 2026-11-27（R6 旁支 Step 4 总控落盘）：新增节点 R6-S7（由 prover 提出，经隔离审计两轮），状态 `L2_AUDITED`；推论 $c^*\ge1/2$ 以 R6-S2 为条件（类别 2）。派发 formalizer。
+- 2026-11-27（总控）：R6-S7 升为 `L3_FORMALIZED`。推论 3（$c^*\ge1/2$）以 R6-S2 为条件，没有形式化。

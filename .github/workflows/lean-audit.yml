@@ -169,24 +169,26 @@ jobs:
               "../verification/${REFS[$lean_file]}" --count "${COUNTS[$lean_file]}" --only-axioms "$BASE_AXIOMS"
           done
 
-      - name: "Siege-campaign audits (THM-0001, THM-0003 A+B, THM-0005, THM-0006): base axioms only for gate theorems"
+      - name: "Siege-campaign audits (THM-0001, THM-0003 A+B, THM-0005, THM-0006, R6-S7): base axioms only for gate theorems"
         working-directory: epi_formal
         run: |
           set -o pipefail
           BASE='[propext, Classical.choice, Quot.sound]'
-          for f in EpiFormal/RationalSpan.lean EpiFormal/KappaSharp.lean EpiFormal/GeneralDichotomy.lean; do
+          for f in EpiFormal/RationalSpan.lean EpiFormal/KappaSharp.lean EpiFormal/GeneralDichotomy.lean EpiFormal/R6S7Mstar.lean; do
             if grep -nE '\bsorry\b|\badmit\b' "$f"; then echo "sorry/admit in $f"; exit 1; fi
           done
           lake env lean AuditRationalSpan.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit_siege_rational_span.log"
           lake env lean AuditCorollary3Gap.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit_siege_corollary3_gap.log"
           lake env lean AuditKappaSharp.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit_siege_kappa_sharp.log"
           lake env lean AuditGeneralDichotomy.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit_siege_general_dichotomy.log"
+          lake env lean AuditR6S7.lean 2>&1 | tee "$GITHUB_WORKSPACE/audit-output/audit_siege_r6s7.log"
           cat "$GITHUB_WORKSPACE"/audit-output/audit_siege_*.log > /tmp/siege_all.log
           for thm in mem_latticeL_iff_rat P1_iff_not_mem_span P1_iff_linearIndependent_of_irrational \
                      Classification.corollary3_gap Classification.theorem2_classification \
                      KappaSharp.upper_ev KappaSharp.lower_freq kappa_sharp kappa_eq_quarter \
                      GeneralDichotomy.casoratian GeneralDichotomy.T2 GeneralDichotomy.T3A \
-                     GeneralDichotomy.T3B GeneralDichotomy.general_dichotomy GeneralDichotomy.sanity_dichotomy; do
+                     GeneralDichotomy.T3B GeneralDichotomy.general_dichotomy GeneralDichotomy.sanity_dichotomy \
+                     R6S7.prop1 R6S7.mstar_ge_half R6S7.cor2_K_ge_two R6S7.cor2_K_eq_one R6S7.nu_ge_half; do
             line=$(grep -F "'$thm' depends on axioms:" /tmp/siege_all.log || true)
             echo "$line"
             [ "$line" = "'$thm' depends on axioms: $BASE" ] || { echo "AXIOM GATE FAILED for $thm"; exit 1; }

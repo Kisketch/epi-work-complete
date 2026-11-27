@@ -1,0 +1,73 @@
+# formal/R6_S7.log — R6-S7 (m* >= 1/2; nu = min(1, m*)) Lean 4 build and axiom audit
+# Date: 2026-11-27. Role: formalizer. Append-only record of the local build.
+
+Source file : formal/R6_S7.lean (identical copy: epi_formal/EpiFormal/R6S7Mstar.lean)
+SHA-256     : 791571b185a910de42af97205ed13f98d1dbfe1ee306e2b3cecfe8ec75af75fb  (737 lines)
+Toolchain   : Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+Project     : ~/epi_native/epi_formal (native copy; lakefile.toml, lean-toolchain, lake-manifest.json
+              byte-identical to repo epi_formal/; Mathlib oleans via `lake exe cache get`)
+Imports     : Mathlib.Data.ZMod.Units, Mathlib.Algebra.Order.Archimedean.Real.Basic,
+              Mathlib.Algebra.Order.Round, Mathlib.Logic.Equiv.Fin.Rotate, Mathlib.Tactic.LinearCombination
+              (no EpiFormal imports; standalone)
+Escape scan : grep -nE '\b(sorry|admit|native_decide|implemented_by|extern|unsafe|partial|opaque)\b'
+              -> only hit is line 12 inside the module doc block comment ("No `sorry`, no `admit` ...");
+              the regex used by verification/check_audit_reconcile.py strips block comments, so 0 code hits.
+              No `axiom` declarations. One `decide +kernel` (kernel reduction, NOT native_decide) in the
+              sanity theorem `sanity_extremal`; its axiom list below contains no Lean.ofReduceBool.
+
+## Build 1: lake build (applies lakefile leanOptions, as CI does)
+$ cd ~/epi_native/epi_formal && time timeout 580 lake build EpiFormal.R6S7Mstar
+exit code: 0
+⚠ [1317/1317] Built EpiFormal.R6S7Mstar (3.8s)
+info: EpiFormal/R6S7Mstar.lean:723:0: 'R6S7.dK_isLeast' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S7Mstar.lean:724:0: 'R6S7.contK_append_two' depends on axioms: [propext]
+info: EpiFormal/R6S7Mstar.lean:725:0: 'R6S7.contK_cons_cons' depends on axioms: [propext]
+info: EpiFormal/R6S7Mstar.lean:726:0: 'R6S7.vcost_isGreatest' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S7Mstar.lean:727:0: 'R6S7.dK_congr' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/R6S7Mstar.lean:728:0: 'R6S7.vterm_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S7Mstar.lean:729:0: 'R6S7.core_main' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S7Mstar.lean:730:0: 'R6S7.prop1' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S7Mstar.lean:731:0: 'R6S7.mstar_isLeast' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S7Mstar.lean:732:0: 'R6S7.mstar_ge_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S7Mstar.lean:733:0: 'R6S7.cor2_K_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S7Mstar.lean:734:0: 'R6S7.cor2_K_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S7Mstar.lean:735:0: 'R6S7.nu_ge_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S7Mstar.lean:736:0: 'R6S7.sanity_extremal' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S7Mstar.lean:737:0: 'R6S7.sanity_prop1_instance' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (1317 jobs).
+timeout 580 lake build EpiFormal.R6S7Mstar  8.67s user 3.77s system 142% cpu 8.731 total
+(The 5 omitted lines are the generic Lake notice "imports `Mathlib.…` from package `mathlib`, which is
+designed for use with the module system; consider adding `module` …" — one per import; same as other
+standalone EpiFormal modules.)
+
+## Build 2: lake env lean (standalone check)
+$ cd ~/epi_native/epi_formal && time timeout 580 lake env lean EpiFormal/R6S7Mstar.lean
+exit code: 0
+'R6S7.dK_isLeast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S7.contK_append_two' depends on axioms: [propext]
+'R6S7.contK_cons_cons' depends on axioms: [propext]
+'R6S7.vcost_isGreatest' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S7.dK_congr' depends on axioms: [propext, Quot.sound]
+'R6S7.vterm_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S7.core_main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S7.prop1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S7.mstar_isLeast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S7.mstar_ge_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S7.cor2_K_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S7.cor2_K_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S7.nu_ge_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S7.sanity_extremal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S7.sanity_prop1_instance' depends on axioms: [propext, Classical.choice, Quot.sound]
+timeout 580 lake env lean EpiFormal/R6S7Mstar.lean  5.94s user 4.23s system 197% cpu 5.138 total
+
+## Axiom tiers
+- Lean core axioms: propext, Quot.sound
+- Classical whitelist: Classical.choice
+- Project-added axioms: none
+Every theorem above depends only on a subset of [propext, Classical.choice, Quot.sound]
+(the CI BASE_AXIOMS set). contK_append_two / contK_cons_cons: [propext]; dK_congr: [propext, Quot.sound].
+
+## CI
+Not yet run in GitHub CI (no CI run number). The repo copy epi_formal/EpiFormal/R6S7Mstar.lean is matched by
+lakefile glob "EpiFormal.+", so the next full `lake build` in .github/workflows/lean-audit.yml will compile it;
+it is NOT yet in the siege axiom gate (workflow not modified, by instruction).
