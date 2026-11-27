@@ -71,3 +71,12 @@ Every theorem above depends only on a subset of [propext, Classical.choice, Quot
 Not yet run in GitHub CI (no CI run number). The repo copy epi_formal/EpiFormal/R6S7Mstar.lean is matched by
 lakefile glob "EpiFormal.+", so the next full `lake build` in .github/workflows/lean-audit.yml will compile it;
 it is NOT yet in the siege axiom gate (workflow not modified, by instruction).
+
+== 2026-11-27 amendment (commander) ==
+CI run 46005717585 failed: the siege gate's grep '\bsorry\b|\badmit\b' matched line 12 of the docstring
+("No `sorry`, no `admit`, no project axioms."), not code. The comment was reworded to
+"No proof-escape tactics (enforced by the CI siege gate), no project axioms." (comment-only change;
+formal/R6_S7.lean and epi_formal/EpiFormal/R6S7Mstar.lean remain byte-identical).
+Local rebuild: lake build EpiFormal.R6S7Mstar -> Build completed successfully (1317 jobs), exit 0;
+lake env lean AuditR6S7.lean -> all 5 gate theorems [propext, Classical.choice, Quot.sound].
+New SHA-256: 71c2520e8972c7b20987f4e606fd70a8a7ffc123dcf7fa1d6dce9ab498e862c3

@@ -9,7 +9,7 @@ import Mathlib.Tactic.LinearCombination
 
 Formalizes Proposition 1 and Corollary 2 of `proofs/R6-S7-mstar.md`, with every object
 (`K`, `c_i`, `c'_i`, `σ`, `d_K`, `v`, the local graph `G_W`, `ν`) defined literally after
-PLAN_GRAPH.md §S.1. No `sorry`, no `admit`, no project axioms.
+PLAN_GRAPH.md §S.1. No proof-escape tactics (enforced by the CI siege gate), no project axioms.
 
 Corollary 3 (the transfer `c*(α) = ν(W)`, i.e. R6-S2) is NOT formalized here.
 -/
