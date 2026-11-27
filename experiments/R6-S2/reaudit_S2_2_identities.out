@@ -1,0 +1,26 @@
+D4 all-ones digits l=0 N=0: max ratio (i) 2.618034, (ii) 2.719771 (bound 4)
+D4 all-ones digits l=0 N=1: max ratio (i) 2.618034, (ii) 2.632762 (bound 4)
+D4 all-ones digits l=0 N=2: max ratio (i) 2.618034, (ii) 2.632762 (bound 4)
+D4 all-ones digits l=1 N=0: max ratio (i) 1.618034, (ii) 1.618034 (bound 4)
+D4 all-ones digits l=1 N=1: max ratio (i) 1.618034, (ii) 1.622576 (bound 4)
+D4 all-ones digits l=1 N=2: max ratio (i) 1.618034, (ii) 1.618034 (bound 4)
+D4 all-ones digits l=2 N=0: max ratio (i) 1.333333, (ii) 1.311636 (bound 4)
+D4 all-ones digits l=2 N=1: max ratio (i) 1.309017, (ii) 1.309073 (bound 4)
+D4 all-ones digits l=2 N=2: max ratio (i) 1.309017, (ii) 1.309399 (bound 4)
+D4 all-ones digits l=3 N=0: max ratio (i) 1.200000, (ii) 1.170820 (bound 4)
+D4 all-ones digits l=3 N=1: max ratio (i) 1.170820, (ii) 1.171019 (bound 4)
+D4 all-ones digits l=3 N=2: max ratio (i) 1.170820, (ii) 1.170820 (bound 4)
+B1: min (1/theta - A_k) = 0.13307379 ; max (1/theta - A_k - 2) = -0.12773921
+B1: case q_{n_k-1}/q_{n_k} = 1 occurred (so the closed bound [0,1] is attained): True
+
+A1   : cases   39060  failures 0
+A2   : cases  112305  failures 0
+A2b  : cases  112305  failures 0
+F2   : cases   13141  failures 0
+D3   : cases   12341  failures 0
+D4i  : cases     612  failures 0
+D4ii : cases     612  failures 0
+B4   : cases  112305  failures 0
+gcd  : cases   19530  failures 0
+B1   : cases    3300  failures 0
+ALL PASS: True
