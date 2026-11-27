@@ -1,0 +1,21 @@
+=== Part A: beta=(a alpha+b)/m, lower bound probe ===
+  W=[5, 1, 5]  nu=5/6    #bounded non-lattice beta=34  min late max=0.83347725 at (a,b,m)=(6, 0, 7)  OK
+  W=[3, 1]     nu=1      #bounded non-lattice beta=3  min late max=1.0000004 at (a,b,m)=(1, 0, 4)  OK
+  W=[2, 2]     nu=1      #bounded non-lattice beta=4  min late max=1.0002939 at (a,b,m)=(2, 0, 5)  OK
+  W=[1, 9, 9]  nu=1      #bounded non-lattice beta=18  min late max=3.1108073 at (a,b,m)=(12, 0, 13)  OK
+  W=[1, 1]     nu=1      #bounded non-lattice beta=1  min late max=1.000001 at (a,b,m)=(1, 0, 2)  OK
+  W=[]         nu=1      #bounded non-lattice beta=0  min late max=None at (a,b,m)=None  OK
+=== Part B: Sec.8 finite-shift remark ===
+  W=(1,1), alpha=[0;A_1,1,1,A_2,1,1,...], A_k=10+k, beta=alpha/2 (K_alpha(beta) finite: max R_n over n>=30 = 1.00198)
+  #n in [30,78) with y_n(beta-alpha) != y_n(beta) - eps_n (as real numbers): 32
+    n=31  y_n(beta)=0.5  y_n(beta-alpha)=-0.5  y_n(beta)-eps_n=0.5
+    n=32  y_n(beta)=-0.5  y_n(beta-alpha)=0.5  y_n(beta)-eps_n=-0.5
+    n=34  y_n(beta)=-0.5  y_n(beta-alpha)=0.5  y_n(beta)-eps_n=-0.5
+    n=35  y_n(beta)=0.5  y_n(beta-alpha)=-0.5  y_n(beta)-eps_n=0.5
+    n=37  y_n(beta)=0.5  y_n(beta-alpha)=-0.5  y_n(beta)-eps_n=0.5
+    n=38  y_n(beta)=-0.5  y_n(beta-alpha)=0.5  y_n(beta)-eps_n=-0.5
+  => the remark is false as an identity of real numbers (true only mod 1 / for |y_n|), infinitely often in this example
+=== Part C: Sec.8 tie remark at minimal admissible k_1 ===
+  W=(1,9,9), A_1=3, A_k=1000+k: among T'_1 in [-400,400] with k_0=k_1=1 admissible, max |y_{n_1}| = 0.498592 (T'_1=-177, K~4.99951)
+FAILS (Part A lower-bound violations): 0
+PART A PASSED

@@ -1,0 +1,19 @@
+(A2) split identity checked: 30948 cases
+(A2a),(A2b),gcd checked for 5461 words
+(A1),D3,D4 checked on 60 random block-Hurwitz prefixes
+D4(i) with l=0 and all a=1 (Fibonacci): max sum/q = 2.6180339887498896 (<=4 required)
+  W=[5, 1, 5]: max|1/theta_{n_k+i}-K/(c c')| at k=30, A~1e6: 1.0277e-6 ; 1/theta_{n_k}-A_k = 0.34285714
+  W=[1, 9, 9]: max|1/theta_{n_k+i}-K/(c c')| at k=30, A~1e6: 1.0123e-6 ; 1/theta_{n_k}-A_k = 1.010989
+  W=[2]: max|1/theta_{n_k+i}-K/(c c')| at k=30, A~1e6: 1.9999e-6 ; 1/theta_{n_k}-A_k = 0.9999995
+  W=[1, 1]: max|1/theta_{n_k+i}-K/(c c')| at k=30, A~1e6: 1.9999e-12 ; 1/theta_{n_k}-A_k = 1.0000005
+  W=[3, 1]: max|1/theta_{n_k+i}-K/(c c')| at k=30, A~1e6: 8.8886e-7 ; 1/theta_{n_k}-A_k = 1.0000001
+  W=[2, 2, 2, 2]: max|1/theta_{n_k+i}-K/(c c')| at k=30, A~1e6: 9.9303e-7 ; 1/theta_{n_k}-A_k = 0.82758621
+nu(W): bottleneck == brute-force closed-walk enumeration on 43 words with K<=9
+  nu([]) = 1   (K=1, sigma=1)
+  nu([1]) = 1   (K=1, sigma=1)
+  nu([1, 1]) = 1   (K=2, sigma=1)
+  nu([5, 1, 5]) = 5/6   (K=35, sigma=6)
+  nu([2]) = 1   (K=2, sigma=1)
+  nu([1, 9, 9]) = 1   (K=91, sigma=10)
+FAILS: 0
+ALL CHECKS PASSED

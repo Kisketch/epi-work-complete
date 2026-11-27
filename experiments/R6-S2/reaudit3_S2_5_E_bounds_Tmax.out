@@ -1,0 +1,64 @@
+=== Part A ===
+  T_max <= K tau_max + sigma(K-1): 1173396 cases, 18675 equalities, fails so far 0
+=== Part B ===
+  K=91 sigma=10  T'_1=910 (=T_1+sigma r0)
+  |K g'_1| = 0.818444 ; wrong bound 8K tau_max/min = 0.07992007992007992 ; (tau') bound = 7.2727272727272725 ; (tau) bound = 7.2727272727272725
+=== Part C: (E1)-(E4),(E4_0) ===
+  constructed A_k=k+1        W=[1, 9, 9]  K_est=4.27459    k0=1 k1=1 checked=154 violations=0
+  lattice u=0 v=3 A_k=k+1    W=[1, 9, 9]  K_est=0.0        k0=1 k1=1 checked=154 violations=0
+  lattice u=0 v=0 A_k=k+1    W=[1, 9, 9]  K_est=0.0        k0=1 k1=1 checked=154 violations=0
+  lattice u=2 v=-1 A_k=k+1   W=[1, 9, 9]  K_est=5.197e-67  k0=1 k1=1 checked=154 violations=0
+  constructed A_k=50+k       W=[1, 9, 9]  K_est=3.82695    k0=1 k1=1 checked=154 violations=0
+  lattice u=0 v=3 A_k=50+k   W=[1, 9, 9]  K_est=0.0        k0=1 k1=1 checked=154 violations=0
+  lattice u=0 v=0 A_k=50+k   W=[1, 9, 9]  K_est=0.0        k0=1 k1=1 checked=154 violations=0
+  lattice u=2 v=-1 A_k=50+k  W=[1, 9, 9]  K_est=5.51654e-83 k0=2 k1=2 checked=147 violations=0
+  constructed A_k=k+1        W=[2]        K_est=1.04994    k0=19 k1=19 checked=20 violations=0
+  lattice u=0 v=3 A_k=k+1    W=[2]        K_est=0.0        k0=1 k1=1 checked=110 violations=0
+  lattice u=0 v=0 A_k=k+1    W=[2]        K_est=0.0        k0=1 k1=1 checked=110 violations=0
+  lattice u=2 v=-1 A_k=k+1   W=[2]        K_est=1.99436e-30 k0=1 k1=1 checked=110 violations=0
+  constructed A_k=50+k       W=[2]        K_est=1.01307    k0=15 k1=15 checked=40 violations=0
+  lattice u=0 v=3 A_k=50+k   W=[2]        K_est=0.0        k0=1 k1=1 checked=110 violations=0
+  lattice u=0 v=0 A_k=50+k   W=[2]        K_est=0.0        k0=1 k1=1 checked=110 violations=0
+  lattice u=2 v=-1 A_k=50+k  W=[2]        K_est=1.67299e-46 k0=2 k1=2 checked=105 violations=0
+  constructed A_k=k+1        W=[3, 1]     K_est=1.96183    k0=1 k1=1 checked=132 violations=0
+  lattice u=0 v=3 A_k=k+1    W=[3, 1]     K_est=0.0        k0=1 k1=1 checked=132 violations=0
+  lattice u=0 v=0 A_k=k+1    W=[3, 1]     K_est=0.0        k0=1 k1=1 checked=132 violations=0
+  lattice u=2 v=-1 A_k=k+1   W=[3, 1]     K_est=4.78997e-37 k0=1 k1=1 checked=132 violations=0
+  constructed A_k=50+k       W=[3, 1]     K_est=2.00582    k0=4 k1=4 checked=114 violations=0
+  lattice u=0 v=3 A_k=50+k   W=[3, 1]     K_est=0.0        k0=1 k1=1 checked=132 violations=0
+  lattice u=0 v=0 A_k=50+k   W=[3, 1]     K_est=0.0        k0=1 k1=1 checked=132 violations=0
+  lattice u=2 v=-1 A_k=50+k  W=[3, 1]     K_est=4.00125e-53 k0=2 k1=2 checked=126 violations=0
+  constructed A_k=k+1        W=[5, 1, 5]  K_est=2.84509    k0=1 k1=1 checked=154 violations=0
+  lattice u=0 v=3 A_k=k+1    W=[5, 1, 5]  K_est=0.0        k0=1 k1=1 checked=154 violations=0
+  lattice u=0 v=0 A_k=k+1    W=[5, 1, 5]  K_est=0.0        k0=1 k1=1 checked=154 violations=0
+  lattice u=2 v=-1 A_k=k+1   W=[5, 1, 5]  K_est=3.62537e-57 k0=1 k1=1 checked=154 violations=0
+  constructed A_k=50+k       W=[5, 1, 5]  K_est=2.66242    k0=4 k1=4 checked=133 violations=0
+  lattice u=0 v=3 A_k=50+k   W=[5, 1, 5]  K_est=0.0        k0=1 k1=1 checked=154 violations=0
+  lattice u=0 v=0 A_k=50+k   W=[5, 1, 5]  K_est=0.0        k0=1 k1=1 checked=154 violations=0
+  lattice u=2 v=-1 A_k=50+k  W=[5, 1, 5]  K_est=9.44879e-74 k0=2 k1=2 checked=147 violations=0
+  constructed A_k=k+1        W=[1, 1]     K_est=1.01755    k0=18 k1=18 checked=30 violations=0
+  lattice u=0 v=3 A_k=k+1    W=[1, 1]     K_est=0.0        k0=1 k1=1 checked=132 violations=0
+  lattice u=0 v=0 A_k=k+1    W=[1, 1]     K_est=0.0        k0=1 k1=1 checked=132 violations=0
+  lattice u=2 v=-1 A_k=k+1   W=[1, 1]     K_est=1.70934e-30 k0=1 k1=1 checked=132 violations=0
+  constructed A_k=50+k       W=[1, 1]     K_est=1.50636    k0=5 k1=5 checked=108 violations=0
+  lattice u=0 v=3 A_k=50+k   W=[1, 1]     K_est=0.0        k0=1 k1=1 checked=132 violations=0
+  lattice u=0 v=0 A_k=50+k   W=[1, 1]     K_est=0.0        k0=1 k1=1 checked=132 violations=0
+  lattice u=2 v=-1 A_k=50+k  W=[1, 1]     K_est=1.66837e-46 k0=2 k1=2 checked=126 violations=0
+  constructed A_k=k+1        W=[]         K_est=1.12469    k0=6 k1=None checked=51 violations=0
+  lattice u=0 v=3 A_k=k+1    W=[]         K_est=0.0        k0=1 k1=None checked=66 violations=0
+  lattice u=0 v=0 A_k=k+1    W=[]         K_est=0.0        k0=1 k1=None checked=66 violations=0
+  lattice u=2 v=-1 A_k=k+1   W=[]         K_est=5.07959e-23 k0=1 k1=None checked=66 violations=0
+  constructed A_k=50+k       W=[]         K_est=1.98629    k0=5 k1=None checked=54 violations=0
+  lattice u=0 v=3 A_k=50+k   W=[]         K_est=0.0        k0=1 k1=None checked=66 violations=0
+  lattice u=0 v=0 A_k=50+k   W=[]         K_est=0.0        k0=1 k1=None checked=66 violations=0
+  lattice u=2 v=-1 A_k=50+k  W=[]         K_est=9.87703e-40 k0=2 k1=None checked=63 violations=0
+  constructed A_k=k+1        W=[1]        K_est=2.15691    k0=1 k1=1 checked=110 violations=0
+  lattice u=0 v=3 A_k=k+1    W=[1]        K_est=0.0        k0=1 k1=1 checked=110 violations=0
+  lattice u=0 v=0 A_k=k+1    W=[1]        K_est=0.0        k0=1 k1=1 checked=110 violations=0
+  lattice u=2 v=-1 A_k=k+1   W=[1]        K_est=1.30471e-24 k0=1 k1=1 checked=110 violations=0
+  constructed A_k=50+k       W=[1]        K_est=1.98651    k0=4 k1=4 checked=95 violations=0
+  lattice u=0 v=3 A_k=50+k   W=[1]        K_est=0.0        k0=1 k1=1 checked=110 violations=0
+  lattice u=0 v=0 A_k=50+k   W=[1]        K_est=0.0        k0=1 k1=1 checked=110 violations=0
+  lattice u=2 v=-1 A_k=50+k  W=[1]        K_est=4.99723e-40 k0=2 k1=2 checked=105 violations=0
+FAILS: 0
+ALL CHECKS PASSED
