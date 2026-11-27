@@ -20,4 +20,12 @@
 | D13 | 由测度上界（含 $\sin$ 下界）逐项推出 $\operatorname{irr}(\pi)\le5/2$ | 当 $n>\pi\lvert m\rvert$ 时不等式反向 | 逐项论证在 $n>\pi\lvert m\rvert$ 时失效（Paper 1 中保留了历史记录） | 检查不等式在**所有**参数范围上的方向 | B9 | Paper 1 §Alekseyev |
 
 ## R6 自主循环新增
-（尚无）
+
+> D14–D16 是 R6 Step 1 strategist 的纸面分析，**未经 skeptic 复核**，不得当作定理引用；skeptic 若推翻其中任何一条，请在本表追加更正行。D17 不是失败路线，而是“已饱和、低信息”的不重复标记。
+
+| 编号 | 路线 | 精确失效步骤 | 最小反例 / 阻断事实 | 教训 | 对应障碍 | 来源 |
+|---|---|---|---|---|---|---|
+| D14 | Nesterenko 一般 $q$ 版本取 $q=e^{-1}$，配合 $E_2$ 拟模变换（D4 的推广） | 在 $e+\pi=r$ 的假设下，把 $q=e^{-1}$ 与 $q'=e^{-4\pi^2}=e^{-4(r-e)^2}$ 两点的 $P,Q,R$ 值放进同一个域 | 假设至多让联合超越次数降 1，而单点下界只有 $\ge3$，两者不冲突；两点联合下界未知，所需强度接近 Schanuel 型 | 只能拿到单点超越次数下界的定理，不可能被一个“降 1”的假设驳倒 | B18、B1 | R6 strategist 分析 |
+| D15 | 留数型指数周期恒等式（把 bridge 4 推广到一般有理函数 $R$） | 由 $\int_{\mathbb R}R(x)e^{iax}dx$ 求 $e,\pi$ 的加法关系 | 由留数定理，值属于 $2\pi i\cdot\overline{\mathbb Q}[e^{ia\beta_k}]$，π 只作为整体因子出现 | 先检查恒等式里 π 是加法出现还是乘法出现 | B19 | R6 strategist 分析；Paper 1 §sub:bridges |
+| D16 | 用 π 的 Padé 型（非收敛分数）逼近填 adaptive strip（Paper 1 thm:adaptive-strip） | 需要 $q\asymp Q_j\cdot(\le j)$ 的分母，并且 $\lvert q\pi-p\rvert<c/(BQ_j)$ | 这是收敛分数级的质量；Padé 构造的质量 $q^{-\tau}$（$\tau<1$）在该尺度上远远不够 | strip 判据要求 π 在**指定尺度**上有**最佳逼近**，而测度型信息给不了这一点 | B14、B13 | R6 strategist 分析 |
+| D17 | 继续扩大方向 R 的有限排除，或在小 $B$ 上做 π 的 $e$ 尺度数值（**低信息，已饱和**） | 不是失败，而是信息量趋近于零 | Paper 1 prop:denominator-bounds 已给出 $q\ge10^{500018}$（两台机器复现，Paper 1 自报）；prop:farey-gap 已给出 $b<3635695100$ 时对所有 $j\ge8$ 有 $D_j(b)\ne0$（Lean 证书，Paper 1 自报，未复跑）；§lean-reduction 已算 $B\le20$、$j\le80$。按 Paper 1 自己的说明，界 $\approx10^{D/2}$ 只反映计算长度 | 有限排除只是证伪门槛，不是进展；除非有新的对照设计，否则不要重复 | B11、B16 | Paper 1 §sub:denominator-bounds、§lean-reduction |
