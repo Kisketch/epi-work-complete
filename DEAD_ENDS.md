@@ -30,3 +30,11 @@
 | D16 | 用 π 的 Padé 型（非收敛分数）逼近填 adaptive strip（Paper 1 thm:adaptive-strip） | 需要 $q\asymp Q_j\cdot(\le j)$ 的分母，并且 $\lvert q\pi-p\rvert<c/(BQ_j)$ | 这是收敛分数级的质量；Padé 构造的质量 $q^{-\tau}$（$\tau<1$）在该尺度上远远不够 | strip 判据要求 π 在**指定尺度**上有**最佳逼近**，而测度型信息给不了这一点 | B14、B13 | R6 strategist 分析 |
 | D17 | 继续扩大方向 R 的有限排除，或在小 $B$ 上做 π 的 $e$ 尺度数值（**低信息，已饱和**） | 不是失败，而是信息量趋近于零 | Paper 1 prop:denominator-bounds 已给出 $q\ge10^{500018}$（两台机器复现，Paper 1 自报）；prop:farey-gap 已给出 $b<3635695100$ 时对所有 $j\ge8$ 有 $D_j(b)\ne0$（Lean 证书，Paper 1 自报，未复跑）；§lean-reduction 已算 $B\le20$、$j\le80$。按 Paper 1 自己的说明，界 $\approx10^{D/2}$ 只反映计算长度 | 有限排除只是证伪门槛，不是进展；除非有新的对照设计，否则不要重复 | B11、B16 | Paper 1 §sub:denominator-bounds、§lean-reduction |
 | D18 | 把 THM-0006 阈值 1 的尖锐性（一般 $a_j\to\infty$）与 THM-0005 的极值集合当作**新**旁支目标重做（R6 旁支 Step 1 strategist，2026-11-27 去重） | 不是失败，是**重复**：Paper 2 thm:growing-rec-spectrum 已给出任意增长商递推的全谱 $\mathbb Z_{\ge0}\cup\{\infty\}$（含阈值 1 尖锐且可达）；thm:trichotomy 与 `FullSpectrumDiscrete.lean`、`GaugeLiminfComplete.lean`、`QuarterPoint*.lean` 已刻画 $\{\Lambda=1/4\}$ 等水平集（缺陷字母表、陪集坍缩、临界 gauge、维数 0） | 均为作者自报 Lean，本轮未复跑；`logs/CAMPAIGN_SUMMARY.md`“展望”第 2、3 条与 Paper 2 现状不同步 | 提新目标前先 grep Paper 2 / 2D / 2E 的摘要与 `EpiFormal/` 声明；剩余的设定差异（$a_j\ge1$、任意初值、$L_D$ 对 $L_G$）只作对账（R6-S6，类别 5） | — | PLAN_GRAPH §R6 旁支轨 S.0 |
+
+## R6 旁支流程记录（strategist，2026-11-27）
+
+> D19 是**流程记录**，不是数学失败：R6-S2 的陈述没有被证伪，证明链 §0–§7 在 4 次隔离审计中没有被报出缺口。记录它是为了满足“失败记录保留”与 CLAUDE.md 硬门禁 2（不重复失败做法）。
+
+| 编号 | 路线 | 精确失效步骤 | 最小反例 / 阻断事实 | 教训 | 对应障碍 | 来源 |
+|---|---|---|---|---|---|---|
+| D19 | 对 R6-S2 第 1 版证明稿（proofs/R6-S2.md，含 §8 附注、§9 备注与修补记录）做原地修补（流程层面） | 首审与 3 次复审都是 MINOR_FIX，3 轮修补预算用尽。证明链内的真实问题（规范标签定义；§5.4、§5.5 退化情形的严格不等号）都已修正；剩余发现集中在不承重的 §8 附注：第 2 轮复审 m1（第 1 轮修补新增的 $8K\tau_{\max}$ 界为假，反例 $W=(1,9,9)$）、第 3 轮复审 n1（§8 把只在模 1 下成立的关系写成实数等式，反例 $W=(1,1)$、$\beta=\alpha/2$）、n2（§8 中“$y_{n_k}$ 远离 $\pm1/2$”无依据） | 每轮修补都在审计范围内的附注中新增解释性文字，新增文字成为下一轮的主要发现来源，修补不收敛 | 待审文件只放承重证明链；解释、一致性讨论与修补记录放进不入审计的单独文件；修补只改被点名的位置，禁止在待审文件新增附注（PLAN_GRAPH §“R6-S2 路线重构”D-1、D-5） | —（非数学障碍，不追加 BARRIERS） | 账本 `logs/ledger/ledger-R6.jsonl` R6-S2 各行；`experiments/R6-S2/audit_S2_*`、`reaudit_S2_*`、`reaudit2_S2_*`、`reaudit3_S2_*` |
