@@ -1,0 +1,95 @@
+== Part A1: exhaustive check  T_max <= K tau_max + sigma (K-1)  (exact integers) ==
+words: 781 (all words over {1..5} of length <= 4, plus empty); cases: 297571176; violations: 0; cases with equality (and sigma(K-1)>0): 290056
+
+== Part A2: end-to-end, section 5.6 construction; |K g'_k| vs three bounds ==
+[audit counterexample] W=(1, 9, 9) K=91 sigma=10 r0=90 tau_1=10/91 T_1=10 T'_1=910 K tau_max=10 K tau'_max=910 T_max=910 K tau_max+sigma(K-1)=910
+   k=1: |K g'_k|=0.818444  (i) 7.27273  (ii) 7.27273  (iii) 0.0799201  label=90 given=0
+   k=2: |K g'_k|=8.96689e-6  (i) 7.26547  (ii) 7.26547  (iii) 0.0798403  label=0 given=0
+   k=3: |K g'_k|=9.81436e-11  (i) 7.25823  (ii) 7.25823  (iii) 0.0797607  label=0 given=0
+   all k in 1..12: (i) holds: True;  (ii) holds: True;  (iii) fails at k in [1]
+[random 0] W=(5,) K=5 sigma=1 r0=1 tau_1=1 T_1=5 T'_1=6 K tau_max=5 K tau'_max=6 T_max=6 K tau_max+sigma(K-1)=9
+   k=1: |K g'_k|=0.0098117  (i) 0.494845  (ii) 0.742268  (iii) 0.412371  label=1 given=1
+   k=2: |K g'_k|=0.00213496  (i) 0.280702  (ii) 0.421053  (iii) 0.233918  label=0 given=0
+   k=3: |K g'_k|=0.00144875  (i) 0.280702  (ii) 0.421053  (iii) 0.233918  label=4 given=4
+   all k in 1..8: (i) holds: True;  (ii) holds: True;  (iii) fails at k in []
+[random 1] W=(8,) K=8 sigma=1 r0=3 tau_1=-7/8 T_1=-7 T'_1=-4 K tau_max=11 K tau'_max=11 T_max=11 K tau_max+sigma(K-1)=18
+   k=1: |K g'_k|=0.00159132  (i) 1.08642  (ii) 1.77778  (iii) 1.08642  label=4 given=4
+   k=2: |K g'_k|=0.0118424  (i) 0.465608  (ii) 0.761905  (iii) 0.465608  label=1 given=1
+   k=3: |K g'_k|=0.00593729  (i) 0.465608  (ii) 0.761905  (iii) 0.465608  label=4 given=4
+   all k in 1..8: (i) holds: True;  (ii) holds: True;  (iii) fails at k in []
+[random 2] W=(5, 4, 1, 2) K=73 sigma=26 r0=32 tau_1=-90/73 T_1=-90 T'_1=742 K tau_max=90 K tau'_max=742 T_max=742 K tau_max+sigma(K-1)=1962
+   k=1: |K g'_k|=0.80783  (i) 33.92  (ii) 89.6914  (iii) 4.11429  label=11 given=12
+   k=2: |K g'_k|=0.0670266  (i) 41.2222  (ii) 109.0  (iii) 5.0  label=12 given=12
+   k=3: |K g'_k|=0.0698044  (i) 41.2222  (ii) 109.0  (iii) 5.0  label=41 given=41
+   all k in 1..8: (i) holds: True;  (ii) holds: True;  (iii) fails at k in []
+[random 3] W=(3, 7, 7) K=157 sigma=22 r0=42 tau_1=7/157 T_1=7 T'_1=931 K tau_max=211 K tau'_max=931 T_max=931 K tau_max+sigma(K-1)=3643
+   k=1: |K g'_k|=3.0627  (i) 103.444  (ii) 404.778  (iii) 23.4444  label=143 given=146
+   k=2: |K g'_k|=0.782175  (i) 103.444  (ii) 404.778  (iii) 23.4444  label=92 given=93
+   k=3: |K g'_k|=0.0237757  (i) 19.3958  (ii) 75.8958  (iii) 4.39583  label=38 given=38
+   all k in 1..8: (i) holds: True;  (ii) holds: True;  (iii) fails at k in []
+[random 4] W=(9, 8) K=73 sigma=9 r0=29 tau_1=-69/73 T_1=-69 T'_1=192 K tau_max=101 K tau'_max=192 T_max=192 K tau_max+sigma(K-1)=749
+   k=1: |K g'_k|=0.474954  (i) 35.7209  (ii) 139.349  (iii) 18.7907  label=46 given=46
+   k=2: |K g'_k|=0.100044  (i) 18.2857  (ii) 71.3333  (iii) 9.61905  label=57 given=57
+   k=3: |K g'_k|=0.0430057  (i) 8.82759  (ii) 34.4368  (iii) 4.64368  label=69 given=69
+   all k in 1..8: (i) holds: True;  (ii) holds: True;  (iii) fails at k in []
+[random 5] W=(3,) K=3 sigma=1 r0=2 tau_1=1/3 T_1=1 T'_1=3 K tau_max=3 K tau'_max=3 T_max=3 K tau_max+sigma(K-1)=5
+   k=1: |K g'_k|=0.0187038  (i) 0.45283  (ii) 0.754717  (iii) 0.45283  label=0 given=0
+   k=2: |K g'_k|=0.00281164  (i) 0.210526  (ii) 0.350877  (iii) 0.210526  label=0 given=0
+   k=3: |K g'_k|=0.00172595  (i) 0.2  (ii) 0.333333  (iii) 0.2  label=2 given=2
+   all k in 1..8: (i) holds: True;  (ii) holds: True;  (iii) fails at k in []
+[random 6] W=(8,) K=8 sigma=1 r0=1 tau_1=7/8 T_1=7 T'_1=8 K tau_max=10 K tau'_max=10 T_max=10 K tau_max+sigma(K-1)=17
+   k=1: |K g'_k|=0.0269477  (i) 2.0  (ii) 3.4  (iii) 2.0  label=0 given=0
+   k=2: |K g'_k|=0.0195322  (i) 2.0  (ii) 3.4  (iii) 2.0  label=1 given=1
+   k=3: |K g'_k|=0.00127275  (i) 0.277778  (ii) 0.472222  (iii) 0.277778  label=7 given=7
+   all k in 1..8: (i) holds: True;  (ii) holds: True;  (iii) fails at k in []
+[random 7] W=(3, 4, 7, 5) K=483 sigma=94 r0=21 tau_1=-691/483 T_1=-691 T'_1=1283 K tau_max=723 K tau'_max=1283 T_max=1283 K tau_max+sigma(K-1)=46031
+   k=1: |K g'_k|=2.67306  (i) 223.13  (ii) 8005.39  (iii) 125.739  label=314 given=317
+   k=2: |K g'_k|=4.79774  (i) 223.13  (ii) 8005.39  (iii) 125.739  label=87 given=92
+   k=3: |K g'_k|=0.250605  (i) 79.5659  (ii) 2854.64  (iii) 44.8372  label=331 given=331
+   all k in 1..8: (i) holds: True;  (ii) holds: True;  (iii) fails at k in []
+[random 8] W=(3, 6, 5, 2) K=215 sigma=98 r0=159 tau_1=119/215 T_1=119 T'_1=15701 K tau_max=319 K tau'_max=15701 T_max=15701 K tau_max+sigma(K-1)=21291
+   k=1: |K g'_k|=126.311  (i) 3220.72  (ii) 4367.38  (iii) 65.4359  label=95 given=6
+   k=2: |K g'_k|=0.352069  (i) 448.6  (ii) 608.314  (iii) 9.11429  label=65 given=65
+   k=3: |K g'_k|=0.209843  (i) 392.525  (ii) 532.275  (iii) 7.975  label=24 given=24
+   all k in 1..8: (i) holds: True;  (ii) holds: True;  (iii) fails at k in [1]
+[random 9] W=(8,) K=8 sigma=1 r0=3 tau_1=-9/8 T_1=-9 T'_1=-6 K tau_max=12 K tau'_max=12 T_max=12 K tau_max+sigma(K-1)=19
+   k=1: |K g'_k|=0.0285988  (i) 3.42857  (ii) 5.42857  (iii) 3.42857  label=2 given=2
+   k=2: |K g'_k|=0.00325615  (i) 1.0  (ii) 1.58333  (iii) 1.0  label=6 given=6
+   k=3: |K g'_k|=0.0055268  (i) 1.0  (ii) 1.58333  (iii) 1.0  label=2 given=2
+   all k in 1..8: (i) holds: True;  (ii) holds: True;  (iii) fails at k in []
+[random 10] W=(2, 4, 5) K=47 sigma=9 r0=39 tau_1=6/47 T_1=6 T'_1=357 K tau_max=68 K tau'_max=357 T_max=357 K tau_max+sigma(K-1)=482
+   k=1: |K g'_k|=4.15066  (i) 75.1579  (ii) 101.474  (iii) 14.3158  label=24 given=28
+   k=2: |K g'_k|=0.0244081  (i) 27.2  (ii) 36.7238  (iii) 5.18095  label=45 given=45
+   k=3: |K g'_k|=0.289354  (i) 27.2  (ii) 36.7238  (iii) 5.18095  label=8 given=8
+   all k in 1..8: (i) holds: True;  (ii) holds: True;  (iii) fails at k in []
+[random 11] W=(5, 7) K=36 sigma=5 r0=4 tau_1=-5/36 T_1=-5 T'_1=15 K tau_max=54 K tau'_max=54 T_max=54 K tau_max+sigma(K-1)=229
+   k=1: |K g'_k|=0.0241432  (i) 3.06383  (ii) 12.9929  (iii) 3.06383  label=15 given=15
+   k=2: |K g'_k|=0.0214901  (i) 1.35849  (ii) 5.76101  (iii) 1.35849  label=35 given=35
+   k=3: |K g'_k|=0.0245755  (i) 1.36709  (ii) 5.79747  (iii) 1.36709  label=17 given=17
+   all k in 1..8: (i) holds: True;  (ii) holds: True;  (iii) fails at k in []
+Part A2 random trials: (i) and (ii) hold in all: True
+
+== Part B: section 5.2-5.4 bounds (B1-B4) per block, Rb := max of the R_n actually used ==
+[generic 0] W=(3, 7, 1) K=25 K_[2,l]=8: checks=60 violations=0 max|K g_k|=0.4885
+[constructed 0] W=(3, 7, 1) K=25 K_[2,l]=8: checks=60 violations=0 max|K g_k|=0.4819
+[generic 1] W=(4,) K=4 K_[2,l]=1: checks=40 violations=0 max|K g_k|=0.4272
+[constructed 1] W=(4,) K=4 K_[2,l]=1: checks=40 violations=0 max|K g_k|=0.05738
+[generic 2] W=(3, 4) K=13 K_[2,l]=4: checks=50 violations=0 max|K g_k|=0.4553
+[constructed 2] W=(3, 4) K=13 K_[2,l]=4: checks=50 violations=0 max|K g_k|=0.1007
+[generic 3] W=(6, 8, 8) K=398 K_[2,l]=65: checks=60 violations=0 max|K g_k|=0.4897
+[constructed 3] W=(6, 8, 8) K=398 K_[2,l]=65: checks=60 violations=0 max|K g_k|=0.4744
+[generic 4] W=(4,) K=4 K_[2,l]=1: checks=40 violations=0 max|K g_k|=0.4599
+[constructed 4] W=(4,) K=4 K_[2,l]=1: checks=40 violations=0 max|K g_k|=0.04252
+[generic 5] W=(8,) K=8 K_[2,l]=1: checks=40 violations=0 max|K g_k|=0.4375
+[constructed 5] W=(8,) K=8 K_[2,l]=1: checks=40 violations=0 max|K g_k|=0.05121
+[generic 6] W=(8, 3) K=25 K_[2,l]=3: checks=50 violations=0 max|K g_k|=0.386
+[constructed 6] W=(8, 3) K=25 K_[2,l]=3: checks=50 violations=0 max|K g_k|=0.2237
+[generic 7] W=(8, 5, 2, 3) K=311 K_[2,l]=38: checks=70 violations=0 max|K g_k|=0.4922
+[constructed 7] W=(8, 5, 2, 3) K=311 K_[2,l]=38: checks=70 violations=0 max|K g_k|=0.4901
+[generic 8] W=(4, 4, 4) K=72 K_[2,l]=17: checks=60 violations=0 max|K g_k|=0.4203
+[constructed 8] W=(4, 4, 4) K=72 K_[2,l]=17: checks=60 violations=0 max|K g_k|=0.2289
+[generic 9] W=(1, 8, 6, 2) K=119 K_[2,l]=106: checks=70 violations=0 max|K g_k|=0.3985
+[constructed 9] W=(1, 8, 6, 2) K=119 K_[2,l]=106: checks=70 violations=0 max|K g_k|=0.4582
+Part B total violations: 0
+
+ALL CHECKS PASSED
