@@ -47,7 +47,8 @@ integer sequences satisfying a three-term recurrence with partial quotients tend
 infinity. We also give a self-contained proof that $P_j/Q_j\to e$ and that the $Q_j$ are the
 regular continued-fraction denominators of $(e-1)/2=[0;1,6,10,14,\dots]$, so that the results
 apply to the setting of Kraaikamp and Liardet. The lower-bound and the optimality statements are machine-checked in Lean~4 (full CI build, run 45759959535);
-the even/odd sub-limits are not. We state explicitly what is not claimed.
+the even/odd sub-limits and the identification of $Q_j$ with the continued-fraction denominators
+of $(e-1)/2$ are proved on paper only. We state explicitly what is not claimed.
 \end{abstract}
 
 \maketitle
@@ -96,16 +97,19 @@ Consequently $\kappa:=\inf_{z\notin\LL}\limsup_j j\,\dist{Q_jz}=1/4$, and the in
 \end{theorem}
 
 \begin{remark}[Comparison with \cite{KL}]
-By Proposition~\ref{prop:input}(ii), $\theta_j=Q_j\dist{Q_j\alpha}$, and the standard identity
-$\theta_n=1/(x_{n+1}+q_{n-1}/q_n)$ (with $x_{n+1}$ the complete quotient, $c_{n+1}<x_{n+1}<c_{n+1}+1$)
-gives $\theta_j(4j+2)\to1$. So the
+By Proposition~\ref{prop:input}(ii), for $j\ge1$ the $\theta_j$ of \cite{KL} (defined there through the
+continued-fraction denominators of $\alpha$) is $\theta_j=Q_j\dist{Q_j\alpha}=Q_j|Q_j\alpha-p_j|$, because
+$|q_j\alpha-p_j|<1/q_{j+1}\le\frac12$. The standard identity $|q_j\alpha-p_j|=1/(q_jx_{j+1}+q_{j-1})$,
+with $x_{j+1}$ the complete quotient, $4j+2=c_{j+1}<x_{j+1}<c_{j+1}+1$ and $0<q_{j-1}/q_j\le1$, gives
+$4j+2<1/\theta_j<4j+4$, hence $\theta_j(4j+2)\to1$. So the
 bound $\theta_j/4$ in KL's Theorem~1 corresponds, in the normalisation $j\,\dist{Q_jz}$, to a
 threshold tending to $1/16$. Theorem~\ref{thm:main}(b) raises this to $1/4$, and (c)
 shows that $1/4$ cannot be improved along this sequence. Qualitatively, (a) and (b) are
 consequences of \cite{KL} (Theorem~1$'$);
-the new content, if any, is the numerical value of the optimal constant and its attainment. Numerically, $\theta_j(4j+2)\to1$ and $j\theta_j/4$ increases to $1/16$ ($0.0594558$ at $j=10$,
+the new content, if any, is the numerical value of the optimal constant and its attainment. The limit $j\theta_j/4\to1/16$ follows from
+$\theta_j(4j+2)\to1$. Numerically $j\theta_j/4$ appears to increase ($0.0594558$ at $j=10$,
 $0.0623050$ at $j=160$; mpmath, 900 digits, script \texttt{logs/verification/R4/note\_chk.py});
-this is a finite computation, not a proof.
+monotonicity is not proved, and these values are a finite computation.
 \end{remark}
 
 \medskip
@@ -347,11 +351,21 @@ $r_0=1=P_0$ and $r_1=3=P_1$; hence $P_k=Q_k+2p_k$ for all $k\ge0$. Therefore, by
 \frac{p_k}{q_k}=\frac12\Bigl(\frac{P_k}{Q_k}-1\Bigr)\longrightarrow\frac{e-1}2 .
 \]
 Thus the infinite regular continued fraction $[c_0;c_1,c_2,\dots]$ (whose value is by definition
-$\lim_kp_k/q_k$) equals $(e-1)/2$. The number $(e-1)/2$ is irrational (by Proposition~\ref{prop:dich}(d)
-with $\theta=e$, or directly from (i)), and an irrational number has a unique infinite regular
-continued-fraction expansion: if $x=[c_0;c_1,\dots]$ with $c_k\ge1$ for $k\ge1$, then the complete quotients
-$x_k=[c_k;c_{k+1},\dots]$ satisfy $x_k=c_k+1/x_{k+1}$ and $x_{k+1}>c_{k+1}\ge1$, so $c_k=\lfloor x_k\rfloor$
-is forced by the Gauss algorithm. Hence $[0;1,6,10,14,\dots]$ is \emph{the} regular continued-fraction
+$\lim_kp_k/q_k$) equals $(e-1)/2$. The number $(e-1)/2$ is irrational: if $e=a/b$ with $a,b\in\Z$, then
+$b\delta_j=bQ_je-bP_j$ would be a nonzero integer by (i) tending to $0$, which is impossible.
+(Equivalently, apply Proposition~\ref{prop:dich}(d) to $a_j=4j+2$, $D=-2$; its proof does not use the
+present section.)
+
+It remains to see that $[c_0;c_1,\dots]$ is \emph{the} regular continued-fraction expansion of
+$x:=(e-1)/2$, i.e.\ that the Gauss algorithm applied to $x$ returns $c_0,c_1,\dots$. Every infinite continued
+fraction $[b_0;b_1,b_2,\dots]$ with integers $b_i\ge1$ for $i\ge1$ converges: its convergents satisfy
+the determinant relation $p'_kq'_{k+1}-p'_{k+1}q'_k=\pm1$ and $q'_{k+2}\ge q'_{k+1}+q'_k$, so $q'_k\to\infty$
+and the alternating-series argument of Proposition~\ref{prop:dich}(c) applies. Hence every tail
+$x_k:=[c_k;c_{k+1},\dots]$ ($k\ge0$) is a well-defined real number, $x_0=x$, $x_k\ge c_k\ge1$ for $k\ge1$
+(each finite truncation $[c_k;c_{k+1},\dots,c_m]$ is $\ge c_k$), and letting $m\to\infty$ in
+$[c_k;c_{k+1},\dots,c_m]=c_k+1/[c_{k+1};\dots,c_m]$ gives $x_k=c_k+1/x_{k+1}$. Since $x_{k+2}\ge1$ is finite,
+$x_{k+1}=c_{k+1}+1/x_{k+2}>c_{k+1}\ge1$, so $0<1/x_{k+1}<1$ and $c_k=\lfloor x_k\rfloor$ for every $k\ge0$.
+These are exactly the steps of the Gauss algorithm. Hence $[0;1,6,10,14,\dots]$ is \emph{the} regular continued-fraction
 expansion of $(e-1)/2$, with denominators $q_j=Q_j$. Finally, $\frac2{e-1}=1/\frac{e-1}2=[c_1;c_2,c_3,\dots]=[1;6,10,14,\dots]$. \qedhere
 \end{proof}
 

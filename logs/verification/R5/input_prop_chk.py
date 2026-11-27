@@ -65,9 +65,9 @@ for j in range(0, 31):
     rel = fabs(d - (-1) ** j * J) / fabs(J)
     worst = max(worst, rel)
     ok_sign &= (J > 0)
-    ok_bound &= (J <= E / (mpf(4) ** j * factorial(j)))
+    ok_bound &= (J <= (E - 1) / (mpf(4) ** j * factorial(j)))
 print("max rel. err |delta_j - (-1)^j J_j|/J_j, j=0..30:", nstr(worst, 5))
-print("J_j > 0 and J_j <= e/(4^j j!) for j=0..30:", ok_sign and ok_bound)
+print("J_j > 0 and J_j <= (e-1)/(4^j j!) for j=0..30:", ok_sign and ok_bound)
 print("J_0 = e-1:", nstr(quad(lambda x: exp(x), [0, 1]) - (E - 1), 5),
       " J_1 = 3-e:", nstr(quad(lambda x: x * (1 - x) * exp(x), [0, 1]) - (3 - E), 5))
 print("P_j/Q_j - e at j=1,2,3,5,10:", [nstr(mpf(P[j]) / Q[j] - E, 6) for j in (1, 2, 3, 5, 10)])
