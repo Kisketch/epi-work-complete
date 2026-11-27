@@ -1,0 +1,2 @@
+non-equal segments: [('delete', '- **', ''), ('delete', '**', '')]
+only markdown markers differ: True

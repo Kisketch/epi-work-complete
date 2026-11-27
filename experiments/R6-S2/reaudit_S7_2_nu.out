@@ -1,0 +1,11 @@
+words with K <= 30: 556
+Floyd checks 556, threshold checks 556, simple-cycle checks 44; nu<1 in 216
+== random words with 30 < K <= 160 (threshold method)
+  W=(5, 1, 5): K=35, nu=5/6, min(1,m*)=5/6
+  W=(5, 1, 1, 1, 5): K=96, nu=12/17, min(1,m*)=12/17
+  W=(3, 1, 3): K=15, nu=3/4, min(1,m*)=3/4
+  W=(1, 1, 1, 1, 1, 1, 1, 1, 1): K=55, nu=7/8, min(1,m*)=7/8
+random/deliberate checks: 262  min nu seen: 12/17
+  W=(): K=1, sigma=1, floyd=1, thr=1, simple=1
+  W=(1,): K=1, sigma=1, floyd=1, thr=1, simple=1
+FAILURES: 0
