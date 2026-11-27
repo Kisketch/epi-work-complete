@@ -15,3 +15,6 @@ Run 4  commit 12c71e8  tex sha256 fbf1090840af4fa481416f648ab41f797e763dd9cff668
        pdf sha256 1ff72d4dade611786e595c4a57bb1c0335c88bd5683e8f00b6a81b4ed8aa8d93
        pypdf text extraction: new section renders as Section 5, "Proposition 9" (prop:input).
 The PDF itself was not copied back into the repository (it is regenerable from the source above).
+Run 5  commit 73c9ec1 (after double-check fixes)  tex sha256 39d0971c30c1e5f51e2d4b59b508e4e6ee75eb6b987d6616cd3f7febf1ac0913
+       EXIT=0  ERRORS=0  WARN=0  Output written on paper_draft.pdf (7 pages, 402380 bytes)
+       pdf sha256 29c021445690b39b3611b43a04647c3851cecf1d8cf65ac3f071dc0048a75faa
