@@ -1,0 +1,3 @@
+words checked (K>=2, K<=20000): 5888; skipped (K=1 or K>20000): 2
+L1-L4 all passed; min m* over checked words = 12/17 = 0.7058823529 at W=(5, 1, 1, 1, 5)
+elapsed 9.5s

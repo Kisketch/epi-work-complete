@@ -1,0 +1,3 @@
+random words: 17066; best m* (float) 0.702842 at (2, 2, 1, 5, 1, 1, 1, 5, 2, 10)
+after local search: m* = 0.70157480 at W=(2, 5, 1, 2, 2, 1, 5, 1, 1, 1, 5, 1, 2, 3, 12, 1) K=2000256; exact nu = 891/1270 (0.70157480), witness [1782, 1782]
+elapsed 660.4s
