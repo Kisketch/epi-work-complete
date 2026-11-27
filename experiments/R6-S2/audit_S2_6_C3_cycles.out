@@ -1,0 +1,8 @@
+=== audit_S2_6: Lemma C3 (closed walks vs simple cycles), C0 ===
+words tested: 56 (all W with K(W)<=9, l<=6, letters 1..9)
+C0 failures (v(0)!=0): 0
+nu_walk != nu_simple: 0
+distribution of nu over tested words: {'1': 56}
+category 4: finite exact computation, not a proof.
+Part 2: words (l<=5, letters 1..5, K<=60): 708; with nu_walk<1: 560; no simple cycle of cost<=nu_walk: 0
+Part 3: nu_walk (this file) vs common.nu (Step-2 script): 708 words, mismatches = 0

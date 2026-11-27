@@ -1,0 +1,175 @@
+=== audit_S2_4: S1(d) realization and S2 upper bound (category 4) ===
+W=()            K=  1 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.191 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.67e-04
+W=()            K=  1 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.203 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:2.25e-05
+W=()            K=  1 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.194 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.45e-04
+W=()            K=  1 pre=(0,)       A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.125 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:2.22e-05  nu=1 max_R(blocks20-30)=0.99997798 diff=-2.2e-5
+W=()            K=  1 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.196 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.43e-02
+W=()            K=  1 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.215 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.22e-03
+W=()            K=  1 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.188 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.24e-02
+W=()            K=  1 pre=(0,)       A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.082 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:2.21e-03  nu=1 max_R(blocks20-30)=1.0000366 diff=3.66e-5
+W=()            K=  1 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.191 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.67e-04
+W=()            K=  1 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.203 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:2.25e-05
+W=()            K=  1 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.194 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.45e-04
+W=()            K=  1 pre=(2, 3, 1)  A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.123 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:2.22e-05  nu=1 max_R(blocks20-30)=0.99997798 diff=-2.2e-5
+W=()            K=  1 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.196 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.43e-02
+W=()            K=  1 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.211 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.22e-03
+W=()            K=  1 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.188 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.24e-02
+W=()            K=  1 pre=(2, 3, 1)  A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.035 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:2.21e-03  nu=1 max_R(blocks20-30)=1.0000366 diff=3.66e-5
+W=(1,)          K=  1 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.249 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:9.87e-04
+W=(1,)          K=  1 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.250 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.67e-04
+W=(1,)          K=  1 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.249 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.44e-04
+W=(1,)          K=  1 pre=(0,)       A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.250 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:7.42e-07  nu=1 max_R(blocks20-30)=1.001002 diff=0.001
+W=(1,)          K=  1 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.170 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:8.82e-02
+W=(1,)          K=  1 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.221 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.71e-02
+W=(1,)          K=  1 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.187 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.71e-02
+W=(1,)          K=  1 pre=(0,)       A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.228 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:7.42e-05  nu=1 max_R(blocks20-30)=1.0957107 diff=0.0957
+W=(1,)          K=  1 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.249 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:9.87e-04
+W=(1,)          K=  1 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.250 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.67e-04
+W=(1,)          K=  1 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.249 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.44e-04
+W=(1,)          K=  1 pre=(2, 3, 1)  A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.250 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:7.42e-07  nu=1 max_R(blocks20-30)=1.001002 diff=0.001
+W=(1,)          K=  1 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.170 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:8.82e-02
+W=(1,)          K=  1 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.221 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.71e-02
+W=(1,)          K=  1 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.187 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.71e-02
+W=(1,)          K=  1 pre=(2, 3, 1)  A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.228 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:7.42e-05  nu=1 max_R(blocks20-30)=1.0957107 diff=0.0957
+W=(2,)          K=  2 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.125 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.22e-04
+W=(2,)          K=  2 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.094 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.56e-04
+W=(2,)          K=  2 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.109 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:8.62e-05
+W=(2,)          K=  2 pre=(0,)       A=100k data=tie+-1/2 d2F=0 d1F=0 d3F=0 d3ratio=0.125 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.33e-04  t_30=-0.499667 tau_30=-0.500
+W=(2,)          K=  2 pre=(0,)       A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.125 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.71e-07  nu=1 max_R(blocks20-30)=1.0005011 diff=0.000501
+W=(2,)          K=  2 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.116 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:3.09e-02
+W=(2,)          K=  2 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.091 labFlate=0 labels_ok_from_k=4 |t_k-tau_k|@k=30:1.52e-02
+W=(2,)          K=  2 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.102 labFlate=0 labels_ok_from_k=3 |t_k-tau_k|@k=30:8.12e-03
+W=(2,)          K=  2 pre=(0,)       A=k    data=tie+-1/2 d2F=0 d1F=0 d3F=0 d3ratio=0.117 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.13e-02  t_30=-0.468736 tau_30=-0.500
+W=(2,)          K=  2 pre=(0,)       A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.119 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.71e-05  nu=1 max_R(blocks20-30)=1.0489377 diff=0.0489
+W=(2,)          K=  2 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.125 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.22e-04
+W=(2,)          K=  2 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.094 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.56e-04
+W=(2,)          K=  2 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.109 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:8.62e-05
+W=(2,)          K=  2 pre=(2, 3, 1)  A=100k data=tie+-1/2 d2F=0 d1F=0 d3F=0 d3ratio=0.125 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.33e-04  t_30=-0.499667 tau_30=-0.500
+W=(2,)          K=  2 pre=(2, 3, 1)  A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.125 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.71e-07  nu=1 max_R(blocks20-30)=1.0005011 diff=0.000501
+W=(2,)          K=  2 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.116 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:3.09e-02
+W=(2,)          K=  2 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.091 labFlate=0 labels_ok_from_k=4 |t_k-tau_k|@k=30:1.52e-02
+W=(2,)          K=  2 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.102 labFlate=0 labels_ok_from_k=3 |t_k-tau_k|@k=30:8.12e-03
+W=(2,)          K=  2 pre=(2, 3, 1)  A=k    data=tie+-1/2 d2F=0 d1F=0 d3F=0 d3ratio=0.117 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.13e-02  t_30=-0.468736 tau_30=-0.500
+W=(2,)          K=  2 pre=(2, 3, 1)  A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.119 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.71e-05  nu=1 max_R(blocks20-30)=1.0489377 diff=0.0489
+W=(1, 1)        K=  2 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.110 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.97e-04
+W=(1, 1)        K=  2 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.095 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:4.08e-04
+W=(1, 1)        K=  2 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.110 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.80e-04
+W=(1, 1)        K=  2 pre=(0,)       A=100k data=tie+-1/2 d2F=0 d1F=0 d3F=0 d3ratio=0.125 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.61e-04  t_30=-0.499839 tau_30=-0.500
+W=(1, 1)        K=  2 pre=(0,)       A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.125 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.44e-04  nu=1 max_R(blocks20-30)=0.99998894 diff=-1.11e-5
+W=(1, 1)        K=  2 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.107 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.82e-02
+W=(1, 1)        K=  2 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.091 labFlate=0 labels_ok_from_k=3 |t_k-tau_k|@k=30:4.05e-02
+W=(1, 1)        K=  2 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.102 labFlate=0 labels_ok_from_k=4 |t_k-tau_k|@k=30:5.76e-02
+W=(1, 1)        K=  2 pre=(0,)       A=k    data=tie+-1/2 d2F=0 d1F=0 d3F=0 d3ratio=0.121 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.56e-02  t_30=-0.484377 tau_30=-0.500
+W=(1, 1)        K=  2 pre=(0,)       A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.121 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:3.33e-02  nu=1 max_R(blocks20-30)=0.99948174 diff=-0.000518
+W=(1, 1)        K=  2 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.110 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.97e-04
+W=(1, 1)        K=  2 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.095 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:4.08e-04
+W=(1, 1)        K=  2 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.110 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.80e-04
+W=(1, 1)        K=  2 pre=(2, 3, 1)  A=100k data=tie+-1/2 d2F=0 d1F=0 d3F=0 d3ratio=0.125 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.61e-04  t_30=-0.499839 tau_30=-0.500
+W=(1, 1)        K=  2 pre=(2, 3, 1)  A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.125 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.44e-04  nu=1 max_R(blocks20-30)=0.99998894 diff=-1.11e-5
+W=(1, 1)        K=  2 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.107 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:5.82e-02
+W=(1, 1)        K=  2 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.091 labFlate=0 labels_ok_from_k=3 |t_k-tau_k|@k=30:4.05e-02
+W=(1, 1)        K=  2 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.102 labFlate=0 labels_ok_from_k=4 |t_k-tau_k|@k=30:5.76e-02
+W=(1, 1)        K=  2 pre=(2, 3, 1)  A=k    data=tie+-1/2 d2F=0 d1F=0 d3F=0 d3ratio=0.121 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.56e-02  t_30=-0.484377 tau_30=-0.500
+W=(1, 1)        K=  2 pre=(2, 3, 1)  A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.121 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.33e-02  nu=1 max_R(blocks20-30)=0.99948174 diff=-0.000518
+W=(1, 2)        K=  3 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.114 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.22e-05
+W=(1, 2)        K=  3 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.110 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.28e-04
+W=(1, 2)        K=  3 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.120 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.06e-04
+W=(1, 2)        K=  3 pre=(0,)       A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.083 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.41e-04  nu=1 max_R(blocks20-30)=0.99999261 diff=-7.39e-6
+W=(1, 2)        K=  3 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.105 labFlate=0 labels_ok_from_k=6 |t_k-tau_k|@k=30:2.51e-03
+W=(1, 2)        K=  3 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.089 labFlate=0 labels_ok_from_k=8 |t_k-tau_k|@k=30:5.11e-02
+W=(1, 2)        K=  3 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.110 labFlate=0 labels_ok_from_k=5 |t_k-tau_k|@k=30:1.14e-02
+W=(1, 2)        K=  3 pre=(0,)       A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.081 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:3.29e-02  nu=1 max_R(blocks20-30)=0.9995383 diff=-0.000462
+W=(1, 2)        K=  3 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.114 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.22e-05
+W=(1, 2)        K=  3 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.110 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.28e-04
+W=(1, 2)        K=  3 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.120 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.06e-04
+W=(1, 2)        K=  3 pre=(2, 3, 1)  A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.083 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.41e-04  nu=1 max_R(blocks20-30)=0.99999261 diff=-7.39e-6
+W=(1, 2)        K=  3 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.105 labFlate=0 labels_ok_from_k=6 |t_k-tau_k|@k=30:2.51e-03
+W=(1, 2)        K=  3 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.089 labFlate=0 labels_ok_from_k=8 |t_k-tau_k|@k=30:5.11e-02
+W=(1, 2)        K=  3 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.110 labFlate=0 labels_ok_from_k=5 |t_k-tau_k|@k=30:1.14e-02
+W=(1, 2)        K=  3 pre=(2, 3, 1)  A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.081 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:3.29e-02  nu=1 max_R(blocks20-30)=0.9995383 diff=-0.000462
+W=(2, 3)        K=  7 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.067 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.31e-04
+W=(2, 3)        K=  7 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.050 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:7.35e-05
+W=(2, 3)        K=  7 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.057 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.13e-04
+W=(2, 3)        K=  7 pre=(0,)       A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.053 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:2.41e-04  nu=1 max_R(blocks20-30)=0.99999683 diff=-3.17e-6
+W=(2, 3)        K=  7 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.064 labFlate=0 labels_ok_from_k=7 |t_k-tau_k|@k=30:3.23e-02
+W=(2, 3)        K=  7 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.048 labFlate=0 labels_ok_from_k=9 |t_k-tau_k|@k=30:7.18e-03
+W=(2, 3)        K=  7 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.056 labFlate=0 labels_ok_from_k=4 |t_k-tau_k|@k=30:5.01e-02
+W=(2, 3)        K=  7 pre=(0,)       A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.052 labFlate=0 labels_ok_from_k=4 |t_k-tau_k|@k=30:2.36e-02  nu=1 max_R(blocks20-30)=0.99974039 diff=-0.00026
+W=(2, 3)        K=  7 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.067 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.31e-04
+W=(2, 3)        K=  7 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.050 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:7.35e-05
+W=(2, 3)        K=  7 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.057 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:5.13e-04
+W=(2, 3)        K=  7 pre=(2, 3, 1)  A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.053 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:2.41e-04  nu=1 max_R(blocks20-30)=0.99999683 diff=-3.17e-6
+W=(2, 3)        K=  7 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.064 labFlate=0 labels_ok_from_k=7 |t_k-tau_k|@k=30:3.23e-02
+W=(2, 3)        K=  7 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.048 labFlate=0 labels_ok_from_k=9 |t_k-tau_k|@k=30:7.18e-03
+W=(2, 3)        K=  7 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.056 labFlate=0 labels_ok_from_k=4 |t_k-tau_k|@k=30:5.01e-02
+W=(2, 3)        K=  7 pre=(2, 3, 1)  A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.052 labFlate=0 labels_ok_from_k=4 |t_k-tau_k|@k=30:2.36e-02  nu=1 max_R(blocks20-30)=0.99974039 diff=-0.00026
+W=(5, 1, 5)     K= 35 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.027 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.50e-04
+W=(5, 1, 5)     K= 35 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.035 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.40e-05
+W=(5, 1, 5)     K= 35 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.022 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.07e-04
+W=(5, 1, 5)     K= 35 pre=(0,)       A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.009 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:2.72e-05  nu=5/6 max_R(blocks20-30)=0.83330445 diff=-2.89e-5
+W=(5, 1, 5)     K= 35 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.026 labFlate=1 labels_ok_from_k=18 |t_k-tau_k|@k=30:1.48e-02
+W=(5, 1, 5)     K= 35 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.034 labFlate=2 labels_ok_from_k=21 |t_k-tau_k|@k=30:6.33e-03
+W=(5, 1, 5)     K= 35 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.020 labFlate=1 labels_ok_from_k=17 |t_k-tau_k|@k=30:1.06e-02
+W=(5, 1, 5)     K= 35 pre=(0,)       A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.009 labFlate=0 labels_ok_from_k=3 |t_k-tau_k|@k=30:2.69e-03  nu=5/6 max_R(blocks20-30)=0.83044422 diff=-0.00289
+W=(5, 1, 5)     K= 35 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.027 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.50e-04
+W=(5, 1, 5)     K= 35 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.035 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.40e-05
+W=(5, 1, 5)     K= 35 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.022 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.07e-04
+W=(5, 1, 5)     K= 35 pre=(2, 3, 1)  A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.009 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:2.72e-05  nu=5/6 max_R(blocks20-30)=0.83330445 diff=-2.89e-5
+W=(5, 1, 5)     K= 35 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.026 labFlate=1 labels_ok_from_k=18 |t_k-tau_k|@k=30:1.48e-02
+W=(5, 1, 5)     K= 35 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.034 labFlate=2 labels_ok_from_k=21 |t_k-tau_k|@k=30:6.33e-03
+W=(5, 1, 5)     K= 35 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.020 labFlate=1 labels_ok_from_k=17 |t_k-tau_k|@k=30:1.06e-02
+W=(5, 1, 5)     K= 35 pre=(2, 3, 1)  A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.009 labFlate=0 labels_ok_from_k=3 |t_k-tau_k|@k=30:2.69e-03  nu=5/6 max_R(blocks20-30)=0.83044422 diff=-0.00289
+W=(1, 1, 1)     K=  3 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.105 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:7.00e-04
+W=(1, 1, 1)     K=  3 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.091 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:4.77e-04
+W=(1, 1, 1)     K=  3 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.110 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.70e-04
+W=(1, 1, 1)     K=  3 pre=(0,)       A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.083 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:2.22e-04  nu=1 max_R(blocks20-30)=1.000334 diff=0.000334
+W=(1, 1, 1)     K=  3 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.098 labFlate=0 labels_ok_from_k=7 |t_k-tau_k|@k=30:6.67e-02
+W=(1, 1, 1)     K=  3 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.075 labFlate=0 labels_ok_from_k=5 |t_k-tau_k|@k=30:4.59e-02
+W=(1, 1, 1)     K=  3 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.103 labFlate=0 labels_ok_from_k=5 |t_k-tau_k|@k=30:3.65e-02
+W=(1, 1, 1)     K=  3 pre=(0,)       A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.082 labFlate=0 labels_ok_from_k=3 |t_k-tau_k|@k=30:2.17e-02  nu=1 max_R(blocks20-30)=1.031831 diff=0.0318
+W=(1, 1, 1)     K=  3 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.105 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:7.00e-04
+W=(1, 1, 1)     K=  3 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.091 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:4.77e-04
+W=(1, 1, 1)     K=  3 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.110 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.70e-04
+W=(1, 1, 1)     K=  3 pre=(2, 3, 1)  A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.083 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:2.22e-04  nu=1 max_R(blocks20-30)=1.000334 diff=0.000334
+W=(1, 1, 1)     K=  3 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.098 labFlate=0 labels_ok_from_k=7 |t_k-tau_k|@k=30:6.67e-02
+W=(1, 1, 1)     K=  3 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.075 labFlate=0 labels_ok_from_k=5 |t_k-tau_k|@k=30:4.59e-02
+W=(1, 1, 1)     K=  3 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.103 labFlate=0 labels_ok_from_k=5 |t_k-tau_k|@k=30:3.65e-02
+W=(1, 1, 1)     K=  3 pre=(2, 3, 1)  A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.082 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:2.17e-02  nu=1 max_R(blocks20-30)=1.031831 diff=0.0318
+W=(3, 1, 4, 1)  K= 23 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.011 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:5.73e-04
+W=(3, 1, 4, 1)  K= 23 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.090 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.46e-04
+W=(3, 1, 4, 1)  K= 23 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.020 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:5.73e-04
+W=(3, 1, 4, 1)  K= 23 pre=(0,)       A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.008 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.16e-05  nu=5/6 max_R(blocks20-30)=0.83340255 diff=6.92e-5
+W=(3, 1, 4, 1)  K= 23 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.011 labFlate=1 labels_ok_from_k=20 |t_k-tau_k|@k=30:5.55e-02
+W=(3, 1, 4, 1)  K= 23 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.087 labFlate=3 labels_ok_from_k=25 |t_k-tau_k|@k=30:6.23e-02
+W=(3, 1, 4, 1)  K= 23 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.019 labFlate=2 labels_ok_from_k=24 |t_k-tau_k|@k=30:5.53e-02
+W=(3, 1, 4, 1)  K= 23 pre=(0,)       A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.004 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:3.05e-03  nu=5/6 max_R(blocks20-30)=0.83998925 diff=0.00666
+W=(3, 1, 4, 1)  K= 23 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.011 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:5.73e-04
+W=(3, 1, 4, 1)  K= 23 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.090 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.46e-04
+W=(3, 1, 4, 1)  K= 23 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.020 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:5.73e-04
+W=(3, 1, 4, 1)  K= 23 pre=(2, 3, 1)  A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.008 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.16e-05  nu=5/6 max_R(blocks20-30)=0.83340255 diff=6.92e-5
+W=(3, 1, 4, 1)  K= 23 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.011 labFlate=1 labels_ok_from_k=20 |t_k-tau_k|@k=30:5.55e-02
+W=(3, 1, 4, 1)  K= 23 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.087 labFlate=3 labels_ok_from_k=25 |t_k-tau_k|@k=30:6.23e-02
+W=(3, 1, 4, 1)  K= 23 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.019 labFlate=2 labels_ok_from_k=24 |t_k-tau_k|@k=30:5.53e-02
+W=(3, 1, 4, 1)  K= 23 pre=(2, 3, 1)  A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.003 labFlate=0 labels_ok_from_k=2 |t_k-tau_k|@k=30:3.05e-03  nu=5/6 max_R(blocks20-30)=0.83998925 diff=0.00666
+W=(1, 2, 1, 2)  K= 11 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.047 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.23e-04
+W=(1, 2, 1, 2)  K= 11 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.046 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.94e-05
+W=(1, 2, 1, 2)  K= 11 pre=(0,)       A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.085 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:4.11e-04
+W=(1, 2, 1, 2)  K= 11 pre=(0,)       A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.038 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.66e-04  nu=5/6 max_R(blocks20-30)=0.83329072 diff=-4.26e-5
+W=(1, 2, 1, 2)  K= 11 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.042 labFlate=3 labels_ok_from_k=29 |t_k-tau_k|@k=30:3.15e-02
+W=(1, 2, 1, 2)  K= 11 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.043 labFlate=6 labels_ok_from_k=25 |t_k-tau_k|@k=30:6.46e-03
+W=(1, 2, 1, 2)  K= 11 pre=(0,)       A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.081 labFlate=4 labels_ok_from_k=22 |t_k-tau_k|@k=30:3.96e-02
+W=(1, 2, 1, 2)  K= 11 pre=(0,)       A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.030 labFlate=0 labels_ok_from_k=6 |t_k-tau_k|@k=30:1.60e-02  nu=5/6 max_R(blocks20-30)=0.82923136 diff=-0.0041
+W=(1, 2, 1, 2)  K= 11 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.047 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:3.23e-04
+W=(1, 2, 1, 2)  K= 11 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.046 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:6.94e-05
+W=(1, 2, 1, 2)  K= 11 pre=(2, 3, 1)  A=100k data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.085 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:4.11e-04
+W=(1, 2, 1, 2)  K= 11 pre=(2, 3, 1)  A=100k data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.038 labFlate=0 labels_ok_from_k=1 |t_k-tau_k|@k=30:1.66e-04  nu=5/6 max_R(blocks20-30)=0.83329072 diff=-4.26e-5
+W=(1, 2, 1, 2)  K= 11 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.042 labFlate=3 labels_ok_from_k=29 |t_k-tau_k|@k=30:3.15e-02
+W=(1, 2, 1, 2)  K= 11 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.043 labFlate=6 labels_ok_from_k=25 |t_k-tau_k|@k=30:6.46e-03
+W=(1, 2, 1, 2)  K= 11 pre=(2, 3, 1)  A=k    data=random   d2F=0 d1F=0 d3F=0 d3ratio=0.081 labFlate=4 labels_ok_from_k=22 |t_k-tau_k|@k=30:3.96e-02
+W=(1, 2, 1, 2)  K= 11 pre=(2, 3, 1)  A=k    data=C*       d2F=0 d1F=0 d3F=0 d3ratio=0.030 labFlate=0 labels_ok_from_k=6 |t_k-tau_k|@k=30:1.60e-02  nu=5/6 max_R(blocks20-30)=0.82923136 diff=-0.0041
+
+TOTAL failures: {'d2_fail': 0, 'd1_fail': 0, 'd3_fail': 0, 'label_fail_late': 46}
+note: label_fail_late counts k>=15 with canonical label != r_k; all such cases have A_k = k (slow growth) and K>=11,
+      i.e. pre-asymptotic (|K g_k|<1/2 needs ~8 T_max/A_k small); every run is label-correct from some k on (labels_ok_from_k).
+worst ratio LHS/RHS over all (d3) explicit bounds: 0.2498  (<=1 required)
+category 4: finite computation; checks the proof's explicit inequalities and congruences, not a proof.

@@ -1,0 +1,16 @@
+=== audit_S2_1: verbatim check of proof §0 against PLAN_GRAPH ===
+
+--- S.1 notation vs §0.1: PLAN_GRAPH lines=7, proof lines=6
+identical lines: 6
+  [in PLAN_GRAPH, NOT in proof] - **已知下界**：按 `artifacts/THM-0005/paper_draft.tex` 对 KL 1991 Thm 1 的引述（项目读过全文），$\beta\in\alpha\mathbb Z+\mathbb Z\iff$ 对充分大的 $n$ 有 $\lVert q_n\beta\rVert\le\thet...
+
+--- R6-S1 vs §0.2: PLAN_GRAPH lines=6, proof lines=6
+identical lines: 5
+  [in PLAN_GRAPH, NOT in proof]   - 推导要点（strategist 推导，不是证明）：$\mathcal K<\infty$ 推出大指标处 $\lvert y\rvert\ll1/A_k\to0$。块内部分商有界，$y$ 满足带整数缺陷的正则连分数递推，于是 $y_{n_k+\ell+1}=K(W)\,y_{n_k+1}+O(y_{n_k})-(...
+  [in proof, NOT in PLAN_GRAPH] （原条目末尾的“推导要点（strategist 推导，不是证明）”子条目不属于命题本身，此处从略。）
+
+--- R6-S2 vs §0.3: PLAN_GRAPH lines=2, proof lines=2
+identical lines: 1
+  [in PLAN_GRAPH, NOT in proof]   - 校准（必须成立，否则 S1/S2 有错）：$\nu(\varnothing)=\nu((1))=\nu((1,1))=1$。$W=\varnothing$ 的情形对应 Paper 2 thm:growing-rec-spectrum（KL 比值与 $A_j\lVert Q_jx\rVert$ 等价），$W=(1...
+  [in proof, NOT in PLAN_GRAPH]   - 校准（必须成立，否则 S1/S2 有错）：$\nu(\varnothing)=\nu((1))=\nu((1,1))=1$。……（其余为对 Paper 2 / 2E 的交叉引用，不属于待证命题；见本文 §9 备注 R1 的手算核对。）
+     nearest proof line shares prefix of 66/241 chars; divergence at: PG='$W=\varnothing$ 的情形对应 Paper 2 thm:growing-rec-spectrum（KL 比值' | proof='……（其余为对 Paper 2 / 2E 的交叉引用，不属于待证命题；见本文 §9 备注 R1 的手算核对。）'
