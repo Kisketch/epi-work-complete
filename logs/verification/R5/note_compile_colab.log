@@ -1,0 +1,17 @@
+LOG-ONLY / NON-CANONICAL / DO NOT CITE
+Compile record for artifacts/THM-0005/paper_draft.tex (R5, 2026-11-26/27)
+Environment: Google Colab runtime (user's notebook), apt texlive-latex-base/-recommended/-extra,
+  texlive-fonts-recommended; pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)
+Source fetched by wget from raw.githubusercontent.com/Kisketch/epi-work-complete/<commit>/artifacts/THM-0005/paper_draft.tex
+Command: 3x pdflatex -interaction=nonstopmode paper_draft.tex
+
+Run 1  commit f161b42  tex sha256 cffee3d9...43385  EXIT=0  errors=0  undefined=0  overfull=8 (pre-existing text:
+       running head, intro display, z* digits, Lean section)  7 pages
+Run 2  commit 37b2690  tex sha256 e69ddd25...7a39   EXIT=0  errors=0  overfull=1 (lines 369--371)
+Run 3  commit 537a976  tex sha256 44eb0fe8...a7f4   EXIT=0  errors=0  overfull=1 (lines 369--372)
+Run 4  commit 12c71e8  tex sha256 fbf1090840af4fa481416f648ab41f797e763dd9cff668f34d1d22f574557f7c
+       EXIT=0  ERRORS=0  WARN=0 (grep 'Undefined|undefined|Overfull|Warning' -> 0 lines)
+       Output written on paper_draft.pdf (7 pages, 399900 bytes)
+       pdf sha256 1ff72d4dade611786e595c4a57bb1c0335c88bd5683e8f00b6a81b4ed8aa8d93
+       pypdf text extraction: new section renders as Section 5, "Proposition 9" (prop:input).
+The PDF itself was not copied back into the repository (it is regenerable from the source above).
