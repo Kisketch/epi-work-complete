@@ -34,6 +34,18 @@
 | B18 | **CM 点障碍（Nesterenko 机制）** | Nesterenko 方法通过 Ramanujan 函数 $P,Q,R$ 在 $q=e^{2\pi i\tau}$ 处的值工作；只有在 CM 点（如 $\tau=i$）这些值才能用 π、$\Gamma(1/4)$ 表示。若要让 $e$ 出现，须取 $q=e^{-1}$，即 $\tau=i/(2\pi)$，这不是 CM 点，此时 $P,Q,R$ 的值是新的未知常数。$E_2$ 的拟模变换把 $q=e^{-1}$ 与 $q'=e^{-4\pi^2}$ 用含 π 的系数联系起来，但假设 $e+\pi\in\mathbb Q$ 只能让这两点联合生成域的超越次数至多降 1；单点下界（每点 $\ge3$，一般 $q$ 形式据通行表述，**原文未核到**）推不出矛盾。要产生矛盾，需要两点联合的下界，其强度接近 Schanuel 型 | D4 的一般 $q$ 推广（D14） | strategist 推导；Paper 1 引 Nesterenko1996（原文未核到） |
 | B19 | **乘性分离（留数型指数周期）** | 形如 $\int_{\mathbb R}R(x)e^{iax}\,dx$ 的恒等式（$R\in\overline{\mathbb Q}(x)$，$a\in\overline{\mathbb Q}$；含实轴极点的主值情形同理）由留数定理等于 $2\pi i\sum\operatorname{Res}$，而每个留数都落在 $\overline{\mathbb Q}[e^{ia\beta}]$ 中（$\beta$ 为极点）。所以 π 只作为**整体乘因子**出现，这类恒等式只能约束 $\pi\cdot(\text{指数值})$ 型乘积，不能约束 $e+\pi$ 型加法关系。Paper 1 的 bridge 4（$\int_0^\infty\cos x/(1+x^2)dx=\pi/(2e)$）正是这一类 | D15；bridge-identity 路线的整个留数类 | strategist 推导（留数定理；未审）；Paper 1 §sub:bridges |
 
+
+## R6 旁支 Step 1 strategist 追加（2026-11-27；旁支轨，PROBLEM.md §4b）
+
+以下障碍只针对旁支路线 C（PLAN_GRAPH §R6 旁支轨），与 ROOT 无关；均为 strategist 纸面分析，未经 skeptic 复核。
+
+| 编号 | 障碍 | 精确内容 | 被它挡住的路线 | 来源 |
+|---|---|---|---|---|
+| B20 | **有界型解耦失效** | R6-S1 的局部化要求大部分商 $A_k\to\infty$，块词取自固定的有限集。此时大指标处误差 $\ll1/A_k\to0$，块内误差可由有限标签描述。对有界型 α（如黄金比），没有大指标，块与块之间不解耦，$c^*(\alpha)$ 成为一个无限状态问题。块长无界的情形同样不适用。Paper 1 §8 的黄金比常数（`GoldenOrbitRigidity.lean`）研究的泛函与 $\mathcal K_\alpha$ 的关系**未核到** | 把 R6-S2 推广到一切无理 α；用 S2 回答“对一切 α 有 $c^*(\alpha)\ge1$ 吗” | strategist 推导 |
+| B21 | **文献先例未核（新颖性障碍）** | Hurwitz 型连分数的非齐次逼近常数已有专门文献：Paper 1 bibitem 列有 Komatsu 1999（J. Théor. Nombres Bordeaux 11, 331–344）等多篇，原文均**未核到**。按 Paper 1 的转述，那里研究的是对所有 $q$ 的 $\liminf$ 型常数 $M(\theta,\phi)$，与本支沿收敛分母的 $\limsup$ 型 KL 常数是否等价或可互推，**未核到**。Stewart 1981 全文同样未取得 | R6-S2、S3、S4 的“类别 1”表述 | Paper 1 §Hurwitz 文献段（行 806–815）；THM-0005 paper_draft 的 Scope 一节 |
+| B22 | **具体常数的连分数输入缺失** | $e^{1/m}$、$\tanh(1/m)$、$\tan(1/m)$ 的正则连分数展开在本仓库中没有形式化（本地 grep `EpiFormal/` 未见对应声明；Mathlib 现状**未核到**），原始出处也**未核到**。只有 $e$ 与 $(e-1)/2$ 的展开在仓库中有证明（R5 prop:input 为纸面证明；`FullConvergentSpectrum.lean` 为作者自报 Lean） | R6-S5 的严格证明与 Lean 化（S1/S2 本身不受影响，它们是抽象数字序列定理） | 本地 grep；Paper 1 行 1264 |
+
 ## 变更记录
 - 2026-11-27：初版 B1–B12（R6 bootstrap，由总控从仓库记录整理；尚未经 strategist 复核）。
 - 2026-11-27（R6 Step 1 strategist）：复核 B1–B12。B8、B9、B12 标 `[SUPERSEDED]`，修正版为 B13（阶乘判据只针对斜率 −1；“同难度”降为启发式）、B14（“非有效”不是障碍原因，改为尺度与类型错配）、B15（必要/充分条件的标签方向更正，并标出 $\pi\in S$ 一支属类别 2）。新增 B16（可数集分离/迁移）、B17（校准，来自 Toy T1）、B18（CM 点）、B19（乘性分离）。B16–B19 中的推导均为纸面分析，待 skeptic 复核。
+- 2026-11-27 R6 旁支 Step 1 strategist：新增 B20（有界型解耦失效）、B21（Hurwitz 非齐次常数文献先例未核）、B22（具体常数连分数输入缺失），只针对旁支路线 C，与 ROOT 无关；B1–B19 未改动。
