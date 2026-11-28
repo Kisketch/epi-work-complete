@@ -1,8 +1,9 @@
 % =====================================================================================
 % NON-CANONICAL DRAFT / DO NOT CITE / NOT FOR SUBMISSION
 % Written 2026-11-28 by the project orchestrator's drafting agent. Mathematical body only.
-% The section "Prior art and novelty" and the extra bibliography are PLACEHOLDERS, to be
-% filled after the prior-art check (search the file for PLACEHOLDER-).
+% The section "Prior art and novelty" was filled on 2026-11-28 from artifacts/R6-S2/prior_art.md
+% (LOG-ONLY record of the prior-art check). Remaining PLACEHOLDER-BIB markers: textbook for (F1)-(F3)
+% and a source for the expansion of e (search the file for PLACEHOLDER-).
 %
 % Source map (the ONLY sources of mathematics in this file):
 %   * PLAN_GRAPH.md, Section "R6 旁支轨" S.1 (all definitions) and S.2 (statements of R6-S1,
@@ -20,6 +21,7 @@
 %       CI: R6-S7 run 46011329540 (head 65db490); R6-S2 run 46110437346 (head 46d1a36,
 %       full build 9399 jobs, siege gate 16 theorems).
 %   * Numerics (category 4, finite exact computation): experiments/R6-S2/*.out only.
+%   * Prior-art and bibliographic fields: artifacts/R6-S2/prior_art.md (2026-11-28, LOG-ONLY).
 %   * Style / bibliography reference: artifacts/THM-0005/paper_draft.tex (cited as [D5];
 %     its Proposition 9 = prop:input is used as an input in Sec. 8).
 %
@@ -85,8 +87,11 @@ For $W=\varnothing$ the formula is consistent with the sharp value $1/4$ found i
 for $(e-1)/2$ in its normalisation (by a short derivation given here, not yet independently audited); a
 finite exact computation gives $\nu(5,1,5)=5/6<1$. Both theorems are machine-checked in Lean~4 (CI runs
 46011329540 and 46110437346). Nothing here bears on the irrationality of $e+\pi$ or of $\pi$.
-Whether the results are new has not yet been determined; a prior-art check is pending, and no claim
-of novelty is made in this draft.
+For $W=\varnothing$ and for $\alpha=e$ ($W=(1,1)$) the value $c^*(\alpha)=1$ is a special case of results in
+earlier project manuscripts, which determine the full spectrum. For general $W$, the formula
+$c^*=\nu(W)$, the quantity $\nu(W)$, the examples with $\nu(W)<1$ and the bound $c^*\ge1/2$ were not found in the
+literature consulted; this is a negative search only (MathSciNet and zbMATH were not searched), and no
+literature search was made for the inequality $m^*(W)\ge1/2$.
 \end{abstract}
 
 \maketitle
@@ -114,8 +119,8 @@ of their statement that is needed here is proved in Section~\ref{sec:lemma0} (Le
 Corollary~\ref{cor:0}). Earlier, Larcher \cite{Larcher} treated the bounded-type case; the statement of
 \cite{KL} is quoted in a related form in \cite{BDS}; \cite{KL} attribute a related bounded-type statement to
 Stewart \cite{Stewart}, whose full text was not consulted (see the bibliography).
-These sentences repeat the literature summary of \cite{D5}; they are not a prior-art assessment of the
-present results (Section~\ref{subsec:prior}).
+These sentences repeat the literature summary of \cite{D5}; the prior-art assessment of the present results,
+including the special cases already covered by project manuscripts, is in Subsection~\ref{subsec:prior}.
 
 \medskip\noindent\textbf{Block-Hurwitz numbers.} Fix a finite word $W=(w_1,\dots,w_\ell)$ of positive
 integers ($\ell\ge0$). A \emph{block-Hurwitz number} with block word $W$ is
@@ -186,20 +191,75 @@ alignment, the axiom lists and the CI runs are in Section~\ref{sec:lean}.
 concerns $\pi$, $e+\pi$, or the irrationality of any constant.
 
 \subsection{Prior art and novelty}\label{subsec:prior}
-% PLACEHOLDER-PRIOR-ART: to be written after the prior-art check. Candidates to be checked include
-% (from project notes; NOT opened, NOT cited): Komatsu 1999 (J. Theor. Nombres Bordeaux, Hurwitz-type
-% inhomogeneous constants, liminf over all q; relation to K_alpha unknown), the full text of Stewart 1981,
-% and standard monographs on continued fractions. Do not write "new" before that check.
-The relation of these results to the literature has not yet been assessed; this subsection will be
-completed after a prior-art check.
+% SRC: artifacts/R6-S2/prior_art.md (prior-art check of 2026-11-28; LOG-ONLY), sections (a)-(d).
+% Bibliographic fields below are only those marked as checked there.
+This subsection summarises a prior-art check carried out on 2026-11-28 (internal project files and the
+external sources listed below). It is a \emph{negative search}: not finding a result is not a proof that it
+does not exist.
 
-\subsection*{Relation to project manuscripts}
-The project manuscripts \cite{P2} and \cite{P2E} state results for the cases $W=\varnothing$ (with a
-different normalisation, by the partial quotients) and $\alpha=e$ ($W=(1,1)$), respectively; their Lean
-developments are reported by their authors and were not re-run for this draft. Only the calibration
-values $\nu(\varnothing)=\nu((1,1))=1$ are compared with them in the project records; no result of
-\cite{P2} or \cite{P2E} is used in this draft.
-% SRC: PLAN_GRAPH.md S.2 (calibration note of R6-S2) and S.0 table, item (d).
+\medskip\noindent\textbf{Special cases already covered by project manuscripts.}
+\begin{itemize}
+\item \emph{$W=\varnothing$.} For a recurrence $Q_{j+1}=A_jQ_j+Q_{j-1}$ with $A_j\in\Z_{\ge2}$ and $A_j\to\infty$, the
+theorem \texttt{thm:growing-rec-spectrum} of the project manuscript \cite{P2} identifies the KL ratio with
+$\limsup_jA_j\dist{Q_jx}$ and determines its \emph{full} set of values, $\Z_{\ge0}\cup\{\infty\}$, with zero level set
+the corresponding lattice. Applied to the convergent denominators of a block-Hurwitz number with $W=\varnothing$,
+this gives $c^*(\alpha)=1$ with attainment, which is the case $W=\varnothing$ of Theorem~\ref{thm:A}; in that case
+\cite{P2} is stronger than the present paper. Two points of reconciliation are recorded in the prior-art check
+and not written out here: \cite{P2} requires $A_j\ge2$, which holds eventually when $A_k\to\infty$; and its
+normalising sequence is built from an auxiliary $\tilde P_j$, whose limit is in general a M\"obius image of
+$\alpha$, but both normalisations are asymptotic to $1/A_j$. A single instance, $\alpha=(e-1)/2$, is the subject of
+the project note \cite{D5}, whose value $\kappa=1/4$ corresponds to $c^*=1$ (Proposition~\ref{prop:W-empty}); the
+lower-bound half for $W=\varnothing$ is also contained in the general dichotomy of \cite{D5}
+(\texttt{prop:dich} there, registered in the project as THM-0006), which does not give attainment.
+\item \emph{$W=(1,1)$ and $\alpha=e$.} The theorem \texttt{thm:full-spectra} of the project manuscript \cite{P2E}
+determines the full set of values of the KL ratio of $e$ along all convergent denominators and its level sets;
+it implies $c^*(e)=1$ with attainment, which is the case $\alpha=e$ of Theorem~\ref{thm:A} with
+Example~\ref{ex:calib} (compare Example~\ref{ex:e}), and is stronger in that case. For $W=(1,1)$ the weight
+limit of Lemma~\ref{lem:S1}(a), $1/\theta_{n_k+i}\to K/(c_ic_i')=2$ ($i=1,2$), agrees with the weight limits in
+\texttt{thm:full-identities} of \cite{P2E}.
+\item \emph{Block-boundary recurrence.} The theorem \texttt{thm:even-hurwitz} of \cite{P2E} gives only a
+three-term recurrence for the denominators at block boundaries of a Hurwitz continued fraction with affine
+large quotients, obtained from the product of the matrices $\bigl(\begin{smallmatrix}c&1\\1&0\end{smallmatrix}\bigr)$ of
+the constant quotients. It contains no statement about KL ratios or the KL constant. The continuant identities
+used in Section~\ref{sec:prelim} are of the same standard kind and are not claimed as new.
+\end{itemize}
+The Lean developments of \cite{P2} and \cite{P2E} are reported by their authors and were not re-run for
+this paper. No result of \cite{P2}, \cite{P2E} or \cite{D5} is used in the proofs of
+Theorems~\ref{thm:A} and~\ref{thm:B}.
+
+\medskip\noindent\textbf{The general lower bound $1/4$.} The bound $c^*(\alpha)\ge1/4$ for every irrational
+$\alpha$ follows from Theorem~1 of Kraaikamp and Liardet \cite{KL}. Only the bibliographic data of \cite{KL} were
+checked in the prior-art check; the wording of their Theorem~1 was not re-checked there and is quoted as read
+in \cite{D5}. Corollary~\ref{cor:0} reproves the half that is needed and is not claimed as new.
+
+\medskip\noindent\textbf{Komatsu's inhomogeneous constants.} Komatsu \cite{Komatsu99} studies, for quasi-periodic
+(Hurwitzian) $\theta$, the inhomogeneous constant $\mathcal M(\theta,\phi)=\liminf_{|q|\to\infty}|q|\,\dist{q\theta-\phi}$, a
+$\liminf$ over \emph{all} integers $q$. This is a different functional from $\KL_\alpha$, which is a $\limsup$ of
+$\dist{q_n\beta}$ along the convergent denominators only, normalised by $\theta_n$. The methods are related: there
+$\phi$ is taken in $\Q(\theta)+\Q$, and residue classes of convergent numerators and denominators modulo an integer
+play a role, much as the labels $r_k\in\Z/K$ do here. The formulas of the theorems of \cite{Komatsu99} could not be
+read in the prior-art check, and no conversion between Komatsu's constants and $c^*(\alpha)$ was found or proved; the
+relation between the two problems is therefore open from our side. Further papers in this family (by Komatsu,
+and by Bumby and Flahive) were located but not read.
+
+\medskip\noindent\textbf{Scope of the search.} Internal: the project manuscripts \cite{P2}, \cite{P2E}, a further
+project manuscript on Hausdorff dimension (not related), the notes \cite{D5} and THM-0006, and a text search
+of the project files. External: the complete list of works citing \cite{KL} in OpenAlex ($39$ entries, all titles
+read, abstracts where available); Crossref and OpenAlex look-ups; three abstract queries in the arXiv API; nine
+keyword web searches; the journal and Numdam pages of \cite{Komatsu99} and part of its text layer; and the
+abstract pages of some recent work on inhomogeneous approximation (e.g.\ Kim--Liao, arXiv:1508.00520), which
+concern different problems. \emph{Not searched or not obtained:} MathSciNet and zbMATH; the full texts of \cite{KL},
+of Stewart \cite{Stewart}, and of \cite{BDS} (a scanned copy that could not be read); the theorem formulas of
+\cite{Komatsu99} and the full texts of the related papers; the monographs of Cusick--Flahive, Rockett--Sz\"usz and
+Perron; Google Scholar citations.
+
+\medskip\noindent\textbf{Conclusion.} Within this search, the following were \emph{not found in the literature
+consulted (a negative search only)}: the formula $c^*(\alpha)=\nu(W)$ for a general block word $W$ together with its
+attainment and its independence of $(A_k)$ and of the initial segment; the finite graph $G_W$ and the quantity
+$\nu(W)$; the examples with $\nu(W)<1$ (Subsection~\ref{subsec:numerics}); and the uniform bound $c^*(\alpha)\ge1/2$
+on the block-Hurwitz class (Corollary~\ref{cor:half}). This content beyond the cited special cases concerns block
+words other than $\varnothing$ and $(1,1)$. For the combinatorial inequality $m^*(W)\ge1/2$ of
+Theorem~\ref{thm:B}(i), \emph{no literature search was carried out}; it may restate classical facts about continuants.
 
 % =====================================================================================
 \section{Definitions and the finite graph}\label{sec:defs}
@@ -929,7 +989,9 @@ and so commutes with infima. By (i), $\kappa=1/4$, attained at $\beta_0$ by (iii
 Proposition~\ref{prop:W-empty}(iv) is the statement $\kappa=1/4$, attained, of \cite{D5} (its Theorem~1). The route
 above is different: it uses only the expansion of $(e-1)/2$ from \cite{D5}, together with Theorems~\ref{thm:A}
 and~\ref{thm:B}, and gives neither the explicit point $z^*$ of \cite{D5} nor its even/odd sub-limits. The bound in
-(ii) is the one stated in the comparison remark of \cite{D5}; here it is read off from Lemma~\ref{lem:B}.
+(ii) is the one stated in the comparison remark of \cite{D5}; here it is read off from Lemma~\ref{lem:B}. The value
+$c^*(\alpha)=1$ with attainment for $W=\varnothing$ is also a consequence of \texttt{thm:growing-rec-spectrum} of
+\cite{P2}, which gives the full spectrum (Subsection~\ref{subsec:prior}).
 \end{remark}
 
 \begin{example}[The number $e$; conditional]\label{ex:e}
@@ -938,7 +1000,10 @@ The classical expansion $e=[2;1,2,1,1,4,1,1,6,\dots]$ is \emph{not proved in thi
 not been verified}. If it is granted, $e$ is a block-Hurwitz number with $N=1$, $a_0=2$, $a_1=1$, $A_k=2k$ and
 $W=(1,1)$, and Theorem~\ref{thm:A} with Example~\ref{ex:calib} gives $c^*(e)=1$, attained. This is a conditional
 statement (category~2 in the project's classification). The Lean theorem \texttt{R6S2.cstar\_example11} concerns the
-different number $[0;1,1,1,2,1,1,3,\dots]$ ($W=(1,1)$, $A_k=k$, $N=0$), not $e$.
+different number $[0;1,1,1,2,1,1,3,\dots]$ ($W=(1,1)$, $A_k=k$, $N=0$), not $e$. The value $c^*(e)=1$ with
+attainment is also a consequence of \texttt{thm:full-spectra} of \cite{P2E}, which gives the full spectrum
+(Subsection~\ref{subsec:prior}).
+% PLACEHOLDER-BIB: a verified original source for the expansion of e is still missing (see bibliography).
 \end{example}
 
 \subsection{Finite exact computations}\label{subsec:numerics}
@@ -1067,26 +1132,36 @@ observation $\nu(w,1,w)=w/(w+1)$ for finitely many $w$, are finite computations 
 \item \textbf{Unaudited parts.} Remark~\ref{rem:theta-conv}, Example~\ref{ex:calib}, Proposition~\ref{prop:W-empty},
 Remark~\ref{rem:W-empty}, Example~\ref{ex:e} and Remark~\ref{rem:lean-route} were written for this draft and have
 not been independently audited. Example~\ref{ex:e} is conditional on an expansion not proved here.
-\item \textbf{Novelty is undetermined.} See Subsection~\ref{subsec:prior}; no claim of novelty is made.
+\item \textbf{Novelty rests on a negative search.} The cases $W=\varnothing$ and $\alpha=e$ are special cases of
+\cite{P2} and \cite{P2E}. For general $W$ the formula, $\nu(W)$, the examples with $\nu<1$ and $c^*\ge1/2$ were not
+found in the literature consulted, but MathSciNet, zbMATH, the full texts of \cite{KL} and \cite{Stewart} and the
+theorem formulas of \cite{Komatsu99} were not checked, and the relation to Komatsu's constants is open. No
+literature search was made for $m^*(W)\ge1/2$, which may restate classical facts about continuants. See
+Subsection~\ref{subsec:prior}.
 \item \textbf{Project manuscripts.} The Lean results of \cite{P2} and \cite{P2E} are author-reported and were not
 re-run for this draft.
 \item \textbf{Formalization.} See Section~\ref{sec:lean} for exactly what is machine-checked.
 \end{itemize}
 
-% TODO before submission: prior-art section (PLACEHOLDER-PRIOR-ART), bibliography additions (PLACEHOLDER-BIB),
+% TODO before submission: remaining bibliography (PLACEHOLDER-BIB); MathSciNet/zbMATH search; literature
+% search for m* >= 1/2 (R6-S7); full texts of KL 1991, Stewart 1981, Komatsu 1999;
 % independent audit of NEW-1..NEW-5, human check of all proofs, author data.
 
 \begin{thebibliography}{9}
 
-\bibitem{KL} Kraaikamp, Liardet, \emph{Good approximations and continued fractions},
+% Fields checked on 2026-11-28 via Crossref and OpenAlex (prior_art.md b.1 #1); full text not opened in
+% that check (AMS page returned HTTP 403). Statement of Theorem 1 quoted via [D5].
+\bibitem{KL} C. Kraaikamp and P. Liardet, \emph{Good approximations and continued fractions},
 Proc.\ Amer.\ Math.\ Soc.\ \textbf{112} (1991), no.~2, 303--309.
-DOI 10.1090/S0002-9939-1991-1062392-7 (DOI from Crossref; not printed on the PDF read).
+DOI 10.1090/S0002-9939-1991-1062392-7 (Crossref). The full text was not re-opened in the 2026-11-28
+prior-art check; the content of its Theorem~1 is quoted as read in \cite{D5}.
 
 \bibitem{Larcher} Larcher, \emph{A convergence problem connected with continued fractions},
 Proc.\ Amer.\ Math.\ Soc.\ \textbf{103} (1988), no.~3, 718--722.
 
-\bibitem{BDS} B\'ir\'o, Deshouillers, S\'os,
-Studia Sci.\ Math.\ Hungar.\ \textbf{38} (2001), 97--113.
+% Title and authors checked on the real.mtak.hu record page (prior_art.md b.1 #2); Lemma 4.1 not re-checked.
+\bibitem{BDS} A. Bir\'o, J.-M. Deshouillers and V. T. S\'os, \emph{Good approximation and characterization of
+subgroups of $\R/\Z$}, Studia Sci.\ Math.\ Hungar.\ \textbf{38} (2001), 97--113.
 DOI 10.1556/sscmath.38.2001.1-4.7. (Open-access copy read at \texttt{http://real.mtak.hu/110616/}.)
 
 \bibitem{Stewart} M. Stewart, \emph{Irregularities of uniform distribution},
@@ -1094,19 +1169,30 @@ Acta Math.\ Acad.\ Sci.\ Hungar.\ \textbf{37} (1981), 185--221.
 DOI 10.1007/bf01904883 (Crossref). Cited only via the reference list and Remark~3 of \cite{KL};
 \emph{full text not consulted}. (Another source cites different page numbers; unresolved.)
 
+% Fields checked on the journal page jtnb.centre-mersenne.org (10.5802/jtnb.254) and on numdam.org
+% (prior_art.md b.1 #3). Theorem formulas NOT checked (text layer without math).
+\bibitem{Komatsu99} T. Komatsu, \emph{On inhomogeneous diophantine approximation with some quasi-periodic
+expressions, II}, J.\ Th\'eor.\ Nombres Bordeaux \textbf{11} (1999), no.~2, 331--344. DOI 10.5802/jtnb.254;
+MR1745883; Zbl 1058.11049. (Theorem statements not checked.)
+
 \bibitem{D5} [Project manuscript], \emph{A sharp constant for inhomogeneous approximation along a sequence of
 denominators associated with $e$}, non-canonical draft (project file \texttt{artifacts/THM-0005/paper\_draft.tex});
 unpublished.
 
 \bibitem{P2} [Project manuscript], \emph{Complete spectrum discretization, exact Hausdorff gauges, and dimension
-phase transitions for Diophantine approximation along the convergent denominators of $e$}, draft; unpublished.
+phase transitions for Diophantine approximation along the convergent denominators of $e$}, draft
+(project file \texttt{paper2\_spectral\_gap\_dimension/paper2\_spectral\_gap\_dimension.tex}); unpublished.
 Lean results author-reported, not re-run.
 
 \bibitem{P2E} [Project manuscript], \emph{Full regular convergent spectra of $e$, signed Hurwitz recurrences, and
-Brouwer-free Perron--Frobenius elimination}, draft; unpublished. Lean results author-reported, not re-run.
+Brouwer-free Perron--Frobenius elimination}, draft (project file
+\texttt{paper2\_spectral\_gap\_dimension/spinoff\_full\_convergent\_and\_even\_hurwitz\_20261125/}
+\texttt{paper2E\_full\_convergent\_and\_even\_hurwitz.tex}); unpublished. Lean results author-reported, not re-run.
 
-% PLACEHOLDER-BIB: further references (prior-art check: e.g. Komatsu 1999 and others; textbook for
-% (F1)-(F3); a verified source for the expansion of e) to be added only after their pages are opened and checked.
+% PLACEHOLDER-BIB (still open, NOT verified): (1) a textbook reference for the standard facts (F1)-(F3)
+% (Section 3, "Standard facts"); (2) a verified original source for the classical expansion
+% e = [2;1,2,1,1,4,1,1,6,...] used conditionally in Example ex:e. Neither was opened in the 2026-11-28
+% prior-art check. Add an entry only after its page has actually been opened and its fields checked.
 
 \end{thebibliography}
 

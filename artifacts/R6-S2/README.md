@@ -11,7 +11,7 @@
 | `check_tex.py` | static checker: `\ref`/`\label`, `\cite`/`\bibitem`, environment pairing, brace/`$`/`\[ \]` balance, placeholder and NEW-k listing |
 | `README.md` | this file |
 
-No TeX was available on the machine, so the draft has **not been compiled**. Run `python3 check_tex.py paper_draft.tex` (last run: RESULT OK, 0 errors; 9 warnings, all for section/lemma labels that are never referenced).
+No TeX was available on the machine, so the draft has **not been compiled**. Run `python3 check_tex.py paper_draft.tex` (last run 2026-11-28, after filling the prior-art section: RESULT OK, 0 errors; 9 warnings, all for section/lemma labels that are never referenced).
 
 ## Results in the draft and where they come from
 
@@ -26,10 +26,21 @@ No TeX was available on the machine, so the draft has **not been compiled**. Run
 `proofs/R6-S2-remarks.md` was **not** used (it is marked "not audited, must not be cited").
 The older draft `artifacts/THM-0005/paper_draft.tex` is used for style, for the four checked bibliography entries (KL, Larcher, BDS, Stewart, with their original notes), and for its Proposition 9 (expansion of (e−1)/2) as an input.
 
-## Placeholders (to be filled after the prior-art check)
+## Prior art (filled 2026-11-28 from `prior_art.md`)
 
-- `% PLACEHOLDER-PRIOR-ART` — Subsection "Prior art and novelty" (`subsec:prior`). It contains only a neutral sentence; the word "new" is not used for the results.
-- `% PLACEHOLDER-BIB` (two places) — a textbook reference for the standard facts (F1)–(F3), and further bibliography from the prior-art check (e.g. Komatsu 1999; a verified source for the expansion of e).
+Subsection `subsec:prior` now follows `prior_art.md` (d):
+- W=∅ is a special case of Paper 2 `thm:growing-rec-spectrum` (full spectrum; stronger there) and of THM-0005 (single instance (e−1)/2) / THM-0006 (lower-bound half).
+- W=(1,1), α=e is a special case of 2E `thm:full-spectra` (full spectrum); S1(a)'s weight limit matches 2E `thm:full-identities`.
+- 2E `thm:even-hurwitz` is only a block-boundary recurrence identity, with no KL constant.
+- The general bound 1/4 is KL 1991; only its bibliographic fields were checked in the 2026-11-28 check.
+- Komatsu 1999 (JTNB 11(2), 331–344, doi:10.5802/jtnb.254): a different functional (liminf over all q) with related methods. No conversion was found or proved.
+- The scope of the negative search is stated, including what was not searched (MathSciNet, zbMATH, full texts of KL / Stewart, Komatsu's theorem formulas, monographs).
+- Conclusion: general-W formula, ν(W), the ν<1 examples and c\*≥1/2 are "not found in the literature consulted (a negative search only)". For m\*≥1/2 (R6-S7), no literature search was made; it may restate classical facts about continuants.
+
+## Remaining placeholders
+
+- `% PLACEHOLDER-BIB` (Section 3, "Standard facts", and end of bibliography): a textbook reference for (F1)–(F3). Not verified.
+- `% PLACEHOLDER-BIB` (Example `ex:e` and end of bibliography): a verified original source for the expansion e=[2;1,2,1,1,4,1,1,6,…]. Not verified.
 - Author data, MSC codes and keywords (`TODO before submission`).
 
 ## Material written for this draft (NOT audited; marked NEW-k in the source)
@@ -46,5 +57,5 @@ Condensations of the source proofs are marked with `% SRC: <file> <section>` com
 
 - Not compiled (no TeX on this machine).
 - No independent audit of NEW-1 to NEW-5.
-- No prior-art check; novelty undetermined.
+- Prior-art check is a negative search only (see `subsec:prior`); MathSciNet/zbMATH not searched; no search for m\*≥1/2.
 - Lean builds were not re-run for this draft; CI run numbers and axiom lists are quoted from formal/R6_S2.log and formal/R6_S7.log.
