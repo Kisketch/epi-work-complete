@@ -1,0 +1,10 @@
+LOG-ONLY / NON-CANONICAL / DO NOT CITE
+Compile record for artifacts/R6-S2/paper_draft.tex (2026-11-28)
+Environment: Google Colab (user's notebook), apt texlive-latex-base/-recommended/-extra, texlive-fonts-recommended, lmodern; pdfTeX (TeX Live 2023/Debian)
+Source fetched by wget from raw.githubusercontent.com/Kisketch/epi-work-complete/<commit>/artifacts/R6-S2/paper_draft.tex; 3x pdflatex -interaction=nonstopmode
+Run 1  commit 7860a03  tex sha256 d441c51c...5c30  EXIT=0 ERRORS=0 WARN=3 (overfull at 1026-1029, 1066, 1074-1080)  18 pages
+Run 2  commit 7a68b8a  tex sha256 ac956674896df9fcbbff05d2923843b7d73da5b5958f354a23959210686157ce
+       EXIT=0  ERRORS=0  WARN=0 (Undefined|undefined|Overfull|Warning: 0 lines)
+       Output written on paper_draft.pdf (18 pages, 496244 bytes)
+       pdf sha256 3268e57ecb3e9ffaa87f990b931acfe8fae04cfc0d546169915c8e7ad322aa1c
+The PDF is regenerable from the source above and was not copied into the repository.
