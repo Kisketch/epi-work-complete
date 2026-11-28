@@ -45,7 +45,17 @@
 | B21 | **文献先例未核（新颖性障碍）** | Hurwitz 型连分数的非齐次逼近常数已有专门文献：Paper 1 bibitem 列有 Komatsu 1999（J. Théor. Nombres Bordeaux 11, 331–344）等多篇，原文均**未核到**。按 Paper 1 的转述，那里研究的是对所有 $q$ 的 $\liminf$ 型常数 $M(\theta,\phi)$，与本支沿收敛分母的 $\limsup$ 型 KL 常数是否等价或可互推，**未核到**。Stewart 1981 全文同样未取得 | R6-S2、S3、S4 的“类别 1”表述 | Paper 1 §Hurwitz 文献段（行 806–815）；THM-0005 paper_draft 的 Scope 一节 |
 | B22 | **具体常数的连分数输入缺失** | $e^{1/m}$、$\tanh(1/m)$、$\tan(1/m)$ 的正则连分数展开在本仓库中没有形式化（本地 grep `EpiFormal/` 未见对应声明；Mathlib 现状**未核到**），原始出处也**未核到**。只有 $e$ 与 $(e-1)/2$ 的展开在仓库中有证明（R5 prop:input 为纸面证明；`FullConvergentSpectrum.lean` 为作者自报 Lean） | R6-S5 的严格证明与 Lean 化（S1/S2 本身不受影响，它们是抽象数字序列定理） | 本地 grep；Paper 1 行 1264 |
 
+## R7 Step 1 strategist 追加（2026-11-28；旁支轨，PROBLEM.md §4b）
+
+以下障碍只针对旁支路线 D（PLAN_GRAPH §R7 旁支轨），与 ROOT 无关。两条都是 strategist 纸面分析，未经 skeptic 复核；书目字段一律**未核到**。B1–B22 均未改动。
+
+| 编号 | 障碍 | 精确内容 | 被它挡住的路线 | 来源 |
+|---|---|---|---|---|
+| B23 | **新颖性：Perron / 非齐次 Lagrange 型结构** | 按 R7-T3(a)(b)（strategist 推导，未审），块内权重 $\lambda_i(W)=K/(c_ic_i')$ 恰好是 Perron 局部表达式 $[w_i;w_{i-1},\dots]+[0;w_{i+1},\dots]$ 的有限词版本。经典理论中，Lagrange 谱的值就是这一表达式沿 $i$ 取上确界。$m^*(W)$ 则是“模 1 Dirichlet 解群中的非零挠点”上 $\max_i\lambda_i\lVert x_i\rVert$ 的极小值，形态上属于非齐次 Lagrange/Markov 型问题。与之相近、可能已经覆盖 $\nu_{\inf}$、$(w,1,w)$ 族公式或 $m^*\ge1/2$ 的文献方向有：非齐次不定二元二次型的极小值（Barnes–Swinnerton-Dyer 一系，以及 Cusick–Flahive 专著的相关章节；均凭记忆列出，**作者、卷、页与内容全部未核到**），以及 prior_art.md b.2 第 2 条中已定位、但未打开的 Pinner 与 Paudel–Pinner 关于非齐次常数 $\rho(\alpha)$ 的工作。在完成专门检索之前，不能判断 R7 的组合结论是否只是经典结果换了写法 | R7-T1、T2、T5、T7（以及 R6-S7）的类别 1 表述 | strategist 推导（R7-T3）；prior_art.md (b.2) #2、(c) 末条；论文稿 Scope 节“No literature search was made for $m^*(W)\ge1/2$” |
+| B24 | **单指标论证的天花板；有限搜索不能判定下确界** | (i) R6-S7 Step 6 只选一个指标 $j$（满足 $c_j\le2\lvert u\rvert<c_{j+1}$），把该处代价下界写成 $\lvert u\rvert/c_j\ge1/2$。论证中没有任何一步排除等号情形 $c_j=2\lvert u\rvert$（strategist 对证明的读法，未审），所以只细化这一个指标的论证，不可能得到高于 1/2 的常数。要改进 1/2（R7-T1），必须同时耦合至少两个指标，例如经递推 (R)(L) 把 $j$ 与 $j-1$ 联系起来，或者使用整体结构（R7-T3(b)）。(ii) 有限词集合无限，有限搜索只能给出 $\nu_{\inf}$ 的**上**界与反例证书，既不能证实 T1，也不能判定 T2（非可达性）或 $\nu_{\inf}$ 的精确值 | 只细化 R6-S7 Step 6 的 T1 证明；用数值“确定”$\nu_{\inf}$ 或判定 T2 | strategist 读 artifacts/R6-S2/paper_draft.tex §thmB Step 6；R6-S7 证明 |
+
 ## 变更记录
 - 2026-11-27：初版 B1–B12（R6 bootstrap，由总控从仓库记录整理；尚未经 strategist 复核）。
 - 2026-11-27（R6 Step 1 strategist）：复核 B1–B12。B8、B9、B12 标 `[SUPERSEDED]`，修正版为 B13（阶乘判据只针对斜率 −1；“同难度”降为启发式）、B14（“非有效”不是障碍原因，改为尺度与类型错配）、B15（必要/充分条件的标签方向更正，并标出 $\pi\in S$ 一支属类别 2）。新增 B16（可数集分离/迁移）、B17（校准，来自 Toy T1）、B18（CM 点）、B19（乘性分离）。B16–B19 中的推导均为纸面分析，待 skeptic 复核。
 - 2026-11-27 R6 旁支 Step 1 strategist：新增 B20（有界型解耦失效）、B21（Hurwitz 非齐次常数文献先例未核）、B22（具体常数连分数输入缺失），只针对旁支路线 C，与 ROOT 无关；B1–B19 未改动。
+- 2026-11-28（R7 Step 1 strategist）：新增 B23（Perron / 非齐次 Lagrange 型结构带来的新颖性障碍，书目未核到）与 B24（单指标论证天花板；有限搜索不能判定下确界）。两条都只针对旁支路线 D，与 ROOT 无关；B1–B22 未改动。
