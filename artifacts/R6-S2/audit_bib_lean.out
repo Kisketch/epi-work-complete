@@ -1,0 +1,74 @@
+=== (1) bibliographic fields: found in prior_art.md? (and, if not, in THM-0005 draft?) ===
+KL               'kraaikamp'                                                            prior_art:YES  THM-0005:yes
+KL               'liardet'                                                              prior_art:YES  THM-0005:yes
+KL               'good approximations and continued fractions'                          prior_art:YES  THM-0005:yes
+KL               'proc. amer. math. soc'                                                prior_art:YES  THM-0005:no
+KL               '112'                                                                  prior_art:YES  THM-0005:yes
+KL               'no. 2'                                                                prior_art:YES  THM-0005:no
+KL               '303-309'                                                              prior_art:YES  THM-0005:no
+KL               '1991'                                                                 prior_art:YES  THM-0005:yes
+KL               '10.1090/s0002-9939-1991-1062392-7'                                    prior_art:YES  THM-0005:yes
+Larcher          'larcher'                                                              prior_art:YES  THM-0005:yes
+Larcher          'a convergence problem connected with continued fractions'             prior_art:NO   THM-0005:yes
+Larcher          '103'                                                                  prior_art:NO   THM-0005:yes
+Larcher          'no. 3'                                                                prior_art:NO   THM-0005:no
+Larcher          '718-722'                                                              prior_art:NO   THM-0005:no
+Larcher          '1988'                                                                 prior_art:NO   THM-0005:yes
+BDS              'biró'                                                                 prior_art:YES  THM-0005:no
+BDS              'deshouillers'                                                         prior_art:YES  THM-0005:yes
+BDS              'sós'                                                                  prior_art:YES  THM-0005:no
+BDS              'good approximation and characterization of subgroups'                 prior_art:YES  THM-0005:no
+BDS              'studia sci. math. hungar'                                             prior_art:YES  THM-0005:no
+BDS              '38'                                                                   prior_art:YES  THM-0005:yes
+BDS              '97-113'                                                               prior_art:YES  THM-0005:no
+BDS              '2001'                                                                 prior_art:YES  THM-0005:yes
+BDS              '10.1556/sscmath.38.2001.1-4.7'                                        prior_art:YES  THM-0005:yes
+BDS              'real.mtak.hu/110616'                                                  prior_art:YES  THM-0005:yes
+BDS              'open-access copy read'                                                prior_art:NO   THM-0005:yes
+Stewart          'stewart'                                                              prior_art:YES  THM-0005:yes
+Stewart          'irregularities of uniform distribution'                               prior_art:YES  THM-0005:yes
+Stewart          'acta math. acad. sci. hungar'                                         prior_art:YES  THM-0005:no
+Stewart          '37'                                                                   prior_art:YES  THM-0005:yes
+Stewart          '185-221'                                                              prior_art:YES  THM-0005:no
+Stewart          '1981'                                                                 prior_art:YES  THM-0005:yes
+Stewart          '10.1007/bf01904883'                                                   prior_art:YES  THM-0005:yes
+Stewart          'remark 3'                                                             prior_art:NO   THM-0005:no
+Stewart          'reference list'                                                       prior_art:NO   THM-0005:yes
+Komatsu99        'komatsu'                                                              prior_art:YES  THM-0005:no
+Komatsu99        'on inhomogeneous diophantine approximation with some quasi-periodic expressions, ii' prior_art:YES  THM-0005:no
+Komatsu99        'nombres bordeaux'                                                     prior_art:YES  THM-0005:no
+Komatsu99        '11'                                                                   prior_art:YES  THM-0005:yes
+Komatsu99        '331-344'                                                              prior_art:YES  THM-0005:no
+Komatsu99        '1999'                                                                 prior_art:YES  THM-0005:no
+Komatsu99        '10.5802/jtnb.254'                                                     prior_art:YES  THM-0005:no
+Komatsu99        'mr1745883'                                                            prior_art:YES  THM-0005:no
+Komatsu99        'zbl 1058.11049'                                                       prior_art:YES  THM-0005:no
+Kim-Liao (text)  '1508.00520'                                                           prior_art:YES  THM-0005:no
+Kim-Liao (text)  'kim'                                                                  prior_art:YES  THM-0005:no
+Kim-Liao (text)  'liao'                                                                 prior_art:YES  THM-0005:no
+prior_art contains 'lemma 4.1': True
+prior_art contains 'theorem 1/1': True
+prior_art contains 'remark 3': False
+prior_art contains '全文本会话未打开': True
+prior_art contains '扫描件': True
+
+=== (2) Lean / CI claims ===
+R6S7 CI run 46011329540 head 65db490: True
+R6S2 CI run 46110437346 head 46d1a36: True
+9399 jobs: True
+toolchain commit eb6cafb7: True
+Build 11 (AuditR6S2) theorems: 16 ; equal to paper's 16-list: True
+all exactly [propext, Classical.choice, Quot.sound]: True
+R6S7 gate line in log: : GitHub Actions run 46011329540 (head 65db490, lean-audit.yml) conclusion success; siege gate includes R6S7.prop1/mstar_ge_half/cor2_K_ge_two/cor2_K_eq_one/nu_ge_half.
+all 5 names present: True
+R6S7 gate axioms: {'prop1': 'propext, Classical.choice, Quot.sound', 'mstar_ge_half': 'propext, Classical.choice, Quot.sound', 'cor2_K_ge_two': 'propext, Classical.choice, Quot.sound', 'cor2_K_eq_one': 'propext, Classical.choice, Quot.sound', 'nu_ge_half': 'propext, Classical.choice, Quot.sound'}
+R6S7 theorems with strict subset of axioms: {'contK_append_two': 'propext', 'contK_cons_cons': 'propext', 'dK_congr': 'propext, Quot.sound'}
+R6_S7.lean: occurrences of 'decide +kernel': 1 ; plain 'by decide' occurrences: 4
+R6_S2_main.lean: 'decide +kernel' occurrences: 1
+formal/R6_S2.lean: sorry=0 admit=0 native_decide=0 axiom-decls=0 'decide +kernel'=0
+formal/R6_S2_blocks.lean: sorry=0 admit=0 native_decide=0 axiom-decls=0 'decide +kernel'=0
+formal/R6_S2_realize.lean: sorry=0 admit=0 native_decide=0 axiom-decls=0 'decide +kernel'=0
+formal/R6_S2_localize.lean: sorry=0 admit=0 native_decide=0 axiom-decls=0 'decide +kernel'=0
+formal/R6_S2_main.lean: sorry=0 admit=0 native_decide=0 axiom-decls=0 'decide +kernel'=1
+formal/R6_S2_audit.lean: sorry=0 admit=0 native_decide=0 axiom-decls=0 'decide +kernel'=0
+formal/R6_S7.lean: sorry=0 admit=0 native_decide=0 axiom-decls=0 'decide +kernel'=1

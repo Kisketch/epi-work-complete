@@ -1,0 +1,48 @@
+RESULT: OK
+
+--- draft numbering (amsart, [section]) ---
+theorem      1.1    thm:A              line 136
+theorem      1.2    thm:B              line 149
+corollary    1.3    cor:half           line 160
+definition   2.1    def:cont           line 267
+definition   2.2    def:BH             line 283
+definition   2.3    def:KL             line 295
+remark       2.4    rem:theta-conv     line 301
+definition   2.5    def:graph          line 309
+lemma        2.6    lem:C              line 328
+lemma        3.1    lem:cont           line 368
+lemma        3.2    lem:D              line 425
+lemma        3.3    lem:A              line 466
+lemma        3.4    lem:B              line 503
+lemma        4.1    lem:0              line 537
+corollary    4.2    cor:0              line 542
+lemma        5.1    lem:S1             line 571
+proposition  6.1    prop:lower         line 771
+proposition  6.2    prop:upper         line 815
+remark       6.3    rem:lean-route     line 852
+example      8.1    ex:calib           line 934
+proposition  8.2    prop:W-empty       line 954
+remark       8.3    rem:W-empty        line 988
+example      8.4    ex:e               line 997
+
+--- THM-0005 numbering (global counter) ---
+theorem      1    thm:main         line 88
+remark       2                     line 99
+proposition  3    prop:dich        line 131
+remark       4                     line 204
+remark       5    rem:input        line 212
+corollary    6    cor:lower        line 221
+theorem      7    thm:sharp        line 241
+remark       8                     line 289
+proposition  9    prop:input       line 301
+remark       10                    line 372
+
+--- \nu applied to explicit words (notation consistency) ---
+  \nu((1))
+  \nu((1,1))
+  \nu((2))
+  \nu(1,1,1)
+  \nu(2,3)
+  \nu(3,1,3)
+  \nu(5,1,1,1,5)
+  \nu(5,1,5)
