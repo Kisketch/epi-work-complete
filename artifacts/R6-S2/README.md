@@ -37,6 +37,28 @@ Subsection `subsec:prior` now follows `prior_art.md` (d):
 - The scope of the negative search is stated, including what was not searched (MathSciNet, zbMATH, full texts of KL / Stewart, Komatsu's theorem formulas, monographs).
 - Conclusion: general-W formula, ν(W), the ν<1 examples and c\*≥1/2 are "not found in the literature consulted (a negative search only)". For m\*≥1/2 (R6-S7), no literature search was made; it may restate classical facts about continuants.
 
+## Revision after the isolated audit (2026-11-28, VERDICT MINOR_FIX)
+
+All 14 audit items and the 3 overfull boxes reported by the Colab trial compile (commit 7860a03: 18 pages, 0 errors, 0 undefined references) were addressed in `paper_draft.tex`. No mathematical content was changed. The changes are:
+- bibliography notes: Larcher, BDS and Stewart;
+- formalization status of [D5] Prop. 9;
+- negative-search coverage (located-but-unopened items; Bourla listed separately);
+- the "all cases other than W=∅ and α=e" wording;
+- the Komatsu attribution;
+- the NEW-1 citations;
+- "conditional on the expansion of e";
+- the `decide +kernel` naming;
+- "CI records; builds not re-run" in the abstract and introduction;
+- "for K(W)≥2" in the abstract;
+- the category labels;
+- the ν((…)) notation;
+- separate Theorem A/B environments, with no duplicate lemma names;
+- the wording of "β fixed" in Section 5;
+- the NEW-5 items added to the unaudited list;
+- the overfull boxes (display for the long word, `align*` for the Lean statement, display for the axiom list).
+
+The NEW-k items keep their "not independently audited" labels in the text. The audit found NEW-1..4 correct; whether to relabel them is left to the coordinator.
+
 ## Remaining placeholders
 
 - `% PLACEHOLDER-BIB` (Section 3, "Standard facts", and end of bibliography): a textbook reference for (F1)–(F3). Not verified.

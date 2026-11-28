@@ -25,7 +25,7 @@
 %   * Style / bibliography reference: artifacts/THM-0005/paper_draft.tex (cited as [D5];
 %     its Proposition 9 = prop:input is used as an input in Sec. 8).
 %
-% Material written for this draft (NOT audited; listed again in artifacts/R6-S2/README.md):
+% Material written for this draft (checked in one isolated internal audit 2026-11-28, MINOR_FIX fixed; listed in artifacts/R6-S2/README.md):
 %   NEW-1  Remark rem:theta-conv (theta_n = q_n ||q_n alpha|| for n >= 1).
 %   NEW-2  Example ex:calib, the computation nu((1,1)) = 1 from Theorem B.
 %   NEW-3  Proposition prop:W-empty and its proof (W = empty set vs. THM-0005, kappa = 1/4).
@@ -45,6 +45,8 @@
 \emergencystretch=3em
 
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem{introthm}{Theorem}
+\renewcommand{\theintrothm}{\Alph{introthm}}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -82,11 +84,11 @@ partial quotients are $a_0,\dots,a_N,A_1,W,A_2,W,\dots$ for a fixed finite word 
 integers and $A_k\to\infty$. For such $\alpha$ we prove that $c^*(\alpha)=\nu(W)$, where $\nu(W)$ is a
 min--max value on an explicit finite graph with vertex set $\Z/K(W)$, $K(W)$ the continuant of $W$;
 the infimum is attained, and $c^*(\alpha)$ does not depend on $(A_k)$ or on the initial segment. We
-further show $\nu(W)=\min(1,m^*(W))$ with $m^*(W)\ge1/2$, so that $c^*(\alpha)\ge1/2$ on this class.
+further show $\nu(W)=\min(1,m^*(W))$ with $m^*(W)\ge1/2$ for $K(W)\ge2$ (and $\nu(W)=1$ for $K(W)=1$), so that $c^*(\alpha)\ge1/2$ on this class.
 For $W=\varnothing$ the formula is consistent with the sharp value $1/4$ found in an earlier project note
-for $(e-1)/2$ in its normalisation (by a short derivation given here, not yet independently audited); a
-finite exact computation gives $\nu(5,1,5)=5/6<1$. Both theorems are machine-checked in Lean~4 (CI runs
-46011329540 and 46110437346). Nothing here bears on the irrationality of $e+\pi$ or of $\pi$.
+for $(e-1)/2$ in its normalisation (by a short derivation given here, checked only in one internal audit); a
+finite exact computation gives $\nu((5,1,5))=5/6<1$. Both theorems are machine-checked in Lean~4 (CI records,
+runs 46011329540 and 46110437346; builds not re-run for this draft). Nothing here bears on the irrationality of $e+\pi$ or of $\pi$.
 For $W=\varnothing$ and for $\alpha=e$ ($W=(1,1)$) the value $c^*(\alpha)=1$ is a special case of results in
 earlier project manuscripts, which determine the full spectrum. For general $W$, the formula
 $c^*=\nu(W)$, the quantity $\nu(W)$, the examples with $\nu(W)<1$ and the bound $c^*\ge1/2$ were not found in the
@@ -133,12 +135,12 @@ $G_W$ with vertex set $\Z/K$, $K=K(W)$ the continuant of $W$, vertex costs $v(r)
 $t$, and the min--max value $\nu(W)$ over closed walks that are not made only of the trivial loop
 (Definition~\ref{def:graph}).
 
-\begin{theorem}[Theorem A]\label{thm:A}
+\begin{introthm}\label{thm:A}
 For every block-Hurwitz number $\alpha$ (a single block word $W$, $A_k\to\infty$), $c^*(\alpha)=\nu(W)$, and
 the infimum is attained: there exists $\beta\notin\Z\alpha+\Z$ with $\KL_\alpha(\beta)=\nu(W)$. In particular,
 $c^*(\alpha)$ depends only on $W$, and not on $(A_k)$ or on the initial segment $a_0,\dots,a_N$; and
 $1/4\le\nu(W)\le1$.
-\end{theorem}
+\end{introthm}
 % SRC: statement = PLAN_GRAPH.md S.2 R6-S2 (translated; no hypothesis, quantifier or constant changed).
 
 The proof (Section~\ref{sec:thmA}) rests on a localization lemma (Lemma~\ref{lem:S1}, Section~\ref{sec:S1}):
@@ -146,7 +148,7 @@ when $\KL_\alpha(\beta)<\infty$, the errors $\dist{q_n\beta}$ inside each block 
 residue $r_k\in\Z/K$ and a bounded real number $t_k$, and conversely every admissible sequence of such data
 is realised by some $\beta$.
 
-\begin{theorem}[Theorem B]\label{thm:B}
+\begin{introthm}\label{thm:B}
 Let $W$ be a finite word of positive integers, $K=K(W)$.
 \begin{enumerate}
 \item[(i)] If $K\ge2$, then $v(r)\ge1/2$ for every $r\in\Z/K$, $r\ne0$; that is,
@@ -154,7 +156,7 @@ $m^*(W):=\min_{r\ne0}v(r)\ge1/2$.
 \item[(ii)] If $K\ge2$, then $\nu(W)=\min(1,m^*(W))$; if $K=1$, then $\nu(W)=1$.
 \end{enumerate}
 Consequently $\nu(W)\ge1/2$ for every $W$.
-\end{theorem}
+\end{introthm}
 % SRC: statement = PLAN_GRAPH.md node-table row R6-S7 = proofs/R6-S7-mstar.md Prop. 1 + Cor. 2.
 
 \begin{corollary}\label{cor:half}
@@ -175,16 +177,16 @@ Theorem~\ref{thm:A}; its proof is in Section~\ref{sec:thmB}.
 \item For $\alpha=(e-1)/2$ ($W=\varnothing$), Theorem~\ref{thm:A} gives $c^*(\alpha)=1$. Combined with
 $j\theta_j\to1/4$ this yields $\inf_{z\notin\Z+\Z\frac{e+1}2}\limsup_j j\dist{Q_jz}=1/4$, attained, which is
 the value $\kappa=1/4$ of \cite{D5} (Proposition~\ref{prop:W-empty}; this derivation was written for this draft and
-has not been independently audited).
+has been checked only in one internal audit).
 \item Granting the classical expansion $e=[2;1,2,1,1,4,1,1,6,\dots]$ (not proved here; original source not
 verified), $e$ is block-Hurwitz with $W=(1,1)$ and $c^*(e)=1$ (Example~\ref{ex:e}; conditional).
-\item A finite exact computation (category~4 in the project's classification) gives $\nu(5,1,5)=5/6<1$,
-$\nu(5,1,1,1,5)=12/17$, and $\nu(W)<1$ for $5733$ of $5890$ words tested (Section~\ref{subsec:numerics}). So
+\item A finite exact computation (category~4 in the project's classification) gives $\nu((5,1,5))=5/6<1$,
+$\nu((5,1,1,1,5))=12/17$, and $\nu(W)<1$ for $5733$ of $5890$ words tested (Section~\ref{subsec:numerics}). So
 $c^*$ is not constant on the block-Hurwitz class, provided these computations are correct.
 \end{itemize}
 
 \medskip\noindent\textbf{Formal verification.} Theorems~\ref{thm:A} and~\ref{thm:B} and Lemma~\ref{lem:S1}
-are formalized in Lean~4 with Mathlib; the exact boundary of what is machine-checked, the statement
+are formalized in Lean~4 with Mathlib (CI records; builds not re-run for this draft); the exact boundary of what is machine-checked, the statement
 alignment, the axiom lists and the CI runs are in Section~\ref{sec:lean}.
 
 \medskip\noindent\textbf{What is not claimed.} See Section~\ref{sec:scope}. In particular nothing here
@@ -214,7 +216,7 @@ lower-bound half for $W=\varnothing$ is also contained in the general dichotomy 
 \item \emph{$W=(1,1)$ and $\alpha=e$.} The theorem \texttt{thm:full-spectra} of the project manuscript \cite{P2E}
 determines the full set of values of the KL ratio of $e$ along all convergent denominators and its level sets;
 it implies $c^*(e)=1$ with attainment, which is the case $\alpha=e$ of Theorem~\ref{thm:A} with
-Example~\ref{ex:calib} (compare Example~\ref{ex:e}), and is stronger in that case. For $W=(1,1)$ the weight
+Example~\ref{ex:calib} (conditional on the expansion of $e$, Example~\ref{ex:e}), and is stronger in that case. For $W=(1,1)$ the weight
 limit of Lemma~\ref{lem:S1}(a), $1/\theta_{n_k+i}\to K/(c_ic_i')=2$ ($i=1,2$), agrees with the weight limits in
 \texttt{thm:full-identities} of \cite{P2E}.
 \item \emph{Block-boundary recurrence.} The theorem \texttt{thm:even-hurwitz} of \cite{P2E} gives only a
@@ -232,13 +234,14 @@ $\alpha$ follows from Theorem~1 of Kraaikamp and Liardet \cite{KL}. Only the bib
 checked in the prior-art check; the wording of their Theorem~1 was not re-checked there and is quoted as read
 in \cite{D5}. Corollary~\ref{cor:0} reproves the half that is needed and is not claimed as new.
 
-\medskip\noindent\textbf{Komatsu's inhomogeneous constants.} Komatsu \cite{Komatsu99} studies, for quasi-periodic
-(Hurwitzian) $\theta$, the inhomogeneous constant $\mathcal M(\theta,\phi)=\liminf_{|q|\to\infty}|q|\,\dist{q\theta-\phi}$, a
+\medskip\noindent\textbf{Komatsu's inhomogeneous constants.} As far as the abstract and the partially readable text show, Komatsu
+\cite{Komatsu99} studies, for quasi-periodic (Hurwitzian) $\theta$, the inhomogeneous constant $\mathcal M(\theta,\phi)=\liminf_{|q|\to\infty}|q|\,\dist{q\theta-\phi}$, a
 $\liminf$ over \emph{all} integers $q$. This is a different functional from $\KL_\alpha$, which is a $\limsup$ of
-$\dist{q_n\beta}$ along the convergent denominators only, normalised by $\theta_n$. The methods are related: there
-$\phi$ is taken in $\Q(\theta)+\Q$, and residue classes of convergent numerators and denominators modulo an integer
-play a role, much as the labels $r_k\in\Z/K$ do here. The formulas of the theorems of \cite{Komatsu99} could not be
-read in the prior-art check, and no conversion between Komatsu's constants and $c^*(\alpha)$ was found or proved; the
+$\dist{q_n\beta}$ along the convergent denominators only, normalised by $\theta_n$. The methods appear related: in this
+family the shift is taken in $\Q(\theta)+\Q$ (stated in the abstract of the later paper of Bumby and Flahive,
+arXiv:0710.0399), and residue classes of convergent numerators and denominators modulo an integer play a role,
+much as the labels $r_k\in\Z/K$ do here. The formulas of the theorems of \cite{Komatsu99} could not be read in the
+prior-art check, and no conversion between Komatsu's constants and $c^*(\alpha)$ was found or proved; the
 relation between the two problems is therefore open from our side. Further papers in this family (by Komatsu,
 and by Bumby and Flahive) were located but not read.
 
@@ -248,7 +251,13 @@ of the project files. External: the complete list of works citing \cite{KL} in O
 read, abstracts where available); Crossref and OpenAlex look-ups; three abstract queries in the arXiv API; nine
 keyword web searches; the journal and Numdam pages of \cite{Komatsu99} and part of its text layer; and the
 abstract pages of some recent work on inhomogeneous approximation (e.g.\ Kim--Liao, arXiv:1508.00520), which
-concern different problems. \emph{Not searched or not obtained:} MathSciNet and zbMATH; the full texts of \cite{KL},
+concern different problems. \emph{Located but not opened} (by web search, used only to locate sources): work of Pinner and of Paudel and
+Pinner on inhomogeneous approximation constants of Minkowski type (a worst case over shifts, a different
+functional); Hartono and Kraaikamp on Hurwitzian numbers for the nearest-integer continued fraction; and
+dimension-theoretic papers of Kim, Rams and Wang and of Bugeaud, Kim, Lim and Rams. \emph{Possibly related,
+not read:} A.~Bourla, \emph{Ostrowski Numeration, Alternating Expansions and Inhomogeneous Linear Approximation},
+arXiv:2106.10712 (found by an arXiv abstract query; its abstract does not mention a KL-type constant along the
+$q_n$). \emph{Not searched or not obtained:} MathSciNet and zbMATH; the full texts of \cite{KL},
 of Stewart \cite{Stewart}, and of \cite{BDS} (a scanned copy that could not be read); the theorem formulas of
 \cite{Komatsu99} and the full texts of the related papers; the monographs of Cusick--Flahive, Rockett--Sz\"usz and
 Perron; Google Scholar citations.
@@ -257,8 +266,8 @@ Perron; Google Scholar citations.
 consulted (a negative search only)}: the formula $c^*(\alpha)=\nu(W)$ for a general block word $W$ together with its
 attainment and its independence of $(A_k)$ and of the initial segment; the finite graph $G_W$ and the quantity
 $\nu(W)$; the examples with $\nu(W)<1$ (Subsection~\ref{subsec:numerics}); and the uniform bound $c^*(\alpha)\ge1/2$
-on the block-Hurwitz class (Corollary~\ref{cor:half}). This content beyond the cited special cases concerns block
-words other than $\varnothing$ and $(1,1)$. For the combinatorial inequality $m^*(W)\ge1/2$ of
+on the block-Hurwitz class (Corollary~\ref{cor:half}). This content beyond the cited special cases concerns all
+cases other than $W=\varnothing$ and the single number $\alpha=e$. For the combinatorial inequality $m^*(W)\ge1/2$ of
 Theorem~\ref{thm:B}(i), \emph{no literature search was carried out}; it may restate classical facts about continuants.
 
 % =====================================================================================
@@ -300,10 +309,11 @@ $c^*(\alpha):=\inf_{\beta\notin\Z\alpha+\Z}\KL_\alpha(\beta)$.
 
 \begin{remark}\label{rem:theta-conv}
 % NEW-1 (not audited).
-For $n\ge1$ one has $|q_n\alpha-p_n|<1/q_{n+1}\le1/2$ (Lemma~\ref{lem:D}, (D1)--(D2): $q_{n+1}\ge q_n+q_{n-1}\ge
-q_1+q_0\ge2$), hence $|q_n\alpha-p_n|=\dist{q_n\alpha}$ and $\theta_n=q_n\dist{q_n\alpha}$, the normalisation of
-\cite{KL}. Since $\KL_\alpha$ is a $\limsup$, the index $n=0$ does not matter. \emph{This remark was written for this
-draft and not audited.}
+For $n\ge1$ one has $|q_n\alpha-p_n|<1/q_{n+1}$ by (D2) of Lemma~\ref{lem:D}, and $q_{n+1}\ge q_n+q_{n-1}$ by (F1)
+since $a_{n+1}\ge1$, while $q_n+q_{n-1}\ge q_1+q_0\ge2$ by the monotonicity in (D1); so $|q_n\alpha-p_n|<1/2$. Hence
+$|q_n\alpha-p_n|=\dist{q_n\alpha}$ and $\theta_n=q_n\dist{q_n\alpha}$, the normalisation of \cite{KL} as read in
+\cite{D5}. Since $\KL_\alpha$ is a $\limsup$, the index $n=0$ does not matter. \emph{This remark was written for this
+draft; it was checked in one isolated internal audit on 2026-11-28 (artifacts/R6-S2/audit\_*); no external review.}
 \end{remark}
 
 \begin{definition}[The local graph $G_W$ and $\nu(W)$]\label{def:graph}
@@ -325,7 +335,7 @@ trivial loops (``non-trivial'' closed walks).
 Here $d_K(c_ir)$ means $d_K(c_i\tilde r)$ for any integer representative $\tilde r$ of $r$; it does not depend
 on the representative because $d_K$ is $K$-periodic.
 
-\begin{lemma}[Lemma C]\label{lem:C}
+\begin{lemma}\label{lem:C}
 \begin{enumerate}
 \item[(C0)] $v(0)=0$; the loop $C_1$ at $0$ with $t=1$ is a non-trivial closed walk with $\cost(C_1)=1$.
 \item[(C1)] Only finitely many edges have $|t|\le1$, and every non-trivial closed walk of cost $\le1$
@@ -422,7 +432,7 @@ $\alpha=(p_n\alpha_{n+1}+p_{n-1})/(q_n\alpha_{n+1}+q_{n-1})$.
 ($a_0\in\Z$, all others $\ge1$); so (F1)--(F3) apply, and $p_n/q_n$ are its convergents.
 \end{enumerate}
 
-\begin{lemma}[Lemma D]\label{lem:D}
+\begin{lemma}\label{lem:D}
 Under the hypotheses of (F1)--(F3):
 \begin{enumerate}
 \item[(D1)] $q_n\ge1$, $q_{n+1}\ge q_n$ and $q_{n+1}\ge a_{n+1}q_n$ for $n\ge0$; $q_{m+2}\ge2q_m$ for $m\ge0$;
@@ -463,7 +473,7 @@ $\sum_{j\le k}q_{n_j}\le q_{n_k}\sum_{d\ge0}2^{-\lfloor d/2\rfloor}=q_{n_k}\cdot
 (ii) For $j>k$, $q_{n_j+1}\ge2^{\lfloor(j-k-1)/2\rfloor}q_{n_{k+1}+1}$, and the same summation applies.
 \end{proof}
 
-\begin{lemma}[Lemma A]\label{lem:A}
+\begin{lemma}\label{lem:A}
 Let $\alpha$ be block-Hurwitz.
 \begin{enumerate}
 \item[(A1)] Let $(X_m)_{m\ge0}$ be real numbers with $X_{m+1}=a_{m+1}X_m+X_{m-1}$ for
@@ -500,7 +510,7 @@ $i<\ell$ apply (A2) to $(w_i,\dots,w_\ell)$ with splitting position $2$; for $i=
 $w_\ell=w_\ell\cdot1+0$.
 \end{proof}
 
-\begin{lemma}[Lemma B]\label{lem:B}
+\begin{lemma}\label{lem:B}
 Let $\alpha$ be block-Hurwitz. For every $k\ge1$, $1/\theta_{n_k}\in(A_k,A_k+2)$; hence $A_k\theta_{n_k}\to1$.
 For $1\le i\le\ell$, $1/\theta_{n_k+i}\to K/(c_ic_i')$ as $k\to\infty$.
 \end{lemma}
@@ -532,14 +542,14 @@ limit. If $i=1$, $q_{n_k}/q_{n_k+1}\le1/A_k\to0=K_{[1,-1]}/c_1$.
 \end{proof}
 
 % =====================================================================================
-\section{Lemma 0: the half of the Kraaikamp--Liardet theorem that is used}\label{sec:lemma0}
+\section{The half of the Kraaikamp--Liardet theorem that is used}\label{sec:lemma0}
 
-\begin{lemma}[Lemma 0]\label{lem:0}
+\begin{lemma}\label{lem:0}
 Let $\alpha$ be irrational (its regular continued fraction satisfies (F1)--(F3)) and $\beta\in\R$. If there is
 $n^*\ge1$ such that $\dist{q_n\beta}<\theta_n/4$ for every $n\ge n^*-1$, then $\beta\in\Z\alpha+\Z$.
 \end{lemma}
 
-\begin{corollary}[Corollary $0'$]\label{cor:0}
+\begin{corollary}\label{cor:0}
 If $\beta\notin\Z\alpha+\Z$, then $\KL_\alpha(\beta)\ge1/4$. Hence $c^*(\alpha)\ge1/4$ for every irrational $\alpha$.
 \end{corollary}
 
@@ -568,7 +578,7 @@ $c^*(\alpha)\ge1/4$.
 % =====================================================================================
 \section{The localization lemma}\label{sec:S1}
 
-\begin{lemma}[Lemma S1]\label{lem:S1}
+\begin{lemma}[Localization]\label{lem:S1}
 Let $\alpha$ be a block-Hurwitz number with block word $W$, let $\beta\in\R$ with $\KL_\alpha(\beta)<\infty$, and put
 $y_n:=q_n\beta-\rnd(q_n\beta)$ and $t_k:=A_ky_{n_k}$. Define the \emph{canonical labels} of $\beta$ by
 \[
@@ -594,7 +604,8 @@ Moreover, the $\beta$ constructed in (d) satisfies $\KL_\alpha(\beta)<\infty$ (s
 The class $(r_k-\sigma r_{k-1})/K+\Z$ is well defined for $r_{k-1},r_k\in\Z/K$: changing the representative of
 $r_k$ by $K$ changes the quotient by $1$, and changing that of $r_{k-1}$ by $K$ changes it by $\sigma\in\Z$.
 
-Throughout this section $\alpha$ and $\beta$ are fixed; in (a)--(c) we assume $\KL:=\KL_\alpha(\beta)<\infty$.
+Throughout this section $\alpha$ is fixed. In the proofs of (a)--(c), $\beta$ is a fixed real number with
+$\KL:=\KL_\alpha(\beta)<\infty$; in the proof of (d), $\beta$ is the number constructed there.
 
 \subsection{Proof of (a)}
 % SRC: R6-S2.md Sec. 5.1.
@@ -937,21 +948,22 @@ Since $K(\varnothing)=K((1))=1$, Theorem~\ref{thm:B}(ii) gives $\nu(\varnothing)
 $\ell=2$, $K=K(1,1)=1\cdot K(1)+K()=2$, $c_1=K()=1$, $c_2=K(w_1)=1$, $c'_1=K(w_2)=1$, $c'_2=K()=1$. The only
 non-zero residue is $r=1$, and $v(1)=\max\bigl(d_2(1)/1,\ d_2(1)/1\bigr)=d_2(1)=\min_{s\in\Z}|1-2s|=1$. So
 $m^*((1,1))=1$ and $\nu((1,1))=\min(1,1)=1$ by Theorem~\ref{thm:B}(ii). \emph{This short computation was written for this
-draft and not audited}; the same value is the Lean theorem \texttt{R6S2.nu\_one\_one} and appears in the finite table
+draft; it was checked in one isolated internal audit on 2026-11-28 (artifacts/R6-S2/audit\_*); no external review}; the same value is the Lean theorem \texttt{R6S2.nu\_one\_one} and appears in the finite table
 of Subsection~\ref{subsec:numerics}.
 \end{example}
 
 \subsection{The case $W=\varnothing$ and the constant of \cite{D5}}\label{subsec:W-empty}
 % NEW-3: everything in this subsection (Proposition prop:W-empty and its proof) is new in this draft.
-\emph{The derivation in this subsection was written for this draft and has not been independently audited.}
+\emph{The derivation in this subsection was written for this draft; it was checked in one isolated internal audit on 2026-11-28 (artifacts/R6-S2/audit\_*); no external review.}
 
 Let $Q_0=Q_1=1$, $Q_{j+1}=(4j+2)Q_j+Q_{j-1}$ ($j\ge1$), and $\mathcal L:=\Z+\Z\frac{e+1}2$, as in \cite{D5}. We use
 the following input from \cite{D5} (its Proposition~9, labelled \texttt{prop:input} there; audited on paper in
-the project, with only its part (i) machine-checked): \emph{the regular continued-fraction expansion of
+the project; only the limit $P_j/Q_j\to e$ of its part (i) is formalized there, by a separate proof,
+author-reported and not re-run): \emph{the regular continued-fraction expansion of
 $(e-1)/2$ is $[c_0;c_1,c_2,\dots]$ with $c_0=0$, $c_1=1$, $c_k=4k-2$ ($k\ge2$), and its convergent denominators are
 $q_j=Q_j$ for all $j\ge0$.}
 
-\begin{proposition}\label{prop:W-empty}
+\begin{proposition}[category~5: a reproduction of {\cite[Theorem~1]{D5}}, with {\cite[Proposition~9]{D5}} as input]\label{prop:W-empty}
 Let $\alpha:=(e-1)/2$, and assume the input above.
 \begin{enumerate}
 \item[(i)] $\alpha$ is a block-Hurwitz number with $W=\varnothing$; hence $c^*(\alpha)=1$, and there is
@@ -1014,8 +1026,9 @@ the project scripts named, and are quoted from their recorded output files (not 
 \item \texttt{experiments/R6-S2/R6\_R6-S2\_T1\_nu\_table.py} (output \texttt{.out}): $5890$ words, namely all words
 of length $\le5$ with letters in $\{1,\dots,5\}$, all words of length $\le10$ with letters in $\{1,2\}$, and the
 list $\varnothing,(1),(1,1),(2),(1,1,1),(2,3),(5,1,5)$ (union, deduplicated). An independent brute-force
-computation for the $791$ words with $K\le60$ gave $0$ mismatches. Recorded values include $\nu(5,1,5)=5/6$ ($K=35$,
-$\sigma=6$, witness: a loop at $r=5$), $\nu(3,1,3)=3/4$, and $\nu(\varnothing)=\nu((1))=\nu((1,1))=\nu((2))=\nu(1,1,1)=\nu(2,3)=1$.
+computation for the $791$ words with $K\le60$ gave $0$ mismatches. Recorded values include $\nu((5,1,5))=5/6$ ($K=35$,
+$\sigma=6$, witness: a loop at $r=5$), $\nu((3,1,3))=3/4$, and $\nu(W)=1$ for each of $W=\varnothing$, $(1)$,
+$(1,1)$, $(2)$, $(1,1,1)$, $(2,3)$.
 $5733$ of the $5890$ words have $\nu(W)<1$; no word has $\nu(W)<1/4$; the minimum over the range is $12/17$, attained
 only at $W=(5,1,1,1,5)$ ($K=96$). In this range every minimising closed walk found is either a loop at a non-zero
 vertex ($5733$ words) or the loop at $0$ with $t=\pm1$ ($157$ words).
@@ -1024,8 +1037,11 @@ $5888$ words with $K\ge2$ (consistent with Theorem~\ref{thm:B}). For the family 
 $\nu=1$ for $w=1,2$ and $\nu=w/(w+1)$ for $w\in\{3,\dots,12,16,20,25,30,40\}$. \emph{This is an observation on
 finitely many $w$, not a theorem}; no proof of a formula for this family is claimed.
 \item \texttt{experiments/R6-S2/R6\_R6-S2\_T1c\_mstar\_search.py}: a random and local search (floating point, then
-exact for the final word) found $W=(2,5,1,2,2,1,5,1,1,1,5,1,2,3,12,1)$ with exact $\nu(W)=891/1270\approx0.7016$,
-below $12/17$. Whether $\inf_W\nu(W)$ exceeds $1/2$ is open.
+exact for the final word) found the word
+\[
+W=(2,5,1,2,2,1,5,1,1,1,5,1,2,3,12,1)
+\]
+with exact $\nu(W)=891/1270\approx0.7016$, below $12/17$. Whether $\inf_W\nu(W)$ exceeds $1/2$ is open.
 \item \texttt{experiments/R6-S2/R6\_R6-S7\_mstar\_lemma\_check.py}: the intermediate claims of Steps 3, 4 and 6 of
 Section~\ref{sec:thmB} and Theorem~\ref{thm:B}(ii) were checked exactly on the $5888$ words with $2\le K\le20000$ of
 the table; all passed.
@@ -1054,16 +1070,18 @@ imports only Mathlib). Theorem~\ref{thm:B}(i) is \texttt{R6S7.prop1} (and \textt
 simple-cycle value \texttt{nuSimple} coincide; the consequence $\nu\ge1/2$ is \texttt{nu\_ge\_half}. CI run
 \texttt{46011329540} (head \texttt{65db490}), conclusion success; these five theorems are in the CI axiom gate.
 
-\medskip\noindent\textbf{Theorem A and Lemma S1.} Modules \texttt{R6S2Kl} (definitions, the statement
+\medskip\noindent\textbf{Theorem A and Lemma~\ref{lem:S1}.} Modules \texttt{R6S2Kl} (definitions, the statement
 \texttt{StatementR6S2}, (F1)--(F4), (D1)--(D3), (A1), (A2a), (B1)), \texttt{R6S2Blocks} ((D4), (B2)--(B4)),
 \texttt{R6S2Realize} (Lemma~\ref{lem:S1}(a), (d)), \texttt{R6S2Localize} (Lemma~\ref{lem:0}, Corollary~\ref{cor:0},
 Subsection~\ref{subsec:labels}, Lemma~\ref{lem:S1}(b), (c)), \texttt{R6S2Main} (Propositions~\ref{prop:lower},
 \ref{prop:upper}, Theorem~\ref{thm:A}), and the audit entry \texttt{AuditR6S2.lean}. The main theorem is
 \texttt{R6S2.main : StatementR6S2}, where
-\[
-\texttt{StatementR6S2}:\ \forall X:\texttt{BH},\ \texttt{cstar}\,X.a=\texttt{ofReal}(\nu(X.W))\ \wedge\
-\exists\beta,\ \beta\notin\texttt{lattice}(\texttt{alpha}\,X.a)\wedge\texttt{KL}\,X.a\,\beta=\texttt{ofReal}(\nu(X.W)).
-\]
+\begin{align*}
+\texttt{StatementR6S2}:\quad\forall X:\texttt{BH},\quad
+&\texttt{cstar}\,X.a=\texttt{ofReal}(\nu(X.W))\\
+\wedge\ &\exists\beta,\ \beta\notin\texttt{lattice}(\texttt{alpha}\,X.a)\\
+&\qquad\wedge\ \texttt{KL}\,X.a\,\beta=\texttt{ofReal}(\nu(X.W)).
+\end{align*}
 Lemma~\ref{lem:S1} (a)--(d) is \texttt{R6S2.S1\_all : StatementS1}; ``depends only on $W$'' is
 \texttt{cstar\_only\_W'}; $1/4\le\nu\le1$ is \texttt{nu\_bounds}. CI run \texttt{46110437346} (head \texttt{46d1a36}):
 full \texttt{lake build}, $9399$ jobs, success; the CI axiom gate covers $16$ theorems (\texttt{main}, \texttt{lower},
@@ -1072,11 +1090,16 @@ full \texttt{lake build}, $9399$ jobs, success; the CI axiom gate covers $16$ th
 \texttt{nu\_one\_one}, \texttt{cstar\_example11}).
 
 \medskip\noindent\textbf{Axioms.} For all gated theorems \texttt{\#print axioms} gives exactly
-$[\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound}]$: Lean foundational axioms (\texttt{propext},
+\[
+[\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound}]:
+\]
+Lean foundational axioms (\texttt{propext},
 \texttt{Quot.sound}) and the classical-whitelist axiom \texttt{Classical.choice}; no project-added axioms, no
 \texttt{sorryAx}, no \texttt{Lean.ofReduceBool}. (Some auxiliary lemmas depend on a subset of this list.) The
-module files contain no \texttt{sorry}/\texttt{admit}/\texttt{native\_decide}; two small sanity theorems use
-\texttt{decide +kernel} (kernel reduction).
+module files contain no \texttt{sorry}/\texttt{admit}/\texttt{native\_decide}. The calibration theorem
+\texttt{R6S2.nu\_one\_one} (cited in Example~\ref{ex:calib}) and the sanity theorem \texttt{R6S7.sanity\_extremal}
+use \texttt{decide +kernel} (kernel reduction); ordinary \texttt{decide} also occurs, e.g.\ in small sanity checks
+and side conditions in \texttt{R6S7Mstar.lean} (\texttt{formal/R6\_S7.lean}) and \texttt{R6S2Main.lean}.
 
 \medskip\noindent\textbf{Statement alignment} (internal review, formal/R6\_S2\_blueprint.md \S1, \S7; not external).
 \begin{itemize}
@@ -1108,7 +1131,9 @@ from the explicit formula of Theorem~\ref{thm:B}(ii) rather than from Lemma~\ref
 \item Remark~\ref{rem:theta-conv}, Example~\ref{ex:calib} as written (the value $\nu((1,1))=1$ itself is
 \texttt{nu\_one\_one}; $\nu(\varnothing)$, $\nu((1))$ are not separate theorems but follow from
 \texttt{cor2\_K\_eq\_one}), Proposition~\ref{prop:W-empty}, Remark~\ref{rem:W-empty} and Example~\ref{ex:e}.
-The input from \cite{D5} (expansion of $(e-1)/2$) is machine-checked there only in its part (i), not the expansion.
+Of the input from \cite{D5} (Proposition~9 there), only the limit $P_j/Q_j\to e$ of part (i) is formalized there,
+by a separate proof (author-reported, not re-run); the identity $\delta_j=(-1)^jJ_j$, its bounds, and the
+expansion of $(e-1)/2$ are not formalized.
 The expansion of $e$ is not formalized.
 \item No value of $\nu$ from Subsection~\ref{subsec:numerics} is formalized, except that
 \texttt{R6S7.sanity\_extremal} checks the single vertex cost $v(12)=12/17$ for $W=(5,1,1,1,5)$ (not $\nu$).
@@ -1127,11 +1152,16 @@ covered.
 \item \textbf{Is $1/2$ sharp?} Theorem~\ref{thm:B} gives $\inf_W\nu(W)\ge1/2$. The finite computations give values
 down to $891/1270\approx0.7016$; whether $1/2$ is the infimum, and what the infimum is, is open. Nothing here decides
 whether the constant $1/4$ of Corollary~\ref{cor:0} is sharp over all irrational $\alpha$.
-\item \textbf{Numerics.} The values in Subsection~\ref{subsec:numerics}, including $\nu(5,1,5)=5/6$ and the
-observation $\nu(w,1,w)=w/(w+1)$ for finitely many $w$, are finite computations (category~4).
-\item \textbf{Unaudited parts.} Remark~\ref{rem:theta-conv}, Example~\ref{ex:calib}, Proposition~\ref{prop:W-empty},
-Remark~\ref{rem:W-empty}, Example~\ref{ex:e} and Remark~\ref{rem:lean-route} were written for this draft and have
-not been independently audited. Example~\ref{ex:e} is conditional on an expansion not proved here.
+\item \textbf{Numerics.} The values in Subsection~\ref{subsec:numerics}, including $\nu((5,1,5))=5/6$ and the
+observation $\nu((w,1,w))=w/(w+1)$ for finitely many $w$, are finite computations (category~4).
+\item \textbf{Classification} (project categories, as recorded in the project's plan). Theorem~\ref{thm:A}: a
+\emph{category-1 candidate (negative search only)}. Theorem~\ref{thm:B}: \emph{category 1 or 5, undetermined (no
+literature search)}. Lemma~\ref{lem:S1}: expected category 5. Proposition~\ref{prop:W-empty}: category 5 (a
+reproduction of \cite[Theorem~1]{D5}). The numerical values: category 4. Example~\ref{ex:e}: conditional.
+\item \textbf{Parts checked only internally.} Remark~\ref{rem:theta-conv}, Example~\ref{ex:calib}, Proposition~\ref{prop:W-empty},
+Remark~\ref{rem:W-empty}, Example~\ref{ex:e}, Remark~\ref{rem:lean-route}, and the two editorial additions in
+Lemma~\ref{lem:D}(D3) (the value $D(m,-1)=q_m$) and in step (d3) of Subsection~\ref{subsec:d} (the sum is empty for
+$k=1$) were written for this draft; they were checked in one isolated internal audit on 2026-11-28 (artifacts/R6-S2/audit\_*); no external review, which found them correct (Example~\ref{ex:e} as a conditional statement), and have not been checked by anyone outside this project. Example~\ref{ex:e} is conditional on an expansion not proved here.
 \item \textbf{Novelty rests on a negative search.} The cases $W=\varnothing$ and $\alpha=e$ are special cases of
 \cite{P2} and \cite{P2E}. For general $W$ the formula, $\nu(W)$, the examples with $\nu<1$ and $c^*\ge1/2$ were not
 found in the literature consulted, but MathSciNet, zbMATH, the full texts of \cite{KL} and \cite{Stewart} and the
@@ -1157,16 +1187,18 @@ DOI 10.1090/S0002-9939-1991-1062392-7 (Crossref). The full text was not re-opene
 prior-art check; the content of its Theorem~1 is quoted as read in \cite{D5}.
 
 \bibitem{Larcher} Larcher, \emph{A convergence problem connected with continued fractions},
-Proc.\ Amer.\ Math.\ Soc.\ \textbf{103} (1988), no.~3, 718--722.
+Proc.\ Amer.\ Math.\ Soc.\ \textbf{103} (1988), no.~3, 718--722. (Fields taken from the bibliography of
+\cite{D5}, not re-checked on 2026-11-28.)
 
 % Title and authors checked on the real.mtak.hu record page (prior_art.md b.1 #2); Lemma 4.1 not re-checked.
 \bibitem{BDS} A. Bir\'o, J.-M. Deshouillers and V. T. S\'os, \emph{Good approximation and characterization of
 subgroups of $\R/\Z$}, Studia Sci.\ Math.\ Hungar.\ \textbf{38} (2001), 97--113.
-DOI 10.1556/sscmath.38.2001.1-4.7. (Open-access copy read at \texttt{http://real.mtak.hu/110616/}.)
+DOI 10.1556/sscmath.38.2001.1-4.7. (Scanned copy at \texttt{http://real.mtak.hu/110616/}; its text could not
+be read in the 2026-11-28 check, \cite{D5} read it earlier; Lemma~4.1 not checked.)
 
 \bibitem{Stewart} M. Stewart, \emph{Irregularities of uniform distribution},
 Acta Math.\ Acad.\ Sci.\ Hungar.\ \textbf{37} (1981), 185--221.
-DOI 10.1007/bf01904883 (Crossref). Cited only via the reference list and Remark~3 of \cite{KL};
+DOI 10.1007/bf01904883 (Crossref). Cited only via the reference list and Remark~3 of \cite{KL}, as recorded in \cite{D5};
 \emph{full text not consulted}. (Another source cites different page numbers; unresolved.)
 
 % Fields checked on the journal page jtnb.centre-mersenne.org (10.5802/jtnb.254) and on numdam.org
