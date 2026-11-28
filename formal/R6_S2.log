@@ -259,3 +259,67 @@ getD_le_sum 为 [propext, Quot.sound]，其余均为 [propext, Classical.choice,
 ## CI
 未在 GitHub CI 中运行（无运行号）。两个新模块会被 lakefile 的 glob "EpiFormal.+" 纳入下一次全量 lake build；
 未接入 siege 公理门禁（按指示不改 workflow）。
+
+# 第 3 阶段（2026-11-27，formalizer）：EpiFormal/R6S2Localize.lean（= formal/R6_S2_localize.lean）
+sha256 49b544ab8fbcef2f4a6427e3d330ce476104dadd07971bcb454876d5517439a9（仓库两份与本机原生副本逐字节相同）
+grep -nE 'sorry|admit|native_decide|^axiom|set_option' 无命中。
+
+## Build 6: lake env lean EpiFormal/R6S2Localize.lean（本机原生副本，独立编译）
+$ cd ~/epi_native/epi_formal && time timeout 580 lake env lean EpiFormal/R6S2Localize.lean
+exit code: 0（无 error，无 warning）
+'R6S2.int_eq_of_close' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.dist0_add_int' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.dist0_add_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.dist0_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.dist0_sub_dist0_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.dist0_div_eq_dK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.near_int_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.near_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.dist0_label_rep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.lemma0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.exists_isCF_alpha' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_ge_quarter_irrational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cor0'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_ge_quarter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.q_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.yv_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.Ky_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.yv_big' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.dist0_nk_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.lab_val' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.block_of' depends on axioms: [propext, Quot.sound]
+'R6S2.BH.lab_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.lab_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1_label' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1_label_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.blk_near' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.abs_eps_le_inv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.abs_eps_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.yv_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1c' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.R_big_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.R_word_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.nu_isLeast' depends on axioms: [propext, Classical.choice, Quot.sound]
+timeout 580 lake env lean EpiFormal/R6S2Localize.lean  7.81s user 1.15s system 240% cpu 3.725 total
+
+## Build 7: lake build EpiFormal.R6S2Localize（生成 olean，供草稿导入）
+$ cd ~/epi_native/epi_formal && timeout 580 lake build EpiFormal.R6S2Localize
+exit code: 0；输出末行 "Build completed successfully (2001 jobs)."
+
+## Build 8: 本机草稿类型检查（不入库）
+$ cd ~/epi_native/epi_formal && timeout 580 lake env lean scratch/R6S2_draft.lean
+exit code: 0；只有 2 条 "declaration uses `sorry`" 警告（lower、upper）。main 由二者推出。
+
+## 公理层级（第 3 阶段）
+- Lean 基础公理：propext, Quot.sound
+- 经典白名单：Classical.choice
+- 项目自加公理：无
+上面 34 条 #print axioms：BH.block_of 为 [propext, Quot.sound]，其余均为 [propext, Classical.choice, Quot.sound]。
+
+## 第 3 阶段未证明部分（不在入库模块中）
+- 本机草稿剩 2 个占位：lower（§7.1 步 1–7）、upper（§7.2 步 8–10）。StatementR6S2 仍未证明。
+
+## CI
+未在 GitHub CI 中运行（无运行号）。新模块会被 lakefile 的 glob "EpiFormal.+" 纳入下一次全量 lake build；
+新增导入 Mathlib.NumberTheory.Real.Irrational（与仓库 Mathlib v4.35.0 同版本，本机已编译通过）。未改 workflow。
