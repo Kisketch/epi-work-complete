@@ -6,6 +6,12 @@
 > 本文件只是计划。凡标“计划”的条目在仓库中**没有**任何 Lean 代码；它们的类型检查过的占位陈述只放在
 > 本机草稿 `~/epi_native/epi_formal/scratch/R6S2_draft.lean`，不入库。
 > 状态：**未达 L3**。主陈述 `StatementR6S2` 已写成 Lean `Prop`，尚未证明。
+>
+> **进度栏（第 2 阶段，2026-11-27，formalizer）**：新增模块 `epi_formal/EpiFormal/R6S2Blocks.lean`
+> （= `formal/R6_S2_blocks.lean`）与 `epi_formal/EpiFormal/R6S2Realize.lean`（= `formal/R6_S2_realize.lean`），
+> 零占位，`#print axioms` 只含基础与白名单公理（见 `formal/R6_S2.log` Build 3–5）。已证：D4(i)(ii)、
+> B1 推论、B2、B3、B4、`KL_lt_top_of_bdd`、`KL_lt_top_bound`、**S1(a)**、**S1(d)**（`StatementS1d`，对一切
+> 块 Hurwitz 数；语句对齐表见 §5）。本机草稿剩 6 个占位：`lemma0`、`cor0'`、`S1b`、`S1c`、`lower`、`upper`。
 
 ---
 
@@ -92,7 +98,7 @@ Lean 的 `round` 平局取法是固定的，只用它会把“对任何平局取
 | D1 | `q_pos`、`qq_le_q`、`q_mono_succ`、`q_monotone`、`q_step`、`q_two`、`q_ge_self`、`q_tendsto`、`q_mul_ge` | 已证 | E | F1 |
 | D2 | `eps`、`eps_eq`、`eps_sign`、`abs_eps_eq`、`theta_eq`、`theta_pos`、`theta_lt`、`theta_lt_one`、`abs_eps_lt`、`qq_div_q_mem` | 已证 | M | F2、F3 |
 | D3 | `Dm`、`D3_eq`、`Dm_self`、`Dm_succ`、`Dm_rec` | 已证 | E | F1、F2 |
-| D4 (i)(ii) | `D4i`、`D4ii` | 计划 | M | D1（$q_{m+2}\ge2q_m$）、`nk_succ` |
+| D4 (i)(ii) | `D4i`、`D4ii`（对一切 $k$，比原文 $k\ge1$ 更强）；内部版 `D4i_mm`、`D4ii_mm`；核心 `geo_sum`、`geo_recip` | **已证（第 2 阶段）** | M | D1（$q_{m+2}\ge2q_m$）、`nk_succ` |
 | (A1) | `A1`（任意交换环 R） | 已证 | M | `R6S7.link` |
 | (A2a) | `A2a` | 已证 | E | `R6S7.core_split`、`link` |
 | (A2b) | `R6S7.link` 的第 7 个分量（`dseq` 左递推），后续写包装引理 `A2b` | 实质已证（R6-S7），包装待写 | E | — |
@@ -102,10 +108,10 @@ Lean 的 `round` 平局取法是固定的，只用它会把“对任何平局取
 | 证明稿 | Lean 名 | 状态 | 难度 | 依赖 |
 |---|---|---|---|---|
 | B1：$1/\theta_{n_k}\in(A_k,A_k+2)$ | `inv_theta_mem`（一般形式）、`BH.inv_theta_nk` | 已证 | E | D2、F3 |
-| B1 推论：$A_k\theta_{n_k}\to1$ | `BH.A_theta_tendsto` | 计划 | E | B1、`hAt` |
-| B2：$\alpha_{n_k+i+1}\to K_{[i,\ell]}/K_{[i+1,\ell]}$ | `B2` | 计划 | M | `cq_rec`、`a_word`、`cq_gt`、(A2b)，对 $i$ 倒序归纳 |
-| B3：$q_{n_k+i-1}/q_{n_k+i}\to K_{[1,i-2]}/c_i$ | `B3` | 计划 | M | (A1)（取 $X=q$）、`q_step` |
-| B4：$1/\theta_{n_k+i}\to K/(c_ic_i')$ | `B4` | 计划 | E | `theta_eq`、B2、B3、(A2a) |
+| B1 推论：$A_k\theta_{n_k}\to1$ | `BH.A_theta_tendsto`；另 `BH.A_theta_lt_one`（$A_k\theta_{n_k}<1$） | **已证（第 2 阶段）** | E | B1、`hAt` |
+| B2：$\alpha_{n_k+i+1}\to K_{[i,\ell]}/K_{[i+1,\ell]}$ | `B2` | **已证（第 2 阶段）** | M | `cq_rec`、`a_word`、`cq_gt`、`contK_cons_cons`（即 (A2b)），对 $i$ 倒序归纳 |
+| B3：$q_{n_k+i-1}/q_{n_k+i}\to K_{[1,i-2]}/c_i$ | `B3` | **已证（第 2 阶段）** | M | (A1)（取 $X=q$）、`q_step` |
+| B4：$1/\theta_{n_k+i}\to K/(c_ic_i')$ | `B4` | **已证（第 2 阶段）** | E | `theta_eq`、B2、B3、(A2a) |
 
 ### 2.3 §4 引理 0
 
@@ -120,14 +126,14 @@ Lean 的 `round` 平局取法是固定的，只用它会把“对任何平局取
 
 | 证明稿 | Lean 名 | 状态 | 难度 | 依赖 |
 |---|---|---|---|---|
-| 公共引理：`KL < ⊤` ⇒ 最终 $R_n\le C$ | `KL_lt_top_bound` | 计划 | E | `ℝ≥0∞` 的 limsup |
-| 公共引理：$R_n$ 有界 ⇒ `KL < ⊤` | `KL_lt_top_of_bdd` | 计划 | E | 同上 |
-| 5.1 S1(a) | `S1a` | 计划 | E | B1、B4、上面的公共引理 |
+| 公共引理：`KL < ⊤` ⇒ 最终 $R_n\le C$ | `KL_lt_top_bound` | **已证（第 2 阶段，提前）** | E | `ℝ≥0∞` 的 limsup |
+| 公共引理：$R_n$ 有界 ⇒ `KL < ⊤` | `KL_lt_top_of_bdd` | **已证（第 2 阶段）** | E | 同上 |
+| 5.1 S1(a) | `S1a`（对一切舍入选择 ρ）；辅助 `near_abs_eq_dist0`、`BH.nk_tendsto` | **已证（第 2 阶段，提前）** | E | B1、B4、上面的公共引理 |
 | 5.2 规范标签：$k\ge k_1$ 时唯一的 $s_k$，$g_k\to0$；平局一致性 | `S1_label_unique` | 计划 | M | (A1)、S1(a)、`IsNearSel`/`IsLabelSel` |
 | 5.3 S1(b) 第一条 | `S1b_vertex` | 计划 | M | 5.2、(A1)、`R6S7.dK`、`dK_congr` |
 | 5.4 S1(b) 第二、三条（有界与耦合；含 $\ell=0$） | `S1b_coupling` | 计划 | M | 5.2、5.3、F1 |
 | 5.5 S1(c) | `S1c` | 计划 | M | 引理 0、5.3、B、D2 |
-| 5.6 S1(d)：构造 $\beta=\frac1K\sum T'_k\lvert\varepsilon_{n_k}\rvert$，(d1) 精确分解，(d2) 余数归纳（模 $K$，对 $P^{(k)}$ 用 (A1)），(d3) 误差估计，(d4) 结论与 `KL < ⊤` | `S1d`，内部再拆为 `S1d_summable`、`S1d_decomp`、`S1d_residue`、`S1d_err_big`、`S1d_err_block`、`S1d_label`、`S1d_KL_finite` | 计划 | **H（最难）** | D2、D3、D4、(A1)、B1、B4、`hAt` |
+| 5.6 S1(d)：构造 $\beta=\frac1K\sum T'_k\lvert\varepsilon_{n_k}\rvert$，(d1) 精确分解，(d2) 余数归纳（模 $K$，对 $P^{(k)}$ 用 (A1)），(d3) 误差估计，(d4) 结论与 `KL < ⊤` | `StatementS1d`、`S1d`；实际拆分：`betaU`、`summ`、`decomp`（d1）、`PP_rec`、`residue`（d2）、`fut_bound`、`past_bound`、`big_decomp`、`pre_succ_bound`、`futBig_bound`、`E_bound`、`lab_err`（d3）、`BH.pos_cases`、`KL_lt_top_of_bdd`（d4 的 `KL < ⊤`）；对齐辅助 `near_iff_nearest`、`coset_indep` | **已证（第 2 阶段）** | **H（最难）** | D2、D3、D4、(A1)、B1、`hAt` |
 
 ### 2.5 §6 引理 C
 
@@ -180,8 +186,38 @@ Lean 的 `round` 平局取法是固定的，只用它会把“对任何平局取
 ## 4. 分阶段计划
 
 - **第 1 阶段（本次，已完成）**：定义、陈述 `StatementR6S2`；基础层 F1–F4、D1–D3、(A1)、(A2a)、B1；`nu_bounds`、`cstar_only_W`；全部零占位，`#print axioms` 只含基础与白名单公理。
-- **第 2 阶段（最难项优先）**：D4(i)(ii)；B1 推论、B2、B3、B4；`KL_lt_top_of_bdd`；**S1(d) 全部**（含 `S1d_KL_finite`）。
-- **第 3 阶段**：引理 0 与推论 0′；`KL_lt_top_bound`；S1(a)、5.2 标签唯一性、S1(b)、S1(c)（按 §0.4 对一切选择量化）。
+- **第 2 阶段（最难项优先，已完成）**：D4(i)(ii)；B1 推论、B2、B3、B4；`KL_lt_top_of_bdd`；**S1(d) 全部**（含 `KL < ⊤`）。
+  另提前完成 `KL_lt_top_bound` 与 S1(a)。
+- **第 3 阶段**：引理 0 与推论 0′；5.2 标签唯一性、S1(b)、S1(c)（按 §0.4 对一切选择量化，复用 `IsNearSel`、`BH.yv`、`BH.tv`、`BH.IsLabelSel`、`BH.lab`）。
 - **第 4 阶段**：下界步 1–7、上界步 8–10、组装 `main : StatementR6S2`；新增审计入口 `AuditR6S2.lean`，接入 CI siege 门禁（由总控决定）；语句对齐终审。
 
 每个阶段结束时，只把零占位的模块入库；未完成的陈述只留在本机草稿中。
+
+---
+
+## 5. S1(d) 语句对齐表（第 2 阶段）
+
+原陈述：PLAN_GRAPH.md 现行 R6-S1 陈述的前言（$y_n$、$t_k$、规范标签及平局约定）与 (d)。Lean：
+`R6S2.StatementS1d X`（`R6S2Realize.lean`），`R6S2.S1d : ∀ X, StatementS1d X`。
+
+| # | 原陈述 | Lean | 判定 |
+|---|---|---|---|
+| 1 | α 是块 Hurwitz 数（块词 $W$） | `X : BH`（`S1d` 对一切 `X`） | 等价 |
+| 2 | 对任意序列 $(r_k)_{k\ge0}$，$r_k\in\mathbb Z/K$；$r_0$ 属于给定数据 | `r : ℕ → ZMod (R6S7.contK X.W)`（`r 0` 是给定数据，只出现在 $k=1$ 的条件里） | 等价 |
+| 3 | 任意有界实数序列 $(\tau_k)_{k\ge1}$ | `τ : ℕ → ℝ`，`∃ B, ∀ k, 1 ≤ k → |τ k| ≤ B`（`τ 0` 不受约束，也不出现在结论中） | 等价 |
+| 4 | $\tau_k\in(r_k-\sigma r_{k-1})/K+\mathbb Z$（$k\ge1$） | `∀ k, 1 ≤ k → ∃ z : ℤ, τ k = ((r k).val − σ·(r (k-1)).val)/K + z`，$\sigma$=`R6S7.sigma X.W`（含 $\ell=0$ 时 $\sigma=1$） | 等价：`coset_indep` 证明该条件与整数代表元的选取无关 |
+| 5 | $y_n:=q_n\beta-\operatorname{round}(q_n\beta)$，平局任取 | `BH.yv X β ρ n = q_n β − ρ n`，`ρ` 取遍一切 `IsNearSel`（$\lvert q_n\beta-\rho_n\rvert\le1/2$）；`near_iff_nearest` 证明这恰好是“ρ_n 是最近整数” | 等价 |
+| 6 | $t_k:=A_ky_{n_k}$ | `BH.tv X β ρ k = A_k * yv (n_k)` | 等价（逐字） |
+| 7 | 规范标签 $r_k(\beta):=\operatorname{round}(Ky_{n_k+1})\bmod K$，平局任取 | `BH.lab X lam k = (lam k : ℤ/K)`，`lam` 取遍一切 `BH.IsLabelSel X β ρ lam`（`lam k` 是 $K y_{n_k+1}$ 的最近整数，$y$ 用同一个 ρ） | 等价 |
+| 8 | “下列结论对任何平局取法都成立” | 结论在 `∀ ρ lam, IsNearSel … ρ → IsLabelSel … lam → …` 之下 | 等价 |
+| 9 | 存在 β | `∃ β : ℝ` | 等价 |
+| 10 | 规范标签最终等于 $r_k$ | `∀ᶠ k in atTop, X.lab lam k = r k` | 等价 |
+| 11 | $t_k-\tau_k\to0$ | `Tendsto (fun k => X.tv β ρ k − τ k) atTop (𝓝 0)` | 等价 |
+| 12 | （S1 前言的前提 $\mathcal K_\alpha(\beta)<\infty$，§5.6 (d4) 证明） | 附加结论 `KL X.a β < ⊤` | 更强（多给一个结论） |
+
+**没有任何一项“更弱”。** 与第 1 阶段草稿陈述相比，第 3 项把 `∀ k, |τ k| ≤ B` 放宽为只要求 $k\ge1$（假设更弱，定理更强，且更贴近原文）。
+
+S1(a)（`R6S2.S1a`）对齐：前提 `KL X.a β < ⊤` 与任意 `IsNearSel` 选择 ρ；三条结论 $y_{n_k}\to0$、$A_k\theta_{n_k}\to1$、
+$1/\theta_{n_k+i}\to K/(c_ic_i')$（$1\le i\le\ell$，`cc W (i-1)`、`cc' W (i-1)` 即 $c_i$、$c_i'$）逐条对应，全部等价。
+
+D4、B2–B4 的陈述与 §2.1–2.2 表中的数学命题逐字对应；D4 去掉了不需要的 $k\ge1$（更强）。
