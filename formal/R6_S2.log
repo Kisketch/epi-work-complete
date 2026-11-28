@@ -382,3 +382,5 @@ exit code: 0（无 error，无 warning；末尾的 statement-pin `example` 以 `
 ## CI
 未在 GitHub CI 中运行（无运行号）。R6S2Main 会被 lakefile 的 glob "EpiFormal.+" 纳入下一次全量 lake build；
 AuditR6S2.lean 尚未接入 lean-audit.yml 的 siege 门禁（按指示不改 workflow，接入与否由总控决定）。
+
+CI build of record (stage 4): GitHub Actions run 46110437346 (head 46d1a36, lean-audit.yml) success; full lake build 9399 jobs; siege gate: all 16 R6S2 theorems exactly [propext, Classical.choice, Quot.sound]; SIEGE AXIOM GATE PASSED. Merged to main as c76ed08 (PR #8).

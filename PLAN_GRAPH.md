@@ -20,8 +20,8 @@
 | R6-N2 | LW 校准推论：$x\in\{e^{\sqrt2},\cos1\}$ 满足 $\forall B$：$Bx\notin\mathcal L$、$\limsup_j j\lVert BQ_jx\rVert\ge1/4$、阶乘数字不最终为常数 | Toy T1 | `L0_CONJECTURE` | 5（经典定理加项目结果的推论） | 本文件 §R6 节点 |
 | R6-N3 | Nesterenko 对照：$e^\pi+\pi$ 超越（由 $\pi,e^\pi$ 代数无关推出） | Toy T2 | `L0_CONJECTURE`（文献结果，原文未核） | 5 | Paper 1 引 Nesterenko1996 |
 | R6-N4 | $e$ 尺度通用性检验：π 的 $Q_j$ 尺度统计与已知答案对照、随机对照不可区分，并与 $r-e$ 对照可区分（有限范围；**以 Step 2 修正规格为准**） | Toy T1 / I（证据） | `L1_TESTED`（R6 Step 2 skeptic：MINOR_FIX，修正规格下 PASS） | 4 | 本文件 §R6 节点；原证伪测试见“当前主攻”中的历史记录 |
-| R6-S1 | 块 Hurwitz 数的局部化引理：$\mathcal K_\alpha(\beta)<\infty$ 时，误差在大指标处趋于 0，块内误差由规范标签 $r_k\in\mathbb Z/K(W)$ 决定，KL 权重有显式极限 | 旁支（S） | `L2_AUDITED`（2026-11-27：作为 proofs/R6-S2.md v2 中的引理 S1，经全新隔离 skeptic 整篇审计 PASSED_L2） | 5（预期） | 本文件 §R6 旁支轨 |
-| R6-S2 | 块 Hurwitz 数的 KL 尖锐常数：$c^*(\alpha)=\nu(W)$（有限图上的极小极大值），且可达 | 旁支（S） | `L2_AUDITED`（2026-11-27：v2 范围重构版经全新隔离 skeptic 整篇首次审计 PASSED_L2；v1 的 4 次 MINOR_FIX 和 3 轮修补均保留于记录中） | 1 的候选（仅本地负搜索） | 本文件 §R6 旁支轨；当前主攻 |
+| R6-S1 | 块 Hurwitz 数的局部化引理：$\mathcal K_\alpha(\beta)<\infty$ 时，误差在大指标处趋于 0，块内误差由规范标签 $r_k\in\mathbb Z/K(W)$ 决定，KL 权重有显式极限 | 旁支（S） | `L3_FORMALIZED`（2026-11-27：Lean `R6S2.S1_all` 等，S1(a)–(d) 全部；CI 运行 46110437346 siege 门禁通过；公理只含 [propext, Classical.choice, Quot.sound]） | 5（预期） | 本文件 §R6 旁支轨 |
+| R6-S2 | 块 Hurwitz 数的 KL 尖锐常数：$c^*(\alpha)=\nu(W)$（有限图上的极小极大值），且可达 | 旁支（S） | `L3_FORMALIZED`（2026-11-27：Lean `R6S2.main : StatementR6S2`；语句对齐 10 项全部等价；CI 运行 46110437346（head 46d1a36）全量构建 9399 jobs，siege 门禁 16 条定理通过；公理只含 [propext, Classical.choice, Quot.sound]） | 1 的候选（仅本地负搜索） | 本文件 §R6 旁支轨；当前主攻 |
 | R6-S7 | 连续子组合引理：对一切块词 $W$（$K(W)\ge2$），$m^*:=\min_{r\ne0}v(r)\ge1/2$；从而 $K\ge2$ 时 $\nu(W)=\min(1,m^*)$，$K=1$ 时 $\nu=1$，对一切 $W$ 有 $\nu(W)\ge1/2$ | 旁支（S） | `L3_FORMALIZED`（2026-11-27：经两轮隔离审计后达到 L2；随后完成 Lean 形式化：`EpiFormal/R6S7Mstar.lean`，命题 1 与推论 2 的组合部分；语句对齐逐项等价；本地 `lake build` 与 `#print axioms` 由总控复跑，结果为 [propext, Classical.choice, Quot.sound]，没有项目自加公理；已接入 CI siege 门禁，等待 CI 运行号） | 无条件；属类别 1 还是 5 待新颖性核查（可能是连续子经典事实的改写） | proofs/R6-S7-mstar.md；experiments/R6-S2/reaudit_S7_* |
 | R6-S3 | 非普适性：存在块词 $W$ 使 $\nu(W)<1$ | 旁支（S） | `L0_CONJECTURE` | 依赖 S2；具体 $\nu(W)$ 值为有限精确计算 | 本文件 §R6 旁支轨 |
 | R6-S4 | $\inf_W\nu(W)=1/4$？（KL 常数 1/4 在块 Hurwitz 类中是否尖锐） | 旁支（S），开放 | `L0_CONJECTURE` | 若证出为 1 的候选 | 本文件 §R6 旁支轨 |
@@ -188,7 +188,7 @@ graph TD
 
 ## 当前主攻
 
-- `[BOTTLENECK]`：**R6-S2**（块 Hurwitz 数的 KL 尖锐常数公式 $c^*(\alpha)=\nu(W)$；方向：旁支 S；状态 `L2_AUDITED`（2026-11-27，人工检查点 3）；2026-11-27 R6 旁支 Step 1 strategist 从 R6-N4 移交）。
+- `[BOTTLENECK]`：**R6-S2**（块 Hurwitz 数的 KL 尖锐常数公式 $c^*(\alpha)=\nu(W)$；方向：旁支 S；状态 `L3_FORMALIZED`（2026-11-27，CI 46110437346）；2026-11-27 R6 旁支 Step 1 strategist 从 R6-N4 移交）。
   - 2026-11-27 strategist 重构：第 1 版证明稿修补预算用尽（4 次 MINOR_FIX，证明链内无缺口）。瓶颈标记**不移动**，审计对象改为第 2 版（承重链版），陈述按 D-2 精确化，预算与止损见 §“R6-S2 路线重构”D-4。
 
 **选择理由（Hardest-Case First）**
@@ -377,3 +377,4 @@ graph TD
 - 2026-11-27（总控）：R6-S7 升为 `L3_FORMALIZED`。推论 3（$c^*\ge1/2$）以 R6-S2 为条件，没有形式化。
 - 2026-11-27（R6 旁支 Step 4 后 strategist 路线重构）：R6-S2 第 1 版证明稿 4 次审计均为 MINOR_FIX，3 轮修补用尽。决定采用范围重构（方案 a），不拆分节点；新增 §“R6-S2 路线重构”（诊断、D-1 至 D-5、不选 (b) 的理由、检查点 2 判断、没做到什么）。陈述精确化两处：§S.1 块 Hurwitz 数条目的大指标改为按位置定义 $n_k:=N+(k-1)(\ell+1)$，并写明 $N\ge0$、$a_0\in\mathbb Z$、$a_1,\dots,a_N\ge1$（原证明稿 I3）；S1(d) 明确 $(r_k)_{k\ge0}$、$r_0$ 属于给定数据、$(\tau_k)_{k\ge1}$（第 3 轮复审 n3）。两处都是把唯一合理读法写进陈述，未放宽假设、量词、常数或结论。节点表 R6-S1、R6-S2 状态栏加注；状态值不变（S1 `L0_CONJECTURE`，S2 `L1_TESTED`），瓶颈标记不动。判断：本次不计入人工检查点 2（非数学障碍），不追加 BARRIERS；DEAD_ENDS 追加流程记录 D19。
 - 2026-11-27（总控）：R6-S1、R6-S2 升为 `L2_AUDITED`（v2 审计 PASSED_L2）；触发人工检查点 3。
+- 2026-11-27（总控）：R6-S1、R6-S2 升为 `L3_FORMALIZED`（CI 运行 46110437346；PR #8 已合并为 c76ed08）。块 Hurwitz 类上 $c^*\ge1/2$ 现为 L3，由 R6-S2 与 R6-S7 两者合并得到。
