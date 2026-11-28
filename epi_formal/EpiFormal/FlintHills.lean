@@ -9,7 +9,7 @@ import EpiFormal.MeiburgConvergence
 形式化可行性评级 1/5）。此处给出等价陈述与论文的条件性命题 H′。
 
 依据文献：
-- Alekseyev 2011 (arXiv:1104.5100，已发表)：收敛 ⇒ μ(π) ≤ 5/2。
+- Alekseyev 2011 (arXiv:1104.5100v1, eprint，未发表，无期刊记录)：收敛 ⇒ μ(π) ≤ 5/2。
 - Meiburg 2022 (arXiv:2208.13356，预印本；第八轮已核验其证明结构)：μ(π) < 5/2 ⇒ 收敛。
 -/
 

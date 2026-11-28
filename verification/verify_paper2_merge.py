@@ -21,9 +21,9 @@ def main():
 
     out = []
     out.append("=== Paper 2 Merge & Integrity Verification ===")
-    out.append(f"Paper 2 source: {MERGED_PATH.relative_to(ROOT)} ({len(merged.splitlines())} lines)")
+    out.append(f"Paper 2 source: {MERGED_PATH.relative_to(ROOT).as_posix()} ({len(merged.splitlines())} lines)")
     if draft_lines is not None:
-        out.append(f"Historical B draft: {DRAFT_B_PATH.relative_to(ROOT)} ({draft_lines} lines)")
+        out.append(f"Historical B draft: {DRAFT_B_PATH.relative_to(ROOT).as_posix()} ({draft_lines} lines)")
 
     # 1. Labels & Refs
     labels = re.findall(r"\\label\{([^}]+)\}", merged)
