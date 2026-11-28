@@ -822,7 +822,7 @@ OpenAlex, and arXiv records, no prior precedent was found for the
 unified treatment of the non-homogeneous affine shift $A\ne0$ (notably
 $A/B-e$), the explicit Hermite-cutoff window length criterion
 $r_j=1\iff G_jG_{j+1}=T$, and the sharp five-window characterization
-below (this reports a negative search, not a proof of non-existence).
+below (this reports a negative search, not a proof of non-existence). This negative search concerns affine-window periods; the factorial-tail/Ap\'ery audits \cite{Yu2026,YuHAL2026} lie in a different coordinate and are treated alongside Proposition~\ref{prop:window}.
 
 
 \begin{corollary}[Runs of single-digit affine windows]\label{cor:affine-single}
@@ -3918,11 +3918,9 @@ declarations project-wide across 134 Lean files as of 2026-11-22, recorded in
 registered transcendence/irrationality-measure whitelist axioms
 \texttt{e\_transcendental}, \texttt{pi\_transcendental}, and
 \texttt{mu\_e\_eq\_two}; zero project-added axioms and zero
-\texttt{sorryAx}). The build and this audit were independently reproduced on 2026-11-23 from a
-clean clone of the public repository on a separate machine (Lean~4.35.0,
-Mathlib v4.35.0): \texttt{lake build} succeeded, and the $937$
+\texttt{sorryAx}). The build and this audit were independently reproduced on 2026-11-23 from a clean clone of the public repository at \url{https://github.com/Kisketch/epi-work-complete.git} (commit \texttt{3563f85}, Lean~4.35.0 per \texttt{lean-toolchain}, Mathlib v4.35.0 per \texttt{lake-manifest.json}) on a separate machine: \texttt{lake build} succeeded, and the $937$
 \texttt{\#print axioms} outputs coincide entry by entry with the recorded log
-(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}). The remaining
+(\texttt{verification/\allowbreak colab\_\allowbreak rebuild\_\allowbreak audit\_\allowbreak 20261123.md}). Code and Data Availability: the public repository at \url{https://github.com/Kisketch/epi-work-complete.git} (commit \texttt{3563f85}) archives the Lean sources, verification logs, and reproducible scripts cited here. The remaining
 paper proofs---including the window and spectrum computations of
 Sections~\ref{sec:windows}--\ref{sec:quadratic} and the obstruction
 analysis---are not machine-checked; they have been checked by
@@ -3949,6 +3947,7 @@ have not yet been examined by an independent human referee.
 \bibitem{Bai2026} Y.~Bai, \emph{The irrationality measure of $\pi$ is at most 7.101862832357}, arXiv:2609.11276 (2026). Preprint; abstract verified; local-minimizer claim only.
 \bibitem{CarellaMeasure} N.~A.~Carella, \emph{Irrationality Measure of Pi}, arXiv:1902.08817. Preprint, not accepted; recorded as a negative lead only.
 \bibitem{CarellaEpi} N.~A.~Carella, \emph{The Product $e\pi$ Is Irrational}, arXiv:1706.08394. Preprint, not accepted; public criticism by J.~D'Aurizio on Math StackExchange.
+\bibitem{CarellaLI} N.~A.~Carella, \emph{Linear Independence Of Some Irrational Numbers}, arXiv:2007.15000v3 (2026). Preprint, not accepted; abstract claims linear independence of $\{1,e,\pi\}$ etc.\ (i.e.\ the open premise P1 of Proposition~\ref{prop:rational-span}); recorded as a negative lead only and not used; abstract-level check only (full text not verified here).
 \bibitem{Panti2017} G.~Panti, \emph{Slow continued fractions, transducers, and the Serret theorem}, arXiv:1706.00698; J.~Number Theory (2018).
 \bibitem{Raney1973} G.~N.~Raney, \emph{On continued fractions and finite automata}, Math.~Ann.~206 (1973), 265--283.
 \bibitem{Baker} A.~Baker, \emph{Transcendental Number Theory}, Cambridge, 1975. (Linear forms in logarithms; Fields Medal 1970.)
@@ -3999,6 +3998,7 @@ have not yet been examined by an independent human referee.
 \bibitem{Lin2018} X.~Lin, \emph{Quadratic Lagrange spectrum: I}, Math.~Z.~289 (2018), no.~1--2, 515--533, doi:10.1007/s00209-017-1964-2, arXiv:1703.04847v2.
 \bibitem{Hildebrand2024} A.~Jin, S.~Singh, Z.~Zhang and A.~J.~Hildebrand, \emph{On the continued fraction expansion of almost all real numbers}, Involve~18 (2025), 583--600, doi:10.2140/involve.2025.18.583.
 \bibitem{Yu2026} R.~Yu, \emph{Tail Criteria, No-Go Audits, and Ap\'ery-Type Certificate Obstructions for the Irrationality of $e+\pi$}, arXiv:2606.17303v1 (2026). Preprint; full text read; formalizes factorial tail criteria and audits $145$ candidate Ap\'ery-type linear forms ($133$ primitive), finding only convergent shadows (e.g.\ $27247(e+\pi)-159664$).
+\bibitem{YuHAL2026} R.~Yu, \emph{An Inverse Ap\'ery Audit for e+$\pi$: Positivity-Smallness Separation}, HAL hal-05678450 (2026). Preprint; abstract-level check only (full text not verified here); reports a positivity--smallness separation over $2411$ merged Ap\'ery-type candidates (smallness and sign control forced separately, never jointly); recorded as a negative lead only.
 \bibitem{OpenAI2026} OpenAI, \emph{The irrationality exponent of $\pi$ is 2}, preprint dated 2026-09-24, repository \texttt{openai/math} (public initial commit 2026-10-06), with Lean formalization \texttt{lean/OAI/NumberTheory/PiExponent/Main.lean} (reporting a \texttt{sorry}-free derivation of \texttt{pi\_irrationalityExponent\_eq\_two} and \texttt{flint\_hills\_summable}, whereas the benchmark statement template \texttt{lean/ComparatorChallenges/PiExponent.lean} intentionally carries \texttt{sorry}). Per \texttt{lean/docs/017.md}, the selected comparator target covers only the exponent; Flint Hills convergence lies outside that check. Independent mathematical peer verification and local compilation were not performed here.
 \bibitem{Chudnovsky2026} G.~V.~Chudnovsky and D.~V.~Chudnovsky, \emph{Irrationality Exponents of Real CM Elliptic Periods and Powers of the Lemniscate Period}, arXiv:2610.31112v1 (2026); companion preprint G.~V.~Chudnovsky, \emph{The irrationality exponent of the lemniscate period: A determinant proof with a Lean 4 formalization}, arXiv:2610.26539v1 (2026). Unrefereed preprints with author-reported Lean~4 formalizations conditional on classical uniformization and theta simple-zero inputs (not compiled here; explicitly exclude non-CM periods and $e+\pi$).
 \bibitem{Fauzan2026} A.~Fauzan, \emph{$\zeta(5)$ is irrational}, Zenodo preprint (2026-09-17), doi:10.5281/zenodo.22826419 (concept doi:10.5281/zenodo.22826418). Unrefereed preprint with independent third-party Lean~4 formalizations under active community scrutiny (not compiled here); concerns odd zeta values rather than $e+\pi$.
@@ -4590,7 +4590,7 @@ The slope in the original question is fixed at $-1$; P1 excludes every
 rational slope. For instance the substitute $x=e$ violates the
 corresponding lattice exclusion although $e+x=2e$ is irrational.
 The quantitative match estimate describes rounding errors, while the
-proposition identifies the precise arithmetic premise.
+proposition identifies the precise arithmetic premise. Carella \cite{CarellaLI} claims the independence premise itself; it is unaccepted and unverified here, hence does not anticipate the proved equivalence of Proposition~\ref{prop:rational-span}.
 
 \paragraph{Numerical baseline (corroboration, not proof).} A rebuilt baseline (\texttt{compute\_dj.py}, mpmath, dynamic precision $\mathrm{digits}(Q_j)+500$) verifies over $B=1..20$, $j=1..80$ (1600 pairs): the recurrence and determinant $C_j=2(-1)^{j+1}$ hold termwise; $D_j(B)=0$ occurs $0$ times for the true $\pi$; the identity holds to relative error $<10^{-100}$; the boundary counterexamples $\pi'=6-e$ ($B=1$) and $\pi'=\tfrac{11}{2}-e$ ($B=2$) match eventually as predicted. The upper-bound expression $j(\tfrac12Q_j+2B)/Q_{j+1}$ increases toward $\tfrac18$ (values $0.113,0.119,0.122,0.123$ at $j=5,10,20,40$ for $B=1$). The sign statistic $\operatorname{sgn}(R_j\delta_j)>0$ occurs at ratio $0.42$--$0.48$ over $j=1..200$, $B=1..5$, consistent with no bias (the sign route carries no signal). These are finite computations, not proofs.
 
