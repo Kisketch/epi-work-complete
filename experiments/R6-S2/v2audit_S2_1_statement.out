@@ -1,0 +1,19 @@
+S.1 bullet count in PLAN_GRAPH: 7
+== S.1 vs proof 0.1 (raw): PLAN_GRAPH 7 lines vs proof 8 lines
+    --- PLAN_GRAPH
+    +++ proof
+    @@ -5,0 +6 @@
+    +  - （prover 注，不属于抄录：**本证明未使用此条**。本文所需的下界 $c^*(\alpha)\ge1/4$ 由 §4 引理 0 与推论 0′ 自证，不依赖 KL 1991 原文，见 §1。）
+   DIFFERENCES ABOVE
+== S.1 vs proof 0.1 (prover note removed): PLAN_GRAPH 7 lines vs proof 7 lines
+   IDENTICAL
+== R6-S1 (minus 推导要点) vs proof 0.2: PLAN_GRAPH 5 lines vs proof 5 lines
+   IDENTICAL
+   omitted PLAN_GRAPH lines: ['  - 推导要点（strategist 推导，不是证明）：$\\mathcal K<\\infty$ 推出大指标处 $\\lv']
+== R6-S2 main sentence: PLAN_GRAPH 1 lines vs proof 1 lines
+   IDENTICAL
+== R6-S2 calibration sub-bullet
+   PLAN_GRAPH:   - 校准（必须成立，否则 S1/S2 有错）：$\nu(\varnothing)=\nu((1))=\nu((1,1))=1$。$W=\varnothing$ 的情形对应 Paper 2 thm:growing-rec-spectrum（KL 比值与 $A_j\lVert Q_jx\rVert$ 等价），$W=(1,1)$ 的情形对应 2E thm:full-spectra(iii)（$\alpha=e$ 时初始谱隙为 $(0,1)$），两者都是作者自报 Lean，未复跑。
+   proof     :   - 校准（必须成立，否则 S1/S2 有错）：$\nu(\varnothing)=\nu((1))=\nu((1,1))=1$。……（其余为对 Paper 2 / 2E 的交叉引用，不属于待证命题。）
+   proof prefix (before ……) is a prefix of PLAN_GRAPH line: True
+   PLAN_GRAPH remainder dropped by proof: $W=\varnothing$ 的情形对应 Paper 2 thm:growing-rec-spectrum（KL 比值与 $A_j\lVert Q_jx\rVert$ 等价），$W=(1,1)$ 的情形对应 2E thm:full-spectra(iii)（$\alpha=e$ 时初始谱隙为 $(0,1)$），两者都是作者自报 Lean，未复跑。

@@ -1,0 +1,2 @@
+trials: 520 FAILS: 0
+Lemma 0.2: max of theta_{n+1}+a_{n+1}theta_n+theta_{n-1} (upper estimates) = 2.9944331586311805 (<3 needed)
