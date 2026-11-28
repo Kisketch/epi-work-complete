@@ -80,3 +80,5 @@ formal/R6_S7.lean and epi_formal/EpiFormal/R6S7Mstar.lean remain byte-identical)
 Local rebuild: lake build EpiFormal.R6S7Mstar -> Build completed successfully (1317 jobs), exit 0;
 lake env lean AuditR6S7.lean -> all 5 gate theorems [propext, Classical.choice, Quot.sound].
 New SHA-256: 71c2520e8972c7b20987f4e606fd70a8a7ffc123dcf7fa1d6dce9ab498e862c3
+
+CI build of record: GitHub Actions run 46011329540 (head 65db490, lean-audit.yml) conclusion success; siege gate includes R6S7.prop1/mstar_ge_half/cor2_K_ge_two/cor2_K_eq_one/nu_ge_half.
