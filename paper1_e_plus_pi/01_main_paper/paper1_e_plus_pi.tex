@@ -3355,7 +3355,7 @@ Contrapositive of Theorem~\ref{thm:measure-reduction}.
 \end{proof}
 
 \begin{remark}[Status and honest assessment]
-The published upper bounds for $\irr(\pi)$ are: $\le42$ (Mahler 1953), $\le20.6$ (Mignotte 1974), $\le19.89$ (Chudnovsky 1982), $\le8.016045$ (Hata 1993), $\le7.606308$ (Salikhov 2008), $\le7.10320534$ (Zeilberger--Zudilin 2020) \cite{Alekseyev2011,ZZ2020}; a 2026 preprint of Bai claims $<7.101862832357$ \cite{Bai2026}. Whether $\irr(\pi)=2$ is unknown; a preprint of Carella claims it \cite{CarellaMeasure} but is not accepted and is not used here. Since almost all real numbers have measure $2$ and $\irr(\pi)=2$ is the expected value, the sufficient target $\irr(\pi)>2$ is probably false. The value of Theorem~\ref{thm:measure-reduction} is structural: it connects the problem to an active research line, and any proof via Diophantine approximation must confront the measure. Note also the boundary of the method: Lemma~\ref{lem:invariance} concerns rational translations only; invariance under algebraic translation is unknown, so the reduction cannot even be started under the weaker hypothesis ``$e+\pi$ algebraic.''
+The published upper bounds for $\irr(\pi)$ are: $\le42$ (Mahler 1953), $\le20.6$ (Mignotte 1974), $\le19.89$ (Chudnovsky 1982), $\le8.016045$ (Hata 1993), $\le7.606308$ (Salikhov 2008), $\le7.10320534$ (Zeilberger--Zudilin 2020) \cite{ZZ2020}; Alekseyev \cite{Alekseyev2011} is an arXiv eprint (not a journal publication), cited only for the Flint Hills criteria in \S\ref{sec:flint-bridge}, not for the bound; a 2026 preprint of Bai claims $<7.101862832357$ \cite{Bai2026}. Whether $\irr(\pi)=2$ is unknown; a preprint of Carella claims it \cite{CarellaMeasure} but is not accepted and is not used here. Since almost all real numbers have measure $2$ and $\irr(\pi)=2$ is the expected value, the sufficient target $\irr(\pi)>2$ is probably false. The value of Theorem~\ref{thm:measure-reduction} is structural: it connects the problem to an active research line, and any proof via Diophantine approximation must confront the measure. Note also the boundary of the method: Lemma~\ref{lem:invariance} concerns rational translations only; invariance under algebraic translation is unknown, so the reduction cannot even be started under the weaker hypothesis ``$e+\pi$ algebraic.''
 \end{remark}
 
 \subsection{A continued-fraction necessary condition}
@@ -3565,9 +3565,9 @@ The subquestion ``$\pi\in S$?'' is open. The Grothendieck--André period conject
 
 \subsection{The Flint Hills bridge}\label{sec:flint-bridge}
 
-The Flint Hills series is $\sum_{n\ge1}1/(n^3\sin^2n)$; the classical convergence question (see also the later preprint claim in \cite{OpenAI2026}) is recorded in \cite{Alekseyev2011,FormalConjectures}; generalized Flint Hills series $\sum_{n\ge1}n^{-s}|\sin(\pi n x)|^{-t}$ ($s>0, t>1$, matching $(3,2)$ at $x=1/\pi$) are studied in \cite{Dan2026}, which resolves Meiburg's $t>1$ conjecture on the Hausdorff dimension and critical-gauge ($\kappa=-1$) separation of the convergence/divergence loci while leaving pointwise convergence at $x=1/\pi$ for $(3,2)$ open. Continued-fraction characterizations of the Flint Hills series are also investigated in the unrefereed preprint \cite{Zapata2026}. We first record the precise published results of Alekseyev \cite{Alekseyev2011}, verified by full-text reading.
+The Flint Hills series is $\sum_{n\ge1}1/(n^3\sin^2n)$; the classical convergence question (see also the later preprint claim in \cite{OpenAI2026}) is recorded in the eprint \cite{Alekseyev2011} and \cite{FormalConjectures}; generalized Flint Hills series $\sum_{n\ge1}n^{-s}|\sin(\pi n x)|^{-t}$ ($s>0, t>1$, matching $(3,2)$ at $x=1/\pi$) are studied in \cite{Dan2026}, which resolves Meiburg's $t>1$ conjecture on the Hausdorff dimension and critical-gauge ($\kappa=-1$) separation of the convergence/divergence loci while leaving pointwise convergence at $x=1/\pi$ for $(3,2)$ open. Continued-fraction characterizations of the Flint Hills series are also investigated in the unrefereed preprint \cite{Zapata2026}. We first record the precise eprint results of Alekseyev \cite{Alekseyev2011} (arXiv:1104.5100v1, single version, no journal ref; cited as eprint, not as a journal publication), verified by full-text reading.
 
-\begin{theorem}[Alekseyev, published]\label{thm:alekseyev}
+\begin{theorem}[Alekseyev, arXiv:1104.5100 eprint]\label{thm:alekseyev}
 For $u,v>0$:
 \begin{enumerate}
 \item the terms satisfy $1/(n^u|\sin n|^v)=O(n^{-(u-(\irr(\pi)-1)v-\varepsilon)})$ for every $\varepsilon>0$;
@@ -3945,7 +3945,7 @@ have not yet been examined by an independent human referee.
 \bibitem{Tijdemann1971} R.~Tijdeman, \emph{On the algebraic independence of certain numbers}, Indag.~Math.~33 (1971), 146--162. (The precise ``at least two of $\ee,\pi,\ee^\pi$'' corollary is not verified from the original; the safe attribution for $\pi,\ee^\pi$ algebraic independence is Nesterenko \cite{Nesterenko1996}.)
 \bibitem{CNU2024} Z.~Liang and Y.~Wang, \emph{Irrationality measures of several types of irrational numbers}, J.~Capital Normal Univ.~(Nat.~Sci.), 2024. (Theorem 1: $\irr(\ee^r)=2$ for $r\in\Q^*$; Bundschuh's result.)
 \bibitem{ZZ2020} D.~Zeilberger and W.~Zudilin, \emph{The irrationality measure of $\pi$ is at most $7.103205334137\dots$}, Moscow J.~Combin.~Number Theory~9 (2020), 407--419, arXiv:1912.06345.
-\bibitem{Alekseyev2011} M.~A.~Alekseyev, \emph{On convergence of the Flint Hills series}, arXiv:1104.5100 (2011). Full text read; Theorems 2, 5, Corollaries 3, 4, 6 verified.
+\bibitem{Alekseyev2011} M.~A.~Alekseyev, \emph{On convergence of the Flint Hills series}, arXiv:1104.5100v1 (2011), eprint (single version v1; no journal ref). Full text read; Theorems 2, 5, Corollaries 3, 4, 6 verified.
 \bibitem{Bai2026} Y.~Bai, \emph{The irrationality measure of $\pi$ is at most 7.101862832357}, arXiv:2609.11276 (2026). Preprint; abstract verified; local-minimizer claim only.
 \bibitem{CarellaMeasure} N.~A.~Carella, \emph{Irrationality Measure of Pi}, arXiv:1902.08817. Preprint, not accepted; recorded as a negative lead only.
 \bibitem{CarellaEpi} N.~A.~Carella, \emph{The Product $e\pi$ Is Irrational}, arXiv:1706.08394. Preprint, not accepted; public criticism by J.~D'Aurizio on Math StackExchange.
@@ -4678,9 +4678,10 @@ Hermite--Lindemann / LW & \cite{Lindemann1882,Bertolin2026} & restatement in rea
 Gelfond--Schneider & \cite{GS1934} & classical statement & Thm.~\ref{thm:epi} \\
 Schneider elliptic & \cite{Duke} & direct quotation & Prop.~\ref{prop:scaling} remark \\
 $\irr(\ee^r)=2$ & \cite{CNU2024} & theorem quotation & Lem.~\ref{lem:mue}, Thm.~\ref{thm:measure-reduction} \\
-$\irr(\pi)$ bounds history & \cite{Alekseyev2011,ZZ2020} & full text + journal record & \S\ref{sec:new}.1 remark; Thm.~\ref{thm:translation} \\
+$\irr(\pi)$ bounds history & \cite{ZZ2020} & full text + journal record & \S\ref{sec:new}.1 remark; Thm.~\ref{thm:translation} \\
+Alekseyev eprint & \cite{Alekseyev2011} & full text + arXiv record (no journal ref) & Thm.~\ref{thm:alekseyev}; Flint Hills criteria only \\
 Serret / Raney & \cite{Panti2017,Raney1973} & abstract / publisher record & Thm.~\ref{thm:cf} \\
-Alekseyev criteria & \cite{Alekseyev2011} & full-text close reading & Thm.~\ref{thm:alekseyev}; correction \\
+Alekseyev criteria (eprint) & \cite{Alekseyev2011} & full-text close reading (eprint, v1 only) & Thm.~\ref{thm:alekseyev}; correction \\
 Meiburg criteria & \cite{Meiburg2022} & proof structure verified; Flint Hills case machine-verified & Thms.~\ref{thm:meiburg},\ref{thm:flint} (classical axioms listed) \\
 Bertolin theorem & \cite{Bertolin2026} & abstract+intro+proof opening & Cor.~\ref{cor:bertolin} (conditional) \\
 Schanuel statement/status & \cite{Ax1971,Baker,MO33817} & primary literature + MO & Thms.~\ref{thm:schanuel},\ref{thm:schanuel-consequence} \\
