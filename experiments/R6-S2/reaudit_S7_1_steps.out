@@ -1,0 +1,63 @@
+== (a) exhaustive: all words with K(W) <= 120
+number of words: 8772
+words with K=1 among them: [(), (1,)]
+K=1 characterisation also checked on 55987 words (len<=6, entries<=6)
+min m* over exhaustive set: 12/17 0.7058823529411765 at (6, 1, 1, 1, 5)
+case (i) count: 2950  case (ii) count: 690632
+== (b) random words
+random words with full r-scan: 3205
+== (c) extreme words
+  W=(): K=1 K=1 (no r!=0)
+  W=(1,): K=1 K=1 (no r!=0)
+  W=(2,): K=2 m*=1
+  W=(1, 1): K=2 m*=1
+  W=(3,): K=3 m*=1
+  W=(1, 2): K=3 m*=1
+  W=(2, 1): K=3 m*=1
+  W=(1, 1, 1): K=3 m*=1
+  W=(2, 2): K=5 m*=1
+  W=(1, 1, 1, 1): K=5 m*=1
+  W=(1, 1, 1, 1, 1): K=8 m*=1
+  W=(1, 1, 1, 1, 1, 1): K=13 m*=1
+  W=(1, 1, 1, 1, 1, 1, 1): K=21 m*=7/8
+  W=(1, 1, 1, 1, 1, 1, 1, 1): K=34 m*=7/8
+  W=(1, 1, 1, 1)...len9: K=55 m*=7/8
+  W=(1, 1, 1, 1)...len10: K=89 m*=7/8
+  W=(1, 1, 1, 1)...len11: K=144 m*=6/7
+  W=(1, 1, 1, 1)...len12: K=233 m*=6/7
+  W=(1, 1, 1, 1)...len13: K=377 m*=6/7
+  W=(1, 1, 1, 1)...len14: K=610 m*=6/7
+  W=(1, 1, 1, 1)...len15: K=987 m*=47/55
+  W=(1, 1, 1, 1)...len16: K=1597 m*=47/55
+  W=(1, 1, 1, 1)...len17: K=2584 m*=47/55
+  W=(1, 1, 1, 1)...len18: K=4181 m*=47/55
+  W=(1, 1, 1, 1)...len19: K=6765 K too large for r-scan (identities only)
+  W=(1, 1, 1, 1)...len20: K=10946 K too large for r-scan (identities only)
+  W=(1000,): K=1000 m*=1
+  W=(1000, 1): K=1001 m*=1
+  W=(1, 1000): K=1001 m*=1
+  W=(1000, 1, 1000): K=1002000 K too large for r-scan (identities only)
+  W=(999, 1, 1, 999): K=1998001 K too large for r-scan (identities only)
+  W=(5, 1, 5): K=35 m*=5/6
+  W=(5, 1, 1, 1, 5): K=96 m*=12/17
+  W=(2, 1, 1, 2): K=13 m*=1
+  W=(1, 2, 1): K=4 m*=1
+  W=(2, 1, 2): K=8 m*=1
+  W=(2, 1, 2): K=8 m*=1
+  W=(3, 1, 3): K=15 m*=3/4
+  W=(4, 1, 4): K=24 m*=4/5
+  W=(10, 1, 10): K=120 m*=10/11
+  W=(37, 1, 37): K=1443 m*=37/38
+  W=(1, 2): K=3 m*=1
+  W=(1, 50): K=51 m*=1
+  W=(1, 997): K=998 m*=1
+  W=(2, 1): K=3 m*=1
+  W=(50, 1): K=51 m*=1
+  W=(997, 1): K=998 m*=1
+  W=(1000000000000,): K=big K too large for r-scan (identities only)
+  W=(1000000000, 1, 1000000000): K=big K too large for r-scan (identities only)
+  W=(1000000, 1000000, 1000000, 1000000, 1000000, 1000000, 1000000, 1000000): K=big K too large for r-scan (identities only)
+words with K=2: [(2,), (1, 1)]
+== summary
+{'words': 8772, 'rscan_words': 11884, 'r_checked': 1581564, 'case_i': 4120, 'case_ii': 1577444, 'identity_words': 14322, 'min_mstar': '12/17', 'min_mstar_word': (6, 1, 1, 1, 5)}
+FAILURES: 0

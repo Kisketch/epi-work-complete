@@ -1,0 +1,384 @@
+# formal/R6_S2.log — R6-S2 形式化第 1 阶段（陈述 + 基础层）的 Lean 4 构建与公理审计
+# 日期：2026-11-27。角色：formalizer。只追加。
+
+源文件    : formal/R6_S2.lean（与 epi_formal/EpiFormal/R6S2Kl.lean 逐字节相同）
+SHA-256   : 0258412b9c6f83258b436c4b63d1c785fd86668391acda6cae38c809a1d2f24e  (771 行)
+工具链    : Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+工程      : ~/epi_native/epi_formal（本机原生副本；lakefile.toml、lean-toolchain、lake-manifest.json 与仓库
+            epi_formal/ 逐字节相同；Mathlib olean 来自 `lake exe cache get`）
+导入      : EpiFormal.R6S7Mstar, Mathlib.Analysis.SpecificLimits.Basic, Mathlib.Analysis.Normed.Group.InfiniteSum
+逃逸扫描  : grep -nE '\b(sorry|admit)\b'            -> 0 处（含注释；CI siege 门禁的正则同此）
+            grep -nE '^\s*axiom\b|native_decide'    -> 0 处
+            唯一的 `decide` 位于 non-vacuity 的 example（内核求值，不是 native_decide）。
+范围      : 本模块只含已证明的基础层与陈述（StatementR6S2 是一个 Prop 定义，未被证明）。
+            中间层与主定理的占位稿只在 ~/epi_native/epi_formal/scratch/R6S2_draft.lean（13 个占位，
+            未复制进仓库）。
+
+## Build 1: lake build（使用 lakefile 的 leanOptions，与 CI 相同）
+$ cd ~/epi_native/epi_formal && time timeout 580 lake build EpiFormal.R6S2Kl
+exit code: 0
+⚠ [1779/1779] Replayed EpiFormal.R6S2Kl
+info: EpiFormal/R6S2Kl.lean:732:0: 'R6S2.det' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:733:0: 'R6S2.det'' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:734:0: 'R6S2.q_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:735:0: 'R6S2.q_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:736:0: 'R6S2.q_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:737:0: 'R6S2.q_mul_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:738:0: 'R6S2.q_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:739:0: 'R6S2.conv_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:740:0: 'R6S2.tendsto_conv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:741:0: 'R6S2.crec_concat' depends on axioms: [propext]
+info: EpiFormal/R6S2Kl.lean:742:0: 'R6S2.alpha_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:743:0: 'R6S2.alpha_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:744:0: 'R6S2.cq_rec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:745:0: 'R6S2.cq_gt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:746:0: 'R6S2.cq_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:747:0: 'R6S2.cf_algorithm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:748:0: 'R6S2.eps_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:749:0: 'R6S2.eps_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:750:0: 'R6S2.theta_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:751:0: 'R6S2.theta_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:752:0: 'R6S2.inv_theta_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:753:0: 'R6S2.theta_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:754:0: 'R6S2.theta_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:755:0: 'R6S2.abs_eps_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:756:0: 'R6S2.BH.a_zero' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:757:0: 'R6S2.BH.a_pre' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:758:0: 'R6S2.BH.nk_succ' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:759:0: 'R6S2.BH.a_big' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:760:0: 'R6S2.BH.a_word' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:761:0: 'R6S2.BH.isCF' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:762:0: 'R6S2.A1' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:763:0: 'R6S2.A2a' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:764:0: 'R6S2.D3_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:765:0: 'R6S2.Dm_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:766:0: 'R6S2.Dm_rec' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:767:0: 'R6S2.dist0_isLeast' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:768:0: 'R6S2.nu_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:769:0: 'R6S2.cstar_only_W' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:770:0: 'R6S2.BH.theta_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Kl.lean:771:0: 'R6S2.BH.inv_theta_nk' depends on axioms: [propext, Classical.choice, Quot.sound]
+timeout 580 lake build EpiFormal.R6S2Kl  0.73s user 0.71s system 127% cpu 1.135 total
+Build completed successfully (1779 jobs).
+timeout 580 lake build EpiFormal.R6S2Kl  0.73s user 0.71s system 127% cpu 1.135 total
+（说明：本次记录的这一遍是 "Replayed"，即复用本会话前一遍对同一文件内容的构建结果；前一遍输出为
+ "⚠ [1779/1779] Built EpiFormal.R6S2Kl (2.6s)"，exit 0，Build completed successfully (1779 jobs)。
+ ⚠ 只来自 Lake 的通用提示 "imports `Mathlib.…` … consider adding `module`"，每个 Mathlib 导入一条，与其他独立模块相同。）
+
+## Build 2: lake env lean（独立重新编译，不用缓存）
+$ cd ~/epi_native/epi_formal && time timeout 580 lake env lean EpiFormal/R6S2Kl.lean
+exit code: 0
+'R6S2.det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.det'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.q_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.q_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.q_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.q_mul_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.q_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.conv_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.tendsto_conv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.crec_concat' depends on axioms: [propext]
+'R6S2.alpha_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.alpha_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cq_rec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cq_gt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cq_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cf_algorithm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.eps_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.eps_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.theta_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.theta_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.inv_theta_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.theta_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.theta_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.abs_eps_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.a_zero' depends on axioms: [propext, Quot.sound]
+'R6S2.BH.a_pre' depends on axioms: [propext, Quot.sound]
+'R6S2.BH.nk_succ' depends on axioms: [propext, Quot.sound]
+'R6S2.BH.a_big' depends on axioms: [propext, Quot.sound]
+'R6S2.BH.a_word' depends on axioms: [propext, Quot.sound]
+'R6S2.BH.isCF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.A1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.A2a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.D3_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.Dm_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.Dm_rec' depends on axioms: [propext, Quot.sound]
+'R6S2.dist0_isLeast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.nu_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_only_W' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.theta_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.inv_theta_nk' depends on axioms: [propext, Classical.choice, Quot.sound]
+timeout 580 lake env lean EpiFormal/R6S2Kl.lean  4.87s user 1.20s system 196% cpu 3.081 total
+
+## 公理层级
+- Lean 基础公理：propext, Quot.sound
+- 经典白名单：Classical.choice
+- 项目自加公理：无
+上面 40 条 #print axioms 的结果都是 [propext, Classical.choice, Quot.sound] 的子集（CI 的 BASE_AXIOMS）。
+crec_concat：[propext]；BH.a_zero / a_pre / nk_succ / a_big / a_word、Dm_rec：[propext, Quot.sound]。
+
+## 未证明部分（不在本模块中）
+- StatementR6S2（R6-S2 主陈述）只作为 Prop 定义入库，没有证明，任何定理都不以它为结论。
+  cstar_only_W 以 StatementR6S2 为**假设**推出“只依赖 W”。
+- 中间层（引理 0、D4、B2–B4、S1(a)–(d)、下界步 1–7、上界步 8–10）见 formal/R6_S2_blueprint.md。
+
+## CI
+未在 GitHub CI 中运行（无运行号）。仓库副本 epi_formal/EpiFormal/R6S2Kl.lean 会被 lakefile 的 glob
+"EpiFormal.+" 纳入下一次全量 `lake build`；尚未接入 siege 公理门禁（按指示不改 workflow，由总控决定）。
+
+################################################################################
+# 第 2 阶段（2026-11-27，formalizer）：D4、引理 B（B1 推论、B2–B4）、𝒦<∞ 判据、S1(a)、S1(d)
+################################################################################
+
+源文件    : formal/R6_S2_blocks.lean  （与 epi_formal/EpiFormal/R6S2Blocks.lean 逐字节相同）
+            formal/R6_S2_realize.lean （与 epi_formal/EpiFormal/R6S2Realize.lean 逐字节相同）
+SHA-256   : 7db8c93f073088f29c55d350c3d07594cf90a704223ad675e44a4d1f00d43884  R6S2Blocks.lean  (413 行)
+            2429b610413cf0b8a51dca7be151e1aafde3eab5e92f424e1c6646859b2f3041  R6S2Realize.lean (741 行)
+工具链    : Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+工程      : ~/epi_native/epi_formal（lakefile.toml、lean-toolchain、lake-manifest.json、R6S2Kl.lean、R6S7Mstar.lean
+            与仓库 epi_formal/ 逐字节相同，cmp 核对）
+导入      : R6S2Blocks: EpiFormal.R6S2Kl；R6S2Realize: EpiFormal.R6S2Blocks（无其他 Mathlib 导入）
+逃逸扫描  : grep -nE '(sorry|admit)'           -> 0 处（两文件，含注释）
+            grep -nE '^\s*axiom|native_decide'   -> 0 处
+            grep -nE 'decide'                  -> 0 处
+
+## Build 3: lake build（lakefile 的 leanOptions，与 CI 相同；构建前删除了两模块的 olean/ilean）
+$ cd ~/epi_native/epi_formal && time timeout 580 lake build EpiFormal.R6S2Blocks EpiFormal.R6S2Realize
+exit code: 0
+⚠ [1780/1781] Built EpiFormal.R6S2Blocks (1.8s)
+info: EpiFormal/R6S2Blocks.lean:396:0: 'R6S2.geo_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:397:0: 'R6S2.geo_recip' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:398:0: 'R6S2.q_index_facts' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:399:0: 'R6S2.BH.nk_eq_mm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:400:0: 'R6S2.BH.a_mm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:401:0: 'R6S2.BH.q_step_mm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:402:0: 'R6S2.D4i' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:403:0: 'R6S2.D4ii' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:404:0: 'R6S2.D4i_mm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:405:0: 'R6S2.D4ii_mm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:406:0: 'R6S2.BH.A_inv_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:407:0: 'R6S2.BH.A_theta_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:408:0: 'R6S2.BH.A_theta_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:409:0: 'R6S2.B2' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:410:0: 'R6S2.B3' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:411:0: 'R6S2.B4' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:412:0: 'R6S2.KL_lt_top_of_bdd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Blocks.lean:413:0: 'R6S2.KL_lt_top_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [1781/1781] Built EpiFormal.R6S2Realize (3.7s)
+info: EpiFormal/R6S2Realize.lean:718:0: 'R6S2.near_iff_nearest' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:719:0: 'R6S2.coset_indep' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:720:0: 'R6S2.getD_le_sum' depends on axioms: [propext, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:721:0: 'R6S2.BH.pos_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:722:0: 'R6S2.aux_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:723:0: 'R6S2.BH.Qchain' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:724:0: 'R6S2.xs_eps' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:725:0: 'R6S2.xs_Dm_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:726:0: 'R6S2.xs_q_eps' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:727:0: 'R6S2.summ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:728:0: 'R6S2.decomp' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:729:0: 'R6S2.fut_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:730:0: 'R6S2.past_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:731:0: 'R6S2.big_decomp' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:732:0: 'R6S2.pre_succ_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:733:0: 'R6S2.futBig_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:734:0: 'R6S2.E_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:735:0: 'R6S2.lab_err' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:736:0: 'R6S2.PP_rec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:737:0: 'R6S2.residue' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:738:0: 'R6S2.S1d' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:739:0: 'R6S2.near_abs_eq_dist0' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:740:0: 'R6S2.BH.nk_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EpiFormal/R6S2Realize.lean:741:0: 'R6S2.S1a' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (1781 jobs).
+timeout 580 lake build EpiFormal.R6S2Blocks EpiFormal.R6S2Realize  9.97s user 2.00s system 178% cpu 6.695 total
+（⚠ 只来自 Lake 的通用提示与 Mathlib 风格 linter：行长 >100、"missing space"、一处 flexible simp；无 error，无 sorry 警告。）
+
+## Build 4: lake env lean EpiFormal/R6S2Blocks.lean（独立重新编译）
+$ cd ~/epi_native/epi_formal && time timeout 580 lake env lean EpiFormal/R6S2Blocks.lean
+exit code: 0
+'R6S2.geo_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.geo_recip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.q_index_facts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.nk_eq_mm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.a_mm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.q_step_mm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.D4i' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.D4ii' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.D4i_mm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.D4ii_mm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.A_inv_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.A_theta_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.A_theta_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.B2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.B3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.B4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.KL_lt_top_of_bdd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.KL_lt_top_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+timeout 580 lake env lean EpiFormal/R6S2Blocks.lean  3.19s user 0.86s system 165% cpu 2.437 total
+
+## Build 5: lake env lean EpiFormal/R6S2Realize.lean（独立重新编译）
+$ cd ~/epi_native/epi_formal && time timeout 580 lake env lean EpiFormal/R6S2Realize.lean
+exit code: 0
+'R6S2.near_iff_nearest' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.coset_indep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.getD_le_sum' depends on axioms: [propext, Quot.sound]
+'R6S2.BH.pos_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.aux_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.Qchain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.xs_eps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.xs_Dm_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.xs_q_eps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.summ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.decomp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.fut_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.past_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.big_decomp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.pre_succ_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.futBig_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.E_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.lab_err' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.PP_rec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.residue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1d' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.near_abs_eq_dist0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.nk_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1a' depends on axioms: [propext, Classical.choice, Quot.sound]
+timeout 580 lake env lean EpiFormal/R6S2Realize.lean  5.87s user 0.95s system 165% cpu 4.121 total
+
+## 公理层级（第 2 阶段）
+- Lean 基础公理：propext, Quot.sound
+- 经典白名单：Classical.choice
+- 项目自加公理：无
+上面 18 + 24 条 #print axioms 全是 [propext, Classical.choice, Quot.sound] 的子集；
+getD_le_sum 为 [propext, Quot.sound]，其余均为 [propext, Classical.choice, Quot.sound]。
+
+## 第 2 阶段未证明部分（不在入库模块中）
+- 本机草稿 ~/epi_native/epi_formal/scratch/R6S2_draft.lean 剩 6 个占位：lemma0、cor0'、S1b、S1c、lower、upper
+  （main 由它们推出，类型检查通过）。StatementR6S2 仍未证明。
+
+## CI
+未在 GitHub CI 中运行（无运行号）。两个新模块会被 lakefile 的 glob "EpiFormal.+" 纳入下一次全量 lake build；
+未接入 siege 公理门禁（按指示不改 workflow）。
+
+# 第 3 阶段（2026-11-27，formalizer）：EpiFormal/R6S2Localize.lean（= formal/R6_S2_localize.lean）
+sha256 49b544ab8fbcef2f4a6427e3d330ce476104dadd07971bcb454876d5517439a9（仓库两份与本机原生副本逐字节相同）
+grep -nE 'sorry|admit|native_decide|^axiom|set_option' 无命中。
+
+## Build 6: lake env lean EpiFormal/R6S2Localize.lean（本机原生副本，独立编译）
+$ cd ~/epi_native/epi_formal && time timeout 580 lake env lean EpiFormal/R6S2Localize.lean
+exit code: 0（无 error，无 warning）
+'R6S2.int_eq_of_close' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.dist0_add_int' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.dist0_add_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.dist0_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.dist0_sub_dist0_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.dist0_div_eq_dK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.near_int_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.near_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.dist0_label_rep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.lemma0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.exists_isCF_alpha' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_ge_quarter_irrational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cor0'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_ge_quarter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.q_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.yv_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.Ky_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.yv_big' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.dist0_nk_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.lab_val' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.block_of' depends on axioms: [propext, Quot.sound]
+'R6S2.BH.lab_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.lab_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1_label' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1_label_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.blk_near' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.abs_eps_le_inv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.abs_eps_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.BH.yv_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1c' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.R_big_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.R_word_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.nu_isLeast' depends on axioms: [propext, Classical.choice, Quot.sound]
+timeout 580 lake env lean EpiFormal/R6S2Localize.lean  7.81s user 1.15s system 240% cpu 3.725 total
+
+## Build 7: lake build EpiFormal.R6S2Localize（生成 olean，供草稿导入）
+$ cd ~/epi_native/epi_formal && timeout 580 lake build EpiFormal.R6S2Localize
+exit code: 0；输出末行 "Build completed successfully (2001 jobs)."
+
+## Build 8: 本机草稿类型检查（不入库）
+$ cd ~/epi_native/epi_formal && timeout 580 lake env lean scratch/R6S2_draft.lean
+exit code: 0；只有 2 条 "declaration uses `sorry`" 警告（lower、upper）。main 由二者推出。
+
+## 公理层级（第 3 阶段）
+- Lean 基础公理：propext, Quot.sound
+- 经典白名单：Classical.choice
+- 项目自加公理：无
+上面 34 条 #print axioms：BH.block_of 为 [propext, Quot.sound]，其余均为 [propext, Classical.choice, Quot.sound]。
+
+## 第 3 阶段未证明部分（不在入库模块中）
+- 本机草稿剩 2 个占位：lower（§7.1 步 1–7）、upper（§7.2 步 8–10）。StatementR6S2 仍未证明。
+
+## CI
+未在 GitHub CI 中运行（无运行号）。新模块会被 lakefile 的 glob "EpiFormal.+" 纳入下一次全量 lake build；
+新增导入 Mathlib.NumberTheory.Real.Irrational（与仓库 Mathlib v4.35.0 同版本，本机已编译通过）。未改 workflow。
+
+# 第 4 阶段（2026-11-27，formalizer）：EpiFormal/R6S2Main.lean（= formal/R6_S2_main.lean）与审计入口 AuditR6S2.lean（= formal/R6_S2_audit.lean）
+sha256 R6S2Main.lean  9e9f8ed03b63b99775d554a947b8713ec9056a80f70f3be9a009b85f26759e14（仓库两份与本机原生副本逐字节相同）
+sha256 AuditR6S2.lean 959e9806607b2be9fa0fe9ae47054e1e9813279ab431bbc2b306b714f0207b83（同上）
+grep -nE '\bsorry\b|\badmit\b|native_decide|^axiom|set_option' epi_formal/EpiFormal/R6S2*.lean epi_formal/AuditR6S2.lean 无命中。
+（nu_one_one 用 `decide +kernel`，与 R6S7Mstar.sanity_extremal 相同，是内核归约，不引入公理；公理清单见下。）
+
+## Build 9: lake env lean EpiFormal/R6S2Main.lean（本机原生副本，独立编译）
+$ cd ~/epi_native/epi_formal && timeout 580 lake env lean EpiFormal/R6S2Main.lean
+exit code: 0（无 error，无 warning；输出只有下面 10 行。第一版有 2 行超过 100 字符的风格 lint 警告，已折行后重新编译，下列为重编结果）
+'R6S2.finRotate_val' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.KL_le_ofReal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_only_W'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.main_example11' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.nu_one_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_example11' depends on axioms: [propext, Classical.choice, Quot.sound]
+（用时约 6 s wall）
+
+## Build 10: lake build EpiFormal.R6S2Main（生成 olean，供审计入口导入）
+$ cd ~/epi_native/epi_formal && timeout 580 lake build EpiFormal.R6S2Main
+exit code: 0；输出末行 "Build completed successfully (2002 jobs)."；R6S2Main 无任何 warning（含 lakefile 的 mathlib 风格 linter）。
+
+## Build 11: lake env lean AuditR6S2.lean（审计入口）
+$ cd ~/epi_native/epi_formal && timeout 580 lake env lean AuditR6S2.lean
+exit code: 0（无 error，无 warning；末尾的 statement-pin `example` 以 `main` 证明逐字展开的 StatementR6S2，类型检查通过）
+'R6S2.main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1c' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1d' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.lemma0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cor0'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_ge_quarter_irrational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_only_W'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.nu_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.main_example11' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.nu_one_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_example11' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+## 公理层级（第 4 阶段）
+- Lean 基础公理：propext, Quot.sound
+- 经典白名单：Classical.choice
+- 项目自加公理：无
+上面 10 + 16 条 #print axioms 全部恰为 [propext, Classical.choice, Quot.sound]（无 sorryAx，无 Lean.ofReduceBool）。
+
+## 第 4 阶段结论
+- `R6S2.main : StatementR6S2` 已证（StatementR6S2 为 R6S2Kl.lean 中第 1 阶段对齐的原定义，未改写）。
+- 本机草稿 scratch/R6S2_draft.lean 的 lower、upper 两个占位已被入库模块取代；R6-S2 形式化不再有任何占位。
+
+## CI
+未在 GitHub CI 中运行（无运行号）。R6S2Main 会被 lakefile 的 glob "EpiFormal.+" 纳入下一次全量 lake build；
+AuditR6S2.lean 尚未接入 lean-audit.yml 的 siege 门禁（按指示不改 workflow，接入与否由总控决定）。

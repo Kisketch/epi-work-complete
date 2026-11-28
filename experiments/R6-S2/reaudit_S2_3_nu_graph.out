@@ -1,0 +1,6 @@
+calibration () K= 1 nu_walk= 1 nu_simple= 1 nu_thr= 1
+calibration (1,) K= 1 nu_walk= 1 nu_simple= 1 nu_thr= 1
+calibration (1, 1) K= 2 nu_walk= 1 nu_simple= 1 nu_thr= 1
+C3/consistency: words with K<=7 (l<=4, digits<=4): 28, mismatches walk/simple/threshold: 0
+bounds: 889 words (l<=5, digits<=6, K<=60): min nu = 3/4 at W=(3, 1, 3), max nu = 1; all in [1/4,1]
+nu(5,1,5) = 5/6

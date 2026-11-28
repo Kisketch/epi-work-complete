@@ -1,0 +1,78 @@
+HEAD = 92cb848e94bc9c3e10fd808ce64cef2fdb82fdc5; HEAD~1 = 94381fb4133db11e6fbddf8f11193659ae1c8fd3
+v1 = HEAD:proofs/R6-S2.md (blob c5e97d03f67e1ce12e4e287dcf2ac5c9e8ab7297), 473 lines
+v2 = working-tree proofs/R6-S2.md, 350 lines
+remarks = proofs/R6-S2-remarks.md, 148 lines
+
+== (0) v1 block anchors and separators ==
+PASS  B1 v1 L211-L213 (§5.5 末尾附注（另一种读法）) anchors match
+PASS  B2 v1 L330-L330 (§7.3 指向 proofs/R6-S7-mstar.md 的子条) anchors match
+PASS  B3 v1 L334-L364 (§8 全节) anchors match
+PASS  B4 v1 L368-L376 (§9 全节（R1、R2、R3）) anchors match
+PASS  B5 v1 L401-L473 (修补记录（第 1 轮）（第 2 轮）（第 3 轮）) anchors match
+PASS  extra deleted lines [365, 366, 367, 377, 378, 379, 398] are blank or '---' only
+
+== (i) remarks body == concatenation of moved blocks ==
+PASS  body minus delimiter lines (117 lines) == B1..B5 concat (117 lines)
+PASS  B1 END delimiter matches
+PASS  B1 delimiter range L211-L213 == declared
+PASS  B1 remarks content == v1 L211-L213 verbatim (3 lines)
+PASS  B2 END delimiter matches
+PASS  B2 delimiter range L330-L330 == declared
+PASS  B2 remarks content == v1 L330-L330 verbatim (1 lines)
+PASS  B3 END delimiter matches
+PASS  B3 delimiter range L334-L364 == declared
+PASS  B3 remarks content == v1 L334-L364 verbatim (31 lines)
+PASS  B4 END delimiter matches
+PASS  B4 delimiter range L368-L376 == declared
+PASS  B4 remarks content == v1 L368-L376 verbatim (9 lines)
+PASS  B5 END delimiter matches
+PASS  B5 delimiter range L401-L473 == declared
+PASS  B5 remarks content == v1 L401-L473 verbatim (73 lines)
+PASS  block order in remarks = ['B1', 'B2', 'B3', 'B4', 'B5']
+PASS  header contains the D-1 mandated paragraph verbatim (from PLAN_GRAPH)
+PASS  header states 不入审计、不得引用（D-1）
+PASS  move table row B1: v1 L211-L213 -> remarks L23-L25
+PASS  move table row B2: v1 L330-L330 -> remarks L28-L28
+PASS  move table row B3: v1 L334-L364 -> remarks L31-L61
+PASS  move table row B4: v1 L368-L376 -> remarks L64-L72
+PASS  move table row B5: v1 L401-L473 -> remarks L75-L147
+PASS  header error marker [n1] points to the remarks line containing the flagged text
+PASS  header error marker [n2] points to the remarks line containing the flagged text
+PASS  header error marker [M4] points to the remarks line containing the flagged text
+
+== (ii) v2 == v1 with only the declared edits ==
+PASS  v2 equals v1 + {block deletion, declared edits} exactly
+PASS  every edit class is in {V, S0, I3, R0, P}
+PASS  [V]  v1 L3 (文首版本行 + D-3 第 5 项角色说明): ['> v2（范围重构，2026-11-27，D-1..D-5）', '> 角色：prover。第 2 版（范围重构，2026-11-27），修补历史见 `proofs/R6-S2-remarks.md`。']
+PASS  [S0] v1 L16 (§0.1 块 Hurwitz 数条目（D-2 I3）): old line = previous PLAN_GRAPH, new line = current PLAN_GRAPH verbatim
+PASS  [P]  v1 L19 (§0.1 prover 注): deleted only ' 与 §9 R2' (refers to moved content)
+PASS  [S0] v1 L23 (§0.2 小标题中的版本说明): heading version remark '即 2026-11-27 R6 旁支 Step 4 按审计 M2 加入规范标签定义后的版本' -> '即 2026-11-27 strategist 路线重构 D-2（n3、I3 两处精确化）后的版本'
+PASS  [S0] v1 L29 (§0.2 S1(d)（D-2 n3）): old line = previous PLAN_GRAPH, new line = current PLAN_GRAPH verbatim
+PASS  [P]  v1 L36 (§0.3 校准子条): deleted only '；见本文 §9 备注 R1 的手算核对' (refers to moved content)
+PASS  [I3] v1 L40 (§0.4 引言): '(I1) 已不再是解释性约定，只作说明；(I2)(I3) 仍是' -> '(I1)(I3) 已不再是解释性约定，只作说明；(I2) 仍是'
+PASS  [P]  v1 L42 (§0.4 I1 末句（指向 B1；D-3 未列，按“凡指向”处理）): deleted only '§5.5 末尾的“另一种读法”只是附注，不属于对陈述的证明。' (refers to moved content)
+PASS  [I3] v1 L44 (§0.4 I3 改为已写入陈述): - **(I3) 大指标的位置：已写入陈述（PLAN_GRAPH 2026-11-27 strategist 路线重构 D-2）。** 现行 S.1 的块 Hurwitz 数条目（§0.1）直接按位置定义 $n_k:=N+(k-1)(\ell+1)$，并写明 $N\ge0$、$a_0\in\math
+PASS  [P]  v1 L53 (§1 第 1 处): deleted only '，只在 §9 R1 中作为校准对照提及' (refers to moved content)
+PASS  [P]  v1 L56 (§1 第 2 处（整条只是指向 §9 R1）): whole line deleted, it only points to moved content: '- 校准值 $\\nu((1,1))=1$ 在 §9 R1 中手算。'
+PASS  [P]  v1 L58 (§1 第 3 处): deleted only '§9 R3 与 ' (refers to moved content)
+PASS  [P]  v1 L193 (§5.4 有界性括注（指向 B3；D-3 未列）): deleted only '§8 (E1) 需要的' (refers to moved content)
+PASS  [R0] v1 L217 (§5.6 给定数据（D-3 第 4 项，n3）): appended '$r_0$ 属于 S1(d) 陈述中的给定数据（见 §0.2）。' (verbatim D-3 item 4)
+PASS  [P]  v1 L219 (§5.6 τ′ 子条): deleted only '；§8 用到的两种代替写法见那里' (refers to moved content)
+PASS  [P]  v1 L263 (§5.6 (d4) 注末句（指向 B3；D-3 未列）): deleted only "§8 的引用相应地写作 $g'_k$。" (refers to moved content)
+PASS  [I3] v1 L384 ([GAP] 清单说明段): '§0.4 的 I1 已由陈述本身解决（规范标签已写入陈述，PLAN_GRAPH 2026-11-27 M2），不再是解释性约定；I2、I3 两条解释性约定不是缺口' -> '§0.4 的 I1、I3 已由陈述本身解决（规范标签已写入陈述，PLAN_GRAPH 2026-11-27 M2；大指标已按
+PASS  [P]  v1 L394 (没有做到什么：未形式化): deleted only '；它们只在 R1 中作为校准对照提及' (refers to moved content)
+PASS  [I3] v1 L396 (没有做到什么：解释性约定待裁决): 'I2、I3 是本文为消除陈述歧义而采用的读法，尚未经 skeptic 认可（I1 已并入陈述' -> 'I2 是本文为消除陈述歧义而采用的读法，尚未经 skeptic 认可（I1、I3 已并入陈述'
+PASS  [V]  v1 L400 (文末一行): ['v1 的修补记录与附注见 `proofs/R6-S2-remarks.md`']
+PASS  v2 §0.1–§0.3: all 13 statement lines are verbatim current PLAN_GRAPH lines []
+PASS  v2 no longer lists I3 as pending
+PASS  version line at top, end line at bottom
+PASS  [GAP] list in v2: '无。', [GAP-k] occurrences = 0
+
+== residual mentions in v2 (informational, not failures) ==
+  v2 L4: ['remarks', '修补']  > 角色：prover。第 2 版（范围重构，2026-11-27），修补历史见 `proofs/R6-S2-remarks.md`。
+  v2 L243: ['修补']  （注，修补第 2 轮补：下列各估计中，$T_{\max}$ 只通过 $\lvert x_j\rvert=\lvert T'_j\rvert\
+  v2 L350: ['remarks', '修补', '附注']  v1 的修补记录与附注见 `proofs/R6-S2-remarks.md`
+
+difflib summary: v1 lines removed/replaced = 143, v2 lines inserted/replacing = 20
+
+ALL CHECKS PASSED

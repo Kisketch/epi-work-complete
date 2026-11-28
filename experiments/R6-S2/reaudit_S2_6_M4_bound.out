@@ -1,0 +1,7 @@
+K = 91 sigma = 10 tau_1 = 10/91
+T_1 = 10  T'_1 = 910  T_max (with T'_1) = 910  K*tau_max = 10.0
+k=1: |K g_k| = 0.818444;  8T_max/minA = 7.27273 (holds: True);  8K tau_max/minA = 0.0799201 (holds: False);  label=90 (given 0)
+k=2: |K g_k| = 8.96689e-6;  8T_max/minA = 7.26547 (holds: True);  8K tau_max/minA = 0.0798403 (holds: True);  label=0 (given 0)
+k=3: |K g_k| = 9.81436e-11;  8T_max/minA = 7.25823 (holds: True);  8K tau_max/minA = 0.0797607 (holds: True);  label=0 (given 0)
+k=4: |K g_k| = 1.07312e-15;  8T_max/minA = 7.251 (holds: True);  8K tau_max/minA = 0.0796813 (holds: True);  label=0 (given 0)
+k=5: |K g_k| = 1.17221e-20;  8T_max/minA = 7.24378 (holds: True);  8K tau_max/minA = 0.079602 (holds: True);  label=0 (given 0)

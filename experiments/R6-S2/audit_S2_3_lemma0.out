@@ -1,0 +1,18 @@
+golden: dps=278, log10 q_M ~ 25
+blockW=(): dps=1187, log10 q_M ~ 319
+blockW=(1, 1): dps=512, log10 q_M ~ 101
+blockW=(5, 1, 5): dps=539, log10 q_M ~ 109
+blockW=(2, 3): dps=578, log10 q_M ~ 122
+random0: dps=425, log10 q_M ~ 74
+random1: dps=413, log10 q_M ~ 70
+random2: dps=443, log10 q_M ~ 79
+=== audit_S2_3: Lemma 0 (local form) ===
+n_checked: 172800
+nonzero_m: 73527
+viol: 0
+identity_fail: 0
+closest_margin: 0.21998433
+window_tests: 303
+window_fail: 0
+closest_margin = min over nonzero m_n of max(R_{n-1},R_n,R_{n+1}) - 1/4  (>=0 required)
+category 4: finite numerical check, not a proof.

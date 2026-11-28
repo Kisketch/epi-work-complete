@@ -1,0 +1,4 @@
+constant label 1: max item-1 error (k=20..29) = 7.833e-89; max coupling error = 3.916e-89
+constant label 2: max item-1 error (k=20..29) = 7.833e-89; max coupling error = 3.916e-89
+canonical label round(K y_{n_k+1}) mod K at k=20..29: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+category 4: finite computation; shows non-uniqueness of (b)-witnesses for this beta.

@@ -1,0 +1,38 @@
+Part A: sec 5.4 / 5.5(=>) in the lattice case
+  W=(1, 9, 9) u=0 v=3: <= forms hold 11/11,11/11,11/11; strict forms hold 0/11,0/11,0/11
+  W=(1, 9, 9) u=0 v=0: <= forms hold 11/11,11/11,11/11; strict forms hold 0/11,0/11,0/11
+  W=(1, 9, 9) u=1 v=0: <= forms hold 11/11,11/11,11/11; strict forms hold 11/11,11/11,11/11
+  W=(1, 9, 9) u=-2 v=1: <= forms hold 11/11,11/11,11/11; strict forms hold 11/11,11/11,11/11
+  W=(1, 9, 9) u=5 v=-7: <= forms hold 11/11,11/11,11/11; strict forms hold 11/11,11/11,11/11
+  W=(2,) u=0 v=3: <= forms hold 11/11,11/11,11/11; strict forms hold 0/11,0/11,0/11
+  W=(2,) u=0 v=0: <= forms hold 11/11,11/11,11/11; strict forms hold 0/11,0/11,0/11
+  W=(2,) u=1 v=0: <= forms hold 11/11,11/11,11/11; strict forms hold 11/11,11/11,11/11
+  W=(2,) u=-2 v=1: <= forms hold 11/11,11/11,11/11; strict forms hold 11/11,11/11,11/11
+  W=(2,) u=5 v=-7: <= forms hold 11/11,11/11,11/11; strict forms hold 11/11,11/11,11/11
+  W=() u=0 v=3: <= forms hold 11/11,11/11,11/11; strict forms hold 0/11,0/11,0/11
+  W=() u=0 v=0: <= forms hold 11/11,11/11,11/11; strict forms hold 0/11,0/11,0/11
+  W=() u=1 v=0: <= forms hold 11/11,11/11,11/11; strict forms hold 11/11,11/11,11/11
+  W=() u=-2 v=1: <= forms hold 11/11,11/11,11/11; strict forms hold 11/11,11/11,11/11
+  W=() u=5 v=-7: <= forms hold 11/11,11/11,11/11; strict forms hold 11/11,11/11,11/11
+Part B: (E1)-(E4), (E4_0) strict with K_functional = 0 (K+1 = 1)
+  W=(1, 9, 9) u=0 v=3: k0=1, blocks checked=10
+  W=(1, 9, 9) u=1 v=0: k0=1, blocks checked=10
+  W=(1, 9, 9) u=-2 v=1: k0=2, blocks checked=9
+  W=(1, 9, 9) u=5 v=-7: k0=2, blocks checked=9
+  W=(2,) u=0 v=3: k0=1, blocks checked=10
+  W=(2,) u=1 v=0: k0=1, blocks checked=10
+  W=(2,) u=-2 v=1: k0=2, blocks checked=9
+  W=(2,) u=5 v=-7: k0=2, blocks checked=9
+  W=(3, 1) u=0 v=3: k0=1, blocks checked=10
+  W=(3, 1) u=1 v=0: k0=1, blocks checked=10
+  W=(3, 1) u=-2 v=1: k0=2, blocks checked=9
+  W=(3, 1) u=5 v=-7: k0=2, blocks checked=9
+  W=() u=0 v=3: k0=1, blocks checked=10
+  W=() u=1 v=0: k0=1, blocks checked=10
+  W=() u=-2 v=1: k0=2, blocks checked=9
+  W=() u=5 v=-7: k0=2, blocks checked=9
+Part C: (d3) note -- T_max > 0, T'_max = 0 (beta = 0)
+  K=91 sigma=10 r0=90: T_1=-900, T'_1=0, T_max=900, T'_max=0; beta = 0 exactly
+  strict with T_max holds 20/20; strict with T'_max holds 0/20; <= with T'_max holds 20/20
+FAILURES: none
+ALL CHECKS PASSED

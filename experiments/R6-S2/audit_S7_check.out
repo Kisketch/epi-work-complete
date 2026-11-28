@@ -1,0 +1,48 @@
+# audit_S7_check.py -- independent skeptic audit of proofs/R6-S7-mstar.md (category 4)
+# python 3.13.5
+[exhaustive l<=5, w<=7, K<=400] words=7665  A-fail=0  B-fail=0  case(i) hits=2543  min m*=12/17 (~0.705882) at W=(5, 1, 1, 1, 5)
+[all-ones l=0..24] words=25  A-fail=0  B-fail=0  case(i) hits=7  min m*=322/377 (~0.854111) at W=(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+[single letter (w)] words=9  A-fail=0  B-fail=0  case(i) hits=4  min m*=1 (~1.000000) at W=(2,)
+[large-entry / structured] words=17  A-fail=0  B-fail=0  case(i) hits=5  min m*=11/15 (~0.733333) at W=(1, 2, 1, 2, 1, 2, 1, 2, 1, 2)
+[(w,1^k,w)] words=234  A-fail=0  B-fail=0  case(i) hits=78  min m*=12/17 (~0.705882) at W=(5, 1, 1, 1, 5)
+[random (K<=3000)] words=3000  A-fail=0  B-fail=0  case(i) hits=1090  min m*=56/79 (~0.708861) at W=(2, 1, 1, 4, 1, 1, 1, 7, 3)
+all-ones detail (l, K, m*):
+  l= 2 K=     2 m*=1 ~1.000000 all>=1/2:True
+  l= 3 K=     3 m*=1 ~1.000000 all>=1/2:True
+  l= 4 K=     5 m*=1 ~1.000000 all>=1/2:True
+  l= 5 K=     8 m*=1 ~1.000000 all>=1/2:True
+  l= 6 K=    13 m*=1 ~1.000000 all>=1/2:True
+  l= 7 K=    21 m*=7/8 ~0.875000 all>=1/2:True
+  l= 8 K=    34 m*=7/8 ~0.875000 all>=1/2:True
+  l= 9 K=    55 m*=7/8 ~0.875000 all>=1/2:True
+  l=10 K=    89 m*=7/8 ~0.875000 all>=1/2:True
+  l=11 K=   144 m*=6/7 ~0.857143 all>=1/2:True
+  l=12 K=   233 m*=6/7 ~0.857143 all>=1/2:True
+  l=13 K=   377 m*=6/7 ~0.857143 all>=1/2:True
+  l=14 K=   610 m*=6/7 ~0.857143 all>=1/2:True
+  l=15 K=   987 m*=47/55 ~0.854545 all>=1/2:True
+  l=16 K=  1597 m*=47/55 ~0.854545 all>=1/2:True
+  l=17 K=  2584 m*=47/55 ~0.854545 all>=1/2:True
+  l=18 K=  4181 m*=47/55 ~0.854545 all>=1/2:True
+  l=19 K=  6765 m*=41/48 ~0.854167 all>=1/2:True
+  l=20 K= 10946 m*=41/48 ~0.854167 all>=1/2:True
+  l=21 K= 17711 m*=41/48 ~0.854167 all>=1/2:True
+  l=22 K= 28657 m*=41/48 ~0.854167 all>=1/2:True
+  l=23 K= 46368 m*=322/377 ~0.854111 all>=1/2:True
+  l=24 K= 75025 m*=322/377 ~0.854111 all>=1/2:True
+Part C: nu by brute-force closed-walk minimax vs min(1,m*)  (K<=120)
+  words=2540  mismatches=0
+  nu() = 1
+  nu(1,) = 1
+  nu(1, 1) = 1
+  nu(5, 1, 5) = 5/6
+  nu(5, 1, 1, 1, 5) = 12/17
+  nu(2,) = 1
+  nu(1, 1, 1, 1, 1, 1, 1, 1, 1) = 7/8
+Part D: adversarial local search minimising m* (K<=6000)
+  best m* found = 26/37 ~0.702703 at W=(2, 5, 1, 1, 1, 5, 1, 2, 1)
+Remark check (proof line 99, non-load-bearing)
+  (a) nearest-integer form fails on 2028 of 7663 words, e.g. [((1, 2), 1), ((1, 3), 1), ((1, 4), 1)]
+  (b) convergent-numerator (S.1 theta) form fails on 0 of 7663 words
+TOTAL words checked = 10950; global min m* = 26/37 (~0.702703) at W=(2, 5, 1, 1, 1, 5, 1, 2, 1)
+OVERALL: ALL CHECKS PASS

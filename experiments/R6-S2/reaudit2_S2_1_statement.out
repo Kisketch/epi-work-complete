@@ -1,0 +1,13 @@
+S.1 bullets: PLAN_GRAPH 7  proof 7
+  S.1 bullet b'- **\\u8fde\\u7eed\\u5b50**\\uff1a\\u5bf9\\u67' EQUAL
+  S.1 bullet b'- $d_K(x):=\\\\min_{s\\\\in\\\\mathbb Z' EQUAL
+  S.1 bullet b'- **\\u5757 Hurwitz \\u6570**\\uff1a$\\\\alph' EQUAL
+  S.1 bullet b'- $p_n/q_n$ \\u4e3a \\u03b1 \\u7684\\u6b63\\u' EQUAL
+  S.1 bullet b'- **\\u5df2\\u77e5\\u4e0b\\u754c**\\uff1a\\u63' EQUAL
+  S.1 bullet b'- **\\u5c40\\u90e8\\u56fe $G_W$**\\uff1a\\u98' EQUAL
+  S.1 bullet b'- $\\\\nu(W):=\\\\min$\\uff0c\\u53d6\\u904d\\u62' EQUAL
+S1 main+(a)-(d): lines PLAN_GRAPH 5 proof 5 EQUAL
+S1 omitted sub-bullets in proof: ['  - 推导要点（str']
+S2 main bullet EQUAL
+S2 calibration: proof prefix is verbatim prefix of PLAN_GRAPH line: True | prefix len 66
+ALL VERBATIM CHECKS PASSED

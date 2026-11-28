@@ -1,0 +1,17 @@
+S.1 bullets: PLAN_GRAPH 7  proof 7
+  S.1 item 1: IDENTICAL
+  S.1 item 2: IDENTICAL
+  S.1 item 3: IDENTICAL
+  S.1 item 4: IDENTICAL
+  S.1 item 5: IDENTICAL
+  S.1 item 6: IDENTICAL
+  S.1 item 7: IDENTICAL
+R6-S1 lines: PLAN_GRAPH(core) 5  proof 5
+  S1 line 0: IDENTICAL
+  S1 line 1: IDENTICAL
+  S1 line 2: IDENTICAL
+  S1 line 3: IDENTICAL
+  S1 line 4: IDENTICAL
+R6-S2 main sentence: IDENTICAL
+R6-S2 calibration: proof prefix is verbatim prefix of PLAN_GRAPH line: True
+ALL STATEMENT CHECKS PASSED

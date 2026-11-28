@@ -1,0 +1,5 @@
+beta = 3: y_(n_k) = 0 for all tested k
+sec 5.4 strict |t_k| < R_(n_k) false in 6/6 blocks (0 < 0)
+sec 5.5 strict |u eps_n| < |u|/q_(n+1) false in 6/6; |t_k| < |u|/q_(n_k) false in 6/6
+sec 8 (E1) |t_k| < K+1 holds: True
+CONCLUSION: strict inequalities in sec 5.4 / 5.5(=>) fail in the degenerate case u=0 / y_(n_k)=0; "<" must be "<=" (conclusions unaffected).

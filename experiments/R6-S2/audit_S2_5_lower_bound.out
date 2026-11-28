@@ -1,0 +1,16 @@
+=== audit_S2_5: S1(b) and lower-bound Steps 2-7 on beta outside the label model (A_k=1000k) ===
+betas: 3600
+finiteK_like: 1234
+b1_worst: 0.0004806144390817362
+coup_worst: 0.0009255368251892427
+step3_worst: 0.0004998572686621058
+walks: 913
+nu_gt_cost: 0
+cost_gt_R: 0
+trivial_only: 314
+trivial_only_nonlattice: 0
+no_repeat: 7
+b1_worst = max | |y_{n_k+i}| - d_K(c_i r_k)/K |, coup_worst = max dist(t_{k+1}-(r_{k+1}-sigma r_k)/K, Z),
+step3_worst = max |M_k - max(|t_k|, v(r_k))|  over blocks 12..26 (all should be O(1/A_k) ~ 1e-4..1e-2)
+no_repeat = windows in which no edge repeats (Step 7 needs infinitely many blocks; skipped, not a failure)
+category 4: finite computation, not a proof.
