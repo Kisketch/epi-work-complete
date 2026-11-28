@@ -2,7 +2,7 @@
   [OK] Zero-loss check vs 1e91028: 890/890 files present on disk
   [OK] Zero-loss check vs 7ece3b9: 1230/1230 files present on disk
   [OK] Core & Round-2 Markdown docs: 21/21 BOM-free, 783 local links resolved (0 broken), 4/4 commander skill byte-synced
-  [OK] Audit.lean reconciliation: 937/937 matched, sorryAx=0, 365 Lean files / 0 escape hits
+  [OK] Audit.lean reconciliation: 937/937 matched, sorryAx=0, 371 Lean files / 0 escape hits
   [OK] Standalone Layer A audits: 8 modules / 156/156 base axioms only, sorryAx=0
   [OK] Paper 2 + 2D + 2E builds (0 Overfull / 0 Undef), 11-slice parity, and 46 content anchors passed
   [OK] Split tracks 2A / 2B / 2C undefined-ref & citation audit: 0 / 0 across all 3 tracks

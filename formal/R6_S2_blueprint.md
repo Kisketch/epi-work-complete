@@ -6,6 +6,8 @@
 > 本文件只是计划。凡标“计划”的条目在仓库中**没有**任何 Lean 代码；它们的类型检查过的占位陈述只放在
 > 本机草稿 `~/epi_native/epi_formal/scratch/R6S2_draft.lean`，不入库。
 > 状态：**未达 L3**。主陈述 `StatementR6S2` 已写成 Lean `Prop`，尚未证明。
+> （第 4 阶段更新：`StatementR6S2` 已由 `R6S2.main` 证明，本机构建通过、零占位、只含基础与白名单公理；
+> 尚无 GitHub CI 运行号，L3 升级由总控在 CI 通过后决定。）
 >
 > **进度栏（第 2 阶段，2026-11-27，formalizer）**：新增模块 `epi_formal/EpiFormal/R6S2Blocks.lean`
 > （= `formal/R6_S2_blocks.lean`）与 `epi_formal/EpiFormal/R6S2Realize.lean`（= `formal/R6_S2_realize.lean`），
@@ -20,6 +22,14 @@
 > **S1(b)**（`S1b`）、**S1(c)**（`S1c`），以及为第 4 阶段准备的 `BH.blk_near`、`R_big_tendsto`、
 > `R_word_tendsto`（步 3 的块极限）、`nu_isLeast`（§6 包装）、`BH.block_of`（块分解）。语句对齐表见 §6，
 > **没有任何一项“更弱”**。本机草稿剩 2 个占位：`lower`、`upper`。
+>
+> **进度栏（第 4 阶段，2026-11-27，formalizer）**：新增模块 `epi_formal/EpiFormal/R6S2Main.lean`
+> （= `formal/R6_S2_main.lean`）与审计入口 `epi_formal/AuditR6S2.lean`（= `formal/R6_S2_audit.lean`），
+> 零占位，`#print axioms` 只含基础与白名单公理（见 `formal/R6_S2.log` Build 9–11）。已证：**`lower`**（§7.1）、
+> **`upper`**（§7.2）、**`main : StatementR6S2`**（第 1 阶段对齐的原定义，未改写）、`cstar_only_W'`（无条件版）；
+> **`StatementS1`/`S1_all`**（R6-S1 (a)–(d) 合成一句）；非空性 `main_example11`、校准值 `nu_one_one`（ν((1,1))=1）、
+> `cstar_example11`。语句对齐终审见 §7。**R6-S2 形式化已无任何占位**；本机草稿的两个占位已被取代。
+> 下界没有走步 2–5 的 limsup 等式与 $E_\infty$，改为反证加余量（§7.3）；上界只证 $\mathcal K\le\nu$，等号由下界给出。
 
 ---
 
@@ -83,7 +93,8 @@ Lean 的 `round` 平局取法是固定的，只用它会把“对任何平局取
 | 14 | 特别地，$c^*$ 只依赖 $W$ | `cstar_only_W`（以 `StatementR6S2` 为假设，**已证**） | 等价 |
 | 15 | $1/4\le\nu(W)\le1$ | `nu_bounds`（对一切正词 W，**已证**） | 等价 |
 
-**没有任何一项“更弱”。** 已证明的只有第 14、15 项（第 14 项以主陈述为条件）。第 12、13 项即 `StatementR6S2` 本身，尚未证明。
+**没有任何一项“更弱”。** 第 1–3 阶段时已证明的只有第 14、15 项（第 14 项以主陈述为条件）。**第 4 阶段**：第 12、13 项即
+`StatementR6S2` 本身，已由 `R6S2.main` 证明（`R6S2Main.lean`）；第 14 项的无条件版为 `cstar_only_W'`。
 
 非空性：`BH.example11`（$W=(1,1)$，$A_k=k$，$N=0$）满足全部假设，并用 `decide` 核对了前几个分商。
 
@@ -156,22 +167,20 @@ Lean 的 `round` 平局取法是固定的，只用它会把“对任何平局取
 
 | 证明稿 | Lean 名 | 状态 | 难度 | 依赖 |
 |---|---|---|---|---|
-| 步 1：$\mathcal K=\infty$ 的情形 | `lower`（第一个分支） | 计划 | E | `nu_bounds` |
-| 步 2：limsup 按块取 | `limsup_blocks` | 计划 | M | `nk_succ`；`ℝ≥0∞` 的 limsup 与 `iSup` 的交换 |
-| 步 3：$M_k-\max(\lvert t_k\rvert,v(r_k))\to0$ | `block_max_tendsto`（计划）；逐点部分已证：`R_big_tendsto`（$R_{n_k}-\lvert t_k\rvert\to0$）、`R_word_tendsto`（$R_{n_k+i}-v_i(r_k)\to0$） | 部分已证（第 3 阶段） | M | S1(a)(b)、B4 |
-| 步 4：取边 $\tau_k$，边集有限，$\mathcal K=\Lambda$ | `edge_choice`、`K_eq_Lambda` | 计划 | M | S1(b)、步 2–3 |
-| 步 5：最终只出现无穷次的边；端点代价 $\le\Lambda$ | `eventually_infinitely_often` | 计划 | M | 有限集上的鸽巢（`Set.Finite`、`Filter.Frequently`） |
-| 步 6：存在非平凡的无穷次边 | `exists_nontrivial_edge` | 计划 | E–M | S1(c)(⇐) |
-| 步 7：从 $e_k=e_{k'}$ 截出闭途径，造 `R6S7.ClosedWalk`（`Fin L`、`finRotate`），代价 $\le\Lambda$ | `closedWalk_of_segment`、`lower` | 计划 | M–H | 步 5–6、`R6S7.ClosedWalk` |
+| 步 1：$\mathcal K=\infty$ 的情形 | `lower`（反证假设 $\mathcal K<\nu$ 已蕴含 $\mathcal K<\infty$，无需单列） | **已证（第 4 阶段）** | E | — |
+| 步 2–4：按块取 limsup、块内极限、取边 | `lower` 内部 `hR`、`hτ`、`hE1`–`hE3`（只用不等式：$R_n<\Lambda$ 最终成立 ⇒ $\lvert t_k\rvert$、$v(r_k)$、$\lvert\tau_k\rvert$ 最终 $\le\mu<\nu$）；`R_big_tendsto`、`R_word_tendsto`、`vcost_le_of`、`BH.round_label_sel` | **已证（第 4 阶段）** | M | S1(a)(b)、B4 |
+| 步 5：无穷次出现（改为：某顶点值无穷次出现） | `lower` 内部 `hv`（`Filter.eventually_all`，`ZMod K` 有限） | **已证（第 4 阶段）** | E | — |
+| 步 6：非平凡边无穷次出现 | `lower` 内部 `hfreq` | **已证（第 4 阶段）** | E–M | S1(c)(⇐) |
+| 步 7：截出闭途径 $r_a\to\cdots\to r_{b}=r_a$（含一条非平凡边），造 `R6S7.ClosedWalk`，代价 $\le\mu<\nu$，与 `nu_isLeast` 矛盾 | `lower` 内部 `hvert`、`C`、`hC`、`hcost`；`finRotate_val` | **已证（第 4 阶段）** | M | 步 5–6、`R6S7.ClosedWalk` |
 
 ### 2.7 §7.2 上界与可达（步 8–10）
 
 | 证明稿 | Lean 名 | 状态 | 难度 | 依赖 |
 |---|---|---|---|---|
-| 步 8：由最小闭途径 $C^*$ 造周期数据 $(r_k,\tau_k)$，用 S1(d) 得 β | `periodic_data`、`upper`（构造部分） | 计划 | M | `nu_isLeast`、S1(d) |
-| 步 9：最终周期序列的 limsup 等于一个周期内的最大值，即 cost | `limsup_eventually_periodic`、`KL_eq_cost` | 计划 | M | 步 2–3（对构造的 β） |
-| 步 10：$\beta\notin\mathbb Z\alpha+\mathbb Z$ | `upper`（非格点部分） | 计划 | E–M | S1(c)(⇒) 的逆否 |
-| 组装 | `main : StatementR6S2` | 计划 | E | `lower`、`upper`（草稿中已由占位推出，类型检查通过） |
+| 步 8：由最小闭途径 $C^*$ 造周期数据 $r_k=C^*.\mathrm{vert}(k\bmod L)$、$\tau_k=C^*.t((k-1)\bmod L)$，用 S1(d) 得 β | `upper` 内部 `hτB`、`hτc`；`finRotate_val`、`ClosedWalk.t_le` | **已证（第 4 阶段）** | M | `nu_isLeast`、S1(d) |
+| 步 9：只证 $\mathcal K\le\nu$（逐块：$R_{n_k}<\lvert\tau_k\rvert+\varepsilon$，$R_{n_k+i}<v(r_k)+\varepsilon$）；等号由 `lower` 给出 | `upper` 内部 `hup`；`KL_le_ofReal`、`vterm_le_vcost`、`ClosedWalk.vcost_le`、`BH.block_of` | **已证（第 4 阶段）** | M | `R_big_tendsto`、`R_word_tendsto` |
+| 步 10：$\beta\notin\mathbb Z\alpha+\mathbb Z$（若在格中，则所有顶点为 0、所有 $t$ 为 0，与 $C^*$ 非平凡矛盾） | `upper` 内部 `hnot` | **已证（第 4 阶段）** | E–M | S1(c)(⇒) |
+| 组装 | `main : StatementR6S2` | **已证（第 4 阶段）** | E | `lower`、`upper` |
 | §7.3 只依赖 W；$1/4\le\nu\le1$ | `cstar_only_W`、`nu_bounds` | 已证 | E | — |
 
 ---
@@ -197,7 +206,7 @@ Lean 的 `round` 平局取法是固定的，只用它会把“对任何平局取
 - **第 2 阶段（最难项优先，已完成）**：D4(i)(ii)；B1 推论、B2、B3、B4；`KL_lt_top_of_bdd`；**S1(d) 全部**（含 `KL < ⊤`）。
   另提前完成 `KL_lt_top_bound` 与 S1(a)。
 - **第 3 阶段（已完成）**：引理 0 与推论 0′；5.2 标签唯一性、S1(b)、S1(c)（按 §0.4 对一切选择量化，复用 `IsNearSel`、`BH.yv`、`BH.tv`、`BH.IsLabelSel`、`BH.lab`）。另提前完成 `nu_isLeast`、`R_big_tendsto`、`R_word_tendsto`、`BH.block_of`。
-- **第 4 阶段**：下界步 1–7、上界步 8–10、组装 `main : StatementR6S2`；新增审计入口 `AuditR6S2.lean`，接入 CI siege 门禁（由总控决定）；语句对齐终审。
+- **第 4 阶段（已完成）**：下界步 1–7、上界步 8–10、组装 `main : StatementR6S2`；新增审计入口 `AuditR6S2.lean`（接入 CI siege 门禁由总控决定，未改 workflow）；语句对齐终审（§7）。
 
 每个阶段结束时，只把零占位的模块入库；未完成的陈述只留在本机草稿中。
 
@@ -288,3 +297,45 @@ D4、B2–B4 的陈述与 §2.1–2.2 表中的数学命题逐字对应；D4 去
 
 **§6 中没有任何一项“更弱”。** 第 4 阶段准备引理（不对应原文的单独陈述）：`R_big_tendsto`（$R_{n_k}-\lvert t_k\rvert\to0$）、
 `R_word_tendsto`（$R_{n_k+i}-$`vterm W r_k (i−1)`$\to0$，即 §7.1 步 3 的逐点部分）、`nu_isLeast`、`BH.block_of`。
+
+---
+
+## 7. 第 4 阶段：主定理语句对齐终审
+
+模块 `R6S2Main.lean`。`main : StatementR6S2`，`StatementR6S2` 是 `R6S2Kl.lean` 第 1 阶段的原定义（未改写、未放宽）；
+`AuditR6S2.lean` 末尾的 `example` 把它逐字展开后再用 `main` 证明，类型检查通过（防止定义被悄悄替换）。
+
+### 7.1 R6-S2（主定理）逐项终审
+
+| # | 原陈述（PLAN_GRAPH §S.1/§S.2，proofs/R6-S2.md §0.3） | Lean（`StatementR6S2`） | 判定 |
+|---|---|---|---|
+| 1 | 对一切块 Hurwitz 数 α（单个块词 W，$A_k\to\infty$） | `∀ X : BH`；`BH` 的字段见 §1 第 2–5 项 | 等价 |
+| 2 | $p_n/q_n$ 为 α 的正则连分数收敛分数，$\theta_n$、$\lVert\cdot\rVert$ | `q`、`p`、`alpha`、`theta`、`dist0`（§1 第 6–8 项；`cf_algorithm`、`dist0_isLeast`） | 等价 |
+| 3 | $\mathcal K_\alpha(\beta)=\limsup_n\lVert q_n\beta\rVert/\theta_n\in[0,\infty]$ | `KL`（`ℝ≥0∞` 中的 limsup，§0.2） | 等价 |
+| 4 | $c^*(\alpha)=\inf_{\beta\notin\mathbb Z\alpha+\mathbb Z}\mathcal K_\alpha(\beta)$ | `cstar`、`lattice` | 等价 |
+| 5 | $\nu(W)$：不全由平凡环组成的有向闭路上代价的最小值 | `R6S7.nu`（闭途径读法；与简单圈读法相等，`cor2_*`；最小值可达，`nu_isLeast`） | 等价 |
+| 6 | $c^*(\alpha)=\nu(W)$ | `cstar X.a = ENNReal.ofReal (R6S7.nu X.W)` | 等价（ν ≥ 1/2 > 0，`ofReal` 在 $[0,\infty)$ 上单射） |
+| 7 | 下确界可达：$\exists\beta\notin\mathbb Z\alpha+\mathbb Z$，$\mathcal K_\alpha(\beta)=\nu(W)$ | `∃ β, β ∉ lattice (alpha X.a) ∧ KL X.a β = ENNReal.ofReal (R6S7.nu X.W)` | 等价 |
+| 8 | 特别地，$c^*$ 只依赖 W | `cstar_only_W'`（无条件）：`X.W = Y.W → cstar X.a = cstar Y.a` | 等价 |
+| 9 | $1/4\le\nu(W)\le1$ | `nu_bounds` | 等价 |
+| 10 | 校准：$\nu((1,1))=1$ | `nu_one_one`；`cstar_example11`：$c^*([0;1,1,1,2,1,1,3,\dots])=1$ | 等价（只核了 (1,1) 这一个校准值；$\nu(\varnothing)$、$\nu((1))$ 未单独写定理，但由 `cor2_K_eq_one`（K=1）直接给出） |
+
+**没有任何一项“更弱”。** 证明没有引入任何额外假设：`lower`、`upper`、`main` 的假设只有 `X : BH`（以及 `lower` 的 `β ∉ lattice`）。
+
+非空性（不是空真）：`main_example11` 把 `main` 用在具体数据 `BH.example11`（W=(1,1)，$A_k=k$，N=0）上；`BH` 有居民，且
+`main` 本身给出 `β ∉ lattice`，即 $(\mathbb Z\alpha+\mathbb Z)^c$ 中的元素，非空。
+
+### 7.2 R6-S1（a)–(d) 合成陈述（`StatementS1`、`S1_all`）
+
+`StatementS1 : Prop := ∀ X : BH, (∀ β, KL X.a β < ⊤ → ∀ ρ, IsNearSel … ρ → (a) ∧ ∀ lam, X.IsLabelSel β ρ lam → (b) ∧ (c)) ∧ StatementS1d X`。
+(a)(b)(c) 的结论逐字取自 `S1a`、`S1b`、`S1c` 的类型，(d) 是 `StatementS1d`；对齐见 §5、§6。量词结构：(a) 只对 ρ 全称（不额外要求 lam），
+(b)(c) 对 ρ 与 lam 全称，与原文“对任何平局取法都成立”一致。判定：**等价**（(b) 的有界性一项与 (d) 的 `KL < ⊤` 一项“更强”，见 §5、§6）。
+
+### 7.3 证明路线与证明稿的差别（不影响陈述）
+
+- 下界：证明稿步 2–4 先证 $\mathcal K=\Lambda$（limsup 等式），步 5 用无穷次出现的边集 $E_\infty$。Lean 版改为反证加余量：若
+  $\mathcal K<\Lambda<\nu$，则最终 $R_n<\Lambda$，于是最终 $\lvert t_k\rvert<\Lambda+\delta$、$v(r_k)\le\Lambda+\delta$、$\lvert\tau_k\rvert<\Lambda+2\delta=\nu-\delta$；
+  取一个无穷次出现的顶点值 $v$，在 $a<j_0<b$（$r_a=r_b=v$，第 $j_0$ 条边非平凡）处截出闭途径，代价 $\le\nu-\delta$，与 ν 的最小性矛盾。
+  这里 τ 取 $(r_{k+1}-\sigma r_k)/K+\mathbb Z$ 中的 `round` 代表，不需要“平局只在有限个 k 上出现”的论证。
+- 上界：只证 $\mathcal K\le\nu$（对每个 ε，最终 $R_n\le\nu+\varepsilon$），等号由下界给出，不需要“最终周期序列的 limsup 等于周期内最大值”。
+- 步 10：若 β 在格中，由 S1(c)(⇒) 得最终标签为 0、$t_k\to0$，于是 $C^*$ 的所有顶点为 0、所有 $\tau$ 趋于 0；边条件使 $t$ 为整数，故全为 0，$C^*$ 全平凡，矛盾。

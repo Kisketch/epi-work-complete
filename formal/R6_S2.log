@@ -323,3 +323,62 @@ exit code: 0；只有 2 条 "declaration uses `sorry`" 警告（lower、upper）
 ## CI
 未在 GitHub CI 中运行（无运行号）。新模块会被 lakefile 的 glob "EpiFormal.+" 纳入下一次全量 lake build；
 新增导入 Mathlib.NumberTheory.Real.Irrational（与仓库 Mathlib v4.35.0 同版本，本机已编译通过）。未改 workflow。
+
+# 第 4 阶段（2026-11-27，formalizer）：EpiFormal/R6S2Main.lean（= formal/R6_S2_main.lean）与审计入口 AuditR6S2.lean（= formal/R6_S2_audit.lean）
+sha256 R6S2Main.lean  9e9f8ed03b63b99775d554a947b8713ec9056a80f70f3be9a009b85f26759e14（仓库两份与本机原生副本逐字节相同）
+sha256 AuditR6S2.lean 959e9806607b2be9fa0fe9ae47054e1e9813279ab431bbc2b306b714f0207b83（同上）
+grep -nE '\bsorry\b|\badmit\b|native_decide|^axiom|set_option' epi_formal/EpiFormal/R6S2*.lean epi_formal/AuditR6S2.lean 无命中。
+（nu_one_one 用 `decide +kernel`，与 R6S7Mstar.sanity_extremal 相同，是内核归约，不引入公理；公理清单见下。）
+
+## Build 9: lake env lean EpiFormal/R6S2Main.lean（本机原生副本，独立编译）
+$ cd ~/epi_native/epi_formal && timeout 580 lake env lean EpiFormal/R6S2Main.lean
+exit code: 0（无 error，无 warning；输出只有下面 10 行。第一版有 2 行超过 100 字符的风格 lint 警告，已折行后重新编译，下列为重编结果）
+'R6S2.finRotate_val' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.KL_le_ofReal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_only_W'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.main_example11' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.nu_one_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_example11' depends on axioms: [propext, Classical.choice, Quot.sound]
+（用时约 6 s wall）
+
+## Build 10: lake build EpiFormal.R6S2Main（生成 olean，供审计入口导入）
+$ cd ~/epi_native/epi_formal && timeout 580 lake build EpiFormal.R6S2Main
+exit code: 0；输出末行 "Build completed successfully (2002 jobs)."；R6S2Main 无任何 warning（含 lakefile 的 mathlib 风格 linter）。
+
+## Build 11: lake env lean AuditR6S2.lean（审计入口）
+$ cd ~/epi_native/epi_formal && timeout 580 lake env lean AuditR6S2.lean
+exit code: 0（无 error，无 warning；末尾的 statement-pin `example` 以 `main` 证明逐字展开的 StatementR6S2，类型检查通过）
+'R6S2.main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1c' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.S1d' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.lemma0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cor0'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_ge_quarter_irrational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_only_W'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.nu_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.main_example11' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.nu_one_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'R6S2.cstar_example11' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+## 公理层级（第 4 阶段）
+- Lean 基础公理：propext, Quot.sound
+- 经典白名单：Classical.choice
+- 项目自加公理：无
+上面 10 + 16 条 #print axioms 全部恰为 [propext, Classical.choice, Quot.sound]（无 sorryAx，无 Lean.ofReduceBool）。
+
+## 第 4 阶段结论
+- `R6S2.main : StatementR6S2` 已证（StatementR6S2 为 R6S2Kl.lean 中第 1 阶段对齐的原定义，未改写）。
+- 本机草稿 scratch/R6S2_draft.lean 的 lower、upper 两个占位已被入库模块取代；R6-S2 形式化不再有任何占位。
+
+## CI
+未在 GitHub CI 中运行（无运行号）。R6S2Main 会被 lakefile 的 glob "EpiFormal.+" 纳入下一次全量 lake build；
+AuditR6S2.lean 尚未接入 lean-audit.yml 的 siege 门禁（按指示不改 workflow，接入与否由总控决定）。
