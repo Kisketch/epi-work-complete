@@ -1,0 +1,1113 @@
+% =====================================================================================
+% NON-CANONICAL DRAFT / DO NOT CITE / NOT FOR SUBMISSION
+% Written 2026-11-28 by the project orchestrator's drafting agent. Mathematical body only.
+% The section "Prior art and novelty" and the extra bibliography are PLACEHOLDERS, to be
+% filled after the prior-art check (search the file for PLACEHOLDER-).
+%
+% Source map (the ONLY sources of mathematics in this file):
+%   * PLAN_GRAPH.md, Section "R6 旁支轨" S.1 (all definitions) and S.2 (statements of R6-S1,
+%     R6-S2); node-table row R6-S7 (statement of R6-S7).
+%   * proofs/R6-S2.md (v2, PASSED_L2, L3_FORMALIZED):
+%       Sec. 2 here  <- R6-S2.md S.1 (copied in its Sec. 0.1) and Sec. 6 (Lemma C)
+%       Sec. 3 here  <- R6-S2.md Sec. 2.1-2.4 (F1-F4, D1-D4, Lemma A) and Sec. 3 (Lemma B);
+%                       Lemma 3.1 (continuants) <- proofs/R6-S7-mstar.md Step 0
+%       Sec. 4 here  <- R6-S2.md Sec. 4 (Lemma 0, Cor. 0')
+%       Sec. 5 here  <- R6-S2.md Sec. 5.1-5.6 (Lemma S1 = R6-S1)
+%       Sec. 6 here  <- R6-S2.md Sec. 7.1-7.3 (Theorem R6-S2)
+%   * proofs/R6-S7-mstar.md (PASSED_L2, L3_FORMALIZED): Sec. 7 here <- Steps 0-7.
+%   * proofs/R6-S2-remarks.md is NOT used (it is "not audited, must not be cited").
+%   * Lean records: formal/R6_S2.log, formal/R6_S7.log, formal/R6_S2_blueprint.md (Sec. 1, 7).
+%       CI: R6-S7 run 46011329540 (head 65db490); R6-S2 run 46110437346 (head 46d1a36,
+%       full build 9399 jobs, siege gate 16 theorems).
+%   * Numerics (category 4, finite exact computation): experiments/R6-S2/*.out only.
+%   * Style / bibliography reference: artifacts/THM-0005/paper_draft.tex (cited as [D5];
+%     its Proposition 9 = prop:input is used as an input in Sec. 8).
+%
+% Material written for this draft (NOT audited; listed again in artifacts/R6-S2/README.md):
+%   NEW-1  Remark rem:theta-conv (theta_n = q_n ||q_n alpha|| for n >= 1).
+%   NEW-2  Example ex:calib, the computation nu((1,1)) = 1 from Theorem B.
+%   NEW-3  Proposition prop:W-empty and its proof (W = empty set vs. THM-0005, kappa = 1/4).
+%   NEW-4  Example ex:e (conditional on the classical expansion of e).
+%   NEW-5  Editorial clarifications requested by the v2 audit (D(m,-1) in Lemma D3; empty
+%          sum for k = 1 in (d3)); Remark rem:lean-route (comparison with the Lean route).
+% Every place where detail of the source proof was condensed carries a comment
+% "% SRC: <file> <section>" so that an auditor can compare.
+% =====================================================================================
+\documentclass[11pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=1.1in}
+\emergencystretch=3em
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\dist}[1]{\lVert #1\rVert}
+\newcommand{\KL}{\mathcal{K}}
+\newcommand{\rnd}{\operatorname{round}}
+\newcommand{\dZ}{\operatorname{dist}}
+\newcommand{\cost}{\operatorname{cost}}
+\newcommand{\Lat}{\Z\alpha+\Z}
+
+\begin{document}
+
+\title[Sharp KL constants for block-Hurwitz continued fractions]{Sharp Kraaikamp--Liardet constants\\ for block-Hurwitz continued fractions}
+
+% TODO before submission: author, affiliation, e-mail, acknowledgements, MSC codes, keywords.
+\author{[Author name]}
+\date{Draft of \today. Non-canonical; not for citation.}
+
+\begin{abstract}
+Let $\alpha$ be irrational with convergents $p_n/q_n$ and $\theta_n=q_n|q_n\alpha-p_n|$. For real $\beta$
+put $\KL_\alpha(\beta)=\limsup_n\dist{q_n\beta}/\theta_n$ and let $c^*(\alpha)$ be the infimum of
+$\KL_\alpha(\beta)$ over $\beta\notin\Z\alpha+\Z$. A theorem of Kraaikamp and Liardet implies
+$c^*(\alpha)\ge1/4$ for every irrational $\alpha$. We call $\alpha$ a \emph{block-Hurwitz number} if its
+partial quotients are $a_0,\dots,a_N,A_1,W,A_2,W,\dots$ for a fixed finite word $W$ of positive
+integers and $A_k\to\infty$. For such $\alpha$ we prove that $c^*(\alpha)=\nu(W)$, where $\nu(W)$ is a
+min--max value on an explicit finite graph with vertex set $\Z/K(W)$, $K(W)$ the continuant of $W$;
+the infimum is attained, and $c^*(\alpha)$ does not depend on $(A_k)$ or on the initial segment. We
+further show $\nu(W)=\min(1,m^*(W))$ with $m^*(W)\ge1/2$, so that $c^*(\alpha)\ge1/2$ on this class.
+For $W=\varnothing$ the formula is consistent with the sharp value $1/4$ found in an earlier project note
+for $(e-1)/2$ in its normalisation (by a short derivation given here, not yet independently audited); a
+finite exact computation gives $\nu(5,1,5)=5/6<1$. Both theorems are machine-checked in Lean~4 (CI runs
+46011329540 and 46110437346). Nothing here bears on the irrationality of $e+\pi$ or of $\pi$.
+Whether the results are new has not yet been determined; a prior-art check is pending, and no claim
+of novelty is made in this draft.
+\end{abstract}
+
+\maketitle
+
+% =====================================================================================
+\section{Introduction}\label{sec:intro}
+
+For $x\in\R$ write $\dist{x}$ for the distance from $x$ to the nearest integer. Let $\alpha$ be
+irrational with regular continued-fraction convergents $p_n/q_n$, and put
+\[
+\theta_n:=q_n\,|q_n\alpha-p_n|,\qquad
+\KL_\alpha(\beta):=\limsup_{n\to\infty}\frac{\dist{q_n\beta}}{\theta_n}\in[0,\infty]\quad(\beta\in\R),
+\]
+\[
+c^*(\alpha):=\inf_{\beta\notin\Z\alpha+\Z}\KL_\alpha(\beta).
+\]
+We call $\KL_\alpha$ the \emph{KL functional} and $c^*(\alpha)$ the \emph{sharp KL constant} of $\alpha$.
+
+\medskip\noindent\textbf{Background.} Kraaikamp and Liardet \cite{KL} proved (their Theorem~1, as read in
+\cite{D5}) that $\beta\in\alpha\Z+\Z$ if and only if $\dist{q_n\beta}\le\theta_n/4$ for all large $n$; there
+$\theta_n$ is defined as $q_n\dist{q_n\alpha}$, which agrees with the definition above for $n\ge1$
+(Remark~\ref{rem:theta-conv}). If $\KL_\alpha(\beta)<1/4$ then $\dist{q_n\beta}<\theta_n/4$ for all large $n$,
+so their theorem gives $c^*(\alpha)\ge1/4$ for every irrational $\alpha$. We do not use \cite{KL}: the half
+of their statement that is needed here is proved in Section~\ref{sec:lemma0} (Lemma~\ref{lem:0} and
+Corollary~\ref{cor:0}). Earlier, Larcher \cite{Larcher} treated the bounded-type case; the statement of
+\cite{KL} is quoted in a related form in \cite{BDS}; \cite{KL} attribute a related bounded-type statement to
+Stewart \cite{Stewart}, whose full text was not consulted (see the bibliography).
+These sentences repeat the literature summary of \cite{D5}; they are not a prior-art assessment of the
+present results (Section~\ref{subsec:prior}).
+
+\medskip\noindent\textbf{Block-Hurwitz numbers.} Fix a finite word $W=(w_1,\dots,w_\ell)$ of positive
+integers ($\ell\ge0$). A \emph{block-Hurwitz number} with block word $W$ is
+\[
+\alpha=[a_0;a_1,\dots,a_N,A_1,W,A_2,W,A_3,W,\dots],\qquad A_k\in\Z_{\ge1},\ A_k\to\infty
+\]
+(Definition~\ref{def:BH}). The project note \cite{D5} treats $(e-1)/2=[0;1,6,10,14,\dots]$, a block-Hurwitz
+number with $W=\varnothing$ (Section~\ref{sec:examples}). To every $W$ we attach a finite directed graph
+$G_W$ with vertex set $\Z/K$, $K=K(W)$ the continuant of $W$, vertex costs $v(r)$ and real edge labels
+$t$, and the min--max value $\nu(W)$ over closed walks that are not made only of the trivial loop
+(Definition~\ref{def:graph}).
+
+\begin{theorem}[Theorem A]\label{thm:A}
+For every block-Hurwitz number $\alpha$ (a single block word $W$, $A_k\to\infty$), $c^*(\alpha)=\nu(W)$, and
+the infimum is attained: there exists $\beta\notin\Z\alpha+\Z$ with $\KL_\alpha(\beta)=\nu(W)$. In particular,
+$c^*(\alpha)$ depends only on $W$, and not on $(A_k)$ or on the initial segment $a_0,\dots,a_N$; and
+$1/4\le\nu(W)\le1$.
+\end{theorem}
+% SRC: statement = PLAN_GRAPH.md S.2 R6-S2 (translated; no hypothesis, quantifier or constant changed).
+
+The proof (Section~\ref{sec:thmA}) rests on a localization lemma (Lemma~\ref{lem:S1}, Section~\ref{sec:S1}):
+when $\KL_\alpha(\beta)<\infty$, the errors $\dist{q_n\beta}$ inside each block are governed, up to $o(1)$, by a
+residue $r_k\in\Z/K$ and a bounded real number $t_k$, and conversely every admissible sequence of such data
+is realised by some $\beta$.
+
+\begin{theorem}[Theorem B]\label{thm:B}
+Let $W$ be a finite word of positive integers, $K=K(W)$.
+\begin{enumerate}
+\item[(i)] If $K\ge2$, then $v(r)\ge1/2$ for every $r\in\Z/K$, $r\ne0$; that is,
+$m^*(W):=\min_{r\ne0}v(r)\ge1/2$.
+\item[(ii)] If $K\ge2$, then $\nu(W)=\min(1,m^*(W))$; if $K=1$, then $\nu(W)=1$.
+\end{enumerate}
+Consequently $\nu(W)\ge1/2$ for every $W$.
+\end{theorem}
+% SRC: statement = PLAN_GRAPH.md node-table row R6-S7 = proofs/R6-S7-mstar.md Prop. 1 + Cor. 2.
+
+\begin{corollary}\label{cor:half}
+For every block-Hurwitz number $\alpha$, $c^*(\alpha)\ge1/2$.
+\end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:A}, $c^*(\alpha)=\nu(W)$, and by Theorem~\ref{thm:B}, $\nu(W)\ge1/2$.
+\end{proof}
+
+Theorem~\ref{thm:B} is a purely combinatorial statement about continuants and does not use
+Theorem~\ref{thm:A}; its proof is in Section~\ref{sec:thmB}.
+
+\medskip\noindent\textbf{Examples} (Section~\ref{sec:examples}).
+\begin{itemize}
+\item $\nu(\varnothing)=\nu((1))=1$ (Theorem~\ref{thm:B}(ii), $K=1$) and $\nu((1,1))=1$
+(Example~\ref{ex:calib}).
+\item For $\alpha=(e-1)/2$ ($W=\varnothing$), Theorem~\ref{thm:A} gives $c^*(\alpha)=1$. Combined with
+$j\theta_j\to1/4$ this yields $\inf_{z\notin\Z+\Z\frac{e+1}2}\limsup_j j\dist{Q_jz}=1/4$, attained, which is
+the value $\kappa=1/4$ of \cite{D5} (Proposition~\ref{prop:W-empty}; this derivation was written for this draft and
+has not been independently audited).
+\item Granting the classical expansion $e=[2;1,2,1,1,4,1,1,6,\dots]$ (not proved here; original source not
+verified), $e$ is block-Hurwitz with $W=(1,1)$ and $c^*(e)=1$ (Example~\ref{ex:e}; conditional).
+\item A finite exact computation (category~4 in the project's classification) gives $\nu(5,1,5)=5/6<1$,
+$\nu(5,1,1,1,5)=12/17$, and $\nu(W)<1$ for $5733$ of $5890$ words tested (Section~\ref{subsec:numerics}). So
+$c^*$ is not constant on the block-Hurwitz class, provided these computations are correct.
+\end{itemize}
+
+\medskip\noindent\textbf{Formal verification.} Theorems~\ref{thm:A} and~\ref{thm:B} and Lemma~\ref{lem:S1}
+are formalized in Lean~4 with Mathlib; the exact boundary of what is machine-checked, the statement
+alignment, the axiom lists and the CI runs are in Section~\ref{sec:lean}.
+
+\medskip\noindent\textbf{What is not claimed.} See Section~\ref{sec:scope}. In particular nothing here
+concerns $\pi$, $e+\pi$, or the irrationality of any constant.
+
+\subsection{Prior art and novelty}\label{subsec:prior}
+% PLACEHOLDER-PRIOR-ART: to be written after the prior-art check. Candidates to be checked include
+% (from project notes; NOT opened, NOT cited): Komatsu 1999 (J. Theor. Nombres Bordeaux, Hurwitz-type
+% inhomogeneous constants, liminf over all q; relation to K_alpha unknown), the full text of Stewart 1981,
+% and standard monographs on continued fractions. Do not write "new" before that check.
+The relation of these results to the literature has not yet been assessed; this subsection will be
+completed after a prior-art check.
+
+\subsection*{Relation to project manuscripts}
+The project manuscripts \cite{P2} and \cite{P2E} state results for the cases $W=\varnothing$ (with a
+different normalisation, by the partial quotients) and $\alpha=e$ ($W=(1,1)$), respectively; their Lean
+developments are reported by their authors and were not re-run for this draft. Only the calibration
+values $\nu(\varnothing)=\nu((1,1))=1$ are compared with them in the project records; no result of
+\cite{P2} or \cite{P2E} is used in this draft.
+% SRC: PLAN_GRAPH.md S.2 (calibration note of R6-S2) and S.0 table, item (d).
+
+% =====================================================================================
+\section{Definitions and the finite graph}\label{sec:defs}
+
+\begin{definition}[Continuants]\label{def:cont}
+For a finite word $(x_1,\dots,x_m)$ of positive integers ($m\ge0$) let $K()=1$, $K(x_1)=x_1$ and
+$K(x_1,\dots,x_m)=x_mK(x_1,\dots,x_{m-1})+K(x_1,\dots,x_{m-2})$ for $m\ge2$; the continuant of a word of
+length $-1$ is $0$. For $W=(w_1,\dots,w_\ell)$ put $K:=K(W)$ and, for $1\le i\le\ell$,
+\[
+c_i:=K(w_1,\dots,w_{i-1}),\qquad c_i':=K(w_{i+1},\dots,w_\ell).
+\]
+If $\ell\ge1$ let $\sigma:=c_\ell=K(w_1,\dots,w_{\ell-1})$; if $\ell=0$, then $K=1$ and $\sigma:=1$.
+For $x\in\Z$ let $d_K(x):=\min_{s\in\Z}|x-sK|$.
+\end{definition}
+
+For $\ell\ge1$ one has $\gcd(\sigma,K)=1$ by the determinant identity for continuants; this fact is recorded
+with the definitions in the project records and is not used in this paper.
+% SRC: PLAN_GRAPH S.1 states gcd(sigma,K)=1 "by the determinant identity" without proof; the proofs in
+% this draft never use it (R6-S7 Step 3 proves gcd(K, c'_1)=1 separately, and Theorem A does not need it).
+
+\begin{definition}[Block-Hurwitz numbers]\label{def:BH}
+Let $N\ge0$, $a_0\in\Z$, $a_1,\dots,a_N\in\Z_{\ge1}$, $A_k\in\Z_{\ge1}$ ($k\ge1$) with $A_k\to\infty$, and let
+$W=(w_1,\dots,w_\ell)$ be a fixed finite word of positive integers. The number
+\[
+\alpha=[a_0;a_1,\dots,a_N,A_1,W,A_2,W,A_3,\dots]
+\]
+is a \emph{block-Hurwitz number with block word $W$}. Its \emph{big indices} are defined by position:
+$n_k:=N+(k-1)(\ell+1)$ ($k\ge1$), so that $a_{n_k+1}=A_k$ and $n_{k+1}=n_k+\ell+1$.
+\end{definition}
+% SRC: PLAN_GRAPH S.1, entry "块 Hurwitz 数" (version after strategist decision D-2/I3).
+% Periodically alternating several block words (e.g. e^{2/m}) is NOT covered (extension S2').
+
+\begin{definition}[KL functional]\label{def:KL}
+For an irrational $\alpha$ with convergents $p_n/q_n$ put $\theta_n:=q_n|q_n\alpha-p_n|$,
+$\KL_\alpha(\beta):=\limsup_n\dist{q_n\beta}/\theta_n\in[0,\infty]$ and
+$c^*(\alpha):=\inf_{\beta\notin\Z\alpha+\Z}\KL_\alpha(\beta)$.
+\end{definition}
+
+\begin{remark}\label{rem:theta-conv}
+% NEW-1 (not audited).
+For $n\ge1$ one has $|q_n\alpha-p_n|<1/q_{n+1}\le1/2$ (Lemma~\ref{lem:D}, (D1)--(D2): $q_{n+1}\ge q_n+q_{n-1}\ge
+q_1+q_0\ge2$), hence $|q_n\alpha-p_n|=\dist{q_n\alpha}$ and $\theta_n=q_n\dist{q_n\alpha}$, the normalisation of
+\cite{KL}. Since $\KL_\alpha$ is a $\limsup$, the index $n=0$ does not matter. \emph{This remark was written for this
+draft and not audited.}
+\end{remark}
+
+\begin{definition}[The local graph $G_W$ and $\nu(W)$]\label{def:graph}
+The graph $G_W$ has vertex set $\Z/K$. The \emph{vertex cost} is
+\[
+v(r):=\max_{1\le i\le\ell}\frac{d_K(c_ir)}{c_ic_i'}\qquad(v\equiv0\text{ if }\ell=0).
+\]
+An edge from $r$ to $r'$ carries a real number $t$ with $t\equiv(r'-\sigma r)/K\pmod 1$; its cost is $|t|$.
+The \emph{trivial loop} is the loop at the vertex $0$ with $t=0$. For a closed walk
+$C=(e_1,\dots,e_L)$, $e_m$ an edge from $r^{m-1}$ to $r^m$ with label $t^m$ and $r^L=r^0$, put
+\[
+\cost(C):=\max\Bigl(\max_m v(r^m),\ \max_m|t^m|\Bigr).
+\]
+Then $\nu(W)$ is the minimum of $\cost(C)$ over all closed walks $C$ that do \emph{not} consist only of
+trivial loops (``non-trivial'' closed walks).
+\end{definition}
+% SRC: PLAN_GRAPH S.1 entries "局部图 G_W" and "nu(W)"; "有向闭路" read as closed walk, with
+% interpretation (I2) of R6-S2.md Sec. 0.4, justified by (C3) below (accepted by the v2 audit).
+Here $d_K(c_ir)$ means $d_K(c_i\tilde r)$ for any integer representative $\tilde r$ of $r$; it does not depend
+on the representative because $d_K$ is $K$-periodic.
+
+\begin{lemma}[Lemma C]\label{lem:C}
+\begin{enumerate}
+\item[(C0)] $v(0)=0$; the loop $C_1$ at $0$ with $t=1$ is a non-trivial closed walk with $\cost(C_1)=1$.
+\item[(C1)] Only finitely many edges have $|t|\le1$, and every non-trivial closed walk of cost $\le1$
+has its cost in the finite set $\{v(r)\}\cup\{|t|:\ |t|\le1,\ Kt\in\Z\}$.
+\item[(C2)] The minimum in Definition~\ref{def:graph} exists; hence $\nu(W)$ is well defined and
+$\nu(W)\le1$.
+\item[(C3)] Minimising over simple cycles (vertex sequence without repetition; loops count as simple
+cycles of length $1$) instead of closed walks gives the same value.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+% SRC: R6-S2.md Sec. 6 (C0)-(C3).
+(C0) $d_K(0)=0$, so $v(0)=0$. The loop at $0$ with $t=1$ is an edge since $1\equiv(0-\sigma\cdot0)/K\pmod1$;
+it is not trivial since $t\ne0$; its cost is $\max(v(0),1)=1$.
+
+(C1) A closed walk containing an edge with $|t|>1$ has cost $>1=\cost(C_1)$. An edge from $r$ to $r'$ has
+$t\in(r'-\sigma r)/K+\Z\subset(1/K)\Z$; there are $K^2$ ordered pairs of vertices and for each of them only
+finitely many $t\in(1/K)\Z\cap[-1,1]$. The cost of a walk using only such edges is one of the listed values.
+
+(C2) The set of costs of non-trivial closed walks is non-empty (it contains $\cost(C_1)=1$), and its part
+in $[0,1]$ is contained in a finite set by (C1). Hence the minimum exists and is $\le1$. Fix a minimiser
+$C^*$.
+
+(C3) A simple cycle is a closed walk, so the minimum over closed walks is at most the minimum over simple
+cycles. Conversely let $C$ be a closed walk containing a non-trivial edge $f$. We induct on the number of
+edges of $C$. If the vertices $r^0,\dots,r^{L-1}$ are pairwise distinct, $C$ is a simple cycle. Otherwise
+$r^a=r^b$ for some $0\le a<b\le L-1$; then $e_{a+1},\dots,e_b$ and the remaining edges form two shorter
+closed walks, and $f$ lies in one of them. By induction we obtain a simple cycle $C'$ containing $f$ whose
+edges and vertices are taken from $C$; so $C'$ is non-trivial and $\cost(C')\le\cost(C)$.
+\end{proof}
+
+% =====================================================================================
+\section{Continued-fraction preliminaries}\label{sec:prelim}
+
+\subsection{Continuants}
+For positive integers $x_1,x_2,\dots$ write $K(x_a..x_b)$ for the continuant of $(x_a,\dots,x_b)$, a word of
+length $b-a+1$; by Definition~\ref{def:cont} it is $1$ for length $0$ and $0$ for length $-1$.
+
+\begin{lemma}\label{lem:cont}
+\begin{enumerate}
+\item[(RR)] For every length $m=b-a+1\ge1$: $K(x_a..x_b)=x_bK(x_a..x_{b-1})+K(x_a..x_{b-2})$.
+\item[(N)] Continuants of length $\ge-1$ are $\ge0$, and those of length $\ge0$ are $\ge1$.
+\item[(LL)] For every word of length $m\ge1$: $K(x_1..x_m)=x_1K(x_2..x_m)+K(x_3..x_m)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+% SRC: proofs/R6-S7-mstar.md, paragraph "连续子记号" and Step 0.
+(RR) For $m\ge2$ this is Definition~\ref{def:cont}; for $m=1$ the right side is $x_a\cdot1+0=x_a$.
+
+(N) Induction on the length $m$: $m=-1$ gives $0$, $m=0$ gives $1$; for $m\ge1$, by (RR) the continuant is
+$x_b\cdot(\text{length }m-1)+(\text{length }m-2)\ge1\cdot1+0$, using $x_b\ge1$ and the induction hypothesis.
+
+(LL) Strong induction on $m$. For $m=1$: $x_1=x_1\cdot1+0$. For $m=2$: both sides equal $x_1x_2+1$. For
+$m\ge3$ apply (RR) and then the induction hypothesis to the words of lengths $m-1\ge2$ and $m-2\ge1$:
+\begin{align*}
+K(x_1..x_m)&=x_m\bigl[x_1K(x_2..x_{m-1})+K(x_3..x_{m-1})\bigr]+\bigl[x_1K(x_2..x_{m-2})+K(x_3..x_{m-2})\bigr]\\
+&=x_1\bigl[x_mK(x_2..x_{m-1})+K(x_2..x_{m-2})\bigr]+\bigl[x_mK(x_3..x_{m-1})+K(x_3..x_{m-2})\bigr].
+\end{align*}
+By (RR) for the words $(x_2..x_m)$ (length $m-1\ge2$) and $(x_3..x_m)$ (length $m-2\ge1$) the brackets equal
+$K(x_2..x_m)$ and $K(x_3..x_m)$. (For $m=3$ the second bracket is $x_3\cdot1+0=K(x_3)$.)
+\end{proof}
+
+\subsection{Notation for a block-Hurwitz number}\label{subsec:notation}
+For the rest of Sections~\ref{sec:prelim}--\ref{sec:thmA}, except in the facts (F1)--(F3) and in
+Section~\ref{sec:lemma0}, $\alpha$ is a block-Hurwitz number with block word $W=(w_1,\dots,w_\ell)$ and
+partial quotients $(a_n)_{n\ge0}$. Thus $a_{n_k+1}=A_k$, $a_{n_k+1+i}=w_i$ ($1\le i\le\ell$) and
+$n_{k+1}=n_k+\ell+1$. The set $\{n_k,n_k+1,\dots,n_k+\ell\}$ is the \emph{$k$-th block}; the blocks are pairwise
+disjoint and their union is $\{n\ge n_1\}$.
+
+For interval continuants write $K_{[a,b]}:=K(w_a,\dots,w_b)$, so $K_{[a,a-1]}=1$ and $K_{[a,a-2]}=0$. Then
+$K=K_{[1,\ell]}$, $c_i=K_{[1,i-1]}$, $c_i'=K_{[i+1,\ell]}$ and $\sigma=K_{[1,\ell-1]}$ ($\ell\ge1$). By
+Lemma~\ref{lem:cont}(N) every $K_{[a,b]}$ with $b\ge a-1$ is a positive integer; in particular $c_i,c_i'\ge1$.
+
+Put $\varepsilon_n:=q_n\alpha-p_n$ and $R_n:=\dist{q_n\beta}/\theta_n$, and
+$y_n:=q_n\beta-\rnd(q_n\beta)\in[-\tfrac12,\tfrac12]$, where at a tie $\rnd$ may choose either nearest
+integer. For every choice $|y_n|=\dist{q_n\beta}$, so $R_n=|y_n|/\theta_n$ does not depend on it.
+
+\subsection{Standard facts}
+Let $a_0\in\Z$ and $a_n\in\Z_{\ge1}$ ($n\ge1$). We use the following standard facts.
+% PLACEHOLDER-BIB: a textbook reference for (F1)-(F3) is to be added after the citation check. The source
+% proof (R6-S2.md Sec. 2.2) uses them as standard facts; the Lean development proves them
+% (tendsto_conv, cf_algorithm, theta_eq, ...; formal/R6_S2_blueprint.md Sec. 0.1, 2.1).
+\begin{enumerate}
+\item[(F1)] $p_{-1}=1$, $q_{-1}=0$, $p_0=a_0$, $q_0=1$, and for $n\ge0$,
+$p_{n+1}=a_{n+1}p_n+p_{n-1}$, $q_{n+1}=a_{n+1}q_n+q_{n-1}$.
+\item[(F2)] For $n\ge-1$, $p_{n+1}q_n-p_nq_{n+1}=(-1)^n$.
+\item[(F3)] $[a_0;a_1,\dots]$ converges to an irrational number $\alpha$, and $(a_n)$ is the regular
+continued-fraction expansion of $\alpha$. The complete quotients $\alpha_m:=[a_m;a_{m+1},\dots]$ ($m\ge1$)
+satisfy $\alpha_m=a_m+1/\alpha_{m+1}$, hence $\alpha_m>a_m\ge1$; and for $n\ge0$,
+$\alpha=(p_n\alpha_{n+1}+p_{n-1})/(q_n\alpha_{n+1}+q_{n-1})$.
+\item[(F4)] The partial quotients of a block-Hurwitz number satisfy the hypotheses above
+($a_0\in\Z$, all others $\ge1$); so (F1)--(F3) apply, and $p_n/q_n$ are its convergents.
+\end{enumerate}
+
+\begin{lemma}[Lemma D]\label{lem:D}
+Under the hypotheses of (F1)--(F3):
+\begin{enumerate}
+\item[(D1)] $q_n\ge1$, $q_{n+1}\ge q_n$ and $q_{n+1}\ge a_{n+1}q_n$ for $n\ge0$; $q_{m+2}\ge2q_m$ for $m\ge0$;
+$q_n\to\infty$.
+\item[(D2)] For $n\ge0$, $\varepsilon_n=(-1)^n/(q_n\alpha_{n+1}+q_{n-1})$; hence $\varepsilon_n$ has sign $(-1)^n$,
+\[
+\theta_n=\frac1{\alpha_{n+1}+q_{n-1}/q_n},\qquad\theta_n<\frac1{a_{n+1}}\le1,\qquad|\varepsilon_n|<\frac1{q_{n+1}}.
+\]
+\item[(D3)] For $m,n\ge0$, $q_n\varepsilon_m-q_m\varepsilon_n=D(m,n)$, where $D(m,n):=q_mp_n-p_mq_n\in\Z$.
+For fixed $m$, $D(m,n+1)=a_{n+1}D(m,n)+D(m,n-1)$ for $n\ge0$ (for $n=0$ this involves
+$D(m,-1)=q_mp_{-1}-p_mq_{-1}=q_m$), and $D(m,m)=0$, $D(m,m+1)=(-1)^m$.
+\item[(D4)] If $\alpha$ is block-Hurwitz, then for $k\ge1$:
+(i) $\sum_{j=1}^kq_{n_j}\le4q_{n_k}$; (ii) $\sum_{j>k}1/q_{n_j+1}\le4/q_{n_{k+1}+1}$.
+\end{enumerate}
+\end{lemma}
+% NEW-5 (editorial, requested by the v2 audit): the parenthesis on D(m,-1) in (D3).
+
+\begin{proof}
+% SRC: R6-S2.md Sec. 2.3 D1-D4.
+(D1) $q_0=1$, $q_1=a_1\ge1$; if $q_{n-1},q_n\ge0$ then $q_{n+1}=a_{n+1}q_n+q_{n-1}\ge a_{n+1}q_n\ge q_n$ by (F1),
+and induction gives the first three claims. Then $q_{m+2}=a_{m+2}q_{m+1}+q_m\ge q_{m+1}+q_m\ge2q_m$, which
+implies $q_n\to\infty$.
+
+(D2) By (F3),
+$q_n\alpha-p_n=\bigl(q_n(p_n\alpha_{n+1}+p_{n-1})-p_n(q_n\alpha_{n+1}+q_{n-1})\bigr)/(q_n\alpha_{n+1}+q_{n-1})
+=(q_np_{n-1}-p_nq_{n-1})/(q_n\alpha_{n+1}+q_{n-1})$. By (F2) at index $n-1\ge-1$ the numerator is
+$-(-1)^{n-1}=(-1)^n$; the denominator is positive because $q_n\ge1$, $\alpha_{n+1}>0$, $q_{n-1}\ge0$. Dividing
+gives the formula for $\theta_n$. Since $\alpha_{n+1}>a_{n+1}$ by (F3), $\theta_n<1/a_{n+1}$ and
+$q_n\alpha_{n+1}+q_{n-1}>q_na_{n+1}+q_{n-1}=q_{n+1}$.
+
+(D3) Expanding, $q_n(q_m\alpha-p_m)-q_m(q_n\alpha-p_n)=q_mp_n-q_np_m$. The recurrence in $n$ follows from (F1),
+which is linear in $(p_n,q_n)$ and holds for $n\ge0$ (with $p_{-1},q_{-1}$ at $n=0$). Finally
+$D(m,m+1)=p_{m+1}q_m-p_mq_{m+1}=(-1)^m$ by (F2).
+
+(D4) By (D1), $q$ is non-decreasing and $q_{m+2}\ge2q_m$, so $q_m\ge2^{\lfloor(m-m')/2\rfloor}q_{m'}$ for
+$0\le m'\le m$. Also $n_k-n_j=(k-j)(\ell+1)\ge k-j$. (i) Hence
+$\sum_{j\le k}q_{n_j}\le q_{n_k}\sum_{d\ge0}2^{-\lfloor d/2\rfloor}=q_{n_k}\cdot2\sum_{e\ge0}2^{-e}=4q_{n_k}$.
+(ii) For $j>k$, $q_{n_j+1}\ge2^{\lfloor(j-k-1)/2\rfloor}q_{n_{k+1}+1}$, and the same summation applies.
+\end{proof}
+
+\begin{lemma}[Lemma A]\label{lem:A}
+Let $\alpha$ be block-Hurwitz.
+\begin{enumerate}
+\item[(A1)] Let $(X_m)_{m\ge0}$ be real numbers with $X_{m+1}=a_{m+1}X_m+X_{m-1}$ for
+$n_k+1\le m\le n_k+\ell$. Then for $0\le j\le\ell$,
+\[
+X_{n_k+1+j}=K_{[1,j]}X_{n_k+1}+K_{[2,j]}X_{n_k}.
+\]
+This applies to $p_m$, $q_m$, $D(m',m)$ (as functions of $m$; they satisfy the recurrence for all $m\ge0$ by
+(F1) and (D3)) and to their integer linear combinations.
+\item[(A2)] For every word $(x_1,\dots,x_m)$, $m\ge1$, and $1\le i\le m$,
+\[
+K(x_1..x_m)=K(x_1..x_{i-1})K(x_i..x_m)+K(x_1..x_{i-2})K(x_{i+1}..x_m).
+\]
+In particular: (A2a) $K=c_iK_{[i,\ell]}+K_{[1,i-2]}c_i'$ for $1\le i\le\ell$; (A2b)
+$K_{[i,\ell]}=w_iK_{[i+1,\ell]}+K_{[i+2,\ell]}$ for $1\le i\le\ell$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+% SRC: R6-S2.md Sec. 2.4.
+(A1) Induction on $j$. For $j=0$: $K_{[1,0]}=1$, $K_{[2,0]}=0$. For $j=1$: $X_{n_k+2}=w_1X_{n_k+1}+X_{n_k}$, and
+$K_{[1,1]}=w_1$, $K_{[2,1]}=1$. For $1\le j\le\ell-1$: $X_{n_k+2+j}=w_{j+1}X_{n_k+1+j}+X_{n_k+j}$, and both
+coefficient sequences $j\mapsto K_{[1,j]}$, $j\mapsto K_{[2,j]}$ satisfy $Y_{j+1}=w_{j+1}Y_j+Y_{j-1}$ by
+Lemma~\ref{lem:cont}(RR); so the coefficients agree.
+
+(A2) Fix $i$; we prove
+$K(x_1..x_j)=K(x_1..x_{i-1})K(x_i..x_j)+K(x_1..x_{i-2})K(x_{i+1}..x_j)$ for $j\ge i-1$. For $j=i-1$ the right
+side is $K(x_1..x_{i-1})\cdot1+K(x_1..x_{i-2})\cdot0$. For $j=i$ it is $K(x_1..x_{i-1})x_i+K(x_1..x_{i-2})$,
+which is $K(x_1..x_i)$ by (RR) (for $i=1$: $x_1\cdot1+0$). For $j\ge i$ the three functions
+$K(x_1..x_j)$, $K(x_i..x_j)$, $K(x_{i+1}..x_j)$ of $j$ satisfy $Y_{j+1}=x_{j+1}Y_j+Y_{j-1}$ by (RR) (the last
+one has length $j-i\ge0$, using the length $-1$ convention). Both sides satisfy the same second-order
+recurrence with the same initial values, so they agree. (A2a) is the case $x=W$, $m=\ell$. (A2b): for
+$i<\ell$ apply (A2) to $(w_i,\dots,w_\ell)$ with splitting position $2$; for $i=\ell$ it reads
+$w_\ell=w_\ell\cdot1+0$.
+\end{proof}
+
+\begin{lemma}[Lemma B]\label{lem:B}
+Let $\alpha$ be block-Hurwitz. For every $k\ge1$, $1/\theta_{n_k}\in(A_k,A_k+2)$; hence $A_k\theta_{n_k}\to1$.
+For $1\le i\le\ell$, $1/\theta_{n_k+i}\to K/(c_ic_i')$ as $k\to\infty$.
+\end{lemma}
+
+\begin{proof}
+% SRC: R6-S2.md Sec. 3, B1-B4.
+(B1) By (D2), $1/\theta_{n_k}=\alpha_{n_k+1}+q_{n_k-1}/q_{n_k}$. By (F3),
+$\alpha_{n_k+1}=A_k+1/\alpha_{n_k+2}\in(A_k,A_k+1)$, because $\alpha_{n_k+2}>a_{n_k+2}\ge1$. By (D1),
+$q_{n_k-1}/q_{n_k}\in[0,1]$ ($n_k\ge0$, $q_{-1}=0$). Adding, $A_k<1/\theta_{n_k}<A_k+2$, so
+$A_k\theta_{n_k}\in(A_k/(A_k+2),1)$, and $A_k\to\infty$ gives $A_k\theta_{n_k}\to1$.
+
+(B2) For $1\le i\le\ell$, $\alpha_{n_k+i+1}\to K_{[i,\ell]}/K_{[i+1,\ell]}$. Backward induction on $i$. For
+$i=\ell$: $\alpha_{n_k+\ell+1}=w_\ell+1/\alpha_{n_{k+1}+1}$ and $\alpha_{n_{k+1}+1}>A_{k+1}\to\infty$, so the limit is
+$w_\ell=K_{[\ell,\ell]}/K_{[\ell+1,\ell]}$. For $i<\ell$: $\alpha_{n_k+i+1}=w_i+1/\alpha_{n_k+i+2}$, the last
+term tends to $K_{[i+2,\ell]}/K_{[i+1,\ell]}$ by induction (denominator $\ge1$), and the limit
+$(w_iK_{[i+1,\ell]}+K_{[i+2,\ell]})/K_{[i+1,\ell]}$ equals $K_{[i,\ell]}/K_{[i+1,\ell]}$ by (A2b).
+
+(B3) For $1\le i\le\ell$, $q_{n_k+i-1}/q_{n_k+i}\to K_{[1,i-2]}/c_i$. By (A1) with $X=q$,
+$q_{n_k+i}=c_iq_{n_k+1}+K_{[2,i-1]}q_{n_k}$. If $i\ge2$, also
+$q_{n_k+i-1}=c_{i-1}q_{n_k+1}+K_{[2,i-2]}q_{n_k}$ with $c_{i-1}=K_{[1,i-2]}$; since
+$0\le q_{n_k}/q_{n_k+1}\le1/A_k\to0$ by (D1), dividing numerator and denominator by $q_{n_k+1}$ gives the
+limit. If $i=1$, $q_{n_k}/q_{n_k+1}\le1/A_k\to0=K_{[1,-1]}/c_1$.
+
+(B4) By (D2), (B2), (B3) and (A2a),
+\[
+\frac1{\theta_{n_k+i}}=\alpha_{n_k+i+1}+\frac{q_{n_k+i-1}}{q_{n_k+i}}\to\frac{K_{[i,\ell]}}{c_i'}+\frac{K_{[1,i-2]}}{c_i}
+=\frac{c_iK_{[i,\ell]}+K_{[1,i-2]}c_i'}{c_ic_i'}=\frac K{c_ic_i'}.\qedhere
+\]
+\end{proof}
+
+% =====================================================================================
+\section{Lemma 0: the half of the Kraaikamp--Liardet theorem that is used}\label{sec:lemma0}
+
+\begin{lemma}[Lemma 0]\label{lem:0}
+Let $\alpha$ be irrational (its regular continued fraction satisfies (F1)--(F3)) and $\beta\in\R$. If there is
+$n^*\ge1$ such that $\dist{q_n\beta}<\theta_n/4$ for every $n\ge n^*-1$, then $\beta\in\Z\alpha+\Z$.
+\end{lemma}
+
+\begin{corollary}[Corollary $0'$]\label{cor:0}
+If $\beta\notin\Z\alpha+\Z$, then $\KL_\alpha(\beta)\ge1/4$. Hence $c^*(\alpha)\ge1/4$ for every irrational $\alpha$.
+\end{corollary}
+
+\begin{proof}[Proof of Lemma~\ref{lem:0}]
+% SRC: R6-S2.md Sec. 4, steps 0.1-0.4.
+Let $\rho_n:=\rnd(q_n\beta)$ and $y_n=q_n\beta-\rho_n$. By (F1), $q_{n+1}\beta=a_{n+1}q_n\beta+q_{n-1}\beta$, so the
+integer $m_n:=a_{n+1}\rho_n+\rho_{n-1}-\rho_{n+1}$ equals $y_{n+1}-a_{n+1}y_n-y_{n-1}$ ($n\ge0$). For $n\ge n^*$ the
+hypothesis applies at $n-1,n,n+1$, and (D2) gives $\theta_{n\pm1}<1$ and $a_{n+1}\theta_n<1$; hence
+$|m_n|<\tfrac14\theta_{n+1}+\tfrac14a_{n+1}\theta_n+\tfrac14\theta_{n-1}<\tfrac34$, so $m_n=0$.
+
+By (F2) the integer matrix $\bigl(\begin{smallmatrix}p_{n^*}&q_{n^*}\\p_{n^*+1}&q_{n^*+1}\end{smallmatrix}\bigr)$ has
+determinant $\pm1$, so there are $u,v\in\Z$ with $\rho_{n}=up_{n}+vq_{n}$ for $n=n^*,n^*+1$. Since $m_n=0$ for
+$n\ge n^*$, $(\rho_n)_{n\ge n^*}$ satisfies the recurrence of (F1), as does $(up_n+vq_n)$; the two agree at two
+consecutive indices, hence $\rho_n=up_n+vq_n$ for all $n\ge n^*$.
+
+Therefore $y_n=q_n(\beta-v-u\alpha)+u\varepsilon_n$. Since $|y_n|\le1/2$ and $|u\varepsilon_n|\le|u|$ by (D2),
+$q_n|\beta-v-u\alpha|\le\frac12+|u|$ for all $n\ge n^*$. As $q_n\to\infty$ (D1), $\beta=u\alpha+v$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:0}]
+If $\limsup_nR_n<1/4$, then $R_n<1/4$, i.e.\ $\dist{q_n\beta}<\theta_n/4$, for all $n\ge n_0$, and
+Lemma~\ref{lem:0} with $n^*=n_0+1$ gives $\beta\in\Z\alpha+\Z$. Taking the infimum over $\beta\notin\Z\alpha+\Z$ gives
+$c^*(\alpha)\ge1/4$.
+\end{proof}
+
+% =====================================================================================
+\section{The localization lemma}\label{sec:S1}
+
+\begin{lemma}[Lemma S1]\label{lem:S1}
+Let $\alpha$ be a block-Hurwitz number with block word $W$, let $\beta\in\R$ with $\KL_\alpha(\beta)<\infty$, and put
+$y_n:=q_n\beta-\rnd(q_n\beta)$ and $t_k:=A_ky_{n_k}$. Define the \emph{canonical labels} of $\beta$ by
+\[
+r_k=r_k(\beta):=\rnd(K\,y_{n_k+1})\bmod K\in\Z/K\qquad(k\ge1),
+\]
+where at a tie $\rnd$ may choose either nearest integer (the same convention as for $y_n$); the conclusions
+below hold for every choice. In (b), (c), (d), $r_k$ and ``label'' always mean the canonical label. Then:
+\begin{enumerate}
+\item[(a)] $y_{n_k}\to0$; $A_k\theta_{n_k}\to1$; and $1/\theta_{n_k+i}\to K/(c_ic_i')$ for $1\le i\le\ell$.
+\item[(b)] For $1\le i\le\ell$, $|y_{n_k+i}|-d_K(c_ir_k)/K\to0$; the sequence $(t_k)$ is bounded; and
+$\dZ\bigl(t_{k+1}-(r_{k+1}-\sigma r_k)/K,\ \Z\bigr)\to0$.
+\item[(c)] $\beta\in\Z\alpha+\Z$ if and only if eventually $r_k=0$ and $t_k\to0$.
+\item[(d)] (Realisation.) For every sequence $(r_k)_{k\ge0}$ in $\Z/K$ ($r_0$ is part of the given data and only
+constrains $\tau_1$) and every bounded real sequence $(\tau_k)_{k\ge1}$ with
+$\tau_k\in(r_k-\sigma r_{k-1})/K+\Z$, there is $\beta$ whose canonical labels eventually equal $r_k$ (that is,
+$r_k(\beta)=r_k$ for all large $k$) and such that $t_k-\tau_k\to0$.
+\end{enumerate}
+Moreover, the $\beta$ constructed in (d) satisfies $\KL_\alpha(\beta)<\infty$ (step (d4) below).
+\end{lemma}
+% SRC: statement = PLAN_GRAPH.md S.2 R6-S1 (current version, after M2 and D-2); translated. The
+% "Moreover" sentence is not part of the PLAN_GRAPH statement; it is proved in R6-S2.md Sec. 5.6 (d4)
+% and is the extra conclusion KL < top of the Lean statement StatementS1d (blueprint Sec. 5, item 12).
+The class $(r_k-\sigma r_{k-1})/K+\Z$ is well defined for $r_{k-1},r_k\in\Z/K$: changing the representative of
+$r_k$ by $K$ changes the quotient by $1$, and changing that of $r_{k-1}$ by $K$ changes it by $\sigma\in\Z$.
+
+Throughout this section $\alpha$ and $\beta$ are fixed; in (a)--(c) we assume $\KL:=\KL_\alpha(\beta)<\infty$.
+
+\subsection{Proof of (a)}
+% SRC: R6-S2.md Sec. 5.1.
+There is $k_0$ with $R_n\le\KL+1$ for all $n\ge n_{k_0}$. Then
+$|y_{n_k}|=R_{n_k}\theta_{n_k}\le(\KL+1)\theta_{n_k}<(\KL+1)/A_k\to0$ by (D2). The other two claims are
+Lemma~\ref{lem:B}.
+
+\subsection{Canonical labels}\label{subsec:labels}
+% SRC: R6-S2.md Sec. 5.2 (including the paragraph on ties).
+Let $\ell\ge1$. By (A1) with $X=q$ and $j=\ell$, $q_{n_{k+1}}=Kq_{n_k+1}+K_{[2,\ell]}q_{n_k}$. Since
+$q_m\beta\equiv y_m\pmod1$ for every choice of ties,
+\[
+Ky_{n_k+1}\equiv y_{n_{k+1}}-K_{[2,\ell]}\,y_{n_k}\pmod1,
+\]
+and the right side tends to $0$ by (a). Hence $\dZ(Ky_{n_k+1},\Z)\to0$. Choose $k_1\ge k_0$ such that this
+distance is $<1/2$ for $k\ge k_1$. For such $k$ the nearest integer $s_k$ to $Ky_{n_k+1}$ is unique, so
+$\rnd(Ky_{n_k+1})=s_k$ involves no tie, $r_k=s_k\bmod K$, and
+\[
+g_k:=y_{n_k+1}-s_k/K\to0,\qquad|Kg_k|<1/2.
+\]
+If $\ell=0$, then $K=1$, $\Z/K=\{0\}$, $r_k=0$ for all $k$, and we put $s_k:=0$.
+
+\emph{Ties.} A tie in $y_{n_k+1}$ changes $y_{n_k+1}$ by $\pm1$, hence $Ky_{n_k+1}$ by $\pm K$; its distance to $\Z$ is
+unchanged, its nearest integer moves by $\pm K$, and the label mod $K$ is unchanged. A tie in
+$\rnd(Ky_{n_k+1})$ requires $\dZ(Ky_{n_k+1},\Z)=1/2$, which happens only for finitely many $k<k_1$. Thus $r_k$ is
+independent of all choices for $k\ge k_1$. Statements (b)--(d) concern only limits and properties that hold
+eventually, which are not affected by changing finitely many $r_k$; and every use of labels below is at
+$k\ge k_1$ (or at $k$ large). Hence all conclusions hold for every choice of ties. Note that $k_1$ depends on $\beta$
+and $W$.
+
+\subsection{Proof of (b), first claim}
+% SRC: R6-S2.md Sec. 5.3.
+Let $\ell\ge1$, $1\le i\le\ell$ and $k\ge k_1$. By (A1) with $X=q$, $j=i-1$:
+$q_{n_k+i}=c_iq_{n_k+1}+K_{[2,i-1]}q_{n_k}$, hence
+\[
+y_{n_k+i}\equiv c_i\frac{s_k}K+e_{k,i}\pmod1,\qquad e_{k,i}:=c_ig_k+K_{[2,i-1]}y_{n_k}\to0,
+\]
+the coefficients being independent of $k$. Since $x\mapsto\dist{x}$ is $1$-periodic and $1$-Lipschitz,
+$\bigl|\dist{y_{n_k+i}}-\dist{c_is_k/K}\bigr|\le|e_{k,i}|$. Finally $\dist{y}=|y|$ for $|y|\le1/2$, and
+$\dist{c_is_k/K}=d_K(c_is_k)/K=d_K(c_ir_k)/K$, because $d_K(x)=K\dist{x/K}$ and $d_K$ is $K$-periodic. Hence
+$|y_{n_k+i}|-d_K(c_ir_k)/K\to0$.
+
+\subsection{Proof of (b), second and third claims}
+% SRC: R6-S2.md Sec. 5.4. The parenthetical "strict form" of the bound on |t_k| in the source is
+% omitted (only the non-strict bound is used).
+\emph{Boundedness.} $|t_k|=A_k|y_{n_k}|=(A_k\theta_{n_k})R_{n_k}\le R_{n_k}$, since $0<A_k\theta_{n_k}<1$ by (D2).
+For $k\ge k_0$ this is $\le\KL+1$; for the finitely many $k<k_0$, $|t_k|\le A_k/2$. So $(t_k)$ is bounded.
+
+\emph{Coupling, $\ell\ge1$.} By (F1), $q_{n_{k+1}+1}=A_{k+1}q_{n_{k+1}}+q_{n_{k+1}-1}$ with $n_{k+1}-1=n_k+\ell$, so
+$y_{n_{k+1}+1}\equiv t_{k+1}+y_{n_k+\ell}\pmod1$. For $k\ge k_1$ the left side is $s_{k+1}/K+g_{k+1}$, and by the
+previous subsection ($i=\ell$, $c_\ell=\sigma$) $y_{n_k+\ell}\equiv\sigma s_k/K+e_{k,\ell}$. Hence
+\[
+t_{k+1}\equiv\frac{s_{k+1}-\sigma s_k}K+(g_{k+1}-e_{k,\ell})\pmod1 .
+\]
+Since $s_k\equiv r_k\pmod K$, $(s_{k+1}-\sigma s_k)/K\equiv(r_{k+1}-\sigma r_k)/K\pmod1$, and therefore
+$\dZ\bigl(t_{k+1}-(r_{k+1}-\sigma r_k)/K,\Z\bigr)\le|g_{k+1}-e_{k,\ell}|\to0$.
+
+\emph{Coupling, $\ell=0$.} Now $n_{k+1}-1=n_k$ and $n_{k+1}+1=n_{k+2}$, so $t_{k+1}\equiv y_{n_{k+2}}-y_{n_k}\pmod1$,
+which tends to $0$ by (a); this is the claim, since $(r_{k+1}-\sigma r_k)/K=0$.
+
+\subsection{Proof of (c)}
+% SRC: R6-S2.md Sec. 5.5.
+($\Rightarrow$) Let $\beta=u\alpha+v$ with $u,v\in\Z$. Then $q_n\beta=up_n+vq_n+u\varepsilon_n$ and
+$|u\varepsilon_n|\le|u|/q_{n+1}\to0$ by (D2). For large $n$, $|u\varepsilon_n|<1/2$, so the nearest integer to $q_n\beta$
+is unique and equals $up_n+vq_n$; thus $y_n=u\varepsilon_n$ and $R_n=|u||\varepsilon_n|/\theta_n=|u|/q_n$, whence
+$\KL=\limsup|u|/q_n=0<\infty$. (If $u=0$, then $y_n=0$, $R_n=0$, $t_k=0$ for all $n,k$, and what follows is
+immediate.) Consequently $Ky_{n_k+1}\to0$, so eventually $s_k=0$, i.e.\ $r_k=0$; and
+$|t_k|=A_k|u||\varepsilon_{n_k}|=|u|A_k\theta_{n_k}/q_{n_k}\le|u|/q_{n_k}\to0$.
+
+($\Leftarrow$) Suppose $r_k=0$ eventually and $t_k\to0$. By (b), $|y_{n_k+i}|\to d_K(0)/K=0$, and
+$\theta_{n_k+i}\to c_ic_i'/K>0$ by Lemma~\ref{lem:B}; so $R_{n_k+i}\to0$ for $1\le i\le\ell$. Also
+$R_{n_k}=|t_k|/(A_k\theta_{n_k})\to0$ by Lemma~\ref{lem:B}. The blocks cover all $n\ge n_1$ and have the fixed size
+$\ell+1$, so $R_n\to0$. In particular $R_n<1/4$ for all large $n$, and Lemma~\ref{lem:0} gives
+$\beta\in\Z\alpha+\Z$.
+
+\subsection{Proof of (d)}\label{subsec:d}
+% SRC: R6-S2.md Sec. 5.6 (d1)-(d4). Notation change (mathematically immaterial): the source writes
+% s_k := P^{(k)}_{n_k+1} and g'_k, and explains the clash with s_k, g_k of Sec. 5.2 in a note in (d4);
+% here these are \hat s_k and \hat g_k, so that note is unnecessary. The source's long note on strict
+% versus non-strict inequalities when T_max = 0 (beginning of (d3)) is replaced by stating every bound
+% with "<=", which is valid in all cases and is all that is used afterwards.
+\emph{Data.} We are given $r_0\in\Z/K$, $r_k\in\Z/K$ ($k\ge1$) and bounded $\tau_k\in(r_k-\sigma r_{k-1})/K+\Z$ ($k\ge1$).
+Thus $T_k:=K\tau_k\in\Z$, $T_k\equiv r_k-\sigma r_{k-1}\pmod K$, and $T_{\max}:=\sup_k|T_k|<\infty$.
+
+\emph{Change of the first term.} Let $\tilde r_0\in[0,K)$ represent $r_0$, put $T'_1:=T_1+\sigma\tilde r_0$ and
+$T'_k:=T_k$ for $k\ge2$. Then $T'_1\equiv r_1\pmod K$. From now on $T_{\max}$ denotes
+$\max(T_{\max},|T'_1|)$, so that $|T'_k|\le T_{\max}$ for all $k$. (In general $|T'_1|$ is not bounded by
+$K\sup_k|\tau_k|$, since $\sigma\tilde r_0$ can be as large as $\sigma(K-1)$; this is why $T_{\max}$ is redefined.)
+
+\emph{Construction.} Let $x_k:=(-1)^{n_k}T'_k$ and
+\[
+\beta:=\frac1K\sum_{k\ge1}x_k\varepsilon_{n_k}=\frac1K\sum_{k\ge1}T'_k|\varepsilon_{n_k}|,
+\]
+using that $\varepsilon_{n_k}$ has sign $(-1)^{n_k}$ (D2). The series converges absolutely, since
+$|\varepsilon_{n_k}|<1/q_{n_k+1}$ (D2) and $\sum_k1/q_{n_k+1}<\infty$ (D4(ii)).
+
+\emph{(d1) Exact decomposition.} Fix $k\ge1$ and $n$ in the $k$-th block ($n_k\le n\le n_k+\ell$). Using (D3) in the
+form $q_n\varepsilon_{n_j}=q_{n_j}\varepsilon_n+D(n_j,n)$ for $j\le k$, and splitting off the finitely many terms
+$j\le k$ of the absolutely convergent series,
+\[
+q_n\beta=\frac{P^{(k)}_n}K+E^{\rm past}_n+E^{\rm fut}_n,\qquad
+P^{(k)}_n:=\sum_{j\le k}x_jD(n_j,n)\in\Z,
+\]
+\[
+E^{\rm past}_n:=\frac1K\sum_{j\le k}x_jq_{n_j}\varepsilon_n,\qquad
+E^{\rm fut}_n:=\frac1K\sum_{j>k}x_jq_n\varepsilon_{n_j}.
+\]
+
+\emph{(d2) Residues.} Put $P^{(0)}:\equiv0$. By (D3), each $P^{(k)}$, as a function of $n$, satisfies the recurrence of
+(F1) for all $n\ge0$, so (A1) applies to it. Let $\hat s_k:=P^{(k)}_{n_k+1}\in\Z$. We claim, for all $k\ge1$,
+\[
+\text{(i) }P^{(k)}_{n_k}\equiv0\pmod K;\qquad\text{(ii) }\hat s_k\equiv r_k\pmod K.
+\]
+For $k=1$: $P^{(1)}_n=x_1D(n_1,n)$, so $P^{(1)}_{n_1}=0$ and $\hat s_1=x_1(-1)^{n_1}=T'_1\equiv r_1$ by (D3).
+For $k\ge2$ and $\ell\ge1$: by (A1) for $X=P^{(k-1)}$ on block $k-1$, with $j=\ell$,
+$P^{(k-1)}_{n_k}=K\hat s_{k-1}+K_{[2,\ell]}P^{(k-1)}_{n_{k-1}}\equiv0$ (induction hypothesis (i)), and with $j=\ell-1$,
+$P^{(k-1)}_{n_k-1}=K_{[1,\ell-1]}\hat s_{k-1}+K_{[2,\ell-1]}P^{(k-1)}_{n_{k-1}}\equiv\sigma\hat s_{k-1}$. By the
+recurrence, $P^{(k-1)}_{n_k+1}=A_kP^{(k-1)}_{n_k}+P^{(k-1)}_{n_k-1}\equiv\sigma\hat s_{k-1}\pmod K$, whatever $A_k$ is.
+Since $P^{(k)}=P^{(k-1)}+x_kD(n_k,\cdot)$, (D3) gives $P^{(k)}_{n_k}=P^{(k-1)}_{n_k}\equiv0$ and
+$\hat s_k=P^{(k-1)}_{n_k+1}+x_k(-1)^{n_k}\equiv\sigma\hat s_{k-1}+T_k\equiv\sigma r_{k-1}+(r_k-\sigma r_{k-1})=r_k$.
+For $\ell=0$, $K=1$ and the congruences are trivial. Finally, by (A1) ($X=P^{(k)}$, $j=i-1$) and (i),
+$P^{(k)}_{n_k+i}\equiv c_i\hat s_k\pmod K$ for $1\le i\le\ell$.
+
+\emph{(d3) Error bounds.} All limits are as $k\to\infty$. By (D2), $q_{n_j}|\varepsilon_n|\le q_{n_j}/q_{n+1}$ and
+$q_n|\varepsilon_{n_j}|\le q_n/q_{n_j+1}$; and $|x_j|=|T'_j|\le T_{\max}$.
+
+\noindent\emph{The index $n=n_k$.} Here
+$KE^{\rm past}_{n_k}=x_kq_{n_k}\varepsilon_{n_k}+\sum_{j<k}x_jq_{n_j}\varepsilon_{n_k}$, and the first term is
+$T'_k\theta_{n_k}$ by the sign in (D2). For $k=1$ the remaining sum is empty. For $k\ge2$ its absolute value
+is $\le4T_{\max}q_{n_{k-1}}/q_{n_k+1}$ by (D4)(i); multiplying by $A_k$ and using $q_{n_k+1}\ge A_kq_{n_k}$ and
+$q_{n_k}\ge q_{n_{k-1}+1}\ge A_{k-1}q_{n_{k-1}}$ (D1) gives at most $4T_{\max}/A_{k-1}\to0$. Next,
+$K|E^{\rm fut}_{n_k}|\le4T_{\max}q_{n_k}/q_{n_{k+1}+1}$ by (D4)(ii), and
+$q_{n_{k+1}+1}\ge A_{k+1}q_{n_{k+1}}\ge A_{k+1}q_{n_k+1}\ge A_{k+1}A_kq_{n_k}$, so $A_kK|E^{\rm fut}_{n_k}|\le4T_{\max}/A_{k+1}\to0$.
+Altogether, with $\eta_k:=A_k\bigl(\frac1K\sum_{j<k}x_jq_{n_j}\varepsilon_{n_k}+E^{\rm fut}_{n_k}\bigr)$,
+\[
+q_{n_k}\beta=\frac{P^{(k)}_{n_k}}K+\frac{T'_k\theta_{n_k}}K+\frac{\eta_k}{A_k},\qquad\eta_k\to0,\qquad
+\frac{P^{(k)}_{n_k}}K\in\Z\ \text{(by (d2)(i))}.
+\]
+Since $\bigl|T'_k\theta_{n_k}/K+\eta_k/A_k\bigr|\le(T_{\max}/K+|\eta_k|)/A_k\to0$ (using $\theta_{n_k}<1/A_k$), for large $k$
+this number is $<1/2$ and hence equals $y_{n_k}$ exactly (unique nearest integer). Therefore
+\[
+t_k-\tau_k=\frac{T'_k}K\bigl(A_k\theta_{n_k}-1\bigr)+\eta_k+\frac{T'_k-T_k}K\to0;
+\]
+the first term tends to $0$ by Lemma~\ref{lem:B} and boundedness of $T'_k$, and the last is non-zero only for
+$k=1$.
+% NEW-5 (editorial, requested by the v2 audit): "For k=1 the remaining sum is empty."
+
+\noindent\emph{The indices $n=n_k+i$, $1\le i\le\ell$.} Here
+$K|E^{\rm past}_n|\le4T_{\max}q_{n_k}/q_{n+1}\le4T_{\max}q_{n_k}/q_{n_k+1}\le4T_{\max}/A_k$, and
+$K|E^{\rm fut}_n|\le4T_{\max}q_n/q_{n_{k+1}+1}\le4T_{\max}q_{n_{k+1}}/q_{n_{k+1}+1}\le4T_{\max}/A_{k+1}$, using
+$n<n_{k+1}$ and (D1). With (d2) this gives $q_n\beta\equiv c_i\hat s_k/K+o(1)\pmod1$. In particular (for $\ell\ge1$,
+where $n_k+1$ lies in the $k$-th block) put $\hat g_k:=E^{\rm past}_{n_k+1}+E^{\rm fut}_{n_k+1}$ and
+$z_k:=-\rnd(q_{n_k+1}\beta)\in\Z$. By (d1), $y_{n_k+1}=\hat s_k/K+\hat g_k+z_k$, and
+$|K\hat g_k|\le4T_{\max}/A_k+4T_{\max}/A_{k+1}\to0$. For large $k$, $|K\hat g_k|<1/2$, so
+$Ky_{n_k+1}=(\hat s_k+Kz_k)+K\hat g_k$ has the unique nearest integer $\hat s_k+Kz_k\equiv\hat s_k\equiv r_k\pmod K$. Thus
+the canonical label $r_k(\beta)$ equals the given $r_k$ for all large $k$, for every choice of ties (different
+choices only change $z_k$).
+
+\emph{(d4) Conclusion.} By (d3), $t_k$ is bounded, and $A_k\theta_{n_k}\to1$ with $A_k\theta_{n_k}>0$, so
+$R_{n_k}=|t_k|/(A_k\theta_{n_k})$ is bounded. Since $\theta_{n_k+i}\to c_ic_i'/K>0$ and $|y_n|\le1/2$, $R_{n_k+i}$ is
+bounded. Hence $\KL_\alpha(\beta)<\infty$, so $\beta$ satisfies the hypothesis of the lemma and
+Subsection~\ref{subsec:labels} applies to it. By (d3) the canonical labels of $\beta$ eventually equal $r_k$ and
+$t_k-\tau_k\to0$. If $\ell=0$, then $K=1$, all labels equal the unique element $0$ of $\Z/1$, the argument for the
+index $n_k+1$ (which needs $\ell\ge1$) is not needed, and $t_k-\tau_k\to0$ follows from the part of (d3) for
+$n=n_k$, which does not use $\ell\ge1$. \qed
+
+% =====================================================================================
+\section{Proof of Theorem A}\label{sec:thmA}
+
+Fix a block-Hurwitz number $\alpha$ with block word $W$.
+
+\subsection{Lower bound}\label{subsec:lower}
+% SRC: R6-S2.md Sec. 7.1, steps 1-7.
+\begin{proposition}\label{prop:lower}
+For every $\beta\notin\Z\alpha+\Z$, $\KL_\alpha(\beta)\ge\nu(W)$. Hence $c^*(\alpha)\ge\nu(W)$.
+\end{proposition}
+
+\begin{proof}
+\emph{Step 1.} If $\KL=\infty$ the claim holds because $\nu(W)\le1$ (Lemma~\ref{lem:C}(C2)). Assume $\KL<\infty$ and use
+the canonical labels $r_k$ ($k\ge k_1$) of Subsection~\ref{subsec:labels}.
+
+\emph{Step 2 ($\limsup$ by blocks).} Let $M_k:=\max_{0\le i\le\ell}R_{n_k+i}$. Then $\limsup_nR_n=\limsup_kM_k$: each
+$M_k$ is some $R_n$ with $n\ge n_k\to\infty$, which gives ``$\ge$''; each $n\ge n_1$ lies in exactly one block $k(n)$, with
+$R_n\le M_{k(n)}$ and $k(n)\to\infty$, which gives ``$\le$''.
+
+\emph{Step 3 (limits inside a block).} By Lemma~\ref{lem:B} and boundedness of $(t_k)$,
+$R_{n_k}-|t_k|=|t_k|\bigl(1/(A_k\theta_{n_k})-1\bigr)\to0$. For $1\le i\le\ell$,
+$R_{n_k+i}-d_K(c_ir_k)/(c_ic_i')\to0$: multiply the first claim of Lemma~\ref{lem:S1}(b) by
+$1/\theta_{n_k+i}\to K/(c_ic_i')$, all quantities involved being bounded ($|y_n|\le1/2$). Since
+$|\max_ia_i-\max_ib_i|\le\max_i|a_i-b_i|$, we get $M_k-\max(|t_k|,v(r_k))\to0$.
+
+\emph{Step 4 (edges).} For $k\ge k_1+1$ let $\tau_k$ be the element of $(r_k-\sigma r_{k-1})/K+\Z$ nearest to $t_k$ (any
+choice at a tie). By Lemma~\ref{lem:S1}(b), $|t_k-\tau_k|\to0$. Then $e_k:=(r_{k-1}\to r_k,\ t=\tau_k)$ is an edge of
+$G_W$; since $(\tau_k)$ is bounded and $K\tau_k\in\Z$, the $e_k$ lie in a finite set of edges. By Steps 2 and 3 and
+$\bigl||t_k|-|\tau_k|\bigr|\to0$,
+\[
+\KL=\Lambda:=\limsup_k\max\bigl(|\tau_k|,v(r_k)\bigr).
+\]
+
+\emph{Step 5 (edges occurring infinitely often).} Let $E_\infty$ be the set of edges equal to $e_k$ for infinitely many
+$k$. As the edge set is finite, there is $k_2\ge k_1+1$ with $e_k\in E_\infty$ for all $k\ge k_2$. If
+$g=(a\to b,\ t=\tau)\in E_\infty$, then $\max(v(a),|\tau|,v(b))\le\Lambda$: indeed $g=e_k$ for infinitely many $k$, and
+for those $k$ the numbers $v(a)=v(r_{k-1})\le\max(|\tau_{k-1}|,v(r_{k-1}))$, $|\tau|=|\tau_k|$ and $v(b)=v(r_k)$ are
+bounded by terms of a sequence whose $\limsup$ is $\Lambda$, at indices tending to infinity.
+
+\emph{Step 6 (a non-trivial edge occurs infinitely often).} If $E_\infty$ contained only the trivial loop, then
+$r_k=0$ and $\tau_k=0$ for $k\ge k_2$, hence $t_k\to0$, and Lemma~\ref{lem:S1}(c) ($\Leftarrow$) would give
+$\beta\in\Z\alpha+\Z$, a contradiction. So some non-trivial $f\in E_\infty$ exists.
+
+\emph{Step 7 (a closed walk).} Choose $k_2\le k<k'$ with $e_k=e_{k'}=f$. The walk $e_k,e_{k+1},\dots,e_{k'-1}$ starts at
+$r_{k-1}$ and ends at $r_{k'-1}$; since $e_{k'}=e_k$ have the same initial vertex, $r_{k'-1}=r_{k-1}$, so it is a closed
+walk. It contains $f$, hence is non-trivial, and all its edges lie in $E_\infty$, so by Step 5 its cost is
+$\le\Lambda$. By the definition of $\nu$, $\nu(W)\le\Lambda=\KL$.
+\end{proof}
+
+\subsection{Upper bound and attainment}\label{subsec:upper}
+% SRC: R6-S2.md Sec. 7.2, steps 8-10.
+\begin{proposition}\label{prop:upper}
+There is $\beta\notin\Z\alpha+\Z$ with $\KL_\alpha(\beta)=\nu(W)$. Hence $c^*(\alpha)\le\nu(W)$.
+\end{proposition}
+
+\begin{proof}
+\emph{Step 8 (periodic data).} Let $C^*=(e_1,\dots,e_L)$ be the minimiser of Lemma~\ref{lem:C}(C2),
+$e_m=(r^{m-1}\to r^m,\ t^m)$, $r^L=r^0$, $\cost(C^*)=\nu(W)$, $C^*$ non-trivial. For $k\ge1$ put
+$r_k:=r^{k\bmod L}$, $r_0:=r^0$, and $\tau_k:=t^m$ when $k\equiv m\pmod L$, $m\in\{1,\dots,L\}$. Then
+$\tau_k\in(r_k-\sigma r_{k-1})/K+\Z$ by the edge condition, and $(\tau_k)$ takes only $L$ values. Lemma~\ref{lem:S1}(d)
+gives $\beta$ with $\KL_\alpha(\beta)<\infty$, canonical labels eventually equal to $r_k$, and $t_k-\tau_k\to0$.
+
+\emph{Step 9 (the value).} Steps 2 and 3 of Proposition~\ref{prop:lower} use only $\KL_\alpha(\beta)<\infty$ and
+Lemma~\ref{lem:S1}(a)(b), so they apply to this $\beta$ and give $M_k-\max(|t_k|,v(r_k(\beta)))\to0$. Since
+$r_k(\beta)=r_k$ for large $k$ and $\bigl||t_k|-|\tau_k|\bigr|\le|t_k-\tau_k|\to0$, this yields
+$\KL_\alpha(\beta)=\limsup_kM_k=\limsup_k\max(|\tau_k|,v(r_k))$. The sequence on the right is eventually $L$-periodic with values
+$\max(|t^m|,v(r^m))$, $m=1,\dots,L$, whose maximum is $\cost(C^*)=\nu(W)$ ($r^1,\dots,r^L$ run through all vertices of
+$C^*$). The $\limsup$ of an eventually periodic sequence is the maximum over one period, so
+$\KL_\alpha(\beta)=\nu(W)$.
+
+\emph{Step 10 ($\beta\notin\Z\alpha+\Z$).} Some edge $e_m$ of $C^*$ is non-trivial. If $r^{m-1}\ne0$ or $r^m\ne0$, the
+canonical labels are non-zero infinitely often. Otherwise $r^{m-1}=r^m=0$, so $t^m\in\Z\setminus\{0\}$ and
+$|\tau_k|\ge1$ for infinitely many $k$; as $t_k-\tau_k\to0$, $t_k\not\to0$. In both cases the right side of
+Lemma~\ref{lem:S1}(c) fails, so $\beta\notin\Z\alpha+\Z$ by Lemma~\ref{lem:S1}(c) ($\Rightarrow$).
+\end{proof}
+
+\subsection{Conclusion}\label{subsec:conclA}
+% SRC: R6-S2.md Sec. 7.3.
+\begin{proof}[Proof of Theorem~\ref{thm:A}]
+Propositions~\ref{prop:lower} and~\ref{prop:upper} give $c^*(\alpha)=\nu(W)$, with the infimum attained at the
+$\beta$ of Proposition~\ref{prop:upper}. The definition of $\nu(W)$ involves only $W$ (through $K$, $c_i$, $c_i'$,
+$\sigma$), and the equality holds for every block-Hurwitz number with block word $W$; so $c^*(\alpha)$ does not depend
+on $(A_k)$ or on $a_0,\dots,a_N$. The bound $\nu(W)\le1$ is Lemma~\ref{lem:C}(C2). For $\nu(W)\ge1/4$, let
+$\alpha_W^\circ:=[0;A_1,W,A_2,W,\dots]$ with $A_k:=k$ and $N=0$; it is a block-Hurwitz number with block word $W$
+(F4), and $\beta=1/2\notin\Z\alpha_W^\circ+\Z$ (if $1/2=u\alpha_W^\circ+v$ with $u,v\in\Z$, irrationality forces $u=0$ and
+then $v=1/2\notin\Z$). Hence $\nu(W)=c^*(\alpha_W^\circ)\ge1/4$ by Corollary~\ref{cor:0}.
+\end{proof}
+
+\begin{remark}\label{rem:lean-route}
+% NEW-5 (comparison only; taken from formal/R6_S2_blueprint.md Sec. 7.3; not part of any proof here).
+The Lean proof (Section~\ref{sec:lean}) follows a slightly different route: the lower bound is proved by
+contradiction with a margin (if $\KL<\nu$ then eventually all $|t_k|$, $v(r_k)$, $|\tau_k|$ are $\le\nu-\delta$, and a
+closed walk of cost $\le\nu-\delta$ is cut out at a vertex value occurring infinitely often), without the equality
+$\KL=\Lambda$ or the set $E_\infty$; the upper bound proves only $\KL_\alpha(\beta)\le\nu(W)$, equality then following
+from the lower bound. The statements proved are the same.
+\end{remark}
+
+% =====================================================================================
+\section{Proof of Theorem B}\label{sec:thmB}
+% SRC: proofs/R6-S7-mstar.md, "证明" Steps 0-7 (Step 0 is Lemma 3.1 here). Self-contained: it does not
+% use Lemma S1, Theorem A, or Lemma A of this paper (only Lemma 3.1 and Definition 2.1).
+
+Let $W=(w_1,\dots,w_\ell)$ with $K=K(W)\ge2$; then $\ell\ge1$, because $\ell=0$ gives $K=1$. Extend the definitions of
+$c_j,c'_j$ to $0\le j\le\ell+1$ by the same formulas $c_j:=K(w_1,\dots,w_{j-1})$, $c'_j:=K(w_{j+1},\dots,w_\ell)$
+with the conventions of Definition~\ref{def:cont}: $c_0=0$, $c_{\ell+1}=K$, $c'_0=K$, $c'_{\ell+1}=0$, and
+$c_1=c'_\ell=1$. By Lemma~\ref{lem:cont}(N), $c_j\ge0$ for $0\le j\le\ell+1$, $c_j\ge1$ for $1\le j\le\ell+1$, and
+$c'_j\ge1$ for $0\le j\le\ell$.
+
+\emph{Step 1 (two recurrences).} For $1\le j\le\ell$:
+(R) $c_{j+1}=w_jc_j+c_{j-1}$, which is (RR) for $(w_1,\dots,w_j)$ (for $j=1$: $c_2=w_1\cdot1+0$); and
+(L) $c'_{j-1}=w_jc'_j+c'_{j+1}$, which is (LL) for $(w_j,\dots,w_\ell)$, of length $\ell-j+1\ge1$ (for $j=1$ the left
+side is $c'_0=K$; for $j=\ell$ it reads $w_\ell=w_\ell\cdot1+0$, consistent with $c'_{\ell+1}=0$).
+
+\emph{Step 2 (splitting identity).} For $0\le j\le\ell$, $D_j:=c_{j+1}c'_j+c_jc'_{j+1}=K$. Indeed, for $1\le j\le\ell$,
+\[
+D_j-D_{j-1}=c'_j(c_{j+1}-c_{j-1})-c_j(c'_{j-1}-c'_{j+1})=w_jc_jc'_j-w_jc_jc'_j=0
+\]
+by (R) and (L), and $D_0=c_1c'_0+c_0c'_1=K$. Both terms of $D_j$ are $\ge0$, so $c_{j+1}c'_j\le K$ for $0\le j\le\ell$.
+
+\emph{Step 3 ($\gcd(K,c'_1)=1$).} Let $p:=c'_1=K_{[2,\ell]}$. By (L), $c'_{j-1}\equiv c'_{j+1}\pmod{c'_j}$, so
+$\gcd(c'_{j-1},c'_j)=\gcd(c'_j,c'_{j+1})$ for $1\le j\le\ell$; hence $\gcd(K,p)=\gcd(c'_0,c'_1)=\gcd(c'_\ell,c'_{\ell+1})
+=\gcd(1,0)=1$. Choose $\lambda\in\Z$ with $\lambda p\equiv1\pmod K$.
+
+\emph{Step 4 (congruence duality).} For $0\le j\le\ell+1$, $c_j\equiv(-1)^{j-1}\lambda c'_j\pmod K$. By induction,
+checking two consecutive indices: $j=0$: $c_0=0$ and $c'_0=K\equiv0$; $j=1$: $c_1=1\equiv\lambda p$. For $1\le j\le\ell$,
+(L) gives $c'_{j+1}=c'_{j-1}-w_jc'_j$, hence
+$(-1)^j\lambda c'_{j+1}=(-1)^{j-2}\lambda c'_{j-1}+w_j(-1)^{j-1}\lambda c'_j\equiv c_{j-1}+w_jc_j=c_{j+1}$, by the induction
+hypothesis and (R).
+
+\emph{Step 5 (rewriting the vertex cost).} Let $r\in\Z$, $r\not\equiv0\pmod K$, and $u\equiv\lambda r\pmod K$; since
+$\lambda$ is invertible mod $K$, $u\not\equiv0$. By Step 4, $c_jr\equiv(-1)^{j-1}uc'_j\pmod K$, and since $d_K$ is
+$K$-periodic and even, $d_K(c_jr)=d_K(uc'_j)$ for $1\le j\le\ell$. Choose the representative $u$ with
+$1\le|u|\le K/2$.
+
+\emph{Step 6 (choice of index).} By (R) and (N), $c_{j+1}=w_jc_j+c_{j-1}\ge c_j$, so
+$1=c_1\le c_2\le\dots\le c_{\ell+1}=K$. Let $J:=\min\{j\in[1,\ell+1]:c_j>2|u|\}$.
+\begin{itemize}
+\item If no such $j$ exists, then $K=c_{\ell+1}\le2|u|\le K$, so $|u|=K/2$. Take $j=\ell$: $c'_\ell=1$,
+$d_K(uc'_\ell)=d_K(u)=K/2$, and $c_\ell c'_\ell=\sigma\le K$ by monotonicity. So
+$d_K(c_\ell r)/(c_\ell c'_\ell)\ge(K/2)/K=1/2$.
+\item Otherwise $J\ge2$, because $c_1=1<2\le2|u|$. Let $j:=J-1\in[1,\ell]$, so $c_j\le2|u|<c_{j+1}$. Then
+$\frac12c_jc'_j\le|u|c'_j<\frac12c_{j+1}c'_j\le\frac K2$ by Step 2. Hence $0\le|uc'_j|<K/2$ and $d_K(uc'_j)=|u|c'_j$, so
+$d_K(c_jr)/(c_jc'_j)=|u|c'_j/(c_jc'_j)\ge1/2$.
+\end{itemize}
+In both cases $v(r)=\max_{1\le i\le\ell}d_K(c_ir)/(c_ic'_i)\ge1/2$. This proves Theorem~\ref{thm:B}(i).
+
+\emph{Step 7 (part (ii)).} Let $K\ge2$ and let $r^*\ne0$ attain $m^*$ (a minimum over the finite non-empty set
+$\Z/K\setminus\{0\}$).
+\begin{itemize}
+\item Upper bounds. The loop at $r^*$ whose label $t$ is the element of $(r^*-\sigma r^*)/K+\Z$ of least absolute value
+has $|t|\le1/2$; it is non-trivial because $r^*\ne0$, and its cost is $\max(v(r^*),|t|)\le\max(m^*,1/2)=m^*$ by part
+(i). The loop at $0$ with $t=1$ has cost $1$ ($v(0)=0$). Hence $\nu(W)\le\min(1,m^*)$.
+\item Lower bound. Let $C$ be a non-trivial closed walk. If $C$ visits some $r\ne0$, then $\cost(C)\ge v(r)\ge m^*$.
+Otherwise all edges of $C$ are loops at $0$, with $t\equiv0\pmod1$, i.e.\ $t\in\Z$; since $C$ is non-trivial, some
+$t\ne0$, and $\cost(C)\ge1$. Hence $\nu(W)\ge\min(1,m^*)$.
+\item Both readings. The witnesses of the upper bounds are loops, i.e.\ simple cycles, and the lower bound holds for
+every non-trivial closed walk; so the conclusion holds whether ``closed walk'' or ``simple cycle'' is used in
+Definition~\ref{def:graph}.
+\item The case $K=1$. First, $K(W)=1$ if and only if $W\in\{\varnothing,(1)\}$: for $\ell=0$, $K=1$; for $\ell=1$,
+$K=w_1$; for $\ell\ge2$, the monotonicity of Step 6 (which uses only (R) and (N)) gives $K\ge c_3=w_2w_1+1\ge2$. If
+$K=1$, the vertex set is $\Z/1=\{0\}$ and $v(0)=0$ (for $\ell=0$ by definition; for $\ell=1$,
+$v(0)=d_1(0)/1=0$). The only edges are loops at $0$ with $t\equiv0\pmod1$, i.e.\ $t\in\Z$. A non-trivial closed walk
+contains an edge with $t\in\Z\setminus\{0\}$, so its cost is $\ge1$, and the loop with $t=1$ has cost $1$. Hence
+$\nu(W)=1$, again under both readings.
+\end{itemize}
+Finally, by part (i), $\nu(W)\ge\min(1,1/2)=1/2$ if $K\ge2$, and $\nu(W)=1$ if $K=1$. \qed
+
+% =====================================================================================
+\section{Examples and numerics}\label{sec:examples}
+
+\begin{example}[Calibration values]\label{ex:calib}
+% NEW-2 for nu((1,1)) (not audited); the K=1 cases are Theorem B(ii) directly.
+Since $K(\varnothing)=K((1))=1$, Theorem~\ref{thm:B}(ii) gives $\nu(\varnothing)=\nu((1))=1$. For $W=(1,1)$:
+$\ell=2$, $K=K(1,1)=1\cdot K(1)+K()=2$, $c_1=K()=1$, $c_2=K(w_1)=1$, $c'_1=K(w_2)=1$, $c'_2=K()=1$. The only
+non-zero residue is $r=1$, and $v(1)=\max\bigl(d_2(1)/1,\ d_2(1)/1\bigr)=d_2(1)=\min_{s\in\Z}|1-2s|=1$. So
+$m^*((1,1))=1$ and $\nu((1,1))=\min(1,1)=1$ by Theorem~\ref{thm:B}(ii). \emph{This short computation was written for this
+draft and not audited}; the same value is the Lean theorem \texttt{R6S2.nu\_one\_one} and appears in the finite table
+of Subsection~\ref{subsec:numerics}.
+\end{example}
+
+\subsection{The case $W=\varnothing$ and the constant of \cite{D5}}\label{subsec:W-empty}
+% NEW-3: everything in this subsection (Proposition prop:W-empty and its proof) is new in this draft.
+\emph{The derivation in this subsection was written for this draft and has not been independently audited.}
+
+Let $Q_0=Q_1=1$, $Q_{j+1}=(4j+2)Q_j+Q_{j-1}$ ($j\ge1$), and $\mathcal L:=\Z+\Z\frac{e+1}2$, as in \cite{D5}. We use
+the following input from \cite{D5} (its Proposition~9, labelled \texttt{prop:input} there; audited on paper in
+the project, with only its part (i) machine-checked): \emph{the regular continued-fraction expansion of
+$(e-1)/2$ is $[c_0;c_1,c_2,\dots]$ with $c_0=0$, $c_1=1$, $c_k=4k-2$ ($k\ge2$), and its convergent denominators are
+$q_j=Q_j$ for all $j\ge0$.}
+
+\begin{proposition}\label{prop:W-empty}
+Let $\alpha:=(e-1)/2$, and assume the input above.
+\begin{enumerate}
+\item[(i)] $\alpha$ is a block-Hurwitz number with $W=\varnothing$; hence $c^*(\alpha)=1$, and there is
+$\beta_0\notin\Z\alpha+\Z$ with $\KL_\alpha(\beta_0)=1$.
+\item[(ii)] For $j\ge1$, $4j+2<1/\theta_j<4j+4$; in particular $j\theta_j\to1/4$.
+\item[(iii)] For every $z\in\R$, $\limsup_jj\dist{Q_jz}=\frac14\KL_\alpha(z)$ in $[0,\infty]$.
+\item[(iv)] $\kappa:=\inf_{z\notin\mathcal L}\limsup_jj\dist{Q_jz}=1/4$, and the infimum is attained.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Take $N=1$, $a_0=0$, $a_1=1$, $\ell=0$ and $A_k:=4k+2$ ($k\ge1$). Then $n_k=1+(k-1)=k$, and the partial quotient
+of index $n_k+1=k+1$ is $c_{k+1}=4(k+1)-2=4k+2=A_k$; moreover $A_k\ge1$ and $A_k\to\infty$. So
+$[a_0;a_1,A_1,A_2,\dots]=[0;1,6,10,\dots]$, which by the input is the regular expansion of $\alpha$; thus $\alpha$ is
+block-Hurwitz with $W=\varnothing$, and its convergent denominators $q_j$ in Definition~\ref{def:KL} are the $Q_j$.
+Theorem~\ref{thm:A} and $\nu(\varnothing)=1$ (Example~\ref{ex:calib}) give $c^*(\alpha)=1$ and $\beta_0$.
+
+(ii) Lemma~\ref{lem:B} with $n_k=k$ and $A_k=4k+2$ gives $4k+2<1/\theta_k<4k+4$ for every $k\ge1$. Hence
+$j/(4j+4)<j\theta_j<j/(4j+2)$ for $j\ge1$, and both bounds tend to $1/4$.
+
+(iii) Fix $z$ and write $R_j:=\dist{q_jz}/\theta_j\ge0$ (well defined since $\theta_j>0$ by (D2)), so that
+$j\dist{Q_jz}=u_jR_j$ with $u_j:=j\theta_j$. Let $\KL:=\KL_\alpha(z)=\limsup_jR_j$ and fix $\varepsilon\in(0,1/4)$. By (ii)
+there is $j_\varepsilon$ with $\frac14-\varepsilon\le u_j\le\frac14+\varepsilon$ for $j\ge j_\varepsilon$, hence
+$(\frac14-\varepsilon)R_j\le u_jR_j\le(\frac14+\varepsilon)R_j$ for $j\ge j_\varepsilon$. The $\limsup$ in $[0,\infty]$ is monotone, does
+not depend on finitely many terms, and satisfies $\limsup_j(cx_j)=c\limsup_jx_j$ for $c>0$ and $x_j\ge0$ (with
+$c\cdot\infty=\infty$). So $(\frac14-\varepsilon)\KL\le\limsup_ju_jR_j\le(\frac14+\varepsilon)\KL$. If $\KL=\infty$ the left
+inequality gives $\limsup_ju_jR_j=\infty$; if $\KL<\infty$, letting $\varepsilon\to0$ gives $\limsup_ju_jR_j=\KL/4$.
+
+(iv) Since $\frac{e+1}2=\alpha+1$, $\mathcal L=\Z+\Z(\alpha+1)=\Z\alpha+\Z$. By (iii),
+$\kappa=\inf_{z\notin\Z\alpha+\Z}\KL_\alpha(z)/4=c^*(\alpha)/4$, because $x\mapsto x/4$ is an order isomorphism of $[0,\infty]$
+and so commutes with infima. By (i), $\kappa=1/4$, attained at $\beta_0$ by (iii).
+\end{proof}
+
+\begin{remark}\label{rem:W-empty}
+Proposition~\ref{prop:W-empty}(iv) is the statement $\kappa=1/4$, attained, of \cite{D5} (its Theorem~1). The route
+above is different: it uses only the expansion of $(e-1)/2$ from \cite{D5}, together with Theorems~\ref{thm:A}
+and~\ref{thm:B}, and gives neither the explicit point $z^*$ of \cite{D5} nor its even/odd sub-limits. The bound in
+(ii) is the one stated in the comparison remark of \cite{D5}; here it is read off from Lemma~\ref{lem:B}.
+\end{remark}
+
+\begin{example}[The number $e$; conditional]\label{ex:e}
+% NEW-4 (not audited).
+The classical expansion $e=[2;1,2,1,1,4,1,1,6,\dots]$ is \emph{not proved in this paper, and its original source has
+not been verified}. If it is granted, $e$ is a block-Hurwitz number with $N=1$, $a_0=2$, $a_1=1$, $A_k=2k$ and
+$W=(1,1)$, and Theorem~\ref{thm:A} with Example~\ref{ex:calib} gives $c^*(e)=1$, attained. This is a conditional
+statement (category~2 in the project's classification). The Lean theorem \texttt{R6S2.cstar\_example11} concerns the
+different number $[0;1,1,1,2,1,1,3,\dots]$ ($W=(1,1)$, $A_k=k$, $N=0$), not $e$.
+\end{example}
+
+\subsection{Finite exact computations}\label{subsec:numerics}
+Everything in this subsection is a \emph{finite exact computation (category~4)}; it is not used in any proof and
+proves nothing beyond the words listed. All values of $\nu$ below were computed with exact rational arithmetic by
+the project scripts named, and are quoted from their recorded output files (not recomputed for this draft).
+\begin{itemize}
+\item \texttt{experiments/R6-S2/R6\_R6-S2\_T1\_nu\_table.py} (output \texttt{.out}): $5890$ words, namely all words
+of length $\le5$ with letters in $\{1,\dots,5\}$, all words of length $\le10$ with letters in $\{1,2\}$, and the
+list $\varnothing,(1),(1,1),(2),(1,1,1),(2,3),(5,1,5)$ (union, deduplicated). An independent brute-force
+computation for the $791$ words with $K\le60$ gave $0$ mismatches. Recorded values include $\nu(5,1,5)=5/6$ ($K=35$,
+$\sigma=6$, witness: a loop at $r=5$), $\nu(3,1,3)=3/4$, and $\nu(\varnothing)=\nu((1))=\nu((1,1))=\nu((2))=\nu(1,1,1)=\nu(2,3)=1$.
+$5733$ of the $5890$ words have $\nu(W)<1$; no word has $\nu(W)<1/4$; the minimum over the range is $12/17$, attained
+only at $W=(5,1,1,1,5)$ ($K=96$). In this range every minimising closed walk found is either a loop at a non-zero
+vertex ($5733$ words) or the loop at $0$ with $t=\pm1$ ($157$ words).
+\item \texttt{experiments/R6-S2/R6\_R6-S2\_T1b\_structure.py}: on the same table, $\nu(W)=\min(1,m^*(W))$ for all
+$5888$ words with $K\ge2$ (consistent with Theorem~\ref{thm:B}). For the family $(w,1,w)$ the recorded values are
+$\nu=1$ for $w=1,2$ and $\nu=w/(w+1)$ for $w\in\{3,\dots,12,16,20,25,30,40\}$. \emph{This is an observation on
+finitely many $w$, not a theorem}; no proof of a formula for this family is claimed.
+\item \texttt{experiments/R6-S2/R6\_R6-S2\_T1c\_mstar\_search.py}: a random and local search (floating point, then
+exact for the final word) found $W=(2,5,1,2,2,1,5,1,1,1,5,1,2,3,12,1)$ with exact $\nu(W)=891/1270\approx0.7016$,
+below $12/17$. Whether $\inf_W\nu(W)$ exceeds $1/2$ is open.
+\item \texttt{experiments/R6-S2/R6\_R6-S7\_mstar\_lemma\_check.py}: the intermediate claims of Steps 3, 4 and 6 of
+Section~\ref{sec:thmB} and Theorem~\ref{thm:B}(ii) were checked exactly on the $5888$ words with $2\le K\le20000$ of
+the table; all passed.
+\item \texttt{experiments/R6-S2/R6\_R6-S2\_T2\_T3\_end\_to\_end.py} (mpmath, several hundred digits): for
+$\alpha_W=[0;A_1,W,A_2,W,\dots]$ with $A_k=10k$, $k\le45$, a truncation of the construction of
+Lemma~\ref{lem:S1}(d) along a minimising walk gives $\max R_n$ over blocks $25$--$40$ close to the predicted $\nu(W)$
+(e.g.\ $0.83311$ against $5/6$ for $W=(5,1,5)$), and random and hill-climbing searches over finitely supported
+defect patterns found no value below $\nu(W)-0.02$ for the $11$ words tested.
+\end{itemize}
+Under the correctness of these computations, Theorem~\ref{thm:A} gives $c^*(\alpha)=5/6$ for every block-Hurwitz
+$\alpha$ with $W=(5,1,5)$, so $c^*$ is not constant on the block-Hurwitz class. No such value is formalized
+(Section~\ref{sec:lean}).
+
+% =====================================================================================
+\section{Formal verification}\label{sec:lean}
+% SRC: formal/R6_S7.log, formal/R6_S2.log, formal/R6_S2_blueprint.md Sec. 0, 1, 5, 6, 7. The author of
+% this draft did not re-run any build; everything here is quoted from those records.
+
+Toolchain: Lean (version 4.35.0, commit \texttt{eb6cafb7}), Mathlib at the matching release. The build of record
+is GitHub Actions (workflow \texttt{lean-audit.yml}); local builds by the project's formalization agent are recorded
+in the project logs. The author of this draft did not re-run the builds.
+
+\medskip\noindent\textbf{Theorem B.} Module \texttt{EpiFormal/R6S7Mstar.lean} (namespace \texttt{R6S7}; standalone,
+imports only Mathlib). Theorem~\ref{thm:B}(i) is \texttt{R6S7.prop1} (and \texttt{mstar\_ge\_half}); part (ii) is
+\texttt{cor2\_K\_ge\_two} and \texttt{cor2\_K\_eq\_one}, which also prove that the closed-walk value \texttt{nu} and the
+simple-cycle value \texttt{nuSimple} coincide; the consequence $\nu\ge1/2$ is \texttt{nu\_ge\_half}. CI run
+\texttt{46011329540} (head \texttt{65db490}), conclusion success; these five theorems are in the CI axiom gate.
+
+\medskip\noindent\textbf{Theorem A and Lemma S1.} Modules \texttt{R6S2Kl} (definitions, the statement
+\texttt{StatementR6S2}, (F1)--(F4), (D1)--(D3), (A1), (A2a), (B1)), \texttt{R6S2Blocks} ((D4), (B2)--(B4)),
+\texttt{R6S2Realize} (Lemma~\ref{lem:S1}(a), (d)), \texttt{R6S2Localize} (Lemma~\ref{lem:0}, Corollary~\ref{cor:0},
+Subsection~\ref{subsec:labels}, Lemma~\ref{lem:S1}(b), (c)), \texttt{R6S2Main} (Propositions~\ref{prop:lower},
+\ref{prop:upper}, Theorem~\ref{thm:A}), and the audit entry \texttt{AuditR6S2.lean}. The main theorem is
+\texttt{R6S2.main : StatementR6S2}, where
+\[
+\texttt{StatementR6S2}:\ \forall X:\texttt{BH},\ \texttt{cstar}\,X.a=\texttt{ofReal}(\nu(X.W))\ \wedge\
+\exists\beta,\ \beta\notin\texttt{lattice}(\texttt{alpha}\,X.a)\wedge\texttt{KL}\,X.a\,\beta=\texttt{ofReal}(\nu(X.W)).
+\]
+Lemma~\ref{lem:S1} (a)--(d) is \texttt{R6S2.S1\_all : StatementS1}; ``depends only on $W$'' is
+\texttt{cstar\_only\_W'}; $1/4\le\nu\le1$ is \texttt{nu\_bounds}. CI run \texttt{46110437346} (head \texttt{46d1a36}):
+full \texttt{lake build}, $9399$ jobs, success; the CI axiom gate covers $16$ theorems (\texttt{main}, \texttt{lower},
+\texttt{upper}, \texttt{S1\_all}, \texttt{S1a}, \texttt{S1b}, \texttt{S1c}, \texttt{S1d}, \texttt{lemma0}, \texttt{cor0'},
+\texttt{cstar\_ge\_quarter\_irrational}, \texttt{cstar\_only\_W'}, \texttt{nu\_bounds}, \texttt{main\_example11},
+\texttt{nu\_one\_one}, \texttt{cstar\_example11}).
+
+\medskip\noindent\textbf{Axioms.} For all gated theorems \texttt{\#print axioms} gives exactly
+$[\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound}]$: Lean foundational axioms (\texttt{propext},
+\texttt{Quot.sound}) and the classical-whitelist axiom \texttt{Classical.choice}; no project-added axioms, no
+\texttt{sorryAx}, no \texttt{Lean.ofReduceBool}. (Some auxiliary lemmas depend on a subset of this list.) The
+module files contain no \texttt{sorry}/\texttt{admit}/\texttt{native\_decide}; two small sanity theorems use
+\texttt{decide +kernel} (kernel reduction).
+
+\medskip\noindent\textbf{Statement alignment} (internal review, formal/R6\_S2\_blueprint.md \S1, \S7; not external).
+\begin{itemize}
+\item $\KL_\alpha(\beta)$ is a $\limsup$ in $[0,\infty]$ (\texttt{ENNReal}), matching the value range $[0,\infty]$;
+$c^*$ is the infimum there; the conclusion $c^*=\texttt{ofReal}(\nu)$ is equivalent to $c^*=\nu$ because
+$\texttt{ofReal}$ is injective on $[0,\infty)$ and $\nu\ge0$.
+\item Continued fractions are defined by the integer recurrence (F1), with $\alpha:=a_0+\sum_j(-1)^j/(q_jq_{j+1})$;
+\texttt{tendsto\_conv} and \texttt{cf\_algorithm} prove that $p_n/q_n\to\alpha$ and that the regular continued-fraction
+algorithm applied to $\alpha$ returns $(a_n)$, so (F3)--(F4) are theorems there.
+\item The structure \texttt{BH} has fields $a_0\in\Z$, a list $a_1,\dots,a_N$ of integers $\ge1$, $A:\N\to\N$ with
+$A_k\ge1$ for $k\ge1$ and $A\to\infty$, and a word $W$ of integers $\ge1$; big indices are defined by position.
+$\theta_n$ is literally $q_n|q_n\alpha-p_n|$, and $\dist{x}$ is $|x-\rnd x|$ (shown to be the minimal distance).
+\item $\nu$ is \texttt{R6S7.nu} (closed walks), equal to \texttt{nuSimple} (simple cycles).
+\item In Lemma~\ref{lem:S1} the tie conventions are quantified over \emph{all} nearest-integer selections, matching
+``for every choice''. No item is weaker than the informal statement; a few are stronger (e.g.\ (d) also gives
+$\KL_\alpha(\beta)<\infty$; (D4) holds for all $k$).
+\item Non-vacuity: \texttt{main\_example11} applies \texttt{main} to $W=(1,1)$, $A_k=k$, $N=0$; an \texttt{example} in
+\texttt{AuditR6S2.lean} re-proves the unfolded \texttt{StatementR6S2} by \texttt{main}, to pin the statement.
+\end{itemize}
+
+\medskip\noindent\textbf{Not machine-checked} (or checked only in a different form).
+\begin{itemize}
+\item Corollary~\ref{cor:half} ($c^*\ge1/2$) is not a separate Lean theorem; it is the immediate composition of
+\texttt{R6S2.main} and \texttt{R6S7.nu\_ge\_half}.
+\item The proof route of Propositions~\ref{prop:lower} and~\ref{prop:upper} differs from the Lean route
+(Remark~\ref{rem:lean-route}): the equality $\KL=\Lambda$, the set $E_\infty$, and the periodic-$\limsup$ argument of
+Step 9 are not formalized as such. In Lean the existence of the minimum in Definition~\ref{def:graph} is derived
+from the explicit formula of Theorem~\ref{thm:B}(ii) rather than from Lemma~\ref{lem:C}(C1).
+\item Remark~\ref{rem:theta-conv}, Example~\ref{ex:calib} as written (the value $\nu((1,1))=1$ itself is
+\texttt{nu\_one\_one}; $\nu(\varnothing)$, $\nu((1))$ are not separate theorems but follow from
+\texttt{cor2\_K\_eq\_one}), Proposition~\ref{prop:W-empty}, Remark~\ref{rem:W-empty} and Example~\ref{ex:e}.
+The input from \cite{D5} (expansion of $(e-1)/2$) is machine-checked there only in its part (i), not the expansion.
+The expansion of $e$ is not formalized.
+\item No value of $\nu$ from Subsection~\ref{subsec:numerics} is formalized, except that
+\texttt{R6S7.sanity\_extremal} checks the single vertex cost $v(12)=12/17$ for $W=(5,1,1,1,5)$ (not $\nu$).
+\item The Lean developments reported in \cite{P2} and \cite{P2E} were not re-run (author-reported).
+\end{itemize}
+
+% =====================================================================================
+\section{Scope and limitations}\label{sec:scope}
+\begin{itemize}
+\item \textbf{Nothing about $\pi$ or $e+\pi$.} The theorems concern the approximation of an arbitrary real $\beta$
+along the convergent denominators of a block-Hurwitz number. They give no information about the irrationality
+or transcendence of $e+\pi$, of $\pi$, or of any other constant, and none is claimed.
+\item \textbf{Single block word.} Only block-Hurwitz numbers with one fixed block word $W$ and $A_k\to\infty$ are
+treated. Periodically alternating block words (e.g.\ the expansions of $e^{2/m}$) and bounded-type $\alpha$ are not
+covered.
+\item \textbf{Is $1/2$ sharp?} Theorem~\ref{thm:B} gives $\inf_W\nu(W)\ge1/2$. The finite computations give values
+down to $891/1270\approx0.7016$; whether $1/2$ is the infimum, and what the infimum is, is open. Nothing here decides
+whether the constant $1/4$ of Corollary~\ref{cor:0} is sharp over all irrational $\alpha$.
+\item \textbf{Numerics.} The values in Subsection~\ref{subsec:numerics}, including $\nu(5,1,5)=5/6$ and the
+observation $\nu(w,1,w)=w/(w+1)$ for finitely many $w$, are finite computations (category~4).
+\item \textbf{Unaudited parts.} Remark~\ref{rem:theta-conv}, Example~\ref{ex:calib}, Proposition~\ref{prop:W-empty},
+Remark~\ref{rem:W-empty}, Example~\ref{ex:e} and Remark~\ref{rem:lean-route} were written for this draft and have
+not been independently audited. Example~\ref{ex:e} is conditional on an expansion not proved here.
+\item \textbf{Novelty is undetermined.} See Subsection~\ref{subsec:prior}; no claim of novelty is made.
+\item \textbf{Project manuscripts.} The Lean results of \cite{P2} and \cite{P2E} are author-reported and were not
+re-run for this draft.
+\item \textbf{Formalization.} See Section~\ref{sec:lean} for exactly what is machine-checked.
+\end{itemize}
+
+% TODO before submission: prior-art section (PLACEHOLDER-PRIOR-ART), bibliography additions (PLACEHOLDER-BIB),
+% independent audit of NEW-1..NEW-5, human check of all proofs, author data.
+
+\begin{thebibliography}{9}
+
+\bibitem{KL} Kraaikamp, Liardet, \emph{Good approximations and continued fractions},
+Proc.\ Amer.\ Math.\ Soc.\ \textbf{112} (1991), no.~2, 303--309.
+DOI 10.1090/S0002-9939-1991-1062392-7 (DOI from Crossref; not printed on the PDF read).
+
+\bibitem{Larcher} Larcher, \emph{A convergence problem connected with continued fractions},
+Proc.\ Amer.\ Math.\ Soc.\ \textbf{103} (1988), no.~3, 718--722.
+
+\bibitem{BDS} B\'ir\'o, Deshouillers, S\'os,
+Studia Sci.\ Math.\ Hungar.\ \textbf{38} (2001), 97--113.
+DOI 10.1556/sscmath.38.2001.1-4.7. (Open-access copy read at \texttt{http://real.mtak.hu/110616/}.)
+
+\bibitem{Stewart} M. Stewart, \emph{Irregularities of uniform distribution},
+Acta Math.\ Acad.\ Sci.\ Hungar.\ \textbf{37} (1981), 185--221.
+DOI 10.1007/bf01904883 (Crossref). Cited only via the reference list and Remark~3 of \cite{KL};
+\emph{full text not consulted}. (Another source cites different page numbers; unresolved.)
+
+\bibitem{D5} [Project manuscript], \emph{A sharp constant for inhomogeneous approximation along a sequence of
+denominators associated with $e$}, non-canonical draft (project file \texttt{artifacts/THM-0005/paper\_draft.tex});
+unpublished.
+
+\bibitem{P2} [Project manuscript], \emph{Complete spectrum discretization, exact Hausdorff gauges, and dimension
+phase transitions for Diophantine approximation along the convergent denominators of $e$}, draft; unpublished.
+Lean results author-reported, not re-run.
+
+\bibitem{P2E} [Project manuscript], \emph{Full regular convergent spectra of $e$, signed Hurwitz recurrences, and
+Brouwer-free Perron--Frobenius elimination}, draft; unpublished. Lean results author-reported, not re-run.
+
+% PLACEHOLDER-BIB: further references (prior-art check: e.g. Komatsu 1999 and others; textbook for
+% (F1)-(F3); a verified source for the expansion of e) to be added only after their pages are opened and checked.
+
+\end{thebibliography}
+
+\end{document}
